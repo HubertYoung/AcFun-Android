@@ -43,7 +43,7 @@ if (runAsApp) {
 //      module依赖 : project(':demo_component_b') //如果module名称跟dependencyName相同，可省略(推荐)
 //      maven依赖  : 'com.billy.demo:demoB:1.1.0' //如果使用了maven私服，请使用此方式
 ext.addComponent = { dependencyName, realDependency = null ->
-    def curModuleIsBuildingApk = false //当前task是否为给本module打apk包
+    def curModuleIsBuildingApk = true //当前task是否为给本module打apk包
     def taskNames = project.gradle.startParameter.taskNames
     def regex = "((.*:)?${project.name.toUpperCase()}:)?((ASSEMBLE)|(INSTALL)).*"
     def taskBuildApkPattern = Pattern.compile(regex)
@@ -129,7 +129,7 @@ android {
     }
 }
 dependencies {
-    compile "com.billy.android:cc:0.5.0"
+    api "com.billy.android:cc:0.5.0"
 //    compile project(":cc")
 }
 

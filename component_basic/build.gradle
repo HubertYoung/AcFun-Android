@@ -1,18 +1,24 @@
 apply from: rootProject.file('cc-settings.gradle')
 
+//gradle配置属性
+Properties props = new Properties()
+props.load(new FileInputStream(file("../gradle.properties")))
+
 android {
-    compileSdkVersion rootProject.compileVersion
+    compileSdkVersion props.getAt("ANDROID_BUILD_SDK_VERSION") as int
     defaultConfig {
-        minSdkVersion rootProject.minVersion
-        targetSdkVersion rootProject.targetVersion
+        minSdkVersion props.getAt("ANDROID_BUILD_MIN_SDK_VERSION") as int
+        targetSdkVersion props.getAt("ANDROID_BUILD_TARGET_SDK_VERSION") as int
         versionCode 1
         versionName "1.0"
         if (project.ext.runAsApp) {
-            applicationId 'com.kento.component_basic'
+            applicationId 'com.kento.component.basic'
         }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+
+    resourcePrefix "basic_"
 
     buildTypes {
         release {
@@ -21,12 +27,30 @@ android {
         }
     }
 
+    dexOptions {
+        incremental true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//configurations.all {
+//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+//        def requested = details.requested
+//        if (requested.group == 'com.android.support') {
+//            if (!requested.name.startsWith("multidex")) {
+//                details.useVersion ${props["ANDROID_SUPPORT_LIB_VERSION"]}
+//            }
+//        }
+//    }
+//}
 
-    implementation "com.android.support:appcompat-v7:${rootProject.supportVersion}"
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
+    implementation "com.android.support:design:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

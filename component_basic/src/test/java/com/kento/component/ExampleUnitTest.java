@@ -1,4 +1,4 @@
-package com.kento.component_basic;
+package com.kento.component;
 
 import org.junit.Test;
 

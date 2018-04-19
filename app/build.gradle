@@ -1,13 +1,20 @@
-apply plugin: 'com.android.application'
+apply from: rootProject.file('cc-settings.gradle')
+
+//gradle配置属性
+Properties props = new Properties()
+props.load(new FileInputStream(file("../gradle.properties")))
 
 android {
-    compileSdkVersion rootProject.compileVersion
+    compileSdkVersion props.getAt("ANDROID_BUILD_SDK_VERSION") as int
+//    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
-        applicationId "com.kento.welcome.commonlibrary"
-        minSdkVersion rootProject.minVersion
-        targetSdkVersion rootProject.targetVersion
-        versionCode 1
-        versionName "1.0"
+        applicationId props["ANDROID_APPLICATIONID"]
+        minSdkVersion props.getAt("ANDROID_BUILD_MIN_SDK_VERSION") as int
+        targetSdkVersion props.getAt("ANDROID_BUILD_TARGET_SDK_VERSION") as int
+        versionCode props.getAt("VERSION_CODE") as int
+        versionName props["VERSION_NAME"]
+        flavorDimensions props['VERSION_NAME']
+//        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 //    sourceSets {
@@ -27,11 +34,14 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:${rootProject.supportVersion}"
-    implementation "com.android.support:design:${rootProject.supportVersion}"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
+    implementation "com.android.support:design:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+//    addComponent 'component_basic'
+    // 这里参数2可以省略
+    implementation project(':component_basic')
 }

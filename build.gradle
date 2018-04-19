@@ -14,14 +14,6 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-ext {
-    compileVersion = 27
-    buildVersion = '27.1.1'
-    minVersion = 15
-    targetVersion = 22
-    supportVersion = '27.1.1'
-}
-
 
 allprojects {
     repositories {
