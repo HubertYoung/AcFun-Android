@@ -43,5 +43,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 //    addComponent 'component_basic'
     // 这里参数2可以省略
-    implementation project(':component_basic')
+    addComponent 'component_basic'
 }

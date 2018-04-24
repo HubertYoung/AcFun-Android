@@ -1,40 +1,9 @@
-apply from: rootProject.file('cc-settings.gradle')
+apply from: rootProject.file('basic_component.gradle')
 
 //gradle配置属性
 Properties props = new Properties()
 props.load(new FileInputStream(file("../gradle.properties")))
 
-android {
-    compileSdkVersion props.getAt("ANDROID_BUILD_SDK_VERSION") as int
-    defaultConfig {
-        minSdkVersion props.getAt("ANDROID_BUILD_MIN_SDK_VERSION") as int
-        targetSdkVersion props.getAt("ANDROID_BUILD_TARGET_SDK_VERSION") as int
-        versionCode 1
-        versionName "1.0"
-        if (project.ext.runAsApp) {
-            applicationId 'com.kento.component.basic'
-        }
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-
-    resourcePrefix "basic_"
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    dexOptions {
-        incremental true
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
 
 //configurations.all {
 //    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
@@ -51,6 +20,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
     implementation "com.android.support:design:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
+    implementation "ch.acra:acra-http:${props["ACRAVERSION"]}"
+    implementation "ch.acra:acra-toast:${props["ACRAVERSION"]}"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

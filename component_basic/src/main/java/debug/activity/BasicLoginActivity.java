@@ -57,7 +57,7 @@ public class BasicLoginActivity extends AppCompatActivity implements LoaderCallb
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.activity_basic_login );
 		// Set up the login form.
-		mEmailView = ( AutoCompleteTextView ) findViewById( R.id.email );
+//		mEmailView = ( AutoCompleteTextView ) findViewById( R.id.email );
 		populateAutoComplete();
 
 		mPasswordView = ( EditText ) findViewById( R.id.password );
@@ -122,6 +122,7 @@ public class BasicLoginActivity extends AppCompatActivity implements LoaderCallb
 			mEmailView.setError( getString( R.string.error_field_required ) );
 			focusView = mEmailView;
 			cancel = true;
+
 		} else if ( !isEmailValid( email ) ) {
 			mEmailView.setError( getString( R.string.error_invalid_email ) );
 			focusView = mEmailView;

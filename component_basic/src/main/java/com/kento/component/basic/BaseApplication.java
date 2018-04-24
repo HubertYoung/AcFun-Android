@@ -1,6 +1,15 @@
 package com.kento.component.basic;
 
 import android.app.Application;
+import android.content.Context;
+
+import org.acra.ACRA;
+import org.acra.ReportField;
+import org.acra.annotation.AcraCore;
+import org.acra.annotation.AcraHttpSender;
+import org.acra.annotation.AcraToast;
+import org.acra.data.StringFormat;
+import org.acra.sender.HttpSender;
 
 /**
  * <br>
@@ -12,5 +21,22 @@ import android.app.Application;
  * @since:V1.0
  * @desc:com.kento.component.basic
  */
+@AcraCore(
+		includeDropBoxSystemTags = true,
+		reportContent = {ReportField.CUSTOM_DATA},
+		reportFormat = StringFormat.KEY_VALUE_LIST)
+@AcraToast( resText = R.string.app_crash_str )
+@AcraHttpSender( uri = "http://d1bustest.d1-bus.com/socialbus/api/coupon/getCouponList",
+		httpMethod = HttpSender.Method.POST,
+		connectionTimeout = 15 * 1000,
+		socketTimeout = 15 * 1000,
+		dropReportsOnTimeout = true)
 public class BaseApplication extends Application {
+
+	@Override
+	protected void attachBaseContext( Context base ) {
+		super.attachBaseContext( base );
+//		If you are using legacy multidex, ensure that ACRA.init(...) is called after Multidex.install().
+		ACRA.init( this );
+	}
 }
