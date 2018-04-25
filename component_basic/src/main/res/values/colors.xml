@@ -34,6 +34,8 @@
     <color name="color_bgf8f8f8">#f8f8f8</color>
     <color name="text_color_ababab">#ababab</color>
 
+    <color name="shimmer_color">#a2878787</color>
+
     <color name="orange">#FA8C20</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -103,4 +105,9 @@
     <color name="pickerview_timebtn_pre">#c2daf5</color>
     <color name="pickerview_bg_topbar">#f5f5f5</color>
 
+    <color name="round_corner_progress_bar_background_default">#5f5f5f</color>
+    <color name="round_corner_progress_bar_progress_default">#7f7f7f</color>
+    <color name="round_corner_progress_bar_secondary_progress_default">@android:color/transparent</color>
+
+    <color name="password_bg">#F9FBF9</color>
 </resources>

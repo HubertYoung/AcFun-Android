@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <stroke
+                android:width="@dimen/DIMEN_1PX"
+                android:color="@color/color_bgc9"/>
+            <solid android:color="@color/line_bg"/>
+            <padding
+                android:bottom="@dimen/DIMEN_100PX"
+                android:left="@dimen/DIMEN_200PX"
+                android:right="@dimen/DIMEN_200PX"
+                android:top="@dimen/DIMEN_100PX"/>
+        </shape>
+    </item>
+    <item android:gravity="center">
+        <!--<bitmap android:src="@drawable/img_default"/>-->
+    </item>
+</layer-list>

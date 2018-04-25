@@ -33,10 +33,22 @@ import org.acra.sender.HttpSender;
 		dropReportsOnTimeout = true)
 public class BaseApplication extends Application {
 
+	private static BaseApplication mBaseApplication;
+
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		mBaseApplication = this;
+	}
+
 	@Override
 	protected void attachBaseContext( Context base ) {
 		super.attachBaseContext( base );
 //		If you are using legacy multidex, ensure that ACRA.init(...) is called after Multidex.install().
 		ACRA.init( this );
+	}
+
+	public static Context getAppContext() {
+		return mBaseApplication;
 	}
 }

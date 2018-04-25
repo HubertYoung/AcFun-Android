@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ContentWithSpaceEditText">
+        <attr name="input_type" format="enum">
+            <enum name="phone" value="0"/>
+            <enum name="bank_card_no" value="1"/>
+            <enum name="identify_card_no" value="2"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="SimpleRatingBar">
+        <attr name="srb_borderColor" format="color"/>
+        <attr name="srb_fillColor" format="color"/>
+        <attr name="srb_backgroundColor" format="color"/>
+        <attr name="srb_starBackgroundColor" format="color"/>
+        <attr name="srb_pressedBorderColor" format="color"/>
+        <attr name="srb_pressedFillColor" format="color"/>
+        <attr name="srb_pressedBackgroundColor" format="color"/>
+        <attr name="srb_pressedStarBackgroundColor" format="color"/>
+        <attr name="srb_numberOfStars" format="integer"/>
+        <attr name="srb_starSize" format="dimension"/>
+        <attr name="srb_maxStarSize" format="dimension"/>
+        <attr name="srb_starsSeparation" format="dimension"/>
+        <attr name="srb_starBorderWidth" format="float"/>
+        <attr name="srb_starCornerRadius" format="float"/>
+        <attr name="srb_isIndicator" format="boolean"/>
+        <attr name="srb_rating" format="float"/>
+        <attr name="srb_stepSize" format="float"/>
+        <attr name="srb_drawBorderEnabled" format="boolean"/>
+        <attr name="srb_gravity" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="WaveView">
+        <attr name="wvRangeY" format="integer"/>
+        <attr name="wvSolidColor" format="color"/>
+    </declare-styleable>
+
+    <!--时间轴-->
+    <declare-styleable name="UnderLineLinearLayout">
+        <!--时间轴偏移值-->
+        <attr name="line_margin_side" format="dimension"/>
+        <!--时间轴动态调整值-->
+        <attr name="line_dynamic_dimen" format="dimension"/>
+        <!--线宽-->
+        <attr name="line_stroke_width" format="dimension"/>
+        <!--线的颜色-->
+        <attr name="line_color" format="color"/>
+        <!--点的大小-->
+        <attr name="point_size" format="dimension"/>
+        <!--点的颜色-->
+        <attr name="point_color" format="color"/>
+        <!--图标-->
+        <attr name="icon_src" format="reference"/>
+        <!--时间轴的gravity-->
+        <!--the gravity of the timeline-->
+        <attr name="line_gravity">
+            <enum name="Left" value="2"/>
+            <enum name="Right" value="4"/>
+            <enum name="Middle" value="0"/>
+            <enum name="Top" value="1"/>
+            <enum name="Bottom" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SlantTextView">
+        <attr name="slantedTextSize" format="dimension"/>
+        <attr name="slantedBackgroundColor" format="color"/>
+        <attr name="slantedText" format="string"/>
+        <attr name="slantedTextColor" format="color"/>
+        <attr name="slantedLength" format="dimension"/>
+        <attr name="slantedMode" format="enum">
+            <enum name="left" value="0"></enum>
+            <enum name="right" value="1"></enum>
+            <enum name="left_bottom" value="2"></enum>
+            <enum name="right_bottom" value="3"></enum>
+            <enum name="left_triangle" value="4"></enum>
+            <enum name="right_triangle" value="5"></enum>
+            <enum name="left_bottom_triangle" value="6"></enum>
+            <enum name="right_bottom_triangle" value="7"></enum>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ProgressWheel">
+        <attr name="matProg_progressIndeterminate" format="boolean"/>
+        <attr name="matProg_barColor" format="color"/>
+        <attr name="matProg_rimColor" format="color"/>
+        <attr name="matProg_rimWidth" format="dimension"/>
+        <attr name="matProg_spinSpeed" format="float"/>
+        <attr name="matProg_barSpinCycleTime" format="integer"/>
+        <attr name="matProg_circleRadius" format="dimension"/>
+        <attr name="matProg_fillRadius" format="boolean"/>
+        <attr name="matProg_barWidth" format="dimension"/>
+        <attr name="matProg_linearProgress" format="boolean"/>
+        <attr name="matProg_text" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="ShimmerLayout">
+        <attr name="shimmer_color" format="color|reference"/>
+        <attr name="shimmer_animation_duration" format="integer|reference"/>
+        <attr name="shimmer_auto_start" format="boolean|reference"/>
+        <attr name="shimmer_angle" format="integer|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="WaveSideBarView">
+        <attr name="sidebarTextColor" format="color|reference"/>
+        <attr name="sidebarBackgroundColor" format="color|reference"/>
+        <attr name="sidebarChooseTextColor" format="color|reference"/>
+        <attr name="sidebarTextSize" format="dimension"/>
+        <attr name="sidebarLargeTextSize" format="dimension"/>
+        <attr name="sidebarRadius" format="dimension"/>
+        <attr name="sidebarBallRadius" format="dimension"/>
+        <attr name="sidebarLetters" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundCornerProgress">
+        <attr name="rcReverse" format="boolean"/>
+        <attr name="rcProgress" format="float"/>
+        <attr name="rcMax" format="float"/>
+        <attr name="rcSecondaryProgress" format="float"/>
+        <attr name="rcBackgroundPadding" format="dimension"/>
+        <attr name="rcRadius" format="dimension"/>
+        <attr name="rcProgressColor" format="color"/>
+        <attr name="rcSecondaryProgressColor" format="color"/>
+        <attr name="rcBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="IconRoundCornerProgress">
+        <attr name="rcIconSrc" format="integer"/>
+        <attr name="rcIconSize" format="dimension"/>
+        <attr name="rcIconWidth" format="dimension"/>
+        <attr name="rcIconHeight" format="dimension"/>
+        <attr name="rcIconPadding" format="dimension"/>
+        <attr name="rcIconPaddingLeft" format="dimension"/>
+        <attr name="rcIconPaddingRight" format="dimension"/>
+        <attr name="rcIconPaddingTop" format="dimension"/>
+        <attr name="rcIconPaddingBottom" format="dimension"/>
+        <attr name="rcIconBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="RxRoundProgress">
+        <attr name="roundColor" format="color"/>
+        <attr name="roundProgressColor" format="color"/>
+        <attr name="roundWidth" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="textSize1" format="dimension"/>
+        <attr name="max" format="integer"/>
+        <attr name="textIsDisplayable" format="boolean"/>
+        <attr name="style">
+            <enum name="STROKE" value="0"/>
+            <enum name="FILL" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="TextRoundCornerProgress">
+        <attr name="rcTextProgressColor" format="color"/>
+        <attr name="rcTextProgressSize" format="dimension"/>
+        <attr name="rcTextProgressMargin" format="dimension"/>
+        <attr name="rcTextProgress" format="string"/>
+    </declare-styleable>
+    <!--选择器-->
+    <declare-styleable name="pickerview">
+        <attr name="pickerview_gravity">
+            <enum name="center" value="17"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="5"/>
+        </attr>
+        <attr name="pickerview_textSize" format="dimension"/>
+        <attr name="pickerview_textColorOut" format="color"/>
+        <attr name="pickerview_textColorCenter" format="color"/>
+        <attr name="pickerview_dividerColor" format="color"/>
+        <attr name="pickerview_lineSpacingMultiplier" format="float"/>
+    </declare-styleable>
+
+    <!--密码框-->
+    <declare-styleable name="gridPasswordView">
+        <attr name="gpvTextColor" format="color|reference"/>
+        <attr name="gpvTextSize" format="dimension"/>
+        <attr name="gpvLineColor" format="color"/>
+        <attr name="gpvGridColor" format="color"/>
+        <attr name="gpvLineWidth" format="dimension"/>
+        <attr name="gpvPasswordLength" format="integer"/>
+        <attr name="gpvPasswordTransformation" format="string"/>
+        <attr name="gpvPasswordType" format="enum">
+            <enum name="numberPassword" value="0"/>
+            <enum name="textPassword" value="1"/>
+            <enum name="textVisiblePassword" value="2"/>
+            <enum name="textWebPassword" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <!--带有删除 字数统计的EditText-->
+    <declare-styleable name="MaterialEditText">
+        <!-- The base color of the line and the texts. Default is black. -->
+        <attr name="met_baseColor" format="color"/>
+        <!-- The highlight color of the line, and the floating label if the highlightFloatingLabel is true. -->
+        <attr name="met_primaryColor" format="color"/>
+        <!-- How the floating label should be shown. Default is none -->
+        <attr name="met_floatingLabel">
+            <enum name="none" value="0"/>
+            <enum name="normal" value="1"/>
+            <enum name="highlight" value="2"/>
+        </attr>
+        <!-- The color for when something is wrong.(e.g. exceeding max characters) -->
+        <attr name="met_errorColor" format="color"/>
+        <!-- Min characters count limit. 0 means no limit. -->
+        <attr name="met_minCharacters" format="integer"/>
+        <!-- max Characters count limit. 0 means no limit. -->
+        <attr name="met_maxCharacters" format="integer"/>
+        <!-- Whether to show the bottom ellipsis in singleLine mode -->
+        <attr name="met_singleLineEllipsis" format="boolean"/>
+        <!-- Reserved bottom text lines count, no matter if there is some helper/error text. -->
+        <attr name="met_minBottomTextLines" format="integer"/>
+        <!-- Helper text at the bottom -->
+        <attr name="met_helperText" format="string"/>
+        <!-- Helper text color -->
+        <attr name="met_helperTextColor" format="color"/>
+        <!-- Font of the paint used to draw accent texts -->
+        <attr name="met_accentTypeface" format="string"/>
+        <!-- Font used on view -->
+        <attr name="met_typeface" format="string"/>
+        <!-- Custom float label text -->
+        <attr name="met_floatingLabelText" format="string"/>
+        <!-- spacing between the main text and the floating label -->
+        <attr name="met_floatingLabelPadding" format="dimension"/>
+        <!-- Hide underline -->
+        <attr name="met_hideUnderline" format="boolean"/>
+        <!-- Underline's color -->
+        <attr name="met_underlineColor" format="color"/>
+        <!-- Auto validate -->
+        <attr name="met_autoValidate" format="boolean"/>
+        <!-- Left icon -->
+        <attr name="met_iconLeft" format="reference"/>
+        <!-- Right icon -->
+        <attr name="met_iconRight" format="reference"/>
+        <!-- Padding between icon(s) and the main area. 8dp by default. -->
+        <attr name="met_iconPadding" format="dimension"/>
+        <!-- Clear button -->
+        <attr name="met_clearButton" format="boolean"/>
+        <!-- The floating label's text size. 12sp by default. -->
+        <attr name="met_floatingLabelTextSize" format="dimension"/>
+        <!-- The floating label's text color. -1 by default. -->
+        <attr name="met_floatingLabelTextColor" format="color"/>
+        <!-- The bottom texts' size. 12sp by default. -->
+        <attr name="met_bottomTextSize" format="dimension"/>
+        <!-- Always show the floating label, instead of animating it in/out. False by default. -->
+        <attr name="met_floatingLabelAlwaysShown" format="boolean"/>
+        <!-- Always show the helper text, no matter if the edit text is focused. False by default. -->
+        <attr name="met_helperTextAlwaysShown" format="boolean"/>
+        <!-- Whether use animation to show/hide the floating label. True by default. -->
+        <attr name="met_floatingLabelAnimating" format="boolean"/>
+        <!-- Text color -->
+        <attr name="met_textColor" format="color"/>
+        <!-- Hint Text Color -->
+        <attr name="met_textColorHint" format="color"/>
+        <!-- Auto validate on focus lost. False by default. -->
+        <attr name="met_validateOnFocusLost" format="boolean"/>
+        <!-- Whether check the characters count at the beginning it's shown. True by default. -->
+        <attr name="met_checkCharactersCountAtBeginning" format="boolean"/>
+        <attr name="met_isShowBackground" format="boolean"/>
+
+    </declare-styleable>
+
+    <!--广告滚动-->
+    <declare-styleable name="LimitScroller">
+        <!--显示的条目数量-->
+        <attr name="limit" format="integer"/>
+        <!--滚动速度，比如3000，滚动时间会持续3秒钟-->
+        <attr name="durationTime" format="integer"/>
+        <!--滚动间隔，比如5000，滚动完成后停留5秒继续滚动-->
+        <attr name="periodTime" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="ShapeImageViewStyle">
+        <attr name="siv_border_width" format="dimension"/>
+        <attr name="siv_border_color" format="color"/>
+        <attr name="siv_radius" format="dimension"/>
+        <attr name="siv_pressed_alpha" format="float"/>
+        <attr name="siv_pressed_color" format="color"/>
+        <attr name="siv_shape_type" format="enum">
+            <enum name="rectangle" value="0"/>
+            <enum name="circle" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!--glideIamgeView-->
+    <declare-styleable name="CircleProgressView">
+        <attr name="cpv_progressNormalColor" format="color"/>
+        <attr name="cpv_progressReachColor" format="color"/>
+        <attr name="cpv_progressTextColor" format="color"/>
+        <attr name="cpv_progressTextSize" format="dimension"/>
+        <attr name="cpv_progressTextOffset" format="dimension"/>
+        <attr name="cpv_progressNormalSize" format="dimension"/>
+        <attr name="cpv_progressReachSize" format="dimension"/>
+        <attr name="cpv_radius" format="dimension"/>
+        <attr name="cpv_progressTextVisible" format="boolean"/>
+        <attr name="cpv_progressStartArc" format="integer"/>
+        <attr name="cpv_progressTextSkewX" format="dimension"/>
+        <attr name="cpv_progressTextPrefix" format="string"/>
+        <attr name="cpv_progressTextSuffix" format="string"/>
+        <attr name="cpv_innerBackgroundColor" format="color"/>
+        <attr name="cpv_progressStyle" format="enum">
+            <enum name="Normal" value="0"/>
+            <enum name="FillInner" value="1"/>
+            <enum name="FillInnerArc" value="2"/>
+        </attr>
+        <attr name="cpv_innerProgressColor" format="color"/>
+        <attr name="cpv_innerPadding" format="dimension"/>
+        <attr name="cpv_outerColor" format="color"/>
+        <attr name="cpv_outerSize" format="dimension"/>
+        <attr name="cpv_reachCapRound" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="DynamicSoreView">
+        <!--设置选中点-->
+        <attr name="SoreRadioSelect" format="reference"/>
+        <!--设置最未选中点-->
+        <attr name="SoreRadioUnselected" format="reference"/>
+        <!--设置圆点间距-->
+        <attr name="SoreDistance" format="integer"/>
+        <!--设置每页显示几个-->
+        <attr name="SoreNumber" format="integer"/>
+    </declare-styleable>
+</resources>
