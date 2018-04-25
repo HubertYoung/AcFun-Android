@@ -3,7 +3,8 @@ package com.kento.component.basic.net.request;
 
 import android.text.TextUtils;
 
-import ddframework.gent.common.net.factory.ExGsonConverterFactory;
+import com.kento.component.basic.net.factory.ExGsonConverterFactory;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import ddframework.gent.common.R;
+import com.kento.component.basic.R;
 
 
 /**
@@ -47,7 +47,7 @@ public class CustomEmptyView extends FrameLayout {
         mEmptyText1 = ( TextView ) view.findViewById( R.id.empty_text1 );
         mEmptyText2 = ( TextView ) findViewById( R.id.empty_text2 );
         mPbLoading = ( ProgressBar ) view.findViewById( R.id.pb_loading );
-        mEmptyImg.setImageResource( R.drawable.icon_default_net );
+//        mEmptyImg.setImageResource( R.drawable.icon_default_net );
         mEmptyText2.setText( "网络未连接,请检查网络设置" );
     }
 

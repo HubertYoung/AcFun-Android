@@ -8,10 +8,11 @@ import android.support.v7.widget.TintTypedArray;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import com.kento.component.basic.R;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import ddframework.gent.common.R;
 import skin.support.content.res.SkinCompatResources;
 import skin.support.utils.SkinLog;
 import skin.support.widget.SkinCompatBackgroundHelper;

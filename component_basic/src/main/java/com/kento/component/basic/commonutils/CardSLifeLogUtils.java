@@ -2,6 +2,8 @@ package com.kento.component.basic.commonutils;
 
 
 import com.kento.component.basic.commonconstant.AppConfig;
+import com.orhanobut.logger.LogLevel;
+import com.orhanobut.logger.Logger;
 
 /**
  * 如果用于android平台，将信息记录到“LogCat”。如果用于java平台，将信息记录到“Console”

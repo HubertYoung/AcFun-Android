@@ -20,10 +20,10 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.kento.component.basic.R;
 import com.zhy.autolayout.AutoRelativeLayout;
 import com.zhy.autolayout.utils.AutoUtils;
 
-import ddframework.gent.common.R;
 
 /*<com.snad.loadingbutton.LoadingButton
 		android:id="@+id/second"

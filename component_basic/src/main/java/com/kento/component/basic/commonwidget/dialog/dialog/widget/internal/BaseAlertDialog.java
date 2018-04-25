@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import ddframework.gent.common.commonwidget.dialog.dialog.listener.OnBtnClickL;
-import ddframework.gent.common.commonwidget.dialog.dialog.widget.base.BaseDialog;
+import com.kento.component.basic.commonwidget.dialog.dialog.listener.OnBtnClickL;
+import com.kento.component.basic.commonwidget.dialog.dialog.widget.base.BaseDialog;
 
 
 public abstract class BaseAlertDialog< T extends BaseAlertDialog< T > > extends BaseDialog< T > {

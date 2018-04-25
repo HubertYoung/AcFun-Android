@@ -321,4 +321,33 @@
         <!--设置每页显示几个-->
         <attr name="SoreNumber" format="integer"/>
     </declare-styleable>
+
+    <!--收起展开textview-->
+    <declare-styleable name="ExpandableTextView">
+        <attr name="maxCollapsedLines" format="integer"/>
+        <attr name="animDuration" format="integer"/>
+        <attr name="showExpandCollapseDrawable" format="boolean"/>
+        <attr name="expandDrawable" format="reference"/>
+        <attr name="collapseDrawable" format="reference"/>
+        <attr name="contentTextColor" format="color"/>
+        <attr name="collapseExpandTextColor" format="color"/>
+        <attr name="contentTextSize" format="dimension"/>
+        <attr name="collapseExpandTextSize" format="dimension"/>
+        <attr name="textCollapse" format="string"/>
+        <attr name="textExpand" format="string"/>
+        <attr name="collapseExpandGrarity">
+            <flag name="left" value="3"/>
+            <flag name="right" value="5"/>
+            <flag name="center" value="17"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="LoadingButton">
+        <attr name="pbText" format="string"/>
+        <attr name="pbLoadingText" format="string"/>
+        <attr name="pbEnable" format="boolean"/>
+        <attr name="pbTextSize" format="dimension"/>
+        <attr name="pbTextColor" format="color|reference"/>
+        <attr name="pbProgressColor" format="color|reference"/>
+    </declare-styleable>
 </resources>

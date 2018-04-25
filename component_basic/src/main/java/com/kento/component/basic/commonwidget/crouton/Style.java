@@ -21,7 +21,7 @@ import android.view.Gravity;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
-import ddframework.gent.common.R;
+import com.kento.component.basic.R;
 
 
 /**
@@ -49,7 +49,7 @@ public class Style {
 	public static final Style INFO;
 
 	static {
-		ALERT = new Builder().setBackgroundColor( R.color.CroutonColorPrimary )
+		ALERT = new Builder().setBackgroundColor( R.color.colorPrimary )
 							 .setTextSize( 14 )
 							 .build();
 		CONFIRM = new Builder().setBackgroundColorValue( holoGreenLight )

@@ -17,12 +17,13 @@
 package com.kento.component.basic.net.cookie;
 
 
+import com.kento.component.basic.net.cookie.cache.CookieCache;
+import com.kento.component.basic.net.cookie.persistence.CookiePersistor;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import ddframework.gent.common.net.cookie.cache.CookieCache;
-import ddframework.gent.common.net.cookie.persistence.CookiePersistor;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 

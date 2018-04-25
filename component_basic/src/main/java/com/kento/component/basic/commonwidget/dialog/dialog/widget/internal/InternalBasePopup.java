@@ -5,8 +5,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
-import ddframework.gent.common.commonwidget.dialog.dialog.utils.StatusBarUtils;
-import ddframework.gent.common.commonwidget.dialog.dialog.widget.base.BaseDialog;
+import com.kento.component.basic.commonwidget.dialog.dialog.utils.StatusBarUtils;
+import com.kento.component.basic.commonwidget.dialog.dialog.widget.base.BaseDialog;
 
 
 /** Base class to help create PopupWindow Style Dialog(实现PopupWindow风格对话框基类) */

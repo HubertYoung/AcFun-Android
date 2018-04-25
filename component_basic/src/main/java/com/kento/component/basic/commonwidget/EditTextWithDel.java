@@ -11,8 +11,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import ddframework.gent.common.R;
-import ddframework.gent.common.commonutils.DisplayUtil;
+import com.kento.component.basic.R;
+import com.kento.component.basic.commonutils.DisplayUtil;
+
 
 /**
  * 作者：JIUU on 2017/3/7 11:30

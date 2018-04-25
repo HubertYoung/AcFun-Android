@@ -1,7 +1,8 @@
 package com.kento.component.basic.net.transformer;
 
 
-import ddframework.gent.common.net.response.BaseResponse;
+import com.kento.component.basic.net.response.BaseResponse;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;

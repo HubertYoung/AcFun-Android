@@ -6,8 +6,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import ddframework.gent.common.commonwidget.dialog.dialog.utils.CornerUtils;
-import ddframework.gent.common.commonwidget.dialog.dialog.widget.internal.BaseAlertDialog;
+import com.kento.component.basic.commonwidget.dialog.dialog.utils.CornerUtils;
+import com.kento.component.basic.commonwidget.dialog.dialog.widget.internal.BaseAlertDialog;
+
 
 @SuppressWarnings( "deprecation" )
 public class NormalDialog extends BaseAlertDialog< NormalDialog > {

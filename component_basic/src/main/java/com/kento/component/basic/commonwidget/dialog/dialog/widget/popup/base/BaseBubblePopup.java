@@ -7,13 +7,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import ddframework.gent.common.R;
-import ddframework.gent.common.commonwidget.dialog.animation.BounceEnter.BounceLeftEnter;
-import ddframework.gent.common.commonwidget.dialog.animation.FadeExit.FadeExit;
-import ddframework.gent.common.commonwidget.dialog.dialog.utils.CornerUtils;
-import ddframework.gent.common.commonwidget.dialog.dialog.utils.StatusBarUtils;
-import ddframework.gent.common.commonwidget.dialog.dialog.view.TriangleView;
-import ddframework.gent.common.commonwidget.dialog.dialog.widget.internal.InternalBasePopup;
+import com.kento.component.basic.R;
+import com.kento.component.basic.commonwidget.dialog.animation.BounceEnter.BounceLeftEnter;
+import com.kento.component.basic.commonwidget.dialog.animation.FadeExit.FadeExit;
+import com.kento.component.basic.commonwidget.dialog.dialog.utils.CornerUtils;
+import com.kento.component.basic.commonwidget.dialog.dialog.utils.StatusBarUtils;
+import com.kento.component.basic.commonwidget.dialog.dialog.view.TriangleView;
+import com.kento.component.basic.commonwidget.dialog.dialog.widget.internal.InternalBasePopup;
+
 
 /**
  * Use dialog to realize bubble style popup(利用Dialog实现泡泡样式的弹窗)

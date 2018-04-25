@@ -36,8 +36,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import ddframework.gent.common.R;
-import ddframework.gent.common.commonutils.DisplayUtil;
+import com.kento.component.basic.R;
+import com.kento.component.basic.commonutils.DisplayUtil;
+
 
 /**
  * @author:Yang
@@ -168,7 +169,7 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
 			textExpand = getContext().getString( R.string.expand_all );
 		}
 		contentTextColor = typedArray.getColor( R.styleable.ExpandableTextView_contentTextColor, ContextCompat.getColor( getContext(), R.color
-				.light_gray ) );
+				.line_bg ) );
 		contentTextSize = typedArray.getDimension( R.styleable.ExpandableTextView_contentTextSize, DisplayUtil.sp2px( 14 ) );
 
 		collapseExpandTextColor = typedArray.getColor( R.styleable.ExpandableTextView_collapseExpandTextColor, ContextCompat.getColor( getContext(),

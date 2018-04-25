@@ -2,7 +2,7 @@ package com.kento.component.basic.commonwidget.pickerview.utils;
 
 import android.view.Gravity;
 
-import ddframework.gent.common.R;
+import com.kento.component.basic.R;
 
 
 /**

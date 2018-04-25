@@ -2,9 +2,10 @@ package com.kento.component.basic.net.response;
 
 import android.text.TextUtils;
 
+import com.kento.component.basic.net.config.NetStatus;
+
 import java.io.Serializable;
 
-import ddframework.gent.common.net.config.NetStatus;
 
 /**
  * @author:Yang

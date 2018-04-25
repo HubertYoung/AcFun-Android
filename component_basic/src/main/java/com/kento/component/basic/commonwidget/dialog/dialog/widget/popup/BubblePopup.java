@@ -3,7 +3,7 @@ package com.kento.component.basic.commonwidget.dialog.dialog.widget.popup;
 import android.content.Context;
 import android.view.View;
 
-import ddframework.gent.common.commonwidget.dialog.dialog.widget.popup.base.BaseBubblePopup;
+import com.kento.component.basic.commonwidget.dialog.dialog.widget.popup.base.BaseBubblePopup;
 
 
 /**

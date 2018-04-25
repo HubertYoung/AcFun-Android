@@ -5,9 +5,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import ddframework.gent.common.R;
-import ddframework.gent.common.commonwidget.dialog.dialog.utils.StatusBarUtils;
-import ddframework.gent.common.commonwidget.dialog.dialog.widget.internal.InternalBasePopup;
+import com.kento.component.basic.R;
+import com.kento.component.basic.commonwidget.dialog.dialog.utils.StatusBarUtils;
+import com.kento.component.basic.commonwidget.dialog.dialog.widget.internal.InternalBasePopup;
 
 
 public abstract class BasePopup<T extends BasePopup<T>> extends InternalBasePopup<T> {

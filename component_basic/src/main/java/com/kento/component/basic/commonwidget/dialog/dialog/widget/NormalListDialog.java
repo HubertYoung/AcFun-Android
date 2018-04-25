@@ -19,14 +19,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.kento.component.basic.commonwidget.dialog.dialog.entity.DialogMenuItem;
+import com.kento.component.basic.commonwidget.dialog.dialog.listener.OnOperItemClickL;
+import com.kento.component.basic.commonwidget.dialog.dialog.utils.CornerUtils;
+import com.kento.component.basic.commonwidget.dialog.dialog.widget.base.BaseDialog;
 import com.zhy.autolayout.utils.ScreenUtils;
 
 import java.util.ArrayList;
 
-import ddframework.gent.common.commonwidget.dialog.dialog.entity.DialogMenuItem;
-import ddframework.gent.common.commonwidget.dialog.dialog.listener.OnOperItemClickL;
-import ddframework.gent.common.commonwidget.dialog.dialog.utils.CornerUtils;
-import ddframework.gent.common.commonwidget.dialog.dialog.widget.base.BaseDialog;
 
 public class NormalListDialog extends BaseDialog< NormalListDialog > {
     /**

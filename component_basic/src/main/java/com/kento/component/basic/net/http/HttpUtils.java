@@ -1,22 +1,22 @@
 package com.kento.component.basic.net.http;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.kento.component.basic.BaseApplication;
+import com.kento.component.basic.commonutils.CardSLifeLogUtils;
+import com.kento.component.basic.commonutils.NetworkUtil;
+import com.kento.component.basic.net.callback.UCallback;
+import com.kento.component.basic.net.config.NetWorkConfiguration;
+import com.kento.component.basic.net.cookie.PersistentCookieJar;
+import com.kento.component.basic.net.cookie.cache.SetCookieCache;
+import com.kento.component.basic.net.cookie.persistence.SharedPrefsCookiePersistor;
+import com.kento.component.basic.net.interceptor.LogInterceptor;
+import com.kento.component.basic.net.interceptor.UploadProgressInterceptor;
+import com.kento.component.basic.net.request.RetrofitClient;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
-import ddframework.gent.common.baseapp.BaseApplication;
-import ddframework.gent.common.commonutils.CardSLifeLogUtils;
-import ddframework.gent.common.commonutils.NetworkUtil;
-import ddframework.gent.common.net.callback.UCallback;
-import ddframework.gent.common.net.config.NetWorkConfiguration;
-import ddframework.gent.common.net.cookie.PersistentCookieJar;
-import ddframework.gent.common.net.cookie.cache.SetCookieCache;
-import ddframework.gent.common.net.cookie.persistence.SharedPrefsCookiePersistor;
-import ddframework.gent.common.net.interceptor.LogInterceptor;
-import ddframework.gent.common.net.interceptor.UploadProgressInterceptor;
-import ddframework.gent.common.net.request.RetrofitClient;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;

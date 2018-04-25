@@ -3,6 +3,8 @@ package com.kento.component.basic.net.exception;
 import android.net.ParseException;
 
 import com.google.gson.JsonParseException;
+import com.kento.component.basic.net.config.NetStatus;
+import com.kento.component.basic.net.processserver.ProcessServerException;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
@@ -10,8 +12,6 @@ import org.json.JSONException;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
 
-import ddframework.gent.common.net.config.NetStatus;
-import ddframework.gent.common.net.processserver.ProcessServerException;
 import retrofit2.HttpException;
 
 

@@ -20,12 +20,13 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.kento.component.basic.commonwidget.dialog.dialog.entity.DialogMenuItem;
+import com.kento.component.basic.commonwidget.dialog.dialog.listener.OnOperItemClickL;
+import com.kento.component.basic.commonwidget.dialog.dialog.utils.CornerUtils;
+import com.kento.component.basic.commonwidget.dialog.dialog.widget.base.BottomBaseDialog;
+
 import java.util.ArrayList;
 
-import ddframework.gent.common.commonwidget.dialog.dialog.entity.DialogMenuItem;
-import ddframework.gent.common.commonwidget.dialog.dialog.listener.OnOperItemClickL;
-import ddframework.gent.common.commonwidget.dialog.dialog.utils.CornerUtils;
-import ddframework.gent.common.commonwidget.dialog.dialog.widget.base.BottomBaseDialog;
 
 /**
  * Dialog like iOS ActionSheet(iOS风格对话框)
@@ -76,7 +77,7 @@ public class ActionSheetDialog extends BottomBaseDialog<ActionSheetDialog> {
     /** adapter(自定义适配器) */
     private BaseAdapter mAdapter;
     /** operation items(操作items) */
-    private ArrayList<DialogMenuItem> mContents = new ArrayList<>();
+    private ArrayList<DialogMenuItem > mContents = new ArrayList<>();
     private OnOperItemClickL mOnOperItemClickL;
     private LayoutAnimationController mLac;
 
@@ -167,7 +168,7 @@ public class ActionSheetDialog extends BottomBaseDialog<ActionSheetDialog> {
         /** title */
         float radius = dp2px(mCornerRadius);
         mTvTitle.setHeight(dp2px(mTitleHeight));
-        mTvTitle.setBackgroundDrawable(CornerUtils.cornerDrawable(mTitleBgColor, new float[]{radius, radius, radius,
+        mTvTitle.setBackgroundDrawable( CornerUtils.cornerDrawable(mTitleBgColor, new float[]{radius, radius, radius,
                 radius, 0, 0, 0, 0}));
         mTvTitle.setText(mTitle);
         mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, mTitleTextSize);

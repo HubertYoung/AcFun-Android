@@ -3,6 +3,9 @@ package com.kento.component.basic.net.factory;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.kento.component.basic.commonutils.CardSLifeLogUtils;
+import com.kento.component.basic.net.config.NetStatus;
+import com.kento.component.basic.net.response.BaseResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,9 +13,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
-import ddframework.gent.common.commonutils.CardSLifeLogUtils;
-import ddframework.gent.common.net.config.NetStatus;
-import ddframework.gent.common.net.response.BaseResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 

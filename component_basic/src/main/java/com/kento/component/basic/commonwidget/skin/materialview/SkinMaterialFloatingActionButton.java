@@ -5,7 +5,8 @@ import android.content.res.TypedArray;
 import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 
-import ddframework.gent.common.R;
+import com.kento.component.basic.R;
+
 import skin.support.content.res.SkinCompatResources;
 import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatImageHelper;

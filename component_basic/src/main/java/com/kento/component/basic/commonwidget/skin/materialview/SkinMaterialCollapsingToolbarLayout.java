@@ -9,7 +9,8 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 
-import ddframework.gent.common.R;
+import com.kento.component.basic.R;
+
 import skin.support.content.res.SkinCompatResources;
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatHelper;

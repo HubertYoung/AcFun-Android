@@ -11,7 +11,8 @@ import android.support.design.widget.NavigationView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 
-import ddframework.gent.common.R;
+import com.kento.component.basic.R;
+
 import skin.support.content.res.SkinCompatResources;
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatHelper;

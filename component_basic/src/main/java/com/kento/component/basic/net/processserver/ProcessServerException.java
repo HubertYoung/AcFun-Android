@@ -3,9 +3,10 @@ package com.kento.component.basic.net.processserver;
 import android.content.Intent;
 import android.text.TextUtils;
 
-import ddframework.gent.common.baseapp.BaseApplication;
-import ddframework.gent.common.commonconstant.AppConfig;
-import ddframework.gent.common.net.config.NetStatus;
+import com.kento.component.basic.BaseApplication;
+import com.kento.component.basic.commonconstant.AppConfig;
+import com.kento.component.basic.net.config.NetStatus;
+
 
 /**
  * @author:Yang

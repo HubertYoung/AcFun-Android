@@ -3,13 +3,14 @@ package com.kento.component.basic.net.interceptor;
 
 import android.support.annotation.NonNull;
 
+import com.kento.component.basic.BuildConfig;
+import com.kento.component.basic.commonutils.CardSLifeLogUtils;
+
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
-import ddframework.gent.common.BuildConfig;
-import ddframework.gent.common.commonutils.CardSLifeLogUtils;
 import okhttp3.Connection;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
@@ -31,7 +32,7 @@ import okio.Buffer;
 
 public class LogInterceptor implements Interceptor {
     private static final Charset UTF8 = Charset.forName( "UTF-8" );
-    private volatile Level level = BuildConfig.DEBUG_ENABLE ? Level.BODY : Level.NONE;
+    private volatile Level level = BuildConfig.DEBUG ? Level.BODY : Level.NONE;
 
     public enum Level {
         NONE,       //不打印log

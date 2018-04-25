@@ -8,7 +8,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 
-import ddframework.gent.common.R;
+import com.kento.component.basic.R;
+
 import skin.support.content.res.SkinCompatResources;
 import skin.support.widget.SkinCompatHelper;
 import skin.support.widget.SkinCompatSupportable;

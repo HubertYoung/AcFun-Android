@@ -2,10 +2,11 @@ package com.kento.component.basic.net.interceptor;
 
 import android.support.annotation.NonNull;
 
+import com.kento.component.basic.net.body.UploadProgressRequestBody;
+import com.kento.component.basic.net.callback.UCallback;
+
 import java.io.IOException;
 
-import ddframework.gent.common.net.body.UploadProgressRequestBody;
-import ddframework.gent.common.net.callback.UCallback;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;

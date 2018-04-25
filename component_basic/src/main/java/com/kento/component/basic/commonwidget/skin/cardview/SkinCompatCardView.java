@@ -7,7 +7,8 @@ import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 
-import ddframework.gent.common.R;
+import com.kento.component.basic.R;
+
 import skin.support.content.res.SkinCompatResources;
 import skin.support.utils.SkinLog;
 import skin.support.widget.SkinCompatHelper;
