@@ -66,6 +66,8 @@ public class BannerView extends LinearLayout implements BannerAdapter.ViewPagerO
 	private boolean isMargin = false;
 	private AppCompatActivity activity;
 
+	private boolean isCenter = true;
+
 	public void setmViewPagerOnItemClickListener( BannerViewOnItemClickListener mBannerViewOnItemClickListener ) {
 
 		this.mBannerViewOnItemClickListener = mBannerViewOnItemClickListener;
@@ -100,7 +102,7 @@ public class BannerView extends LinearLayout implements BannerAdapter.ViewPagerO
 
 		super( context, attrs, defStyleAttr );
 		View view = LayoutInflater.from( context )
-								  .inflate( R.layout.layout_custom_banner, this, true );
+								  .inflate( R.layout.banner_layout_custom, this, true );
 		viewPager = ( BannerViewPager ) view.findViewById( R.id.layout_banner_viewpager );
 		points = ( LinearLayout ) view.findViewById( R.id.layout_banner_points_group );
 
@@ -142,6 +144,14 @@ public class BannerView extends LinearLayout implements BannerAdapter.ViewPagerO
 
 		this.isMargin = isMargin;
 		return this;
+	}
+
+	/**
+	 * 是否居中
+	 * @param center
+	 */
+	public void setCenter( boolean center ) {
+		isCenter = center;
 	}
 
 	/**
@@ -321,12 +331,12 @@ public class BannerView extends LinearLayout implements BannerAdapter.ViewPagerO
 		if ( entity.type == 0 ) {
 //			ShapeImageView mImageView = new ShapeImageView( getContext() );
 			View view = LayoutInflater.from( getContext() )
-									  .inflate( R.layout.shape_imageview, null );
+									  .inflate( R.layout.banner_shape_imageview, null );
 			ImageView mImageView = ( ImageView ) view.findViewById( R.id.iv_banner_view );
 //			mImageView.setRadius( getContext().getResources()
 //											  .getDimensionPixelOffset( R.dimen.DIMEN_4PX ) );
 			ImageLoaderUtils.getInstance()
-							.display( getContext(), mImageView, entity.Pic, true, R.drawable.banner_default );
+							.display( getContext(), mImageView, entity.Pic, isCenter, R.drawable.banner_default );
 			imageViewList.add( mImageView );
 		} else if ( entity.type == 1 ) {
 //			videoPlayerStandard = new JCVideoPlayerStandard( getContext() );
