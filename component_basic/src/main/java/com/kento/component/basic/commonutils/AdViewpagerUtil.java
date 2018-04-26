@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.kento.component.basic.R;
-import com.kento.component.basic.commonutils.imageloader.ImageLoaderUtils;
+import com.kento.common.ImageLoaderUtils;
 
 
 

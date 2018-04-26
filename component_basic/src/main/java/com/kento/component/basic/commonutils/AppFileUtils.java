@@ -11,7 +11,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 import com.kento.component.basic.commonconstant.AppConfig;
 import com.kento.component.basic.commonconstant.MemoryConstants;
 
@@ -114,17 +114,17 @@ public class AppFileUtils {
 	 */
 	public static String getAppAbsoluteDir() {
 		if ( Environment.getExternalStorageState().equals( Environment.MEDIA_MOUNTED ) ) {
-			File cacheDir = BaseApplication.getAppContext().getExternalCacheDir();
+			File cacheDir = CommonApplication.getAppContext().getExternalCacheDir();
 			if ( cacheDir != null && ( cacheDir.exists() || cacheDir.mkdirs() ) ) {
 				return cacheDir.getAbsolutePath();
 			}
 		}
-		return BaseApplication.getAppContext().getCacheDir().getAbsolutePath();
+		return CommonApplication.getAppContext().getCacheDir().getAbsolutePath();
 	}
 
 	public static String getFileFromUri( Uri uri ) {
-		if ( BaseApplication.getAppContext() == null || uri == null ) return null;
-		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && DocumentsContract.isDocumentUri( BaseApplication.getAppContext(), uri ) ) {
+		if ( CommonApplication.getAppContext() == null || uri == null ) return null;
+		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && DocumentsContract.isDocumentUri( CommonApplication.getAppContext(), uri ) ) {
 			if ( isExternalStorageDocument( uri ) ) {
 				String docId = DocumentsContract.getDocumentId( uri );
 				String[] split = docId.split( ":" );
@@ -135,7 +135,7 @@ public class AppFileUtils {
 			} else if ( isDownloadsDocument( uri ) ) {
 				String id = DocumentsContract.getDocumentId( uri );
 				Uri contentUri = ContentUris.withAppendedId( Uri.parse( "content://downloads/public_downloads" ), Long.valueOf( id ) );
-				return getDataColumn( BaseApplication.getAppContext(), contentUri, null, null );
+				return getDataColumn( CommonApplication.getAppContext(), contentUri, null, null );
 			} else if ( isMediaDocument( uri ) ) {
 				String docId = DocumentsContract.getDocumentId( uri );
 				String[] split = docId.split( ":" );
@@ -150,13 +150,13 @@ public class AppFileUtils {
 				}
 				String selection = MediaStore.Images.Media._ID + "=?";
 				String[] selectionArgs = new String[]{ split[ 1 ] };
-				return getDataColumn( BaseApplication.getAppContext(), contentUri, selection, selectionArgs );
+				return getDataColumn( CommonApplication.getAppContext(), contentUri, selection, selectionArgs );
 			}
 		} // MediaStore (and general)
 		else if ( "content".equalsIgnoreCase( uri.getScheme() ) ) {
 			// Return the remote address
 			if ( isGooglePhotosUri( uri ) ) return uri.getLastPathSegment();
-			return getDataColumn( BaseApplication.getAppContext(), uri, null, null );
+			return getDataColumn( CommonApplication.getAppContext(), uri, null, null );
 		}
 		// File
 		else if ( "file".equalsIgnoreCase( uri.getScheme() ) ) {

@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import com.kento.component.basic.R;
-import com.kento.component.basic.commonutils.DisplayUtil;
+import com.kento.common.utils.DisplayUtil;
 
 
 /**

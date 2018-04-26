@@ -3,7 +3,7 @@ package com.kento.component.basic.commonutils;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 
 
 /**
@@ -16,7 +16,7 @@ public class SPUtils {
 
 	private static void init() {
 		if ( sp == null ) {
-			sp = PreferenceManager.getDefaultSharedPreferences( BaseApplication.getAppContext() );
+			sp = PreferenceManager.getDefaultSharedPreferences( CommonApplication.getAppContext() );
 		}
 	}
 

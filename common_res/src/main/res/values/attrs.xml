@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="item_game_center_card_view">
+        <item name="android:layout_width">@dimen/DIMEN_162PX</item>
+        <item name="android:layout_height">@dimen/DIMEN_162PX</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:background">@drawable/game_center_card_view_bg</item>
+    </style>
+
+</resources>

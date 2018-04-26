@@ -5,7 +5,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 import com.kento.component.basic.commonconstant.AppConfig;
 
 import java.util.Locale;
@@ -39,7 +39,7 @@ public class LanguageUtils {
 	 */
 	public void setLanguage( Locale language, Class< ? > cla ) {
 		//获取当前资源对象
-		Resources resources = BaseApplication.getAppContext()
+		Resources resources = CommonApplication.getAppContext()
 											 .getResources();
 		//获取设置对象
 		Configuration configuration = resources.getConfiguration();
@@ -54,11 +54,11 @@ public class LanguageUtils {
 
 		//发送结束所有activity的广播
 		Intent intent = new Intent( AppConfig.ACTION_FINISH_ALL_ACTIVITY );
-		BaseApplication.getAppContext()
+		CommonApplication.getAppContext()
 					   .sendBroadcast( intent );
-		Intent activityIntent = new Intent( BaseApplication.getAppContext(), cla );
+		Intent activityIntent = new Intent( CommonApplication.getAppContext(), cla );
 		activityIntent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
-		BaseApplication.getAppContext()
+		CommonApplication.getAppContext()
 					   .startActivity( activityIntent );
 	}
 }

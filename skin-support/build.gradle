@@ -3,7 +3,7 @@ Properties props = new Properties()
 props.load(new FileInputStream(rootProject.file("gradle.properties")))
 android {
     compileSdkVersion props.getAt("ANDROID_BUILD_SDK_VERSION") as int
-    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
+//    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
         minSdkVersion props.getAt("ANDROID_BUILD_MIN_SDK_VERSION") as int
         targetSdkVersion props.getAt("ANDROID_BUILD_TARGET_SDK_VERSION") as int
@@ -16,6 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {

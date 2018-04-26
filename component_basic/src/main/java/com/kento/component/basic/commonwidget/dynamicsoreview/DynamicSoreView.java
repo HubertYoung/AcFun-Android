@@ -12,8 +12,7 @@ import android.widget.LinearLayout;
 
 import com.kento.component.basic.R;
 import com.kento.component.basic.commonutils.CardSLifeLogUtils;
-import com.kento.component.basic.commonutils.DisplayUtil;
-import com.kento.component.basic.commonwidget.banner.transformer.FadeInOutPageTransformer;
+import com.kento.common.utils.DisplayUtil;
 import com.kento.component.basic.commonwidget.dynamicsoreview.Interface.IDynamicSore;
 import com.kento.component.basic.commonwidget.dynamicsoreview.adapter.ViewPagerAdapter;
 import com.zhy.autolayout.utils.AutoUtils;

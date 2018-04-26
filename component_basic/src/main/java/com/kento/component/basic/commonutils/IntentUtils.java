@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 
 import java.io.File;
 
@@ -55,7 +55,7 @@ public final class IntentUtils {
 			data = Uri.fromFile( file );
 		} else {
 			intent.setFlags( Intent.FLAG_GRANT_READ_URI_PERMISSION );
-			data = FileProvider.getUriForFile( BaseApplication.getAppContext(), authority, file );
+			data = FileProvider.getUriForFile( CommonApplication.getAppContext(), authority, file );
 		}
 		intent.setDataAndType( data, type );
 		return intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
@@ -80,7 +80,7 @@ public final class IntentUtils {
 	 * @return intent
 	 */
 	public static Intent getLaunchAppIntent( final String packageName ) {
-		return BaseApplication.getAppContext()
+		return CommonApplication.getAppContext()
 							  .getPackageManager()
 							  .getLaunchIntentForPackage( packageName );
 	}

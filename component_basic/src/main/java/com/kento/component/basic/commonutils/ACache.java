@@ -7,7 +7,7 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -58,7 +58,7 @@ public class ACache {
     }
 
     public static ACache get(String cacheName) {
-        File f = new File( BaseApplication.getAppContext().getCacheDir(), cacheName);
+        File f = new File( CommonApplication.getAppContext().getCacheDir(), cacheName);
         return get(f, MAX_SIZE, MAX_COUNT);
     }
 
@@ -67,7 +67,7 @@ public class ACache {
     }
 
     public static ACache get(long max_zise, int max_count) {
-        File f = new File( BaseApplication.getAppContext().getCacheDir(), "ACache");
+        File f = new File( CommonApplication.getAppContext().getCacheDir(), "ACache");
         return get(f, max_zise, max_count);
     }
 

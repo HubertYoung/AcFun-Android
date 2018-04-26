@@ -9,7 +9,7 @@
     android:paddingRight="15dp"
     android:paddingTop="10dp">
 
-    <com.kento.component.basic.commonwidget.RoundImageView
+    <com.kento.common.widget.RoundImageView
         android:id="@+id/iv_item_winner_headpic"
         android:layout_width="36dp"
         android:layout_height="36dp"

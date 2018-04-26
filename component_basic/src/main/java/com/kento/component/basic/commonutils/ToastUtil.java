@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 import com.kento.component.basic.R;
 
 
@@ -89,9 +89,9 @@ public class ToastUtil {
 	 */
 	private static Toast showToastWithImg( String tvStr, int imageResource ) {
 		if ( toast2 == null ) {
-			toast2 = new Toast( BaseApplication.getAppContext() );
+			toast2 = new Toast( CommonApplication.getAppContext() );
 
-			View view = LayoutInflater.from( BaseApplication.getAppContext() )
+			View view = LayoutInflater.from( CommonApplication.getAppContext() )
 									  .inflate( R.layout.toast_custom, null );
 			TextView tv = ( TextView ) view.findViewById( R.id.text );
 			tv.setText( tvStr );
@@ -146,19 +146,19 @@ public class ToastUtil {
 		showToastWithImg( tvStr, R.drawable.ic_error_outline_white_24dp );
 	}
 	public static void showSuccess(@StringRes int strResId ) {
-		showToastWithImg( BaseApplication.getAppContext()
+		showToastWithImg( CommonApplication.getAppContext()
 										 .getResources()
 										 .getText( strResId ).toString(), R.drawable.ic_done_white_24dp );
 	}
 
 	public static void showError(@StringRes int strResId ) {
-		showToastWithImg( BaseApplication.getAppContext()
+		showToastWithImg( CommonApplication.getAppContext()
 										 .getResources()
 										 .getText( strResId ).toString(), R.drawable.ic_clear_white_24dp );
 	}
 
 	public static void showWarning(@StringRes int strResId ) {
-		showToastWithImg( BaseApplication.getAppContext()
+		showToastWithImg( CommonApplication.getAppContext()
 										 .getResources()
 										 .getText( strResId ).toString(), R.drawable.ic_error_outline_white_24dp );
 	}

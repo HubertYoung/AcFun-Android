@@ -10,7 +10,7 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.text.TextUtils;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 
 import java.io.File;
 import java.security.SecureRandom;
@@ -34,9 +34,9 @@ public class AppUtils {
 	 */
 	public static String getAppVersionName() {
 		try {
-			String pkName = BaseApplication.getAppContext()
+			String pkName = CommonApplication.getAppContext()
 										   .getPackageName();
-			String versionName = BaseApplication.getAppContext()
+			String versionName = CommonApplication.getAppContext()
 												.getPackageManager()
 												.getPackageInfo( pkName, 0 ).versionName;
 			return versionName;
@@ -53,9 +53,9 @@ public class AppUtils {
 	 */
 	public static int getAppVersionCode() {
 		try {
-			String pkName = BaseApplication.getAppContext()
+			String pkName = CommonApplication.getAppContext()
 										   .getPackageName();
-			int versionCode = BaseApplication.getAppContext()
+			int versionCode = CommonApplication.getAppContext()
 											 .getPackageManager()
 											 .getPackageInfo( pkName, 0 ).versionCode;
 			return versionCode;
@@ -66,7 +66,7 @@ public class AppUtils {
 	}
 
 	public static String getDeviceID() {
-		String strID = Settings.Secure.getString( BaseApplication.getAppContext()
+		String strID = Settings.Secure.getString( CommonApplication.getAppContext()
 																 .getContentResolver(), Settings.Secure.ANDROID_ID );
 		if ( strID == null || strID.equals( "" ) ) {
 			strID = getRandom( 16 );
@@ -117,7 +117,7 @@ public class AppUtils {
 	 */
 	public static void installApp( final File file, final String authority ) {
 		if ( !FileUtils.isFileExists( file ) ) return;
-		BaseApplication.getAppContext()
+		CommonApplication.getAppContext()
 					   .startActivity( IntentUtils.getInstallAppIntent( file, authority ) );
 	}
 
@@ -170,7 +170,7 @@ public class AppUtils {
 	 * @return {@code true}: 是<br>{@code false}: 否
 	 */
 	public static boolean isSystemApp() {
-		return isSystemApp( BaseApplication.getAppContext()
+		return isSystemApp( CommonApplication.getAppContext()
 										   .getPackageName() );
 	}
 
@@ -183,7 +183,7 @@ public class AppUtils {
 	public static boolean isSystemApp( final String packageName ) {
 		if ( TextUtils.isEmpty( packageName ) ) return false;
 		try {
-			PackageManager pm = BaseApplication.getAppContext()
+			PackageManager pm = CommonApplication.getAppContext()
 											   .getPackageManager();
 			ApplicationInfo ai = pm.getApplicationInfo( packageName, 0 );
 			return ai != null && ( ai.flags & ApplicationInfo.FLAG_SYSTEM ) != 0;
@@ -199,8 +199,8 @@ public class AppUtils {
 	 * @return 是否是Debug版本
 	 */
 	public static boolean isDebuggable() {
-		return BaseApplication.getAppContext()
-							  .getApplicationInfo() != null && ( BaseApplication.getAppContext()
+		return CommonApplication.getAppContext()
+							  .getApplicationInfo() != null && ( CommonApplication.getAppContext()
 																				.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE ) != 0;
 	}
 
@@ -210,9 +210,9 @@ public class AppUtils {
 	 */
 	public static void mark() {
 		try {
-			Intent viewIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=" + BaseApplication.getAppContext()
+			Intent viewIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=" + CommonApplication.getAppContext()
 																												   .getPackageName() ) );
-			BaseApplication.getAppContext()
+			CommonApplication.getAppContext()
 						   .startActivity( viewIntent );
 		} catch ( Exception e ) {
 			ToastUtil.showWarning( "手机未安装应用市场" );

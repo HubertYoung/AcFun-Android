@@ -37,7 +37,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kento.component.basic.R;
-import com.kento.component.basic.commonutils.DisplayUtil;
+import com.kento.common.utils.DisplayUtil;
 
 
 /**

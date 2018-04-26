@@ -3,7 +3,7 @@ package com.kento.component.basic.net.processserver;
 import android.content.Intent;
 import android.text.TextUtils;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 import com.kento.component.basic.commonconstant.AppConfig;
 import com.kento.component.basic.net.config.NetStatus;
 
@@ -26,7 +26,7 @@ public class ProcessServerException {
 		if ( TextUtils.equals( NetStatus.User_Not_Login.getIndex(), status ) || TextUtils.equals( NetStatus.Account_Login_Other_Device.getIndex(), status ) ) {
 			//发送登录的广播
 			Intent intent = new Intent( AppConfig.ACTION_LOGIN_ACTIVITY );
-			BaseApplication.getAppContext()
+			CommonApplication.getAppContext()
 						   .sendBroadcast( intent );
 		}
 	}

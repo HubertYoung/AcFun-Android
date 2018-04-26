@@ -15,4 +15,7 @@ props.load(new FileInputStream(file("../gradle.properties")))
 //        }
 //    }
 //}
+dependencies {
+    api project(':common')
+}
 

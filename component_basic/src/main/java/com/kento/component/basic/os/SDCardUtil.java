@@ -18,7 +18,7 @@ package com.kento.component.basic.os;
 
 import android.os.Environment;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 
 import java.io.File;
 
@@ -72,7 +72,7 @@ public class SDCardUtil {
      */
     public static String getSDPath() {
 
-        File sdDir = BaseApplication.getAppContext().getCacheDir();
+        File sdDir = CommonApplication.getAppContext().getCacheDir();
         boolean sdCardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);   //判断sd卡是否存在
         if (sdCardExist) {
             sdDir = Environment.getExternalStorageDirectory();//获取跟目录

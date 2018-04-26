@@ -28,7 +28,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 import com.kento.component.basic.os.OSUtil;
 
 import java.lang.reflect.Field;
@@ -65,11 +65,11 @@ public final class BarUtils {
 	 */
 	public static int getStatusBarHeight() {
 		int result = 24;
-		int resId = BaseApplication.getAppContext()
+		int resId = CommonApplication.getAppContext()
 								   .getResources()
 								   .getIdentifier( "status_bar_height", "dimen", "android" );
 		if ( resId > 0 ) {
-			result = BaseApplication.getAppContext()
+			result = CommonApplication.getAppContext()
 									.getResources()
 									.getDimensionPixelSize( resId );
 		} else {
@@ -859,11 +859,11 @@ public final class BarUtils {
 	 * @return 导航栏高度，0代表不存在
 	 */
 	public int getNavigationBarHeight() {
-		boolean hasMenuKey = ViewConfiguration.get( BaseApplication.getAppContext() )
+		boolean hasMenuKey = ViewConfiguration.get( CommonApplication.getAppContext() )
 											  .hasPermanentMenuKey();
 		boolean hasBackKey = KeyCharacterMap.deviceHasKey( KeyEvent.KEYCODE_BACK );
 		if ( !hasMenuKey && !hasBackKey ) {
-			Resources res = BaseApplication.getAppContext()
+			Resources res = CommonApplication.getAppContext()
 										   .getResources();
 			int resourceId = res.getIdentifier( "navigation_bar_height", "dimen", "android" );
 			return res.getDimensionPixelSize( resourceId );

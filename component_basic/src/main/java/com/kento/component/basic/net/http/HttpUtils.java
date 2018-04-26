@@ -1,7 +1,7 @@
 package com.kento.component.basic.net.http;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.kento.component.basic.BaseApplication;
+import com.kento.common.CommonApplication;
 import com.kento.component.basic.commonutils.CardSLifeLogUtils;
 import com.kento.component.basic.commonutils.NetworkUtil;
 import com.kento.component.basic.net.callback.UCallback;
@@ -85,7 +85,7 @@ public class HttpUtils {
 		 *
 		 */
 		if ( configuration == null ) {
-			configuration = new NetWorkConfiguration( BaseApplication.getAppContext() );
+			configuration = new NetWorkConfiguration( CommonApplication.getAppContext() );
 		}
 		//增加头部信息
 		Interceptor headerInterceptor = new Interceptor() {
@@ -202,7 +202,7 @@ public class HttpUtils {
 	 * @return
 	 */
 	public HttpUtils addCookie() {
-		persistentCookieJar = new PersistentCookieJar( new SetCookieCache(), new SharedPrefsCookiePersistor( BaseApplication.getAppContext() ) );
+		persistentCookieJar = new PersistentCookieJar( new SetCookieCache(), new SharedPrefsCookiePersistor( CommonApplication.getAppContext() ) );
 		mOkHttpClient = getOkHttpClient().newBuilder()
 										 .cookieJar( persistentCookieJar )
 										 .build();
