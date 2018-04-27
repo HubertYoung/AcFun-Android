@@ -1,4 +1,4 @@
-package com.kento.component.basic.os;
+package com.kento.common.os;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

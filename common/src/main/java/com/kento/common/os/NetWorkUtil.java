@@ -1,4 +1,4 @@
-package com.kento.component.basic.os;
+package com.kento.common.os;
 
 import android.annotation.TargetApi;
 import android.content.Context;

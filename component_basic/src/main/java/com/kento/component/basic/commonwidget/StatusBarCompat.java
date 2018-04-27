@@ -13,7 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.kento.component.basic.os.OSUtil;
+import com.kento.common.os.OSUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

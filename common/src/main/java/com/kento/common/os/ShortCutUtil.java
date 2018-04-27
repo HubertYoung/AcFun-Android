@@ -1,4 +1,4 @@
-package com.kento.component.basic.os; /**
+package com.kento.common.os; /**
  * Copyright 2014 Zhenguo Jin
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");

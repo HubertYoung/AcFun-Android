@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.kento.component.basic.os;
+package com.kento.common.os;
 
 import android.os.Environment;
 

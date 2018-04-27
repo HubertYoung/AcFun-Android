@@ -1,4 +1,4 @@
-package com.kento.component.basic.os;
+package com.kento.common.os;
 
 import android.content.Context;
 import android.os.Build;
