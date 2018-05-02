@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.dynamicsoreview;
+package com.kento.common.widget.dynamicsoreview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.kento.component.basic.R;
-import com.kento.component.basic.commonwidget.dynamicsoreview.Interface.ViewControl;
-import com.kento.component.basic.commonwidget.dynamicsoreview.adapter.ViewPagerAdapter;
+import com.kento.common.R;
+import com.kento.common.widget.dynamicsoreview.Interface.ViewControl;
+import com.kento.common.widget.dynamicsoreview.adapter.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class SoreButton extends LinearLayout {
 		super( context, attrs );
 		mContext = context;
 		LayoutInflater.from( context )
-					  .inflate( R.layout.layout_custom_banner, this, true );
+					  .inflate( R.layout.layout_custom_dynamic, this, true );
 		viewPager = ( ViewPager ) findViewById( R.id.layout_banner_viewpager );
 		llIndicator = ( LinearLayout ) findViewById( R.id.layout_banner_points_group );
 
@@ -65,7 +65,7 @@ public class SoreButton extends LinearLayout {
 		}
 		//设置空布局
 		listView = new ArrayList<>();
-		listView.add( R.layout.viewpager_default );
+//		listView.add( R.layout.viewpager_default );
 	}
 
 	//初始化ViewPager

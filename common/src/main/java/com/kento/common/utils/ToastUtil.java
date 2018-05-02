@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonutils;
+package com.kento.common.utils;
 
 import android.support.annotation.StringRes;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kento.common.CommonApplication;
-import com.kento.component.basic.R;
+import com.kento.common.R;
 
 
 /**

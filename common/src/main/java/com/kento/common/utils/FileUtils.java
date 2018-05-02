@@ -1,8 +1,8 @@
-package com.kento.component.basic.commonutils;
+package com.kento.common.utils;
 
 import android.annotation.SuppressLint;
 
-import com.kento.component.basic.commonconstant.MemoryConstants;
+import com.kento.common.commonconstant.MemoryConstants;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -307,7 +307,7 @@ public class FileUtils {
             }
             return true;
         } catch ( IOException e ) {
-            CardSLifeLogUtils.loge( e.getMessage().toString() );
+            CommonLog.loge( e.getMessage().toString() );
             return false;
         } finally {
             try {
@@ -318,7 +318,7 @@ public class FileUtils {
                     os.close();
                 }
             } catch ( IOException e ) {
-                CardSLifeLogUtils.loge( e.getMessage().toString() );
+                CommonLog.loge( e.getMessage().toString() );
                 return false;
             }
         }
@@ -347,7 +347,7 @@ public class FileUtils {
             is = new BufferedInputStream( new FileInputStream( file ) );
             p = ( is.read() << 8 ) + is.read();
         } catch ( IOException e ) {
-            CardSLifeLogUtils.loge( e.getMessage().toString() );
+            CommonLog.loge( e.getMessage().toString() );
             return "";
         } finally {
             try {
@@ -355,7 +355,7 @@ public class FileUtils {
                     is.close();
                 }
             } catch ( IOException e ) {
-                CardSLifeLogUtils.loge( e.getMessage().toString() );
+                CommonLog.loge( e.getMessage().toString() );
                 return null;
             }
         }
@@ -526,14 +526,14 @@ public class FileUtils {
             md = dis.getMessageDigest();
             return md.digest();
         } catch ( NoSuchAlgorithmException | IOException e ) {
-            CardSLifeLogUtils.loge( e.getMessage().toString() );
+            CommonLog.loge( e.getMessage().toString() );
         } finally {
             try {
                 if ( dis != null ) {
                     dis.close();
                 }
             } catch ( IOException e ) {
-                CardSLifeLogUtils.loge( e.getMessage().toString() );
+                CommonLog.loge( e.getMessage().toString() );
                 return null;
             }
         }

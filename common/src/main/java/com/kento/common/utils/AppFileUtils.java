@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonutils;
+package com.kento.common.utils;
 
 import android.content.ContentUris;
 import android.content.Context;
@@ -12,8 +12,8 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 
 import com.kento.common.CommonApplication;
-import com.kento.component.basic.commonconstant.AppConfig;
-import com.kento.component.basic.commonconstant.MemoryConstants;
+import com.kento.common.commonconstant.AppConfig;
+import com.kento.common.commonconstant.MemoryConstants;
 
 import java.io.File;
 

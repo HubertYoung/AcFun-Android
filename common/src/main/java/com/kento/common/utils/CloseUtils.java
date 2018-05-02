@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonutils;
+package com.kento.common.utils;
 
 import java.io.Closeable;
 import java.io.IOException;

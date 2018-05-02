@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.dynamicsoreview;
+package com.kento.common.widget.dynamicsoreview;
 
 import android.annotation.SuppressLint;
 import android.support.v4.view.ViewPager;

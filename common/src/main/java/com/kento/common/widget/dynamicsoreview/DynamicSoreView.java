@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.dynamicsoreview;
+package com.kento.common.widget.dynamicsoreview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.kento.component.basic.R;
-import com.kento.component.basic.commonutils.CardSLifeLogUtils;
+import com.kento.common.R;
+import com.kento.common.utils.CommonLog;
 import com.kento.common.utils.DisplayUtil;
-import com.kento.component.basic.commonwidget.dynamicsoreview.Interface.IDynamicSore;
-import com.kento.component.basic.commonwidget.dynamicsoreview.adapter.ViewPagerAdapter;
+import com.kento.common.widget.dynamicsoreview.Interface.IDynamicSore;
+import com.kento.common.widget.dynamicsoreview.adapter.ViewPagerAdapter;
 import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class DynamicSoreView< T > extends LinearLayout {
 		super( context, attrs );
 		mContext = context;
 		LayoutInflater.from( context )
-					  .inflate( R.layout.layout_custom_banner, this, true );
+					  .inflate( R.layout.layout_custom_dynamic, this, true );
 		viewPager = ( ViewPager ) findViewById( R.id.layout_banner_viewpager );
 		llIndicator = ( LinearLayout ) findViewById( R.id.layout_banner_points_group );
 
@@ -89,17 +89,18 @@ public class DynamicSoreView< T > extends LinearLayout {
 			typedArray.recycle();
 		}
 
-		//设置空布局
-		gridView = R.layout.viewpager_default;
 	}
 
 	//初始化ViewPager
 	private void initViewPager() {
 		listSoreView = new ArrayList<>();
 		for (int i = 0; i < page; i++) {
-			//循环拿到传入的View
-			soreView = LayoutInflater.from( getContext() )
-									 .inflate( gridView, null );
+			if ( gridView == 0 ) {
+				throw new RuntimeException( "gridView is null" );
+			}else{
+				//循环拿到传入的View
+				soreView = LayoutInflater.from( getContext() ).inflate( gridView, null );
+			}
 			//通过接口回掉的形式返回当前的View,实现接口后开源拿到每个View然后进行操作
 			if ( iDynamicSore != null ) {
 				List< T > data;
@@ -138,7 +139,7 @@ public class DynamicSoreView< T > extends LinearLayout {
 		try {
 			setPageTransformer( true, transformer.newInstance() );
 		} catch ( Exception e ) {
-			CardSLifeLogUtils.loge( "Please set the PageTransformer class" );
+			CommonLog.loge( "Please set the PageTransformer class" );
 		}
 		return this;
 	}

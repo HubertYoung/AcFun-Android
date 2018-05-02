@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonutils;
+package com.kento.common.utils;
 
 import android.content.Context;
 import android.os.Handler;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.kento.component.basic.R;
 import com.kento.common.ImageLoaderUtils;
+import com.kento.common.R;
 
 
 
