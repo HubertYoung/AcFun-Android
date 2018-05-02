@@ -1,1 +1,1 @@
-include ':app', ':component_basic', ':autolayout-widget', ':skin-support', ':component_banner', ':common_res', ':common'
+include ':app', ':component_basic', ':autolayout-widget', ':skin-support', ':component_banner', ':component_dynamicsoreview', ':common_res', ':common'
