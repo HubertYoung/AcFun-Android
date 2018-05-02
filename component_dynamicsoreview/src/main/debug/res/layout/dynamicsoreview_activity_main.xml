@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.kento.component_banner.banner.BannerView
-        android:id="@+id/bv_main"
+    <com.kento.component_dynamicsoreview.dynamicsoreview.DynamicSoreView
+        android:id="@+id/ds_main"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_200PX"/>
+        android:layout_height="@dimen/DIMEN_400PX"/>
 
 </LinearLayout>

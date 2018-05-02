@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.kento.component.basic.commonwidget.sectioned;
+package com.kento.common.widget.sectioned;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;

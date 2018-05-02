@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.sectioned;
+package com.kento.common.widget.sectioned;
 
 import android.support.annotation.LayoutRes;
 

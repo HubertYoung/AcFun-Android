@@ -1,4 +1,4 @@
-package com.kento.common.widget.dynamicsoreview.Interface;
+package com.kento.component_dynamicsoreview.dynamicsoreview.Interface;
 
 import android.view.View;
 

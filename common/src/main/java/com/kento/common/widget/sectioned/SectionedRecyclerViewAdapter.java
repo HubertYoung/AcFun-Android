@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.sectioned;
+package com.kento.common.widget.sectioned;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
@@ -7,11 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kento.common.widget.sectioned.Section.State;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
-import com.kento.component.basic.commonwidget.sectioned.Section.State;
 
 /**
  * @author:Yang

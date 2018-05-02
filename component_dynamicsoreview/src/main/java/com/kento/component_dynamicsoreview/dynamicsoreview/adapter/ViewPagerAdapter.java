@@ -1,4 +1,4 @@
-package com.kento.common.widget.dynamicsoreview.adapter;
+package com.kento.component_dynamicsoreview.dynamicsoreview.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
