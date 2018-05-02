@@ -12,8 +12,8 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 
 import com.kento.common.CommonApplication;
-import com.kento.common.commonconstant.AppConfig;
-import com.kento.common.commonconstant.MemoryConstants;
+import com.kento.common.constant.AppConfig;
+import com.kento.common.constant.MemoryConstants;
 
 import java.io.File;
 

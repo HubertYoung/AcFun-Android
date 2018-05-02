@@ -2,7 +2,7 @@ package com.kento.common.utils;
 
 import android.annotation.SuppressLint;
 
-import com.kento.common.commonconstant.MemoryConstants;
+import com.kento.common.constant.MemoryConstants;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

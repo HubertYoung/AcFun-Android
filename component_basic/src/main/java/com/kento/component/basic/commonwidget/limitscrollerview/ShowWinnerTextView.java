@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kento.component.basic.R;
-import com.kento.component.basic.commonutils.TimeUtil;
+import com.kento.common.utils.TimeUtil;
 import com.kento.common.ImageLoaderUtils;
 
 import java.util.List;

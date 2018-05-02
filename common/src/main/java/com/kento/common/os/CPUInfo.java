@@ -5,6 +5,8 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.kento.common.BuildConfig;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -24,7 +26,7 @@ import java.util.Enumeration;
  * 作用：硬件信息
  */
 public class CPUInfo {
-    private static boolean DEBUG = true;
+    private static boolean DEBUG = BuildConfig.DEBUG;
     private static String TAG = CPUInfo.class.getSimpleName();
     private static String deviceInfoStr;
 
