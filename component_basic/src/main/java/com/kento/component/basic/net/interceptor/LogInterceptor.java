@@ -3,8 +3,8 @@ package com.kento.component.basic.net.interceptor;
 
 import android.support.annotation.NonNull;
 
+import com.kento.common.utils.CommonLog;
 import com.kento.component.basic.BuildConfig;
-import com.kento.component.basic.commonutils.CardSLifeLogUtils;
 
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -42,7 +42,7 @@ public class LogInterceptor implements Interceptor {
     }
 
     private void log( String message ) {
-        CardSLifeLogUtils.logi( message );
+        CommonLog.logi( message );
     }
 
     public LogInterceptor setLevel( Level level ) {
@@ -72,7 +72,7 @@ public class LogInterceptor implements Interceptor {
         try {
             response = chain.proceed( request );
         } catch ( Exception e ) {
-            CardSLifeLogUtils.loge( "<-- HTTP FAILED: " + e );
+            CommonLog.loge( "<-- HTTP FAILED: " + e );
             throw e;
         }
         long tookMs = TimeUnit.NANOSECONDS.toMillis( System.nanoTime() - startNs );
@@ -109,7 +109,7 @@ public class LogInterceptor implements Interceptor {
                 }
             }
         } catch ( Exception e ) {
-//            CardSLifeLogUtils.loge( e.getMessage()
+//            CommonLog.loge( e.getMessage()
 //                    .toString() );
             log( e.getMessage() );
         } finally {
@@ -148,7 +148,7 @@ public class LogInterceptor implements Interceptor {
                 }
             }
         } catch ( Exception e ) {
-            CardSLifeLogUtils.loge( e.getMessage()
+            CommonLog.loge( e.getMessage()
                     .toString() );
             log( e.getMessage() );
         } finally {

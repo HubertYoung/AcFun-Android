@@ -2,7 +2,7 @@ package com.kento.component.basic.net.http;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.kento.common.CommonApplication;
-import com.kento.component.basic.commonutils.CardSLifeLogUtils;
+import com.kento.common.utils.CommonLog;
 import com.kento.component.basic.commonutils.NetworkUtil;
 import com.kento.component.basic.net.callback.UCallback;
 import com.kento.component.basic.net.config.NetWorkConfiguration;
@@ -145,19 +145,19 @@ public class HttpUtils {
 			throw new IllegalArgumentException( "ImageLoader configuration can not be initialized with null" );
 		} else {
 			if ( HttpUtils.configuration == null ) {
-				CardSLifeLogUtils.logd( "Initialize NetWorkConfiguration with configuration" );
+				CommonLog.logd( "Initialize NetWorkConfiguration with configuration" );
 				HttpUtils.configuration = configuration;
 			} else {
-				CardSLifeLogUtils.logd( "Try to initialize NetWorkConfiguration which had already been initialized before. To re-init NetWorkConfiguration " + "with " + "" + "" + "new configuration " );
+				CommonLog.logd( "Try to initialize NetWorkConfiguration which had already been initialized before. To re-init NetWorkConfiguration " + "with " + "" + "" + "new configuration " );
 			}
 		}
 		if ( configuration != null ) {
-			CardSLifeLogUtils.logi( "ConFiguration" + configuration.toString() );
+			CommonLog.logi( "ConFiguration" + configuration.toString() );
 		}
 	}
 
 	public RetrofitClient getRetofitClinet() {
-		CardSLifeLogUtils.logi( "configuration:" + configuration.toString() );
+		CommonLog.logi( "configuration:" + configuration.toString() );
 		return new RetrofitClient( configuration.getBaseUrl(), mOkHttpClient );
 	}
 

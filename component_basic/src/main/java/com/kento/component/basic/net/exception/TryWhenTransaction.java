@@ -3,7 +3,7 @@ package com.kento.component.basic.net.exception;//package ddframework.gent.commo
 //import java.net.UnknownHostException;
 //import java.util.concurrent.TimeUnit;
 //
-//import ddframework.gent.common.commonutils.CardSLifeLogUtils;
+//import ddframework.gent.common.commonutils.CommonLog;
 //import io.reactivex.Observable;
 //import io.reactivex.ObservableSource;
 //import io.reactivex.functions.Function;
@@ -38,7 +38,7 @@ package com.kento.component.basic.net.exception;//package ddframework.gent.commo
 //					if ( throwable instanceof UnknownHostException ) {
 //						//若没打开网络则停止重试
 //						return Observable.error( throwable );
-//					} else if ( throwable instanceof NullPointerException ) CardSLifeLogUtils.loge( throwable.getMessage()
+//					} else if ( throwable instanceof NullPointerException ) CommonLog.loge( throwable.getMessage()
 //																											 .toString() );
 //					//重试三次
 //					if ( ++retryCount < 3 ) return Observable.timer( 5, TimeUnit.SECONDS );

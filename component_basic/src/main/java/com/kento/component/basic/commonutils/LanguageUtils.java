@@ -6,7 +6,7 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
 import com.kento.common.CommonApplication;
-import com.kento.component.basic.commonconstant.AppConfig;
+import com.kento.common.commonconstant.AppConfig;
 
 import java.util.Locale;
 

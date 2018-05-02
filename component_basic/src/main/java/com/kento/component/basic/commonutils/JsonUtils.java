@@ -9,6 +9,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
+import com.kento.common.utils.CommonLog;
 
 import org.json.JSONObject;
 
@@ -100,7 +101,7 @@ public class JsonUtils {
 			}
 			return result;
 		} catch ( Exception e ) {
-			CardSLifeLogUtils.loge( e.getMessage()
+			CommonLog.loge( e.getMessage()
 							  .toString() );
 			return new ArrayList< T >();
 		}

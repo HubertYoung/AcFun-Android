@@ -3,7 +3,7 @@ package com.kento.component.basic.net.factory;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.kento.component.basic.commonutils.CardSLifeLogUtils;
+import com.kento.common.utils.CommonLog;
 import com.kento.component.basic.net.config.NetStatus;
 import com.kento.component.basic.net.response.BaseResponse;
 
@@ -50,7 +50,7 @@ public class ExGsonResponseBodyConverter< T > implements Converter< ResponseBody
         try {
             JSONObject response = new JSONObject( value );
             String status = response.getString( "status" );
-            CardSLifeLogUtils.loge("status：" + status);
+            CommonLog.loge("status：" + status);
             if ( TextUtils.equals( status, NetStatus.Success.getIndex() ) || TextUtils.equals( status, NetStatus.Server_Success.getIndex() )) {
 				return gson.fromJson( value, type );
             }else{

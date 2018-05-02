@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 
 import com.kento.common.CommonApplication;
 import com.kento.common.os.OSUtil;
+import com.kento.common.utils.CommonLog;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -252,7 +253,7 @@ public final class BarUtils {
 							.setSystemUiVisibility( dark ? View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR : View.SYSTEM_UI_FLAG_VISIBLE );
 				}
 			} catch ( Exception e ) {
-				CardSLifeLogUtils.logi( "tag", e.getMessage()
+				CommonLog.logi( "tag", e.getMessage()
 												.toString() );
 			}
 		}

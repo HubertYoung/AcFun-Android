@@ -8,7 +8,7 @@
 //import android.widget.TextView;
 //
 //import com.kento.component.basic.R;
-//import com.kento.component.basic.commonutils.AppUtils;
+//import com.kento.common.utils.AppUtils;
 //
 //import java.lang.ref.WeakReference;
 //

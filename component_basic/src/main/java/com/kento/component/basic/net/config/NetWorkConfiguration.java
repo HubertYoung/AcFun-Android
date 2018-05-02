@@ -3,8 +3,8 @@ package com.kento.component.basic.net.config;
 import android.content.Context;
 
 import com.facebook.stetho.common.LogUtil;
-import com.kento.component.basic.commonutils.AppFileUtils;
-import com.kento.component.basic.commonutils.AppUtils;
+import com.kento.common.utils.AppFileUtils;
+import com.kento.common.utils.AppUtils;
 
 import java.io.File;
 import java.io.InputStream;

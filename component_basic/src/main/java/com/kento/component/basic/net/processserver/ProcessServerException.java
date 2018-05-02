@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 
 import com.kento.common.CommonApplication;
-import com.kento.component.basic.commonconstant.AppConfig;
+import com.kento.common.commonconstant.AppConfig;
 import com.kento.component.basic.net.config.NetStatus;
 
 

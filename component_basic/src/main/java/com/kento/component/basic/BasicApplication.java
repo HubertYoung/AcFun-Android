@@ -5,7 +5,6 @@ import android.content.Context;
 import com.kento.common.CommonApplication;
 
 import org.acra.ACRA;
-import org.acra.ReportField;
 import org.acra.annotation.AcraCore;
 import org.acra.annotation.AcraHttpSender;
 import org.acra.annotation.AcraToast;
@@ -24,7 +23,6 @@ import org.acra.sender.HttpSender;
  */
 @AcraCore(
 		includeDropBoxSystemTags = true,
-		reportContent = {ReportField.CUSTOM_DATA},
 		reportFormat = StringFormat.KEY_VALUE_LIST)
 @AcraToast( resText = R.string.app_crash_str )
 @AcraHttpSender( uri = "http://d1bustest.d1-bus.com/socialbus/api/coupon/getCouponList",
