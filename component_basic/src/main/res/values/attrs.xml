@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ContentWithSpaceEditText">
-        <attr name="input_type" format="enum">
-            <enum name="phone" value="0"/>
-            <enum name="bank_card_no" value="1"/>
-            <enum name="identify_card_no" value="2"/>
-        </attr>
-    </declare-styleable>
+
     <declare-styleable name="SimpleRatingBar">
         <attr name="srb_borderColor" format="color"/>
         <attr name="srb_fillColor" format="color"/>

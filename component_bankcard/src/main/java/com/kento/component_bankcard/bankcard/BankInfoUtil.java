@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.bankcard;
+package com.kento.component_bankcard.bankcard;
 
 import java.util.regex.Pattern;
 

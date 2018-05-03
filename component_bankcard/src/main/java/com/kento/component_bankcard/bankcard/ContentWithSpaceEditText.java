@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.bankcard;
+package com.kento.component_bankcard.bankcard;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,7 +12,7 @@ import android.text.method.DigitsKeyListener;
 import android.util.AttributeSet;
 import android.widget.Toast;
 
-import com.kento.component.basic.R;
+import com.kento.component_bankcard.R;
 
 
 /**

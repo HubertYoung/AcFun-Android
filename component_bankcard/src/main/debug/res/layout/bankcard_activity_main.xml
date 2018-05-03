@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.kento.component_bankcard.bankcard.ContentWithSpaceEditText
+        android:id="@+id/cws_bankcardnum"
+        android:layout_width="match_parent"
+        app:input_type="bank_card_no"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_bank_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color_gray64"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        tools:text="asdfasdfasdf"/>
+
+    <RadioGroup
+        android:id="@+id/rg_bankcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/DIMEN_20PX"
+        android:layout_marginLeft="@dimen/DIMEN_30PX">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:checked="true"
+            android:text="phone"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bank_card_no"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="identify_card_no"/>
+    </RadioGroup>
+</LinearLayout>
