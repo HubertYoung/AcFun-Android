@@ -1,1 +1,1 @@
-include ':app', ':component_basic', ':autolayout-widget', ':skin-support', ':component_banner', ':component_dynamicsoreview', ':component_bankcard', ':common_res', ':common'
+include ':app', ':component_basic', ':autolayout-widget', ':skin-support', ':component_banner', ':component_dynamicsoreview', ':component_bankcard', ':component_filter', ':common_res', ':common'
