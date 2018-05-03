@@ -1,3 +1,5 @@
+package dynamicsoreview;
+
 import android.app.Activity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
