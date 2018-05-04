@@ -1,10 +1,12 @@
-package filter;
+package filter.fragmentSample;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kento.component_filter.R;
@@ -13,45 +15,51 @@ import com.kento.component_filter.filter.interfaces.OnFilterDoneListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import filter.DropMenuAdapter;
 import filter.entity.FilterUrl;
-import filter.fragmentSample.FilterActivity;
 
-public class MainActivity extends AppCompatActivity implements OnFilterDoneListener, View.OnClickListener {
+/**
+ * author: baiiu
+ * date: on 18/1/8 11:52
+ * description:
+ */
+public class FilterFragment extends Fragment implements OnFilterDoneListener {
 
 	@BindView( R.id.dropDownMenu )
 	DropDownMenu dropDownMenu;
 	@BindView( R.id.mFilterContentView )
 	TextView mFilterContentView;
+	@BindView( R.id.toolbar )
+	Toolbar mToolbar;
+
+	@Nullable
+	@Override
+	public View onCreateView( LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState ) {
+
+		View view = inflater.inflate( R.layout.filter_activity_main, container, false );
+		ButterKnife.bind( this, view );
+
+		mToolbar.setTitle( R.string.app_name );
+
+		return view;
+	}
 
 	@Override
-	protected void onCreate( Bundle savedInstanceState ) {
-		super.onCreate( savedInstanceState );
-		setContentView( R.layout.filter_activity_main );
-		ButterKnife.bind( this );
-
-		Toolbar toolbar = ButterKnife.findById( this, R.id.toolbar );
-		setSupportActionBar( toolbar );
-
+	public void onActivityCreated( @Nullable Bundle savedInstanceState ) {
+		super.onActivityCreated( savedInstanceState );
 		initFilterDropDownView();
-
-		mFilterContentView.setOnClickListener( this );
 	}
 
 	private void initFilterDropDownView() {
 		String[] titleList = new String[]{ "第一个", "第二个", "第三个", "第四个" };
-		dropDownMenu.setMenuAdapter( new DropMenuAdapter( this, titleList, this ) );
+		dropDownMenu.setMenuAdapter( new DropMenuAdapter( getContext(), titleList, this ) );
 	}
 
 	@Override
-	protected void onDestroy() {
+	public void onDestroy() {
 		super.onDestroy();
 		FilterUrl.instance()
-				.clear();
-	}
-
-	@Override
-	public void onClick( View view ) {
-		startActivity( new Intent( this, FilterActivity.class ) );
+				 .clear();
 	}
 
 	@Override
