@@ -89,12 +89,6 @@
         <attr name="matProg_text" format="string"/>
     </declare-styleable>
 
-    <declare-styleable name="ShimmerLayout">
-        <attr name="shimmer_color" format="color|reference"/>
-        <attr name="shimmer_animation_duration" format="integer|reference"/>
-        <attr name="shimmer_auto_start" format="boolean|reference"/>
-        <attr name="shimmer_angle" format="integer|reference"/>
-    </declare-styleable>
 
     <declare-styleable name="WaveSideBarView">
         <attr name="sidebarTextColor" format="color|reference"/>
