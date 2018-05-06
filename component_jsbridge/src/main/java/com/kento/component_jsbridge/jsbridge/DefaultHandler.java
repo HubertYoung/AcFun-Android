@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.jsbridge;
+package com.kento.component_jsbridge.jsbridge;
 
 public class DefaultHandler implements BridgeHandler{
 

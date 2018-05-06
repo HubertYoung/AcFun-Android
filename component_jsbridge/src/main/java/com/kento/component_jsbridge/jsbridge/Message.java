@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.jsbridge;
+package com.kento.component_jsbridge.jsbridge;
 
 import org.json.JSONArray;
 import org.json.JSONException;

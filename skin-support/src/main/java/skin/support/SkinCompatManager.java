@@ -1,46 +1,43 @@
 package skin.support;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.LayoutInflaterCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.WeakHashMap;
 
+import skin.support.app.SkinCompatDelegate;
 import skin.support.app.SkinLayoutInflater;
+import skin.support.content.res.SkinCompatResources;
 import skin.support.observe.SkinObservable;
+import skin.support.observe.SkinObserver;
 import skin.support.utils.SkinConstants;
 import skin.support.utils.SkinFileUtils;
 import skin.support.utils.SkinLog;
 import skin.support.utils.SkinPreference;
-import skin.support.content.res.SkinCompatResources;
-
-import android.app.Activity;
-import android.app.Application;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v4.view.LayoutInflaterCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-
-import java.lang.reflect.Field;
-import java.util.WeakHashMap;
-
-import skin.support.app.SkinCompatDelegate;
-import skin.support.observe.SkinObserver;
 import skin.support.widget.SkinCompatThemeUtils;
 
 import static skin.support.widget.SkinCompatHelper.INVALID_ID;
@@ -204,8 +201,12 @@ public class SkinCompatManager extends SkinObservable {
             @Override
             public void onActivityDestroyed(Activity activity) {
                 SkinCompatManager.getInstance().deleteObserver(getObserver(activity));
-                skinObserverMap.remove(activity);
-                skinDeleMap.remove(activity);
+                if ( skinObserverMap != null ) {
+                    skinObserverMap.remove( activity );
+                }
+                if(skinDeleMap != null) {
+                    skinDeleMap.remove(activity);
+                }
             }
         });
         return sInstance;
