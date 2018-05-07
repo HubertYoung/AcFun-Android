@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.nineimageview;//package ddframework.gent.common.commonwidget.NineImageView;
+package com.kento.component_multiimageview.multiimageview;//package ddframework.gent.common.commonwidget.NineImageView;
 //
 //import android.content.Context;
 //import android.content.res.TypedArray;

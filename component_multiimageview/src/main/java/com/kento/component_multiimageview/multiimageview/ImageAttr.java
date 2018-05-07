@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.nineimageview;
+package com.kento.component_multiimageview.multiimageview;
 
 import java.io.Serializable;
 
@@ -18,6 +18,10 @@ public class ImageAttr implements Serializable {
     // 左上角坐标
     public int left;
     public int top;
+
+    public ImageAttr( String pic ) {
+        Pic = pic;
+    }
 
     @Override
     public String toString() {

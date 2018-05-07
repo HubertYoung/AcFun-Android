@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.nineimageview;
+package com.kento.component_multiimageview.multiimageview;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
-import com.kento.component.basic.R;
 import com.kento.common.ImageLoaderUtils;
+import com.kento.component_multiimageview.R;
 
 import java.util.List;
 
@@ -89,7 +89,7 @@ public class MultiImageView extends LinearLayout {
 		if ( imageCount == 4 || imageCount == 2 ) {
 			MAX_PER_ROW_COUNT = 2;
 		} else if ( imageCount == 1 ) {
-			MAX_PER_ROW_COUNT = 1;
+			MAX_PER_ROW_COUNT = 3;
 		} else {
 			MAX_PER_ROW_COUNT = 3;
 		}
@@ -183,9 +183,9 @@ public class MultiImageView extends LinearLayout {
 			imageCount = attrList.size(); // 再次获取图片数量
 		}
 
-		if ( imagesList.size() == 1 ) {
-			addView( createImageView( 0, false ) );
-		} else {
+//		if ( imagesList.size() == 1 ) {
+//			addView( createImageView( 0, false ) );
+//		} else {
 //            int allCount = imagesList.size();
 			int rowCount = imageCount / MAX_PER_ROW_COUNT + ( imageCount % MAX_PER_ROW_COUNT > 0 ? 1 : 0 );// 行数
 			for (int rowCursor = 0; rowCursor < rowCount; rowCursor++) {
@@ -209,7 +209,7 @@ public class MultiImageView extends LinearLayout {
 					rowLayout.addView( createImageView( position, true ) );
 				}
 			}
-		}
+//		}
 		// 修改最后一个条目，决定是否显示更多
 		if ( imagesList.size() > maxImageSize ) {
 			LinearLayout childLinearLayout = ( LinearLayout ) getChildAt( getChildCount() - 1 );

@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.nineimageview;
+package com.kento.component_multiimageview.multiimageview;
 
 import android.content.Context;
 import android.graphics.Canvas;
