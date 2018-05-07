@@ -24,7 +24,7 @@ import com.kento.component.basic.R;
  * @author:Yang
  * @date:2017/12/11 16:42
  * @since:v1.0
- * @desc:ddframework.gent.common.commonwidget
+ * @desc:com.kento.common.commonwidget
  * @param:
  */
 public class SlantTextView extends View {

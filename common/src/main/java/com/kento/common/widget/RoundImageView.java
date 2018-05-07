@@ -21,7 +21,7 @@ import com.kento.common.R;
  * @author:Yang
  * @date:2017/8/4 10:29
  * @since:v1.0
- * @desc:ddframework.gent.common.commonwidget
+ * @desc:com.kento.common.commonwidget
  * @param:圆形头像
  */
 public class RoundImageView extends AppCompatImageView {

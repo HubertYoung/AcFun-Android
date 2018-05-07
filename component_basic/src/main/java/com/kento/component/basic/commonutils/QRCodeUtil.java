@@ -1,11 +1,11 @@
-package com.kento.component.basic.commonutils;//package ddframework.gent.common.commonutils;
+package com.kento.component.basic.commonutils;//package com.kento.common.commonutils;
 //
 //import android.graphics.Bitmap;
 //import android.util.Log;
 //
 //import java.util.Hashtable;
 //
-//import ddframework.gent.common.qrscan.qrdecode.BarcodeFormat;
+//import com.kento.common.qrscan.qrdecode.BarcodeFormat;
 //import io.reactivex.Observable;
 //import io.reactivex.schedulers.Schedulers;
 //

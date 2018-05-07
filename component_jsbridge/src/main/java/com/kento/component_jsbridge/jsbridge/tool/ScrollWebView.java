@@ -14,7 +14,7 @@ import com.kento.component_jsbridge.jsbridge.BridgeWebView;
  * @author:Yang
  * @date:2018/2/9 上午12:17
  * @since:V1.0
- * @desc:ddframework.gent.common.commonwidget
+ * @desc:com.kento.common.commonwidget
  */
 public class ScrollWebView extends BridgeWebView {
 	private OnScrollChangeListener mOnScrollChangeListener;

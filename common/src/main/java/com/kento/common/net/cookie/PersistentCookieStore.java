@@ -1,4 +1,4 @@
-package com.kento.common.net.cookie;//package ddframework.gent.common.net.cookie;
+package com.kento.common.net.cookie;//package com.kento.common.net.cookie;
 //
 //import android.content.Context;
 //import android.content.SharedPreferences;

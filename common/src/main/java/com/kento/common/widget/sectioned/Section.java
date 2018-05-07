@@ -8,7 +8,7 @@ import android.view.View;
  * @author:Yang
  * @date:2017/10/24 10:53
  * @since:V1.0.0
- * @desc:ddframework.gent.common.commonwidget.sectioned
+ * @desc:com.kento.common.commonwidget.sectioned
  * @param:Abstract Section used by SectionedRecyclerViewAdapter.
  */
 public abstract class Section {

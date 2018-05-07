@@ -1,4 +1,4 @@
-package com.kento.common.net.cookie;//package ddframework.gent.common.net.cookie;
+package com.kento.common.net.cookie;//package com.kento.common.net.cookie;
 //
 //import java.io.IOException;
 //import java.io.ObjectInputStream;
@@ -11,7 +11,7 @@ package com.kento.common.net.cookie;//package ddframework.gent.common.net.cookie
 // * @author:Yang
 // * @date:29/07/17 16:27
 // * @since:v1.0
-// * @desc:ddframework.gent.common.net.cookie
+// * @desc:com.kento.common.net.cookie
 // * @param:
 // */
 //public class OkHttpCookies implements Serializable {

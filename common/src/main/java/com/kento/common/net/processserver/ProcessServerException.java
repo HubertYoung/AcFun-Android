@@ -12,7 +12,7 @@ import com.kento.common.net.config.NetStatus;
  * @author:Yang
  * @date:2017/12/6 14:53
  * @since:v1.0
- * @desc:ddframework.gent.common.net.processserver
+ * @desc:com.kento.common.net.processserver
  * @param:
  */
 public class ProcessServerException {

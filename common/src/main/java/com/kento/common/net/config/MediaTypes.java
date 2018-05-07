@@ -6,7 +6,7 @@ import okhttp3.MediaType;
  * @author:Yang
  * @date:2017/11/28 10:07
  * @since:V1.0
- * @desc:ddframework.gent.common.net.config
+ * @desc:com.kento.common.net.config
  * @param:MediaType汇总
  */
 public class MediaTypes {

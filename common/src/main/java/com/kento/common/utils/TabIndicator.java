@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
  * @author:Yang
  * @date:2017/8/22 19:02
  * @since:v1.0
- * @desc:ddframework.gent.common.commonutils
+ * @desc:com.kento.common.commonutils
  * @param:底部导航条Indicator的长短
  */
 public class TabIndicator {

@@ -1,4 +1,4 @@
-package com.kento.common.net.cookie;//package ddframework.gent.common.net.cookie;
+package com.kento.common.net.cookie;//package com.kento.common.net.cookie;
 //
 //import android.content.Context;
 //import android.content.SharedPreferences;
@@ -17,7 +17,7 @@ package com.kento.common.net.cookie;//package ddframework.gent.common.net.cookie
 // * @author:Yang
 // * @date:29/07/17 17:07
 // * @since:v1.0
-// * @desc:ddframework.gent.common.net.cookie
+// * @desc:com.kento.common.net.cookie
 // * @param: 添加cookie网络拦截器
 // */
 //public class AddCookiesInterceptor implements Interceptor {

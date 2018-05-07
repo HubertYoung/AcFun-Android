@@ -1,4 +1,4 @@
-package com.kento.common.widget.skin.flycotablayout;//package ddframework.gent.common.commonwidget.skin.flycotablayout;
+package com.kento.common.widget.skin.flycotablayout;//package com.kento.common.commonwidget.skin.flycotablayout;
 //
 //import android.content.Context;
 //import android.content.res.TypedArray;

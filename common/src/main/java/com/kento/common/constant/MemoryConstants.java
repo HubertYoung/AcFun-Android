@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * @author:Yang
  * @date:2017/7/17 11:40
  * @since:v1.0
- * @desc:ddframework.gent.common.commonconstant
+ * @desc:com.kento.common.commonconstant
  * @param:
  */
 public class MemoryConstants {

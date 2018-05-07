@@ -6,9 +6,9 @@
 //import android.text.TextUtils;
 //import android.view.Gravity;
 //
-//import ddframework.gent.common.R;
-//import ddframework.gent.common.commonwidget.dialog.dialog.listener.OnBtnClickL;
-//import ddframework.gent.common.commonwidget.dialog.dialog.widget.NormalDialog;
+//import com.kento.common.R;
+//import com.kento.common.commonwidget.dialog.dialog.listener.OnBtnClickL;
+//import com.kento.common.commonwidget.dialog.dialog.widget.NormalDialog;
 //
 ///**
 // * Created by ${lei} on 2017/12/16.

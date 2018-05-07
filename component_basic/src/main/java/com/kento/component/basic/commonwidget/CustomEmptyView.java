@@ -16,7 +16,7 @@ import com.kento.component.basic.R;
  * @author:Yang
  * @date:2018/1/9 14:41
  * @since:V1.0.0
- * @desc:ddframework.gent.common.commonwidget
+ * @desc:com.kento.common.commonwidget
  * @param:自定义EmptyView
  */
 public class CustomEmptyView extends FrameLayout {

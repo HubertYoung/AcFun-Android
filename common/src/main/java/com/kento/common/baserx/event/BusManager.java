@@ -4,7 +4,7 @@ package com.kento.common.baserx.event;
  * @author:Yang
  * @date:2017/11/30 10:32
  * @since:V1.0
- * @desc:ddframework.gent.common.baserx.event
+ * @desc:com.kento.common.baserx.event
  * @param:事件管理，可定制事件发送方式，可替换成EventBus。
  */
 public class BusManager {

@@ -14,7 +14,7 @@ import io.reactivex.subjects.Subject;
  * @author:Yang
  * @date:2017/11/30 10:31
  * @since:V1.0
- * @desc:ddframework.gent.common.baserx.event.inner
+ * @desc:com.kento.common.baserx.event.inner
  * @param:事件处理基类
  */
 public class EventBase {

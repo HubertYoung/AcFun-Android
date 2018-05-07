@@ -44,7 +44,7 @@ import com.kento.common.utils.DisplayUtil;
  * @author:Yang
  * @date:2017/8/9 12:06
  * @since:v1.0
- * @desc:ddframework.gent.common.commonwidget
+ * @desc:com.kento.common.commonwidget
  * @param:折叠textview
  */
 public class ExpandableTextView extends LinearLayout implements View.OnClickListener {

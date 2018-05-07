@@ -11,7 +11,7 @@
 // * @author:Yang
 // * @date:2018/3/9 下午10:24
 // * @since:V$VERSION
-// * @desc:ddframework.gent.common.commonutils
+// * @desc:com.kento.common.commonutils
 // */
 //public class DecimalDigitsInputFilter implements InputFilter {
 //

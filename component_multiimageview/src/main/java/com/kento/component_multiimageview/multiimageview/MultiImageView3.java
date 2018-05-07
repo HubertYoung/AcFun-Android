@@ -1,4 +1,4 @@
-package com.kento.component_multiimageview.multiimageview;//package ddframework.gent.common.commonwidget.NineImageView;
+package com.kento.component_multiimageview.multiimageview;//package com.kento.common.commonwidget.NineImageView;
 //
 //import android.content.Context;
 //import android.content.res.TypedArray;
@@ -24,15 +24,15 @@ package com.kento.component_multiimageview.multiimageview;//package ddframework.
 //import java.util.ArrayList;
 //import java.util.List;
 //
-//import ddframework.gent.common.R;
-//import ddframework.gent.common.commonwidget.glideimageview.GlideImageLoader;
+//import com.kento.common.R;
+//import com.kento.common.commonwidget.glideimageview.GlideImageLoader;
 //
 //
 ///**
 // * @author:Yang
 // * @date:2017/7/18 13:13
 // * @since:v1.0
-// * @desc:ddframework.gent.common.commonwidget
+// * @desc:com.kento.common.commonwidget
 // * @param:显示1~N张图片的View
 // */
 //public class MultiImageView extends LinearLayout {

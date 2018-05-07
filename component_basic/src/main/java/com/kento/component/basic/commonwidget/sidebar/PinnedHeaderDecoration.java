@@ -16,7 +16,7 @@ import android.view.ViewGroup;
  * @author:Yang
  * @date:2018/2/11 上午10:12
  * @since:V1.0
- * @desc:ddframework.gent.common.commonwidget.sidebar
+ * @desc:com.kento.common.commonwidget.sidebar
  */
 public class PinnedHeaderDecoration extends RecyclerView.ItemDecoration {
     private int mHeaderPosition;

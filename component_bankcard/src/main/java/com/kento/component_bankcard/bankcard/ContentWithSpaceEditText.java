@@ -23,7 +23,7 @@ import com.kento.component_bankcard.R;
  * @author:Yang
  * @date:2018/2/28 下午6:00
  * @since:V1.0
- * @desc:ddframework.gent.common.commonwidget.bankcard
+ * @desc:com.kento.common.commonwidget.bankcard
  */
 public class ContentWithSpaceEditText extends AppCompatEditText {
 

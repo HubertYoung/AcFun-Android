@@ -15,7 +15,7 @@ import okhttp3.Response;
  * @author:Yang
  * @date:2017/11/28 10:19
  * @since:V1.0
- * @desc:ddframework.gent.common.net.interceptor
+ * @desc:com.kento.common.net.interceptor
  * @param:上传进度拦截
  */
 public class UploadProgressInterceptor implements Interceptor {

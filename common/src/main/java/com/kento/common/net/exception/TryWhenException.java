@@ -8,7 +8,7 @@ package com.kento.common.net.exception;
  * @author:Yang
  * @date:2018/3/7 下午7:06
  * @since:V$VERSION
- * @desc:ddframework.gent.common.net.exception
+ * @desc:com.kento.common.net.exception
  */
 public class TryWhenException extends IllegalArgumentException {
 	public TryWhenException() {

@@ -28,7 +28,7 @@ import com.kento.component.basic.R;
  * @author:Yang
  * @date:2018/3/19 上午10:07
  * @since:V
- * @desc:ddframework.gent.common.commonwidget
+ * @desc:com.kento.common.commonwidget
  */
 public class ProgressWheel extends View {
 	private static final String TAG = ProgressWheel.class.getSimpleName();

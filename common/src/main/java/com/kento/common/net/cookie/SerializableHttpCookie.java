@@ -1,4 +1,4 @@
-package com.kento.common.net.cookie;//package ddframework.gent.common.net.cookie;
+package com.kento.common.net.cookie;//package com.kento.common.net.cookie;
 //
 //import java.io.IOException;
 //import java.io.ObjectInputStream;

@@ -1,9 +1,9 @@
-package com.kento.common.net.exception;//package ddframework.gent.common.net.exception;
+package com.kento.common.net.exception;//package com.kento.common.net.exception;
 //
 //import java.net.UnknownHostException;
 //import java.util.concurrent.TimeUnit;
 //
-//import ddframework.gent.common.commonutils.CommonLog;
+//import com.kento.common.commonutils.CommonLog;
 //import io.reactivex.Observable;
 //import io.reactivex.ObservableSource;
 //import io.reactivex.functions.Function;
@@ -16,7 +16,7 @@ package com.kento.common.net.exception;//package ddframework.gent.common.net.exc
 // * @author:Yang
 // * @date:2018/3/7 下午7:01
 // * @since:V$VERSION
-// * @desc:ddframework.gent.common.net.exception
+// * @desc:com.kento.common.net.exception
 // */
 //public class TryWhenTransaction implements Function< Observable< Object >, ObservableSource< ? > > {
 //	/***

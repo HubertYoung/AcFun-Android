@@ -5,9 +5,9 @@
 //import android.net.Uri;
 //import android.os.Build;
 //
-//import ddframework.gent.common.R;
-//import ddframework.gent.common.commonwidget.dialog.dialog.listener.OnBtnClickL;
-//import ddframework.gent.common.commonwidget.dialog.dialog.widget.NormalDialog;
+//import com.kento.common.R;
+//import com.kento.common.commonwidget.dialog.dialog.listener.OnBtnClickL;
+//import com.kento.common.commonwidget.dialog.dialog.widget.NormalDialog;
 //
 ///**
 // * Created by ${lei} on 2017/7/17.

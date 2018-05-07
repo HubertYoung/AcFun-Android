@@ -20,7 +20,7 @@ import java.util.List;
  * @author:Yang
  * @date:2017/7/18 13:13
  * @since:v1.0
- * @desc:ddframework.gent.common.commonwidget
+ * @desc:com.kento.common.commonwidget
  * @param:显示1~N张图片的View
  */
 public class MultiImageView extends LinearLayout {

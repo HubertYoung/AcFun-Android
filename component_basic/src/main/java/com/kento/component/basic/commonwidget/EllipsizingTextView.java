@@ -9,7 +9,7 @@ import android.util.AttributeSet;
  * @author:Yang
  * @date:2017/12/10 17:19
  * @since:v1.0
- * @desc:ddframework.gent.common.commonwidget
+ * @desc:com.kento.common.commonwidget
  * @param:如果限制显示指定的行数，超出指定的行数显示省略号。已经有人自定义了
  */
 public class EllipsizingTextView extends AppCompatTextView {

@@ -84,7 +84,7 @@ public class JsonUtils {
 	 * @author:Yang
 	 * @date:2017-8-2 14:12:48
 	 * @since:v1.0
-	 * @desc:ddframework.gent.common.commonutils
+	 * @desc:com.kento.common.commonutils
 	 * @param: 用来将JSON串转为对象，但此方法不可用来转带泛型的集合
 	 */
 	public static < T > List< T > gsonToList( String json, Class< T > cls ) {

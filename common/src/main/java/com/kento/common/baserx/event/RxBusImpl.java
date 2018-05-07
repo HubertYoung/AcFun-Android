@@ -14,7 +14,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * @author:Yang
  * @date:2017/11/30 10:33
  * @since:V1.0
- * @desc:ddframework.gent.common.baserx.event
+ * @desc:com.kento.common.baserx.event
  * @param:RxBus事件管理
  */
 public class RxBusImpl extends EventBase implements IBus {

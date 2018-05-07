@@ -24,7 +24,7 @@ import okio.Sink;
  * @author:Yang
  * @date:2017/11/28 11:27
  * @since:V1.0
- * @desc:ddframework.gent.common.net.body
+ * @desc:com.kento.common.net.body
  * @param:上传进度请求实体类
  */
 public class UploadProgressRequestBody extends RequestBody {

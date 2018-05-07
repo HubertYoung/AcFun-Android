@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author:Yang
  * @date:2017/7/13 10:48
  * @since:v1.0
- * @desc:ddframework.gent.common.net.response
+ * @desc:com.kento.common.net.response
  * @param:封装服务器返回数据
  */
 public class BaseResponse< T > implements Serializable {
