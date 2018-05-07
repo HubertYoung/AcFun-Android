@@ -23,8 +23,6 @@
     <string name="pickerview_minutes">分</string>
     <string name="pickerview_seconds">秒</string>
 
-    <string name="zone_img_position">circle_img_position</string>
-
     <string name="expand">全文</string>
     <string name="expand_all">查看全部</string>
     <string name="shink">收起</string>
