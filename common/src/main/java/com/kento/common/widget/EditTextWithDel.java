@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget;
+package com.kento.common.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import com.kento.component.basic.R;
+import com.kento.common.R;
 import com.kento.common.utils.DisplayUtil;
 
 

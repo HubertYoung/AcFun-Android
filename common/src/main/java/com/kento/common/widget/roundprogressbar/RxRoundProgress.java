@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.roundprogressbar;
+package com.kento.common.widget.roundprogressbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.kento.component.basic.R;
+import com.kento.common.R;
 
 
 /**

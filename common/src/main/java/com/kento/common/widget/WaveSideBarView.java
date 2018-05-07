@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.sidebar;
+package com.kento.common.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.kento.component.basic.R;
+import com.kento.common.R;
 
 import java.util.Arrays;
 import java.util.List;

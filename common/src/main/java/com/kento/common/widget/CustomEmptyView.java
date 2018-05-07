@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget;
+package com.kento.common.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.kento.component.basic.R;
+import com.kento.common.R;
 
 
 /**

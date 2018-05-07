@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget;
+package com.kento.common.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -20,7 +20,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.kento.component.basic.R;
+import com.kento.common.R;
 import com.zhy.autolayout.AutoRelativeLayout;
 import com.zhy.autolayout.utils.AutoUtils;
 

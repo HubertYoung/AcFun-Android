@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.roundprogressbar.common;
+package com.kento.common.widget.roundprogressbar.common;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.kento.component.basic.R;
+import com.kento.common.R;
 
 
 public abstract class RxBaseRoundProgressBar extends LinearLayout {

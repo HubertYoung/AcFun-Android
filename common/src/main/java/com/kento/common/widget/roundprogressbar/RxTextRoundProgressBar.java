@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.roundprogressbar;
+package com.kento.common.widget.roundprogressbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,8 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.kento.component.basic.R;
-import com.kento.component.basic.commonwidget.roundprogressbar.common.RxBaseRoundProgressBar;
+import com.kento.common.R;
+import com.kento.common.widget.roundprogressbar.common.RxBaseRoundProgressBar;
 
 
 public class RxTextRoundProgressBar extends RxBaseRoundProgressBar implements ViewTreeObserver.OnGlobalLayoutListener {

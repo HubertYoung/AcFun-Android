@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget;
+package com.kento.common.widget;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
@@ -27,7 +27,7 @@ import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.Interpolator;
 
-import com.kento.component.basic.R;
+import com.kento.common.R;
 
 import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 import static android.util.TypedValue.COMPLEX_UNIT_SP;

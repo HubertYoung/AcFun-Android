@@ -1,79 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="SimpleRatingBar">
-        <attr name="srb_borderColor" format="color"/>
-        <attr name="srb_fillColor" format="color"/>
-        <attr name="srb_backgroundColor" format="color"/>
-        <attr name="srb_starBackgroundColor" format="color"/>
-        <attr name="srb_pressedBorderColor" format="color"/>
-        <attr name="srb_pressedFillColor" format="color"/>
-        <attr name="srb_pressedBackgroundColor" format="color"/>
-        <attr name="srb_pressedStarBackgroundColor" format="color"/>
-        <attr name="srb_numberOfStars" format="integer"/>
-        <attr name="srb_starSize" format="dimension"/>
-        <attr name="srb_maxStarSize" format="dimension"/>
-        <attr name="srb_starsSeparation" format="dimension"/>
-        <attr name="srb_starBorderWidth" format="float"/>
-        <attr name="srb_starCornerRadius" format="float"/>
-        <attr name="srb_isIndicator" format="boolean"/>
-        <attr name="srb_rating" format="float"/>
-        <attr name="srb_stepSize" format="float"/>
-        <attr name="srb_drawBorderEnabled" format="boolean"/>
-        <attr name="srb_gravity" format="enum">
-            <enum name="left" value="0"/>
-            <enum name="right" value="1"/>
-        </attr>
-    </declare-styleable>
-    <declare-styleable name="WaveView">
-        <attr name="wvRangeY" format="integer"/>
-        <attr name="wvSolidColor" format="color"/>
-    </declare-styleable>
 
-    <!--时间轴-->
-    <declare-styleable name="UnderLineLinearLayout">
-        <!--时间轴偏移值-->
-        <attr name="line_margin_side" format="dimension"/>
-        <!--时间轴动态调整值-->
-        <attr name="line_dynamic_dimen" format="dimension"/>
-        <!--线宽-->
-        <attr name="line_stroke_width" format="dimension"/>
-        <!--线的颜色-->
-        <attr name="line_color" format="color"/>
-        <!--点的大小-->
-        <attr name="point_size" format="dimension"/>
-        <!--点的颜色-->
-        <attr name="point_color" format="color"/>
-        <!--图标-->
-        <attr name="icon_src" format="reference"/>
-        <!--时间轴的gravity-->
-        <!--the gravity of the timeline-->
-        <attr name="line_gravity">
-            <enum name="Left" value="2"/>
-            <enum name="Right" value="4"/>
-            <enum name="Middle" value="0"/>
-            <enum name="Top" value="1"/>
-            <enum name="Bottom" value="3"/>
-        </attr>
-    </declare-styleable>
 
-    <declare-styleable name="SlantTextView">
-        <attr name="slantedTextSize" format="dimension"/>
-        <attr name="slantedBackgroundColor" format="color"/>
-        <attr name="slantedText" format="string"/>
-        <attr name="slantedTextColor" format="color"/>
-        <attr name="slantedLength" format="dimension"/>
-        <attr name="slantedMode" format="enum">
-            <enum name="left" value="0"></enum>
-            <enum name="right" value="1"></enum>
-            <enum name="left_bottom" value="2"></enum>
-            <enum name="right_bottom" value="3"></enum>
-            <enum name="left_triangle" value="4"></enum>
-            <enum name="right_triangle" value="5"></enum>
-            <enum name="left_bottom_triangle" value="6"></enum>
-            <enum name="right_bottom_triangle" value="7"></enum>
-        </attr>
-    </declare-styleable>
 
     <declare-styleable name="ProgressWheel">
         <attr name="matProg_progressIndeterminate" format="boolean"/>
@@ -90,62 +19,7 @@
     </declare-styleable>
 
 
-    <declare-styleable name="WaveSideBarView">
-        <attr name="sidebarTextColor" format="color|reference"/>
-        <attr name="sidebarBackgroundColor" format="color|reference"/>
-        <attr name="sidebarChooseTextColor" format="color|reference"/>
-        <attr name="sidebarTextSize" format="dimension"/>
-        <attr name="sidebarLargeTextSize" format="dimension"/>
-        <attr name="sidebarRadius" format="dimension"/>
-        <attr name="sidebarBallRadius" format="dimension"/>
-        <attr name="sidebarLetters" format="dimension"/>
-    </declare-styleable>
 
-    <declare-styleable name="RoundCornerProgress">
-        <attr name="rcReverse" format="boolean"/>
-        <attr name="rcProgress" format="float"/>
-        <attr name="rcMax" format="float"/>
-        <attr name="rcSecondaryProgress" format="float"/>
-        <attr name="rcBackgroundPadding" format="dimension"/>
-        <attr name="rcRadius" format="dimension"/>
-        <attr name="rcProgressColor" format="color"/>
-        <attr name="rcSecondaryProgressColor" format="color"/>
-        <attr name="rcBackgroundColor" format="color"/>
-    </declare-styleable>
-
-    <declare-styleable name="IconRoundCornerProgress">
-        <attr name="rcIconSrc" format="integer"/>
-        <attr name="rcIconSize" format="dimension"/>
-        <attr name="rcIconWidth" format="dimension"/>
-        <attr name="rcIconHeight" format="dimension"/>
-        <attr name="rcIconPadding" format="dimension"/>
-        <attr name="rcIconPaddingLeft" format="dimension"/>
-        <attr name="rcIconPaddingRight" format="dimension"/>
-        <attr name="rcIconPaddingTop" format="dimension"/>
-        <attr name="rcIconPaddingBottom" format="dimension"/>
-        <attr name="rcIconBackgroundColor" format="color"/>
-    </declare-styleable>
-
-    <declare-styleable name="RxRoundProgress">
-        <attr name="roundColor" format="color"/>
-        <attr name="roundProgressColor" format="color"/>
-        <attr name="roundWidth" format="dimension"/>
-        <attr name="textColor" format="color"/>
-        <attr name="textSize1" format="dimension"/>
-        <attr name="max" format="integer"/>
-        <attr name="textIsDisplayable" format="boolean"/>
-        <attr name="style">
-            <enum name="STROKE" value="0"/>
-            <enum name="FILL" value="1"/>
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="TextRoundCornerProgress">
-        <attr name="rcTextProgressColor" format="color"/>
-        <attr name="rcTextProgressSize" format="dimension"/>
-        <attr name="rcTextProgressMargin" format="dimension"/>
-        <attr name="rcTextProgress" format="string"/>
-    </declare-styleable>
     <!--选择器-->
     <declare-styleable name="pickerview">
         <attr name="pickerview_gravity">
@@ -202,12 +76,4 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="LoadingButton">
-        <attr name="pbText" format="string"/>
-        <attr name="pbLoadingText" format="string"/>
-        <attr name="pbEnable" format="boolean"/>
-        <attr name="pbTextSize" format="dimension"/>
-        <attr name="pbTextColor" format="color|reference"/>
-        <attr name="pbProgressColor" format="color|reference"/>
-    </declare-styleable>
 </resources>

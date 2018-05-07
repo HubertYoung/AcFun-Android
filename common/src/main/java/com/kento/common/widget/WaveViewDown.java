@@ -1,77 +1,56 @@
-package com.kento.component.basic.commonwidget;
+package com.kento.common.widget;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.DrawFilter;
 import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Path;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.kento.component.basic.R;
-
-import java.util.Random;
-
-
 /**
- * des:波浪view
+ * view底部呈现波浪动画效果
  */
-public class WaveView extends View {
 
-	private Path mAbovePath, mBelowWavePath;
-	private Paint mAboveWavePaint, mBelowWavePaint;
+public class WaveViewDown extends View {
+
+	private Path mAbovePath, mBelowWavePath, mBelow2WavePath;
+	private Paint mAboveWavePaint, mBelowWavePaint, mBelow2WavePaint;
+
 	private DrawFilter mDrawFilter;
+	private int rangeY = 12;//Y轴波动幅度
 	private float φ;
-	private int rangeY = 8;//Y轴波动幅度
-	int max = 20;
-	int min = 10;
+
 	private OnWaveAnimationListener mWaveAnimationListener;
-	private float randomFloat = 1.1f;
-	private int solidColor;
 
-	public WaveView( Context context ) {
-		this( context, null );
-	}
-
-	public WaveView( Context context, AttributeSet attrs ) {
+	public WaveViewDown( Context context, AttributeSet attrs ) {
 		super( context, attrs );
-		init( context, attrs );
-
-	}
-
-	private void init( Context context, AttributeSet attrs ) {
-		if ( attrs != null ) {
-			TypedArray a = context.getTheme()
-								  .obtainStyledAttributes( attrs, R.styleable.WaveView, 0, 0 );
-			try {
-				rangeY = a.getInt( R.styleable.WaveView_wvRangeY, 8 );
-				solidColor = a.getColor( R.styleable.WaveView_wvSolidColor, ContextCompat.getColor( context,R.color.colorPrimary ) );
-			} finally {
-				a.recycle();
-			}
-		}
 		//初始化路径
 		mAbovePath = new Path();
 		mBelowWavePath = new Path();
+		mBelow2WavePath = new Path();
 		//初始化画笔
 		mAboveWavePaint = new Paint( Paint.ANTI_ALIAS_FLAG );
 		mAboveWavePaint.setAntiAlias( true );
 		mAboveWavePaint.setStyle( Paint.Style.FILL );
-		//fde533
-		mAboveWavePaint.setColor(solidColor );
+		mAboveWavePaint.setColor( Color.WHITE );
 
 		mBelowWavePaint = new Paint( Paint.ANTI_ALIAS_FLAG );
 		mBelowWavePaint.setAntiAlias( true );
 		mBelowWavePaint.setStyle( Paint.Style.FILL );
-		mBelowWavePaint.setColor( solidColor  );
+		mBelowWavePaint.setColor( Color.WHITE );
 		mBelowWavePaint.setAlpha( 80 );
+
+		mBelow2WavePaint = new Paint( Paint.ANTI_ALIAS_FLAG );
+		mBelow2WavePaint.setAntiAlias( true );
+		mBelow2WavePaint.setStyle( Paint.Style.FILL );
+		mBelow2WavePaint.setColor( Color.WHITE );
+		mBelow2WavePaint.setAlpha( 125 );
+
 		//画布抗锯齿
 		mDrawFilter = new PaintFlagsDrawFilter( 0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG );
-
-		randomFloat = new Random().nextInt( 10 ) / 10F + 1;
 	}
 
 	@Override
@@ -81,15 +60,17 @@ public class WaveView extends View {
 
 		mAbovePath.reset();
 		mBelowWavePath.reset();
+		mBelow2WavePath.reset();
 
 		φ -= 0.1f;
 
-		float y, y2;
+		float y, y2, y3;
 
 		double ω = 2 * Math.PI / getWidth();
 
 		mAbovePath.moveTo( getLeft(), getBottom() );
 		mBelowWavePath.moveTo( getLeft(), getBottom() );
+		mBelow2WavePath.moveTo( getLeft(), getBottom() );
 		for (float x = 0; x <= getWidth(); x += 20) {
 			/**
 			 *  y=Asin(ωx+φ)+k
@@ -99,23 +80,29 @@ public class WaveView extends View {
 			 *  k—偏距，反映在坐标系上则为图像的上移或下移。
 			 */
 			y = ( float ) ( rangeY * Math.cos( 1.1 * ω * x + 1.3 * φ ) + 30 );
-			y2 = ( float ) ( rangeY * Math.sin( ω * x + φ ) + 20 );
-
+			y2 = ( float ) ( rangeY * Math.sin( ω * x + φ ) + 15 );
+			y3 = ( float ) ( rangeY * Math.sin( 1.2 * ω * x + 0.5 * φ ) + 15 );
 			mAbovePath.lineTo( x, y );
 			mBelowWavePath.lineTo( x, y2 );
+			mBelow2WavePath.lineTo( x, y3 );
 			//回调 把y坐标的值传出去(在activity里面接收让小机器人随波浪一起摇摆)
-			if ( mWaveAnimationListener != null ) mWaveAnimationListener.OnWaveAnimation( y );
+			if ( mWaveAnimationListener != null ) {
+				mWaveAnimationListener.OnWaveAnimation( y );
+			}
 		}
 		mAbovePath.lineTo( getRight(), getBottom() );
 		mBelowWavePath.lineTo( getRight(), getBottom() );
+		mBelow2WavePath.lineTo( getRight(), getBottom() );
 
-		canvas.drawPath( mBelowWavePath, mBelowWavePaint );
 		canvas.drawPath( mAbovePath, mAboveWavePaint );
+		canvas.drawPath( mBelowWavePath, mBelowWavePaint );
+		canvas.drawPath( mBelow2WavePath, mBelow2WavePaint );
 
-		postInvalidateDelayed( ( long ) ( 20 * randomFloat ) );
+		postInvalidateDelayed( 20 );
 
 	}
 
+	//imageview随波浪一起动
 	public void setOnWaveAnimationListener( OnWaveAnimationListener l ) {
 		this.mWaveAnimationListener = l;
 	}
@@ -124,14 +111,6 @@ public class WaveView extends View {
 		void OnWaveAnimation( float y );
 	}
 
-	/**
-	 * 设置波动幅度
-	 *
-	 * @param rangeY
-	 */
-	public void setRangeY( int rangeY ) {
-		this.rangeY = rangeY;
-	}
 }
 
 
