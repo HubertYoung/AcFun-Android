@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar_head"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/pickerview_topbar_height"
+    android:background="@color/transparent"
+    android:contentInsetStart="0dp"
+    android:gravity="center"
+    android:navigationIcon="@drawable/icon_nav_next"
+    android:theme="@style/ToolBarStyle"
+    app:contentInsetEnd="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    app:layout_collapseMode="pin"
+    app:navigationIcon="@drawable/icon_nav_next"
+    app:popupTheme="@style/OverflowMenuStyle"
+    app:titleTextAppearance="@style/ToolBar.TitleText">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_head_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/text_color_normal"
+        android:textSize="@dimen/text_size30px"
+        android:visibility="visible"
+        tools:text="hahaha"/>
+
+</android.support.v7.widget.Toolbar>

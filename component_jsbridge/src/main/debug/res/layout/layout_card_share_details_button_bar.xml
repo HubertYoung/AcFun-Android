@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_details_button_bar_root"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/DIMEN_96PX"
+    android:layout_alignParentBottom="true"
+    android:clipChildren="false"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_web_view_details">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1PX"
+        android:background="@color/line_bg"/>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_card_share_details_collection"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg_selector"
+            android:gravity="center"
+            android:paddingBottom="@dimen/DIMEN_10PX"
+            android:paddingTop="@dimen/DIMEN_14PX"
+            android:text="收藏"
+            android:visibility="visible"
+            android:textColor="@color/text_color_gray64"
+            android:textSize="@dimen/text_size22px"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_card_consume_record"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg_selector"
+            android:gravity="center"
+            android:paddingLeft="@dimen/DIMEN_20PX"
+            android:paddingRight="@dimen/DIMEN_20PX"
+            android:text="消费记录"
+            android:visibility="gone"
+            android:textColor="@color/text_color_normal"
+            android:textSize="@dimen/text_size26px"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_card_share_details_buy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/btn_onclick_selector_no_corners"
+            android:gravity="center"
+            android:text="去支付"
+            android:textColor="@color/text_color_normal"
+            android:textSize="@dimen/text_size30px"/>
+    </android.support.v7.widget.LinearLayoutCompat>
+</android.support.v7.widget.LinearLayoutCompat>

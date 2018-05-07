@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_details_button_bar_root"
+        app:srlEnableLoadMore="false"
+        app:srlEnableRefresh="true">
+
+        <FrameLayout
+            android:id="@+id/fl_web_view_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/DIMEN_200PX"
+                android:layout_gravity="top"
+                android:background="@drawable/shadow_gradient"
+                android:fitsSystemWindows="true"/>
+        </FrameLayout>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:gravity="center_vertical"
+        app:elevation="0.0dip">
+
+        <include layout="@layout/title_bar_common_translation"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <include layout="@layout/layout_card_share_details_button_bar"/>
+
+    <ProgressBar
+        android:id="@+id/pb_webview_loading"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_4PX"
+        android:layout_above="@+id/ll_details_button_bar_root"/>
+
+    <!--<include-->
+        <!--android:id="@+id/page_load_error"-->
+        <!--layout="@layout/layout_card_share_details_view_page_error"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:visibility="gone"/>-->
+
+
+</RelativeLayout>

@@ -7,6 +7,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="halfColorPrimary">#AAFF4081</color>
     <!--<color name="CroutonColorPrimary">#CC3F51B5</color>-->
 
     <color name="text_color_normal">#231916</color>
@@ -43,6 +45,10 @@
     <color name="green">#FF00FF00</color>
     <color name="gray">#FFF0F0F0</color>
     <color name="transparent">#00000000</color>
+
+
+    <color name="button_half_color">#AAFCBC34</color>
+    <color name="hint_color">#c8c8c8</color>
 
     <color name="alpha_05_white">#0DFFFFFF</color>
     <color name="alpha_10_white">#1AFFFFFF</color>
