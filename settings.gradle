@@ -10,5 +10,6 @@ include ':app',
         ':component_jsbridge',
         ':component_multiimageview',
         ':component_gridpasswordview',
+        ':component_pickerview',
         ':common_res',
         ':common'
