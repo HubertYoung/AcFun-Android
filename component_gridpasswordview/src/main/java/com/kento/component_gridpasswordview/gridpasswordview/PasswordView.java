@@ -1,4 +1,4 @@
-package com.kento.component.basic.commonwidget.password;
+package com.kento.component_gridpasswordview.gridpasswordview;
 
 /**
  * @author Jungly

@@ -9,5 +9,6 @@ include ':app',
         ':component_skeleton',
         ':component_jsbridge',
         ':component_multiimageview',
+        ':component_gridpasswordview',
         ':common_res',
         ':common'

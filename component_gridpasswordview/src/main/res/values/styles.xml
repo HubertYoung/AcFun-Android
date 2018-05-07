@@ -1,0 +1,42 @@
+<resources>
+    <!--密码框-->
+    <style name="GridPasswordView" />
+
+
+    <style name="GridPasswordView.Divider">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+    </style>
+
+    <style name="GridPasswordView.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/password_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="GridPasswordView.EditText" parent="GridPasswordView.TextView">
+        <item name="android:cursorVisible">false</item>
+    </style>
+
+    <!--密码框-->
+    <declare-styleable name="gridPasswordView">
+        <attr name="gpvTextColor" format="color|reference"/>
+        <attr name="gpvTextSize" format="dimension"/>
+        <attr name="gpvLineColor" format="color"/>
+        <attr name="gpvGridColor" format="color"/>
+        <attr name="gpvLineWidth" format="dimension"/>
+        <attr name="gpvPasswordLength" format="integer"/>
+        <attr name="gpvPasswordTransformation" format="string"/>
+        <attr name="gpvPasswordType" format="enum">
+            <enum name="numberPassword" value="0"/>
+            <enum name="textPassword" value="1"/>
+            <enum name="textVisiblePassword" value="2"/>
+            <enum name="textWebPassword" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>

@@ -160,22 +160,6 @@
         <attr name="pickerview_lineSpacingMultiplier" format="float"/>
     </declare-styleable>
 
-    <!--密码框-->
-    <declare-styleable name="gridPasswordView">
-        <attr name="gpvTextColor" format="color|reference"/>
-        <attr name="gpvTextSize" format="dimension"/>
-        <attr name="gpvLineColor" format="color"/>
-        <attr name="gpvGridColor" format="color"/>
-        <attr name="gpvLineWidth" format="dimension"/>
-        <attr name="gpvPasswordLength" format="integer"/>
-        <attr name="gpvPasswordTransformation" format="string"/>
-        <attr name="gpvPasswordType" format="enum">
-            <enum name="numberPassword" value="0"/>
-            <enum name="textPassword" value="1"/>
-            <enum name="textVisiblePassword" value="2"/>
-            <enum name="textWebPassword" value="3"/>
-        </attr>
-    </declare-styleable>
 
     <!--广告滚动-->
     <declare-styleable name="LimitScroller">
