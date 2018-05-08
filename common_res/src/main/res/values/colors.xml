@@ -44,6 +44,12 @@
     <color name="red">#FFFF0000</color>
     <color name="green">#FF00FF00</color>
     <color name="gray">#FFF0F0F0</color>
+    <color name="grey500">#9E9E9E</color>
+    <color name="grey400">#BDBDBD</color>
+    <color name="grey300">#E0E0E0</color>
+    <color name="grey200">#EEEEEE</color>
+    <color name="grey100">#F5F5F5</color>
+    <color name="grey50">#FAFAFA</color>
     <color name="transparent">#00000000</color>
 
 

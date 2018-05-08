@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.activity_main );
-		Toolbar toolbar = ( Toolbar ) findViewById( R.id.toolbar );
+		Toolbar toolbar = ( Toolbar ) findViewById( R.id.toolbar_head );
 		setSupportActionBar( toolbar );
 
 		FloatingActionButton fab = ( FloatingActionButton ) findViewById( R.id.fab );
