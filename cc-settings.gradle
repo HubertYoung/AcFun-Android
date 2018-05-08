@@ -71,7 +71,7 @@ ext.addComponent = { dependencyName, realDependency = null ->
         app = 'true' == localProperties.getProperty(dependencyName)
     }
     if (!app) {
-        def dependencyModeStr = dependencyMode >= 4.1F ? 'implementation' : 'compile'
+        def dependencyModeStr = dependencyMode >= 4.1F ? 'api' : 'compile'
         if (realDependency) {
             //通过参数传递的依赖方式，如：
             // project(':moduleName')
@@ -83,6 +83,7 @@ ext.addComponent = { dependencyName, realDependency = null ->
             //第二个参数未传，默认为按照module来进行依赖
             project.dependencies.add(dependencyModeStr, project(":$dependencyName"))
             println "CC >>>> add project(\":$dependencyName\") to ${project.name}'s dependencies"
+            println "CC >>>>  " + project(":$dependencyName").path
         } else {
             throw new RuntimeException(
                     "CC >>>> add dependency by [ addComponent '$dependencyName' ] occurred an error:" +

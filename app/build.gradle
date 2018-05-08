@@ -45,7 +45,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    //    addComponent 'component_basic'
-    // 这里参数2可以省略
-    addComponent ('common')
+    implementation project(':common')
 }
