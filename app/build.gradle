@@ -5,7 +5,7 @@ Properties props = new Properties()
 props.load(new FileInputStream(file("../gradle.properties")))
 
 android {
-    compileSdkVersion props.getAt("ANDROID_BUILD_SDK_VERSION") as int
+    compileSdkVersion props["ANDROID_BUILD_SDK_VERSION"] as int
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
         applicationId props["ANDROID_APPLICATIONID"]

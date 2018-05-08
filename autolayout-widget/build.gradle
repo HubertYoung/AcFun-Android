@@ -4,12 +4,12 @@ Properties props = new Properties()
 props.load(new FileInputStream(rootProject.file("gradle.properties")))
 
 android {
-    compileSdkVersion props.getAt("ANDROID_BUILD_SDK_VERSION") as int
+    compileSdkVersion props["ANDROID_BUILD_SDK_VERSION"] as int
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
-        minSdkVersion props.getAt("ANDROID_BUILD_MIN_SDK_VERSION") as int
-        targetSdkVersion props.getAt("ANDROID_BUILD_TARGET_SDK_VERSION") as int
-        versionCode props.getAt("VERSION_CODE") as int
+        minSdkVersion props["ANDROID_BUILD_MIN_SDK_VERSION"] as int
+        targetSdkVersion props["ANDROID_BUILD_TARGET_SDK_VERSION"] as int
+        versionCode props["VERSION_CODE"] as int
         versionName props["VERSION_NAME"]
     }
     buildTypes {
