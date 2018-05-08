@@ -1,25 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clipChildren="false"
+    android:orientation="vertical"
+    app:showDividers="middle"
+    app:divider="@color/line_bg">
 
-    <include
-        layout="@layout/app_bar_main"
+    <FrameLayout
+        android:id="@+id/fl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
 
-</android.support.v4.widget.DrawerLayout>
+        <LinearLayout
+            android:id="@+id/ll_home_page"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/DIMEN_5PX"
+            android:paddingTop="@dimen/DIMEN_10PX">
+
+            <ImageView
+                android:layout_width="@dimen/DIMEN_50PX"
+                android:layout_height="@dimen/DIMEN_50PX"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                android:background="@drawable/tabbar_home_page_selector"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="首页"
+                android:textColor="@color/tabbar_home_page_text_selector"
+                android:textSize="@dimen/text_size22px"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_home_nearby"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/DIMEN_5PX"
+            android:paddingTop="@dimen/DIMEN_10PX">
+
+            <ImageView
+                android:layout_width="@dimen/DIMEN_50PX"
+                android:layout_height="@dimen/DIMEN_50PX"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                android:background="@drawable/tabbar_classification_page_selector"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="分类"
+                android:textColor="@color/tabbar_home_page_text_selector"
+                android:textSize="@dimen/text_size22px"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_home_card_bag"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="@dimen/DIMEN_5PX"
+            android:paddingTop="@dimen/DIMEN_10PX">
+
+            <ImageView
+                android:id="@+id/iv_home_card_bag"
+                android:layout_width="@dimen/DIMEN_50PX"
+                android:layout_height="@dimen/DIMEN_50PX"
+                android:layout_centerHorizontal="true"
+                android:scaleType="center"
+                android:background="@drawable/tabbar_cart_page_selector"/>
+
+            <TextView
+                android:id="@+id/tv_home_card_bag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_home_card_bag"
+                android:layout_centerHorizontal="true"
+                android:text="购物车"
+                android:textColor="@color/tabbar_home_page_text_selector"
+                android:textSize="@dimen/text_size22px"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_home_mine"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingBottom="@dimen/DIMEN_5PX"
+            android:paddingTop="@dimen/DIMEN_10PX">
+
+            <ImageView
+                android:id="@+id/iv_home_mine"
+                android:layout_width="@dimen/DIMEN_50PX"
+                android:layout_height="@dimen/DIMEN_50PX"
+                android:layout_centerHorizontal="true"
+                android:scaleType="center"
+                android:background="@drawable/tabbar_mine_page_selector"/>
+
+            <TextView
+                android:id="@+id/tv_home_mine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_home_mine"
+                android:layout_centerHorizontal="true"
+                android:text="个人"
+                android:textColor="@color/tabbar_home_page_text_selector"
+                android:textSize="@dimen/text_size22px"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.LinearLayoutCompat>
