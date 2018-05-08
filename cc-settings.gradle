@@ -71,17 +71,17 @@ ext.addComponent = { dependencyName, realDependency = null ->
         app = 'true' == localProperties.getProperty(dependencyName)
     }
     if (!app) {
-        dependencyMode >= 4.1F ? 'runtimeOnly' : 'apk'
+        def dependencyModeStr = dependencyMode >= 4.1F ? 'implementation' : 'compile'
         if (realDependency) {
             //通过参数传递的依赖方式，如：
             // project(':moduleName')
             // 或
             // 'com.billy.demo:demoA:1.1.0'
-            project.dependencies.add(dependencyMode, realDependency)
+            project.dependencies.add(dependencyModeStr, realDependency)
             println "CC >>>> add $realDependency to ${project.name}'s dependencies"
         } else if (componentProject) {
             //第二个参数未传，默认为按照module来进行依赖
-            project.dependencies.add(dependencyMode, project(":$dependencyName"))
+            project.dependencies.add(dependencyModeStr, project(":$dependencyName"))
             println "CC >>>> add project(\":$dependencyName\") to ${project.name}'s dependencies"
         } else {
             throw new RuntimeException(
@@ -134,7 +134,7 @@ android {
         }
     }
 }
-project.dependencies.add(dependencyMode ? 'api' : 'compile', "com.billy.android:cc:0.5.0")
+project.dependencies.add(dependencyMode >= 4.1F  ? 'api' : 'compile', "com.billy.android:cc:0.5.0")
 
 
 

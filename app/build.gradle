@@ -9,9 +9,9 @@ android {
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
         applicationId props["ANDROID_APPLICATIONID"]
-        minSdkVersion props.getAt("ANDROID_BUILD_MIN_SDK_VERSION") as int
-        targetSdkVersion props.getAt("ANDROID_BUILD_TARGET_SDK_VERSION") as int
-        versionCode props.getAt("VERSION_CODE") as int
+        minSdkVersion props["ANDROID_BUILD_MIN_SDK_VERSION"] as int
+        targetSdkVersion props["ANDROID_BUILD_TARGET_SDK_VERSION"] as int
+        versionCode props["VERSION_CODE"] as int
         versionName props["VERSION_NAME"]
         flavorDimensions props['VERSION_NAME']
 //        multiDexEnabled true
@@ -31,6 +31,10 @@ android {
     lintOptions {
         abortOnError false
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -41,7 +45,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-//    addComponent 'component_basic'
+    //    addComponent 'component_basic'
     // 这里参数2可以省略
-    addComponent 'component_basic'
+    addComponent ('common')
 }

@@ -1,5 +1,5 @@
 include ':app',
-        ':component_basic',
+//        ':component_basic',
         ':autolayout-widget',
         ':skin-support',
         ':component_banner',

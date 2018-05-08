@@ -1,7 +1,6 @@
 package com.kento.welcome.commonlibrary;
 
-import com.kento.component.basic.BaseApplication;
-
+import com.kento.common.CommonApplication;
 /**
  * <br>
  * function:
@@ -12,5 +11,5 @@ import com.kento.component.basic.BaseApplication;
  * @since:V$VERSION
  * @desc:com.kento.welcome.commonlibrary
  */
-public class MyApplication extends BaseApplication {
+public class MyApplication extends CommonApplication {
 }

@@ -4,12 +4,12 @@ Properties props = new Properties()
 props.load(new FileInputStream(rootProject.file("gradle.properties")))
 
 android {
-    compileSdkVersion props.getAt("ANDROID_BUILD_SDK_VERSION") as int
+    compileSdkVersion props["ANDROID_BUILD_SDK_VERSION"] as int
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
-        minSdkVersion props.getAt("ANDROID_BUILD_MIN_SDK_VERSION") as int
-        targetSdkVersion props.getAt("ANDROID_BUILD_TARGET_SDK_VERSION") as int
-        versionCode props.getAt("VERSION_CODE") as int
+        minSdkVersion props["ANDROID_BUILD_MIN_SDK_VERSION"] as int
+        targetSdkVersion props["ANDROID_BUILD_TARGET_SDK_VERSION"] as int
+        versionCode props["VERSION_CODE"] as int
         versionName props["VERSION_NAME"]
     }
     buildTypes {
@@ -17,6 +17,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -29,9 +33,14 @@ dependencies {
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.5.0'
     //打印日志
     implementation 'com.orhanobut:logger:1.13'
-
+    //    网络调试工具
+    implementation 'com.facebook.stetho:stetho:1.4.2'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.4.2'
     //1.1.0 API改动过大，老用户升级需谨慎
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5'
-    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'//没有使用特殊Header，可以不加这行
-//    compile "com.android.support:appcompat-v7:"+props.getAt("ANDROID_BUILD_SDK_TOOLS_VERSION")//版本 23以上（必须）
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'
+    //没有使用特殊Header，可以不加这行
+    //    compile "com.android.support:appcompat-v7:"+props.getAt("ANDROID_BUILD_SDK_TOOLS_VERSION")//版本 23以上（必须）
+//    implementation "ch.acra:acra-http:${props["ACRAVERSION"]}"
+//    implementation "ch.acra:acra-toast:${props["ACRAVERSION"]}"
 }
