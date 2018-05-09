@@ -97,7 +97,7 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 		// 设置竖屏
 		setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
 
-		doBeforeSetcontentView();
+		doBeforeSetContentView();
 		if ( getLayoutId() != 0 ) {
 			setContentView( getLayoutId() );
 			//初始化黄油刀控件绑定框架
@@ -121,7 +121,7 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 	/**
 	 * 设置layout前配置
 	 */
-	public void doBeforeSetcontentView() {
+	public void doBeforeSetContentView() {
 
 		// 默认着色状态栏
 		setStatusBarColor();

@@ -11,7 +11,7 @@ public class AppConfig {
      */
     public static final String DEBUG_TAG = "logger";// LogCat的标记
 
-    public static String CHANNELID = "cardshare";
+    public static String CHANNELID = "kento";
 //    public static final String OSTYPE = "OSType";
 //    public static final String OSVERSION = "OSVersion";
 //    public static final String CLIENTID = "clientID";
@@ -68,16 +68,11 @@ public class AppConfig {
      */
     public static final String CODETYPE = "codeType";
 
-    //结束所有Activity
-    public static final String ACTION_FINISH_ALL_ACTIVITY = "com.gent.cardsharelife.ACTION_FINISH_ALL_ACTIVITY";
-    //登录广播
-    public static final String ACTION_LOGIN_ACTIVITY = "com.gent.cardsharelife.ACTION_LOGIN_ACTIVITY";
-
     // 图片缓存最大容量，250M，根据自己的需求进行修改
     public static final int GLIDE_CATCH_SIZE = 250 + MemoryConstants.MB;
 
     //项目根目录文件夹
-    public static final String APP_DEPLOY_PATH = "cardshare";
+    public static final String APP_DEPLOY_PATH = "kento";
     //缓存文件夹
     public static final String APP_CACHE_PATH = "cache";
     //图片文件夹

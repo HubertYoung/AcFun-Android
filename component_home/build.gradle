@@ -1,0 +1,8 @@
+apply from: rootProject.file('basic_component.gradle')
+//gradle配置属性
+Properties props = new Properties()
+props.load(new FileInputStream(file("../gradle.properties")))
+dependencies {
+    implementation project(':common')
+    implementation project(':component_banner')
+}

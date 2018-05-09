@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -149,6 +150,9 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 		startActivityForResult( cls, null, requestCode );
 	}
 
+	protected <T extends View> T findViewById(@IdRes int id) {
+		return rootView.findViewById(id);
+	}
 	/**
 	 * 含有Bundle通过Class跳转界面
 	 **/

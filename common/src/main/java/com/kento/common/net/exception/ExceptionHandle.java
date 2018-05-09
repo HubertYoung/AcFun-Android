@@ -38,7 +38,7 @@ public class ExceptionHandle {
         ResponeThrowable ex;
         if ( e instanceof HttpException ) {
             HttpException httpException = ( HttpException ) e;
-            ex = new ResponeThrowable( e, NetStatus.Error.getIndex() );
+            ex = new ResponeThrowable( e, NetStatus.Error.getIndex()+"" );
             switch ( httpException.code() ) {
                 case UNAUTHORIZED:
                 case FORBIDDEN:
@@ -57,7 +57,7 @@ public class ExceptionHandle {
             return ex;
         } else if ( e instanceof ServerException ) {
             ServerException resultException = ( ServerException ) e;
-            ex = new ResponeThrowable( resultException, resultException.status );
+            ex = new ResponeThrowable( resultException, resultException.status+"" );
 
             ProcessServerException processServerException = new ProcessServerException( resultException.status );
             processServerException.send();

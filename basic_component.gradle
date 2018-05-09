@@ -79,8 +79,8 @@ dependencies {
     api "com.android.support:design:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
 
     //view注解
-    api 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //retrofit和rxjava
     api 'com.squareup.retrofit2:retrofit:2.3.0'

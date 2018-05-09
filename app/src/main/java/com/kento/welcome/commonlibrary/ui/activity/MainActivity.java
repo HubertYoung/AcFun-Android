@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity {
 	}
 
 	@Override
-	public void doBeforeSetcontentView() {
+	public void doBeforeSetContentView() {
 		BarUtils.statusBarLightMode( this, true, 0 );
 		BarUtils.immersiveStatusBar( this.getWindow(), 0 );
 	}
@@ -130,7 +130,7 @@ public class MainActivity extends BaseActivity {
 
 	private void initFragment( Bundle savedInstanceState ) {
 		mFragments.clear();
-		mFragments.add( getFragment( "ComponentHome", "getHomeRootFragment" ) );
+		mFragments.add( getFragment( "ComponentIndex", "getIndexRootFragment" ) );
 		mFragments.add( getFragment( "ComponentClassification", "getClassificationFragment" ) );
 		mFragments.add( getFragment( "ComponentCart", "getCartRootFragment" ) );
 		mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );

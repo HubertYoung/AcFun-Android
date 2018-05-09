@@ -1,11 +1,9 @@
 package com.kento.common.net.factory;
 
-import android.text.TextUtils;
-
 import com.google.gson.Gson;
-import com.kento.common.utils.CommonLog;
 import com.kento.common.net.config.NetStatus;
 import com.kento.common.net.response.BaseResponse;
+import com.kento.common.utils.CommonLog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,9 +47,9 @@ public class ExGsonResponseBodyConverter< T > implements Converter< ResponseBody
 //		Type objectType = type( baseRespose.getClass(), type );
         try {
             JSONObject response = new JSONObject( value );
-            String status = response.getString( "status" );
+            int status = response.getInt( "status" );
             CommonLog.loge("status：" + status);
-            if ( TextUtils.equals( status, NetStatus.Success.getIndex() ) || TextUtils.equals( status, NetStatus.Server_Success.getIndex() )) {
+            if ( ( status == NetStatus.Success.getIndex() ) || ( status == NetStatus.Server_Success.getIndex() ) ) {
 				return gson.fromJson( value, type );
             }else{
 				baseRespose.setStatus( status );

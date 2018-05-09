@@ -1,6 +1,5 @@
 package com.kento.common.utils;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -53,12 +52,12 @@ public class LanguageUtils {
 		SPUtils.setSharedStringData( AppConfig.LANG, configuration.locale.toString() );
 
 		//发送结束所有activity的广播
-		Intent intent = new Intent( AppConfig.ACTION_FINISH_ALL_ACTIVITY );
-		CommonApplication.getAppContext()
-					   .sendBroadcast( intent );
-		Intent activityIntent = new Intent( CommonApplication.getAppContext(), cla );
-		activityIntent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
-		CommonApplication.getAppContext()
-					   .startActivity( activityIntent );
+//		Intent intent = new Intent( AppConfig.ACTION_FINISH_ALL_ACTIVITY );
+//		CommonApplication.getAppContext()
+//					   .sendBroadcast( intent );
+//		Intent activityIntent = new Intent( CommonApplication.getAppContext(), cla );
+//		activityIntent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+//		CommonApplication.getAppContext()
+//					   .startActivity( activityIntent );
 	}
 }

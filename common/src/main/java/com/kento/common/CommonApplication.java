@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.kento.common.net.config.NetWorkConfiguration;
+import com.kento.common.net.http.HttpUtils;
 import com.kento.common.utils.CommonLog;
 import com.kento.common.widget.skin.auto.SkinHookAutoLayoutViewInflater;
 import com.kento.common.widget.skin.cardview.SkinCardViewInflater;
@@ -46,6 +48,17 @@ public class CommonApplication extends Application {
 //						 .addInflater(new SkinCircleImageViewInflater()) // hdodenhof/CircleImageView
 //						 .addInflater( new SkinFlycoTabLayoutInflater() )  // H07000223/FlycoTabLayout
 				.loadSkin();                                  // 加载当前皮肤库(保存在SharedPreferences中)
+		//网络框架
+		initOkHttpUtils();
+	}
+
+	private void initOkHttpUtils() {
+
+		NetWorkConfiguration configuration = new NetWorkConfiguration( this )
+				.isCache( true )
+				.isDiskCache( true )
+				.isMemoryCache( true );
+		HttpUtils.setConFiguration( configuration );
 	}
 
 	@Override

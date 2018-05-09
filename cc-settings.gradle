@@ -1,5 +1,4 @@
 import java.util.regex.Pattern
-
 //先加载local.properties文件
 Properties localProperties = new Properties()
 try {
@@ -35,6 +34,10 @@ if (runAsApp) {
 } else {
     apply plugin: 'com.android.library'
 }
+//kotlin
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 //对组件库的依赖格式： addComponent dependencyName [, realDependency]
 // 使用示例见demo/build.gradle

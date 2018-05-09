@@ -1,7 +1,5 @@
 package com.kento.common.net.response;
 
-import android.text.TextUtils;
-
 import com.kento.common.net.config.NetStatus;
 
 import java.io.Serializable;
@@ -15,31 +13,31 @@ import java.io.Serializable;
  * @param:封装服务器返回数据
  */
 public class BaseResponse< T > implements Serializable {
-	public String status;
-	public String result;
+	public int errno;
+	public String errmsg;
 
 	public T data;
 
 	public boolean success( ) {
-		return TextUtils.equals( status, NetStatus.Success.getIndex() )  || TextUtils.equals( status, NetStatus.Server_Success.getIndex() );
+		return errno == NetStatus.Success.getIndex()  || errno == NetStatus.Server_Success.getIndex();
 	}
 	public boolean isFailed( ) {
-		return TextUtils.equals( status, NetStatus.Server_Fail.getIndex());
+		return errno == NetStatus.Server_Fail.getIndex();
 	}
-	public String getStatus() {
-		return status;
+	public int getStatus() {
+		return errno;
 	}
 
-	public void setStatus( String status ) {
-		this.status = status;
+	public void setStatus( int status ) {
+		this.errno = status;
 	}
 
 	public String getResult() {
-		return result;
+		return errmsg;
 	}
 
-	public void setResult( String result ) {
-		this.result = result;
+	public void setResult( String errmsg ) {
+		this.errmsg = errmsg;
 	}
 
 	public T getData() {
@@ -51,7 +49,7 @@ public class BaseResponse< T > implements Serializable {
 	}
 
 	@Override
-	public String toString( ) {
-		return "BaseResponse{" + "status='" + status + '\'' + ", result='" + result + '\'' + ", data=" + data + '}';
+	public String toString() {
+		return "BaseResponse{" + "errno=" + errno + ", errmsg='" + errmsg + '\'' + ", data=" + data + '}';
 	}
 }

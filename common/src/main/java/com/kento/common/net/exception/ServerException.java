@@ -7,10 +7,10 @@ package com.kento.common.net.exception;
  */
 
 public class ServerException extends RuntimeException {
-	public String status;
+	public int status;
 	public String result;
 
-	public ServerException( String result, String status ) {
+	public ServerException( String result, int status ) {
 		this.result = result;
 		this.status = status;
 	}

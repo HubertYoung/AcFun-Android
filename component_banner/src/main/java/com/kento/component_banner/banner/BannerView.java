@@ -1,8 +1,8 @@
 package com.kento.component_banner.banner;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -64,7 +64,7 @@ public class BannerView extends LinearLayout implements BannerAdapter.ViewPagerO
 	private int count = 0;
 	private int lastPosition = 1;
 	private boolean isMargin = false;
-	private AppCompatActivity activity;
+	private FragmentActivity activity;
 
 	private boolean isCenter = true;
 
@@ -158,7 +158,7 @@ public class BannerView extends LinearLayout implements BannerAdapter.ViewPagerO
 	 * @param activity
 	 * @return
 	 */
-	public BannerView instance( AppCompatActivity activity ) {
+	public BannerView instance( FragmentActivity activity ) {
 
 		this.activity = activity;
 		return this;
