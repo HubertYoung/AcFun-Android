@@ -2,7 +2,6 @@ package com.kento.component.home.index.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
 
 import com.kento.common.base.BaseFragment;
 import com.kento.common.basebean.MyRequestMap;
@@ -15,9 +14,12 @@ import com.kento.component.home.index.presenter.IndexRootPresenterImp;
 import com.kento.component_banner.banner.BannerEntity;
 import com.kento.component_banner.banner.BannerView;
 import com.kento.component_home.R;
+import com.kento.component_home.R2;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * <br>
@@ -34,7 +36,7 @@ public class IndexRootFragment extends BaseFragment<IndexRootPresenterImp, Index
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 	@Nullable
-//	@BindView( R.id.bv_home_index )
+	@BindView( R2.id.bv_home_index )
 	public BannerView mBvHomeIndex;
 	private String mParam1;
 	private String mParam2;
@@ -73,12 +75,6 @@ public class IndexRootFragment extends BaseFragment<IndexRootPresenterImp, Index
 	@Override
 	public void initPresenter() {
 		mPresenter.setVM( this,mModel );
-	}
-
-	@Override
-	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
-		mBvHomeIndex = findViewById( R.id.bv_home_index );
-		super.onViewCreated( view, savedInstanceState );
 	}
 
 	@Override
