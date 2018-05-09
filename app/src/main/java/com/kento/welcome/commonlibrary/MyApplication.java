@@ -1,5 +1,6 @@
 package com.kento.welcome.commonlibrary;
 
+import com.billy.cc.core.component.CC;
 import com.kento.common.CommonApplication;
 /**
  * <br>
@@ -12,4 +13,13 @@ import com.kento.common.CommonApplication;
  * @desc:com.kento.welcome.commonlibrary
  */
 public class MyApplication extends CommonApplication {
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		// 初始化CC
+		CC.enableVerboseLog(BuildConfig.DEBUG);
+		CC.enableDebug(BuildConfig.DEBUG);
+		CC.enableRemoteCC(BuildConfig.DEBUG);
+
+	}
 }

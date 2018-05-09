@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clipChildren="false"
     android:orientation="vertical"
-    app:showDividers="middle"
-    app:divider="@color/line_bg">
+    app:divider="@color/line_bg"
+    app:showDividers="middle">
 
     <FrameLayout
         android:id="@+id/fl_container"
@@ -34,8 +34,8 @@
                 android:layout_width="@dimen/DIMEN_50PX"
                 android:layout_height="@dimen/DIMEN_50PX"
                 android:layout_gravity="center"
-                android:scaleType="center"
-                android:background="@drawable/tabbar_home_page_selector"/>
+                android:background="@drawable/tabbar_home_page_selector"
+                android:scaleType="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_home_nearby"
+            android:id="@+id/ll_home_classification"
             android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
@@ -60,8 +60,8 @@
                 android:layout_width="@dimen/DIMEN_50PX"
                 android:layout_height="@dimen/DIMEN_50PX"
                 android:layout_gravity="center"
-                android:scaleType="center"
-                android:background="@drawable/tabbar_classification_page_selector"/>
+                android:background="@drawable/tabbar_classification_page_selector"
+                android:scaleType="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,59 +72,57 @@
                 android:textSize="@dimen/text_size22px"/>
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/rl_home_card_bag"
+        <LinearLayout
+            android:id="@+id/ll_home_cart"
             android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
             android:paddingBottom="@dimen/DIMEN_5PX"
             android:paddingTop="@dimen/DIMEN_10PX">
 
             <ImageView
-                android:id="@+id/iv_home_card_bag"
                 android:layout_width="@dimen/DIMEN_50PX"
                 android:layout_height="@dimen/DIMEN_50PX"
-                android:layout_centerHorizontal="true"
-                android:scaleType="center"
-                android:background="@drawable/tabbar_cart_page_selector"/>
+                android:layout_gravity="center"
+                android:background="@drawable/tabbar_cart_page_selector"
+                android:scaleType="center"/>
 
             <TextView
-                android:id="@+id/tv_home_card_bag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_home_card_bag"
-                android:layout_centerHorizontal="true"
+                android:gravity="center"
                 android:text="购物车"
                 android:textColor="@color/tabbar_home_page_text_selector"
                 android:textSize="@dimen/text_size22px"/>
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/rl_home_mine"
+        <LinearLayout
+            android:id="@+id/ll_home_mine"
             android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
             android:paddingBottom="@dimen/DIMEN_5PX"
             android:paddingTop="@dimen/DIMEN_10PX">
 
             <ImageView
-                android:id="@+id/iv_home_mine"
                 android:layout_width="@dimen/DIMEN_50PX"
                 android:layout_height="@dimen/DIMEN_50PX"
-                android:layout_centerHorizontal="true"
-                android:scaleType="center"
-                android:background="@drawable/tabbar_mine_page_selector"/>
+                android:layout_gravity="center"
+                android:background="@drawable/tabbar_mine_page_selector"
+                android:scaleType="center"/>
 
             <TextView
-                android:id="@+id/tv_home_mine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_home_mine"
-                android:layout_centerHorizontal="true"
+                android:gravity="center"
                 android:text="个人"
                 android:textColor="@color/tabbar_home_page_text_selector"
                 android:textSize="@dimen/text_size22px"/>
-        </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.v7.widget.LinearLayoutCompat>

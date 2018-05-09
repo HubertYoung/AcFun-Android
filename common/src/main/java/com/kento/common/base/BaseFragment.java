@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +56,7 @@ import butterknife.Unbinder;
 //    }
 //}
 public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel > extends com.trello.rxlifecycle2.components.support.RxFragment {
-	public String TAG = this.getClass()
-							.getSimpleName();
+	public String TAG = this.getClass().getSimpleName();
 	protected ViewGroup rootView;
 	public T mPresenter;
 	public E mModel;
@@ -190,8 +191,7 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	 * @return
 	 */
 	public FragmentTransaction getFragmentTransaction() {
-		return activity.getSupportFragmentManager()
-					   .beginTransaction();
+		return activity.getSupportFragmentManager().beginTransaction();
 	}
 
 	/**
@@ -235,8 +235,7 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 				getSupportFragmentManager( getActivity() ).popBackStack();
 			}
 		} catch ( Exception e ) {
-			CommonLog.loge( e.getMessage()
-							  .toString() );
+			CommonLog.loge( e.getMessage().toString() );
 		}
 	}
 
@@ -292,5 +291,9 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 
 	public void refreshData() {
 
+	}
+
+	protected int getColor( @ColorRes int colorResId ) {
+		return ContextCompat.getColor( getApplicationContext(), colorResId );
 	}
 }
