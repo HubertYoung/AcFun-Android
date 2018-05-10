@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.kento.component.home.index.fragment.IndexRootFragment">
+    tools:context="com.acty.component.home.index.fragment.IndexRootFragment">
 
-    <com.kento.component_banner.banner.BannerView
+    <com.acty.component_banner.banner.BannerView
         android:id="@+id/bv_home_index"
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_400PX"/>

@@ -2,8 +2,8 @@ package activity;
 
 import android.os.Bundle;
 
-import com.kento.common.base.BaseActivity;
-import com.kento.common.utils.BarUtils;
+import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.utils.BarUtils;
 import com.kento.component_home.R;
 
 

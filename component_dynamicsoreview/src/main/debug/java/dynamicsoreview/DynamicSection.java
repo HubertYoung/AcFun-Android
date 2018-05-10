@@ -6,8 +6,6 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.kento.common.ImageLoaderUtils;
-import com.kento.common.widget.sectioned.SectionParameters;
 import com.kento.component_dynamicsoreview.R;
 
 import java.util.List;

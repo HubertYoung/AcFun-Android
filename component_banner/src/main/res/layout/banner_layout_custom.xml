@@ -5,7 +5,7 @@
                 android:background="@color/white"
                 android:clipChildren="false">
 
-    <com.kento.component_banner.banner.BannerViewPager
+    <com.acty.component_banner.banner.BannerViewPager
         android:id="@+id/layout_banner_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

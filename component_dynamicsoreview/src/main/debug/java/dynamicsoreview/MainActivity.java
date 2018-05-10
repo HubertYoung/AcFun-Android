@@ -6,8 +6,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.kento.common.utils.ToastUtil;
-import com.kento.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.kento.component_dynamicsoreview.R;
 import com.kento.component_dynamicsoreview.dynamicsoreview.DynamicSoreView;
 import com.kento.component_dynamicsoreview.dynamicsoreview.Interface.IDynamicSore;
