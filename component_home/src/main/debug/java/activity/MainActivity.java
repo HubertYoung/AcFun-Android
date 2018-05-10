@@ -2,9 +2,9 @@ package activity;
 
 import android.os.Bundle;
 
+import com.acty.component_home.R;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.utils.BarUtils;
-import com.kento.component_home.R;
 
 
 public class MainActivity extends BaseActivity {

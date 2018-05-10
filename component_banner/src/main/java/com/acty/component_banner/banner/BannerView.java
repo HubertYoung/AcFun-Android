@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -34,7 +35,7 @@ import io.reactivex.schedulers.Schedulers;
  * QQ号：1344393464
  * 作用：自定义Banner无限轮播控件
  */
-public class BannerView extends LinearLayout implements BannerAdapter.ViewPagerOnItemClickListener {
+public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOnItemClickListener {
 	private static final String TAG = BannerView.class.getSimpleName();
 	//默认轮播时间，3s
 	private int delayTime = 3 * 1000;
@@ -217,7 +218,7 @@ public class BannerView extends LinearLayout implements BannerAdapter.ViewPagerO
 			for (int i = 0; i < count; i++) {
 				View dot = new View( getContext() );
 				dot.setBackgroundResource( unSelcetRes );
-				LayoutParams params = new LayoutParams( DisplayUtil.dip2px( 5 ), DisplayUtil.dip2px( 5 ) );
+				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( DisplayUtil.dip2px( 5 ), DisplayUtil.dip2px( 5 ) );
 				params.leftMargin = DisplayUtil.dip2px( 5 );
 				dot.setLayoutParams( params );
 				dot.setEnabled( false );

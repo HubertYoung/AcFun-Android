@@ -2,9 +2,11 @@ package com.hubertyoung.common;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 
 import com.acty.litemall.BuildConfig;
+import com.acty.litemall.R;
 import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.http.HttpUtils;
 import com.hubertyoung.common.utils.CommonLog;
@@ -12,6 +14,11 @@ import com.hubertyoung.common.widget.skin.auto.SkinHookAutoLayoutViewInflater;
 import com.hubertyoung.common.widget.skin.cardview.SkinCardViewInflater;
 import com.hubertyoung.common.widget.skin.constraintview.SkinConstraintViewInflater;
 import com.hubertyoung.common.widget.skin.materialview.SkinMaterialViewInflater;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
+import com.scwang.smartrefresh.layout.api.RefreshHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import skin.support.SkinCompatManager;
 
@@ -41,6 +48,15 @@ public class CommonApplication extends Application {
 		super.onCreate();
 		mBaseApplication = this;
 		CommonLog.logInit( BuildConfig.DEBUG );
+
+		SmartRefreshLayout.setDefaultRefreshHeaderCreator( new DefaultRefreshHeaderCreator() {
+			@NonNull
+			@Override
+			public RefreshHeader createRefreshHeader( @NonNull Context context, @NonNull RefreshLayout layout) {
+				layout.setPrimaryColorsId( R.color.colorPrimary, android.R.color.white);//全局设置主题颜色
+				return new MaterialHeader(context);
+			}
+		});
 
 		SkinCompatManager.withoutActivity( this )                          // 基础控件换肤初始化
 				.addHookInflater( new SkinHookAutoLayoutViewInflater() ).addInflater( new SkinMaterialViewInflater() )    // material design

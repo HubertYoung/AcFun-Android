@@ -1,25 +1,36 @@
 package com.acty.component.home.index.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.acty.component.home.entity.HomeIndexEntity;
 import com.acty.component.home.index.control.IndexRootControl;
 import com.acty.component.home.index.model.IndexRootModelImp;
 import com.acty.component.home.index.presenter.IndexRootPresenterImp;
+import com.acty.component.home.index.section.BannerSection;
 import com.acty.component_banner.banner.BannerEntity;
-import com.acty.component_banner.banner.BannerView;
 import com.acty.component_home.R;
-import com.acty.component_home.R2;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.widget.decoration.HorizontalDividerItemDecoration;
+import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
+import com.kento.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
+import com.kento.component_skeleton.skeleton.Skeleton;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * <br>
@@ -31,15 +42,20 @@ import butterknife.BindView;
  * @since:V1.0
  * @desc:com.kento.component.home.index.fragment
  */
-public class IndexRootFragment extends BaseFragment<IndexRootPresenterImp, IndexRootModelImp > implements IndexRootControl.View {
+public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, IndexRootModelImp > implements IndexRootControl.View {
 
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
-	@Nullable
-	@BindView( R2.id.bv_home_index )
-	public BannerView mBvHomeIndex;
 	private String mParam1;
 	private String mParam2;
+	@NonNull
+	private SmartRefreshLayout mSrlRefreshHomeIndex;
+	@NonNull
+	private RecyclerView mRvHomeIndex;
+
+	private SectionedRecyclerViewAdapter mAdapter;
+	private BannerSection mBannerSection;
+	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
 
 	public IndexRootFragment() {
 	}
@@ -74,15 +90,61 @@ public class IndexRootFragment extends BaseFragment<IndexRootPresenterImp, Index
 
 	@Override
 	public void initPresenter() {
-		mPresenter.setVM( this,mModel );
+		mPresenter.setVM( this, mModel );
+	}
+
+	@Override
+	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
+		mSrlRefreshHomeIndex = findViewById( R.id.srl_refresh_home_index );
+		mRvHomeIndex = findViewById( R.id.rv_home_index );
+		super.onViewCreated( view, savedInstanceState );
 	}
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
-		BarUtils.setPaddingSmart( mBvHomeIndex );
+		BarUtils.setPaddingSmart( mSrlRefreshHomeIndex );
+		initRecyclerView();
+		initAction();
+		loadData();
+	}
+
+	private void initAction() {
+		mSrlRefreshHomeIndex.setOnRefreshListener( new OnRefreshListener() {
+			@Override
+			public void onRefresh( RefreshLayout refreshLayout ) {
+				mAdapter.getPageBean().refresh = true;
+				mSrlRefreshHomeIndex.finishLoadMore();
+				mSrlRefreshHomeIndex.setNoMoreData( false );
+				loadData();
+			}
+		} );
+		mSrlRefreshHomeIndex.setOnLoadMoreListener( new OnLoadMoreListener() {
+			@Override
+			public void onLoadMore( RefreshLayout refreshLayout ) {
+				mAdapter.getPageBean().refresh = false;
+				loadData();
+			}
+		} );
+	}
+
+	private void initRecyclerView() {
+		LinearLayoutManager layoutManager = new LinearLayoutManager( activity );
+		mRvHomeIndex.setHasFixedSize( true );
+		mRvHomeIndex.setLayoutManager( layoutManager );
+		mAdapter = new SectionedRecyclerViewAdapter();
+		mBannerSection = new BannerSection( ( BaseActivity ) activity );
+		mAdapter.addSection( mBannerSection );
+		mViewSkeletonScreen = Skeleton.bind( mRvHomeIndex ).adapter( mAdapter ).shimmer( true ).duration( 1200 ).angle( 20 ).load( R.layout.common_item_skeleton ).show();
+		mRvHomeIndex.addItemDecoration( new HorizontalDividerItemDecoration.Builder( activity ).colorResId( R.color.line_bg )
+				.size( AutoUtils.getPercentHeightSizeBigger( 20 ) )
+				.showLastDivider()
+				.build() );
+	}
+
+	@Override
+	public void loadData() {
 		MyRequestMap map = new MyRequestMap();
 		mPresenter.requestHomeIndex( map );
-
 	}
 
 	@Override
@@ -92,7 +154,11 @@ public class IndexRootFragment extends BaseFragment<IndexRootPresenterImp, Index
 
 	@Override
 	public void stopLoading() {
-
+		mSrlRefreshHomeIndex.finishRefresh();
+		mSrlRefreshHomeIndex.finishLoadMore();
+		if ( mViewSkeletonScreen != null && mViewSkeletonScreen.isShowing() ) {
+			mViewSkeletonScreen.hide();
+		}
 	}
 
 	@Override
@@ -104,14 +170,12 @@ public class IndexRootFragment extends BaseFragment<IndexRootPresenterImp, Index
 	public void setHomeIndexInfo( HomeIndexEntity homeIndexEntity ) {
 
 		List< HomeIndexEntity.BannerBean > bannerBeanList = homeIndexEntity.banner;
-		ArrayList< BannerEntity > list = new ArrayList<>();
+		ArrayList< BannerEntity > bannerList = new ArrayList<>();
 		for (HomeIndexEntity.BannerBean bannerBean : bannerBeanList) {
-			list.add( new BannerEntity( bannerBean.url,bannerBean.link ) );
+			bannerList.add( new BannerEntity( bannerBean.url, bannerBean.link ) );
 		}
-		mBvHomeIndex.instance( activity );
-		mBvHomeIndex.setCenter( false );
-		mBvHomeIndex.delayTime( 3 );
-		mBvHomeIndex.build( list );
 
+		mBannerSection.setBannerList( bannerList );
+		mAdapter.notifyDataSetChanged();
 	}
 }

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/srl_refresh_home_index"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    app:srlEnableLoadMore="false"
+    app:srlEnableHeaderTranslationContent="false"
     tools:context="com.acty.component.home.index.fragment.IndexRootFragment">
 
-    <com.acty.component_banner.banner.BannerView
-        android:id="@+id/bv_home_index"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_home_index"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_400PX"/>
+        android:layout_height="match_parent"/>
 
-</android.support.v7.widget.LinearLayoutCompat>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
