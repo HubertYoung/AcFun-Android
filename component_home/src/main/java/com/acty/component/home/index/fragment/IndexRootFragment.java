@@ -176,6 +176,7 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		}
 
 		mBannerSection.setBannerList( bannerList );
+		mBannerSection.setChannelList( homeIndexEntity.channel );
 		mAdapter.notifyDataSetChanged();
 	}
 }

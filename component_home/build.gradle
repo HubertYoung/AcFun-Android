@@ -6,4 +6,5 @@ dependencies {
     implementation project(':common')
     implementation project(':component_banner')
     implementation project(':component_skeleton')
+    implementation project(':component_dynamicsoreview')
 }

@@ -2,6 +2,7 @@ package com.acty.component_dynamicsoreview.dynamicsoreview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.DrawableRes;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.AttributeSet;
@@ -37,8 +38,10 @@ public class DynamicSoreView< T > extends LinearLayout {
 	private LinearLayout llIndicator;
 
 	//选中点
+	@DrawableRes
 	private int RadioSelect;
 	//未选中点
+	@DrawableRes
 	private int RadioUnselected;
 	//圆点间距
 	private int distance;
@@ -71,17 +74,16 @@ public class DynamicSoreView< T > extends LinearLayout {
 	public DynamicSoreView( Context context, AttributeSet attrs ) {
 		super( context, attrs );
 		mContext = context;
-		LayoutInflater.from( context )
-					  .inflate( R.layout.layout_custom_dynamic, this, true );
+		LayoutInflater.from( context ).inflate( R.layout.layout_custom_dynamic, this, true );
 		viewPager = ( ViewPager ) findViewById( R.id.layout_banner_viewpager );
 		llIndicator = ( LinearLayout ) findViewById( R.id.layout_banner_points_group );
 
 		TypedArray typedArray = context.obtainStyledAttributes( attrs, R.styleable.DynamicSoreView );
 		if ( typedArray != null ) {
 			//选中点
-			RadioSelect = typedArray.getResourceId( R.styleable.DynamicSoreView_SoreRadioSelect, R.drawable.banner_shape_dots_select );
+			RadioSelect = typedArray.getResourceId( R.styleable.DynamicSoreView_SoreRadioSelect, 0 );
 			//未选中点
-			RadioUnselected = typedArray.getResourceId( R.styleable.DynamicSoreView_SoreRadioUnselected, R.drawable.banner_shape_dots_default );
+			RadioUnselected = typedArray.getResourceId( R.styleable.DynamicSoreView_SoreRadioUnselected, 0 );
 			//圆点间距
 			distance = AutoUtils.getPercentHeightSizeBigger( typedArray.getInteger( R.styleable.DynamicSoreView_SoreDistance, 10 ) );
 			//每页显示几个
@@ -97,7 +99,7 @@ public class DynamicSoreView< T > extends LinearLayout {
 		for (int i = 0; i < page; i++) {
 			if ( gridView == 0 ) {
 				throw new RuntimeException( "gridView is null" );
-			}else{
+			} else {
 				//循环拿到传入的View
 				soreView = LayoutInflater.from( getContext() ).inflate( gridView, null );
 			}
@@ -181,7 +183,7 @@ public class DynamicSoreView< T > extends LinearLayout {
 		}
 
 		//ViewPager的滑动事件
-		viewPager.setOnPageChangeListener( new ViewPager.OnPageChangeListener() {
+		viewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
 			@Override
 			public void onPageScrollStateChanged( int arg0 ) {
 			}
@@ -221,9 +223,9 @@ public class DynamicSoreView< T > extends LinearLayout {
 	 *
 	 * @return
 	 */
-	public DynamicSoreView setNumColumns( GridLayoutManager manager ) {
+	public DynamicSoreView setNumColumns( GridLayoutManager manager, int number ) {
 		//设置每行GridView个数
-		manager.setSpanCount( number / 2 );
+		manager.setSpanCount( number );
 		return this;
 	}
 

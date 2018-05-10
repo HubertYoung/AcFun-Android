@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.acty.component_banner.banner.BannerView
         android:id="@+id/bv_home_index"
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_400PX"/>
-</FrameLayout>
+
+    <com.acty.component_dynamicsoreview.dynamicsoreview.DynamicSoreView
+        android:id="@+id/ds_home_index"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_190PX"
+        app:SoreNumber="9"
+        app:SoreRadioSelect="@null"
+        app:SoreRadioUnselected="@null"/>
+</LinearLayout>
