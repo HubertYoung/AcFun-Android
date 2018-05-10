@@ -6,7 +6,10 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.kento.component_dynamicsoreview.R;
+import com.acty.component_dynamicsoreview.R;
+import com.hubertyoung.common.ImageLoaderUtils;
+import com.hubertyoung.common.widget.sectioned.Section;
+import com.hubertyoung.common.widget.sectioned.SectionParameters;
 
 import java.util.List;
 
@@ -22,7 +25,7 @@ import butterknife.ButterKnife;
  * @since:V$VERSION
  * @desc:com.gent.cardsharelife.ui.home.section
  */
-public class DynamicSection extends com.kento.common.widget.sectioned.Section {
+public class DynamicSection extends Section {
 	private Activity activity;
 	private List< DynamicEntity > data;
 

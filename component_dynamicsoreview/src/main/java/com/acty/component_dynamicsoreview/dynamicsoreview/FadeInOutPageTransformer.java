@@ -1,4 +1,4 @@
-package com.kento.component_dynamicsoreview.dynamicsoreview;
+package com.acty.component_dynamicsoreview.dynamicsoreview;
 
 import android.annotation.SuppressLint;
 import android.support.v4.view.ViewPager;

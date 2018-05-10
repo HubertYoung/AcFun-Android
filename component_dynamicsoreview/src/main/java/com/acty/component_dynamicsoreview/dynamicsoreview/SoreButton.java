@@ -1,74 +1,51 @@
-package com.kento.component_dynamicsoreview.dynamicsoreview;
+package com.acty.component_dynamicsoreview.dynamicsoreview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.GridLayoutManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.kento.common.R;
-import com.kento.common.utils.CommonLog;
-import com.kento.common.utils.DisplayUtil;
-import com.kento.component_dynamicsoreview.dynamicsoreview.Interface.IDynamicSore;
-import com.kento.component_dynamicsoreview.dynamicsoreview.adapter.ViewPagerAdapter;
-import com.zhy.autolayout.utils.AutoUtils;
+import com.acty.component_dynamicsoreview.R;
+import com.acty.component_dynamicsoreview.dynamicsoreview.Interface.ViewControl;
+import com.acty.component_dynamicsoreview.dynamicsoreview.adapter.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * <br>
- * function:动态设置轮播菜单
- * <p>
- *
- * @author:Yang
- * @date:2018/2/6 下午4:32
- * @since:V1.0
- * @desc:com.kento.common.commonwidget.dynamicsoreview
- */
-public class DynamicSoreView< T > extends LinearLayout {
+
+public class SoreButton extends LinearLayout {
 	Context mContext;
 	private ViewPager viewPager;
 	private LinearLayout llIndicator;
-
-	//选中点
+	//选中图片
 	private int RadioSelect;
-	//未选中点
+	//未选中图片
 	private int RadioUnselected;
 	//圆点间距
 	private int distance;
 
-	//每页展示几个
-	private int number;
-	//展示数据的gridView
-	private Integer gridView;
-	//总页数
-	private int page;
-	//数据List
-	private List< T > dataList;
-
 	List< View > listSoreView = new ArrayList<>();
 	View soreView;
-
+	private List< Integer > listView;
 
 	//接口
-	private IDynamicSore iDynamicSore;
+	private ViewControl viewControl;
 
 	//设置接口
-	public IDynamicSore getiDynamicSore() {
-		return iDynamicSore;
+	public void setViewControl( ViewControl viewControl ) {
+		this.viewControl = viewControl;
 	}
 
-	public void setiDynamicSore( IDynamicSore iDynamicSore ) {
-		this.iDynamicSore = iDynamicSore;
+	public SoreButton( Context context ) {
+		super( context );
 	}
 
-	public DynamicSoreView( Context context, AttributeSet attrs ) {
+	public SoreButton( Context context, AttributeSet attrs ) {
 		super( context, attrs );
 		mContext = context;
 		LayoutInflater.from( context )
@@ -83,70 +60,33 @@ public class DynamicSoreView< T > extends LinearLayout {
 			//未选中点
 			RadioUnselected = typedArray.getResourceId( R.styleable.DynamicSoreView_SoreRadioUnselected, R.drawable.banner_shape_dots_default );
 			//圆点间距
-			distance = AutoUtils.getPercentHeightSizeBigger( typedArray.getInteger( R.styleable.DynamicSoreView_SoreDistance, 10 ) );
-			//每页显示几个
-			number = typedArray.getInteger( R.styleable.DynamicSoreView_SoreNumber, 8 );
+			distance = typedArray.getInteger( R.styleable.DynamicSoreView_SoreDistance, 10 );
 			typedArray.recycle();
 		}
-
+		//设置空布局
+		listView = new ArrayList<>();
+//		listView.add( R.layout.viewpager_default );
 	}
 
 	//初始化ViewPager
 	private void initViewPager() {
 		listSoreView = new ArrayList<>();
-		for (int i = 0; i < page; i++) {
-			if ( gridView == 0 ) {
-				throw new RuntimeException( "gridView is null" );
-			}else{
-				//循环拿到传入的View
-				soreView = LayoutInflater.from( getContext() ).inflate( gridView, null );
-			}
+		LayoutInflater layoutInflater = ( LayoutInflater ) mContext.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+		int size = listView.size();
+		for (int i = 0; i < size; i++) {
+			//循环拿到传入的View
+			soreView = layoutInflater.inflate( listView.get( i ), null );
 			//通过接口回掉的形式返回当前的View,实现接口后开源拿到每个View然后进行操作
-			if ( iDynamicSore != null ) {
-				List< T > data;
-				int total = dataList.size();
-				if ( i == page - 1 ) {
-					//添加按钮
-					data = new ArrayList<>();
-					for (int j = i * number; j < total; j++) {
-						data.add( dataList.get( j ) );
-					}
-				} else {
-					data = new ArrayList<>();
-					int size;
-					if ( total < number ) {
-						size = total;
-					} else {
-						size = ( i + 1 ) * number;
-					}
-					for (int j = i * number; j < size; j++) {
-						data.add( dataList.get( j ) );
-					}
-				}
-				iDynamicSore.setGridView( soreView, i, data );
+			if ( viewControl != null ) {
+				viewControl.setView( soreView, i );
 			}
 			//将获取到的View添加到List中
 			listSoreView.add( soreView );
 		}
 		//设置viewPager的Adapter
 		viewPager.setAdapter( new ViewPagerAdapter( listSoreView ) );
-		setAnimation( FadeInOutPageTransformer.class );
 		//初始化LinearLayout，加入指示器
-		initLinearLayout( viewPager, page, llIndicator );
-	}
-
-	public DynamicSoreView< T > setAnimation( Class< ? extends ViewPager.PageTransformer > transformer ) {
-		try {
-			setPageTransformer( true, transformer.newInstance() );
-		} catch ( Exception e ) {
-			CommonLog.loge( "Please set the PageTransformer class" );
-		}
-		return this;
-	}
-
-	public DynamicSoreView< T > setPageTransformer( boolean reverseDrawingOrder, ViewPager.PageTransformer transformer ) {
-		viewPager.setPageTransformer( reverseDrawingOrder, transformer );
-		return this;
+		initLinearLayout( viewPager, size, llIndicator );
 	}
 
 	/**
@@ -174,7 +114,7 @@ public class DynamicSoreView< T > extends LinearLayout {
 				image.setImageResource( RadioUnselected );
 			}
 			//设置宽高
-			LayoutParams params = new LayoutParams( DisplayUtil.dip2px( 6 ), DisplayUtil.dip2px( 6 ) );
+			LayoutParams params = new LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
 			params.setMargins( distance, 0, distance, 0 );
 			//将点添加到LinearLayout中
 			linearLayout.addView( image, params );
@@ -206,37 +146,48 @@ public class DynamicSoreView< T > extends LinearLayout {
 	}
 
 	/**
-	 * 设置view
+	 * 设置圆点距离
 	 *
-	 * @param gridView
+	 * @param distance --距离
 	 * @return
 	 */
-	public DynamicSoreView setGridView( Integer gridView ) {
-		this.gridView = gridView;
+	@Deprecated
+	public SoreButton setDistance( int distance ) {
+		this.distance = distance;
+		return this;
+	}
+
+	/**
+	 * 设置指示器图片
+	 *
+	 * @param radioSelect     --选中图片
+	 * @param radioUnselected --未选中图片
+	 * @return
+	 */
+	@Deprecated
+	public SoreButton setIndicator( int radioSelect, int radioUnselected ) {
+		//选中图片
+		RadioSelect = radioSelect;
+		//未选中图片
+		RadioUnselected = radioUnselected;
 		return this;
 	}
 
 	/**
 	 * 设置view
 	 *
+	 * @param listView --view
 	 * @return
 	 */
-	public DynamicSoreView setNumColumns( GridLayoutManager manager ) {
-		//设置每行GridView个数
-		manager.setSpanCount( number / 2 );
+	public SoreButton setView( List< Integer > listView ) {
+		this.listView = listView;
 		return this;
-	}
-
-	public int getNumber() {
-		return number;
 	}
 
 	/**
 	 * 设置初始化
 	 */
-	public DynamicSoreView init( List< T > t ) {
-		this.dataList = t;
-		this.page = ( int ) Math.ceil( ( double ) t.size() / number );//计算出有几页/这里用了ceil函数凑整，2.1=3
+	public SoreButton init() {
 		initViewPager();
 		return this;
 	}

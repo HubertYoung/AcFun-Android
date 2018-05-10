@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.kento.component_dynamicsoreview.dynamicsoreview.DynamicSoreView
+    <com.acty.component_dynamicsoreview.dynamicsoreview.DynamicSoreView
         android:id="@+id/ds_main"
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_400PX"/>

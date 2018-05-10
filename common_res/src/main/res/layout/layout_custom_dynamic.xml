@@ -5,7 +5,7 @@
                 android:background="@color/white"
                 android:clipChildren="false">
 
-    <com.kento.common.widget.CustomerViewPager
+    <com.hubertyoung.common.widget.CustomerViewPager
         android:id="@+id/layout_banner_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -19,6 +19,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.zhy.autolayout.utils.AutoUtils;
 
 import skin.support.SkinCompatManager;
 
@@ -54,6 +55,7 @@ public class CommonApplication extends Application {
 			@Override
 			public RefreshHeader createRefreshHeader( @NonNull Context context, @NonNull RefreshLayout layout) {
 				layout.setPrimaryColorsId( R.color.colorPrimary, android.R.color.white);//全局设置主题颜色
+				layout.setHeaderHeight( AutoUtils.getPercentHeightSizeBigger( 100 ) );
 				return new MaterialHeader(context);
 			}
 		});
