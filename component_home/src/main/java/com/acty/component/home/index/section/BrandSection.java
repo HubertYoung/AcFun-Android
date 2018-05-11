@@ -8,12 +8,10 @@ import android.view.View;
 import com.acty.component.home.entity.HomeIndexEntity;
 import com.acty.component_home.R;
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.widget.decoration.HorizontalDividerItemDecoration;
-import com.hubertyoung.common.widget.decoration.VerticalDividerItemDecoration;
+import com.hubertyoung.common.widget.decoration.GridDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;
 
@@ -72,7 +70,6 @@ public class BrandSection extends Section {
 			this.mRvBody = ( RecyclerView ) view.findViewById( R.id.rv_body );
 			this.mTvHomeIndexHead = ( AppCompatTextView ) view.findViewById( R.id.tv_home_index_head );
 
-
 			GridLayoutManager manager = new GridLayoutManager( activity, 2 );
 			mRvBody.setHasFixedSize( true );
 			mRvBody.setNestedScrollingEnabled( false );
@@ -81,8 +78,10 @@ public class BrandSection extends Section {
 			sAdapter.addSection( sBrandBodySection );
 			mRvBody.setAdapter( sAdapter );
 			mRvBody.setLayoutManager( manager );
-			mRvBody.addItemDecoration( new HorizontalDividerItemDecoration.Builder( activity ).colorResId( R.color.line_bg ).size( AutoUtils.getPercentHeightSizeBigger( 5 ) ).build() );
-			mRvBody.addItemDecoration( new VerticalDividerItemDecoration.Builder( activity ).colorResId( R.color.line_bg ).size( AutoUtils.getPercentHeightSizeBigger( 5 ) ).build() );
+			GridDividerItemDecoration dividerItemDecoration = new GridDividerItemDecoration( activity, GridDividerItemDecoration.GRID_DIVIDER_VERTICAL );
+			dividerItemDecoration.setVerticalDivider( activity.getResources().getDrawable(R.drawable.home_brand_divider) );
+			dividerItemDecoration.setHorizontalDivider( activity.getResources().getDrawable(R.drawable.home_brand_divider));
+			mRvBody.addItemDecoration( dividerItemDecoration );
 		}
 	}
 }
