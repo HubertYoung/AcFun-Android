@@ -12,6 +12,7 @@ import com.acty.component.home.index.control.IndexRootControl;
 import com.acty.component.home.index.model.IndexRootModelImp;
 import com.acty.component.home.index.presenter.IndexRootPresenterImp;
 import com.acty.component.home.index.section.BannerSection;
+import com.acty.component.home.index.section.BrandSection;
 import com.acty.component_banner.banner.BannerEntity;
 import com.acty.component_home.R;
 import com.hubertyoung.common.base.BaseActivity;
@@ -56,6 +57,7 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 	private SectionedRecyclerViewAdapter mAdapter;
 	private BannerSection mBannerSection;
 	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
+	private BrandSection mBrandSection;
 
 	public IndexRootFragment() {
 	}
@@ -134,6 +136,8 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		mAdapter = new SectionedRecyclerViewAdapter();
 		mBannerSection = new BannerSection( ( BaseActivity ) activity );
 		mAdapter.addSection( mBannerSection );
+		mBrandSection = new BrandSection( ( BaseActivity ) activity );
+		mAdapter.addSection( mBrandSection );
 		mViewSkeletonScreen = Skeleton.bind( mRvHomeIndex ).adapter( mAdapter ).shimmer( true ).duration( 1200 ).angle( 20 ).load( R.layout.common_item_skeleton ).show();
 		mRvHomeIndex.addItemDecoration( new HorizontalDividerItemDecoration.Builder( activity ).colorResId( R.color.line_bg )
 				.size( AutoUtils.getPercentHeightSizeBigger( 20 ) )
@@ -174,9 +178,11 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		for (HomeIndexEntity.BannerBean bannerBean : bannerBeanList) {
 			bannerList.add( new BannerEntity( bannerBean.url, bannerBean.link ) );
 		}
-
+		//轮播图
 		mBannerSection.setBannerList( bannerList );
 		mBannerSection.setChannelList( homeIndexEntity.channel );
+		//品牌制造商直供
+		mBrandSection.setBrandList( homeIndexEntity.brandList );
 		mAdapter.notifyDataSetChanged();
 	}
 }

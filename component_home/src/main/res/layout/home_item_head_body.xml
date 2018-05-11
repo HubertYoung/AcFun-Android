@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_home_index_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingBottom="@dimen/DIMEN_35PX"
+        android:paddingTop="@dimen/DIMEN_35PX"
+        android:textColor="@color/text_color_normal"
+        android:textSize="@dimen/text_size36px"
+        tools:text="品牌只在是"/>
+</LinearLayout>

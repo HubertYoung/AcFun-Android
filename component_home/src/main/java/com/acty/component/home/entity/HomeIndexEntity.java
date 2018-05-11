@@ -131,7 +131,7 @@ public class HomeIndexEntity {
 		public String picUrl;
 		public int sortOrder;
 		public boolean isShow;
-		public double floorPrice;
+		public float floorPrice;
 		public String appListPicUrl;
 		public boolean isNew;
 		public String newPicUrl;

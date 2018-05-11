@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_index_brand_icon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_250PX"
+        android:scaleType="fitXY"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/banner_default"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_index_brand_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/DIMEN_35PX"
+        android:layout_marginLeft="@dimen/DIMEN_40PX"
+        android:layout_marginStart="@dimen/DIMEN_40PX"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="制造商"
+        android:textColor="@color/text_color_normal"
+        android:textSize="@dimen/text_size34px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_index_brand_dec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="12.9元起"
+        android:textColor="@color/text_color_gray66"
+        android:textSize="@dimen/text_size24px"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_index_brand_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_index_brand_name"/>
+</android.support.constraint.ConstraintLayout>

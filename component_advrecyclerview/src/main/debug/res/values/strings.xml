@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+       Copyright (C) 2015 Haruki Hasegawa
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+           http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+-->
+<resources>
+
+    <string name="app_name">Advanced RecyclerView Examples</string>
+
+
+    <string name="activity_title_launcher">Advanced RecyclerView Examples</string>
+    <string name="activity_title_about">Advanced RecyclerView About</string>
+
+    <string name="activity_title_demo_d_minimal">Draggable (Minimal)</string>
+    <string name="activity_title_demo_d_basic">Draggable (Basic)</string>
+    <string name="activity_title_demo_d_grid">Draggable (Grid Layout)</string>
+    <string name="activity_title_demo_d_staggered_grid">Draggable (Staggered Grid Layout)</string>
+    <string name="activity_title_demo_d_on_longpress">Drag on Long Press</string>
+    <string name="activity_title_demo_d_check_can_drop">Draggable (uses onCheckCanDrop)</string>
+    <string name="activity_title_demo_s_minimal">Swipeable (Minimal)</string>
+    <string name="activity_title_demo_s_basic">Swipeable (Basic)</string>
+    <string name="activity_title_demo_s_on_longpress">Swipe on Long Press</string>
+    <string name="activity_title_demo_us">Button under swipeable item</string>
+    <string name="activity_title_demo_e_minimal">Expandable (Minimal)</string>
+    <string name="activity_title_demo_e_basic">Expandable (Basic)</string>
+    <string name="activity_title_demo_ds">Draggable + Swipeable</string>
+    <string name="activity_title_demo_eds">Expandable + Draggable + Swipeable</string>
+    <string name="activity_title_demo_d_with_section">Draggable with Section</string>
+    <string name="activity_title_demo_ed_with_section">Expandable + Draggable with Section</string>
+    <string name="activity_title_demo_e_add_remove">Expandable (Add/Remove items)</string>
+    <string name="activity_title_demo_e_already_expanded">Expandable (Groups already expanded)</string>
+    <string name="activity_title_demo_s_vertical">Swipeable (Vertical)</string>
+    <string name="activity_title_demo_s_viewpager">Swipeable with ViewPager</string>
+    <string name="activity_title_demo_hf_minimal">Header/Footer (Minimal)</string>
+    <string name="activity_title_demo_hf_e">Expandable with Header/Footer</string>
+    <string name="activity_title_demo_hf_add_remove">Header/Footer (Add/Remove items)</string>
+    <string name="activity_title_demo_wa_insertion">Insertion custom adapter</string>
+    <string name="activity_title_demo_wa_filtering">Filtering custom adapter</string>
+    <string name="activity_title_demo_composition_all">Composition All</string>
+
+    <string name="snack_bar_text_item_removed">1 item removed</string>
+    <string name="snack_bar_text_group_item_removed">1 group item removed</string>
+    <string name="snack_bar_text_child_item_removed">1 child item removed</string>
+    <string name="snack_bar_text_button_clicked">Button clicked! (position = %1$d)</string>
+    <string name="snack_bar_action_undo">UNDO</string>
+
+    <string name="dialog_message_item_pinned">Item pinned! (position = %1$d)</string>
+    <string name="dialog_message_group_item_pinned">Group item pinned! (group = %1$d)</string>
+    <string name="dialog_message_child_item_pinned">Child item pinned! (group = %1$d, child = %2$d)</string>
+
+    <string name="menu_item_about">About</string>
+</resources>

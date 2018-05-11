@@ -35,7 +35,7 @@ public class BannerSection extends Section {
 	private List< HomeIndexEntity.ChannelBean > channelData;
 
 	public BannerSection( BaseActivity activity ) {
-		super( new SectionParameters.Builder( R.layout.home_item_banner_body ).build() );
+		super( new SectionParameters.Builder( R.layout.home_item_banner ).build() );
 		this.activity = activity;
 	}
 
@@ -91,7 +91,7 @@ public class BannerSection extends Section {
 				} );
 			}
 		} );
-		viewHolder.mDsHomeIndex.setGridView( R.layout.home_item_dynamicsoreview_body )
+		viewHolder.mDsHomeIndex.setGridView( R.layout.home_item_dynamicsoreview )
 				.init( channelData );
 	}
 

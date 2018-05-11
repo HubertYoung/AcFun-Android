@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.acty.component_advrecyclerview">
+
+    <application
+        android:name="com.hubertyoung.common.CommonApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="advrecyclerview.launcher.MainActivity"
+            android:label="@string/activity_title_launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="advrecyclerview.demo_d_minimal.MinimalDraggableExampleActivity"
+            android:label="@string/activity_title_demo_d_minimal"/>
+
+        <activity
+            android:name="advrecyclerview.demo_d_basic.DraggableExampleActivity"
+            android:label="@string/activity_title_demo_d_basic"/>
+
+        <activity
+            android:name="advrecyclerview.demo_d_grid.DraggableGridExampleActivity"
+            android:label="@string/activity_title_demo_d_grid"/>
+
+        <activity
+            android:name="advrecyclerview.demo_d_staggered_grid.DraggableStaggeredGridExampleActivity"
+            android:label="@string/activity_title_demo_d_staggered_grid"/>
+
+        <activity
+            android:name="advrecyclerview.demo_d_on_longpress.DragOnLongPressExampleActivity"
+            android:label="@string/activity_title_demo_d_on_longpress"/>
+
+        <activity
+            android:name="advrecyclerview.demo_d_check_can_drop.DraggableCheckCanDropExampleActivity"
+            android:label="@string/activity_title_demo_d_check_can_drop"/>
+
+        <activity
+            android:name="advrecyclerview.demo_s_minimal.MinimalSwipeableExampleActivity"
+            android:label="@string/activity_title_demo_s_minimal"/>
+
+        <activity
+            android:name="advrecyclerview.demo_s_basic.SwipeableExampleActivity"
+            android:label="@string/activity_title_demo_s_basic"/>
+
+        <activity
+            android:name="advrecyclerview.demo_s_longpress.SwipeOnLongPressExampleActivity"
+            android:label="@string/activity_title_demo_s_on_longpress"/>
+
+        <activity
+            android:name="advrecyclerview.demo_s_button.SwipeableWithButtonExampleActivity"
+            android:label="@string/activity_title_demo_us"/>
+
+        <activity
+            android:name="advrecyclerview.demo_e_minimal.MinimalExpandableExampleActivity"
+            android:label="@string/activity_title_demo_e_minimal"/>
+
+        <activity
+            android:name="advrecyclerview.demo_e_basic.ExpandableExampleActivity"
+            android:label="@string/activity_title_demo_e_basic"/>
+
+        <activity
+            android:name="advrecyclerview.demo_ds.DraggableSwipeableExampleActivity"
+            android:label="@string/activity_title_demo_ds"/>
+
+        <activity
+            android:name="advrecyclerview.demo_eds.ExpandableDraggableSwipeableExampleActivity"
+            android:label="@string/activity_title_demo_eds"/>
+
+        <activity
+            android:name="advrecyclerview.demo_d_with_section.DraggableWithSectionExampleActivity"
+            android:label="@string/activity_title_demo_d_with_section"/>
+
+        <activity
+            android:name="advrecyclerview.demo_ed_with_section.ExpandableDraggableWithSectionExampleActivity"
+            android:label="@string/activity_title_demo_ed_with_section"/>
+
+        <activity
+            android:name="advrecyclerview.demo_e_add_remove.AddRemoveExpandableExampleActivity"
+            android:label="@string/activity_title_demo_e_add_remove"/>
+
+        <activity
+            android:name="advrecyclerview.demo_e_already_expanded.AlreadyExpandedGroupsExpandableExampleActivity"
+            android:label="@string/activity_title_demo_e_already_expanded"/>
+
+        <activity
+            android:name="advrecyclerview.demo_s_vertical.VerticalSwipeableExampleActivity"
+            android:label="@string/activity_title_demo_s_vertical"/>
+
+        <activity
+            android:name="advrecyclerview.demo_s_viewpager.ViewPagerSwipeableExampleActivity"
+            android:label="@string/activity_title_demo_s_viewpager"/>
+
+        <activity
+            android:name="advrecyclerview.demo_hf_minimal.MinimalHeaderFooterExampleActivity"
+            android:label="@string/activity_title_demo_hf_minimal"/>
+
+        <activity
+            android:name="advrecyclerview.demo_hf_e.ExpandableWithHeaderFooterExampleActivity"
+            android:label="@string/activity_title_demo_hf_e"/>
+
+        <activity
+            android:name="advrecyclerview.demo_hf_add_remove.AddRemoveHeaderFooterExampleActivity"
+            android:label="@string/activity_title_demo_hf_add_remove"/>
+
+        <activity
+            android:name="advrecyclerview.demo_wa_insertion.CustomInsertionWrapperAdapterExampleActivity"
+            android:label="@string/activity_title_demo_wa_insertion"/>
+
+        <activity
+            android:name="advrecyclerview.demo_wa_filtering.CustomFilteringWrapperAdapterExampleActivity"
+            android:label="@string/activity_title_demo_wa_filtering"/>
+
+        <activity
+            android:name="advrecyclerview.demo_composition_all.CompositionAllExampleActivity"
+            android:label="@string/activity_title_demo_composition_all"/>
+
+        <activity
+            android:name="advrecyclerview.about.AboutActivity"
+            android:label="@string/activity_title_about"/>
+    </application>
+
+</manifest>

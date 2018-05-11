@@ -102,7 +102,7 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 			}
 			lastChildPosition = childPosition;
 
-			if ( !mShowLastDivider && childPosition >= itemCount - lastDividerOffset ) {
+			if (!mShowLastDivider && childPosition >= itemCount - lastDividerOffset ) {
 				// Don't draw divider for last line if mShowLastDivider = false
 				continue;
 			}
@@ -143,7 +143,7 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 		int itemCount = parent.getAdapter()
 							  .getItemCount();
 		int lastDividerOffset = getLastDividerOffset( parent );
-		if ( !mShowLastDivider && position >= itemCount - lastDividerOffset ) {
+		if (!mShowLastDivider && position >= itemCount - lastDividerOffset ) {
 			// Don't set item offset for last line if mShowLastDivider = false
 			return;
 		}
@@ -155,7 +155,20 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 
 		setItemOffsets( rect, groupIndex, parent );
 	}
-
+	/**
+	 * Check if recyclerview is LinearLayoutManager layout
+	 *
+	 * @param parent RecyclerView
+	 * @return true if recyclerview is reverse layout
+	 */
+	protected boolean isLinearLayoutManager( RecyclerView parent ) {
+		RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
+		if ( layoutManager instanceof GridLayoutManager ) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 	/**
 	 * Check if recyclerview is reverse layout
 	 *

@@ -14,6 +14,6 @@
         </shape>
     </item>
     <item android:gravity="center">
-        <!--<bitmap android:src="@drawable/img_default"/>-->
+        <bitmap android:src="@drawable/edittext_delete"/>
     </item>
 </layer-list>
