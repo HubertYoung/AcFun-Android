@@ -3,9 +3,13 @@ package com.hubertyoung.common.widget.decoration;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.support.annotation.ColorRes;
 import android.support.annotation.IntDef;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +41,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
 	private final SparseIntArray mVerticalDividerOffsets = new SparseIntArray();
 
 	private final SparseArray< DrawableCreator > mTypeDrawableFactories = new SparseArray<>();
+	private final Context context;
 
 	@IntDef( { GRID_DIVIDER_HORIZONTAL, GRID_DIVIDER_VERTICAL } )
 	@Retention( RetentionPolicy.SOURCE )
@@ -49,6 +54,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
 	private Drawable mVerticalDivider;
 
 	public GridDividerItemDecoration( Context context, @Orientation int orientation ) {
+		this.context = context;
 		resolveDivider( context );
 		setOrientation( orientation );
 	}
@@ -67,10 +73,36 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
 		this.mVerticalDivider = verticalDivider;
 	}
 
+	/**
+	 * <shape xmlns:android="http://schemas.android.com/apk/res/android">
+	 <solid android:color="@color/white"/>
+	 <size android:height="@dimen/DIMEN_5PX"/>
+	 </shape>
+	 * @param verticalSize
+	 */
+	public void setVerticalSize( int verticalSize , @ColorRes int verticalColor) {
+		ShapeDrawable shapeDrawable = new ShapeDrawable();
+		shapeDrawable.setColorFilter( ContextCompat.getColor( context, verticalColor ), PorterDuff.Mode.SRC_ATOP );
+		shapeDrawable.setIntrinsicHeight( verticalSize );
+		this.mVerticalDivider = shapeDrawable;
+	}
+
 	public void setHorizontalDivider( Drawable horizontalDivider ) {
 		this.mHorizontalDivider = horizontalDivider;
 	}
-
+	/**
+	 * <shape xmlns:android="http://schemas.android.com/apk/res/android">
+	 <solid android:color="@color/white"/>
+	 <size android:height="@dimen/DIMEN_5PX"/>
+	 </shape>
+	 * @param horizontalSize
+	 */
+	public void setHorizontalSize( int horizontalSize , @ColorRes int horizontalColor) {
+		ShapeDrawable shapeDrawable = new ShapeDrawable();
+		shapeDrawable.setColorFilter( ContextCompat.getColor( context, horizontalColor ), PorterDuff.Mode.SRC_ATOP );
+		shapeDrawable.setIntrinsicHeight( horizontalSize );
+		this.mHorizontalDivider = shapeDrawable;
+	}
 	@Override
 	public void onDraw( Canvas c, RecyclerView parent, RecyclerView.State state ) {
 		drawHorizontalDividers( c, parent );

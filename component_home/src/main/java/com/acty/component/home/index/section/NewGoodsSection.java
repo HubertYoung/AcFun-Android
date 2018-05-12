@@ -12,6 +12,7 @@ import com.hubertyoung.common.widget.decoration.GridDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
+import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class NewGoodsSection extends Section {
 
 	@Override
 	public RecyclerView.ViewHolder getItemViewHolder( View view, int itemType ) {
-		return new NewGoodsViewHolder(activity, view );
+		return new NewGoodsViewHolder( activity, view );
 	}
 
 	@Override
@@ -81,8 +82,8 @@ public class NewGoodsSection extends Section {
 			mRvBody.setAdapter( sAdapter );
 			mRvBody.setLayoutManager( manager );
 			GridDividerItemDecoration dividerItemDecoration = new GridDividerItemDecoration( activity, GridDividerItemDecoration.GRID_DIVIDER_VERTICAL );
-			dividerItemDecoration.setVerticalDivider( activity.getResources().getDrawable(R.drawable.home_brand_divider) );
-			dividerItemDecoration.setHorizontalDivider( activity.getResources().getDrawable(R.drawable.home_brand_divider));
+			dividerItemDecoration.setVerticalSize( AutoUtils.getPercentHeightSizeBigger( 20 ), R.color.white );
+			dividerItemDecoration.setHorizontalSize( AutoUtils.getPercentHeightSizeBigger( 3 ), R.color.white );
 			mRvBody.addItemDecoration( dividerItemDecoration );
 		}
 	}

@@ -10,5 +10,10 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_body"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/DIMEN_20PX"
+        android:paddingLeft="@dimen/DIMEN_40PX"
+        android:paddingRight="@dimen/DIMEN_40PX"
+        android:paddingTop="@dimen/DIMEN_10PX"/>
 </android.support.v7.widget.LinearLayoutCompat>

@@ -20,16 +20,16 @@
         android:id="@+id/tv_index_brand_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/DIMEN_35PX"
         android:layout_marginLeft="@dimen/DIMEN_30PX"
         android:layout_marginStart="@dimen/DIMEN_30PX"
+        android:layout_marginTop="@dimen/DIMEN_35PX"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="制造商"
         android:textColor="@color/text_color_normal"
         android:textSize="@dimen/text_size34px"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="制造商"/>
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/tv_index_brand_dec"
@@ -37,9 +37,9 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="12.9元起"
         android:textColor="@color/text_color_gray66"
         android:textSize="@dimen/text_size24px"
         app:layout_constraintLeft_toLeftOf="@+id/tv_index_brand_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_index_brand_name"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_index_brand_name"
+        tools:text="12.9元起"/>
 </android.support.constraint.ConstraintLayout>
