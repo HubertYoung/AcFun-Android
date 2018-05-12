@@ -13,6 +13,7 @@ import com.acty.component.home.index.model.IndexRootModelImp;
 import com.acty.component.home.index.presenter.IndexRootPresenterImp;
 import com.acty.component.home.index.section.BannerSection;
 import com.acty.component.home.index.section.BrandSection;
+import com.acty.component.home.index.section.NewGoodsSection;
 import com.acty.component_banner.banner.BannerEntity;
 import com.acty.component_home.R;
 import com.hubertyoung.common.base.BaseActivity;
@@ -58,6 +59,7 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 	private BannerSection mBannerSection;
 	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
 	private BrandSection mBrandSection;
+	private NewGoodsSection mNewGoodsSection;
 
 	public IndexRootFragment() {
 	}
@@ -138,6 +140,8 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		mAdapter.addSection( mBannerSection );
 		mBrandSection = new BrandSection( ( BaseActivity ) activity );
 		mAdapter.addSection( mBrandSection );
+		mNewGoodsSection = new NewGoodsSection( ( BaseActivity ) activity );
+		mAdapter.addSection( mNewGoodsSection );
 		mViewSkeletonScreen = Skeleton.bind( mRvHomeIndex ).adapter( mAdapter ).shimmer( true ).duration( 1200 ).angle( 20 ).load( R.layout.common_item_skeleton ).show();
 		mRvHomeIndex.addItemDecoration( new HorizontalDividerItemDecoration.Builder( activity ).colorResId( R.color.line_bg )
 				.size( AutoUtils.getPercentHeightSizeBigger( 20 ) )
@@ -183,6 +187,8 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		mBannerSection.setChannelList( homeIndexEntity.channel );
 		//品牌制造商直供
 		mBrandSection.setBrandList( homeIndexEntity.brandList );
+		mNewGoodsSection.setnewGoodsList( homeIndexEntity.newGoodsList );
+
 		mAdapter.notifyDataSetChanged();
 	}
 }

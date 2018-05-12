@@ -21,16 +21,16 @@ import java.util.List;
  * <p>
  *
  * @author:Yang
- * @date:2018/5/10 8:09 PM
+ * @date:2018/5/12 11:45 PM
  * @since:V$VERSION
  * @desc:com.acty.component.home.index.section
  */
-public class BrandSection extends Section {
+public class NewGoodsSection extends Section {
 	private final BaseActivity activity;
-	private List< HomeIndexEntity.BrandListBean > data;
+	private List< HomeIndexEntity.NewGoodsListBean > data;
 
-	public BrandSection( BaseActivity activity ) {
-		super( new SectionParameters.Builder( R.layout.home_item_brand ).build() );
+	public NewGoodsSection( BaseActivity activity ) {
+		super( new SectionParameters.Builder( R.layout.home_item_new_goods ).build() );
 		this.activity = activity;
 	}
 
@@ -41,42 +41,43 @@ public class BrandSection extends Section {
 
 	@Override
 	public RecyclerView.ViewHolder getItemViewHolder( View view, int itemType ) {
-		return new BrandViewHolder( activity, view );
+		return new NewGoodsViewHolder(activity, view );
 	}
 
 	@Override
 	public void onBindItemViewHolder( RecyclerView.ViewHolder holder, int position ) {
-		BrandViewHolder viewHolder = ( BrandViewHolder ) holder;
-		viewHolder.mTvHomeIndexHead.setText( "品牌制造商直供" );
+		NewGoodsViewHolder viewHolder = ( NewGoodsViewHolder ) holder;
+		viewHolder.mTvHomeIndexHead.setText( "周一周四 · 新品首发" );
 
-		viewHolder.sBrandBodySection.setBrandList( data );
+		viewHolder.mNewGoodsBodySection.setNewGoodsList( data );
 		viewHolder.sAdapter.notifyDataSetChanged();
 	}
 
-	public void setBrandList( List< HomeIndexEntity.BrandListBean > brandList ) {
-		this.data = brandList;
+	public void setnewGoodsList( List< HomeIndexEntity.NewGoodsListBean > newGoodsList ) {
+		this.data = newGoodsList;
 	}
 
-	static class BrandViewHolder extends RecyclerView.ViewHolder {
+	static class NewGoodsViewHolder extends RecyclerView.ViewHolder {
+		NewGoodsBodySection mNewGoodsBodySection;
 		SectionedRecyclerViewAdapter sAdapter;
-		BrandBodySection sBrandBodySection;
 
 		View view;
-		RecyclerView mRvBody;
 		AppCompatTextView mTvHomeIndexHead;
+		RecyclerView mRvBody;
 
-		BrandViewHolder( BaseActivity activity, View view ) {
+		NewGoodsViewHolder( BaseActivity activity, View view ) {
 			super( view );
 			this.view = view;
-			this.mRvBody = ( RecyclerView ) view.findViewById( R.id.rv_body );
 			this.mTvHomeIndexHead = ( AppCompatTextView ) view.findViewById( R.id.tv_home_index_head );
+			this.mRvBody = ( RecyclerView ) view.findViewById( R.id.rv_body );
+
 
 			GridLayoutManager manager = new GridLayoutManager( activity, 2 );
 			mRvBody.setHasFixedSize( true );
 			mRvBody.setNestedScrollingEnabled( false );
 			sAdapter = new SectionedRecyclerViewAdapter();
-			sBrandBodySection = new BrandBodySection( activity );
-			sAdapter.addSection( sBrandBodySection );
+			mNewGoodsBodySection = new NewGoodsBodySection( activity );
+			sAdapter.addSection( mNewGoodsBodySection );
 			mRvBody.setAdapter( sAdapter );
 			mRvBody.setLayoutManager( manager );
 			GridDividerItemDecoration dividerItemDecoration = new GridDividerItemDecoration( activity, GridDividerItemDecoration.GRID_DIVIDER_VERTICAL );
