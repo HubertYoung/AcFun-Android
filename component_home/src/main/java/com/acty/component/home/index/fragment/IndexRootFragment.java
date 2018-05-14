@@ -13,6 +13,7 @@ import com.acty.component.home.index.model.IndexRootModelImp;
 import com.acty.component.home.index.presenter.IndexRootPresenterImp;
 import com.acty.component.home.index.section.BannerSection;
 import com.acty.component.home.index.section.BrandSection;
+import com.acty.component.home.index.section.FloorGoodsSection;
 import com.acty.component.home.index.section.HotGoodsSection;
 import com.acty.component.home.index.section.NewGoodsSection;
 import com.acty.component.home.index.section.TopicSection;
@@ -198,7 +199,16 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		mNewGoodsSection.setNewGoodsList( homeIndexEntity.newGoodsList );
 		mHotGoodsSection.setHotGoodsList( homeIndexEntity.hotGoodsList );
 		mTopicSection.setTopicList( homeIndexEntity.topicList);
-
+		for (HomeIndexEntity.FloorGoodsListBean floorGoodsListBean : homeIndexEntity.floorGoodsList) {
+			FloorGoodsSection floorGoodsSection = new FloorGoodsSection( ( BaseActivity ) activity );
+			mAdapter.addSection( floorGoodsSection );
+			List< HomeIndexEntity.FloorGoodsListBean.GoodsListBean > goodsList = floorGoodsListBean.goodsList;
+			HomeIndexEntity.FloorGoodsListBean.GoodsListBean goodsListBean = new HomeIndexEntity.FloorGoodsListBean.GoodsListBean();
+			goodsListBean.goodsId = floorGoodsListBean.floorGoodsid;
+			goodsListBean.name = "更多"+floorGoodsListBean.name+"好物";
+			goodsList.add( goodsListBean );
+			floorGoodsSection.setFloorGoodsBean( floorGoodsListBean );
+		}
 		mAdapter.notifyDataSetChanged();
 	}
 }
