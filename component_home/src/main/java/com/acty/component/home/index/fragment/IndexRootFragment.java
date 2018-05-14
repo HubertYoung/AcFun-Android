@@ -13,7 +13,9 @@ import com.acty.component.home.index.model.IndexRootModelImp;
 import com.acty.component.home.index.presenter.IndexRootPresenterImp;
 import com.acty.component.home.index.section.BannerSection;
 import com.acty.component.home.index.section.BrandSection;
+import com.acty.component.home.index.section.HotGoodsSection;
 import com.acty.component.home.index.section.NewGoodsSection;
+import com.acty.component.home.index.section.TopicSection;
 import com.acty.component_banner.banner.BannerEntity;
 import com.acty.component_home.R;
 import com.hubertyoung.common.base.BaseActivity;
@@ -60,6 +62,8 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
 	private BrandSection mBrandSection;
 	private NewGoodsSection mNewGoodsSection;
+	private HotGoodsSection mHotGoodsSection;
+	private TopicSection mTopicSection;
 
 	public IndexRootFragment() {
 	}
@@ -142,6 +146,10 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		mAdapter.addSection( mBrandSection );
 		mNewGoodsSection = new NewGoodsSection( ( BaseActivity ) activity );
 		mAdapter.addSection( mNewGoodsSection );
+		mHotGoodsSection = new HotGoodsSection( ( BaseActivity ) activity );
+		mAdapter.addSection( mHotGoodsSection );
+		mTopicSection = new TopicSection( ( BaseActivity ) activity );
+		mAdapter.addSection( mTopicSection );
 		mViewSkeletonScreen = Skeleton.bind( mRvHomeIndex ).adapter( mAdapter ).shimmer( true ).duration( 1200 ).angle( 20 ).load( R.layout.common_item_skeleton ).show();
 		mRvHomeIndex.addItemDecoration( new HorizontalDividerItemDecoration.Builder( activity ).colorResId( R.color.line_bg )
 				.size( AutoUtils.getPercentHeightSizeBigger( 20 ) )
@@ -187,7 +195,9 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		mBannerSection.setChannelList( homeIndexEntity.channel );
 		//品牌制造商直供
 		mBrandSection.setBrandList( homeIndexEntity.brandList );
-		mNewGoodsSection.setnewGoodsList( homeIndexEntity.newGoodsList );
+		mNewGoodsSection.setNewGoodsList( homeIndexEntity.newGoodsList );
+		mHotGoodsSection.setHotGoodsList( homeIndexEntity.hotGoodsList );
+		mTopicSection.setTopicList( homeIndexEntity.topicList);
 
 		mAdapter.notifyDataSetChanged();
 	}

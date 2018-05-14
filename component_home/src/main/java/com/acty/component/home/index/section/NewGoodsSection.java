@@ -54,7 +54,7 @@ public class NewGoodsSection extends Section {
 		viewHolder.sAdapter.notifyDataSetChanged();
 	}
 
-	public void setnewGoodsList( List< HomeIndexEntity.NewGoodsListBean > newGoodsList ) {
+	public void setNewGoodsList( List< HomeIndexEntity.NewGoodsListBean > newGoodsList ) {
 		this.data = newGoodsList;
 	}
 
@@ -71,7 +71,6 @@ public class NewGoodsSection extends Section {
 			this.view = view;
 			this.mTvHomeIndexHead = ( AppCompatTextView ) view.findViewById( R.id.tv_home_index_head );
 			this.mRvBody = ( RecyclerView ) view.findViewById( R.id.rv_body );
-
 
 			GridLayoutManager manager = new GridLayoutManager( activity, 2 );
 			mRvBody.setHasFixedSize( true );

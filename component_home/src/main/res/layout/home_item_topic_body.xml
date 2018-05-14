@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_index_topic_icon"
+        android:layout_width="@dimen/DIMEN_690PX"
+        android:layout_height="@dimen/DIMEN_400PX"
+        android:layout_marginTop="@dimen/DIMEN_10PX"
+        android:layout_marginRight="@dimen/DIMEN_20PX"
+        android:layout_marginLeft="@dimen/DIMEN_20PX"
+        android:scaleType="fitXY"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/banner_default"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_index_topic_name"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/DIMEN_40PX"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:singleLine="true"
+        android:textColor="@color/text_color_normal"
+        android:textSize="@dimen/text_size30px"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="@id/iv_index_topic_icon"
+        app:layout_constraintRight_toLeftOf="@id/tv_index_topic_price"
+        app:layout_constraintTop_toBottomOf="@id/iv_index_topic_icon"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_max="wrap"
+        app:layout_goneMarginLeft="@dimen/DIMEN_20PX"
+        android:maxWidth="@dimen/DIMEN_500PX"
+        tools:text="笔记笔记笔记笔笔笔记笔笔记笔笔记笔笔记笔记笔记"
+        tools:visibility="visible"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_index_topic_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:singleLine="true"
+        android:textColor="@color/color_bg9f1522"
+        android:textSize="@dimen/text_size30px"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintLeft_toRightOf="@+id/tv_index_topic_name"
+        app:layout_constraintRight_toRightOf="@id/iv_index_topic_icon"
+        app:layout_constraintTop_toTopOf="@id/tv_index_topic_name"
+        app:layout_goneMarginLeft="0dp"
+        app:layout_goneMarginTop="@dimen/DIMEN_40PX"
+        tools:text="￥12.4433"
+        tools:visibility="visible"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_index_topic_dec"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/DIMEN_20PX"
+        android:layout_marginTop="@dimen/DIMEN_10PX"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:singleLine="true"
+        android:textColor="@color/text_color_gray64"
+        android:textSize="@dimen/text_size28px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@id/tv_index_topic_name"
+        app:layout_constraintRight_toRightOf="@id/iv_index_topic_icon"
+        app:layout_constraintTop_toBottomOf="@id/tv_index_topic_price"
+        app:layout_constraintWidth_max="@dimen/DIMEN_690PX"
+        tools:text="笔记本笔记本笔记本笔记本笔记本笔记本笔记本笔记本笔记本笔记本"
+        tools:visibility="visible"/>
+
+</android.support.constraint.ConstraintLayout>

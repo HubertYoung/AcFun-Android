@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <include layout="@layout/home_item_head_body"/>
@@ -13,12 +14,8 @@
         android:id="@+id/rv_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingBottom="@dimen/DIMEN_20PX"
-        android:paddingLeft="@dimen/DIMEN_40PX"
-        android:paddingRight="@dimen/DIMEN_40PX"
-        android:paddingTop="@dimen/DIMEN_10PX"
-        tools:layoutManager="android.support.v7.widget.GridLayoutManager"
-        tools:listitem="@layout/home_item_new_goods_body"
-        tools:spanCount="2"/>
+        android:scrollbars="none"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:listitem="@layout/home_item_topic_body"
+        tools:orientation="horizontal"/>
 </android.support.v7.widget.LinearLayoutCompat>

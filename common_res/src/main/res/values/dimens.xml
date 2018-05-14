@@ -87,6 +87,7 @@
     <dimen name="DIMEN_430PX">430px</dimen>
     <dimen name="DIMEN_450PX">450px</dimen>
     <dimen name="DIMEN_480PX">480px</dimen>
+    <dimen name="DIMEN_500PX">500px</dimen>
     <dimen name="DIMEN_544PX">544px</dimen>
     <dimen name="DIMEN_550PX">550px</dimen>
     <dimen name="DIMEN_560PX">560px</dimen>
@@ -96,6 +97,7 @@
     <dimen name="DIMEN_600PX">600px</dimen>
     <dimen name="DIMEN_620PX">620px</dimen>
     <dimen name="DIMEN_690PX">690px</dimen>
+    <dimen name="DIMEN_710PX">710px</dimen>
     <dimen name="DIMEN_740PX">740px</dimen>
     <dimen name="DIMEN_758PX">758px</dimen>
 
