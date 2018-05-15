@@ -54,14 +54,14 @@ public class DynamicSection extends Section {
 			viewHolder.itemView.setOnClickListener( new View.OnClickListener() {
 				@Override
 				public void onClick( View v ) {
-					mOnItemClickListener.onitemClick( v, bean.iconUrl + "", bean.name );
+					mOnItemClickListener.onItemClick( v, bean.channelId + "", bean.name );
 				}
 			} );
 		}
 	}
 
 	public interface OnItemClickListener {
-		void onitemClick( View v, String iconUrl, String name );
+		void onItemClick( View v, String channelId, String name );
 	}
 
 	private OnItemClickListener mOnItemClickListener;

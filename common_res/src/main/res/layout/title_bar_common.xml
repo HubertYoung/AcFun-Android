@@ -6,7 +6,7 @@
     android:id="@+id/toolbar_head"
     android:layout_width="match_parent"
     android:layout_height="@dimen/pickerview_topbar_height"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     android:contentInsetStart="0dp"
     android:gravity="center"
     android:navigationIcon="@drawable/icon_nav_next"

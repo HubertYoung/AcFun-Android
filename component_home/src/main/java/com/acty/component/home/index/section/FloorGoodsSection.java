@@ -49,7 +49,7 @@ public class FloorGoodsSection extends Section {
 		FloorGoodsViewHolder viewHolder = ( FloorGoodsViewHolder ) holder;
 		viewHolder.mTvHomeIndexHead.setText( data.name );
 
-		viewHolder.mFloorGoodsBodySection.setFloorGoodsList( data.goodsList,"更多" + data.name + "好物" );
+		viewHolder.mFloorGoodsBodySection.setFloorGoodsList( data.goodsList);
 		viewHolder.mAdapter.notifyDataSetChanged();
 	}
 

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.acty.component.home.branddetail.activity.BrandDetailActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        app:elevation="0.0dip"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/title_bar_common"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--<View-->
+        <!--android:id="@+id/vHomeBrandDetailLine"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/DIMEN_1PX"-->
+        <!--android:background="@color/line_bg"-->
+        <!--app:layout_constraintLeft_toLeftOf="@id/appBar"-->
+        <!--app:layout_constraintRight_toRightOf="@id/appBar"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/appBar"/>-->
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tlHomeBrandDetail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_84PX"
+        android:layout_marginLeft="@dimen/DIMEN_100PX"
+        android:layout_marginRight="@dimen/DIMEN_100PX"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintLeft_toLeftOf="@id/appBar"
+        app:layout_constraintRight_toRightOf="@id/appBar"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabIndicatorHeight="@dimen/DIMEN_6PX"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/text_color_normal"
+        app:tabTextColor="@color/text_color_gray96"/>
+</android.support.constraint.ConstraintLayout>

@@ -11,7 +11,6 @@ import com.acty.component_dynamicsoreview.dynamicsoreview.DynamicSoreView;
 import com.acty.component_dynamicsoreview.dynamicsoreview.Interface.IDynamicSore;
 import com.acty.component_home.R;
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
@@ -43,7 +42,7 @@ public class BannerSection extends Section {
 	public int getContentItemsTotal() {
 		if ( data == null || data.isEmpty() || channelData == null || channelData.isEmpty() ) {
 			return 0;
-		}else {
+		} else {
 			return 1;
 		}
 	}
@@ -60,7 +59,20 @@ public class BannerSection extends Section {
 		viewHolder.mBvHomeIndex.setCenter( false );
 		viewHolder.mBvHomeIndex.delayTime( 3 );
 		viewHolder.mBvHomeIndex.build( data );
+		if ( mOnItemClickListener != null ) {
+			viewHolder.mBvHomeIndex.setmViewPagerOnItemClickListener( new BannerView.BannerViewOnItemClickListener() {
+				@Override
+				public void onItemClick( String url, String title, String dataJson ) {
+					mOnItemClickListener.onItemClickBanner( url, title, dataJson );
+				}
+			} );
+		}
+		viewHolder.view.setOnClickListener( new View.OnClickListener() {
+			@Override
+			public void onClick( View v ) {
 
+			}
+		} );
 		initDynamicSoreView( viewHolder, channelData );
 	}
 
@@ -83,16 +95,18 @@ public class BannerSection extends Section {
 				rvBody.setAdapter( menuAdapter );
 				rvBody.setLayoutManager( manager );
 				menuAdapter.notifyDataSetChanged();
+				if(mOnItemClickListener != null) {
+
 				cardShareMenuBodySection.setOnItemClickListener( new DynamicSection.OnItemClickListener() {
 					@Override
-					public void onitemClick( View v, String Pic, String title ) {
-						ToastUtil.showSuccess( title );
+					public void onItemClick( View v, String channelId, String title ) {
+						mOnItemClickListener.onItemClickChannel( v,channelId,title );
 					}
 				} );
+				}
 			}
 		} );
-		viewHolder.mDsHomeIndex.setGridView( R.layout.home_item_dynamicsoreview )
-				.init( channelData );
+		viewHolder.mDsHomeIndex.setGridView( R.layout.home_item_dynamicsoreview ).init( channelData );
 	}
 
 	public void setBannerList( List< BannerEntity > bannerList ) {
@@ -102,6 +116,18 @@ public class BannerSection extends Section {
 	public void setChannelList( List< HomeIndexEntity.ChannelBean > channel ) {
 		this.channelData = channel;
 	}
+
+	public interface OnItemClickListener {
+		void onItemClickBanner( String url, String title, String dataJson );
+
+		void onItemClickChannel( View v, String channelId, String title );
+	}
+
+	public void setOnItemClickListener( OnItemClickListener onItemClickListener ) {
+		mOnItemClickListener = onItemClickListener;
+	}
+
+	private OnItemClickListener mOnItemClickListener;
 
 	static class BannerViewHolder extends RecyclerView.ViewHolder {
 		View view;

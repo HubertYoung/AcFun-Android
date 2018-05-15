@@ -134,6 +134,17 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 				loadData();
 			}
 		} );
+		mBannerSection.setOnItemClickListener( new BannerSection.OnItemClickListener() {
+			@Override
+			public void onItemClickBanner( String url, String title, String dataJson ) {
+				ToastUtil.showSuccess( "跳转url ==> " + url );
+			}
+
+			@Override
+			public void onItemClickChannel( View v, String channelId, String title ) {
+				ToastUtil.showSuccess( "跳转channelId ==> " + channelId );
+			}
+		} );
 	}
 
 	private void initRecyclerView() {
@@ -198,14 +209,14 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		mBrandSection.setBrandList( homeIndexEntity.brandList );
 		mNewGoodsSection.setNewGoodsList( homeIndexEntity.newGoodsList );
 		mHotGoodsSection.setHotGoodsList( homeIndexEntity.hotGoodsList );
-		mTopicSection.setTopicList( homeIndexEntity.topicList);
+		mTopicSection.setTopicList( homeIndexEntity.topicList );
 		for (HomeIndexEntity.FloorGoodsListBean floorGoodsListBean : homeIndexEntity.floorGoodsList) {
 			FloorGoodsSection floorGoodsSection = new FloorGoodsSection( ( BaseActivity ) activity );
 			mAdapter.addSection( floorGoodsSection );
 			List< HomeIndexEntity.FloorGoodsListBean.GoodsListBean > goodsList = floorGoodsListBean.goodsList;
 			HomeIndexEntity.FloorGoodsListBean.GoodsListBean goodsListBean = new HomeIndexEntity.FloorGoodsListBean.GoodsListBean();
 			goodsListBean.goodsId = floorGoodsListBean.floorGoodsid;
-			goodsListBean.name = "更多"+floorGoodsListBean.name+"好物";
+			goodsListBean.name = "更多" + floorGoodsListBean.name + "好物";
 			goodsList.add( goodsListBean );
 			floorGoodsSection.setFloorGoodsBean( floorGoodsListBean );
 		}

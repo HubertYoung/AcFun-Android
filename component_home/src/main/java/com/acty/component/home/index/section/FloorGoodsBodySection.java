@@ -32,7 +32,6 @@ class FloorGoodsBodySection extends Section {
 	private List< HomeIndexEntity.FloorGoodsListBean.GoodsListBean > data;
 	private static final int TYPE_1 = 1;//item
 	private static final int TYPE_2 = 2;//more
-	private String title;
 
 	public FloorGoodsBodySection( BaseActivity activity ) {
 		super( new SectionParameters.Builder( R.layout.home_item_floor_goods_body ).build() );
@@ -70,16 +69,14 @@ class FloorGoodsBodySection extends Section {
 
 	}
 
-	public void setFloorGoodsList( List< HomeIndexEntity.FloorGoodsListBean.GoodsListBean > goodsList, String title ) {
+	public void setFloorGoodsList( List< HomeIndexEntity.FloorGoodsListBean.GoodsListBean > goodsList ) {
 		this.data = goodsList;
-		this.title = title;
 	}
 
 	@Override
 	public int getItemViewType( int position ) {
 		Log.e( "TAG", "position ==> " + position );
 		return TextUtils.isEmpty( data.get( position ).goodsSn ) ? TYPE_2 : TYPE_1;
-//		return 0;
 	}
 
 	static class FloorGoodsBodyViewHolder extends RecyclerView.ViewHolder {

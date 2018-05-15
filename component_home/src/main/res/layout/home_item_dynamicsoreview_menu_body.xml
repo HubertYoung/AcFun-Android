@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:gravity="center"
+    android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical">
 
     <android.support.v7.widget.AppCompatImageView
