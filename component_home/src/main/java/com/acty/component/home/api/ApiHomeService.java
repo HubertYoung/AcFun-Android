@@ -1,8 +1,8 @@
 package com.acty.component.home.api;
 
 
-import com.hubertyoung.common.net.response.BaseResponse;
 import com.acty.component.home.entity.HomeIndexEntity;
+import com.hubertyoung.common.net.response.BaseResponse;
 
 import java.util.Map;
 

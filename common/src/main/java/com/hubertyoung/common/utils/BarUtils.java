@@ -65,16 +65,11 @@ public final class BarUtils {
 	 */
 	public static int getStatusBarHeight() {
 		int result = 24;
-		int resId = CommonApplication.getAppContext()
-								   .getResources()
-								   .getIdentifier( "status_bar_height", "dimen", "android" );
+		int resId = CommonApplication.getAppContext().getResources().getIdentifier( "status_bar_height", "dimen", "android" );
 		if ( resId > 0 ) {
-			result = CommonApplication.getAppContext()
-									.getResources()
-									.getDimensionPixelSize( resId );
+			result = CommonApplication.getAppContext().getResources().getDimensionPixelSize( resId );
 		} else {
-			result = ( int ) TypedValue.applyDimension( TypedValue.COMPLEX_UNIT_DIP, result, Resources.getSystem()
-																									  .getDisplayMetrics() );
+			result = ( int ) TypedValue.applyDimension( TypedValue.COMPLEX_UNIT_DIP, result, Resources.getSystem().getDisplayMetrics() );
 		}
 		return result;
 	}
@@ -162,17 +157,14 @@ public final class BarUtils {
 			darkModeForM( activity.getWindow(), true );
 			immersive( activity.getWindow(), color, alpha );
 		} else if ( Build.VERSION.SDK_INT >= 19 ) {
-			activity.getWindow()
-					.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-			setTranslucentView( ( ViewGroup ) activity.getWindow()
-													  .getDecorView(), color, alpha );
+			activity.getWindow().addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+			setTranslucentView( ( ViewGroup ) activity.getWindow().getDecorView(), color, alpha );
 			result = 3;
 		} else {
 			immersive( activity.getWindow(), color, alpha );
 			result = 4;
 		}
-		setTranslucentView( ( ViewGroup ) activity.getWindow()
-												  .getDecorView(), color, alpha );
+		setTranslucentView( ( ViewGroup ) activity.getWindow().getDecorView(), color, alpha );
 		return result;
 	}
 
@@ -181,15 +173,13 @@ public final class BarUtils {
 	 */
 	@RequiresApi( Build.VERSION_CODES.M )
 	private static void darkModeForM( Window window, boolean dark ) {
-		int systemUiVisibility = window.getDecorView()
-									   .getSystemUiVisibility();
+		int systemUiVisibility = window.getDecorView().getSystemUiVisibility();
 		if ( dark ) {
 			systemUiVisibility |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
 		} else {
 			systemUiVisibility &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
 		}
-		window.getDecorView()
-			  .setSystemUiVisibility( systemUiVisibility );
+		window.getDecorView().setSystemUiVisibility( systemUiVisibility );
 	}
 
 	/**
@@ -247,13 +237,10 @@ public final class BarUtils {
 
 				if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {
 					//开发版 7.7.13 及以后版本采用了系统API，旧方法无效但不会报错，所以两个方式都要加上
-					activity.getWindow()
-							.getDecorView()
-							.setSystemUiVisibility( dark ? View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR : View.SYSTEM_UI_FLAG_VISIBLE );
+					activity.getWindow().getDecorView().setSystemUiVisibility( dark ? View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR : View.SYSTEM_UI_FLAG_VISIBLE );
 				}
 			} catch ( Exception e ) {
-				CommonLog.logi( "tag", e.getMessage()
-												.toString() );
+				CommonLog.logi( "tag", e.getMessage().toString() );
 			}
 		}
 		return result;
@@ -301,19 +288,16 @@ public final class BarUtils {
 			window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
 			window.setStatusBarColor( Color.TRANSPARENT );
 
-			int systemUiVisibility = window.getDecorView()
-										   .getSystemUiVisibility();
+			int systemUiVisibility = window.getDecorView().getSystemUiVisibility();
 			systemUiVisibility |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
 			systemUiVisibility |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-			window.getDecorView()
-				  .setSystemUiVisibility( systemUiVisibility );
+			window.getDecorView().setSystemUiVisibility( systemUiVisibility );
 		} else {
 			window.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
 		}
 
 		ViewGroup decorView = ( ViewGroup ) window.getDecorView();
-		ViewGroup contentView = ( ViewGroup ) window.getDecorView()
-													.findViewById( Window.ID_ANDROID_CONTENT );
+		ViewGroup contentView = ( ViewGroup ) window.getDecorView().findViewById( Window.ID_ANDROID_CONTENT );
 		View rootView = contentView.getChildAt( 0 );
 		int statusBarHeight = getStatusBarHeight();
 		if ( rootView != null ) {
@@ -336,22 +320,18 @@ public final class BarUtils {
 			window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
 			window.setStatusBarColor( mixtureColor( color, alpha ) );
 
-			int systemUiVisibility = window.getDecorView()
-										   .getSystemUiVisibility();
+			int systemUiVisibility = window.getDecorView().getSystemUiVisibility();
 			systemUiVisibility |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
 			systemUiVisibility |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-			window.getDecorView()
-				  .setSystemUiVisibility( systemUiVisibility );
+			window.getDecorView().setSystemUiVisibility( systemUiVisibility );
 		} else if ( Build.VERSION.SDK_INT >= 19 ) {
 			window.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
 			setTranslucentView( ( ViewGroup ) window.getDecorView(), color, alpha );
 		} else if ( Build.VERSION.SDK_INT >= MIN_API && Build.VERSION.SDK_INT > 16 ) {
-			int systemUiVisibility = window.getDecorView()
-										   .getSystemUiVisibility();
+			int systemUiVisibility = window.getDecorView().getSystemUiVisibility();
 			systemUiVisibility |= View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
 			systemUiVisibility |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-			window.getDecorView()
-				  .setSystemUiVisibility( systemUiVisibility );
+			window.getDecorView().setSystemUiVisibility( systemUiVisibility );
 		}
 	}
 
@@ -401,8 +381,7 @@ public final class BarUtils {
 		Window window = activity.getWindow();
 		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
 			int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-			window.getDecorView()
-				  .setSystemUiVisibility( option );
+			window.getDecorView().setSystemUiVisibility( option );
 			window.setStatusBarColor( Color.TRANSPARENT );
 		} else {
 			window.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
@@ -442,17 +421,20 @@ public final class BarUtils {
 		statusBarView.setTag( FAKE_TOP_VIEW_TAG );
 		return statusBarView;
 	}
-	/** 增加View的paddingTop,增加的值为状态栏高度 (智能判断，并设置高度)*/
-	public static void setPaddingSmart(View view) {
-		if (Build.VERSION.SDK_INT >= MIN_API) {
+
+	/**
+	 * 增加View的paddingTop,增加的值为状态栏高度 (智能判断，并设置高度)
+	 */
+	public static void setPaddingSmart( View view ) {
+		if ( Build.VERSION.SDK_INT >= MIN_API ) {
 			ViewGroup.LayoutParams lp = view.getLayoutParams();
-			if (lp != null && lp.height > 0) {
+			if ( lp != null && lp.height > 0 ) {
 				lp.height += getStatusBarHeight();//增高
 			}
-			view.setPadding(view.getPaddingLeft(), view.getPaddingTop() + getStatusBarHeight(),
-					view.getPaddingRight(), view.getPaddingBottom());
+			view.setPadding( view.getPaddingLeft(), view.getPaddingTop() + getStatusBarHeight(), view.getPaddingRight(), view.getPaddingBottom() );
 		}
 	}
+
 	/**
 	 * 为头部ImageView设置状态栏透明度
 	 * <p>如果</p>
@@ -471,7 +453,7 @@ public final class BarUtils {
 	 * @param alpha          状态栏透明度
 	 * @param needOffsetView 需要向下偏移的 View
 	 */
-	public static void setStatusBar4ImageView( @NonNull final Activity activity, @FloatRange( from = 0.0, to = 1.0 ) final float alpha, @Nullable    final View needOffsetView ) {
+	public static void setStatusBar4ImageView( @NonNull final Activity activity, @FloatRange( from = 0.0, to = 1.0 ) final float alpha, @Nullable final View needOffsetView ) {
 		if ( Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT ) return;
 		transparentStatusBar( activity );
 		addTopView( activity, alpha );
@@ -507,8 +489,7 @@ public final class BarUtils {
 	public static void setStatusBar4ImageViewInFragment( @NonNull final Activity activity, @FloatRange( from = 0, to = 1.0 ) final float alpha, @Nullable final View needOffsetView ) {
 		setStatusBar4ImageView( activity, alpha, needOffsetView );
 		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP ) {
-			ViewGroup decorView = ( ViewGroup ) activity.getWindow()
-														.getDecorView();
+			ViewGroup decorView = ( ViewGroup ) activity.getWindow().getDecorView();
 			View fakeStatusBarView = decorView.findViewWithTag( FAKE_STATUS_BAR_VIEW_TAG );
 			if ( fakeStatusBarView != null ) {
 				decorView.removeView( fakeStatusBarView );
@@ -602,7 +583,7 @@ public final class BarUtils {
 	 * @param drawerLayout DrawerLayout
 	 * @param color        状态栏颜色值
 	 */
-	public static void setColorNoTranslucentForDrawerLayout( @NonNull final Activity activity, @NonNull final DrawerLayout drawerLayout, @ColorInt    final int color ) {
+	public static void setColorNoTranslucentForDrawerLayout( @NonNull final Activity activity, @NonNull final DrawerLayout drawerLayout, @ColorInt final int color ) {
 		setColorForDrawerLayout( activity, drawerLayout, color, 0 );
 	}
 
@@ -614,20 +595,17 @@ public final class BarUtils {
 	 * @param color        状态栏颜色值
 	 * @param alpha        状态栏透明度
 	 */
-	public static void setColorForDrawerLayout( @NonNull final Activity activity, @NonNull final DrawerLayout drawerLayout, final @ColorInt int color, @FloatRange( from = 0, to = 1.0 ) final float alpha ) {
+	public static void setColorForDrawerLayout( @NonNull final Activity activity, @NonNull final DrawerLayout drawerLayout, final @ColorInt int color, @FloatRange( from = 0, to = 1.0 ) final float
+			alpha ) {
 		if ( Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT ) {
 			return;
 		}
 		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
-			activity.getWindow()
-					.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
-			activity.getWindow()
-					.clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-			activity.getWindow()
-					.setStatusBarColor( Color.TRANSPARENT );
+			activity.getWindow().addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
+			activity.getWindow().clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+			activity.getWindow().setStatusBarColor( Color.TRANSPARENT );
 		} else {
-			activity.getWindow()
-					.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+			activity.getWindow().addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
 		}
 		// 生成一个状态栏大小的矩形
 		// 添加 statusBarView 到布局中
@@ -644,7 +622,7 @@ public final class BarUtils {
 		// 内容布局不是 LinearLayout 时,设置padding top
 		if ( !( contentLayout instanceof LinearLayout ) && contentLayout.getChildAt( 1 ) != null ) {
 			contentLayout.getChildAt( 1 )
-						 .setPadding( contentLayout.getPaddingLeft(), getStatusBarHeight() + contentLayout.getPaddingTop(), contentLayout.getPaddingRight(), contentLayout.getPaddingBottom() );
+					.setPadding( contentLayout.getPaddingLeft(), getStatusBarHeight() + contentLayout.getPaddingTop(), contentLayout.getPaddingRight(), contentLayout.getPaddingBottom() );
 		}
 		// 设置属性
 		setDrawerLayoutProperty( drawerLayout, contentLayout );
@@ -700,22 +678,17 @@ public final class BarUtils {
 			return;
 		}
 		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
-			activity.getWindow()
-					.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
-			activity.getWindow()
-					.clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-			activity.getWindow()
-					.setStatusBarColor( Color.TRANSPARENT );
+			activity.getWindow().addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
+			activity.getWindow().clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+			activity.getWindow().setStatusBarColor( Color.TRANSPARENT );
 		} else {
-			activity.getWindow()
-					.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+			activity.getWindow().addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
 		}
 
 		ViewGroup contentLayout = ( ViewGroup ) drawerLayout.getChildAt( 0 );
 		// 内容布局不是 LinearLayout 时,设置padding top
 		if ( !( contentLayout instanceof LinearLayout ) && contentLayout.getChildAt( 1 ) != null ) {
-			contentLayout.getChildAt( 1 )
-						 .setPadding( 0, getStatusBarHeight(), 0, 0 );
+			contentLayout.getChildAt( 1 ).setPadding( 0, getStatusBarHeight(), 0, 0 );
 		}
 
 		// 设置属性
@@ -728,8 +701,7 @@ public final class BarUtils {
 	 * @param activity 调用的 Activity
 	 */
 	public static void hideFakeStatusBarView( @NonNull final Activity activity ) {
-		ViewGroup decorView = ( ViewGroup ) activity.getWindow()
-													.getDecorView();
+		ViewGroup decorView = ( ViewGroup ) activity.getWindow().getDecorView();
 		View fakeStatusBarView = decorView.findViewWithTag( FAKE_STATUS_BAR_VIEW_TAG );
 		if ( fakeStatusBarView != null ) {
 			fakeStatusBarView.setVisibility( View.GONE );
@@ -742,7 +714,7 @@ public final class BarUtils {
 
 	///////////////////////////////////////////////////////////////////////////////////
 
-    /*--------------------------------old--------------------------------*/
+	/*--------------------------------old--------------------------------*/
 
 	/**
 	 * 设置透明状态栏（api大于19方可使用）
@@ -756,8 +728,7 @@ public final class BarUtils {
 	public static void setTransparentStatusBar( @NonNull final Activity activity ) {
 		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT ) {
 			//透明状态栏
-			activity.getWindow()
-					.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+			activity.getWindow().addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
 			//透明导航栏
 //			activity.getWindow()
 //					.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION );
@@ -776,8 +747,7 @@ public final class BarUtils {
 	 */
 	public static void hideStatusBar( @NonNull final Activity activity ) {
 		activity.requestWindowFeature( Window.FEATURE_NO_TITLE );
-		activity.getWindow()
-				.setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
+		activity.getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
 	}
 
 	/**
@@ -787,8 +757,7 @@ public final class BarUtils {
 	 * @return {@code true}: 存在<br>{@code false}: 不存在
 	 */
 	public static boolean isStatusBarExists( @NonNull final Activity activity ) {
-		WindowManager.LayoutParams params = activity.getWindow()
-													.getAttributes();
+		WindowManager.LayoutParams params = activity.getWindow().getAttributes();
 		return ( params.flags & WindowManager.LayoutParams.FLAG_FULLSCREEN ) != WindowManager.LayoutParams.FLAG_FULLSCREEN;
 	}
 
@@ -800,10 +769,8 @@ public final class BarUtils {
 	 */
 	public static int getActionBarHeight( @NonNull final Activity activity ) {
 		TypedValue tv = new TypedValue();
-		if ( activity.getTheme()
-					 .resolveAttribute( android.R.attr.actionBarSize, tv, true ) ) {
-			return TypedValue.complexToDimensionPixelSize( tv.data, activity.getResources()
-																			.getDisplayMetrics() );
+		if ( activity.getTheme().resolveAttribute( android.R.attr.actionBarSize, tv, true ) ) {
+			return TypedValue.complexToDimensionPixelSize( tv.data, activity.getResources().getDisplayMetrics() );
 		}
 		return 0;
 	}
@@ -859,12 +826,10 @@ public final class BarUtils {
 	 * @return 导航栏高度，0代表不存在
 	 */
 	public int getNavigationBarHeight() {
-		boolean hasMenuKey = ViewConfiguration.get( CommonApplication.getAppContext() )
-											  .hasPermanentMenuKey();
+		boolean hasMenuKey = ViewConfiguration.get( CommonApplication.getAppContext() ).hasPermanentMenuKey();
 		boolean hasBackKey = KeyCharacterMap.deviceHasKey( KeyEvent.KEYCODE_BACK );
 		if ( !hasMenuKey && !hasBackKey ) {
-			Resources res = CommonApplication.getAppContext()
-										   .getResources();
+			Resources res = CommonApplication.getAppContext().getResources();
 			int resourceId = res.getIdentifier( "navigation_bar_height", "dimen", "android" );
 			return res.getDimensionPixelSize( resourceId );
 		} else {

@@ -24,6 +24,7 @@ import com.hubertyoung.common.utils.SPUtils;
 public class ApiConstants {
 	public static final String BASE_PATH = "/wx/";
 	public static final String NETEAST_HOST = "http://122.152.206.172:8082";
+//	public static final String NETEAST_HOST = "http://192.168.2.60:9006";
 
 	/**
 	 * 获取对应的host

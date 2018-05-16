@@ -111,7 +111,6 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
-		BarUtils.setPaddingSmart( mSrlRefreshHomeIndex );
 		initRecyclerView();
 		initAction();
 		loadData();

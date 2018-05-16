@@ -3,7 +3,11 @@ package com.hubertyoung.common.net.request;
 
 import android.text.TextUtils;
 
+import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.net.factory.ExGsonConverterFactory;
+import com.kroegerama.kaiteki.retrofit.CacheCallAdapterFactory;
+import com.kroegerama.kaiteki.retrofit.DefaultCacheHandler;
+import com.kroegerama.kaiteki.retrofit.RetryCallAdapterFactory;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -69,17 +73,22 @@ public class RetrofitClient {
 //        return retrofit.create(service);
 //    }
 	public < T > T builder( Class< T > service ) {
-		if ( TextUtils.isEmpty( baseUrl) ) {
+		if ( TextUtils.isEmpty( baseUrl ) ) {
 			throw new RuntimeException( "baseUrl is null!" );
 		}
 		if ( service == null ) {
 			throw new RuntimeException( "api Service is null!" );
 		}
 		retrofit = new Retrofit.Builder().client( mOkHttpClient )
-										 .baseUrl( baseUrl )
-										 .addConverterFactory( ExGsonConverterFactory.create() )
-										 .addCallAdapterFactory( RxJava2CallAdapterFactory.create() )
-										 .build();
+				.baseUrl( baseUrl )
+				//增加返回值为String的支持
+//				.addConverterFactory( ScalarsConverterFactory.create() )
+				.addConverterFactory( ExGsonConverterFactory.create() )
+				.addCallAdapterFactory( RetryCallAdapterFactory.INSTANCE )
+				.addCallAdapterFactory( new CacheCallAdapterFactory( new DefaultCacheHandler( CommonApplication.getAppContext(), DefaultCacheHandler.DEFAULT_DISK_SIZE, DefaultCacheHandler
+						.DEFAULT_MEM_CACHE_ENTRIES ) ) )
+				.addCallAdapterFactory( RxJava2CallAdapterFactory.create() )
+				.build();
 		return retrofit.create( service );
 	}
 }

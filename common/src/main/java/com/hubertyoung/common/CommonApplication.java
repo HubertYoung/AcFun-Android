@@ -7,8 +7,10 @@ import android.support.multidex.MultiDex;
 
 import com.acty.litemall.BuildConfig;
 import com.acty.litemall.R;
+import com.facebook.stetho.Stetho;
 import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.http.HttpUtils;
+import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.widget.skin.auto.SkinHookAutoLayoutViewInflater;
 import com.hubertyoung.common.widget.skin.cardview.SkinCardViewInflater;
@@ -69,6 +71,15 @@ public class CommonApplication extends Application {
 				.loadSkin();                                  // 加载当前皮肤库(保存在SharedPreferences中)
 		//网络框架
 		initOkHttpUtils();
+		initStetho();
+	}
+
+	private void initStetho() {
+		if ( AppUtils.isDebuggable()) {
+			Stetho.initialize(Stetho.newInitializerBuilder(this).enableDumpapp(Stetho.defaultDumperPluginsProvider(this)).enableWebKitInspector
+					(Stetho.defaultInspectorModulesProvider(this)).build());
+
+		}
 	}
 
 	private void initOkHttpUtils() {

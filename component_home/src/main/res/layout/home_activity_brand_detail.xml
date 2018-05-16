@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context="com.acty.component.home.branddetail.activity.BrandDetailActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -22,14 +23,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <!--<View-->
-        <!--android:id="@+id/vHomeBrandDetailLine"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/DIMEN_1PX"-->
-        <!--android:background="@color/line_bg"-->
-        <!--app:layout_constraintLeft_toLeftOf="@id/appBar"-->
-        <!--app:layout_constraintRight_toRightOf="@id/appBar"-->
-        <!--app:layout_constraintTop_toBottomOf="@id/appBar"/>-->
+    <View
+        android:id="@+id/vHomeBrandDetailLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1PX"
+        android:background="@color/line_bg"
+        app:layout_constraintLeft_toLeftOf="@id/appBar"
+        app:layout_constraintRight_toRightOf="@id/appBar"
+        app:layout_constraintTop_toBottomOf="@id/appBar"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tlHomeBrandDetail"
@@ -37,9 +38,9 @@
         android:layout_height="@dimen/DIMEN_84PX"
         android:layout_marginLeft="@dimen/DIMEN_100PX"
         android:layout_marginRight="@dimen/DIMEN_100PX"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
         app:layout_constraintLeft_toLeftOf="@id/appBar"
         app:layout_constraintRight_toRightOf="@id/appBar"
+        app:layout_constraintTop_toBottomOf="@id/vHomeBrandDetailLine"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/colorPrimary"
         app:tabIndicatorHeight="@dimen/DIMEN_6PX"

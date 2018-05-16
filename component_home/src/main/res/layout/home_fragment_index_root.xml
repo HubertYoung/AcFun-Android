@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     app:srlEnableLoadMore="false"
     app:srlEnableHeaderTranslationContent="false"
+    android:fitsSystemWindows="true"
     tools:context="com.acty.component.home.index.fragment.IndexRootFragment">
 
     <android.support.v7.widget.RecyclerView

@@ -3,7 +3,13 @@
           package="com.acty.component_home">
 
     <application>
+        <activity android:name="com.acty.component.home.branddetail.activity.BrandDetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
 
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
