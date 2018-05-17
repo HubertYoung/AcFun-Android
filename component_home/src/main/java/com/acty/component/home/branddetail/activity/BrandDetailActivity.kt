@@ -3,6 +3,8 @@ package com.acty.component.home.branddetail.activity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.AppCompatTextView
+import android.support.v7.widget.Toolbar
+import android.view.View
 import com.acty.component.home.branddetail.adapter.BrandDetailAdapter
 import com.acty.component.home.branddetail.control.BrandDetailControl
 import com.acty.component.home.entity.BrandDetailEntity
@@ -33,6 +35,7 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 
 	private var brandDetailAdapter = BrandDetailAdapter(fm = supportFragmentManager, activity = this@BrandDetailActivity)
 	private var currentPosition: Int = 0
+	private var brandDetailID: String = ""
 
 	override fun getLayoutId(): Int {
 		return R.layout.home_activity_brand_detail
@@ -48,6 +51,12 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 	}
 
 	override fun initView(savedInstanceState: Bundle?) {
+		intent.extras?.let {
+			brandDetailID = it.getString("brandDetailID")
+		}
+		intent.extras?: let {
+			brandDetailID = "1008009"
+		}
 		initViewPager()
 	}
 
@@ -88,11 +97,13 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 		}
 
 	}
+
 	override fun loadData() {
 		val map = MyRequestMap()
-		map.put("id","1008009")
+		map.put("id", brandDetailID)
 		mPresenter.requestBrandDetail(map)
 	}
+
 	override fun setBrandDetailInfo(brandDetailEntity: BrandDetailEntity) {
 		var tvHeadTitle = findViewById<AppCompatTextView>(R.id.tv_head_title)
 		tvHeadTitle.text = brandDetailEntity.parentCategory.name
@@ -100,14 +111,19 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 
 		vpHomeBrandDetail.offscreenPageLimit = brandDetailEntity.brotherCategory.size
 		tlHomeBrandDetail.setupWithViewPager(vpHomeBrandDetail)
-		brandDetailAdapter.setList( brandDetailEntity.brotherCategory )
+		brandDetailAdapter.setList(brandDetailEntity.brotherCategory)
 
 		for (i in brandDetailEntity.brotherCategory.indices) {
 			tlHomeBrandDetail.addTab(tlHomeBrandDetail.newTab())
 		}
 		brandDetailAdapter.notifyDataSetChanged()
 	}
+
 	override fun initToolBar() {
+		var toolbarHead = findViewById<Toolbar>(R.id.toolbar_head)
+		toolbarHead.setBackgroundResource(R.color.white)
+		toolbarHead.title = ""
+		toolbarHead.visibility = View.VISIBLE
 	}
 
 	override fun showLoading(title: String?, type: Int) {

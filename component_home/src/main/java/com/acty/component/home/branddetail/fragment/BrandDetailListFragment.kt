@@ -6,7 +6,7 @@ import com.gent.youxidandan.ddsocial.ui.mytest.model.BrandDetailListModelImp
 import com.gent.youxidandan.ddsocial.ui.mytest.presenter.BrandDetailListPresenterImp
 import com.hubertyoung.common.base.BaseFragment
 
-private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM1 = "BrandDetail"
 private const val ARG_PARAM2 = "param2"
 
 class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandDetailListModelImp>() {
@@ -35,7 +35,7 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 	}
 
 	override fun getLayoutResource(): Int {
-		return R.layout.fragment_brand_detail_list
+		return R.layout.home_fragment_brand_detail_list
 	}
 
 	override fun initPresenter() {
