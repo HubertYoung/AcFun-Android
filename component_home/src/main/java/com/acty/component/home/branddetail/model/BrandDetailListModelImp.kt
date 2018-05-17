@@ -1,6 +1,6 @@
 package com.gent.youxidandan.ddsocial.ui.mytest.model
 
-import com.acty.component.home.branddetail.control.BrandDetailControl
+import com.acty.component.home.branddetail.control.BrandDetailListControl
 
 /**
  * <br>
@@ -11,5 +11,5 @@ import com.acty.component.home.branddetail.control.BrandDetailControl
  * @since:V1.0
  * @desc:com.gent.youxidandan.ddsocial.ui.mytest.model
  */
-class TestActivity2ModelImp : BrandDetailControl.Model {
+class BrandDetailListModelImp : BrandDetailListControl.Model {
 }

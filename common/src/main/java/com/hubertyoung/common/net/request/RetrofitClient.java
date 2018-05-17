@@ -3,15 +3,12 @@ package com.hubertyoung.common.net.request;
 
 import android.text.TextUtils;
 
-import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.net.factory.ExGsonConverterFactory;
-import com.kroegerama.kaiteki.retrofit.CacheCallAdapterFactory;
-import com.kroegerama.kaiteki.retrofit.DefaultCacheHandler;
-import com.kroegerama.kaiteki.retrofit.RetryCallAdapterFactory;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * 作者：JIUU on 2017-7-10 16:00:51
@@ -82,11 +79,8 @@ public class RetrofitClient {
 		retrofit = new Retrofit.Builder().client( mOkHttpClient )
 				.baseUrl( baseUrl )
 				//增加返回值为String的支持
-//				.addConverterFactory( ScalarsConverterFactory.create() )
+				.addConverterFactory( ScalarsConverterFactory.create() )
 				.addConverterFactory( ExGsonConverterFactory.create() )
-				.addCallAdapterFactory( RetryCallAdapterFactory.INSTANCE )
-				.addCallAdapterFactory( new CacheCallAdapterFactory( new DefaultCacheHandler( CommonApplication.getAppContext(), DefaultCacheHandler.DEFAULT_DISK_SIZE, DefaultCacheHandler
-						.DEFAULT_MEM_CACHE_ENTRIES ) ) )
 				.addCallAdapterFactory( RxJava2CallAdapterFactory.create() )
 				.build();
 		return retrofit.create( service );

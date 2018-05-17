@@ -36,15 +36,33 @@
         android:id="@+id/tlHomeBrandDetail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_84PX"
-        android:layout_marginLeft="@dimen/DIMEN_100PX"
-        android:layout_marginRight="@dimen/DIMEN_100PX"
         app:layout_constraintLeft_toLeftOf="@id/appBar"
         app:layout_constraintRight_toRightOf="@id/appBar"
         app:layout_constraintTop_toBottomOf="@id/vHomeBrandDetailLine"
         app:tabGravity="fill"
-        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabIndicatorColor="@color/color_bg9f1522"
         app:tabIndicatorHeight="@dimen/DIMEN_6PX"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/text_color_normal"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/color_bg9f1522"
         app:tabTextColor="@color/text_color_gray96"/>
+
+    <View
+        android:id="@+id/vHomeBrandDetailLine2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_1PX"
+        android:background="@color/line_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tlHomeBrandDetail"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpHomeBrandDetail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vHomeBrandDetailLine2"/>
 </android.support.constraint.ConstraintLayout>

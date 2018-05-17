@@ -1,7 +1,8 @@
 package skin.support.utils;
 
-import android.support.compat.BuildConfig;
 import android.util.Log;
+
+import skin.support.BuildConfig;
 
 /**
  * Created by ximsfei on 17-1-9.
