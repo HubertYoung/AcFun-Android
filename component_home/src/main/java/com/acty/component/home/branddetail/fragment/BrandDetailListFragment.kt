@@ -20,15 +20,16 @@ import com.kento.component_skeleton.skeleton.Skeleton
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import kotlinx.android.synthetic.main.home_fragment_brand_detail_list.*
-import kotlinx.android.synthetic.main.home_item_floor_goods.*
 
 private const val ARG_PARAM1 = "BrandDetail"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_PARAM2 = "name"
+private const val ARG_PARAM3 = "frontName"
 
 class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandDetailListModelImp>(), BrandDetailListControl.View {
 
 	private var categoryId: String? = null
-	private var param2: String? = null
+	private var name: String? = null
+	private var frontName: String? = null
 	private lateinit var mAdapter: SectionedRecyclerViewAdapter
 
 	private lateinit var brandDetailBodySection: BrandDetailBodySection
@@ -37,10 +38,11 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 
 	companion object {
 		@JvmStatic
-		fun newInstance(param1: String, param2: String) = BrandDetailListFragment().apply {
+		fun newInstance(param1: String, param2: String, frontName: String) = BrandDetailListFragment().apply {
 			arguments = Bundle().apply {
 				putString(ARG_PARAM1, param1)
 				putString(ARG_PARAM2, param2)
+				putString(ARG_PARAM3, frontName)
 			}
 		}
 	}
@@ -49,7 +51,8 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 		super.onCreate(savedInstanceState)
 		arguments?.let {
 			categoryId = it.getString(ARG_PARAM1)
-			param2 = it.getString(ARG_PARAM2)
+			name = it.getString(ARG_PARAM2)
+			frontName = it.getString(ARG_PARAM3)
 		}
 	}
 
@@ -89,6 +92,17 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 		mAdapter = SectionedRecyclerViewAdapter()
 		brandDetailBodySection = BrandDetailBodySection(activity as BaseActivity<*, *>)
 		mAdapter.addSection(brandDetailBodySection)
+		val gridLayoutManager = GridLayoutManager(activity, 2)
+		gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+			override fun getSpanSize(position: Int): Int {
+				return try {
+					if (mAdapter.getSectionItemViewType(position) == SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER) 2 else 1
+				} catch (e: Exception) {
+					1
+				}
+			}
+		}
+		rv_body.layoutManager = gridLayoutManager
 		mViewSkeletonScreen = Skeleton.bind(rv_body)//
 				.adapter(mAdapter)//
 				.shimmer(true)//
@@ -96,7 +110,6 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 				.angle(20)//
 				.load(R.layout.common_item_skeleton)//
 				.show()
-		rv_body.layoutManager = GridLayoutManager(activity, 2)
 		var dividerItemDecoration = GridDividerItemDecoration(activity, GridDividerItemDecoration.GRID_DIVIDER_VERTICAL)
 		dividerItemDecoration.setVerticalDivider(activity.resources.getDrawable(R.drawable.home_brand_divider))
 		dividerItemDecoration.setHorizontalDivider(activity.resources.getDrawable(R.drawable.home_brand_divider))
@@ -115,6 +128,7 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 			loadData()
 		}
 	}
+
 	override fun loadData() {
 		val map = MyRequestMap()
 		map.put("categoryId", categoryId)
@@ -124,7 +138,7 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 	}
 
 	override fun setBrandDetailListInfo(brandDetailBodyEntity: BrandDetailBodyEntity) {
-		brandDetailBodySection.setList(brandDetailBodyEntity?.goodsList)
+		brandDetailBodySection.setList(brandDetailBodyEntity?.goodsList, name, frontName)
 	}
 
 	override fun showLoading(title: String?, type: Int) {

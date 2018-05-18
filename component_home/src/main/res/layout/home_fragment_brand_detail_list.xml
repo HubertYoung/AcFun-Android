@@ -9,6 +9,13 @@
     app:srlEnableLoadMore="false"
     tools:context="com.acty.component.home.branddetail.fragment.BrandDetailListFragment">
 
-    <include layout="@layout/home_item_floor_goods"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:layoutManager="android.support.v7.widget.GridLayoutManager"
+        tools:listitem="@layout/home_item_floor_goods_body"
+        tools:spanCount="2"/>
 
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>
