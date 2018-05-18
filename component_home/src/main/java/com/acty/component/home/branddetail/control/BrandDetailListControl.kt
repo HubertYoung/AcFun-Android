@@ -1,8 +1,11 @@
 package com.acty.component.home.branddetail.control
 
+import com.acty.component.home.entity.BrandDetailBodyEntity
 import com.hubertyoung.common.base.BaseModel
 import com.hubertyoung.common.base.BasePresenter
 import com.hubertyoung.common.base.BaseView
+import com.hubertyoung.common.basebean.MyRequestMap
+import io.reactivex.Observable
 
 /**
  * <br>
@@ -15,9 +18,15 @@ import com.hubertyoung.common.base.BaseView
  */
 interface BrandDetailListControl {
 
-	interface Model : BaseModel
+	interface Model : BaseModel {
+		abstract fun requestBrandDetailList(map: MyRequestMap): Observable<BrandDetailBodyEntity>
+	}
 
-	interface View : BaseView
+	interface View : BaseView {
+		fun setBrandDetailListInfo(brandDetailBodyEntity: BrandDetailBodyEntity)
+	}
 
-	abstract class Presenter : BasePresenter<View, Model>()
+	abstract class Presenter : BasePresenter<View, Model>() {
+		abstract fun requestBrandDetailList(map: MyRequestMap)
+	}
 }

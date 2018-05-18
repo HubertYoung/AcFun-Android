@@ -1,6 +1,13 @@
 package com.gent.youxidandan.ddsocial.ui.mytest.model
 
+import com.acty.component.home.api.ApiHomeService
 import com.acty.component.home.branddetail.control.BrandDetailListControl
+import com.acty.component.home.entity.BrandDetailBodyEntity
+import com.hubertyoung.common.api.Api
+import com.hubertyoung.common.api.HostType
+import com.hubertyoung.common.basebean.MyRequestMap
+import com.hubertyoung.common.net.transformer.DefaultTransformer
+import io.reactivex.Observable
 
 /**
  * <br>
@@ -12,4 +19,10 @@ import com.acty.component.home.branddetail.control.BrandDetailListControl
  * @desc:com.gent.youxidandan.ddsocial.ui.mytest.model
  */
 class BrandDetailListModelImp : BrandDetailListControl.Model {
+	override fun requestBrandDetailList(map: MyRequestMap): Observable<BrandDetailBodyEntity> {
+		return Api.getDefault(HostType.MY_RESULT)
+				.retrofitClient.builder(ApiHomeService::class.java)
+				.requestBrandDetailList(map.map)
+				.compose(DefaultTransformer())
+	}
 }

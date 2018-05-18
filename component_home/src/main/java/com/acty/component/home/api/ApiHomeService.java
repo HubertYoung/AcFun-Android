@@ -1,6 +1,7 @@
 package com.acty.component.home.api;
 
 
+import com.acty.component.home.entity.BrandDetailBodyEntity;
 import com.acty.component.home.entity.BrandDetailEntity;
 import com.acty.component.home.entity.HomeIndexEntity;
 import com.hubertyoung.common.net.response.BaseResponse;
@@ -38,4 +39,11 @@ public interface ApiHomeService {
 	 */
 	@GET( "goods/category" )
 	Observable< BaseResponse< BrandDetailEntity > > requestBrandDetail( @QueryMap Map< String, String > map );
+	/**
+	 * 商品列表
+	 * @param map
+	 * @return
+	 */
+	@GET("goods/list" )
+	Observable< BaseResponse< BrandDetailBodyEntity > > requestBrandDetailList( @QueryMap Map< String, String > map );
 }
