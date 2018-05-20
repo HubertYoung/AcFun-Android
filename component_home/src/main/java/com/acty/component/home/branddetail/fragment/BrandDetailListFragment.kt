@@ -145,8 +145,10 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 	}
 
 	override fun stopLoading() {
-		if (mViewSkeletonScreen != null && mViewSkeletonScreen.isShowing) {
-			mViewSkeletonScreen.hide()
+		mSrlRefreshHomeIndex?.finishRefresh()
+		mSrlRefreshHomeIndex?.finishLoadMore()
+		if (mViewSkeletonScreen?.isShowing) {
+			mViewSkeletonScreen?.hide()
 		}
 	}
 

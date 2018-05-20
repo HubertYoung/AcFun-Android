@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.acty.component.home.branddetail.activity.BrandDetailActivity;
 import com.acty.component.home.entity.HomeIndexEntity;
 import com.acty.component.home.index.control.IndexRootControl;
 import com.acty.component.home.index.model.IndexRootModelImp;
@@ -22,7 +23,6 @@ import com.acty.component_home.R;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.common.widget.decoration.HorizontalDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
@@ -141,7 +141,7 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 
 			@Override
 			public void onItemClickChannel( View v, String channelId, String title ) {
-				ToastUtil.showSuccess( "跳转channelId ==> " + channelId );
+				BrandDetailActivity.Companion.launch( ( BaseActivity ) activity, channelId );
 			}
 		} );
 	}

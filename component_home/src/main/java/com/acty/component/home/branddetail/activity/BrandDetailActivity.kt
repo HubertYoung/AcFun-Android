@@ -3,13 +3,13 @@ package com.acty.component.home.branddetail.activity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.AppCompatTextView
-import android.support.v7.widget.Toolbar
 import android.view.View
 import com.acty.component.home.branddetail.adapter.BrandDetailAdapter
 import com.acty.component.home.branddetail.control.BrandDetailControl
 import com.acty.component.home.entity.BrandDetailEntity
 import com.acty.component_banner.banner.BannerScroller
 import com.acty.component_banner.banner.transformer.FadeInOutPageTransformer
+import com.acty.component_home.BuildConfig
 import com.acty.component_home.R
 import com.gent.youxidandan.ddsocial.ui.mytest.model.BrandDetailModelImp
 import com.gent.youxidandan.ddsocial.ui.mytest.presenter.BrandDetailPresenterImp
@@ -21,6 +21,7 @@ import com.hubertyoung.common.utils.ToastUtil
 import com.kento.component_skeleton.skeleton.Skeleton
 import com.kento.component_skeleton.skeleton.ViewSkeletonScreen
 import kotlinx.android.synthetic.main.home_activity_brand_detail.*
+import kotlinx.android.synthetic.main.title_bar_common.*
 
 /**
  * <br>
@@ -54,10 +55,17 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 		intent.extras?.let {
 			brandDetailID = it.getString("brandDetailID")
 		}
-		intent.extras?: let {
-			brandDetailID = "1008009"
+		intent.extras ?: let {
+			brandDetailID = if (BuildConfig.DEBUG) "1008009" else ""
 		}
 		initViewPager()
+		initAction()
+	}
+
+	private fun initAction() {
+		toolbar_head.setNavigationOnClickListener {
+			finish()
+		}
 	}
 
 	private lateinit var mViewSkeletonScreen: ViewSkeletonScreen
@@ -120,10 +128,9 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 	}
 
 	override fun initToolBar() {
-		var toolbarHead = findViewById<Toolbar>(R.id.toolbar_head)
-		toolbarHead.setBackgroundResource(R.color.white)
-		toolbarHead.title = ""
-		toolbarHead.visibility = View.VISIBLE
+		toolbar_head.setBackgroundResource(R.color.white)
+		toolbar_head.title = ""
+		toolbar_head.visibility = View.VISIBLE
 	}
 
 	override fun showLoading(title: String?, type: Int) {
@@ -139,4 +146,11 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 		ToastUtil.showError(msg)
 	}
 
+	companion object {
+		fun launch(activity: BaseActivity<*, *>, channelId: String) {
+			val bundle = Bundle()
+			bundle.putString("brandDetailID", channelId)
+			activity.startActivity(BrandDetailActivity::class.java, bundle)
+		}
+	}
 }
