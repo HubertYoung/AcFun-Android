@@ -71,21 +71,37 @@ public class AppConfig {
     // 图片缓存最大容量，250M，根据自己的需求进行修改
     public static final int GLIDE_CATCH_SIZE = 250 + MemoryConstants.MB;
 
-    //项目根目录文件夹
+    /**
+     * 项目根目录文件夹
+     */
     public static final String APP_DEPLOY_PATH = "kento";
-    //缓存文件夹
+    /**
+     * 缓存文件夹
+     */
     public static final String APP_CACHE_PATH = "cache";
-    //图片文件夹
+    /**
+     * 图片文件夹
+     */
     public static final String APP_IMAGE_PATH = "image";
-    //换肤文件夹
+    /**
+     * 换肤文件夹
+     */
     public static final String APP_SKINS_PATH = "skins";
-    //log文件夹
+    /**
+     * log文件夹
+     */
     public static final String APP_LOG_PATH = "log";
-    //    download文件夹
+    /**
+     * download文件夹
+     */
     public static final String APP_DOWN_PATH = "download";
-    //录制视频存放文件夹
+    /**
+     * 录制视频存放文件夹
+     */
     public static final String APP_RECODER_VIDEO_PATH = "recoderVideo";
-    //录制视频第一帧图片的文件目录
+    /**
+     * 录制视频第一帧图片的文件目录
+     */
     public static final String APP_RECODER_VIDEO_FIRST_FRAME_PATH = "recoderVideoFirstframe";
 
     // glide图片缓存子目录

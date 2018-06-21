@@ -15,3 +15,6 @@ component_gridpasswordview=false
 component_pickerview=false
 component_home=true
 ```
+
+##相关项目
+[一个小商城。litemall = Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端](https://github.com/linlinjava/litemall)
