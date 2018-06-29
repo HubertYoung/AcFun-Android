@@ -32,7 +32,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -163,7 +162,7 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 		mAdapter.addSection( mTopicSection );
 		mViewSkeletonScreen = Skeleton.bind( mRvHomeIndex ).adapter( mAdapter ).shimmer( true ).duration( 1200 ).angle( 20 ).load( R.layout.common_item_skeleton ).show();
 		mRvHomeIndex.addItemDecoration( new HorizontalDividerItemDecoration.Builder( activity ).colorResId( R.color.line_bg )
-				.size( AutoUtils.getPercentHeightSizeBigger( 20 ) )
+				.size( 20 )
 				.showLastDivider()
 				.build() );
 	}

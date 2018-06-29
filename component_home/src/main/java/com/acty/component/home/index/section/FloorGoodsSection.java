@@ -13,7 +13,6 @@ import com.hubertyoung.common.widget.decoration.GridDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.zhy.autolayout.utils.AutoUtils;
 
 /**
  * <br>
@@ -79,8 +78,8 @@ public class FloorGoodsSection extends Section {
 			mRvBody.setAdapter( mAdapter );
 			mRvBody.setLayoutManager( manager );
 			GridDividerItemDecoration dividerItemDecoration = new GridDividerItemDecoration( activity, GridDividerItemDecoration.GRID_DIVIDER_VERTICAL );
-			dividerItemDecoration.setVerticalSize( AutoUtils.getPercentHeightSizeBigger( 5 ), R.color.line_bg );
-			dividerItemDecoration.setHorizontalSize( AutoUtils.getPercentHeightSizeBigger( 5 ), R.color.line_bg );
+			dividerItemDecoration.setVerticalSize( 5 , R.color.line_bg );
+			dividerItemDecoration.setHorizontalSize( 5 , R.color.line_bg );
 			mRvBody.addItemDecoration( dividerItemDecoration );
 		}
 	}

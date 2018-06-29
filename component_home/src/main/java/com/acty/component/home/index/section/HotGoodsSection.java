@@ -12,7 +12,6 @@ import com.hubertyoung.common.widget.decoration.HorizontalDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;
 
@@ -80,9 +79,9 @@ public class HotGoodsSection extends Section {
 			mRvBody.setAdapter( mAdapter );
 			mRvBody.setLayoutManager( manager );
 			mRvBody.addItemDecoration( new HorizontalDividerItemDecoration.Builder( activity ).colorResId( R.color.line_bg )
-					.size( AutoUtils.getPercentHeightSizeBigger( 1 ) )
+					.size( 1 )
 					.showLastDivider()
-					.margin( AutoUtils.getPercentHeightSizeBigger( 10 ) )
+					.margin( 10 )
 					.build() );
 		}
 	}

@@ -20,7 +20,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/DIMEN_200PX"
+                android:layout_height="@dimen/DIMEN_100_0DP"
                 android:layout_gravity="top"
                 android:background="@drawable/shadow_gradient"
                 android:fitsSystemWindows="true"/>
@@ -47,7 +47,7 @@
         android:id="@+id/pb_webview_loading"
         style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_4PX"
+        android:layout_height="@dimen/DIMEN_2_0DP"
         android:layout_above="@+id/ll_details_button_bar_root"/>
 
     <!--<include-->

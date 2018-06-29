@@ -9,15 +9,15 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.acty.litemall.R;
-import com.zhy.autolayout.AutoFrameLayout;
 
 
 /**
  * Created by ditclear on 16/7/12. 可滑动的layout extends FrameLayout
  */
-public class SwipeDragLayout extends AutoFrameLayout {
+public class SwipeDragLayout extends FrameLayout {
 
 	private final String TAG = getClass().getSimpleName();
 	private static SwipeDragLayout mCacheView;

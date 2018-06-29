@@ -11,18 +11,18 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_1PX"
+        android:layout_height="@dimen/DIMEN_0_5DP"
         android:background="@color/line_bg"
-        android:layout_marginLeft="@dimen/DIMEN_20PX"
-        android:layout_marginRight="@dimen/DIMEN_20PX"/>
+        android:layout_marginLeft="@dimen/DIMEN_10_0DP"
+        android:layout_marginRight="@dimen/DIMEN_10_0DP"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/DIMEN_20PX"
-        android:paddingLeft="@dimen/DIMEN_10PX"
-        android:paddingRight="@dimen/DIMEN_10PX"
+        android:paddingBottom="@dimen/DIMEN_10_0DP"
+        android:paddingLeft="@dimen/DIMEN_5_0DP"
+        android:paddingRight="@dimen/DIMEN_5_0DP"
         tools:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:listitem="@layout/home_item_hot_goods_body"/>
 </android.support.v7.widget.LinearLayoutCompat>

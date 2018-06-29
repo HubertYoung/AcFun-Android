@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.acty.litemall.R;
 import com.hubertyoung.common.base.BaseFragment;
-import com.zhy.autolayout.utils.AutoUtils;
 
 
 /**
@@ -57,7 +56,7 @@ public class PlaceHolderFragment extends BaseFragment {
         textView.setGravity( Gravity.CENTER);
         textView.setText("componentName ==> " + componentName +"\n\n" + "actionName ==> " + actionName);
         textView.setTextColor(getColor( R.color.color_bgf83c3a));
-        textView.setTextSize( AutoUtils.getPercentHeightSizeBigger( 15 ));
+        textView.setTextSize( 15 );
         return textView;
     }
 

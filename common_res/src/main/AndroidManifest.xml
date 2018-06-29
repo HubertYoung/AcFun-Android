@@ -2,12 +2,12 @@
           package="com.kento.common_res">
     <application>
 
-        <meta-data
-            android:name="design_width"
-            android:value="750"/>
-        <meta-data
-            android:name="design_height"
-            android:value="1335"/>
+        <!--<meta-data-->
+            <!--android:name="design_width"-->
+            <!--android:value="750"/>-->
+        <!--<meta-data-->
+            <!--android:name="design_height"-->
+            <!--android:value="1335"/>-->
 
     </application>
 </manifest>

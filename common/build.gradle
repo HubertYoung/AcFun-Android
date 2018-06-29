@@ -26,6 +26,13 @@ android {
 
 dependencies {
     api project(':common_res')
+
+    implementation project(':android-support:skin-support')
+    implementation project(':android-support:skin-support-appcompat')
+    implementation project(':android-support:skin-support-cardview')
+    implementation project(':android-support:skin-support-constraint-layout')
+    implementation project(':android-support:skin-support-design')
+
     //显示图片框架
     implementation 'com.github.bumptech.glide:glide:4.5.0'
     kapt 'com.github.bumptech.glide:compiler:4.5.0'

@@ -27,12 +27,12 @@
             android:layout_weight="1.0"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/DIMEN_5PX"
-            android:paddingTop="@dimen/DIMEN_10PX">
+            android:paddingBottom="@dimen/DIMEN_2_5DP"
+            android:paddingTop="@dimen/DIMEN_5_0DP">
 
             <ImageView
-                android:layout_width="@dimen/DIMEN_50PX"
-                android:layout_height="@dimen/DIMEN_50PX"
+                android:layout_width="@dimen/DIMEN_25_0DP"
+                android:layout_height="@dimen/DIMEN_25_0DP"
                 android:layout_gravity="center"
                 android:background="@drawable/tabbar_home_page_selector"
                 android:scaleType="center"/>
@@ -43,7 +43,7 @@
                 android:gravity="center"
                 android:text="首页"
                 android:textColor="@color/tabbar_home_page_text_selector"
-                android:textSize="@dimen/text_size22px"/>
+                android:textSize="@dimen/text_size11_0dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -53,12 +53,12 @@
             android:layout_weight="1.0"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/DIMEN_5PX"
-            android:paddingTop="@dimen/DIMEN_10PX">
+            android:paddingBottom="@dimen/DIMEN_2_5DP"
+            android:paddingTop="@dimen/DIMEN_5_0DP">
 
             <ImageView
-                android:layout_width="@dimen/DIMEN_50PX"
-                android:layout_height="@dimen/DIMEN_50PX"
+                android:layout_width="@dimen/DIMEN_25_0DP"
+                android:layout_height="@dimen/DIMEN_25_0DP"
                 android:layout_gravity="center"
                 android:background="@drawable/tabbar_classification_page_selector"
                 android:scaleType="center"/>
@@ -69,7 +69,7 @@
                 android:gravity="center"
                 android:text="分类"
                 android:textColor="@color/tabbar_home_page_text_selector"
-                android:textSize="@dimen/text_size22px"/>
+                android:textSize="@dimen/text_size11_0dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -79,12 +79,12 @@
             android:layout_weight="1.0"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/DIMEN_5PX"
-            android:paddingTop="@dimen/DIMEN_10PX">
+            android:paddingBottom="@dimen/DIMEN_2_5DP"
+            android:paddingTop="@dimen/DIMEN_5_0DP">
 
             <ImageView
-                android:layout_width="@dimen/DIMEN_50PX"
-                android:layout_height="@dimen/DIMEN_50PX"
+                android:layout_width="@dimen/DIMEN_25_0DP"
+                android:layout_height="@dimen/DIMEN_25_0DP"
                 android:layout_gravity="center"
                 android:background="@drawable/tabbar_cart_page_selector"
                 android:scaleType="center"/>
@@ -95,7 +95,7 @@
                 android:gravity="center"
                 android:text="购物车"
                 android:textColor="@color/tabbar_home_page_text_selector"
-                android:textSize="@dimen/text_size22px"/>
+                android:textSize="@dimen/text_size11_0dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -105,12 +105,12 @@
             android:layout_weight="1.0"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/DIMEN_5PX"
-            android:paddingTop="@dimen/DIMEN_10PX">
+            android:paddingBottom="@dimen/DIMEN_2_5DP"
+            android:paddingTop="@dimen/DIMEN_5_0DP">
 
             <ImageView
-                android:layout_width="@dimen/DIMEN_50PX"
-                android:layout_height="@dimen/DIMEN_50PX"
+                android:layout_width="@dimen/DIMEN_25_0DP"
+                android:layout_height="@dimen/DIMEN_25_0DP"
                 android:layout_gravity="center"
                 android:background="@drawable/tabbar_mine_page_selector"
                 android:scaleType="center"/>
@@ -121,7 +121,7 @@
                 android:gravity="center"
                 android:text="个人"
                 android:textColor="@color/tabbar_home_page_text_selector"
-                android:textSize="@dimen/text_size22px"/>
+                android:textSize="@dimen/text_size11_0dp"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -121,7 +121,7 @@ public class SoreButton extends LinearLayout {
 		}
 
 		//ViewPager的滑动事件
-		viewPager.setOnPageChangeListener( new ViewPager.OnPageChangeListener() {
+		viewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
 			@Override
 			public void onPageScrollStateChanged( int arg0 ) {
 			}

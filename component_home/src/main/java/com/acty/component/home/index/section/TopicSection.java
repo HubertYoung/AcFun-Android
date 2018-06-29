@@ -12,7 +12,6 @@ import com.hubertyoung.common.widget.decoration.VerticalDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;
 
@@ -80,7 +79,7 @@ public class TopicSection extends Section {
 			mRvBody.setAdapter( mAdapter );
 			mRvBody.setLayoutManager( manager );
 			mRvBody.addItemDecoration( new VerticalDividerItemDecoration.Builder( activity ).colorResId( R.color.white )
-					.size( AutoUtils.getPercentHeightSizeBigger( -20 ) )
+					.size( -20 )
 					.build() );
 		}
 	}

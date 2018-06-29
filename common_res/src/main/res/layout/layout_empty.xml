@@ -17,10 +17,10 @@
         android:id="@+id/empty_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/DIMEN_20PX"
-        android:paddingRight="@dimen/DIMEN_20PX"
+        android:paddingLeft="@dimen/DIMEN_10_0DP"
+        android:paddingRight="@dimen/DIMEN_10_0DP"
         android:textColor="@color/text_color_normal"
-        android:textSize="@dimen/text_size30px"
+        android:textSize="@dimen/text_size15_0dp"
         android:visibility="gone"/>
 
 
@@ -28,9 +28,9 @@
         android:id="@+id/empty_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/DIMEN_20PX"
+        android:padding="@dimen/DIMEN_10_0DP"
         android:textColor="@color/alpha_45_black"
-        android:textSize="@dimen/text_size24px"/>
+        android:textSize="@dimen/text_size12_0dp"/>
 
     <ProgressBar
         android:id="@+id/pb_loading"

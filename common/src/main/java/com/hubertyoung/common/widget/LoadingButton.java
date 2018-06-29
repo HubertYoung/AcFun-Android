@@ -16,13 +16,12 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.acty.litemall.R;
-import com.zhy.autolayout.AutoRelativeLayout;
-import com.zhy.autolayout.utils.AutoUtils;
 
 
 /*<com.snad.loadingbutton.LoadingButton
@@ -37,7 +36,7 @@ import com.zhy.autolayout.utils.AutoUtils;
         app:pbText="CLICK"
         app:pbTextColor="#7286A0"
         app:pbTextSize="16sp"/>*/
-public class LoadingButton extends AutoRelativeLayout {
+public class LoadingButton extends RelativeLayout {
 
 	//region Variables
 	static final int DEFAULT_COLOR = android.R.color.white;
@@ -96,9 +95,7 @@ public class LoadingButton extends AutoRelativeLayout {
 	}
 
 	public void setProgressColor( int colorRes ) {
-		mProgressBar.getIndeterminateDrawable()
-					.mutate()
-					.setColorFilter( colorRes, PorterDuff.Mode.SRC_ATOP );
+		mProgressBar.getIndeterminateDrawable().mutate().setColorFilter( colorRes, PorterDuff.Mode.SRC_ATOP );
 	}
 
 	public void setTypeface( @NonNull Typeface typeface ) {
@@ -155,7 +152,8 @@ public class LoadingButton extends AutoRelativeLayout {
 		}
 		invalidate();
 	}
-	public void showButtonText(boolean isEnable) {
+
+	public void showButtonText( boolean isEnable ) {
 		if ( mIsLoadingShowing ) {
 			mProgressBar.setVisibility( View.GONE );
 			mTextSwitcher.setVisibility( View.VISIBLE );
@@ -171,18 +169,16 @@ public class LoadingButton extends AutoRelativeLayout {
 	}
 
 	private void init( Context context, AttributeSet attrs ) {
-		mDefaultTextSize = getResources().getDimensionPixelSize( R.dimen.text_size34px );
+		mDefaultTextSize = getResources().getDimensionPixelSize( R.dimen.text_size17_0dp );
 		mIsLoadingShowing = false;
-		LayoutInflater.from( getContext() )
-					  .inflate( R.layout.view_loading_button, this, true );
+		LayoutInflater.from( getContext() ).inflate( R.layout.view_loading_button, this, true );
 
 		mProgressBar = ( ProgressBar ) findViewById( R.id.pb_progress );
 		mTextSwitcher = ( TextSwitcher ) findViewById( R.id.pb_text );
 
 
 		if ( attrs != null ) {
-			TypedArray a = context.getTheme()
-								  .obtainStyledAttributes( attrs, R.styleable.LoadingButton, 0, 0 );
+			TypedArray a = context.getTheme().obtainStyledAttributes( attrs, R.styleable.LoadingButton, 0, 0 );
 			try {
 				float textSize = a.getDimensionPixelSize( R.styleable.LoadingButton_pbTextSize, mDefaultTextSize );
 				setTextSize( textSize );
@@ -228,11 +224,11 @@ public class LoadingButton extends AutoRelativeLayout {
 //		mTextSwitcher.setInAnimation( inRight );
 		mTextSwitcher.setText( mButtonText );
 		mTextSwitcherReady = true;
-		AutoUtils.autoTextSize( mTextSwitcher );
+//		AutoUtils.autoTextSize( mTextSwitcher );
 	}
 
 	private void setTextSize( float size ) {
-		mTextSize = AutoUtils.getPercentWidthSize( ( int ) size );
+		mTextSize = size;
 	}
 
 	private void setTextColor( ColorStateList textColor ) {

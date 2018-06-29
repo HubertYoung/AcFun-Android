@@ -16,7 +16,6 @@ import com.acty.component_dynamicsoreview.dynamicsoreview.Interface.IDynamicSore
 import com.acty.component_dynamicsoreview.dynamicsoreview.adapter.ViewPagerAdapter;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.DisplayUtil;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +38,10 @@ public class DynamicSoreView< T > extends LinearLayout {
 
 	//选中点
 	@DrawableRes
-	private int RadioSelect;
+	private int mRadioSelect;
 	//未选中点
 	@DrawableRes
-	private int RadioUnselected;
+	private int mRadioUnselected;
 	//圆点间距
 	private int distance;
 
@@ -81,11 +80,11 @@ public class DynamicSoreView< T > extends LinearLayout {
 		TypedArray typedArray = context.obtainStyledAttributes( attrs, R.styleable.DynamicSoreView );
 		if ( typedArray != null ) {
 			//选中点
-			RadioSelect = typedArray.getResourceId( R.styleable.DynamicSoreView_SoreRadioSelect, 0 );
+			mRadioSelect = typedArray.getResourceId( R.styleable.DynamicSoreView_SoreRadioSelect, 0 );
 			//未选中点
-			RadioUnselected = typedArray.getResourceId( R.styleable.DynamicSoreView_SoreRadioUnselected, 0 );
+			mRadioUnselected = typedArray.getResourceId( R.styleable.DynamicSoreView_SoreRadioUnselected, 0 );
 			//圆点间距
-			distance = AutoUtils.getPercentHeightSizeBigger( typedArray.getInteger( R.styleable.DynamicSoreView_SoreDistance, 10 ) );
+			distance = typedArray.getInteger( R.styleable.DynamicSoreView_SoreDistance, 10 );
 			//每页显示几个
 			number = typedArray.getInteger( R.styleable.DynamicSoreView_SoreNumber, 8 );
 			typedArray.recycle();
@@ -170,10 +169,10 @@ public class DynamicSoreView< T > extends LinearLayout {
 			//默认选中第一个
 			if ( i == 0 ) {
 				//选中的点
-				image.setImageResource( RadioSelect );
+				image.setImageResource( mRadioSelect );
 			} else {
 				//未选中的点
-				image.setImageResource( RadioUnselected );
+				image.setImageResource( mRadioUnselected );
 			}
 			//设置宽高
 			LayoutParams params = new LayoutParams( DisplayUtil.dip2px( 6 ), DisplayUtil.dip2px( 6 ) );
@@ -197,10 +196,10 @@ public class DynamicSoreView< T > extends LinearLayout {
 				//arg0当前ViewPager
 				for (int i = 0; i < imageViews.length; i++) {
 					//设置为选中的点
-					imageViews[ arg0 ].setImageResource( RadioSelect );
+					imageViews[ arg0 ].setImageResource( mRadioSelect );
 					//判断当前的点i如果不等于当前页的话就设置为未选中
 					if ( arg0 != i ) {
-						imageViews[ i ].setImageResource( RadioUnselected );
+						imageViews[ i ].setImageResource( mRadioUnselected );
 					}
 				}
 			}

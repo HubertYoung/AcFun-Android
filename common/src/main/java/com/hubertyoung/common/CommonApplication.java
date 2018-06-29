@@ -12,18 +12,18 @@ import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.http.HttpUtils;
 import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.CommonLog;
-import com.hubertyoung.common.widget.skin.auto.SkinHookAutoLayoutViewInflater;
-import com.hubertyoung.common.widget.skin.cardview.SkinCardViewInflater;
-import com.hubertyoung.common.widget.skin.constraintview.SkinConstraintViewInflater;
-import com.hubertyoung.common.widget.skin.materialview.SkinMaterialViewInflater;
+import com.hubertyoung.common.utils.ScreenHelper;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import skin.support.SkinCompatManager;
+import skin.support.app.SkinCardViewInflater;
+import skin.support.constraint.app.SkinConstraintViewInflater;
+import skin.support.design.app.SkinMaterialViewInflater;
+import skin.support.utils.Slog;
 
 /**
  * <br>
@@ -55,39 +55,46 @@ public class CommonApplication extends Application {
 		SmartRefreshLayout.setDefaultRefreshHeaderCreator( new DefaultRefreshHeaderCreator() {
 			@NonNull
 			@Override
-			public RefreshHeader createRefreshHeader( @NonNull Context context, @NonNull RefreshLayout layout) {
-				layout.setPrimaryColorsId( R.color.colorPrimary, android.R.color.white);//全局设置主题颜色
-				layout.setHeaderHeight( AutoUtils.getPercentHeightSizeBigger( 100 ) );
-				return new MaterialHeader(context);
+			public RefreshHeader createRefreshHeader( @NonNull Context context, @NonNull RefreshLayout layout ) {
+				layout.setPrimaryColorsId( R.color.colorPrimary, android.R.color.white );//全局设置主题颜色
+				layout.setHeaderHeight( 100 );
+				return new MaterialHeader( context );
 			}
-		});
-
-		SkinCompatManager.withoutActivity( this )                          // 基础控件换肤初始化
-				.addHookInflater( new SkinHookAutoLayoutViewInflater() ).addInflater( new SkinMaterialViewInflater() )    // material design
+		} );
+		ScreenHelper.initCustomDensity( this );
+		// 框架换肤日志打印
+		Slog.DEBUG = BuildConfig.DEBUG;
+		SkinCompatManager.withoutActivity( this )
+//				.addStrategy(new CustomSDCardLoader())          // 自定义加载策略，指定SDCard路径
+//				.addStrategy(new ZipSDCardLoader())             // 自定义加载策略，获取zip包中的资源
+//				.addInflater( new SkinAppCompatViewInflater() )   // 基础控件换肤
+				.addInflater( new SkinMaterialViewInflater() )    // material design
 				.addInflater( new SkinConstraintViewInflater() )  // ConstraintLayout
 				.addInflater( new SkinCardViewInflater() )        // CardView v7
-//						 .addInflater(new SkinCircleImageViewInflater()) // hdodenhof/CircleImageView
-//						 .addInflater( new SkinFlycoTabLayoutInflater() )  // H07000223/FlycoTabLayout
-				.loadSkin();                                  // 加载当前皮肤库(保存在SharedPreferences中)
+//				.addInflater(new SkinCircleImageViewInflater()) // hdodenhof/CircleImageView
+//				.addInflater(new SkinFlycoTabLayoutInflater())  // H07000223/FlycoTabLayout
+//				.setSkinStatusBarColorEnable( true )              // 关闭状态栏换肤
+//                .setSkinWindowBackgroundEnable(false)           // 关闭windowBackground换肤
+				.setSkinAllActivityEnable( true )                // true: 默认所有的Activity都换肤; false: 只有实现SkinCompatSupportable接口的Activity换肤
+				.loadSkin();
 		//网络框架
 		initOkHttpUtils();
 		initStetho();
 	}
 
 	private void initStetho() {
-		if ( AppUtils.isDebuggable()) {
-			Stetho.initialize(Stetho.newInitializerBuilder(this).enableDumpapp(Stetho.defaultDumperPluginsProvider(this)).enableWebKitInspector
-					(Stetho.defaultInspectorModulesProvider(this)).build());
+		if ( AppUtils.isDebuggable() ) {
+			Stetho.initialize( Stetho.newInitializerBuilder( this )
+					.enableDumpapp( Stetho.defaultDumperPluginsProvider( this ) )
+					.enableWebKitInspector( Stetho.defaultInspectorModulesProvider( this ) )
+					.build() );
 
 		}
 	}
 
 	private void initOkHttpUtils() {
 
-		NetWorkConfiguration configuration = new NetWorkConfiguration( this )
-				.isCache( true )
-				.isDiskCache( true )
-				.isMemoryCache( true );
+		NetWorkConfiguration configuration = new NetWorkConfiguration( this ).isCache( true ).isDiskCache( true ).isMemoryCache( true );
 		HttpUtils.setConFiguration( configuration );
 	}
 

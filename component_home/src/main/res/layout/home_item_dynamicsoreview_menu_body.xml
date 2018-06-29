@@ -11,9 +11,9 @@
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/iv_menu"
-        android:layout_width="@dimen/DIMEN_60PX"
-        android:layout_height="@dimen/DIMEN_60PX"
-        android:layout_marginTop="@dimen/DIMEN_30PX"
+        android:layout_width="@dimen/DIMEN_30_0DP"
+        android:layout_height="@dimen/DIMEN_30_0DP"
+        android:layout_marginTop="@dimen/DIMEN_15_0DP"
         android:scaleType="fitXY"
         tools:src="@drawable/banner_default"/>
 
@@ -21,9 +21,9 @@
         android:id="@+id/tv_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/DIMEN_30PX"
-        android:layout_marginTop="@dimen/DIMEN_10PX"
+        android:layout_marginBottom="@dimen/DIMEN_15_0DP"
+        android:layout_marginTop="@dimen/DIMEN_5_0DP"
         android:text="名称"
-        android:textSize="@dimen/text_size24px"/>
+        android:textSize="@dimen/text_size12_0dp"/>
 
 </android.support.v7.widget.LinearLayoutCompat>

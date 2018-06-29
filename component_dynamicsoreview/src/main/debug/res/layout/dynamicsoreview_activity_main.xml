@@ -9,6 +9,6 @@
     <com.acty.component_dynamicsoreview.dynamicsoreview.DynamicSoreView
         android:id="@+id/ds_main"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_400PX"/>
+        android:layout_height="@dimen/DIMEN_200_0DP"/>
 
 </LinearLayout>

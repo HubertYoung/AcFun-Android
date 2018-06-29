@@ -9,12 +9,12 @@
     <com.acty.component_banner.banner.BannerView
         android:id="@+id/bv_home_index"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_400PX"/>
+        android:layout_height="@dimen/DIMEN_200_0DP"/>
 
     <com.acty.component_dynamicsoreview.dynamicsoreview.DynamicSoreView
         android:id="@+id/ds_home_index"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_190PX"
+        android:layout_height="@dimen/DIMEN_95_0DP"
         app:SoreNumber="9"
         app:SoreRadioSelect="@null"
         app:SoreRadioUnselected="@null"/>

@@ -124,9 +124,9 @@ public class WaveSideBarView extends View {
 			mLargeTextSize = a.getFloat( R.styleable.WaveSideBarView_sidebarLargeTextSize, mLargeTextSize );
 			mWaveColor = a.getColor( R.styleable.WaveSideBarView_sidebarBackgroundColor, mWaveColor );
 			mRadius = a.getInt( R.styleable.WaveSideBarView_sidebarRadius, context.getResources()
-																				  .getDimensionPixelSize( R.dimen.DIMEN_40PX ) );
+																				  .getDimensionPixelSize( R.dimen.DIMEN_20_0DP ) );
 			mBallRadius = a.getInt( R.styleable.WaveSideBarView_sidebarBallRadius, context.getResources()
-																						  .getDimensionPixelSize( R.dimen.DIMEN_48PX ) );
+																						  .getDimensionPixelSize( R.dimen.DIMEN_24_0DP ) );
 			mLetters = Arrays.asList( context.getResources()
 											 .getStringArray( a.getResourceId( R.styleable.WaveSideBarView_sidebarLetters, R.array.waveSideBarLetters ) ) );
 			a.recycle();

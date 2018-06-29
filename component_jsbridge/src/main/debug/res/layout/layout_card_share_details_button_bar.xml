@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_details_button_bar_root"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/DIMEN_96PX"
+    android:layout_height="@dimen/DIMEN_48_0DP"
     android:layout_alignParentBottom="true"
     android:clipChildren="false"
     android:gravity="center"
@@ -13,7 +13,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_1PX"
+        android:layout_height="@dimen/DIMEN_0_5DP"
         android:background="@color/line_bg"/>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -29,12 +29,12 @@
             android:layout_weight="1"
             android:background="@drawable/item_bg_selector"
             android:gravity="center"
-            android:paddingBottom="@dimen/DIMEN_10PX"
-            android:paddingTop="@dimen/DIMEN_14PX"
+            android:paddingBottom="@dimen/DIMEN_5_0DP"
+            android:paddingTop="@dimen/DIMEN_7_0DP"
             android:text="收藏"
             android:visibility="visible"
             android:textColor="@color/text_color_gray64"
-            android:textSize="@dimen/text_size22px"/>
+            android:textSize="@dimen/text_size11_0dp"/>
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_card_consume_record"
@@ -44,12 +44,12 @@
             android:layout_weight="1"
             android:background="@drawable/item_bg_selector"
             android:gravity="center"
-            android:paddingLeft="@dimen/DIMEN_20PX"
-            android:paddingRight="@dimen/DIMEN_20PX"
+            android:paddingLeft="@dimen/DIMEN_10_0DP"
+            android:paddingRight="@dimen/DIMEN_10_0DP"
             android:text="消费记录"
             android:visibility="gone"
             android:textColor="@color/text_color_normal"
-            android:textSize="@dimen/text_size26px"/>
+            android:textSize="@dimen/text_size13_0dp"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_card_share_details_buy"
@@ -60,6 +60,6 @@
             android:gravity="center"
             android:text="去支付"
             android:textColor="@color/text_color_normal"
-            android:textSize="@dimen/text_size30px"/>
+            android:textSize="@dimen/text_size15_0dp"/>
     </android.support.v7.widget.LinearLayoutCompat>
 </android.support.v7.widget.LinearLayoutCompat>

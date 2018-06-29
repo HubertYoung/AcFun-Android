@@ -335,7 +335,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 									  .inflate( R.layout.banner_shape_imageview, null );
 			ImageView mImageView = ( ImageView ) view.findViewById( R.id.iv_banner_view );
 //			mImageView.setRadius( getContext().getResources()
-//											  .getDimensionPixelOffset( R.dimen.DIMEN_4PX ) );
+//											  .getDimensionPixelOffset( R.dimen.DIMEN_2_0DP ) );
 			ImageLoaderUtils.getInstance()
 							.display( getContext(), mImageView, entity.Pic, isCenter, R.drawable.banner_default );
 			imageViewList.add( mImageView );

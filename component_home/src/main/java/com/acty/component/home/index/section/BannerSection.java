@@ -14,7 +14,6 @@ import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;
 
@@ -85,7 +84,7 @@ public class BannerSection extends Section {
 				viewHolder.mDsHomeIndex.setNumColumns( manager, 9 );
 
 				RecyclerView rvBody = ( RecyclerView ) view.findViewById( R.id.rv_body );
-				rvBody.setPadding( 0, AutoUtils.getPercentHeightSizeBigger( 20 ), 0, AutoUtils.getPercentHeightSizeBigger( 20 ) );
+				rvBody.setPadding( 0,20 , 0, 20 );
 				rvBody.setHasFixedSize( true );
 
 				rvBody.setNestedScrollingEnabled( false );

@@ -76,7 +76,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
 	/**
 	 * <shape xmlns:android="http://schemas.android.com/apk/res/android">
 	 <solid android:color="@color/white"/>
-	 <size android:height="@dimen/DIMEN_5PX"/>
+	 <size android:height="@dimen/DIMEN_2_5DP"/>
 	 </shape>
 	 * @param verticalSize
 	 */
@@ -93,7 +93,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
 	/**
 	 * <shape xmlns:android="http://schemas.android.com/apk/res/android">
 	 <solid android:color="@color/white"/>
-	 <size android:height="@dimen/DIMEN_5PX"/>
+	 <size android:height="@dimen/DIMEN_2_5DP"/>
 	 </shape>
 	 * @param horizontalSize
 	 */
