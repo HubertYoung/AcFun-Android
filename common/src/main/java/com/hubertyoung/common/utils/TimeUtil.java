@@ -19,57 +19,51 @@ import java.util.Locale;
  */
 @SuppressWarnings( "all" )
 public class TimeUtil {
-    /**
-     * one day millisecond count
-     */
-    public static final long ONE_DAY_MILLISECONDS = 1000 * 3600 * 24;
-
+    //<editor-fold desc=" one day millisecond count ">
     public static final long ONE_HOUR_MILLISECONDS = 1000 * 3600;
 
     public static final long ONE_MIN_MILLISECONDS = 1000 * 60;
 
-    /**
-     * 时间日期格式化到年月日时分秒.
-     */
+    public static final long ONE_DAY_MILLISECONDS = 1000 * 3600 * 24;
+    //</editor-fold>
+
+    //<editor-fold desc=" 时间日期格式化到年月日时分秒. ">
     public static String dateFormatYMDHMS = "yyyy-MM-dd HH:mm:ss";
     public static String dateFormatYMDHMS_f = "yyyyMMddHHmmss";
     public static String dateFormatMDHM = "MM-dd HH:mm";
     public static String dateFormat = "yyyy-MM-dd HH:mm";
-    /**
-     * 时间日期格式化到年月日.
-     */
+    //</editor-fold>
+
+    //<editor-fold desc=" 时间日期格式化到年月日. ">
     public static String dateFormatYMD = "yyyy-MM-dd";
+    //</editor-fold>
 
-    /**
-     * 时间日期格式化到年月日时分.中文显示
-     */
+
+    //<editor-fold desc=" 时间日期格式化到年月日时分.中文显示 ">
     public static String dateFormatYMDHMofChinese = "yyyy年MM月dd日 HH:mm";
+    //</editor-fold>
 
-    /**
-     * 时间日期格式化到年月日.中文显示
-     */
+    //<editor-fold desc=" 时间日期格式化到年月日.中文显示 ">
     public static String dateFormatYMDofChinese = "yyyy年MM月dd日";
-    /**
-     * 时间日期格式化到月日.中文显示
-     */
+    //</editor-fold>
+
+    //<editor-fold desc=" 时间日期格式化到月日.中文显示 ">
     public static String dateFormatMDofChinese = "MM月dd日";
-    /**
-     * 时间日期格式化到月.中文显示
-     */
+    //</editor-fold>
+
+    //<editor-fold desc=" 时间日期格式化到月.中文显示 ">
     public static String dateFormatMofChinese = "MM月";
-    /**
-     * 时间日期格式化到年月.
-     */
+    //</editor-fold>
+
+    //<editor-fold desc="  时间日期格式化到年月. ">
     public static String dateFormatYM = "yyyy-MM";
+    //</editor-fold>
 
-    /**
-     * 时间日期格式化到年月日时分.
-     */
+    //<editor-fold desc=" 时间日期格式化到年月日时分. ">
     public static String dateFormatYMDHM = "yyyy-MM-dd HH:mm";
+    //</editor-fold>
 
-    /**
-     * 时间日期格式化到月日.
-     */
+    //<editor-fold desc=" 时间日期格式化到月日. ">
     public static String dateFormatMD = "MM/dd";
     public static String dateFormatM_D = "MM-dd";
 
@@ -79,25 +73,24 @@ public class TimeUtil {
 
     public static String dateFormatMDHMofChinese = "MM月dd日HH时mm分";
     public static String dateFormatHMofChinese = "HH时mm分";
+    //</editor-fold>
 
-    /**
-     * 时分秒.
-     */
+    //<editor-fold desc=" 时分秒. ">
     public static String dateFormatHMS = "HH:mm:ss";
+    //</editor-fold>
 
-    /**
-     * 时分.
-     */
+    //<editor-fold desc=" content ">
     public static String dateFormatHM = "HH:mm";
+    //</editor-fold>
 
-    /**
-     * 上午/下午时分
-     */
+    //<editor-fold desc=" 上午/下午时分 ">
     public static String dateFormatAHM = "aHH:mm";
-
+    //</editor-fold>
+    //<editor-fold desc=" 年月日 ">
     public static String dateFormatYMDE = "yyyy/MM/dd E";
     public static String dateFormatYMD2 = "yyyy/MM/dd";
-
+    //</editor-fold>
+    //<editor-fold desc=" 时间格式 ">
     private final static ThreadLocal< SimpleDateFormat > dateFormater = new ThreadLocal< SimpleDateFormat >() {
         @SuppressLint( "SimpleDateFormat" )
         @Override
@@ -113,11 +106,11 @@ public class TimeUtil {
             return new SimpleDateFormat( "yyyy-MM-dd" );
         }
     };
+    //</editor-fold>
 
+    //<editor-fold desc=" 将长时间格式字符串取月份 ">
 
     /**
-     * 将长时间格式字符串取月份
-     *
      * @param str
      * @return 注意月份是从0开始的, 比如当前7月，获得的month为6
      */
@@ -128,9 +121,10 @@ public class TimeUtil {
         return month + 1;
     }
 
+    //</editor-fold>
+
+    //<editor-fold desc=" 将长时间格式字符串取月份 ">
     /**
-     * 将长时间格式字符串取月份
-     *
      * @param str
      * @return 注意月份是从0开始的, 比如当前7月，获得的month为6
      */
@@ -140,10 +134,10 @@ public class TimeUtil {
         int month = cal.get( Calendar.DATE );
         return month;
     }
+    //</editor-fold>
 
+    //<editor-fold desc="  时间戳转特定格式时间 ">
     /**
-     * 时间戳转特定格式时间
-     *
      * @param dataFormat
      * @param timeStamp
      * @return
@@ -156,10 +150,10 @@ public class TimeUtil {
         SimpleDateFormat format = new SimpleDateFormat( dataFormat );
         return format.format( new Date( timeStamp ) );
     }
+    //</editor-fold>
 
+    //<editor-fold desc=" 将毫秒转换成秒 ">
     /**
-     * 将毫秒转换成秒
-     *
      * @param time
      * @return
      */
@@ -168,10 +162,10 @@ public class TimeUtil {
         date.setTime( time );
         return date.getSeconds();
     }
+    //</editor-fold>
 
+    //<editor-fold desc=" String类型的日期时间转化为Date类型 ">
     /**
-     * 描述：String类型的日期时间转化为Date类型.
-     *
      * @param strDate String形式的日期时间
      * @param format  格式化字符串，如："yyyy-MM-dd HH:mm:ss"
      * @return Date Date类型日期时间
@@ -186,10 +180,10 @@ public class TimeUtil {
         }
         return date;
     }
+    //</editor-fold>
 
+    //<editor-fold desc=" 获取偏移之后的Date ">
     /**
-     * 描述：获取偏移之后的Date.
-     *
      * @param date          日期时间
      * @param calendarField Calendar属性，对应offset的值， 如(Calendar.DATE,表示+offset天,Calendar.HOUR_OF_DAY,表示＋offset小时)
      * @param offset        偏移(值大于0,表示+,值小于0,表示－)
@@ -206,9 +200,10 @@ public class TimeUtil {
         return c.getTime();
     }
 
+    //</editor-fold>
+
+    //<editor-fold desc=" 获取指定日期时间的字符串(可偏移). ">
     /**
-     * 描述：获取指定日期时间的字符串(可偏移).
-     *
      * @param strDate       String形式的日期时间
      * @param format        格式化字符串，如："yyyy-MM-dd HH:mm:ss"
      * @param calendarField Calendar属性，对应offset的值， 如(Calendar.DATE,表示+offset天,Calendar.HOUR_OF_DAY,表示＋offset小时)
@@ -229,9 +224,10 @@ public class TimeUtil {
         return mDateTime;
     }
 
+    //</editor-fold>
+
+    //<editor-fold desc=" Date类型转化为String类型(可偏移). ">
     /**
-     * 描述：Date类型转化为String类型(可偏移).
-     *
      * @param date          the date
      * @param format        the format
      * @param calendarField the calendar field
@@ -252,9 +248,9 @@ public class TimeUtil {
         return strDate;
     }
 
-    /**
-     * from yyyy-MM-dd HH:mm:ss to MM-dd HH:mm
-     */
+    //</editor-fold>
+
+    //<editor-fold desc=" from yyyy-MM-dd HH:mm:ss to MM-dd HH:mm ">
     public static String formatDate( String before ) {
         String after;
         try {
@@ -266,9 +262,10 @@ public class TimeUtil {
         return after;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" Date类型转化为String类型. ">
     /**
-     * 描述：Date类型转化为String类型.
-     *
      * @param date   the date
      * @param format the format
      * @return String String类型日期时间
@@ -284,9 +281,10 @@ public class TimeUtil {
         return strDate;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取指定日期时间的字符串,用于导出想要的格式. ">
     /**
-     * 描述：获取指定日期时间的字符串,用于导出想要的格式.
-     *
      * @param strDate String形式的日期时间，必须为yyyy-MM-dd HH:mm:ss格式
      * @param format  输出格式化字符串，如："yyyy-MM-dd HH:mm:ss"
      * @return String 转换后的String类型的日期时间
@@ -305,9 +303,10 @@ public class TimeUtil {
         return mDateTime;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取milliseconds表示的日期时间的字符串. ">
     /**
-     * 描述：获取milliseconds表示的日期时间的字符串.
-     *
      * @param format 格式化字符串，如："yyyy-MM-dd HH:mm:ss"
      * @return String 日期时间字符串
      */
@@ -323,9 +322,10 @@ public class TimeUtil {
     }
 
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取表示当前日期时间的字符串. ">
     /**
-     * 描述：获取表示当前日期时间的字符串.
-     *
      * @param format 格式化字符串，如："yyyy-MM-dd HH:mm:ss"
      * @return String String类型的当前日期时间
      */
@@ -341,9 +341,10 @@ public class TimeUtil {
         return curDateTime;
 
     }
+    //</editor-fold>
 
+//<editor-fold desc=" 获取当前系统当天日期. ">
 
-    //获取当前系统当天日期
     public static String getCurrentDay() {
         String curDateTime = null;
         try {
@@ -356,8 +357,9 @@ public class TimeUtil {
         }
         return curDateTime;
     }
+    //</editor-fold>
 
-    //获取当前系统当天日期
+    //<editor-fold desc=" 获取当前系统当天日期. ">
     public static String getCurrentDay2() {
         String curDateTime = null;
         try {
@@ -371,7 +373,8 @@ public class TimeUtil {
         return curDateTime;
     }
 
-    //获取当前系统前后第几天
+    //<editor-fold desc=" 获取当前系统前后第几天. ">
+
     public static String getNextDay( int i ) {
         String curDateTime = null;
         try {
@@ -384,6 +387,7 @@ public class TimeUtil {
         }
         return curDateTime;
     }
+    //</editor-fold>
 
     //获取当前系统前后第几小时
     public static String getNextHour( int i ) {
@@ -399,9 +403,10 @@ public class TimeUtil {
         return curDateTime;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取表示当前日期时间的字符串(可偏移). ">
     /**
-     * 描述：获取表示当前日期时间的字符串(可偏移).
-     *
      * @param format        格式化字符串，如："yyyy-MM-dd HH:mm:ss"
      * @param calendarField Calendar属性，对应offset的值， 如(Calendar.DATE,表示+offset天,Calendar.HOUR_OF_DAY,表示＋offset小时)
      * @param offset        偏移(值大于0,表示+,值小于0,表示－)
@@ -421,9 +426,10 @@ public class TimeUtil {
 
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 计算两个日期所差的年数 ">
     /**
-     * 描述：计算两个日期所差的年数.
-     *
      * @param date1 第一个时间的毫秒表示
      * @param date2 第二个时间的毫秒表示
      * @return int 所差的天数
@@ -439,9 +445,10 @@ public class TimeUtil {
         return y1 - y2;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 计算两个日期所差的天数 ">
     /**
-     * 描述：计算两个日期所差的天数.
-     *
      * @param date1 第一个时间的毫秒表示
      * @param date2 第二个时间的毫秒表示
      * @return int 所差的天数
@@ -470,9 +477,10 @@ public class TimeUtil {
         return day;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 计算两个日期所差的小时数 ">
     /**
-     * 描述：计算两个日期所差的小时数.
-     *
      * @param date1 第一个时间的毫秒表示
      * @param date2 第二个时间的毫秒表示
      * @return int 所差的小时数
@@ -490,9 +498,10 @@ public class TimeUtil {
         return h;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 计算两个日期所差的分钟数 ">
     /**
-     * 描述：计算两个日期所差的分钟数.
-     *
      * @param date1 第一个时间的毫秒表示
      * @param date2 第二个时间的毫秒表示
      * @return int 所差的分钟数
@@ -510,6 +519,9 @@ public class TimeUtil {
         return m;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 将毫秒转换成秒 ">
     /**
      * 描述：获取本周一.
      *
@@ -520,9 +532,10 @@ public class TimeUtil {
         return getDayOfWeek( format, Calendar.MONDAY );
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取本周日 ">
     /**
-     * 描述：获取本周日.
-     *
      * @param format the format
      * @return String String类型日期时间
      */
@@ -530,9 +543,10 @@ public class TimeUtil {
         return getDayOfWeek( format, Calendar.SUNDAY );
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取本周的某一天 ">
     /**
-     * 描述：获取本周的某一天.
-     *
      * @param format        the format
      * @param calendarField the calendar field
      * @return String String类型日期时间
@@ -559,9 +573,10 @@ public class TimeUtil {
         return strDate;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取本月第一天 ">
     /**
-     * 描述：获取本月第一天.
-     *
      * @param format the format
      * @return String String类型日期时间
      */
@@ -579,9 +594,10 @@ public class TimeUtil {
         return strDate;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取本月最后一天 ">
     /**
-     * 描述：获取本月最后一天.
-     *
      * @param format the format
      * @return String String类型日期时间
      */
@@ -601,9 +617,10 @@ public class TimeUtil {
     }
 
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取表示当前日期的0点时间毫秒数 ">
     /**
-     * 描述：获取表示当前日期的0点时间毫秒数.
-     *
      * @return the first time of day
      */
     public static long getFirstTimeOfDay() {
@@ -617,9 +634,10 @@ public class TimeUtil {
         return -1;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 获取表示当前日期24点时间毫秒数 ">
     /**
-     * 描述：获取表示当前日期24点时间毫秒数.
-     *
      * @return the last time of day
      */
     public static long getLastTimeOfDay() {
@@ -633,10 +651,11 @@ public class TimeUtil {
         return -1;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 判断是否是闰年()
+//	 * <p>(year能被4整除 并且 不能被100整除) 或者 year能被400整除,则该年为闰年. ">
     /**
-     * 描述：判断是否是闰年()
-     * <p>(year能被4整除 并且 不能被100整除) 或者 year能被400整除,则该年为闰年.
-     *
      * @param year 年代（如2012）
      * @return boolean 是否为闰年
      */
@@ -648,9 +667,10 @@ public class TimeUtil {
         }
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 根据时间返回几天前或几分钟的描述. ">
     /**
-     * 描述：根据时间返回几天前或几分钟的描述.
-     *
      * @param strDate the str date
      * @return the string
      */
@@ -707,9 +727,10 @@ public class TimeUtil {
         return strDate;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 根据时间返回几天前的描述. ">
     /**
-     * 描述：根据时间返回几天前的描述.
-     *
      * @param strDate the str date
      * @return the string
      */
@@ -753,9 +774,10 @@ public class TimeUtil {
         return strDate;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 取指定日期为星期几 ">
     /**
-     * 取指定日期为星期几
-     *
      * @param strDate  指定日期
      * @param inFormat 指定日期格式
      * @return String   星期几
@@ -796,24 +818,25 @@ public class TimeUtil {
         return week;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 将字符串转位日期类型 ">
     /**
-     * 将字符串转位日期类型
-     *
      * @param sdate
      * @return
      */
     private static Date toDate( String sdate ) {
         try {
-            return dateFormater.get()
-                    .parse( sdate );
+            return dateFormater.get().parse( sdate );
         } catch ( ParseException e ) {
             return null;
         }
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 以友好的方式显示时间 ">
     /**
-     * 以友好的方式显示时间
-     *
      * @param ms
      * @return
      */
@@ -830,10 +853,8 @@ public class TimeUtil {
         Calendar cal = Calendar.getInstance();
 
         // 判断是否是同一天
-        String curDate = dateFormater2.get()
-                .format( cal.getTime() );
-        String paramDate = dateFormater2.get()
-                .format( time );
+        String curDate = dateFormater2.get().format( cal.getTime() );
+        String paramDate = dateFormater2.get().format( time );
         if ( curDate.equals( paramDate ) ) {
             int hour = ( int ) ( ( cal.getTimeInMillis() - time.getTime() ) / 3600000 );
             if ( hour == 0 ) {
@@ -853,8 +874,7 @@ public class TimeUtil {
         int days = ( int ) ( ct - lt );
         if ( days == 0 ) {
             int hour = ( int ) ( ( cal.getTimeInMillis() - time.getTime() ) / 3600000 );
-            if ( hour == 0 )
-                ftime = Math.max( ( cal.getTimeInMillis() - time.getTime() ) / 60000, 1 ) + "分钟前";
+            if ( hour == 0 ) ftime = Math.max( ( cal.getTimeInMillis() - time.getTime() ) / 60000, 1 ) + "分钟前";
             else ftime = hour + "小时前";
         } else if ( days == 1 ) {
             ftime = "昨天";
@@ -863,12 +883,14 @@ public class TimeUtil {
         } else if ( days > 2 && days <= 10 ) {
             ftime = days + "天前";
         } else if ( days > 10 ) {
-            ftime = dateFormater2.get()
-                    .format( time );
+            ftime = dateFormater2.get().format( time );
         }
         return ftime;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 将毫秒转换成秒 ">
     /**
      * 距离当前多少个小时
      *
@@ -899,9 +921,10 @@ public class TimeUtil {
         return ret;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 过了多少个小时 ">
     /**
-     * 过了多少个小时
-     *
      * @param dateStr
      * @return
      */
@@ -930,9 +953,10 @@ public class TimeUtil {
     }
 
 
+    //</editor-fold>
+
+//<editor-fold desc=" 判断给定字符串时间是否为今日 ">
     /**
-     * 判断给定字符串时间是否为今日
-     *
      * @param sdate
      * @return boolean
      */
@@ -941,10 +965,8 @@ public class TimeUtil {
         Date time = toDate( sdate );
         Date today = new Date();
         if ( time != null ) {
-            String nowDate = dateFormater2.get()
-                    .format( today );
-            String timeDate = dateFormater2.get()
-                    .format( time );
+            String nowDate = dateFormater2.get().format( today );
+            String timeDate = dateFormater2.get().format( time );
             if ( nowDate.equals( timeDate ) ) {
                 b = true;
             }
@@ -952,9 +974,10 @@ public class TimeUtil {
         return b;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 判断给定字符串时间是否为今日 ">
     /**
-     * 判断给定字符串时间是否为今日
-     *
      * @param sdate
      * @return boolean
      */
@@ -963,10 +986,8 @@ public class TimeUtil {
         Date time = new Date( sdate );
         Date today = new Date();
         if ( time != null ) {
-            String nowDate = dateFormater2.get()
-                    .format( today );
-            String timeDate = dateFormater2.get()
-                    .format( time );
+            String nowDate = dateFormater2.get().format( today );
+            String timeDate = dateFormater2.get().format( time );
             if ( nowDate.equals( timeDate ) ) {
                 b = true;
             }
@@ -974,9 +995,9 @@ public class TimeUtil {
         return b;
     }
 
-    /**
-     * 根据用户生日计算年龄
-     */
+    //</editor-fold>
+
+    //<editor-fold desc=" 根据用户生日计算年龄 ">
     public static int getAgeByBirthday( Date birthday ) {
         Calendar cal = Calendar.getInstance();
 
@@ -1009,9 +1030,10 @@ public class TimeUtil {
         return age;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 友好显示时间差 ">
     /**
-     * 友好显示时间差
-     *
      * @param diff 毫秒
      * @return
      */
@@ -1027,9 +1049,10 @@ public class TimeUtil {
         return "1秒";
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 友好的时间间隔 ">
     /**
-     * 友好的时间间隔
-     *
      * @param duration 秒
      * @return
      */
@@ -1043,9 +1066,10 @@ public class TimeUtil {
         return str;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 友好的时间间隔2 ">
     /**
-     * 友好的时间间隔2
-     *
      * @param duration 秒
      * @return
      */
@@ -1071,9 +1095,10 @@ public class TimeUtil {
         return str;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 通过日期来确定星座 ">
     /**
-     * 通过日期来确定星座
-     *
      * @param mouth
      * @param day
      * @return
@@ -1108,9 +1133,10 @@ public class TimeUtil {
         return starSeat;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 返回聊天时间 ">
     /**
-     * 返回聊天时间
-     *
      * @return
      */
     public static String getChatTimeForShow( long time ) {
@@ -1121,9 +1147,9 @@ public class TimeUtil {
         }
     }
 
-    /**
-     * 获取指定时间的毫秒值
-     */
+    //</editor-fold>
+
+    //<editor-fold desc=" 获取指定时间的毫秒值 ">
     public static long getDatelongMills( String fomat, String dateStr ) {
         SimpleDateFormat sdf = new SimpleDateFormat( fomat );
         Date date = new Date();
@@ -1136,9 +1162,10 @@ public class TimeUtil {
         return longDate;
     }
 
+    //</editor-fold>
+
+//<editor-fold desc=" 两个日期比较 ">
     /**
-     * 两个日期比较
-     *
      * @param DATE1
      * @param DATE2
      * @return
