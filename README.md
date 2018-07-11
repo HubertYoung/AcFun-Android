@@ -9,11 +9,11 @@ component_dynamicsoreview=false
 component_bankcard=false
 component_filter=false
 component_skeleton=false
-component_jsbridge=true
+component_jsbridge=false
 component_multiimageview=false
 component_gridpasswordview=false
 component_pickerview=false
-component_home=true
+component_home=false
 ```
 
 ## 相关项目
