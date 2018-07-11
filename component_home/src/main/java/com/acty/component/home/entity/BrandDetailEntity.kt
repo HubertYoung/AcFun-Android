@@ -53,9 +53,11 @@ data class BrotherCategory(
     val wapBannerUrl: String,
     val level: String,
     val type: Int,
-    val frontName: String,
+    var frontName: String = "",
     val addTime: String,
     val deleted: Boolean
+
+
 )
 
 data class ParentCategory(

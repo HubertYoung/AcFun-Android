@@ -42,7 +42,7 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 			arguments = Bundle().apply {
 				putString(ARG_PARAM1, param1)
 				putString(ARG_PARAM2, param2)
-				putString(ARG_PARAM3, frontName)
+				putString(ARG_PARAM3, frontName )
 			}
 		}
 	}
@@ -154,7 +154,7 @@ class BrandDetailListFragment : BaseFragment<BrandDetailListPresenterImp, BrandD
 
 	override fun showErrorTip(msg: String?) {
 		if (mAdapter.pageBean.refresh) {
-			brandDetailBodySection.state = Section.State.FAILED
+			brandDetailBodySection?.state = Section.State.FAILED
 		}
 		ToastUtil.showError(msg)
 	}

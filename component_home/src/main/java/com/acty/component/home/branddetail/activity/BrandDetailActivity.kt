@@ -3,6 +3,7 @@ package com.acty.component.home.branddetail.activity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.AppCompatTextView
+import android.support.v7.widget.Toolbar
 import android.view.View
 import com.acty.component.home.branddetail.adapter.BrandDetailAdapter
 import com.acty.component.home.branddetail.control.BrandDetailControl
@@ -21,7 +22,6 @@ import com.hubertyoung.common.utils.ToastUtil
 import com.kento.component_skeleton.skeleton.Skeleton
 import com.kento.component_skeleton.skeleton.ViewSkeletonScreen
 import kotlinx.android.synthetic.main.home_activity_brand_detail.*
-import kotlinx.android.synthetic.main.title_bar_common.*
 
 /**
  * <br>
@@ -37,6 +37,7 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 	private var brandDetailAdapter = BrandDetailAdapter(fm = supportFragmentManager, activity = this@BrandDetailActivity)
 	private var currentPosition: Int = 0
 	private var brandDetailID: String = ""
+	private lateinit var toolbarHead: Toolbar
 
 	override fun getLayoutId(): Int {
 		return R.layout.home_activity_brand_detail
@@ -63,7 +64,7 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 	}
 
 	private fun initAction() {
-		toolbar_head.setNavigationOnClickListener {
+		toolbarHead.setNavigationOnClickListener {
 			finish()
 		}
 	}
@@ -128,9 +129,10 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 	}
 
 	override fun initToolBar() {
-		toolbar_head.setBackgroundResource(R.color.white)
-		toolbar_head.title = ""
-		toolbar_head.visibility = View.VISIBLE
+		toolbarHead = findViewById<Toolbar>(R.id.toolbar_head)
+		toolbarHead.setBackgroundResource(R.color.white)
+		toolbarHead.title = ""
+		toolbarHead.visibility = View.VISIBLE
 	}
 
 	override fun showLoading(title: String?, type: Int) {

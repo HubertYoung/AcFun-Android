@@ -17,7 +17,7 @@ class BrandDetailAdapter(fm: FragmentManager?, var activity: BrandDetailActivity
 	private var fragments: LinkedList<BaseFragment<*,*>> = LinkedList()
 
 	override fun getItem(position: Int): Fragment {
-		val fragment = BrandDetailListFragment.newInstance(data[position].id.toString(), data[position].name, data[position].frontName)
+		val fragment = BrandDetailListFragment.newInstance(data[position].id.toString(), data[position].name, "" )
 		fragments.add(fragment)
 		return fragment
 	}

@@ -22,7 +22,9 @@ import java.util.*
  * @since:V1.0
  * @desc:com.acty.component.home.branddetail.section
  */
-class BrandDetailBodySection(var activity: BaseActivity<*, *>) : Section(SectionParameters.Builder(R.layout.home_item_floor_goods_body).headerResourceId(R.layout.home_brand_detail_head_body).build()) {
+class BrandDetailBodySection(var activity: BaseActivity<*, *>) : Section(SectionParameters.Builder(R.layout.home_item_floor_goods_body).failedResourceId(R.layout.common_section_error).headerResourceId(R.layout
+		.home_brand_detail_head_body).build
+()) {
 
 	private var data: List<Goods> = ArrayList()
 	private var name: String = ""
