@@ -14,7 +14,7 @@ import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ProgressBar;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 import com.hubertyoung.common.utils.DisplayUtil;
 
 import java.lang.annotation.Retention;

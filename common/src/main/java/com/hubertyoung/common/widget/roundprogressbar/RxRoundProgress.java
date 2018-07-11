@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 
 
 /**

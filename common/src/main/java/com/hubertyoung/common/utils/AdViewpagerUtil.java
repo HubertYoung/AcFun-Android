@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.acty.litemall.R;
 import com.hubertyoung.common.ImageLoaderUtils;
+import com.hubertyoung.common.R;
 
 
 

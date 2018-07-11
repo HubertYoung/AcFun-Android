@@ -21,7 +21,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 
 
 /*<com.snad.loadingbutton.LoadingButton

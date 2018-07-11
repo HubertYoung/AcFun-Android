@@ -18,7 +18,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 import com.hubertyoung.common.utils.DisplayUtil;
 
 import java.lang.annotation.Retention;
@@ -70,7 +70,7 @@ public class ShapeImageView extends AppCompatImageView {
     private void init(Context context, AttributeSet attrs) {
         if (attrs != null) {
             TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ShapeImageViewStyle);
-            borderWidth = array.getDimensionPixelOffset(R.styleable.ShapeImageViewStyle_siv_border_width, borderWidth);
+            borderWidth = array.getDimensionPixelOffset( R.styleable.ShapeImageViewStyle_siv_border_width, borderWidth);
             borderColor = array.getColor(R.styleable.ShapeImageViewStyle_siv_border_color, borderColor);
             radius = array.getDimensionPixelOffset(R.styleable.ShapeImageViewStyle_siv_radius, radius);
             pressedAlpha = array.getFloat(R.styleable.ShapeImageViewStyle_siv_pressed_alpha, pressedAlpha);

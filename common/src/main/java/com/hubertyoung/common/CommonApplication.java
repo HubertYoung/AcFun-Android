@@ -5,8 +5,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 
-import com.acty.litemall.BuildConfig;
-import com.acty.litemall.R;
 import com.facebook.stetho.Stetho;
 import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.http.HttpUtils;

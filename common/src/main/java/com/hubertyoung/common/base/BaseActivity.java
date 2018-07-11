@@ -18,9 +18,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
-import com.acty.litemall.BuildConfig;
-import com.acty.litemall.R;
 import com.facebook.stetho.common.LogUtil;
+import com.hubertyoung.common.BuildConfig;
+import com.hubertyoung.common.R;
 import com.hubertyoung.common.baserx.RxManager;
 import com.hubertyoung.common.utils.AppManager;
 import com.hubertyoung.common.utils.BarUtils;

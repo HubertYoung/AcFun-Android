@@ -7,9 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.acty.litemall.R;
 import com.hubertyoung.common.CommonApplication;
-
+import com.hubertyoung.common.R;
 
 
 /**

@@ -3,7 +3,7 @@ package com.hubertyoung.common.net.interceptor;
 
 import android.support.annotation.NonNull;
 
-import com.acty.litemall.BuildConfig;
+import com.hubertyoung.common.BuildConfig;
 import com.hubertyoung.common.utils.CommonLog;
 
 import java.io.IOException;

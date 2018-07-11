@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 
 
 public abstract class RxBaseRoundProgressBar extends LinearLayout {

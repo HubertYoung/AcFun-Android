@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 
 
 /**

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 import com.hubertyoung.common.widget.roundprogressbar.common.RxBaseRoundProgressBar;
 
 

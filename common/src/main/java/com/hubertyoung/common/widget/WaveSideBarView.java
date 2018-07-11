@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 
 import java.util.Arrays;
 import java.util.List;

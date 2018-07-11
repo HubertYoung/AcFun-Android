@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 import com.hubertyoung.common.utils.DisplayUtil;
 
 

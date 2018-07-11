@@ -5,7 +5,7 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.acty.litemall.BuildConfig;
+import com.hubertyoung.common.BuildConfig;
 
 import org.json.JSONObject;
 

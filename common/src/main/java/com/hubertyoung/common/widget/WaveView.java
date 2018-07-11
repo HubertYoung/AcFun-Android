@@ -11,7 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.acty.litemall.R;
+import com.hubertyoung.common.R;
 
 import java.util.Random;
 
