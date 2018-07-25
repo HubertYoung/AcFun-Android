@@ -48,8 +48,8 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 	}
 
 	override fun doBeforeSetContentView() {
-		BarUtils.statusBarLightMode(this, true, 0f)
-		BarUtils.immersiveStatusBar(window, 0f)
+		BarUtils.statusBarLightMode(this, true)
+//		BarUtils.immersiveStatusBar(window, 0f)
 	}
 
 	override fun initView(savedInstanceState: Bundle?) {

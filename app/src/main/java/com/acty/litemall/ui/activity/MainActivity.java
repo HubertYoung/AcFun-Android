@@ -63,8 +63,7 @@ public class MainActivity extends BaseActivity {
 
 	@Override
 	public void doBeforeSetContentView() {
-		BarUtils.statusBarLightMode( this, true, 0 );
-		BarUtils.immersiveStatusBar( this.getWindow(), 0 );
+		BarUtils.statusBarLightMode( this, true );
 	}
 
 	@Override
@@ -77,7 +76,7 @@ public class MainActivity extends BaseActivity {
 //			// 跳转用户组件-登录界面
 //			ToastUtil.showWarning("请先登录");
 //			CC.obtainBuilder("ComponentUser")
-//					.setActionName("toLoginActivityClearTask")
+//					.setActionName("toLo1ginActivityClearTask")
 //					.build()
 //					.call();
 //		} else {
