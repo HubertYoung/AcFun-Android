@@ -51,9 +51,6 @@ dependencies {
     //    compile "com.android.support:appcompat-v7:"+props.getAt("ANDROID_BUILD_SDK_TOOLS_VERSION")//版本 23以上（必须）
 //    implementation "ch.acra:acra-http:${props["ACRAVERSION"]}"
 //    implementation "ch.acra:acra-toast:${props["ACRAVERSION"]}"
-
-    api 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
-
 }
 repositories {
     mavenCentral()
