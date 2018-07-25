@@ -87,8 +87,6 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 		if ( isRegisterEvent() ) {
 			mRxManager.mRxBus.register( this );
 		}
-		//设置昼夜主题
-		initTheme();
 		// 把actvity放到application栈中管理
 		AppManager.getAppManager()
 				  .addActivity( this );
@@ -150,13 +148,6 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 	 */
 	protected boolean isRegisterEvent() {
 		return false;
-	}
-
-	/**
-	 * 设置主题
-	 */
-	private void initTheme() {
-//        ChangeModeController.setTheme(this, R.style.DayTheme, R.style.NightTheme);
 	}
 
 	/**
