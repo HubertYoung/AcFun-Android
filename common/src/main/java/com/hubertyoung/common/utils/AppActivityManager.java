@@ -9,22 +9,22 @@ import java.util.Stack;
 /**
  * activity管理
  */
-public class AppManager {
+public class AppActivityManager {
 	private static Stack< Activity > activityStack;
-	private volatile static AppManager instance;
+	private volatile static AppActivityManager instance;
 
-	private AppManager() {
+	private AppActivityManager() {
 
 	}
 
 	/**
 	 * 单一实例
 	 */
-	public static AppManager getAppManager() {
+	public static AppActivityManager getAppManager() {
 		if ( instance == null ) {
-			synchronized ( AppManager.class ) {
+			synchronized ( AppActivityManager.class ) {
 				if ( instance == null ) {
-					instance = new AppManager();
+					instance = new AppActivityManager();
 					instance.activityStack = new Stack();
 				}
 			}

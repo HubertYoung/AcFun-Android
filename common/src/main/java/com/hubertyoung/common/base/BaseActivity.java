@@ -22,7 +22,7 @@ import com.facebook.stetho.common.LogUtil;
 import com.hubertyoung.common.BuildConfig;
 import com.hubertyoung.common.R;
 import com.hubertyoung.common.baserx.RxManager;
-import com.hubertyoung.common.utils.AppManager;
+import com.hubertyoung.common.utils.AppActivityManager;
 import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.StatusBarCompat;
@@ -88,7 +88,7 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 			mRxManager.mRxBus.register( this );
 		}
 		// 把actvity放到application栈中管理
-		AppManager.getAppManager()
+		AppActivityManager.getAppManager()
 				  .addActivity( this );
 		// 无标题
 		requestWindowFeature( Window.FEATURE_NO_TITLE );
@@ -289,7 +289,7 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 			mRxManager.clear();
 		}
 		if ( !isConfigChange ) {
-			AppManager.getAppManager()
+			AppActivityManager.getAppManager()
 					  .finishActivity( this );
 		}
 		if ( bind != null ) bind.unbind();
