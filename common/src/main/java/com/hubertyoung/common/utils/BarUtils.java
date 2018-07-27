@@ -11,29 +11,24 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
-import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import com.hubertyoung.common.CommonApplication;
+import com.hubertyoung.common.R;
 import com.hubertyoung.common.os.OSUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.UUID;
 
 /**
  * <pre>
@@ -59,7 +54,7 @@ public final class BarUtils {
 	 *
 	 * @return 状态栏高度
 	 */
-	private static int getStatusBarHeight() {
+	public static int getStatusBarHeight() {
 		int result = 24;
 		int resId = CommonApplication.getAppContext().getResources().getIdentifier( "status_bar_height", "dimen", "android" );
 		if ( resId > 0 ) {
@@ -71,33 +66,67 @@ public final class BarUtils {
 	}
 
 	public static void setStatusBarTranslucent( Window window, boolean translucent ) {
-		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
-			View decorView = window.getDecorView();
-			if ( translucent ) {
-				decorView.setOnApplyWindowInsetsListener( new View.OnApplyWindowInsetsListener() {
-					@TargetApi( Build.VERSION_CODES.LOLLIPOP )
-					@Override
-					public WindowInsets onApplyWindowInsets( View v, WindowInsets insets ) {
-						WindowInsets defaultInsets = v.onApplyWindowInsets( insets );
-						return defaultInsets.replaceSystemWindowInsets( defaultInsets.getSystemWindowInsetLeft(), 0, defaultInsets.getSystemWindowInsetRight(), defaultInsets
-								.getSystemWindowInsetBottom() );
-					}
-				} );
-			} else {
-				decorView.setOnApplyWindowInsetsListener( null );
-			}
-
-			ViewCompat.requestApplyInsets( decorView );
-		} else if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT ) {
-			if ( translucent ) {
+//		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
+//			View decorView = window.getDecorView();
+//			if ( translucent ) {
+//				decorView.setOnApplyWindowInsetsListener( new View.OnApplyWindowInsetsListener() {
+//					@TargetApi( Build.VERSION_CODES.LOLLIPOP )
+//					@Override
+//					public WindowInsets onApplyWindowInsets( View v, WindowInsets insets ) {
+//						WindowInsets defaultInsets = v.onApplyWindowInsets( insets );
+//						return defaultInsets.replaceSystemWindowInsets( defaultInsets.getSystemWindowInsetLeft(), 0, defaultInsets.getSystemWindowInsetRight(), defaultInsets
+//								.getSystemWindowInsetBottom() );
+//					}
+//				} );
+//			} else {
+//				decorView.setOnApplyWindowInsetsListener( null );
+//			}
+//
+//			ViewCompat.requestApplyInsets( decorView );
+//		} else if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT ) {
+//			if ( translucent ) {
+//				window.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+//			} else {
+//				window.clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+//			}
+//			ViewCompat.requestApplyInsets( window.getDecorView() );
+//		}
+		if ( OSUtil.isMiui() || OSUtil.isFlyme() ) {
+			if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
+				transparentStatusBarAbove21( window, translucent );
+			} else if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT ) {
 				window.addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-			} else {
-				window.clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
 			}
-			ViewCompat.requestApplyInsets( window.getDecorView() );
+		} else if ( ( OSUtil.isOppo() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) ) {
+			transparentStatusBarAbove21( window, translucent );
+		} else if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {
+			transparentStatusBarAbove21( window, translucent );
 		}
 	}
 
+	@TargetApi( 21 )
+	private static void transparentStatusBarAbove21( Window window, boolean translucent ) {
+		if ( translucent ) {
+			window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
+			window.clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+			window.getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE );
+			window.setStatusBarColor( Color.TRANSPARENT );
+		} else {
+			window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
+			window.clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
+			window.getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE );
+			window.setStatusBarColor( getColorPrimary(window));
+		}
+	}
+	/**
+	 * 获取主题颜色
+	 * @return
+	 */
+	public static int getColorPrimary( Window window ){
+		TypedValue typedValue = new  TypedValue();
+		window.getContext().getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
+		return typedValue.data;
+	}
 	/**
 	 * 设置状态栏颜色
 	 *
@@ -107,6 +136,10 @@ public final class BarUtils {
 	 */
 	public static void setStatusBarColor( @NonNull final Activity activity, @ColorInt int color, boolean animated ) {
 		Window window = activity.getWindow();
+		setStatusBarColor( window, color, animated );
+	}
+
+	public static void setStatusBarColor( @NonNull Window window, @ColorInt int color, boolean animated ) {
 		if ( ( window.getAttributes().flags & WindowManager.LayoutParams.FLAG_FULLSCREEN ) == WindowManager.LayoutParams.FLAG_FULLSCREEN ) {
 			color = Color.TRANSPARENT;
 		}
@@ -174,32 +207,46 @@ public final class BarUtils {
 	 * 适配4.4以上版本MIUIV、Flyme和6.0以上版本其他Android
 	 *
 	 * @param activity
-	 * @return 1:MIUUI 2:Flyme 3:android6.0
 	 */
-	public static int statusBarLightMode( Activity activity, boolean dark ) {
-		int result = 0;
-		if ( OSUtil.isFlyme4Later() ) {
-			darkModeForFlyme4( activity.getWindow(), dark );
-//			immersive( activity.getWindow(), color, alpha );
-			result = 1;
-		} else if ( OSUtil.isMIUI6Later() ) {
-			MIUISetStatusBarLightMode( activity, dark );
-//			immersive( activity.getWindow(), color, alpha );
-			result = 2;
-		} else if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {
-			darkModeForM( activity.getWindow(), dark );
-//			immersive( activity.getWindow(), color, alpha );
-		} else if ( Build.VERSION.SDK_INT >= 19 ) {
-			activity.getWindow().addFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-//			setTranslucentView( ( ViewGroup ) activity.getWindow().getDecorView(), color, alpha );
-//			immersive( activity.getWindow(), color, alpha );
-			result = 3;
+	public static void statusBarLightMode( Activity activity, boolean dark ) {
+		Window window = activity.getWindow();
+		statusBarLightMode( window, dark );
+	}
+
+	public static void statusBarLightMode( Window window, boolean dark ) {
+		if ( OSUtil.isMiui() ) {
+			setMIUIStatusBarDarkMode( window, dark );
+		} else if ( OSUtil.isFlyme() ) {
+			setFlymeStatusBarDarkMode( window, dark );
+		} else if ( OSUtil.isOppo() ) {
+			setOppoStatusBarDarkMode( window, dark );
 		} else {
-//			immersive( activity.getWindow(), color, alpha );
-			result = 4;
+			setStatusBarDarkMode( window, dark );
 		}
-//		setTranslucentView( ( ViewGroup ) activity.getWindow().getDecorView(), color, alpha );
-		return result;
+	}
+
+	private static final int SYSTEM_UI_FLAG_OP_STATUS_BAR_TINT = 0x00000010;
+
+	private static void setOppoStatusBarDarkMode( Window window, boolean darkMode ) {
+		int vis = window.getDecorView().getSystemUiVisibility();
+		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {
+			if ( darkMode ) {
+				vis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+			} else {
+				vis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+			}
+		} else if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
+			if ( darkMode ) {
+				vis |= SYSTEM_UI_FLAG_OP_STATUS_BAR_TINT;
+			} else {
+				vis &= ~SYSTEM_UI_FLAG_OP_STATUS_BAR_TINT;
+			}
+		}
+		window.getDecorView().setSystemUiVisibility( vis );
+	}
+
+	private static void setFlymeStatusBarDarkMode( Window window, boolean darkMode ) {
+		FlymeStatusBarUtils.setStatusBarDarkIcon( window, darkMode );
 	}
 
 	/**
@@ -251,33 +298,33 @@ public final class BarUtils {
 	/**
 	 * 需要MIUIV6以上
 	 *
-	 * @param activity
-	 * @param dark     是否把状态栏文字及图标颜色设置为深色
+	 * @param window
+	 * @param darkMode 是否把状态栏文字及图标颜色设置为深色
 	 * @return boolean 成功执行返回true
 	 */
-	private static boolean MIUISetStatusBarLightMode( Activity activity, boolean dark ) {
-		boolean result = false;
-		Window window = activity.getWindow();
-		if ( window != null ) {
-			Class clazz = window.getClass();
+	private static void setMIUIStatusBarDarkMode( Window window, boolean darkMode ) {
+		if ( Build.VERSION.SDK_INT < Build.VERSION_CODES.M ) {
+			Class< ? extends Window > clazz = window.getClass();
 			try {
-				int darkModeFlag = 0;
 				Class< ? > layoutParams = Class.forName( "android.view.MiuiWindowManager$LayoutParams" );
 				Field field = layoutParams.getField( "EXTRA_FLAG_STATUS_BAR_DARK_MODE" );
-				darkModeFlag = field.getInt( layoutParams );
+				int darkModeFlag = field.getInt( layoutParams );
 				Method extraFlagField = clazz.getMethod( "setExtraFlags", int.class, int.class );
-				extraFlagField.invoke( window, dark ? darkModeFlag : 0, darkModeFlag );
-				result = true;
-
-				if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {
-					//开发版 7.7.13 及以后版本采用了系统API，旧方法无效但不会报错，所以两个方式都要加上
-					activity.getWindow().getDecorView().setSystemUiVisibility( dark ? View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR : View.SYSTEM_UI_FLAG_VISIBLE );
-				}
+				extraFlagField.invoke( window, darkMode ? darkModeFlag : 0, darkModeFlag );
 			} catch ( Exception e ) {
-				CommonLog.logi( "tag", e.getMessage().toString() );
 			}
 		}
-		return result;
+		setStatusBarDarkMode( window, darkMode );
+	}
+
+	private static void setStatusBarDarkMode( Window window, boolean darkMode ) {
+		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {
+			if ( darkMode ) {
+				window.getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN );
+			} else {
+				window.getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN );
+			}
+		}
 	}
 
 	public static void setStatusBarHidden( Activity activity, boolean hidden ) {
@@ -336,6 +383,19 @@ public final class BarUtils {
 				view.setPadding( view.getPaddingLeft(), 0, view.getPaddingRight(), view.getPaddingBottom() );
 				view.getLayoutParams().height -= getStatusBarHeight();
 			}
+		}
+	}
+
+	/**
+	 * 计算View Id
+	 *
+	 * @return
+	 */
+	public static int generateViewId() {
+		if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 ) {
+			return View.generateViewId();
+		} else {
+			return UUID.randomUUID().hashCode();
 		}
 	}
 }

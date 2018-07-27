@@ -2,6 +2,7 @@ package com.hubertyoung.common.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -36,9 +37,7 @@ public class DisplayUtil {
 	 * @return
 	 */
 	public static int px2dip( float pxValue ) {
-		final float scale = CommonApplication.getAppContext()
-										   .getResources()
-										   .getDisplayMetrics().density;
+		final float scale = CommonApplication.getAppContext().getResources().getDisplayMetrics().density;
 		return ( int ) ( pxValue / scale + 0.5f );
 	}
 
@@ -49,9 +48,7 @@ public class DisplayUtil {
 	 * @return
 	 */
 	public static int dip2px( float dipValue ) {
-		final float scale = CommonApplication.getAppContext()
-										   .getResources()
-										   .getDisplayMetrics().density;
+		final float scale = CommonApplication.getAppContext().getResources().getDisplayMetrics().density;
 		return ( int ) ( dipValue * scale + 0.5f );
 	}
 
@@ -62,9 +59,7 @@ public class DisplayUtil {
 	 * @return
 	 */
 	public static int px2sp( float pxValue ) {
-		final float fontScale = CommonApplication.getAppContext()
-											   .getResources()
-											   .getDisplayMetrics().scaledDensity;
+		final float fontScale = CommonApplication.getAppContext().getResources().getDisplayMetrics().scaledDensity;
 		return ( int ) ( pxValue / fontScale + 0.5f );
 	}
 
@@ -75,9 +70,7 @@ public class DisplayUtil {
 	 * @return
 	 */
 	public static int sp2px( float spValue ) {
-		final float fontScale = CommonApplication.getAppContext()
-											   .getResources()
-											   .getDisplayMetrics().scaledDensity;
+		final float fontScale = CommonApplication.getAppContext().getResources().getDisplayMetrics().scaledDensity;
 		return ( int ) ( spValue * fontScale + 0.5f );
 	}
 
@@ -92,8 +85,7 @@ public class DisplayUtil {
 		vto2.addOnGlobalLayoutListener( new OnGlobalLayoutListener() {
 			@Override
 			public void onGlobalLayout() {
-				view.getViewTreeObserver()
-					.removeGlobalOnLayoutListener( this );
+				view.getViewTreeObserver().removeGlobalOnLayoutListener( this );
 			}
 		} );
 		return new int[]{ view.getWidth(), view.getHeight() };
@@ -110,8 +102,7 @@ public class DisplayUtil {
 		vto2.addOnGlobalLayoutListener( new OnGlobalLayoutListener() {
 			@Override
 			public void onGlobalLayout() {
-				view.getViewTreeObserver()
-					.removeGlobalOnLayoutListener( this );
+				view.getViewTreeObserver().removeGlobalOnLayoutListener( this );
 			}
 		} );
 		return view.getHeight();
@@ -128,8 +119,7 @@ public class DisplayUtil {
 		vto2.addOnGlobalLayoutListener( new OnGlobalLayoutListener() {
 			@Override
 			public void onGlobalLayout() {
-				view.getViewTreeObserver()
-					.removeGlobalOnLayoutListener( this );
+				view.getViewTreeObserver().removeGlobalOnLayoutListener( this );
 			}
 		} );
 		return view.getWidth();
@@ -144,8 +134,7 @@ public class DisplayUtil {
 	public static int getScreenWidth( Context context ) {
 		WindowManager wm = ( WindowManager ) context.getSystemService( Context.WINDOW_SERVICE );
 		DisplayMetrics outMetrics = new DisplayMetrics();
-		wm.getDefaultDisplay()
-		  .getMetrics( outMetrics );
+		wm.getDefaultDisplay().getMetrics( outMetrics );
 		return outMetrics.widthPixels;
 	}
 
@@ -158,33 +147,10 @@ public class DisplayUtil {
 	public static int getScreenHeight( Context context ) {
 		WindowManager wm = ( WindowManager ) context.getSystemService( Context.WINDOW_SERVICE );
 		DisplayMetrics outMetrics = new DisplayMetrics();
-		wm.getDefaultDisplay()
-		  .getMetrics( outMetrics );
+		wm.getDefaultDisplay().getMetrics( outMetrics );
 		return outMetrics.heightPixels;
 	}
 
-	/**
-	 * 获得状态栏的高度
-	 * 注意：该方法只能在Activity类中使用，在测试模式下失败
-	 *
-	 * @param context
-	 * @return
-	 */
-	public static int getStatusBarHeight( Context context ) {
-		int statusBarHeight = -1;
-		try {
-			Class< ? > clazz = Class.forName( "com.android.internal.R$dimen" );
-			Object object = clazz.newInstance();
-			int height = Integer.parseInt( clazz.getField( "status_bar_height" )
-												.get( object )
-												.toString() );
-			statusBarHeight = context.getResources()
-									 .getDimensionPixelSize( height );
-		} catch ( Exception e ) {
-			e.printStackTrace();
-		}
-		return statusBarHeight;
-	}
 
 	/**
 	 * 获取控件的宽
@@ -248,8 +214,7 @@ public class DisplayUtil {
 	 * @return Bitmap
 	 */
 	public static Bitmap snapShotWithStatusBar( Activity activity ) {
-		View view = activity.getWindow()
-							.getDecorView();
+		View view = activity.getWindow().getDecorView();
 		view.setDrawingCacheEnabled( true );
 		view.buildDrawingCache();
 		Bitmap bmp = view.getDrawingCache();
@@ -268,15 +233,12 @@ public class DisplayUtil {
 	 * @return Bitmap
 	 */
 	public static Bitmap snapShotWithoutStatusBar( Activity activity ) {
-		View view = activity.getWindow()
-							.getDecorView();
+		View view = activity.getWindow().getDecorView();
 		view.setDrawingCacheEnabled( true );
 		view.buildDrawingCache();
 		Bitmap bmp = view.getDrawingCache();
 		Rect frame = new Rect();
-		activity.getWindow()
-				.getDecorView()
-				.getWindowVisibleDisplayFrame( frame );
+		activity.getWindow().getDecorView().getWindowVisibleDisplayFrame( frame );
 		int statusBarHeight = frame.top;
 
 		int width = getScreenWidth( activity );
@@ -303,10 +265,31 @@ public class DisplayUtil {
 	public static void setDefKeyboardHeight( Context context, int height ) {
 		if ( sSDefKeyboardHeight != height ) {
 			final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences( context );
-			settings.edit()
-					.putInt( EXTRA_DEF_KEYBOARDHEIGHT, height )
-					.apply();
+			settings.edit().putInt( EXTRA_DEF_KEYBOARDHEIGHT, height ).apply();
 		}
 		sSDefKeyboardHeight = height;
+	}
+
+	/**
+	 * 获取屏幕大小
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static int[] getScreenPixelSize( Context context ) {
+		DisplayMetrics metrics = getDisplayMetrics( context );
+		return new int[]{ metrics.widthPixels, metrics.heightPixels };
+	}
+
+	private static DisplayMetrics getDisplayMetrics( Context context ) {
+		Activity activity;
+		if ( !( context instanceof Activity ) && context instanceof ContextWrapper ) {
+			activity = ( Activity ) ( ( ContextWrapper ) context ).getBaseContext();
+		} else {
+			activity = ( Activity ) context;
+		}
+		DisplayMetrics metrics = new DisplayMetrics();
+		activity.getWindowManager().getDefaultDisplay().getMetrics( metrics );
+		return metrics;
 	}
 }

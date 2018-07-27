@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LaunchActivity">
+
+    <com.hubertyoung.titilebar.widget.CommonTitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        titlebar:statusBarMode="light"
+        titlebar:centerText="通用标题栏"
+        titlebar:centerTextColor="#ffffff"
+        titlebar:bottomShadowHeight="0dp"
+        titlebar:showBottomLine="false"
+        titlebar:centerType="textView"
+        titlebar:rightType="textView"
+        titlebar:rightText="切换图标颜色"
+        titlebar:rightTextColor="#ffffff" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titlebar"
+        android:dividerHeight="1px"
+        android:overScrollMode="never" />
+</RelativeLayout>

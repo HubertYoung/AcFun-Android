@@ -17,5 +17,6 @@ include ':app',
 //        ':component_gridpasswordview',
 //        ':component_pickerview',
         ':component_bar',
+        ':component_titlebar',
         ':common_res',
         ':common'

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/selected_search"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp"
+        android:src="@mipmap/search" />
+
+    <ImageView
+        android:id="@+id/selected_im"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="12dp"
+        android:layout_toRightOf="@id/selected_search"
+        android:src="@mipmap/im_msgs" />
+
+    <TextView
+        android:id="@+id/tv_msg_num"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:layout_alignRight="@id/selected_im"
+        android:layout_alignTop="@id/selected_im"
+        android:layout_marginRight="-3dp"
+        android:layout_marginTop="-3dp"
+        android:background="@drawable/msg_num_shape"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="99"
+        android:textColor="#ffffff"
+        android:textSize="9dp" />
+</RelativeLayout>

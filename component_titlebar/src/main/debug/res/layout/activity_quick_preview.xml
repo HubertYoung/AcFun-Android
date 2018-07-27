@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hubertyoung.titilebar.widget.CommonTitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        titlebar:centerText="标题栏"
+        titlebar:centerType="textView"
+        titlebar:leftDrawable="@drawable/comm_titlebar_back_normal"
+        titlebar:leftDrawablePadding="0dp"
+        titlebar:leftText="返回"
+        titlebar:leftType="textView" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eeeeee"
+        android:overScrollMode="never">
+
+        <LinearLayout xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerText="标题栏"
+                titlebar:centerType="textView"
+                titlebar:fillStatusBar="false"
+                titlebar:leftType="imageButton" />
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerText="标题栏"
+                titlebar:centerType="textView"
+                titlebar:fillStatusBar="false"
+                titlebar:leftCustomView="@layout/layout_custom_left"
+                titlebar:leftType="customView" />
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:id="@+id/titlebar_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerCustomView="@layout/layout_custom_left"
+                titlebar:centerText="标题栏"
+                titlebar:centerType="textView"
+                titlebar:fillStatusBar="false"
+                titlebar:rightText="确定"
+                titlebar:rightType="textView" />
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerCustomView="@layout/layout_custom_left"
+                titlebar:centerText="标题栏"
+                titlebar:centerType="textView"
+                titlebar:fillStatusBar="false"
+                titlebar:rightImageResource="@mipmap/selected_search"
+                titlebar:rightType="imageButton" />
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerText="标题栏"
+                titlebar:centerType="textView"
+                titlebar:fillStatusBar="false"
+                titlebar:rightCustomView="@layout/layout_custom_right"
+                titlebar:rightType="customView" />
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerText="功能说明：商品图片、商品信息、店铺信息、物流信息、猜你喜欢、商品详情等信息的展示"
+                titlebar:centerType="textView"
+                titlebar:fillStatusBar="false"
+                titlebar:leftType="imageButton"
+                titlebar:rightText="确定"
+                titlebar:rightType="textView" />
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerSubText="无线研发部"
+                titlebar:centerText="标题栏"
+                titlebar:centerType="textView"
+                titlebar:fillStatusBar="false"
+                titlebar:leftType="imageButton"
+                titlebar:rightText="确定"
+                titlebar:rightType="textView" />
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerCustomView="@layout/layout_custom_left"
+                titlebar:centerType="customView"
+                titlebar:fillStatusBar="false"
+                titlebar:leftType="imageButton"
+                titlebar:rightText="确定"
+                titlebar:rightType="textView" />
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerType="searchView"
+                titlebar:fillStatusBar="false"
+                titlebar:leftType="imageButton"
+                titlebar:rightText="确定"
+                titlebar:rightType="textView" />
+
+            <com.hubertyoung.titilebar.widget.CommonTitleBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                titlebar:centerType="searchView"
+                titlebar:fillStatusBar="false"
+                titlebar:leftCustomView="@layout/layout_custom_left"
+                titlebar:leftType="customView"
+                titlebar:rightCustomView="@layout/layout_custom_right_simple"
+                titlebar:rightType="customView" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

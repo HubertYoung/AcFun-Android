@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+             android:fitsSystemWindows="false"
+    tools:context="titlebar.MainActivity">
+
+
+    <titlebar.GScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/layout_fill" />
+    </titlebar.GScrollView>
+
+    <com.hubertyoung.titilebar.widget.CommonTitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        titlebar:centerText="标题栏"
+        titlebar:centerType="textView"
+        titlebar:leftDrawable="@drawable/comm_titlebar_back_normal"
+        titlebar:leftDrawablePadding="0dp"
+        titlebar:leftText="返回"
+        titlebar:leftType="textView" />
+</FrameLayout>

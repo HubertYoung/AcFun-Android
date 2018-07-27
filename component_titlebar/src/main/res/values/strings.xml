@@ -1,0 +1,4 @@
+<resources>
+    <string name="titlebar_app_name">标题栏</string>
+    <string name="titlebar_search_hint">Search</string>
+</resources>
