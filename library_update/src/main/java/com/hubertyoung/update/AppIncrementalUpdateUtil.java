@@ -1,9 +1,5 @@
 package com.hubertyoung.update;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
 import android.util.Log;
 
 import com.hubertyoung.common.utils.AppUtils;
@@ -30,31 +26,29 @@ import io.reactivex.schedulers.Schedulers;
 public class AppIncrementalUpdateUtil {
 	private final String TAG = getClass().getSimpleName();
 	private static AppIncrementalUpdateUtil mAppUtil;
-	private Context mContext;
 
-	private AppIncrementalUpdateUtil( Context context ) {
-		mContext = context;
+	private AppIncrementalUpdateUtil() {
 	}
 
-	public static AppIncrementalUpdateUtil get( Context context ) {
+	public static AppIncrementalUpdateUtil get() {
 		if ( mAppUtil == null ) {
 			synchronized ( AppIncrementalUpdateUtil.class ) {
 				if ( mAppUtil == null ) {
-					mAppUtil = new AppIncrementalUpdateUtil( context );
+					mAppUtil = new AppIncrementalUpdateUtil();
 				}
 			}
 		}
 		return mAppUtil;
 	}
 
-	public void incrementalInstall( String newApk, String patch ) {
+	public void incrementalInstall( String oldApk, String newApk, String patch ) {
 		final File newApkFile = new File( newApk );
-		final File outApkFile = new File( extract() );
+		final File oldApkFile = new File( oldApk );
 		final File patchFile = new File( patch );
-		Observable.empty()//
-				.map( new Function< Object, Boolean >() {
+		Observable.just( "" )//
+				.map( new Function< String, Boolean >() {
 					@Override
-					public Boolean apply( Object o ) throws Exception {
+					public Boolean apply( String s ) throws Exception {
 						//一定要检查补丁文件是否存在
 						if ( !patchFile.exists() ) {
 							Log.w( TAG, "doBspatch: patch.patch is not exists" );
@@ -67,10 +61,10 @@ public class AppIncrementalUpdateUtil {
 							Log.d( TAG, "doBspatch: new.apk is exists, to del" );
 						}
 
-						boolean b = bspatch( outApkFile.getAbsolutePath(), newApkFile.getAbsolutePath(), patchFile.getAbsolutePath() );
+						boolean b = bspatch( oldApkFile.getAbsolutePath(), newApkFile.getAbsolutePath(), patchFile.getAbsolutePath() );
 						Log.i( TAG, "bspatch: result is " + b );
 
-						return null;
+						return b;
 					}
 				} )//
 				.subscribeOn( Schedulers.io() )//
@@ -82,7 +76,7 @@ public class AppIncrementalUpdateUtil {
 							if ( newApkFile.exists() ) {
 								install( newApkFile.getAbsolutePath() );
 							}
-							ToastUtil.showSuccess( "apk生成到" + outApkFile.getAbsolutePath() );
+							ToastUtil.showSuccess( "apk生成到" + oldApkFile.getAbsolutePath() );
 //							mContext.startActivity(new Intent(Intent.ACTION_VIEW).setDataAndType( Uri.fromFile(outApkFile),
 //									"application/vnd.android.package-archive"));
 						} else {
@@ -92,13 +86,14 @@ public class AppIncrementalUpdateUtil {
 				} );
 	}
 
-	public void incrementalDiff( String oldApk, String patch ) {
+	public void incrementalDiff( String oldApk, String newApk, String patch ) {
+		final File newApkFile = new File( newApk );
 		final File oldApkFile = new File( oldApk );
 		final File patchFile = new File( patch );
-		Observable.empty()//
-				.map( new Function< Object, Boolean >() {
+		Observable.just( "" )//
+				.map( new Function< String, Boolean >() {
 					@Override
-					public Boolean apply( Object o ) throws Exception {
+					public Boolean apply( String s ) throws Exception {
 						//一定要检查补丁文件是否存在
 						if ( !patchFile.exists() ) {
 							Log.w( TAG, "doBspatch: patch.patch is not exists" );
@@ -107,10 +102,10 @@ public class AppIncrementalUpdateUtil {
 							Log.d( TAG, "doBspatch: patch.patch is exists, to del" );
 						}
 
-						boolean b = diff( oldApkFile.getAbsolutePath(), extract(), patchFile.getAbsolutePath() );
+						boolean b = diff( oldApkFile.getAbsolutePath(), newApkFile.getAbsolutePath(), patchFile.getAbsolutePath() );
 						Log.i( TAG, "bspatch: result is " + b );
 
-						return null;
+						return b;
 					}
 				} )//
 				.subscribeOn( Schedulers.io() )//
@@ -121,13 +116,18 @@ public class AppIncrementalUpdateUtil {
 						if ( aBoolean ) {
 							if ( patchFile.exists() ) {
 								ToastUtil.showSuccess( "patch生成到" + patchFile.getAbsolutePath() );
-								mContext.startActivity( new Intent( Intent.ACTION_VIEW ).setDataAndType( Uri.fromFile( patchFile ), "application/vnd.android.package-archive" ) );
+//								mContext.startActivity( new Intent( Intent.ACTION_VIEW ).setDataAndType( Uri.fromFile( patchFile ), "application/vnd.android.package-archive" ) );
 							} else {
 								ToastUtil.showError( "apk生成失败" );
 							}
 						} else {
 							ToastUtil.showError( "apk生成失败" );
 						}
+					}
+				}, new Consumer< Throwable >() {
+					@Override
+					public void accept( Throwable throwable ) throws Exception {
+						Log.e( "TAG", "" );
 					}
 				} );
 	}
@@ -161,18 +161,6 @@ public class AppIncrementalUpdateUtil {
 //		}
 //		return "";
 //	}
-
-	/**
-	 * 提取当前app的apk路径
-	 *
-	 * @return
-	 */
-	public String extract() {
-		ApplicationInfo applicationInfo = mContext.getApplicationContext().getApplicationInfo();
-		String apkPath = applicationInfo.sourceDir;
-		Log.d( TAG, "extract: " + apkPath );
-		return apkPath;
-	}
 
 	/**
 	 * 增量更新：Jni库加载

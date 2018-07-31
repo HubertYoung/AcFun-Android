@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
 	private static final String PATH = Environment.getExternalStorageDirectory().getPath();
 	private static final String NEW_APK = PATH + File.separator + "new.apk";
-	private static final String OUT_APK = PATH + File.separator + "out.apk";
+	private static final String OLD_APK = PATH + File.separator + "old.apk";
 	private static final String PATCH_FILE = PATH + File.separator + "patch";
 
 	@Override
@@ -24,22 +24,23 @@ public class MainActivity extends AppCompatActivity {
 		btn.setOnClickListener( new View.OnClickListener() {
 			@Override
 			public void onClick( View view ) {
-				update();
+				diff();
 			}
 		} );
 		btnMake.setOnClickListener( new View.OnClickListener() {
 			@Override
 			public void onClick( View view ) {
-				diff();
+				update();
 			}
 		} );
 	}
 
 	private void update() {
 		// 执行增量升级
-		AppIncrementalUpdateUtil.get( this.getApplicationContext() ).incrementalInstall(NEW_APK, PATCH_FILE );
+		AppIncrementalUpdateUtil.get().incrementalInstall( OLD_APK, NEW_APK, PATCH_FILE );
 	}
+
 	private void diff() {
-		AppIncrementalUpdateUtil.get( this.getApplicationContext() ).incrementalDiff( OUT_APK, PATCH_FILE );
+		AppIncrementalUpdateUtil.get().incrementalDiff( OLD_APK, NEW_APK, PATCH_FILE );
 	}
 }

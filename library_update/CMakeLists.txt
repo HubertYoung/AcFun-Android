@@ -20,6 +20,8 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
+             src/main/cpp/updatelib.c
+             src/main/cpp/bsdiff.c
              src/main/cpp/bspatch.c
              src/main/cpp/bzip2/blocksort.c
              src/main/cpp/bzip2/bzip2.c

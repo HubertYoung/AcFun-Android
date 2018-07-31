@@ -39,36 +39,6 @@ __FBSDID("$FreeBSD: src/usr.bin/bsdiff/bsdiff/bsdiff.c,v 1.1 2005/08/06 01:59:05
 
 #define MIN(x, y) (((x)<(y)) ? (x) : (y))
 
-extern int bsdiff_main(int argc, char *argv[]);
-
-int main_exec(int (*mainFunc)(int, char **), int argc, char **argv) {
-    int ret = fork();
-    if (0 == ret) {
-        _exit(mainFunc(argc, argv));
-    } else if (-1 != ret) {
-        wait(&ret);
-    }
-    return ret;
-}
-
-JNIEXPORT jboolean JNICALL
-Java_com_hubertyoung_update_AppIncrementalUpdateUtil_diff
-        (JNIEnv *env, jclass type, jstring oldFilePath_, jstring newFilePath_,
-         jstring patchPath_) {
-    char *ch[5] = {0};
-    ch[0] = "bsdiff";
-    ch[1] = (*env)->GetStringUTFChars(env, oldFilePath_, 0);
-    ch[2] = (*env)->GetStringUTFChars(env, newFilePath_, 0);
-    ch[3] = (*env)->GetStringUTFChars(env, patchPath_, 0);
-
-    int ret = main_exec(bsdiff_main, 4, ch);
-
-    (*env)->ReleaseStringUTFChars(env, oldFilePath_, ch[1]);
-    (*env)->ReleaseStringUTFChars(env, newFilePath_, ch[2]);
-    (*env)->ReleaseStringUTFChars(env, patchPath_, ch[3]);
-
-    return !ret;
-}
 static void split(off_t *I, off_t *V, off_t start, off_t len, off_t h) {
     off_t i, j, k, x, tmp, jj, kk;
 
