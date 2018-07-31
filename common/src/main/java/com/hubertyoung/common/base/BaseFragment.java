@@ -71,7 +71,7 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 
 	public FragmentActivity activity;
 	private boolean mIsRegisterEvent = false;
-	protected View mStatusBarView;
+//	protected View mStatusBarView;
 
 	@Override
 	public void onAttach( Activity activity ) {
