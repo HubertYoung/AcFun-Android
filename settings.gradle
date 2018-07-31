@@ -18,6 +18,7 @@ include ':app',
 //        ':component_pickerview',
         ':component_bar',
         ':component_titlebar',
-        ':library_update',
+        ':component_update',
+//        ':library_update',
         ':common_res',
         ':common'
