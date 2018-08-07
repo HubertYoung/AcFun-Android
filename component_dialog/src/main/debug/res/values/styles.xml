@@ -19,16 +19,13 @@
         <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
         <item name="android:windowExitAnimation">@anim/slide_out_right</item>
     </style>
-
-    <style name="EnterExitAnimation" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/enter_anim</item>
-        <item name="android:windowExitAnimation">@anim/exit_anim</item>
+    <style name="animate_dialog">
+        <item name="android:windowEnterAnimation">@anim/enter_translate_dialog</item>
+        <item name="android:windowExitAnimation">@anim/exit_translate_dialog</item>
     </style>
 
-    <style name="TextStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#969696</item>
-        <item name="android:textSize">16sp</item>
+    <style name="animate_dialog_scale">
+        <item name="android:windowEnterAnimation">@anim/enter_scale_dialog</item>
+        <item name="android:windowExitAnimation">@anim/exit_scale_dialog</item>
     </style>
 </resources>

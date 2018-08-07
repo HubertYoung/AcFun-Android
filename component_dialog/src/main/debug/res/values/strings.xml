@@ -1,3 +1,5 @@
 <resources>
     <string name="dialog_app_name">dialog</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
