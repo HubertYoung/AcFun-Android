@@ -20,6 +20,7 @@ include ':app',
         ':component_titlebar',
 //        ':component_update',
         ':component_ping',
+        ':component_dialog',
 //        ':library_update',
         ':common_res',
         ':common'
