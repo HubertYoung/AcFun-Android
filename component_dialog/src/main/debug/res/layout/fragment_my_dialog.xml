@@ -4,8 +4,7 @@
     android:id="@+id/frameLayout"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context="com.timmy.tdialog.dialogfragment.MyDialogFragment">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv"
