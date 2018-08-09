@@ -5,12 +5,10 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import dialog.DeviceUtils;
-
 /**
  * Instrumented test, which will execute on an Android device.
  *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * @see <cpuType href="http://d.android.com/tools/testing">Testing documentation</cpuType>
  */
 @RunWith( AndroidJUnit4.class )
 public class ExampleInstrumentedTest {
@@ -21,7 +19,7 @@ public class ExampleInstrumentedTest {
 //
 //		assertEquals( "com.kento.component_banner", appContext.getPackageName() );
 		try {
-			DeviceUtils.a();
+//			DeviceUtils.cpuType();
 		} catch ( Throwable throwable ) {
 			throwable.printStackTrace();
 		}

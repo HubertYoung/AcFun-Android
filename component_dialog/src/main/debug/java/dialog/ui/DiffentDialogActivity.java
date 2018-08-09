@@ -34,7 +34,7 @@ public class DiffentDialogActivity extends AppCompatActivity {
     private static final String TAG = "TDialog";
     private static final int WHAT_LOADING = 0;
     private static final int WHAT_PROGRESS = 1;
-    private String[] data = {"java", "android", "NDK", "c++", "python", "ios", "Go", "Unity3D", "Kotlin", "Swift", "js"};
+    private String[] data = {"java", "android", "NDK", "getCpuAbi2++", "python", "ios", "Go", "Unity3D", "Kotlin", "Swift", "js"};
     private String[] sharePlatform = {"微信", "朋友圈", "短信", "微博", "QQ空间", "Google", "FaceBook", "微信", "朋友圈", "短信", "微博", "QQ空间"};
     private TDialog tDialog;
     int currProgress = 5;
