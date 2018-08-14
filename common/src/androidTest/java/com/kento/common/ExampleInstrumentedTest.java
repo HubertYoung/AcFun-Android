@@ -4,10 +4,12 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.hubertyoung.common.utils.IPInfomation;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -23,4 +25,13 @@ public class ExampleInstrumentedTest {
 
 		assertEquals( "com.kento.common.test", appContext.getPackageName() );
 	}
+	@Test
+	public void getWIFIInformation() {
+		IPInfomation ipInfomation = new IPInfomation( InstrumentationRegistry.getContext() );
+		String macAddress = ipInfomation.getMacAddress();
+		String wifiLocalIpAdress = ipInfomation.getWIFILocalIpAdress();
+		System.out.println( macAddress );
+		System.out.println( wifiLocalIpAdress );
+	}
+
 }
