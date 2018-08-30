@@ -190,6 +190,8 @@ public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, Inde
 	@Override
 	public void showErrorTip( String msg ) {
 		ToastUtil.showError( msg );
+		String a = null;
+		a.endsWith( "" );
 	}
 
 	@Override
