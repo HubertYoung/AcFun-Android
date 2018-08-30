@@ -134,7 +134,6 @@ public class MainActivity extends BaseActivity {
 		mFragments.add( getFragment( "ComponentCart", "getCartRootFragment" ) );
 		mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );
 		changeFragment( position );
-
 	}
 
 	private void changeFragment( int index ) {
