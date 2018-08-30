@@ -1,5 +1,5 @@
 include ':studydemo', ':acfun',
-//        ':component_home',
+        ':bottom-navigation-bar',
 //        ':autolayout-widget',
 
         ':android-support:skin-support',
