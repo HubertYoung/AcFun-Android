@@ -4,12 +4,9 @@ Properties props = new Properties()
 props.load(new FileInputStream(rootProject.file("gradle.properties")))
 
 android {
-    lintOptions {
-        abortOnError false
-    }
 
     compileSdkVersion props["ANDROID_BUILD_SDK_VERSION"] as int
-    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
+//    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
 
     defaultConfig {
         minSdkVersion props["ANDROID_BUILD_MIN_SDK_VERSION"] as int
