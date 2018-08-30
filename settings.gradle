@@ -1,4 +1,4 @@
-include ':studydemo',
+include ':studydemo', ':acfun',
 //        ':component_home',
 //        ':autolayout-widget',
 
