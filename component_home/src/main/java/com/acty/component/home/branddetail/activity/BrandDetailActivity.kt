@@ -10,7 +10,6 @@ import com.acty.component.home.branddetail.control.BrandDetailControl
 import com.acty.component.home.entity.BrandDetailEntity
 import com.acty.component_banner.banner.BannerScroller
 import com.acty.component_banner.banner.transformer.FadeInOutPageTransformer
-import com.acty.component_home.BuildConfig
 import com.acty.component_home.R
 import com.gent.youxidandan.ddsocial.ui.mytest.model.BrandDetailModelImp
 import com.gent.youxidandan.ddsocial.ui.mytest.presenter.BrandDetailPresenterImp
@@ -56,9 +55,9 @@ class BrandDetailActivity : BaseActivity<BrandDetailPresenterImp, BrandDetailMod
 		intent.extras?.let {
 			brandDetailID = it.getString("brandDetailID")
 		}
-		intent.extras ?: let {
-			brandDetailID = if (BuildConfig.DEBUG) "1008009" else ""
-		}
+//		intent.extras ?: let {
+//			brandDetailID = if (BuildConfig.DEBUG) "1008009" else ""
+//		}
 		initViewPager()
 		initAction()
 	}
