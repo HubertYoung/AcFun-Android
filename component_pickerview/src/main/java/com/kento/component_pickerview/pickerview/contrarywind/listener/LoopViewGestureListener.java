@@ -1,8 +1,8 @@
-package com.kento.component_pickerview.pickerview.contrarywind.listener;
+package com.hubertyoung.component_pickerview.pickerview.contrarywind.listener;
 
 import android.view.MotionEvent;
 
-import com.kento.component_pickerview.pickerview.contrarywind.view.WheelView;
+import com.hubertyoung.component_pickerview.pickerview.contrarywind.view.WheelView;
 
 
 /**

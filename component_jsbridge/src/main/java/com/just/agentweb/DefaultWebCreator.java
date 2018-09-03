@@ -11,7 +11,7 @@ import android.view.ViewStub;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 
-import com.kento.component_jsbridge.R;
+import com.hubertyoung.component_jsbridge.R;
 
 
 /**

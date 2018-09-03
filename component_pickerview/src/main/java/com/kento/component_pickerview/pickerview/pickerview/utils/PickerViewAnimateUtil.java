@@ -1,8 +1,8 @@
-package com.kento.component_pickerview.pickerview.pickerview.utils;
+package com.hubertyoung.component_pickerview.pickerview.pickerview.utils;
 
 import android.view.Gravity;
 
-import com.kento.component_pickerview.R;
+import com.hubertyoung.component_pickerview.R;
 
 
 /**

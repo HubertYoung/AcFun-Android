@@ -1,4 +1,4 @@
-package com.kento.component_filter.filter.view;
+package com.hubertyoung.component_filter.filter.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -16,9 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.kento.component_filter.R;
-import com.kento.component_filter.filter.adapter.MenuAdapter;
-import com.kento.component_filter.filter.util.UIUtil;
+import com.hubertyoung.component_filter.R;
+import com.hubertyoung.component_filter.filter.adapter.MenuAdapter;
+import com.hubertyoung.component_filter.filter.util.UIUtil;
 
 import java.util.Arrays;
 import java.util.List;

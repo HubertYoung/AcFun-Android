@@ -44,7 +44,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import com.kento.component_jsbridge.R;
+import com.hubertyoung.component_jsbridge.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

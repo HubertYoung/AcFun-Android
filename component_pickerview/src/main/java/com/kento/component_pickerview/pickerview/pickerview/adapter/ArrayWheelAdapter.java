@@ -1,7 +1,7 @@
-package com.kento.component_pickerview.pickerview.pickerview.adapter;
+package com.hubertyoung.component_pickerview.pickerview.pickerview.adapter;
 
 
-import com.kento.component_pickerview.pickerview.contrarywind.adapter.WheelAdapter;
+import com.hubertyoung.component_pickerview.pickerview.contrarywind.adapter.WheelAdapter;
 
 import java.util.List;
 

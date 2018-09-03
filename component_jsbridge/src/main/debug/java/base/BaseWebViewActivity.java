@@ -19,13 +19,13 @@ import com.just.agentweb.AgentWeb;
 import com.just.agentweb.AgentWebConfig;
 import com.just.agentweb.ChromeClientCallbackManager;
 import com.just.agentweb.DefaultWebClient;
-import com.kento.common.base.BaseActivity;
-import com.kento.common.base.BaseModel;
-import com.kento.common.base.BasePresenter;
-import com.kento.common.net.http.HttpUtils;
-import com.kento.common.utils.CommonLog;
-import com.kento.common.utils.ToastUtil;
-import com.kento.component_jsbridge.R;
+import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseModel;
+import com.hubertyoung.common.base.BasePresenter;
+import com.hubertyoung.common.net.http.HttpUtils;
+import com.hubertyoung.common.utils.CommonLog;
+import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.component_jsbridge.R;
 
 import java.util.List;
 

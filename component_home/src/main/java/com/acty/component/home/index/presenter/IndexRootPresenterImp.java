@@ -17,7 +17,7 @@ import io.reactivex.functions.Consumer;
  * @author:Yang
  * @date:2018/5/9 11:19 AM
  * @since:V1.0
- * @desc:com.kento.component.home.index.presenter
+ * @desc:com.hubertyoung.component.home.index.presenter
  */
 public class IndexRootPresenterImp extends IndexRootControl.Presenter {
 	@Override

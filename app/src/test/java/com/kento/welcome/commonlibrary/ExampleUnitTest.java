@@ -1,4 +1,4 @@
-package com.kento.welcome.commonlibrary;
+package com.hubertyoung.welcome.commonlibrary;
 
 import org.junit.Test;
 

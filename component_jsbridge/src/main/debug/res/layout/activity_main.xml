@@ -13,10 +13,10 @@
         />
     
     <!-- webview 演示web调用Java -->
-    <com.kento.component_jsbridge.jsbridge.BridgeWebView
+    <com.hubertyoung.component_jsbridge.jsbridge.BridgeWebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-     </com.kento.component_jsbridge.jsbridge.BridgeWebView>
+     </com.hubertyoung.component_jsbridge.jsbridge.BridgeWebView>
 
 </LinearLayout>

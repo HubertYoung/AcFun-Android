@@ -9,9 +9,9 @@ import android.widget.RadioGroup;
 
 import com.jakewharton.rxbinding2.widget.RxRadioGroup;
 import com.jakewharton.rxbinding2.widget.RxTextView;
-import com.kento.component_bankcard.R;
-import com.kento.component_bankcard.bankcard.BankInfoUtil;
-import com.kento.component_bankcard.bankcard.ContentWithSpaceEditText;
+import com.hubertyoung.component_bankcard.R;
+import com.hubertyoung.component_bankcard.bankcard.BankInfoUtil;
+import com.hubertyoung.component_bankcard.bankcard.ContentWithSpaceEditText;
 
 import java.util.concurrent.TimeUnit;
 

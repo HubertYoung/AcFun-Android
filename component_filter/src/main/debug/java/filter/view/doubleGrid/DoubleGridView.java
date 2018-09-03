@@ -9,12 +9,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ScrollView;
 
-import com.kento.component_filter.R;
-import com.kento.component_filter.filter.adapter.SimpleTextAdapter;
-import com.kento.component_filter.filter.interfaces.OnFilterDoneListener;
-import com.kento.component_filter.filter.util.CommonUtil;
-import com.kento.component_filter.filter.util.UIUtil;
-import com.kento.component_filter.filter.view.FilterCheckedTextView;
+import com.hubertyoung.component_filter.R;
+import com.hubertyoung.component_filter.filter.adapter.SimpleTextAdapter;
+import com.hubertyoung.component_filter.filter.interfaces.OnFilterDoneListener;
+import com.hubertyoung.component_filter.filter.util.CommonUtil;
+import com.hubertyoung.component_filter.filter.util.UIUtil;
+import com.hubertyoung.component_filter.filter.view.FilterCheckedTextView;
 
 import java.util.List;
 

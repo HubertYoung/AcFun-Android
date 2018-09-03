@@ -1,4 +1,4 @@
-package com.kento.component_filter.filter.interfaces;
+package com.hubertyoung.component_filter.filter.interfaces;
 
 /**
  */

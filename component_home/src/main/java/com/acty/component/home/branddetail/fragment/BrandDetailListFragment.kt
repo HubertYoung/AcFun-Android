@@ -15,8 +15,8 @@ import com.hubertyoung.common.utils.ToastUtil
 import com.hubertyoung.common.widget.decoration.GridDividerItemDecoration
 import com.hubertyoung.common.widget.sectioned.Section
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter
-import com.kento.component_skeleton.skeleton.RecyclerViewSkeletonScreen
-import com.kento.component_skeleton.skeleton.Skeleton
+import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen
+import com.hubertyoung.component_skeleton.skeleton.Skeleton
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import kotlinx.android.synthetic.main.home_fragment_brand_detail_list.*

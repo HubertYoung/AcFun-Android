@@ -12,7 +12,7 @@ import java.util.List;
  * @author:Yang
  * @date:2018/2/6 下午4:57
  * @since:V1.0
- * @desc:com.kento.common.commonwidget.dynamicsoreview.Interface
+ * @desc:com.hubertyoung.common.commonwidget.dynamicsoreview.Interface
  */
 public interface IDynamicSore<T> {
     void setGridView( View view, int type, List< T > data );

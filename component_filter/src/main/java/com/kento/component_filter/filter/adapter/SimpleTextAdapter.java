@@ -1,13 +1,13 @@
-package com.kento.component_filter.filter.adapter;
+package com.hubertyoung.component_filter.filter.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kento.component_filter.R;
-import com.kento.component_filter.filter.util.UIUtil;
-import com.kento.component_filter.filter.view.FilterCheckedTextView;
+import com.hubertyoung.component_filter.R;
+import com.hubertyoung.component_filter.filter.util.UIUtil;
+import com.hubertyoung.component_filter.filter.view.FilterCheckedTextView;
 
 import java.util.List;
 

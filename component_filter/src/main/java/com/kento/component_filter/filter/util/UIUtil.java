@@ -1,4 +1,4 @@
-package com.kento.component_filter.filter.util;
+package com.hubertyoung.component_filter.filter.util;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;

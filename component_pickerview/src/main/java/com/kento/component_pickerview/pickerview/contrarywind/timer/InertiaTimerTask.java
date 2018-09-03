@@ -1,7 +1,7 @@
-package com.kento.component_pickerview.pickerview.contrarywind.timer;
+package com.hubertyoung.component_pickerview.pickerview.contrarywind.timer;
 
 
-import com.kento.component_pickerview.pickerview.contrarywind.view.WheelView;
+import com.hubertyoung.component_pickerview.pickerview.contrarywind.view.WheelView;
 
 import java.util.TimerTask;
 

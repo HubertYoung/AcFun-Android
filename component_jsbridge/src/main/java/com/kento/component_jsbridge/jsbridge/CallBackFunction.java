@@ -1,4 +1,4 @@
-package com.kento.component_jsbridge.jsbridge;
+package com.hubertyoung.component_jsbridge.jsbridge;
 
 public interface CallBackFunction {
 	

@@ -12,7 +12,7 @@ import android.view.View;
  * @author:Yang
  * @date:2018/2/7 下午1:48
  * @since:V1.0
- * @desc:com.kento.common.commonwidget.banner.transformer
+ * @desc:com.hubertyoung.common.commonwidget.banner.transformer
  */
 public class FadeInOutPageTransformer implements ViewPager.PageTransformer {
 

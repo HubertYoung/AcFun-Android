@@ -5,9 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 
 import com.jakewharton.rxbinding2.view.RxView;
-import com.kento.component_multiimageview.R;
-import com.kento.component_multiimageview.multiimageview.ImageAttr;
-import com.kento.component_multiimageview.multiimageview.MultiImageView;
+import com.hubertyoung.component_multiimageview.R;
+import com.hubertyoung.component_multiimageview.multiimageview.ImageAttr;
+import com.hubertyoung.component_multiimageview.multiimageview.MultiImageView;
 
 import java.util.ArrayList;
 import java.util.List;

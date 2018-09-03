@@ -1,4 +1,4 @@
-package com.kento.component_filter.filter.view;
+package com.hubertyoung.component_filter.filter.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

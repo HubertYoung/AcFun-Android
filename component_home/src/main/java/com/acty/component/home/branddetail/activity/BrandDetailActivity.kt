@@ -18,8 +18,8 @@ import com.hubertyoung.common.basebean.MyRequestMap
 import com.hubertyoung.common.utils.BarUtils
 import com.hubertyoung.common.utils.CommonLog
 import com.hubertyoung.common.utils.ToastUtil
-import com.kento.component_skeleton.skeleton.Skeleton
-import com.kento.component_skeleton.skeleton.ViewSkeletonScreen
+import com.hubertyoung.component_skeleton.skeleton.Skeleton
+import com.hubertyoung.component_skeleton.skeleton.ViewSkeletonScreen
 import kotlinx.android.synthetic.main.home_activity_brand_detail.*
 
 /**

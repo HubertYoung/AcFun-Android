@@ -1,4 +1,4 @@
-package com.kento.component_gridpasswordview.gridpasswordview.imebugfixer;
+package com.hubertyoung.component_gridpasswordview.gridpasswordview.imebugfixer;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatEditText;

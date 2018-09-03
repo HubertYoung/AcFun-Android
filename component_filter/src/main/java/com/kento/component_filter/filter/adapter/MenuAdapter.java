@@ -1,4 +1,4 @@
-package com.kento.component_filter.filter.adapter;
+package com.hubertyoung.component_filter.filter.adapter;
 
 import android.view.View;
 import android.widget.FrameLayout;

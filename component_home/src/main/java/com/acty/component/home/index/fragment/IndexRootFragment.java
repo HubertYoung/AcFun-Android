@@ -26,8 +26,8 @@ import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.common.widget.decoration.HorizontalDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.kento.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
-import com.kento.component_skeleton.skeleton.Skeleton;
+import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
+import com.hubertyoung.component_skeleton.skeleton.Skeleton;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -44,7 +44,7 @@ import java.util.List;
  * @author:Yang
  * @date:2018/5/9 10:18 AM
  * @since:V1.0
- * @desc:com.kento.component.home.index.fragment
+ * @desc:com.hubertyoung.component.home.index.fragment
  */
 public class IndexRootFragment extends BaseFragment< IndexRootPresenterImp, IndexRootModelImp > implements IndexRootControl.View {
 

@@ -1,0 +1,21 @@
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mSrlRefreshHomeIndex"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlEnableHeaderTranslationContent="false"
+    app:srlEnableLoadMore="false"
+    tools:context="com.acty.component.home.branddetail.fragment.BrandDetailListFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:layoutManager="android.support.v7.widget.GridLayoutManager"
+        tools:listitem="@layout/home_item_floor_goods_body"
+        tools:spanCount="2"/>
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

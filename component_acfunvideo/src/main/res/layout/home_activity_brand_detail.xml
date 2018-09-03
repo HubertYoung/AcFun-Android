@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context="com.acty.component.home.branddetail.activity.BrandDetailActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        app:elevation="0.0dip"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/title_bar_common"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <View
+        android:id="@+id/vHomeBrandDetailLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_0_5DP"
+        android:background="@color/line_bg"
+        app:layout_constraintLeft_toLeftOf="@id/appBar"
+        app:layout_constraintRight_toRightOf="@id/appBar"
+        app:layout_constraintTop_toBottomOf="@id/appBar"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tlHomeBrandDetail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_42_0DP"
+        app:layout_constraintLeft_toLeftOf="@id/appBar"
+        app:layout_constraintRight_toRightOf="@id/appBar"
+        app:layout_constraintTop_toBottomOf="@id/vHomeBrandDetailLine"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/color_bg9f1522"
+        app:tabIndicatorHeight="@dimen/DIMEN_3_0DP"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/color_bg9f1522"
+        app:tabTextColor="@color/text_color_gray96"/>
+
+    <View
+        android:id="@+id/vHomeBrandDetailLine2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_0_5DP"
+        android:background="@color/line_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tlHomeBrandDetail"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpHomeBrandDetail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vHomeBrandDetailLine2"/>
+</android.support.constraint.ConstraintLayout>

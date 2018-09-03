@@ -1,4 +1,4 @@
-package com.kento.component_filter.filter;
+package com.hubertyoung.component_filter.filter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -9,11 +9,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.kento.component_filter.R;
-import com.kento.component_filter.filter.adapter.MenuAdapter;
-import com.kento.component_filter.filter.util.SimpleAnimationListener;
-import com.kento.component_filter.filter.util.UIUtil;
-import com.kento.component_filter.filter.view.FixedTabIndicator;
+import com.hubertyoung.component_filter.R;
+import com.hubertyoung.component_filter.filter.adapter.MenuAdapter;
+import com.hubertyoung.component_filter.filter.util.SimpleAnimationListener;
+import com.hubertyoung.component_filter.filter.util.UIUtil;
+import com.hubertyoung.component_filter.filter.view.FixedTabIndicator;
 
 
 /**

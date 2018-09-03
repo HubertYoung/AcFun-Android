@@ -16,7 +16,7 @@ import com.acty.component.home.index.fragment.IndexRootFragment;
  * @author:Yang
  * @date:2018/5/9 10:33 AM
  * @since:V1.0
- * @desc:com.kento.component.home
+ * @desc:com.hubertyoung.component.home
  */
 public class ComponentTask implements IComponent {
 	@Override

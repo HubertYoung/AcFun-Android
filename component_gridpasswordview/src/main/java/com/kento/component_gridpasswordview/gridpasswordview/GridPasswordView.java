@@ -1,4 +1,4 @@
-package com.kento.component_gridpasswordview.gridpasswordview;
+package com.hubertyoung.component_gridpasswordview.gridpasswordview;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -22,8 +22,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.kento.component_gridpasswordview.R;
-import com.kento.component_gridpasswordview.gridpasswordview.imebugfixer.ImeDelBugFixedEditText;
+import com.hubertyoung.component_gridpasswordview.R;
+import com.hubertyoung.component_gridpasswordview.gridpasswordview.imebugfixer.ImeDelBugFixedEditText;
 
 
 /**

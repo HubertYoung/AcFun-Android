@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.kento.component_skeleton.R;
-import com.kento.component_skeleton.skeleton.ViewReplacer;
+import com.hubertyoung.component_skeleton.R;
+import com.hubertyoung.component_skeleton.skeleton.ViewReplacer;
 
 
 public class StatusViewActivity extends AppCompatActivity {

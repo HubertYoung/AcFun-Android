@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.kento.component_pickerview.R;
+import com.hubertyoung.component_pickerview.R;
 
 public class FragmentTestActivity extends AppCompatActivity {
     private FragmentManager mFragmentManager;

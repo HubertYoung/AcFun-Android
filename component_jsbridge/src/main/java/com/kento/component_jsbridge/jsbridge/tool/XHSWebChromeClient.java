@@ -1,4 +1,4 @@
-package com.kento.component_jsbridge.jsbridge.tool;
+package com.hubertyoung.component_jsbridge.jsbridge.tool;
 
 import android.app.Activity;
 import android.content.Intent;

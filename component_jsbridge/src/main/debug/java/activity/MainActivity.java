@@ -12,11 +12,11 @@ import android.webkit.WebChromeClient;
 import android.widget.Button;
 
 import com.google.gson.Gson;
-import com.kento.component_jsbridge.R;
-import com.kento.component_jsbridge.jsbridge.BridgeHandler;
-import com.kento.component_jsbridge.jsbridge.BridgeWebView;
-import com.kento.component_jsbridge.jsbridge.CallBackFunction;
-import com.kento.component_jsbridge.jsbridge.DefaultHandler;
+import com.hubertyoung.component_jsbridge.R;
+import com.hubertyoung.component_jsbridge.jsbridge.BridgeHandler;
+import com.hubertyoung.component_jsbridge.jsbridge.BridgeWebView;
+import com.hubertyoung.component_jsbridge.jsbridge.CallBackFunction;
+import com.hubertyoung.component_jsbridge.jsbridge.DefaultHandler;
 
 public class MainActivity extends Activity implements OnClickListener {
 

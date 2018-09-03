@@ -1,4 +1,4 @@
-package com.kento.component_filter.filter.adapter;
+package com.hubertyoung.component_filter.filter.adapter;
 
 import android.content.Context;
 import android.view.View;

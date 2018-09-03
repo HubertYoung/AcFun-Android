@@ -1,4 +1,4 @@
-package com.kento.component_banner;
+package com.hubertyoung.component_banner;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
 		// Context of the app under test.
 		Context appContext = InstrumentationRegistry.getTargetContext();
 
-		assertEquals( "com.kento.component_banner", appContext.getPackageName() );
+		assertEquals( "com.hubertyoung.component_banner", appContext.getPackageName() );
 	}
 }

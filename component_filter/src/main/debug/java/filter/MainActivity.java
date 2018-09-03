@@ -7,9 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.kento.component_filter.R;
-import com.kento.component_filter.filter.DropDownMenu;
-import com.kento.component_filter.filter.interfaces.OnFilterDoneListener;
+import com.hubertyoung.component_filter.R;
+import com.hubertyoung.component_filter.filter.DropDownMenu;
+import com.hubertyoung.component_filter.filter.interfaces.OnFilterDoneListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,9 +1,9 @@
-package com.kento.component_jsbridge.jsbridge.tool;
+package com.hubertyoung.component_jsbridge.jsbridge.tool;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.kento.component_jsbridge.jsbridge.BridgeWebView;
+import com.hubertyoung.component_jsbridge.jsbridge.BridgeWebView;
 
 
 /**
@@ -14,7 +14,7 @@ import com.kento.component_jsbridge.jsbridge.BridgeWebView;
  * @author:Yang
  * @date:2018/2/9 上午12:17
  * @since:V1.0
- * @desc:com.kento.common.commonwidget
+ * @desc:com.hubertyoung.common.commonwidget
  */
 public class ScrollWebView extends BridgeWebView {
 	private OnScrollChangeListener mOnScrollChangeListener;

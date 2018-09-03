@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.kento.component_skeleton.R;
+import com.hubertyoung.component_skeleton.R;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.kento.component_filter.filter.typeview;
+package com.hubertyoung.component_filter.filter.typeview;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.kento.component_filter.filter.adapter.BaseBaseAdapter;
-import com.kento.component_filter.filter.interfaces.OnFilterItemClickListener;
-import com.kento.component_filter.filter.util.CommonUtil;
+import com.hubertyoung.component_filter.filter.adapter.BaseBaseAdapter;
+import com.hubertyoung.component_filter.filter.interfaces.OnFilterItemClickListener;
+import com.hubertyoung.component_filter.filter.util.CommonUtil;
 
 import java.util.List;
 

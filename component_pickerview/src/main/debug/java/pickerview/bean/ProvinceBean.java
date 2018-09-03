@@ -1,7 +1,7 @@
 package pickerview.bean;
 
 
-import com.kento.component_pickerview.pickerview.contrarywind.interfaces.IPickerViewData;
+import com.hubertyoung.component_pickerview.pickerview.contrarywind.interfaces.IPickerViewData;
 
 /**
  * Created by Sai on 15/11/22.

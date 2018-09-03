@@ -29,7 +29,7 @@ import java.util.List;
  * @author:Yang
  * @date:2018/2/6 下午4:32
  * @since:V1.0
- * @desc:com.kento.common.commonwidget.dynamicsoreview
+ * @desc:com.hubertyoung.common.commonwidget.dynamicsoreview
  */
 public class DynamicSoreView< T > extends LinearLayout {
 	Context mContext;

@@ -1,4 +1,4 @@
-package com.kento.component_jsbridge.jsbridge;
+package com.hubertyoung.component_jsbridge.jsbridge;
 
 import android.content.Context;
 import android.webkit.WebView;

@@ -2,7 +2,7 @@ package com.just.agentweb;
 
 import android.util.Log;
 
-import com.kento.component_jsbridge.BuildConfig;
+import com.hubertyoung.component_jsbridge.BuildConfig;
 
 
 /**

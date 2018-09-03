@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_index_new_goods_icon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_150_0DP"
+        android:layout_marginLeft="@dimen/DIMEN_5_0DP"
+        android:layout_marginRight="@dimen/DIMEN_5_0DP"
+        android:scaleType="fitXY"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/banner_default"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_index_new_goods_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/DIMEN_5_0DP"
+        android:layout_marginRight="@dimen/DIMEN_5_0DP"
+        android:layout_marginTop="@dimen/DIMEN_5_0DP"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/text_color_normal"
+        android:textSize="@dimen/text_size17_0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_index_new_goods_icon"
+        app:layout_constraintRight_toRightOf="@+id/iv_index_new_goods_icon"
+        app:layout_constraintTop_toBottomOf="@+id/iv_index_new_goods_icon"
+        tools:text="笔记本笔记本"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_index_new_goods_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/DIMEN_5_0DP"
+        android:layout_marginRight="@dimen/DIMEN_5_0DP"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:paddingBottom="@dimen/DIMEN_2_5DP"
+        android:singleLine="true"
+        android:textColor="@color/color_bg9f1522"
+        android:textSize="@dimen/text_size14_0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_index_new_goods_icon"
+        app:layout_constraintRight_toRightOf="@+id/iv_index_new_goods_icon"
+        app:layout_constraintTop_toBottomOf="@+id/tv_index_new_goods_name"
+        tools:text="￥12.9"/>
+</android.support.constraint.ConstraintLayout>

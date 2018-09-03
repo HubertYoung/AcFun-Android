@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="clear"/>
-    <com.kento.component_multiimageview.multiimageview.MultiImageView
+    <com.hubertyoung.component_multiimageview.multiimageview.MultiImageView
         android:id="@+id/multiImagView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

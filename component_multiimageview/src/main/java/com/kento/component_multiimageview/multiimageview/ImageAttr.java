@@ -1,4 +1,4 @@
-package com.kento.component_multiimageview.multiimageview;
+package com.hubertyoung.component_multiimageview.multiimageview;
 
 import java.io.Serializable;
 

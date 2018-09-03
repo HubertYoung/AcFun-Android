@@ -9,9 +9,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.kento.component_skeleton.R;
-import com.kento.component_skeleton.skeleton.Skeleton;
-import com.kento.component_skeleton.skeleton.SkeletonScreen;
+import com.hubertyoung.component_skeleton.R;
+import com.hubertyoung.component_skeleton.skeleton.Skeleton;
+import com.hubertyoung.component_skeleton.skeleton.SkeletonScreen;
 
 import adapter.NewsAdapter;
 import adapter.PersonAdapter;

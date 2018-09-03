@@ -12,7 +12,7 @@ import java.util.List;
  * @author:Yang
  * @date:2018/5/9 1:06 PM
  * @since:V$VERSION
- * @desc:com.kento.component.home.entity
+ * @desc:com.hubertyoung.component.home.entity
  */
 public class HomeIndexEntity {
 

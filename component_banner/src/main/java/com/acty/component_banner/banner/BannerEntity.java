@@ -4,7 +4,7 @@ package com.acty.component_banner.banner;
  * @author:Yang
  * @date:2017/8/7 14:52
  * @since:v1.0
- * @desc:com.kento.common.commonwidget.banner
+ * @desc:com.hubertyoung.common.commonwidget.banner
  * @param:Banner模型类
  */
 public class BannerEntity {

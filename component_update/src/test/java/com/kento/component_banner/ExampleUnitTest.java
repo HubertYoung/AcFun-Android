@@ -1,4 +1,4 @@
-package com.kento.component_banner;
+package com.hubertyoung.component_banner;
 
 import org.junit.Test;
 

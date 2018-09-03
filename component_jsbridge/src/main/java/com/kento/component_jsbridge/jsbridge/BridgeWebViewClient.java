@@ -1,4 +1,4 @@
-package com.kento.component_jsbridge.jsbridge;
+package com.hubertyoung.component_jsbridge.jsbridge;
 
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
@@ -8,7 +8,7 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.kento.component_jsbridge.jsbridge.tool.ADFilterTool;
+import com.hubertyoung.component_jsbridge.jsbridge.tool.ADFilterTool;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

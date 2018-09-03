@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.kento.component_skeleton.R;
+import com.hubertyoung.component_skeleton.R;
 
 
 public class MainActivity extends AppCompatActivity {

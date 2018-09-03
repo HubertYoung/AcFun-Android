@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.kento.component_filter.R;
-import com.kento.component_filter.filter.util.UIUtil;
+import com.hubertyoung.component_filter.R;
+import com.hubertyoung.component_filter.filter.util.UIUtil;
 
 /**
  * auther: baiiu

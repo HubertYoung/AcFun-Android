@@ -1,9 +1,9 @@
-package com.kento.component_jsbridge.jsbridge.tool;
+package com.hubertyoung.component_jsbridge.jsbridge.tool;
 
 import android.content.Context;
 import android.content.res.Resources;
 
-import com.kento.component_jsbridge.R;
+import com.hubertyoung.component_jsbridge.R;
 
 
 /**

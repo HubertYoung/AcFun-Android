@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.utils.BarUtils;
-import com.kento.component_bar.R;
+import com.hubertyoung.component_bar.R;
 
 import butterknife.BindView;
 

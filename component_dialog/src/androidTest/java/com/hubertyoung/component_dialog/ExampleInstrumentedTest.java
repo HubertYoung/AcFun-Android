@@ -17,7 +17,7 @@ public class ExampleInstrumentedTest {
 		// Context of the app under test.
 //		Context appContext = InstrumentationRegistry.getTargetContext();
 //
-//		assertEquals( "com.kento.component_banner", appContext.getPackageName() );
+//		assertEquals( "com.hubertyoung.component_banner", appContext.getPackageName() );
 		try {
 //			DeviceUtils.cpuType();
 		} catch ( Throwable throwable ) {

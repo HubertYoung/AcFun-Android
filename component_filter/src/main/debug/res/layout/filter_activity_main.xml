@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         />
 
-    <com.kento.component_filter.filter.DropDownMenu
+    <com.hubertyoung.component_filter.filter.DropDownMenu
         android:id="@+id/dropDownMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,6 +26,6 @@
             android:gravity="center_vertical"
             android:textSize="22sp"
             />
-    </com.kento.component_filter.filter.DropDownMenu>
+    </com.hubertyoung.component_filter.filter.DropDownMenu>
 
 </LinearLayout>

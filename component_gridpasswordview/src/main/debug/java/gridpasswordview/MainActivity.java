@@ -7,8 +7,8 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.kento.component_gridpasswordview.R;
-import com.kento.component_gridpasswordview.gridpasswordview.GridPasswordView;
+import com.hubertyoung.component_gridpasswordview.R;
+import com.hubertyoung.component_gridpasswordview.gridpasswordview.GridPasswordView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

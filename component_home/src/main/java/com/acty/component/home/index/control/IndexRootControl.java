@@ -17,7 +17,7 @@ import io.reactivex.Observable;
  * @author:Yang
  * @date:2018/5/9 11:17 AM
  * @since:V1.0
- * @desc:com.kento.component.home.index.control
+ * @desc:com.hubertyoung.component.home.index.control
  */
 public interface IndexRootControl {
 

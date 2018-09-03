@@ -18,7 +18,7 @@ import android.webkit.JsResult;
 import android.webkit.WebView;
 import android.widget.TextView;
 
-import com.kento.component_jsbridge.R;
+import com.hubertyoung.component_jsbridge.R;
 
 
 /**

@@ -3,9 +3,9 @@ package debug.java;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.kento.component_banner.R;
-import com.kento.component_banner.banner.BannerEntity;
-import com.kento.component_banner.banner.BannerView;
+import com.hubertyoung.component_banner.R;
+import com.hubertyoung.component_banner.banner.BannerEntity;
+import com.hubertyoung.component_banner.banner.BannerView;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.kento.component_gridpasswordview.gridpasswordview;
+package com.hubertyoung.component_gridpasswordview.gridpasswordview;
 
 /**
  * @author Jungly

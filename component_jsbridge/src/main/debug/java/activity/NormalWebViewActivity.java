@@ -18,11 +18,11 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
 import com.just.agentweb.ChromeClientCallbackManager;
-import com.kento.common.utils.BarUtils;
-import com.kento.common.utils.CommonLog;
-import com.kento.component_jsbridge.R;
-import com.kento.component_jsbridge.jsbridge.BridgeWebViewClient;
-import com.kento.component_jsbridge.jsbridge.tool.ScrollWebView;
+import com.hubertyoung.common.utils.BarUtils;
+import com.hubertyoung.common.utils.CommonLog;
+import com.hubertyoung.component_jsbridge.R;
+import com.hubertyoung.component_jsbridge.jsbridge.BridgeWebViewClient;
+import com.hubertyoung.component_jsbridge.jsbridge.tool.ScrollWebView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;

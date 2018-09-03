@@ -11,7 +11,7 @@ import com.hubertyoung.common.CommonApplication;
  * @author:Yang
  * @date:2018/4/19 5:44 PM
  * @since:V$VERSION
- * @desc:com.kento.welcome.commonlibrary
+ * @desc:com.hubertyoung.welcome.commonlibrary
  */
 public class MyApplication extends CommonApplication {
 	@Override

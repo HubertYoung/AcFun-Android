@@ -19,7 +19,7 @@ import io.reactivex.Observable;
  * @author:Yang
  * @date:2018/5/9 11:18 AM
  * @since:V1.0
- * @desc:com.kento.component.home.index.model
+ * @desc:com.hubertyoung.component.home.index.model
  */
 public class IndexRootModelImp implements IndexRootControl.Model {
 	@Override

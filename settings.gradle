@@ -1,6 +1,6 @@
 include ':studydemo', ':acfun',
         ':bottom-navigation-bar',
-//        ':autolayout-widget',
+        ':component_acfunvideo',
 
         ':android-support:skin-support',
         ':android-support:skin-support-appcompat',

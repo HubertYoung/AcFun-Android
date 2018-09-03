@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
 
-import com.kento.component_jsbridge.R;
+import com.hubertyoung.component_jsbridge.R;
 
 import java.io.File;
 import java.lang.ref.WeakReference;

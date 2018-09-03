@@ -1,4 +1,4 @@
-package com.kento.component_multiimageview.multiimageview;
+package com.hubertyoung.component_multiimageview.multiimageview;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
-import com.kento.common.ImageLoaderUtils;
-import com.kento.component_multiimageview.R;
+import com.hubertyoung.common.ImageLoaderUtils;
+import com.hubertyoung.component_multiimageview.R;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
  * @author:Yang
  * @date:2017/7/18 13:13
  * @since:v1.0
- * @desc:com.kento.common.commonwidget
+ * @desc:com.hubertyoung.common.commonwidget
  * @param:显示1~N张图片的View
  */
 public class MultiImageView extends LinearLayout {

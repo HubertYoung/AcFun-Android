@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kento.component_filter.R;
-import com.kento.component_filter.filter.util.UIUtil;
-import com.kento.component_filter.filter.view.FilterCheckedTextView;
+import com.hubertyoung.component_filter.R;
+import com.hubertyoung.component_filter.filter.util.UIUtil;
+import com.hubertyoung.component_filter.filter.view.FilterCheckedTextView;
 
 import butterknife.ButterKnife;
 

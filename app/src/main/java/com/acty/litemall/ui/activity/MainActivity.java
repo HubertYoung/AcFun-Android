@@ -31,7 +31,7 @@ import io.reactivex.functions.Consumer;
  * @author:Yang
  * @date:2018/5/8 3:56 PM
  * @since:V1.0
- * @desc:com.kento.welcome.commonlibrary
+ * @desc:com.hubertyoung.welcome.commonlibrary
  */
 public class MainActivity extends BaseActivity {
 
