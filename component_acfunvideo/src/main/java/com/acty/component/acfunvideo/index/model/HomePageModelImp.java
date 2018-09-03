@@ -1,6 +1,6 @@
 package com.acty.component.acfunvideo.index.model;
 
-import com.acty.component.acfunvideo.index.control.IndexRootControl;
+import com.acty.component.acfunvideo.index.control.HomePageControl;
 
 
 /**
@@ -13,7 +13,7 @@ import com.acty.component.acfunvideo.index.control.IndexRootControl;
  * @since:V1.0
  * @desc:com.hubertyoung.component.home.index.model
  */
-public class IndexRootModelImp implements IndexRootControl.Model {
+public class HomePageModelImp implements HomePageControl.Model {
 //	@Override
 //	public Observable< HomeIndexEntity > requestHomeIndex( MyRequestMap map ) {
 //		return Api.getDefault( HostType.MY_RESULT )

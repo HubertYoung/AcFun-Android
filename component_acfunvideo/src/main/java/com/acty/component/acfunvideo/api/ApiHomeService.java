@@ -3,7 +3,6 @@ package com.acty.component.acfunvideo.api;
 
 import com.acty.component.home.entity.BrandDetailBodyEntity;
 import com.acty.component.home.entity.BrandDetailEntity;
-import com.acty.component.home.entity.HomeIndexEntity;
 import com.hubertyoung.common.net.response.BaseResponse;
 
 import java.util.Map;
@@ -29,8 +28,8 @@ public interface ApiHomeService {
 	 * @param map
 	 * @return
 	 */
-	@GET( "home/index" )
-	Observable< BaseResponse< HomeIndexEntity > > requestHomeIndex( @QueryMap Map< String, String > map );
+//	@GET( "home/index" )
+//	Observable< BaseResponse< HomeIndexEntity > > requestHomeIndex( @QueryMap Map< String, String > map );
 
 	/**
 	 * 商品详情

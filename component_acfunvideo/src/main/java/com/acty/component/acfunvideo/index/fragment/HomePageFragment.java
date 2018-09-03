@@ -7,10 +7,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.acty.component.acfunvideo.index.adapter.HomePagerAdapter;
+import com.acty.component.acfunvideo.index.control.HomePageControl;
+import com.acty.component.acfunvideo.index.model.HomePageModelImp;
+import com.acty.component.acfunvideo.index.presenter.HomePagePresenterImp;
 import com.acty.component_acfunvideo.R;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.BarUtils;
+import com.hubertyoung.common.utils.ToastUtil;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 /**
@@ -23,7 +28,7 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
  * @since:V1.0
  * @desc:com.hubertyoung.component.home.index.fragment
  */
-public class HomePageFragment extends BaseFragment {
+public class HomePageFragment extends BaseFragment< HomePagePresenterImp, HomePageModelImp > implements HomePageControl.View {
 
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
@@ -34,6 +39,13 @@ public class HomePageFragment extends BaseFragment {
 	private ImageView mIvSearch;
 	private ImageView mIvGame;
 	private ViewPager mHomeViewPager;
+	private HomePagerAdapter mHomePagerAdapter;
+	private NewRecommendFragment mNewRecommendFragment;
+	private ChannelFragment mChannelFragment;
+
+	private boolean isShowGameIcon = true;
+	private boolean isGameNew = false;
+	private int mCurrentPostion = 0;
 
 	public HomePageFragment() {
 	}
@@ -58,7 +70,7 @@ public class HomePageFragment extends BaseFragment {
 
 	@Override
 	protected void initToolBar() {
-		BarUtils.setPaddingSmart(mToolbar);
+		BarUtils.setPaddingSmart( mToolbar );
 	}
 
 	@Override
@@ -78,19 +90,89 @@ public class HomePageFragment extends BaseFragment {
 
 	@Override
 	public void initPresenter() {
-//		mPresenter.setVM( this, mModel );
+		mPresenter.setVM( this, mModel );
 	}
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
-//		initRecyclerView();
-//		initAction();
+		initViewPager();
+		initAction();
+		initData();
 		loadData();
+	}
+
+	private void initData() {
+		if ( isShowGameIcon ) {
+			mIvGame.setVisibility( View.VISIBLE );
+			mIvGame.setBackgroundResource( isGameNew ? R.mipmap.ic_game_center_new : R.mipmap.ic_game_center );
+		} else {
+			mIvGame.setVisibility( View.GONE );
+		}
+	}
+
+	private void initAction() {
+		mHomeViewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
+			@Override
+			public void onPageScrolled( int position, float positionOffset, int positionOffsetPixels ) {
+
+			}
+
+			@Override
+			public void onPageSelected( int position ) {
+				mCurrentPostion = position;
+			}
+
+			@Override
+			public void onPageScrollStateChanged( int state ) {
+
+			}
+		} );
+		mIvSearch.setOnClickListener( new View.OnClickListener() {
+			@Override
+			public void onClick( View v ) {
+				ToastUtil.showSuccess( "mIvSearch" );
+			}
+		} );
+		mIvGame.setOnClickListener( new View.OnClickListener() {
+			@Override
+			public void onClick( View v ) {
+				ToastUtil.showSuccess( "mIvGame" );
+			}
+		} );
+	}
+
+	private void initViewPager() {
+		mHomeViewTab.setCustomTabView( R.layout.widget_home_page_tab_view, R.id.tab_text );
+		mHomePagerAdapter = new HomePagerAdapter( getChildFragmentManager() );
+		mNewRecommendFragment = new NewRecommendFragment();
+		mChannelFragment = new ChannelFragment();
+
+		mHomePagerAdapter.add( mNewRecommendFragment, activity.getString( R.string.recommend_text ) );
+		mHomePagerAdapter.add( mChannelFragment, activity.getString( R.string.common_channel ) );
+		mHomeViewPager.setAdapter( mHomePagerAdapter );
+		mHomeViewPager.setOffscreenPageLimit( 1 );
+		mHomeViewPager.setCurrentItem( 0 );
+		mHomeViewTab.setViewPager( mHomeViewPager );
 	}
 
 	@Override
 	public void loadData() {
 		MyRequestMap map = new MyRequestMap();
 //		mPresenter.requestHomeIndex( map );
+	}
+
+	@Override
+	public void showLoading( String title, int type ) {
+
+	}
+
+	@Override
+	public void stopLoading() {
+
+	}
+
+	@Override
+	public void showErrorTip( String msg ) {
+
 	}
 }

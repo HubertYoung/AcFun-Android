@@ -15,7 +15,7 @@ import com.hubertyoung.common.base.BaseView;
  * @since:V1.0
  * @desc:com.hubertyoung.component.home.index.control
  */
-public interface IndexRootControl {
+public interface HomePageControl {
 
 	interface Model extends BaseModel {
 	}

@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	public void doBeforeSetContentView() {
 		BarUtils.setStatusBarTranslucent(getWindow(), true);
-		BarUtils.statusBarLightMode(getWindow(), true);
+//		BarUtils.statusBarLightMode(getWindow(), true);
 	}
 	@Override
 	public void initView( Bundle savedInstanceState ) {

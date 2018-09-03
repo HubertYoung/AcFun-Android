@@ -1,7 +1,7 @@
 package com.acty.component.acfunvideo.index.presenter;
 
 
-import com.acty.component.acfunvideo.index.control.IndexRootControl;
+import com.acty.component.acfunvideo.index.control.HomePageControl;
 
 /**
  * <br>
@@ -13,7 +13,7 @@ import com.acty.component.acfunvideo.index.control.IndexRootControl;
  * @since:V1.0
  * @desc:com.hubertyoung.component.home.index.presenter
  */
-public class IndexRootPresenterImp extends IndexRootControl.Presenter {
+public class HomePagePresenterImp extends HomePageControl.Presenter {
 //	@Override
 //	public void requestHomeIndex( MyRequestMap map ) {
 //		mView.showLoading( "Loading...", 0 );
