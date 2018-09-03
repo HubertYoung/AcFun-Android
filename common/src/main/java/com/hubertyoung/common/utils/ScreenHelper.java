@@ -25,7 +25,7 @@ public class ScreenHelper {
 	/**
 	 * 单位dp
 	 */
-	private static float design_width = 326;
+	private static float design_width = 360;
 
 	public static void initCustomDensity( @NonNull final Application application ) {
 		application.registerActivityLifecycleCallbacks( new Application.ActivityLifecycleCallbacks() {
