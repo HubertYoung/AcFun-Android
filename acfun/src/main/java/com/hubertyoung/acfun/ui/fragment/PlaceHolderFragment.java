@@ -21,7 +21,7 @@ import com.hubertyoung.common.base.BaseFragment;
  * @author:Yang
  * @date:2018/5/8 4:14 PM
  * @since:V1.0
- * @desc:com.kento.welcome.commonlibrary.ui.fragment
+ * @desc:com.hubertyoung.welcome.commonlibrary.ui.fragment
  */
 
 public class PlaceHolderFragment extends BaseFragment {

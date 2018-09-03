@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity {
 
 	private void initFragment( Bundle savedInstanceState ) {
 		mFragments.clear();
-		mFragments.add( getFragment( "ComponentIndex", "getIndexRootFragment" ) );
+		mFragments.add( getFragment( "ComponentAcFunIndex", "getHomePageFragment" ) );
 		mFragments.add( getFragment( "ComponentClassification", "getClassificationFragment" ) );
 		mFragments.add( getFragment( "ComponentCart", "getCartRootFragment" ) );
 		mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );
