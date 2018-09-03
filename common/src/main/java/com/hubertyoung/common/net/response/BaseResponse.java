@@ -1,5 +1,6 @@
 package com.hubertyoung.common.net.response;
 
+import com.google.gson.annotations.SerializedName;
 import com.hubertyoung.common.net.config.NetStatus;
 
 import java.io.Serializable;
@@ -13,13 +14,19 @@ import java.io.Serializable;
  * @param:封装服务器返回数据
  */
 public class BaseResponse< T > implements Serializable {
+	@SerializedName( "errorid" )
 	public int errno;
+
+	public int code;
+	@SerializedName( "message" )
 	public String errmsg;
 
+//	public String requestid;
+	@SerializedName( "vdata" )
 	public T data;
 
 	public boolean success( ) {
-		return errno == NetStatus.Success.getIndex()  || errno == NetStatus.Server_Success.getIndex();
+		return errno == NetStatus.Success.getIndex() || errno == NetStatus.Server_Success.getIndex() || code == 0;
 	}
 	public boolean isFailed( ) {
 		return errno == NetStatus.Server_Fail.getIndex();
@@ -38,6 +45,10 @@ public class BaseResponse< T > implements Serializable {
 
 	public void setResult( String errmsg ) {
 		this.errmsg = errmsg;
+	}
+
+	public void setCode( int code ) {
+		this.code = code;
 	}
 
 	public T getData() {

@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.CacheControl;
+import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -32,7 +33,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 public class HttpUtils {
 
 	public static final String TAG = "HttpUtils";
-	private String userAgentHeaderValue = "Android";
+//	private String userAgentHeaderValue = "Android";
 	//    获得HttpUtils实例
 	private static HttpUtils mInstance;
 	//    OkHttpClient对象
@@ -91,10 +92,12 @@ public class HttpUtils {
 		Interceptor headerInterceptor = new Interceptor() {
 			@Override
 			public Response intercept( Chain chain ) throws IOException {
-				Request build = chain.request()
-									 .newBuilder()
-									 .addHeader( "Content-Type", "application/json" )
-									 .build();
+				Request.Builder builder = chain.request().newBuilder().addHeader( "Content-Type", "application/json" );
+				Headers headers = configuration.getHeaders();
+				for (int i = 0; i < headers.size(); i++) {
+					builder.addHeader( headers.name( i ), headers.value( i ) );
+				}
+				Request build = builder.build();
 				return chain.proceed( build );
 			}
 		};
@@ -115,8 +118,7 @@ public class HttpUtils {
 //			mBuilder.addNetworkInterceptor( new UploadProgressInterceptor( uploadCallback ) );
 //		}
 		if ( configuration.getIsCache() ) {
-			mOkHttpClient = mBuilder.cache( configuration.getDiskCache() )
-									.build();
+			mOkHttpClient = mBuilder.cache( configuration.getDiskCache() ).build();
 		} else {
 			mOkHttpClient = mBuilder.build();
 
@@ -129,9 +131,7 @@ public class HttpUtils {
 		 *
 		 */
 		if ( configuration.getCertificates() != null ) {
-			mOkHttpClient = getOkHttpClient().newBuilder()
-											 .sslSocketFactory( HttpsUtils.getSslSocketFactory( null, null, configuration.getCertificates() ) )
-											 .build();
+			mOkHttpClient = getOkHttpClient().newBuilder().sslSocketFactory( HttpsUtils.getSslSocketFactory( null, null, configuration.getCertificates() ) ).build();
 		}
 	}
 
@@ -167,17 +167,13 @@ public class HttpUtils {
 	 * @param certificates 本地证书
 	 */
 	public HttpUtils setCertificates( InputStream... certificates ) {
-		mOkHttpClient = getOkHttpClient().newBuilder()
-										 .sslSocketFactory( HttpsUtils.getSslSocketFactory( null, null, certificates ) )
-										 .build();
+		mOkHttpClient = getOkHttpClient().newBuilder().sslSocketFactory( HttpsUtils.getSslSocketFactory( null, null, certificates ) ).build();
 		return this;
 	}
 
 	public HttpUtils setCallback( UCallback uploadCallback ) {
 		if ( uploadCallback != null ) {
-			mOkHttpClient = getOkHttpClient().newBuilder()
-											 .addNetworkInterceptor( new UploadProgressInterceptor( uploadCallback ) )
-											 .build();
+			mOkHttpClient = getOkHttpClient().newBuilder().addNetworkInterceptor( new UploadProgressInterceptor( uploadCallback ) ).build();
 		}
 		return this;
 	}
@@ -189,9 +185,7 @@ public class HttpUtils {
 	 */
 	public HttpUtils setDBugLog( boolean falg ) {
 		if ( falg ) {
-			mOkHttpClient = getOkHttpClient().newBuilder()
-											 .addNetworkInterceptor( new HttpLoggingInterceptor().setLevel( HttpLoggingInterceptor.Level.BODY ) )
-											 .build();
+			mOkHttpClient = getOkHttpClient().newBuilder().addNetworkInterceptor( new HttpLoggingInterceptor().setLevel( HttpLoggingInterceptor.Level.BODY ) ).build();
 		}
 		return this;
 	}
@@ -203,9 +197,7 @@ public class HttpUtils {
 	 */
 	public HttpUtils addCookie() {
 		persistentCookieJar = new PersistentCookieJar( new SetCookieCache(), new SharedPrefsCookiePersistor( CommonApplication.getAppContext() ) );
-		mOkHttpClient = getOkHttpClient().newBuilder()
-										 .cookieJar( persistentCookieJar )
-										 .build();
+		mOkHttpClient = getOkHttpClient().newBuilder().cookieJar( persistentCookieJar ).build();
 		return this;
 //        mOkHttpClient = getOkHttpClient().newBuilder()
 //                                         .addInterceptor( new AddCookiesInterceptor( BaseApplication.getAppContext(), "ch" ) )
@@ -229,7 +221,7 @@ public class HttpUtils {
 	 */
 	final Interceptor interceptor = new Interceptor() {
 
-		private static final String USER_AGENT_HEADER_NAME = "User-Agent";
+//		private static final String USER_AGENT_HEADER_NAME = "User-Agent";
 
 		@Override
 		public Response intercept( Chain chain ) throws IOException {
@@ -240,29 +232,17 @@ public class HttpUtils {
 			 *
 			 */
 			if ( !NetworkUtil.isNetAvailable( configuration.context ) && isLoadDiskCache ) {
-				request = request.newBuilder()
-								 .removeHeader( USER_AGENT_HEADER_NAME )
-								 .addHeader( USER_AGENT_HEADER_NAME, userAgentHeaderValue )
-								 .cacheControl( CacheControl.FORCE_CACHE )
-								 .build();
+				request = request.newBuilder().cacheControl( CacheControl.FORCE_CACHE ).build();
 			}
 //            加载内存缓存数据
 			else if ( isLoadMemoryCache ) {
-				request = request.newBuilder()
-								 .removeHeader( USER_AGENT_HEADER_NAME )
-								 .addHeader( USER_AGENT_HEADER_NAME, userAgentHeaderValue )
-								 .cacheControl( CacheControl.FORCE_CACHE )
-								 .build();
+				request = request.newBuilder().cacheControl( CacheControl.FORCE_CACHE ).build();
 			}
 			/**
 			 *  加载网络数据
 			 */
 			else {
-				request = request.newBuilder()
-								 .removeHeader( USER_AGENT_HEADER_NAME )
-								 .addHeader( USER_AGENT_HEADER_NAME, userAgentHeaderValue )
-								 .cacheControl( CacheControl.FORCE_NETWORK )
-								 .build();
+				request = request.newBuilder().cacheControl( CacheControl.FORCE_NETWORK ).build();
 			}
 			Response response = chain.proceed( request );
 //            有网进行内存缓存数据
@@ -273,9 +253,7 @@ public class HttpUtils {
 			if ( NetworkUtil.isNetAvailable( configuration.context ) && configuration.getIsMemoryCache() ) {
 				response.newBuilder()
 
-						.header( "Cache-Control", "public, max-age=" + configuration.getmemoryCacheTime() )
-						.removeHeader( "Pragma" )
-						.build();
+						.header( "Cache-Control", "public, max-age=" + configuration.getmemoryCacheTime() ).removeHeader( "Pragma" ).build();
 			} else {
 //              进行本地缓存数据
 				/**
@@ -284,8 +262,6 @@ public class HttpUtils {
 				 */
 				if ( configuration.getIsDiskCache() ) {
 					response.newBuilder()
-							.removeHeader( USER_AGENT_HEADER_NAME )
-							.addHeader( USER_AGENT_HEADER_NAME, userAgentHeaderValue )
 							.header( "Cache-Control", "public, only-if-cached, max-stale=" + configuration.getDiskCacheTime() )
 							.removeHeader( "Pragma" )
 							.build();

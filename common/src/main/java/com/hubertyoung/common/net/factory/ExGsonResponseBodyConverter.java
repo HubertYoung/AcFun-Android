@@ -47,14 +47,24 @@ public class ExGsonResponseBodyConverter< T > implements Converter< ResponseBody
 //		Type objectType = type( baseRespose.getClass(), type );
         try {
             JSONObject response = new JSONObject( value );
-            int status = response.getInt( "status" );
+			int status = NetStatus.Server_Fail.getIndex();
+			if ( response.has("errorid")){
+				status = response.getInt( "errorid" );
+			}
             CommonLog.loge("status：" + status);
             if ( ( status == NetStatus.Success.getIndex() ) || ( status == NetStatus.Server_Success.getIndex() ) ) {
 				return gson.fromJson( value, type );
             }else{
 				baseRespose.setStatus( status );
-				baseRespose.setData( response.getString( "data" ) );
-				baseRespose.setResult( response.getString( "result" ) );
+				if ( response.has( "code" ) ) {
+					baseRespose.setCode( response.getInt( "code" ) );
+				}
+				if(response.has( "vdata" )) {
+					baseRespose.setData( response.getString( "vdata" ) );
+				}
+				if ( response.has( "message" ) ) {
+					baseRespose.setResult( response.getString( "message" ) );
+				}
 				return ( T ) gson.fromJson( value, baseRespose.getClass() );
 			}
         } catch ( JSONException e ) {

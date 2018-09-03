@@ -3,11 +3,14 @@ package com.hubertyoung.common.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 import com.hubertyoung.common.CommonApplication;
@@ -15,6 +18,7 @@ import com.hubertyoung.common.CommonApplication;
 import java.io.File;
 import java.security.SecureRandom;
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -23,6 +27,10 @@ import java.util.List;
  * 作用：获取设备信息
  */
 public class AppUtils {
+	protected static final String PREFS_FILE = "gank_device_id.xml";
+	protected static final String PREFS_DEVICE_ID = "gank_device_id";
+	protected static String uuid = null;
+
 	private AppUtils() {
 		throw new UnsupportedOperationException( "u can't instantiate me..." );
 	}
@@ -34,11 +42,8 @@ public class AppUtils {
 	 */
 	public static String getAppVersionName() {
 		try {
-			String pkName = CommonApplication.getAppContext()
-										   .getPackageName();
-			String versionName = CommonApplication.getAppContext()
-												.getPackageManager()
-												.getPackageInfo( pkName, 0 ).versionName;
+			String pkName = CommonApplication.getAppContext().getPackageName();
+			String versionName = CommonApplication.getAppContext().getPackageManager().getPackageInfo( pkName, 0 ).versionName;
 			return versionName;
 		} catch ( Exception e ) {
 			// TODO: 2017/6/25 崩溃日志
@@ -53,11 +58,8 @@ public class AppUtils {
 	 */
 	public static int getAppVersionCode() {
 		try {
-			String pkName = CommonApplication.getAppContext()
-										   .getPackageName();
-			int versionCode = CommonApplication.getAppContext()
-											 .getPackageManager()
-											 .getPackageInfo( pkName, 0 ).versionCode;
+			String pkName = CommonApplication.getAppContext().getPackageName();
+			int versionCode = CommonApplication.getAppContext().getPackageManager().getPackageInfo( pkName, 0 ).versionCode;
 			return versionCode;
 		} catch ( Exception e ) {
 			// TODO: 2017/6/25 崩溃日志
@@ -66,12 +68,54 @@ public class AppUtils {
 	}
 
 	public static String getDeviceID() {
-		String strID = Settings.Secure.getString( CommonApplication.getAppContext()
-																 .getContentResolver(), Settings.Secure.ANDROID_ID );
+		String strID = Settings.Secure.getString( CommonApplication.getAppContext().getContentResolver(), Settings.Secure.ANDROID_ID );
 		if ( strID == null || strID.equals( "" ) ) {
 			strID = getRandom( 16 );
 		}
 		return strID;
+	}
+
+	public static String getUUID() {
+		if ( uuid == null ) {
+			synchronized ( AppUtils.class ) {
+				if ( uuid == null ) {
+					SharedPreferences sharedPreferences = CommonApplication.getAppContext().getSharedPreferences( PREFS_FILE, Context.MODE_PRIVATE );
+					String str = null;
+					String string = sharedPreferences.getString( PREFS_DEVICE_ID, null );
+					if ( string != null ) {
+						uuid = string;
+					} else {
+						string = Settings.Secure.getString( CommonApplication.getAppContext().getContentResolver(), Settings.Secure.ANDROID_ID );
+						boolean isHavePermission = true;
+						try {
+							if ( "9774d56d682e549c".equals( string ) ) {
+								UUID nameUUIDFromBytes;
+								if ( ContextCompat.checkSelfPermission( CommonApplication.getAppContext(), "android.permission.READ_PHONE_STATE" ) != PackageManager.PERMISSION_GRANTED ) {
+									isHavePermission = false;
+								}
+								if ( isHavePermission ) {
+									str = ( ( TelephonyManager ) CommonApplication.getAppContext().getSystemService( Context.TELEPHONY_SERVICE ) ).getDeviceId();
+								}
+								if ( str != null ) {
+									nameUUIDFromBytes = UUID.nameUUIDFromBytes( str.getBytes( "utf8" ) );
+								} else {
+									nameUUIDFromBytes = UUID.randomUUID();
+								}
+								uuid = nameUUIDFromBytes.toString();
+							} else {
+								uuid = UUID.nameUUIDFromBytes( string.getBytes( "utf8" ) ).toString();
+							}
+							if ( isHavePermission ) {
+								sharedPreferences.edit().putString( PREFS_DEVICE_ID, uuid ).apply();
+							}
+						} catch ( Throwable e ) {
+							throw new RuntimeException( e );
+						}
+					}
+				}
+			}
+		}
+		return uuid;
 	}
 
 	private static String getRandom( int var0 ) {
@@ -117,8 +161,7 @@ public class AppUtils {
 	 */
 	public static void installApp( final File file, final String authority ) {
 		if ( !FileUtils.isFileExists( file ) ) return;
-		CommonApplication.getAppContext()
-					   .startActivity( IntentUtils.getInstallAppIntent( file, authority ) );
+		CommonApplication.getAppContext().startActivity( IntentUtils.getInstallAppIntent( file, authority ) );
 	}
 
 	/**
@@ -160,8 +203,7 @@ public class AppUtils {
 		if ( !FileUtils.isFileExists( file ) ) return false;
 		String command = "LD_LIBRARY_PATH=/vendor/lib:/system/lib pm install " + filePath;
 		ShellUtils.CommandResult commandResult = ShellUtils.execCmd( command, !isSystemApp(), true );
-		return commandResult.successMsg != null && commandResult.successMsg.toLowerCase()
-																		   .contains( "success" );
+		return commandResult.successMsg != null && commandResult.successMsg.toLowerCase().contains( "success" );
 	}
 
 	/**
@@ -170,8 +212,7 @@ public class AppUtils {
 	 * @return {@code true}: 是<br>{@code false}: 否
 	 */
 	public static boolean isSystemApp() {
-		return isSystemApp( CommonApplication.getAppContext()
-										   .getPackageName() );
+		return isSystemApp( CommonApplication.getAppContext().getPackageName() );
 	}
 
 	/**
@@ -183,8 +224,7 @@ public class AppUtils {
 	public static boolean isSystemApp( final String packageName ) {
 		if ( TextUtils.isEmpty( packageName ) ) return false;
 		try {
-			PackageManager pm = CommonApplication.getAppContext()
-											   .getPackageManager();
+			PackageManager pm = CommonApplication.getAppContext().getPackageManager();
 			ApplicationInfo ai = pm.getApplicationInfo( packageName, 0 );
 			return ai != null && ( ai.flags & ApplicationInfo.FLAG_SYSTEM ) != 0;
 		} catch ( PackageManager.NameNotFoundException e ) {
@@ -199,9 +239,7 @@ public class AppUtils {
 	 * @return 是否是Debug版本
 	 */
 	public static boolean isDebuggable() {
-		return CommonApplication.getAppContext()
-							  .getApplicationInfo() != null && ( CommonApplication.getAppContext()
-																				.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE ) != 0;
+		return CommonApplication.getAppContext().getApplicationInfo() != null && ( CommonApplication.getAppContext().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE ) != 0;
 	}
 
 	/**
@@ -210,10 +248,8 @@ public class AppUtils {
 	 */
 	public static void mark() {
 		try {
-			Intent viewIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=" + CommonApplication.getAppContext()
-																												   .getPackageName() ) );
-			CommonApplication.getAppContext()
-						   .startActivity( viewIntent );
+			Intent viewIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=" + CommonApplication.getAppContext().getPackageName() ) );
+			CommonApplication.getAppContext().startActivity( viewIntent );
 		} catch ( Exception e ) {
 			ToastUtil.showWarning( "手机未安装应用市场" );
 		}

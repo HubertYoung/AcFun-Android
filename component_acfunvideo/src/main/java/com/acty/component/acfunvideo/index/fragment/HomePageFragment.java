@@ -8,12 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.acty.component.acfunvideo.index.adapter.HomePagerAdapter;
-import com.acty.component.acfunvideo.index.control.HomePageControl;
-import com.acty.component.acfunvideo.index.model.HomePageModelImp;
-import com.acty.component.acfunvideo.index.presenter.HomePagePresenterImp;
 import com.acty.component_acfunvideo.R;
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -28,7 +24,7 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
  * @since:V1.0
  * @desc:com.hubertyoung.component.home.index.fragment
  */
-public class HomePageFragment extends BaseFragment< HomePagePresenterImp, HomePageModelImp > implements HomePageControl.View {
+public class HomePageFragment extends BaseFragment {
 
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
@@ -90,7 +86,6 @@ public class HomePageFragment extends BaseFragment< HomePagePresenterImp, HomePa
 
 	@Override
 	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
 	}
 
 	@Override
@@ -153,26 +148,5 @@ public class HomePageFragment extends BaseFragment< HomePagePresenterImp, HomePa
 		mHomeViewPager.setOffscreenPageLimit( 1 );
 		mHomeViewPager.setCurrentItem( 0 );
 		mHomeViewTab.setViewPager( mHomeViewPager );
-	}
-
-	@Override
-	public void loadData() {
-		MyRequestMap map = new MyRequestMap();
-//		mPresenter.requestHomeIndex( map );
-	}
-
-	@Override
-	public void showLoading( String title, int type ) {
-
-	}
-
-	@Override
-	public void stopLoading() {
-
-	}
-
-	@Override
-	public void showErrorTip( String msg ) {
-
 	}
 }

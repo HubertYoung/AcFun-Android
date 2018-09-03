@@ -2,6 +2,7 @@ package com.hubertyoung.common;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 
@@ -10,7 +11,9 @@ import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.http.HttpUtils;
 import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.CommonLog;
+import com.hubertyoung.common.utils.DisplayUtil;
 import com.hubertyoung.common.utils.ScreenHelper;
+import com.hubertyoung.common.utils.TimeUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -22,6 +25,10 @@ import org.acra.annotation.AcraCore;
 import org.acra.annotation.AcraHttpSender;
 import org.acra.data.StringFormat;
 import org.acra.sender.HttpSender;
+
+import java.util.UUID;
+
+import okhttp3.Headers;
 
 /**
  * <br>
@@ -35,10 +42,7 @@ import org.acra.sender.HttpSender;
  */
 @AcraCore( includeDropBoxSystemTags = true, reportFormat = StringFormat.KEY_VALUE_LIST )
 //@AcraToast( resText = R.string.common_res_app_crash_str )
-@AcraHttpSender( uri = "http://d1bustest.d1-bus.com/socialbus/api/coupon/getCouponList",
-		httpMethod = HttpSender.Method.POST,
-		connectionTimeout = 15 * 1000,
-		socketTimeout = 15 * 1000,
+@AcraHttpSender( uri = "http://d1bustest.d1-bus.com/socialbus/api/coupon/getCouponList", httpMethod = HttpSender.Method.POST, connectionTimeout = 15 * 1000, socketTimeout = 15 * 1000,
 		dropReportsOnTimeout = true )
 public class CommonApplication extends Application {
 
@@ -91,8 +95,43 @@ public class CommonApplication extends Application {
 	}
 
 	private void initOkHttpUtils() {
-
+//		GET /v3/regions?channelId=0 HTTP/1.1
+//		deviceType	1
+//		appVersion	5.4.0
+//		productId	2000
+//		User-agent	acvideo core/5.4.0(Xiaomi;MI 5;8.0.0)
+//		resolution	1080x1920
+//		uuid	d30b763b-963e-473d-af3d-3810853e8ba5
+//		market	portal
+//		requestTime	2018-09-03 19:10:30.645
+//		uid	0
+//		udid	0e282674-678c-3274-bc4f-59c4e1870526
+//		Host	apipc.app.acfun.cn
+//		Connection	Keep-Alive
+//		Accept-Encoding	gzip
 		NetWorkConfiguration configuration = new NetWorkConfiguration( this ).isCache( true ).isDiskCache( true ).isMemoryCache( true );
+		StringBuffer stringBuffer = new StringBuffer();
+		stringBuffer.append( "acvideo core/" )//
+				.append( AppUtils.getAppVersionName() )//
+				.append( "(" )//
+				.append( Build.BRAND )//
+				.append( ";" )//
+				.append( Build.MODEL )//
+				.append( ";" )//
+				.append( Build.VERSION.RELEASE )//
+				.append( ")" );
+		Headers.Builder builder = new Headers.Builder()//
+				.add( "deviceType", "1" )//
+				.add( "appVersion", AppUtils.getAppVersionName() )//
+				.add( "productId", "2000" ) //
+				.add( "User-agent", stringBuffer.toString() )//
+				.add( "resolution", DisplayUtil.getScreenWidth( this ) + "x" + DisplayUtil.getScreenHeight( this ) )//
+				.add( "uuid", UUID.randomUUID().toString() )//
+				.add( "market", "portal" )//
+				.add( "requestTime", TimeUtil.getCurrentDate( TimeUtil.dateFormatYMDHMSSSS ) )//
+				.add( "uid", "0" )//
+				.add( "udid", AppUtils.getUUID() );
+		configuration.setHeaders( builder.build() );
 		HttpUtils.setConFiguration( configuration );
 	}
 
