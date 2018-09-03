@@ -8,7 +8,7 @@ import android.view.View;
  * @author:Yang
  * @date:2017/10/24 10:52
  * @since:V1.0.0
- * @desc:com.kento.common.commonwidget.sectioned
+ * @desc:com.hubertyoung.common.commonwidget.sectioned
  * @param: 自定义section
  */
 public abstract class StatelessSection extends Section {

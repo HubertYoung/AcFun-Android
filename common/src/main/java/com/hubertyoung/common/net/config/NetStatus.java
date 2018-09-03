@@ -4,7 +4,7 @@ package com.hubertyoung.common.net.config;
  * @author:Yang
  * @date:2017/7/25 10:12
  * @since:v1.0
- * @desc:com.kento.common.net.config
+ * @desc:com.hubertyoung.common.net.config
  * @param:对应网络状态码
  */
 public enum NetStatus {

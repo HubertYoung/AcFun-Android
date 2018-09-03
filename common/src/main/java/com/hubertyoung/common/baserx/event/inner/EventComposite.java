@@ -12,7 +12,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * @author:Yang
  * @date:2017/11/30 10:31
  * @since:V1.0
- * @desc:com.kento.common.baserx.event.inner
+ * @desc:com.hubertyoung.common.baserx.event.inner
  * @param:事件复合
  */
 public class EventComposite extends EventBase {

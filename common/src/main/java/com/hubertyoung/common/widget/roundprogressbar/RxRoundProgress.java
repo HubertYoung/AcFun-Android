@@ -16,7 +16,7 @@ import com.hubertyoung.common.R;
  * @author:Yang
  * @date:2017/12/2 16:40
  * @since:V1.0
- * @desc:com.kento.common.commonwidget.roundprogressbar
+ * @desc:com.hubertyoung.common.commonwidget.roundprogressbar
  * @param:圆形进度条
  */
 public class RxRoundProgress extends View {

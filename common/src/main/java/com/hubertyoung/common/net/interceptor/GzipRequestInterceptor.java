@@ -17,7 +17,7 @@ import okio.Okio;
  * @author:Yang
  * @date:2017/11/30 09:56
  * @since:V1.0
- * @desc:com.kento.common.net.interceptor
+ * @desc:com.hubertyoung.common.net.interceptor
  * @param:包含Gzip压缩的请求拦截
  */
 public class GzipRequestInterceptor implements Interceptor {

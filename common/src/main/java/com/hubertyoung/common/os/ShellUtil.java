@@ -1,4 +1,4 @@
-//package com.kento.common.os;
+//package com.hubertyoung.common.os;
 //
 //import java.io.BufferedReader;
 //import java.io.DataOutputStream;

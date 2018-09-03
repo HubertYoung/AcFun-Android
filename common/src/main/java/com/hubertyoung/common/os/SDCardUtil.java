@@ -14,11 +14,11 @@
 // * limitations under the License.
 // */
 //
-//package com.kento.common.os;
+//package com.hubertyoung.common.os;
 //
 //import android.os.Environment;
 //
-//import com.kento.common.CommonApplication;
+//import com.hubertyoung.common.CommonApplication;
 //
 //import java.io.File;
 //

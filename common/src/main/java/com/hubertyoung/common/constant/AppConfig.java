@@ -11,7 +11,7 @@ public class AppConfig {
      */
     public static final String DEBUG_TAG = "logger";// LogCat的标记
 
-    public static String CHANNELID = "kento";
+    public static String CHANNELID = "hubertyoung";
 //    public static final String OSTYPE = "OSType";
 //    public static final String OSVERSION = "OSVersion";
 //    public static final String CLIENTID = "clientID";
@@ -74,7 +74,7 @@ public class AppConfig {
     /**
      * 项目根目录文件夹
      */
-    public static final String APP_DEPLOY_PATH = "kento";
+    public static final String APP_DEPLOY_PATH = "hubertyoung";
     /**
      * 缓存文件夹
      */

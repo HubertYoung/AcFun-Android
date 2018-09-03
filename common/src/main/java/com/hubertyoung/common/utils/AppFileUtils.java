@@ -22,7 +22,7 @@ import java.io.File;
  * @author:Yang
  * @date:2017/7/17 12:06
  * @since:v1.0
- * @desc:com.kento.common.commonutils
+ * @desc:com.hubertyoung.common.commonutils
  * @param:
  */
 public class AppFileUtils {

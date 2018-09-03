@@ -31,7 +31,7 @@ import org.acra.sender.HttpSender;
  * @author:Yang
  * @date:2018/4/19 5:12 PM
  * @since:V1.0
- * @desc:com.kento.component.basic
+ * @desc:com.hubertyoung.component.basic
  */
 @AcraCore( includeDropBoxSystemTags = true, reportFormat = StringFormat.KEY_VALUE_LIST )
 //@AcraToast( resText = R.string.common_res_app_crash_str )

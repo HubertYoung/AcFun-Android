@@ -24,7 +24,7 @@ import com.hubertyoung.common.R;
  * @author:Yang
  * @date:2017/12/11 16:42
  * @since:v1.0
- * @desc:com.kento.common.commonwidget
+ * @desc:com.hubertyoung.common.commonwidget
  * @param:边角标签文字
  */
 public class SlantTextView extends View {

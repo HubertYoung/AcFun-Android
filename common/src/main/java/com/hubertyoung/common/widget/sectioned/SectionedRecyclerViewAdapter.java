@@ -16,7 +16,7 @@ import java.util.UUID;
  * @author:Yang
  * @date:2017/10/24 10:52
  * @since:V1.0.0
- * @desc:com.kento.common.commonwidget.sectioned
+ * @desc:com.hubertyoung.common.commonwidget.sectioned
  * @param:A custom RecyclerView with Sections with custom Titles.
  * Sections are displayed in the same order they were added.
  */

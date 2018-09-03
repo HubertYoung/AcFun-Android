@@ -1,9 +1,9 @@
-package com.hubertyoung.common.net.exception;//package com.kento.common.net.exception;
+package com.hubertyoung.common.net.exception;//package com.hubertyoung.common.net.exception;
 //
 //import java.net.UnknownHostException;
 //import java.util.concurrent.TimeUnit;
 //
-//import com.kento.common.commonutils.CommonLog;
+//import com.hubertyoung.common.commonutils.CommonLog;
 //import io.reactivex.Observable;
 //import io.reactivex.ObservableSource;
 //import io.reactivex.functions.Function;
@@ -16,7 +16,7 @@ package com.hubertyoung.common.net.exception;//package com.kento.common.net.exce
 // * @author:Yang
 // * @date:2018/3/7 下午7:01
 // * @since:V$VERSION
-// * @desc:com.kento.common.net.exception
+// * @desc:com.hubertyoung.common.net.exception
 // */
 //public class TryWhenTransaction implements Function< Observable< Object >, ObservableSource< ? > > {
 //	/***

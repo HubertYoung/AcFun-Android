@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
  * @author:Yang
  * @date:2017/8/9 22:30
  * @since:v1.0
- * @desc:com.kento.common.commonutils
+ * @desc:com.hubertyoung.common.commonutils
  * @param:输入框弹出管理
  */
 public class KeyBordUtil {

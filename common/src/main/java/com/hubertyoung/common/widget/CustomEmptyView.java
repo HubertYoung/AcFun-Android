@@ -16,7 +16,7 @@ import com.hubertyoung.common.R;
  * @author:Yang
  * @date:2018/1/9 14:41
  * @since:V1.0.0
- * @desc:com.kento.common.commonwidget
+ * @desc:com.hubertyoung.common.commonwidget
  * @param:自定义EmptyView
  */
 public class CustomEmptyView extends FrameLayout {

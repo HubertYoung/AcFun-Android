@@ -4,7 +4,7 @@ package com.hubertyoung.common.net.processserver;
  * @author:Yang
  * @date:2017/12/6 14:53
  * @since:v1.0
- * @desc:com.kento.common.net.processserver
+ * @desc:com.hubertyoung.common.net.processserver
  * @param:
  */
 public class ProcessServerException {

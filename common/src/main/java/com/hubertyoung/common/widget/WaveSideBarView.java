@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
  * @author:Yang
  * @date:2018/2/11 上午10:13
  * @since:V1.0
- * @desc:com.kento.common.commonwidget.sidebar
+ * @desc:com.hubertyoung.common.commonwidget.sidebar
  */
 public class WaveSideBarView extends View {
 
