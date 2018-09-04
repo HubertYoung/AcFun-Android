@@ -1,7 +1,7 @@
 package com.acty.component.acfunvideo.index.presenter;
 
 
-import com.acty.component.acfunvideo.entity.NewRecommendEntity;
+import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.basebean.MyRequestMap;
@@ -27,10 +27,10 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 		mView.showLoading( "Loading...", 0 );
 		mRxManage.add( mModel.requestNewRecommend( map )
 				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< List<NewRecommendEntity > >() {
+				.subscribe( new Consumer< List<Regions > >() {
 
 					@Override
-					public void accept( @NonNull List<NewRecommendEntity > newRecommendEntityList ) throws Exception {
+					public void accept( @NonNull List<Regions > newRecommendEntityList ) throws Exception {
 						mView.stopLoading();
 						mView.setNewRecommendInfo( newRecommendEntityList );
 

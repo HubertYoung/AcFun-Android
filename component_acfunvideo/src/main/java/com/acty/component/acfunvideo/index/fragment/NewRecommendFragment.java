@@ -6,7 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.acty.component.acfunvideo.entity.NewRecommendEntity;
+import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.acty.component.acfunvideo.index.model.NewRecommendModelImp;
 import com.acty.component.acfunvideo.index.presenter.NewRecommendPresenterImp;
@@ -194,9 +194,9 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	}
 
 	@Override
-	public void setNewRecommendInfo( List< NewRecommendEntity > newRecommendEntityList ) {
+	public void setNewRecommendInfo( List< Regions > newRecommendEntityList ) {
 //		mNewBangumiSection.setData(newRecommendEntityList);
-		for (NewRecommendEntity recommendEntity : newRecommendEntityList) {
+		for (Regions recommendEntity : newRecommendEntityList) {
 			switch (recommendEntity.schema) {
 			    case Utils.videos:
 					NewRecommendVideosSection mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );

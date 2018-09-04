@@ -1,7 +1,7 @@
 package com.acty.component.acfunvideo.index.control;
 
 
-import com.acty.component.acfunvideo.entity.NewRecommendEntity;
+import com.acty.component.acfunvideo.entity.Regions;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
@@ -24,11 +24,11 @@ import io.reactivex.Observable;
 public interface NewRecommendControl {
 
 	interface Model extends BaseModel {
-		Observable< List<NewRecommendEntity > > requestNewRecommend( MyRequestMap map );
+		Observable< List<Regions > > requestNewRecommend( MyRequestMap map );
 	}
 
 	interface View extends BaseView {
-		void setNewRecommendInfo( List<NewRecommendEntity > searchBangumiList );
+		void setNewRecommendInfo( List<Regions > searchBangumiList );
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {

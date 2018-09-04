@@ -7,19 +7,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.acty.component.acfunvideo.entity.NewRecommendEntity;
-import com.acty.component.acfunvideo.index.itemview.RecommendBangumiItemView;
+import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component_acfunvideo.R;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
-import com.hubertyoung.common.utils.DisplayUtil;
-import com.hubertyoung.common.utils.StringUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
-
-import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * <br>
@@ -33,7 +25,7 @@ import butterknife.BindView;
  */
 public class NewRecommendVideosSection extends Section {
 	private Context mContext;
-	private NewRecommendEntity data;
+	private Regions data;
 
 	public NewRecommendVideosSection( Context context ) {
 		super( new SectionParameters.Builder( R.layout.item_home_video ).headerResourceId( R.layout.widget_region_header_text ).build() );
@@ -74,7 +66,7 @@ public class NewRecommendVideosSection extends Section {
 	@Override
 	public void onBindItemViewHolder( RecyclerView.ViewHolder holder, int position ) {
 		NewRecommendVideosViewHolder viewHolder = ( NewRecommendVideosViewHolder ) holder;
-		NewRecommendEntity.BodyContentsBean regionBodyContent = data.bodyContents.get( position );
+		Regions.BodyContentsBean regionBodyContent = data.bodyContents.get( position );
 //		if (regionBodyContent == null) {
 //			viewHolder.itemView.setVisibility(View.GONE);
 //			viewHolder.playsLayout.setVisibility(View.GONE);
@@ -130,12 +122,12 @@ public class NewRecommendVideosSection extends Section {
 //		viewHolder.root.setOnClickListener(r7);
 	}
 
-	public void setData( NewRecommendEntity newRecommendEntityList ) {
+	public void setData( Regions newRecommendEntityList ) {
 		this.data = newRecommendEntityList;
 	}
 
 	public interface OnItemClickListener {
-		void onClickRecommendBangumiItem( View v, NewRecommendEntity.BodyContentsBean bodyContentsBean );
+		void onClickRecommendBangumiItem( View v, Regions.BodyContentsBean bodyContentsBean );
 	}
 
 	private OnItemClickListener mOnItemClickListener;
