@@ -25,7 +25,7 @@ import io.reactivex.Observable;
  */
 public class NewRecommendModelImp implements NewRecommendControl.Model {
 	@Override
-	public Observable< List<NewRecommendEntity> > requestNewRecommend( MyRequestMap map ) {
+	public Observable< List<NewRecommendEntity > > requestNewRecommend( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )

@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 
 import com.acty.component_banner.R;
 import com.acty.component_banner.banner.transformer.ABaseTransformer;
-import com.hubertyoung.common.ImageLoaderUtils;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.DisplayUtil;
 
@@ -336,8 +335,8 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 			ImageView mImageView = ( ImageView ) view.findViewById( R.id.iv_banner_view );
 //			mImageView.setRadius( getContext().getResources()
 //											  .getDimensionPixelOffset( R.dimen.DIMEN_2_0DP ) );
-			ImageLoaderUtils.getInstance()
-							.display( getContext(), mImageView, entity.Pic, isCenter, R.drawable.banner_default );
+//			ImageLoaderUtils.getInstance()
+//							.display( getContext(), mImageView, entity.Pic, isCenter, R.drawable.banner_default );
 			imageViewList.add( mImageView );
 		} else if ( entity.type == 1 ) {
 //			videoPlayerStandard = new JCVideoPlayerStandard( getContext() );

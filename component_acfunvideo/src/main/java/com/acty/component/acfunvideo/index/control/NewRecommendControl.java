@@ -24,11 +24,11 @@ import io.reactivex.Observable;
 public interface NewRecommendControl {
 
 	interface Model extends BaseModel {
-		Observable< List<NewRecommendEntity> > requestNewRecommend( MyRequestMap map );
+		Observable< List<NewRecommendEntity > > requestNewRecommend( MyRequestMap map );
 	}
 
 	interface View extends BaseView {
-		void setNewRecommendInfo( List<NewRecommendEntity> newRecommendEntityList );
+		void setNewRecommendInfo( List<NewRecommendEntity > searchBangumiList );
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {

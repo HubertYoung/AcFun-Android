@@ -2,8 +2,6 @@ package com.acty.component.acfunvideo.api;
 
 
 import com.acty.component.acfunvideo.entity.NewRecommendEntity;
-import com.acty.component.home.entity.BrandDetailBodyEntity;
-import com.acty.component.home.entity.BrandDetailEntity;
 import com.hubertyoung.common.net.response.BaseResponse;
 
 import java.util.List;
@@ -31,23 +29,23 @@ public interface ApiHomeService {
 	 * @return
 	 */
 	@GET( "v3/regions" )
-	Observable< BaseResponse< List<NewRecommendEntity> > > requestNewRecommend( @QueryMap Map< String, String > map );
+	Observable< BaseResponse< List< NewRecommendEntity > > > requestNewRecommend( @QueryMap Map< String, String > map );
 
-	/**
-	 * 商品详情
-	 *
-	 * @param map
-	 * @return
-	 */
-	@GET( "goods/category" )
-	Observable< BaseResponse< BrandDetailEntity > > requestBrandDetail( @QueryMap Map< String, String > map );
-
-	/**
-	 * 商品列表
-	 *
-	 * @param map
-	 * @return
-	 */
-	@GET( "goods/list" )
-	Observable< BaseResponse< BrandDetailBodyEntity > > requestBrandDetailList( @QueryMap Map< String, String > map );
+//	/**
+//	 * 商品详情
+//	 *
+//	 * @param map
+//	 * @return
+//	 */
+//	@GET( "goods/category" )
+//	Observable< BaseResponse< BrandDetailEntity > > requestBrandDetail( @QueryMap Map< String, String > map );
+//
+//	/**
+//	 * 商品列表
+//	 *
+//	 * @param map
+//	 * @return
+//	 */
+//	@GET( "goods/list" )
+//	Observable< BaseResponse< BrandDetailBodyEntity > > requestBrandDetailList( @QueryMap Map< String, String > map );
 }

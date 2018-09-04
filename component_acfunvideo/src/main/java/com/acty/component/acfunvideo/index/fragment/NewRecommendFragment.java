@@ -4,18 +4,18 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.acty.component.acfunvideo.entity.NewRecommendEntity;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.acty.component.acfunvideo.index.model.NewRecommendModelImp;
 import com.acty.component.acfunvideo.index.presenter.NewRecommendPresenterImp;
-import com.acty.component.acfunvideo.index.section.BannerSection;
+import com.acty.component.acfunvideo.index.section.NewBangumiSection;
 import com.acty.component_acfunvideo.R;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
@@ -37,15 +37,16 @@ import java.util.List;
  * @desc:com.acty.component.acfunvideo.index.fragment
  */
 public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp, NewRecommendModelImp > implements NewRecommendControl.View {
-	private static final String ARG_PARAM1 = "param1";
+	private static final String ARG_PARAM1 = "id";
 	private static final String ARG_PARAM2 = "param2";
 
-	private String mParam1;
+	private String id;
 	private String mParam2;
 	private SmartRefreshLayout mSrlContainer;
 	private RecyclerView mHomeRecommendLis;
 	private SectionedRecyclerViewAdapter mAdapter;
 	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
+	private NewBangumiSection mNewBangumiSection;
 
 	public static NewRecommendFragment newInstance( String param1, String param2 ) {
 		NewRecommendFragment fragment = new NewRecommendFragment();
@@ -60,7 +61,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	public void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		if ( getArguments() != null ) {
-			mParam1 = getArguments().getString( ARG_PARAM1 );
+			id = getArguments().getString( ARG_PARAM1 );
 			mParam2 = getArguments().getString( ARG_PARAM2 );
 		}
 	}
@@ -136,10 +137,10 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 		mHomeRecommendLis.setHasFixedSize( true );
 		mHomeRecommendLis.setLayoutManager( layoutManager );
 		mAdapter = new SectionedRecyclerViewAdapter();
-		mBannerSection = new BannerSection( ( BaseActivity ) activity );
-		mAdapter.addSection( mBannerSection );
-//		mBrandSection = new BrandSection( ( BaseActivity ) activity );
-//		mAdapter.addSection( mBrandSection );
+//		mBannerSection = new BannerSection( ( BaseActivity ) activity );
+//		mAdapter.addSection( mBannerSection );
+		mNewBangumiSection = new NewBangumiSection( ( BaseActivity ) activity );
+		mAdapter.addSection( mNewBangumiSection );
 //		mNewGoodsSection = new NewGoodsSection( ( BaseActivity ) activity );
 //		mAdapter.addSection( mNewGoodsSection );
 //		mHotGoodsSection = new HotGoodsSection( ( BaseActivity ) activity );
@@ -169,16 +170,21 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 
 	@Override
 	public void stopLoading() {
-
+		mSrlContainer.finishRefresh();
+		mSrlContainer.finishLoadMore();
+		if ( mViewSkeletonScreen != null && mViewSkeletonScreen.isShowing() ) {
+			mViewSkeletonScreen.hide();
+		}
 	}
 
 	@Override
 	public void showErrorTip( String msg ) {
-
+		ToastUtil.showError( msg );
 	}
 
 	@Override
 	public void setNewRecommendInfo( List< NewRecommendEntity > newRecommendEntityList ) {
-		Log.e( "TAG", "str == " + newRecommendEntityList.toString() );
+		mNewBangumiSection.setData(newRecommendEntityList);
+		mAdapter.notifyDataSetChanged();
 	}
 }

@@ -6,5 +6,13 @@
         <attr name="shimmer_auto_start" format="boolean|reference"/>
         <attr name="shimmer_angle" format="integer|reference"/>
     </declare-styleable>
-
+    <style name="home_item_title_video_bangumi">
+        <item name="android:textSize">@dimen/text_size_home_item_title</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:maxLines">2</item>
+    </style>
+    <style name="text_style_detail">
+        <item name="android:textSize">@dimen/text_detail_size</item>
+        <item name="android:textColor">@color/text_deep_gray_color</item>
+    </style>
 </resources>

@@ -1,6 +1,11 @@
 package com.acty.component.acfunvideo.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * <br>
@@ -99,17 +104,59 @@ public class NewRecommendEntity {
 	}
 
 	public static class BodyContentsBean {
-		/**
-		 * img : ["http://imgs.aixifan.com/test-douw/2018_8_3/1535972425383.jpg"]
-		 * action : 4
-		 * href : http://www.acfun.cn/spn/xwyh2018
-		 * title : 星舞银河2018投票
-		 */
+		@SerializedName("avgScore")
+		public float mAvgScore;
+		@SerializedName("id")
+		public int mBangumiId;
+		@SerializedName("cover")
+		public String mCover;
+		@SerializedName("coverHorizontal")
+		public String mCoverHorizontal;
+		@SerializedName("coverVertical")
+		public String mCoverVertical;
+		@SerializedName("hasScore")
+		public int mHasScore;
+		@SerializedName("intro")
+		public String mIntro;
+		// TODO: 2018/9/4 这里
+		@SerializedName("lastUpdateTime")
+		public Date mLastUpdateTime;
+		@SerializedName("lastVideoName")
+		public String mLastVideoName;
+		@SerializedName("score1Count")
+		public int mScore1Count;
+		@SerializedName("score2Count")
+		public int mScore2Count;
+		@SerializedName("score3Count")
+		public int mScore3Count;
+		@SerializedName("score4Count")
+		public int mScore4Count;
+		@SerializedName("score5Count")
+		public int mScore5Count;
+		@SerializedName("status")
+		public int mStatus;
+		@SerializedName("title")
+		public String mTitle;
+		@SerializedName("totalCount")
+		public int mTotalCount;
+		@SerializedName("totalScore")
+		public int mTotalScore;
+		@SerializedName("type")
+		public int mType;
+		@SerializedName("stows")
+		public int stows;
+		@SerializedName("userScore")
+		public int userScore;
+		@SerializedName("week")
+		public int week;
 
-		public int action;
-		public String href;
-		public String title;
-		public List< String > img;
+		public String getAbbrTitle() {
+			if (this.mTitle == null) {
+				return "";
+			}
+			Matcher matcher = Pattern.compile("【.*?】").matcher(this.mTitle);
+			return matcher.find() ? matcher.replaceFirst("") : this.mTitle;
+		}
 	}
 
 	public static class AdvertListsBean {

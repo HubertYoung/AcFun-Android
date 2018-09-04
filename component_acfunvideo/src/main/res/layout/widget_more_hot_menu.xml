@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:aapt="http://schemas.android.com/aapt"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+                android:id="@+id/widget_more_hot_menu_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_transparent_light"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:paddingBottom="25dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="25dp">
+
+    <TextView
+        android:id="@+id/widget_more_hot_menu_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:drawablePadding="7dp"
+        android:drawableRight="@mipmap/ic_region_bottom_enter"
+        android:gravity="center"
+        android:text="@string/more_hot_menu_text"
+        android:textColor="@color/them_color"
+        android:textSize="13sp"
+        android:textStyle="bold"/>
+</RelativeLayout>

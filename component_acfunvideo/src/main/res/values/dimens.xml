@@ -3,5 +3,11 @@
     <dimen name="height_tab_or_bottom">48dp</dimen>
     <dimen name="margin_large">12dp</dimen>
     <dimen name="text_title_middle_size">14sp</dimen>
+    <dimen name="bangumi_radius_size">3dp</dimen>
+    <dimen name="round_border_width">1px</dimen>
+    <dimen name="text_size_home_item_title">13sp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="text_detail_size">12sp</dimen>
+    <dimen name="text_title_large_size">15sp</dimen>
 
 </resources>

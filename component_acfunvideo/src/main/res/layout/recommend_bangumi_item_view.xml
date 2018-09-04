@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/cover"
+            android:layout_width="100dp"
+            android:layout_height="123dp"
+            app:failureImage="@color/background_gray_color"
+            app:placeholderImage="@color/background_gray_color"
+            app:roundWithOverlayColor="@color/white"
+            app:roundedCornerRadius="@dimen/bangumi_radius_size"
+            app:roundingBorderColor="@color/image_border_color"
+            app:roundingBorderWidth="@dimen/round_border_width"/>
+
+        <TextView
+            android:id="@+id/stows"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/cover"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="6dp"
+            android:background="@drawable/shape_trans_black_rounded_3dp"
+            android:includeFontPadding="false"
+            android:paddingBottom="3dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="3dp"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/home_item_title_video_bangumi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="1.5dp"/>
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/text_style_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:drawablePadding="5dp"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:textColor="@color/text_deep_gray_color"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+</LinearLayout>

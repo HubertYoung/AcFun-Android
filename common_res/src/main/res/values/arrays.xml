@@ -30,4 +30,57 @@
         <item>Y</item>
         <item>Z</item>
     </array>
+
+    <array name="forbidden_words">
+        <item>镕基</item>
+        <item>咨询</item>
+        <item>邓小</item>
+        <item>粪</item>
+        <item>达赖</item>
+        <item>工作</item>
+        <item>网店</item>
+        <item>淘宝</item>
+        <item>傻</item>
+        <item>猴</item>
+        <item>Ac</item>
+        <item>泽民</item>
+        <item>李洪志</item>
+        <item>薄熙来</item>
+        <item>胡锦涛</item>
+        <item>温家宝</item>
+        <item>大便</item>
+        <item>屄</item>
+        <item>鸡巴</item>
+        <item>精液</item>
+        <item>阴道</item>
+        <item>主席</item>
+        <item>书记</item>
+        <item>市长</item>
+        <item>省长</item>
+        <item>艹</item>
+        <item>法轮功</item>
+        <item>藏独</item>
+        <item>bilibili</item>
+        <item>哔哩</item>
+        <item>b站</item>
+        <item>润之</item>
+        <item>屄</item>
+        <item>屌</item>
+        <item>屎</item>
+        <item>兼</item>
+        <item>聘</item>
+        <item>傻逼</item>
+        <item>丽媛</item>
+        <item>近平</item>
+    </array>
+
+    <array name="weekdays">
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+        <item>周日</item>
+    </array>
 </resources>

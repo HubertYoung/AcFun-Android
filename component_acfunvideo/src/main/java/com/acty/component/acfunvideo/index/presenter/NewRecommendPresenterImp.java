@@ -27,10 +27,10 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 		mView.showLoading( "Loading...", 0 );
 		mRxManage.add( mModel.requestNewRecommend( map )
 				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< List<NewRecommendEntity> >() {
+				.subscribe( new Consumer< List<NewRecommendEntity > >() {
 
 					@Override
-					public void accept( @NonNull List<NewRecommendEntity> newRecommendEntityList ) throws Exception {
+					public void accept( @NonNull List<NewRecommendEntity > newRecommendEntityList ) throws Exception {
 						mView.stopLoading();
 						mView.setNewRecommendInfo( newRecommendEntityList );
 

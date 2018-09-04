@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingBottom="4dp"
+              android:paddingLeft="12dp"
+              android:paddingRight="12dp"
+              android:paddingTop="12dp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="3dp"
+        android:layout_height="15dp"
+        app:backgroundImage="@color/them_color"
+        app:roundedCornerRadius="2dp"/>
+
+    <TextView
+        android:id="@+id/part_name_view_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:textColor="@color/text_black_color"
+        android:textSize="@dimen/text_title_large_size"/>
+
+    <TextView
+        android:id="@+id/part_name_view_name2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="8dp"
+        android:textColor="@color/text_black_color"
+        android:textSize="13sp"
+        android:visibility="gone"/>
+</LinearLayout>
