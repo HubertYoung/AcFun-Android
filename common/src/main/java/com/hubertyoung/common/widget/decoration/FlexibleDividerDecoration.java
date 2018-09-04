@@ -186,13 +186,13 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 
 	/**
 	 * In the case mShowLastDivider = false,
-	 * Returns offset for how many views we don't have to draw a divider for,
+	 * Returns offset for how many views we don't have to draw drawable divider for,
 	 * for LinearLayoutManager it is as simple as not drawing the last child divider,
-	 * but for a GridLayoutManager it needs to take the span count for the last items into account
+	 * but for drawable GridLayoutManager it needs to take the span count for the last items into account
 	 * until we use the span count configured for the grid.
 	 *
 	 * @param parent RecyclerView
-	 * @return offset for how many views we don't have to draw a divider or 1 if its a
+	 * @return offset for how many views we don't have to draw drawable divider or 1 if its drawable
 	 * LinearLayoutManager
 	 */
 	private int getLastDividerOffset( RecyclerView parent ) {
@@ -214,7 +214,7 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 
 	/**
 	 * Determines whether divider was already drawn for the row the item is in,
-	 * effectively only makes sense for a grid
+	 * effectively only makes sense for drawable grid
 	 *
 	 * @param position current view position to draw divider
 	 * @param parent   RecyclerView
@@ -232,7 +232,7 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 	}
 
 	/**
-	 * Returns a group index for GridLayoutManager.
+	 * Returns drawable group index for GridLayoutManager.
 	 * for LinearLayoutManager, always returns position.
 	 *
 	 * @param position current view position to draw divider

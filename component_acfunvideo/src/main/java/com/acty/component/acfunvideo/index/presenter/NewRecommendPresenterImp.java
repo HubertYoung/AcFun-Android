@@ -30,9 +30,9 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 				.subscribe( new Consumer< List<Regions > >() {
 
 					@Override
-					public void accept( @NonNull List<Regions > newRecommendEntityList ) throws Exception {
+					public void accept( @NonNull List<Regions > regionsList ) throws Exception {
 						mView.stopLoading();
-						mView.setNewRecommendInfo( newRecommendEntityList );
+						mView.setNewRecommendInfo( regionsList );
 
 					}
 				}, new Consumer< Throwable >() {

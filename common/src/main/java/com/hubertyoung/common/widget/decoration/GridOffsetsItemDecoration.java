@@ -178,7 +178,7 @@ public class GridOffsetsItemDecoration extends RecyclerView.ItemDecoration {
 		} else if ( layoutManager instanceof StaggeredGridLayoutManager ) {
 			return ( ( StaggeredGridLayoutManager ) layoutManager ).getSpanCount();
 		} else {
-			throw new UnsupportedOperationException( "the GridDividerItemDecoration can only be used in " + "the RecyclerView which use a GridLayoutManager or StaggeredGridLayoutManager" );
+			throw new UnsupportedOperationException( "the GridDividerItemDecoration can only be used in " + "the RecyclerView which use drawable GridLayoutManager or StaggeredGridLayoutManager" );
 		}
 	}
 

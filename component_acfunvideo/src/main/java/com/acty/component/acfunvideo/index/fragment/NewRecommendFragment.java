@@ -47,6 +47,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private RecyclerView mHomeRecommendLis;
 	private SectionedRecyclerViewAdapter mAdapter;
 	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
+	private NewRecommendVideosSection mNewBangumiSection;
 //	private NewBangumiSection mNewBangumiSection;
 
 	public static NewRecommendFragment newInstance( String param1, String param2 ) {
@@ -142,8 +143,14 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 				switch ( mAdapter.getSectionItemViewType( position ) ) {
 					case SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER:
 						return 6;
+					case SectionedRecyclerViewAdapter.VIEW_TYPE_FOOTER:
+						return 6;
+					case SectionedRecyclerViewAdapter.VIEW_TYPE_ITEM_LOADED:{
+						int itemViewType = mAdapter.getSectionForPosition( position ).positionType;
+						return itemViewType == 1 ? 3 : 6;
+					}
 					default:
-						return 3;
+						return 6;
 				}
 			}
 		} );
@@ -194,15 +201,15 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	}
 
 	@Override
-	public void setNewRecommendInfo( List< Regions > newRecommendEntityList ) {
+	public void setNewRecommendInfo( List< Regions > regionsList ) {
 //		mNewBangumiSection.setData(newRecommendEntityList);
-		for (Regions recommendEntity : newRecommendEntityList) {
-			switch (recommendEntity.schema) {
-			    case Utils.videos:
-					NewRecommendVideosSection mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );
+		for (Regions regions : regionsList) {
+			switch ( regions.schema ) {
+				case Utils.videos:
+					mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );
 					mAdapter.addSection( mNewBangumiSection );
-					mNewBangumiSection.setData( recommendEntity );
-			        break;
+					mNewBangumiSection.setRegions( regions );
+					break;
 			}
 		}
 

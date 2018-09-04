@@ -336,7 +336,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 //			mImageView.setRadius( getContext().getResources()
 //											  .getDimensionPixelOffset( R.dimen.DIMEN_2_0DP ) );
 //			ImageLoaderUtils.getInstance()
-//							.display( getContext(), mImageView, entity.Pic, isCenter, R.drawable.banner_default );
+//							.loadImage( getContext(), mImageView, entity.Pic, isCenter, R.drawable.banner_default );
 			imageViewList.add( mImageView );
 		} else if ( entity.type == 1 ) {
 //			videoPlayerStandard = new JCVideoPlayerStandard( getContext() );
@@ -345,7 +345,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 
 //			videoPlayerStandard.setUp( entity.videoUrl, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, entity.title );
 //			ImageLoaderUtils.getInstance()
-//							.display( getContext(), videoPlayerStandard.thumbImageView, entity.Pic, false, R.drawable.banner_default );
+//							.loadImage( getContext(), videoPlayerStandard.thumbImageView, entity.Pic, false, R.drawable.banner_default );
 //			imageViewList.add( videoPlayerStandard );
 //				if ( TextUtils.equals( "gif", entity.type ) ) {
 //				ImageView mImageView = new ImageView( getContext() );

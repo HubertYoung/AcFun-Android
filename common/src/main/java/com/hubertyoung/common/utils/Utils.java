@@ -72,7 +72,7 @@ public class Utils {
 		return i == -100 || i == 401 || i == 110008;
 	}
 
-//	public static List<Regions> a(List<Regions> list, int i) {
+//	public static List<Regions> drawable(List<Regions> list, int i) {
 //		List<Regions> arrayList = new ArrayList();
 //		if (list != null) {
 //			for (Regions regions : list) {
@@ -92,7 +92,7 @@ public class Utils {
 //				Bundle bundle2;
 //				switch (i) {
 //					case 1:
-//						IntentHelper.a(activity, Integer.valueOf(str).intValue(), "recommend");
+//						IntentHelper.drawable(activity, Integer.valueOf(str).intValue(), "recommend");
 //						break;
 //					case 2:
 //						IntentHelper.c(activity, Integer.valueOf(str).intValue(), "recommend");
@@ -100,14 +100,14 @@ public class Utils {
 //					case 3:
 //						User user = new User();
 //						user.setUid(Integer.valueOf(str).intValue());
-//						IntentHelper.a(activity, user);
+//						IntentHelper.drawable(activity, user);
 //						break;
 //					case 4:
 //						if (bundle == null) {
 //							bundle = new Bundle();
 //						}
 //						bundle.putString("url", str);
-//						IntentHelper.a(activity, WebViewActivity.class, bundle);
+//						IntentHelper.drawable(activity, WebViewActivity.class, bundle);
 //						break;
 //					case 5:
 //					case 18:
@@ -141,12 +141,12 @@ public class Utils {
 //						intent.putExtra(RankActivity.f, 1);
 //						break;
 //					case 12:
-//						IntentHelper.a(activity, BangumiSecondaryActivity.class);
+//						IntentHelper.drawable(activity, BangumiSecondaryActivity.class);
 //						break;
 //					case 13:
 //						bundle2 = new Bundle();
 //						bundle2.putInt(NewHistoryActivity.g, 1);
-//						IntentHelper.a(activity, NewHistoryActivity.class, bundle2);
+//						IntentHelper.drawable(activity, NewHistoryActivity.class, bundle2);
 //						break;
 //					case 14:
 //						try {
@@ -162,7 +162,7 @@ public class Utils {
 //						stringBuilder.append(b());
 //						stringBuilder.append(str);
 //						bundle2.putString("url", stringBuilder.toString());
-//						IntentHelper.a(activity, WebViewActivity.class, bundle2);
+//						IntentHelper.drawable(activity, WebViewActivity.class, bundle2);
 //						break;
 //					case 16:
 //						IntentHelper.c(activity);
@@ -173,7 +173,7 @@ public class Utils {
 //								bundle = new Bundle();
 //							}
 //							bundle.putString(GameDetailActivity.f, str);
-//							IntentHelper.a(activity, GameDetailActivity.class, bundle);
+//							IntentHelper.drawable(activity, GameDetailActivity.class, bundle);
 //							break;
 //						}
 //						break;
@@ -184,7 +184,7 @@ public class Utils {
 //					default:
 //						intent.setClass(activity, WebViewActivity.class);
 //						StringBuilder stringBuilder2 = new StringBuilder();
-//						stringBuilder2.append(DomainHelper.a().m());
+//						stringBuilder2.append(DomainHelper.drawable().m());
 //						stringBuilder2.append("/pleaseupdate/");
 //						intent.putExtra("url", stringBuilder2.toString());
 //						break;
@@ -194,32 +194,32 @@ public class Utils {
 //					activity.startActivity(intent2);
 //				}
 //			} catch (Throwable e) {
-//				LogUtil.a(e);
+//				LogUtil.drawable(e);
 //			}
 //		}
 //	}
 
-//	public static void a(Activity activity, RegionsContent regionsContent, Bundle bundle) {
+//	public static void drawable(Activity activity, RegionsContent regionsContent, Bundle bundle) {
 //		if (regionsContent.actionId == 4) {
 //			bundle = new Bundle();
 //			bundle.putInt("share_menu", regionsContent.shareTagShow);
 //		}
-//		a(activity, regionsContent.actionId, regionsContent.url, bundle);
+//		drawable(activity, regionsContent.actionId, regionsContent.url, bundle);
 //	}
 //
-//	public static void a(Activity activity, RegionBodyContent regionBodyContent, Bundle bundle) {
-//		a(activity, regionBodyContent.actionId, regionBodyContent.contentId, bundle);
+//	public static void drawable(Activity activity, RegionBodyContent regionBodyContent, Bundle bundle) {
+//		drawable(activity, regionBodyContent.actionId, regionBodyContent.contentId, bundle);
 //	}
 //
-//	public static void a(Activity activity, RegionsContent regionsContent, int i, int i2, int i3) {
-//		a(activity, regionsContent, null);
+//	public static void drawable(Activity activity, RegionsContent regionsContent, int i, int i2, int i3) {
+//		drawable(activity, regionsContent, null);
 //	}
 //
-//	public static void a(Activity activity, RegionsContent regionsContent) {
-//		a(activity, regionsContent, null);
+//	public static void drawable(Activity activity, RegionsContent regionsContent) {
+//		drawable(activity, regionsContent, null);
 //	}
 //
-//	public static void a(Context context) {
+//	public static void drawable(Context context) {
 //		Editor edit = context.getSharedPreferences(SharedPreferencesConst.g, 0).edit();
 //		edit.putLong(TtmlNode.START, System.currentTimeMillis());
 //		edit.apply();
@@ -239,8 +239,8 @@ public class Utils {
 //		return context.getSharedPreferences(SharedPreferencesConst.g, 0).getLong("length", 0);
 //	}
 //
-//	public static void a(final Activity activity) {
-//		DialogUtils.a(activity, new OnClickListener() {
+//	public static void drawable(final Activity activity) {
+//		DialogUtils.drawable(activity, new OnClickListener() {
 //			public void onClick( DialogInterface dialogInterface, int i) {
 //				dialogInterface.dismiss();
 //			}
@@ -254,7 +254,7 @@ public class Utils {
 //	}
 //
 //	public static void b(final Activity activity) {
-//		DialogUtils.a(activity, new OnClickListener() {
+//		DialogUtils.drawable(activity, new OnClickListener() {
 //			public void onClick(DialogInterface dialogInterface, int i) {
 //				dialogInterface.dismiss();
 //			}
@@ -268,7 +268,7 @@ public class Utils {
 //	}
 //
 //	public static void c(final Activity activity) {
-//		DialogUtils.a(activity, new OnClickListener() {
+//		DialogUtils.drawable(activity, new OnClickListener() {
 //			public void onClick(DialogInterface dialogInterface, int i) {
 //				dialogInterface.dismiss();
 //			}
@@ -281,7 +281,7 @@ public class Utils {
 //		}, activity.getString(R.string.real_name_certify_dialog_title), activity.getString(R.string.real_name_upload_certify_dialog_message), activity.getString(R.string.common_cancel), activity.getString(R.string.real_name_upload_certify_dialog_right_text), true, false).show();
 //	}
 //
-//	public static int a(View view) {
+//	public static int drawable(View view) {
 //		try {
 //			if (VERSION.SDK_INT <= 17 && view.getLayoutParams() == null) {
 //				view.setLayoutParams(new LayoutParams(-2, -2));
@@ -289,12 +289,12 @@ public class Utils {
 //			view.measure(MeasureSpec.makeMeasureSpec(0, 0), MeasureSpec.makeMeasureSpec(0, 0));
 //			return view.getMeasuredHeight();
 //		} catch (Throwable e) {
-//			LogUtil.a(e);
+//			LogUtil.drawable(e);
 //			return 0;
 //		}
 //	}
 //
-//	public static int a(View view, int i) {
+//	public static int drawable(View view, int i) {
 //		try {
 //			if (VERSION.SDK_INT <= 17 && view.getLayoutParams() == null) {
 //				view.setLayoutParams(new LayoutParams(-2, -2));
@@ -302,7 +302,7 @@ public class Utils {
 //			view.measure(MeasureSpec.makeMeasureSpec(i, 1073741824), MeasureSpec.makeMeasureSpec(0, 0));
 //			return view.getMeasuredHeight();
 //		} catch (Throwable e) {
-//			LogUtil.a(e);
+//			LogUtil.drawable(e);
 //			return 0;
 //		}
 //	}
@@ -310,8 +310,8 @@ public class Utils {
 //	public static void d(final Activity activity) {
 //		AlertDialog create = new Builder(activity).setMessage(R.string.token_invalid_msg).setPositiveButton(R.string.token_invalid_confirm, new OnClickListener() {
 //			public void onClick(DialogInterface dialogInterface, int i) {
-//				Object valueOf = String.valueOf(SigninHelper.a().b());
-//				SigninHelper.a().t();
+//				Object valueOf = String.valueOf(SigninHelper.drawable().b());
+//				SigninHelper.drawable().t();
 //				Activity activity = activity;
 //				String str = SharedPreferencesConst.h;
 //				Activity activity2 = activity;
@@ -329,21 +329,21 @@ public class Utils {
 //
 
 
-//	public static String a(int i) {
+//	public static String drawable(int i) {
 //		StringBuilder stringBuilder = new StringBuilder();
 //		stringBuilder.append("res://tv.acfundanmaku.video/");
 //		stringBuilder.append(i);
 //		return stringBuilder.toString();
 //	}
 //
-//	public static String a(File file) {
+//	public static String drawable(File file) {
 //		StringBuilder stringBuilder = new StringBuilder();
 //		stringBuilder.append("file://");
 //		stringBuilder.append(file.getPath());
 //		return stringBuilder.toString();
 //	}
 //
-//	public static Spanned a( Context context, String str) {
+//	public static Spanned drawable( Context context, String str) {
 //		if (context == null) {
 //			return null;
 //		}
@@ -354,40 +354,40 @@ public class Utils {
 //	}
 //
 //	public static void e(Activity activity) {
-//		a(activity, 1);
+//		drawable(activity, 1);
 //	}
 //
-//	public static void a(Activity activity, int i) {
-//		if (SigninHelper.a().s()) {
-//			SigninHelper.a().t();
-//			ToastUtil.a((Context) activity, (int) R.string.token_nvalid_toast);
-//			EventHelper.a().a(new LogoutEvent(2));
+//	public static void drawable(Activity activity, int i) {
+//		if (SigninHelper.drawable().s()) {
+//			SigninHelper.drawable().t();
+//			ToastUtil.drawable((Context) activity, (int) R.string.token_nvalid_toast);
+//			EventHelper.drawable().drawable(new LogoutEvent(2));
 //			IntentHelper.e(activity, i);
 //		}
 //	}
 //
-//	public static void a(String str, Context context) {
+//	public static void drawable(String str, Context context) {
 //		if (!TextUtils.isEmpty(str)) {
 //			TagAliasBean tagAliasBean = new TagAliasBean();
 //			tagAliasBean.d = true;
-//			tagAliasBean.a = 2;
+//			tagAliasBean.drawable = 2;
 //			tagAliasBean.c = str;
-//			TagAliasOperatorHelper.a().a(context, 101, tagAliasBean);
+//			TagAliasOperatorHelper.drawable().drawable(context, 101, tagAliasBean);
 //		}
 //	}
 //
 //	public static void b(String str, Context context) {
 //		if (!TextUtils.isEmpty(str)) {
 //			TagAliasBean tagAliasBean = new TagAliasBean();
-//			tagAliasBean.a = 3;
+//			tagAliasBean.drawable = 3;
 //			tagAliasBean.d = true;
 //			tagAliasBean.c = str;
-//			TagAliasOperatorHelper.a().a(context, 102, tagAliasBean);
+//			TagAliasOperatorHelper.drawable().drawable(context, 102, tagAliasBean);
 //		}
 //	}
 //
-//	public static void a( TextView textView, Link.OnClickListener onClickListener) {
-//		LinkBuilder.a(textView).a(new Link( Pattern.compile("(aa|AA|ab|AB|ac|AC)\\d+")).a(AcFunApplication.b().getResources().getColor(R.color.bangou_clickable_color)).a(false).a(onClickListener)).a();
+//	public static void drawable( TextView textView, Link.OnClickListener onClickListener) {
+//		LinkBuilder.drawable(textView).drawable(new Link( Pattern.compile("(aa|AA|ab|AB|ac|AC)\\d+")).drawable(AcFunApplication.b().getResources().getColor(R.color.bangou_clickable_color)).drawable(false).drawable(onClickListener)).drawable();
 //	}
 //
 //	public static int c(int i) {
@@ -395,32 +395,32 @@ public class Utils {
 //	}
 //
 //	@DrawableRes
-//	public static int a() {
+//	public static int drawable() {
 //		return VERSION.SDK_INT >= 21 ? R.mipmap.ic_launcher_silhouette : R.mipmap.ic_launcher;
 //	}
 //
-//	public static Cancelable a(String str, String str2, boolean z, boolean z2, CommonCallback<File> commonCallback) {
+//	public static Cancelable drawable(String str, String str2, boolean z, boolean z2, CommonCallback<File> commonCallback) {
 //		RequestParams requestParams = new RequestParams(str);
 //		requestParams.setAutoResume(z);
 //		requestParams.setAutoRename(z2);
 //		requestParams.setSaveFilePath(str2);
-//		requestParams.addHeader("User-agent", UserAgent.a);
+//		requestParams.addHeader("User-agent", UserAgent.drawable);
 //		requestParams.setCancelFast(true);
 //		return spread_banner.http().get(requestParams, commonCallback);
 //	}
 //
-//	public static void a(@NonNull Activity activity, @NonNull Share share, OnDismissListener onDismissListener) {
+//	public static void drawable(@NonNull Activity activity, @NonNull Share share, OnDismissListener onDismissListener) {
 //		SharePopup sharePopup = new SharePopup(activity, share);
 //		sharePopup.setAnimationStyle(R.style.fade_in_out_animation);
 //		sharePopup.setOnDismissListener(onDismissListener);
 //		sharePopup.getContentView().startAnimation( AnimationUtils.loadAnimation(activity, R.anim.modify_pop_show));
 //		if (share.type != ContentType.VIDEO) {
-//			a(activity, 1.0f, 0.5f);
+//			drawable(activity, 1.0f, 0.5f);
 //		}
 //		sharePopup.showAtLocation(activity.getWindow().getDecorView(), 80, 0, 0);
 //	}
 //
-//	public static SharePopup a(Activity activity, String str, String str2, String str3) {
+//	public static SharePopup drawable(Activity activity, String str, String str2, String str3) {
 //		Share share = new Share();
 //		share.setShareUrl(str);
 //		share.title = str2;
@@ -432,7 +432,7 @@ public class Utils {
 //		return sharePopup;
 //	}
 //
-//	public static void a(Activity activity, View view, int i, String str, String str2, String str3, int i2, String str4) {
+//	public static void drawable(Activity activity, View view, int i, String str, String str2, String str3, int i2, String str4) {
 //		final Context context = activity;
 //		PopupMenu popupMenu = new PopupMenu(context, view);
 //		if ((context instanceof ArticleDetailActivity) || (context instanceof VideoDetailActivity)) {
@@ -455,8 +455,8 @@ public class Utils {
 //				} else if (itemId != R.id.item_report) {
 //					return false;
 //				} else {
-//					if (SigninHelper.a().s()) {
-//						IntentHelper.a(context, (long) i3, str5, str6, str7, i4, str8);
+//					if (SigninHelper.drawable().s()) {
+//						IntentHelper.drawable(context, (long) i3, str5, str6, str7, i4, str8);
 //					} else {
 //						IntentHelper.f(context);
 //					}
@@ -474,12 +474,12 @@ public class Utils {
 //				return false;
 //			}
 //		} catch (Throwable e) {
-//			LogUtil.a(e);
+//			LogUtil.drawable(e);
 //		}
 //		return true;
 //	}
 //
-//	public static List<SearchContent> a(List<SearchContent> list, List<SearchContent> list2, int i) {
+//	public static List<SearchContent> drawable(List<SearchContent> list, List<SearchContent> list2, int i) {
 //		List<SearchContent> arrayList = new ArrayList();
 //		List arrayList2 = new ArrayList();
 //		if (list.size() > i) {
@@ -523,7 +523,7 @@ public class Utils {
 //		return arrayList;
 //	}
 //
-//	public static void a(Activity activity, float f, float f2) {
+//	public static void drawable(Activity activity, float f, float f2) {
 //		if (activity != null) {
 //			final Window window = activity.getWindow();
 //			ValueAnimator ofFloat = ValueAnimator.ofFloat(new float[]{f, f2});
@@ -540,7 +540,7 @@ public class Utils {
 //		}
 //	}
 //
-//	public static String a(long j) {
+//	public static String drawable(long j) {
 //		if (j <= 0) {
 //			return "0K";
 //		}
@@ -556,18 +556,18 @@ public class Utils {
 //
 //	public static String b() {
 //		StringBuilder stringBuilder = new StringBuilder();
-//		stringBuilder.append(DomainHelper.a().p());
+//		stringBuilder.append(DomainHelper.drawable().p());
 //		stringBuilder.append(Constants.COMPERE_URL_PRE);
 //		return stringBuilder.toString();
 //	}
 //
-//	public static void a(WebView webView) {
-//		if (VERSION.SDK_INT >= 19 && SettingHelper.a().p()) {
+//	public static void drawable(WebView webView) {
+//		if (VERSION.SDK_INT >= 19 && SettingHelper.drawable().p()) {
 //			WebView.setWebContentsDebuggingEnabled(true);
 //		}
 //	}
 //
-//	public static String a(RegionsContent regionsContent) {
+//	public static String drawable(RegionsContent regionsContent) {
 //		if (regionsContent == null) {
 //			return null;
 //		}
@@ -589,7 +589,7 @@ public class Utils {
 //		return stringBuilder;
 //	}
 //
-//	public static String a(String str, String str2, String str3) {
+//	public static String drawable(String str, String str2, String str3) {
 //		StringBuilder stringBuilder = new StringBuilder();
 //		if (TextUtils.isEmpty(str)) {
 //			str = "";
@@ -608,7 +608,7 @@ public class Utils {
 //		return stringBuilder.toString();
 //	}
 //
-//	public static String[] a(String str) {
+//	public static String[] drawable(String str) {
 //		if (TextUtils.isEmpty(str)) {
 //			return null;
 //		}
@@ -616,7 +616,7 @@ public class Utils {
 //	}
 //
 //	public static String b(String str) {
-//		return a(str, Constants.ANALYTICS_PAGE_GAME_DETAIL, "");
+//		return drawable(str, Constants.ANALYTICS_PAGE_GAME_DETAIL, "");
 //	}
 //
 //	public static boolean f(Context context) {
@@ -631,15 +631,15 @@ public class Utils {
 //		return false;
 //	}
 //
-//	public static void a(SimpleDraweeView simpleDraweeView, String str, int i, int i2) {
+//	public static void drawable(SimpleDraweeView simpleDraweeView, String str, int i, int i2) {
 //		try {
 //			simpleDraweeView.setController(((PipelineDraweeControllerBuilder) ((PipelineDraweeControllerBuilder) Fresco.newDraweeControllerBuilder().setOldController(simpleDraweeView.getController())).setImageRequest(ImageRequestBuilder.newBuilderWithSource(Uri.parse(str)).setPostprocessor(new IterativeBoxBlurPostProcessor(i, i2)).build())).build());
 //		} catch (Throwable e) {
-//			LogUtil.a(e);
+//			LogUtil.drawable(e);
 //		}
 //	}
 //
-//	public static void a(AdElementMime adElementMime) {
+//	public static void drawable(AdElementMime adElementMime) {
 //		Message message = new Message();
 //		message.what = 101;
 //		Bundle bundle = new Bundle();
@@ -652,10 +652,10 @@ public class Utils {
 //		}
 //	}
 //
-//	public static void a( Activity activity, AdElementMime adElementMime) {
+//	public static void drawable( Activity activity, AdElementMime adElementMime) {
 //		if (adElementMime != null) {
 //			if (8 == adElementMime.clickShowType) {
-//				a(activity, 17, adElementMime.gameId, null);
+//				drawable(activity, 17, adElementMime.gameId, null);
 //			}
 //			Message message = new Message();
 //			message.what = 102;
@@ -669,7 +669,7 @@ public class Utils {
 //		}
 //	}
 //
-//	public static HashMap<String, String> a( int i, int i2, long j) {
+//	public static HashMap<String, String> drawable( int i, int i2, long j) {
 //		HashMap<String, String> hashMap = new HashMap();
 //		StringBuilder stringBuilder = new StringBuilder();
 //		stringBuilder.append(i);

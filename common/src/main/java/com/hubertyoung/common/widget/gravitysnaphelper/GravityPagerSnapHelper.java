@@ -32,8 +32,8 @@ public class GravityPagerSnapHelper extends PagerSnapHelper {
         if (recyclerView != null
                 && (!(recyclerView.getLayoutManager() instanceof LinearLayoutManager )
                 || recyclerView.getLayoutManager() instanceof GridLayoutManager )) {
-            throw new IllegalStateException("GravityPagerSnapHelper needs a RecyclerView" +
-                    " with a LinearLayoutManager");
+            throw new IllegalStateException("GravityPagerSnapHelper needs drawable RecyclerView" +
+                    " with drawable LinearLayoutManager");
         }
         delegate.attachToRecyclerView(recyclerView);
         super.attachToRecyclerView(recyclerView);

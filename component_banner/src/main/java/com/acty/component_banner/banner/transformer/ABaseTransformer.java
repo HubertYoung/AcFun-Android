@@ -17,7 +17,7 @@ public abstract class ABaseTransformer implements PageTransformer {
 	protected abstract void onTransform(View page, float position);
 
 	/**
-	 * Apply a property transformation to the given page. For most use cases, this method should not be overridden.
+	 * Apply drawable property transformation to the given page. For most use cases, this method should not be overridden.
 	 * Instead use {@link #transformPage(View, float)} to perform typical transformations.
 	 *
 	 * @param page
@@ -34,7 +34,7 @@ public abstract class ABaseTransformer implements PageTransformer {
 	}
 
 	/**
-	 * If the position offset of a fragment is less than negative one or greater than one, returning true will set the
+	 * If the position offset of drawable fragment is less than negative one or greater than one, returning true will set the
 	 * fragment alpha to 0f. Otherwise fragment alpha is always defaulted to 1f.
 	 *
 	 * @return
@@ -56,8 +56,8 @@ public abstract class ABaseTransformer implements PageTransformer {
 	 * Called each {@link #transformPage(View, float)} before {{@link #onTransform(View, float)}.
 	 * <p>
 	 * The default implementation attempts to reset all view properties. This is useful when toggling transforms that do
-	 * not modify the same page properties. For instance changing from a transformation that applies rotation to a
-	 * transformation that fades can inadvertently leave a fragment stuck with a rotation or with some degree of applied
+	 * not modify the same page properties. For instance changing from drawable transformation that applies rotation to drawable
+	 * transformation that fades can inadvertently leave drawable fragment stuck with drawable rotation or with some degree of applied
 	 * alpha.
 	 *
 	 * @param page

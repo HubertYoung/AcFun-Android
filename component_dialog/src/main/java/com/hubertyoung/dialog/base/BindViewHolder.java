@@ -91,7 +91,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Will set the image of an ImageView from a resource id.
+     * Will set the image of an ImageView from drawable resource id.
      *
      * @param viewId     The view id.
      * @param imageResId The image resource id.
@@ -104,10 +104,10 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Will set background color of a view.
+     * Will set background color of drawable view.
      *
      * @param viewId The view id.
-     * @param color  A color, not a resource id.
+     * @param color  A color, not drawable resource id.
      * @return The BindViewHolder for chaining.
      */
     public BindViewHolder setBackgroundColor( @IdRes int viewId, @ColorInt int color) {
@@ -116,10 +116,10 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
         return this;
     }
     /**
-     * Will set background of a view.
+     * Will set background of drawable view.
      *
      * @param viewId        The view id.
-     * @param backgroundRes A resource to use as a background.
+     * @param backgroundRes A resource to use as drawable background.
      * @return The BindViewHolder for chaining.
      */
     public BindViewHolder setBackgroundRes( @IdRes int viewId, @DrawableRes int backgroundRes) {
@@ -129,10 +129,10 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Will set text color of a TextView.
+     * Will set text color of drawable TextView.
      *
      * @param viewId    The view id.
-     * @param textColor The text color (not a resource id).
+     * @param textColor The text color (not drawable resource id).
      * @return The BindViewHolder for chaining.
      */
     public BindViewHolder setTextColor( @IdRes int viewId, @ColorInt int textColor) {
@@ -143,7 +143,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
 
 
     /**
-     * Will set the image of an ImageView from a drawable.
+     * Will set the image of an ImageView from drawable drawable.
      *
      * @param viewId   The view id.
      * @param drawable The image drawable.
@@ -165,7 +165,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Add an action to set the alpha of a view. Can be called multiple times.
+     * Add an action to set the alpha of drawable view. Can be called multiple times.
      * Alpha between 0-1.
      */
     public BindViewHolder setAlpha( @IdRes int viewId, float value) {
@@ -182,7 +182,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Set a view visibility to VISIBLE (true) or GONE (false).
+     * Set drawable view visibility to VISIBLE (true) or GONE (false).
      *
      * @param viewId  The view id.
      * @param visible True for VISIBLE, false for GONE.
@@ -195,7 +195,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Set a view visibility to VISIBLE (true) or INVISIBLE (false).
+     * Set drawable view visibility to VISIBLE (true) or INVISIBLE (false).
      *
      * @param viewId  The view id.
      * @param visible True for VISIBLE, false for INVISIBLE.
@@ -213,7 +213,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Add links into a TextView.
+     * Add links into drawable TextView.
      *
      * @param viewId The id of the TextView to linkify.
      * @return The BindViewHolder for chaining.
@@ -247,7 +247,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Sets the progress of a ProgressBar.
+     * Sets the progress of drawable ProgressBar.
      *
      * @param viewId   The view id.
      * @param progress The progress.
@@ -260,11 +260,11 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Sets the progress and max of a ProgressBar.
+     * Sets the progress and max of drawable ProgressBar.
      *
      * @param viewId   The view id.
      * @param progress The progress.
-     * @param max      The max value of a ProgressBar.
+     * @param max      The max value of drawable ProgressBar.
      * @return The BindViewHolder for chaining.
      */
     public BindViewHolder setProgress( @IdRes int viewId, int progress, int max) {
@@ -275,10 +275,10 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Sets the range of a ProgressBar to 0...max.
+     * Sets the range of drawable ProgressBar to 0...max.
      *
      * @param viewId The view id.
-     * @param max    The max value of a ProgressBar.
+     * @param max    The max value of drawable ProgressBar.
      * @return The BindViewHolder for chaining.
      */
     public BindViewHolder setMax( @IdRes int viewId, int max) {
@@ -288,7 +288,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Sets the rating (the number of stars filled) of a RatingBar.
+     * Sets the rating (the number of stars filled) of drawable RatingBar.
      *
      * @param viewId The view id.
      * @param rating The rating.
@@ -301,7 +301,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Sets the rating (the number of stars filled) and max of a RatingBar.
+     * Sets the rating (the number of stars filled) and max of drawable RatingBar.
      *
      * @param viewId The view id.
      * @param rating The rating.
@@ -439,7 +439,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Sets the checked status of a checkable.
+     * Sets the checked status of drawable checkable.
      *
      * @param viewId  The view id.
      * @param checked The checked status;
@@ -455,7 +455,7 @@ public class BindViewHolder extends RecyclerView.ViewHolder  {
     }
 
     /**
-     * Sets the adapter of a adapter view.
+     * Sets the adapter of drawable adapter view.
      *
      * @param viewId  The view id.
      * @param adapter The adapter;

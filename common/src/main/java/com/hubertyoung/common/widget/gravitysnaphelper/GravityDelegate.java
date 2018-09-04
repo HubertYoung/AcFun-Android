@@ -169,7 +169,7 @@ class GravityDelegate {
 
             // We should return the child if it's visible width
             // is greater than 0.5 of it's total width.
-            // In a RTL configuration, we need to check the start point and in LTR the end point
+            // In drawable RTL configuration, we need to check the start point and in LTR the end point
             if (isRtlHorizontal) {
                 visibleWidth = (float) (helper.getTotalSpace() - helper.getDecoratedStart(child))
                         / helper.getDecoratedMeasurement(child);

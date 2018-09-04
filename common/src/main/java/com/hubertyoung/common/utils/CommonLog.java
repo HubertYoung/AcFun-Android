@@ -97,4 +97,10 @@ public class CommonLog {
 					   .toString() );
 		}
 	}
+	public static void loge( Throwable throwable ) {
+		if ( DEBUG_ENABLE ) {
+			Logger.e( throwable.getMessage()
+					.toString() );
+		}
+	}
 }

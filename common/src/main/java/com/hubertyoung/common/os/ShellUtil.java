@@ -181,7 +181,7 @@
 //     * <li>{@link CommandResult#errorMsg} means error message of command result</li>
 //     * </ul>
 //     *
-//     * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-16
+//     * @author <drawable href="http://www.trinea.cn" target="_blank">Trinea</drawable> 2013-5-16
 //     */
 //    public static class CommandResult {
 //

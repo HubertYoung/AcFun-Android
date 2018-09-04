@@ -1,5 +1,6 @@
 package com.hubertyoung.common.utils;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.text.TextUtils;
 
 import com.hubertyoung.common.CommonApplication;
 
@@ -233,6 +235,117 @@ public final class IntentUtils {
 		return intent.addFlags( Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_NEW_TASK );
 	}
 
+	public static void startActivity( Activity activity, int action, String url, Bundle bundle) {
+		if (url != null) {
+			try {
+				Intent intent = new Intent();
+				switch (action) {
+					case 1:
+//						IntentHelper.a(activity, Integer.valueOf(str).intValue(), "recommend");
+						break;
+					case 2:
+//						IntentHelper.c(activity, Integer.valueOf(str).intValue(), "recommend");
+						break;
+					case 3:
+//						User user = new User();
+//						user.setUid(Integer.valueOf(str).intValue());
+//						IntentHelper.a(activity, user);
+						break;
+					case 4:
+						if (bundle == null) {
+							bundle = new Bundle();
+						}
+						bundle.putString("url", url);
+//						IntentHelper.a(activity, WebViewActivity.class, bundle);
+						break;
+					case 5:
+					case 18:
+						Uri parse = Uri.parse(url);
+//						intent.setAction(ACTION.HWID_SCHEME_URL);
+						intent.setData(parse);
+						break;
+					case 6:
+//						IntentHelper.b(activity, Integer.valueOf(str).intValue());
+						break;
+					case 7:
+//						intent.setClass(activity, RankActivity.class);
+//						if (!TextUtils.isEmpty(str)) {
+//							intent.putExtra(RankActivity.f, -1);
+//							intent.putExtra(RankActivity.e, Integer.parseInt(str));
+//							break;
+//						}
+//						intent.putExtra(RankActivity.f, 2);
+						break;
+					case 8:
+//						intent.setClass(activity, SerialBangumiActivity.class);
+//						intent.putExtra("category", BangumiType.ANIMATION);
+						break;
+					case 9:
+						break;
+					case 10:
+//						IntentHelper.b(activity, Integer.valueOf(str).intValue(), "recommend");
+						break;
+					case 11:
+//						intent.setClass(activity, RankActivity.class);
+//						intent.putExtra(RankActivity.f, 1);
+						break;
+					case 12:
+//						IntentHelper.a(activity, BangumiSecondaryActivity.class);
+						break;
+					case 13:
+						bundle = new Bundle();
+//						bundle2.putInt(NewHistoryActivity.g, 1);
+//						IntentHelper.a(activity, NewHistoryActivity.class, bundle2);
+						break;
+					case 14:
+						try {
+							action = Integer.valueOf(url).intValue();
+						} catch (Exception e) {
+							action = 0;
+						}
+//						IntentHelper.d(activity, i, "recommend");
+						break;
+					case 15:
+						bundle = new Bundle();
+						StringBuilder stringBuilder = new StringBuilder();
+//						stringBuilder.append(b());
+						stringBuilder.append(url);
+						bundle.putString("url", stringBuilder.toString());
+//						IntentHelper.a(activity, WebViewActivity.class, bundle2);
+						break;
+					case 16:
+//						IntentHelper.c(activity);
+						break;
+					case 17:
+						if (!TextUtils.isEmpty(url)) {
+							if (bundle == null) {
+								bundle = new Bundle();
+							}
+//							bundle.putString(GameDetailActivity.f, str);
+//							IntentHelper.a(activity, GameDetailActivity.class, bundle);
+							break;
+						}
+						break;
+					case 19:
+//						intent = new Intent(activity, ChannelHotActivity.class);
+//						intent.putExtra("channel", str);
+						break;
+					default:
+//						intent.setClass(activity, WebViewActivity.class);
+//						StringBuilder stringBuilder2 = new StringBuilder();
+//						stringBuilder2.append(DomainHelper.a().m());
+//						stringBuilder2.append("/pleaseupdate/");
+//						intent.putExtra("url", stringBuilder2.toString());
+						break;
+				}
+				if (intent != null) {
+					activity.startActivity(intent);
+				}
+			} catch (Throwable e) {
+				CommonLog.loge( e );
+			}
+		}
+	}
 //    /**
 //     * 获取选择照片的Intent
 //     *

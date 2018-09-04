@@ -32,7 +32,7 @@ public class EventFind {
 			if ( method.isAnnotationPresent( Subscribe.class ) ) {
 				Class< ? >[] parameterTypes = method.getParameterTypes();
 				if ( parameterTypes.length != 1 ) {
-					throw new IllegalArgumentException( "Method " + method + " has @Subscribe annotation but requires " + parameterTypes.length + " arguments.  Methods must require a single argument." );
+					throw new IllegalArgumentException( "Method " + method + " has @Subscribe annotation but requires " + parameterTypes.length + " arguments.  Methods must require drawable single argument." );
 				}
 
 				Class< ? > parameterClazz = parameterTypes[ 0 ];

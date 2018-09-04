@@ -104,7 +104,7 @@ public class AppUtils {
 
 
     /**
-     * @param context used to fetch display metrics
+     * @param context used to fetch loadImage metrics
      * @param dp      dp value
      * @return pixel value
      */

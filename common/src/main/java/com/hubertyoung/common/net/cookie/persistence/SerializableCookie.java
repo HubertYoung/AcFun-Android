@@ -49,7 +49,7 @@ public class SerializableCookie implements Serializable {
         } finally {
             if (objectOutputStream != null) {
                 try {
-                    // Closing a ByteArrayOutputStream has no effect, it can be used later (and is used in the return statement)
+                    // Closing drawable ByteArrayOutputStream has no effect, it can be used later (and is used in the return statement)
                     objectOutputStream.close();
                 } catch (IOException e) {
                     Log.d(TAG, "Stream not closed in encodeCookie", e);

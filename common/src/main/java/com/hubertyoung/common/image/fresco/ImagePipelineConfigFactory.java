@@ -74,11 +74,12 @@ public class ImagePipelineConfigFactory {
 				Integer.MAX_VALUE,                     // Max length of eviction queue
 				Integer.MAX_VALUE );                    // Max cache entry size
 		configBuilder.setBitmapMemoryCacheParamsSupplier( new Supplier< MemoryCacheParams >() {
+			@Override
 			public MemoryCacheParams get() {
 				return bitmapCacheParams;
 			}
 		} )
-				.setMainDiskCacheConfig( DiskCacheConfig.newBuilder(context)
+				.setMainDiskCacheConfig( DiskCacheConfig.newBuilder( context )
 						.setBaseDirectoryPath( context.getApplicationContext().getCacheDir() )
 						.setBaseDirectoryName( IMAGE_PIPELINE_CACHE_DIR )
 						.setMaxCacheSize( ConfigConstants.MAX_DISK_CACHE_SIZE )
@@ -102,6 +103,7 @@ public class ImagePipelineConfigFactory {
 			return scanNumber + 2;
 		}
 
+		@Override
 		public QualityInfo getQualityInfo( int scanNumber ) {
 			boolean isGoodEnough = ( scanNumber >= 5 );
 			return ImmutableQualityInfo.of( scanNumber, isGoodEnough, false );

@@ -137,7 +137,6 @@ public class DisplayUtil {
 		wm.getDefaultDisplay().getMetrics( outMetrics );
 		return outMetrics.widthPixels;
 	}
-
 	/**
 	 * 获得屏幕高度
 	 *

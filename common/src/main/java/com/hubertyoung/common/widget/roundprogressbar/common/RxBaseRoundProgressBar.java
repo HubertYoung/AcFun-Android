@@ -79,7 +79,7 @@ public abstract class RxBaseRoundProgressBar extends LinearLayout {
         addView(tv);
     }
 
-    // Setup a progress bar layout by sub class
+    // Setup drawable progress bar layout by sub class
     protected abstract int initLayout();
 
     // Setup an attribute parameter on sub class
@@ -88,7 +88,7 @@ public abstract class RxBaseRoundProgressBar extends LinearLayout {
     // Initial any view on sub class
     protected abstract void initView();
 
-    // Draw a progress by sub class
+    // Draw drawable progress by sub class
     protected abstract void drawProgress(LinearLayout layoutProgress, float max, float progress, float totalWidth,
                                          int radius, int padding, int colorProgress, boolean isReverse);
 

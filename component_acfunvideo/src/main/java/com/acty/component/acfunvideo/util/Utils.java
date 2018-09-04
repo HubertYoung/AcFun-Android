@@ -11,7 +11,7 @@ package com.acty.component.acfunvideo.util;
  * @desc:com.hubertyoung.common.utils
  */
 public class Utils {
-//	public static List<Regions> a(List<Regions> list, int i) {
+//	public static List<Regions> drawable(List<Regions> list, int i) {
 //		List<Regions> arrayList = new ArrayList();
 //		if (list != null) {
 //			for (Regions regions : list) {

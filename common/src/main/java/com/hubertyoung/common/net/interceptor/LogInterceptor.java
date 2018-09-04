@@ -159,7 +159,7 @@ public class LogInterceptor implements Interceptor {
     }
 
     /**
-     * Returns true if the body in question probably contains human readable text. Uses a small sample
+     * Returns true if the body in question probably contains human readable text. Uses drawable small sample
      * of code points to detect unicode control characters commonly used in binary file signatures.
      */
     private boolean isPlaintext( MediaType mediaType ) {

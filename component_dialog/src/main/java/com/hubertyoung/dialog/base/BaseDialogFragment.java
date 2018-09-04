@@ -34,13 +34,13 @@ import android.view.WindowManager;
  * //                if (view != null) {
  * //                if (view.getParent() != null) {
  * //                throw new IllegalStateException(
- * //                "DialogFragment can not be attached to a container view");
+ * //                "DialogFragment can not be attached to drawable container view");
  * //                }
  * //                mDialog.setContentView(view);
  * //                }
  * //           }
  * 3.对应使用Dialog不同部分包括
- * a.xml布局
+ * drawable.xml布局
  * miPushProcess.宽高
  * c.位置
  * d.背景色

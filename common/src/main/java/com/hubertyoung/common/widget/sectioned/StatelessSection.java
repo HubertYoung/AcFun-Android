@@ -14,7 +14,7 @@ import android.view.View;
 public abstract class StatelessSection extends Section {
 
 	/**
-	 * Create a stateless Section object without header and footer
+	 * Create drawable stateless Section object without header and footer
 	 *
 	 * @deprecated Replaced by {@link #StatelessSection(SectionParameters)}
 	 *
@@ -27,7 +27,7 @@ public abstract class StatelessSection extends Section {
 	}
 
 	/**
-	 * Create a stateless Section object, with a custom header but without footer
+	 * Create drawable stateless Section object, with drawable custom header but without footer
 	 *
 	 * @deprecated Replaced by {@link #StatelessSection(SectionParameters)}
 	 *
@@ -42,7 +42,7 @@ public abstract class StatelessSection extends Section {
 	}
 
 	/**
-	 * Create a stateless Section object, with a custom header and a custom footer
+	 * Create drawable stateless Section object, with drawable custom header and drawable custom footer
 	 *
 	 * @deprecated Replaced by {@link #StatelessSection(SectionParameters)}
 	 *
@@ -60,18 +60,18 @@ public abstract class StatelessSection extends Section {
 	}
 
 	/**
-	 * Create a stateless Section object based on {@link SectionParameters}
+	 * Create drawable stateless Section object based on {@link SectionParameters}
 	 * @param sectionParameters section parameters
 	 */
 	public StatelessSection(SectionParameters sectionParameters) {
 		super(sectionParameters);
 
 		if (sectionParameters.loadingResourceId != null) {
-			throw new IllegalArgumentException("Stateless section shouldn't have a loading state resource");
+			throw new IllegalArgumentException("Stateless section shouldn't have drawable loading state resource");
 		}
 
 		if (sectionParameters.failedResourceId != null) {
-			throw new IllegalArgumentException("Stateless section shouldn't have a failed state resource");
+			throw new IllegalArgumentException("Stateless section shouldn't have drawable failed state resource");
 		}
 
 		if (sectionParameters.emptyResourceId != null) {

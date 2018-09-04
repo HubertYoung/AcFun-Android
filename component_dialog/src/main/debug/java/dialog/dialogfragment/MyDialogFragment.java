@@ -40,7 +40,7 @@ public class MyDialogFragment extends DialogFragment {
 //        int num = getArguments().getInt("num");
 //        Log.d(TAG, "onCreate num:" + num);
 //        //设置style类型
-//        // Pick a style based on the num.
+//        // Pick drawable style based on the num.
 //        int style = DialogFragment.STYLE_NORMAL, theme = 0;
 //        Log.d(TAG, "(num - 1) % 6:" + ((num - 1) % 6));
 //        switch ((num - 1) % 6) {

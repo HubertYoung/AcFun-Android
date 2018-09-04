@@ -50,7 +50,7 @@ public abstract class Section {
 	private Integer emptyResourceId;
 
 	/**
-	 * Create a Section object with loading/failed states, without header and footer
+	 * Create drawable Section object with loading/failed states, without header and footer
 	 *
 	 * @param itemResourceId    layout resource for its items
 	 * @param loadingResourceId layout resource for its loading state
@@ -65,7 +65,7 @@ public abstract class Section {
 	}
 
 	/**
-	 * Create a Section object with loading/failed states, with a custom header but without footer
+	 * Create drawable Section object with loading/failed states, with drawable custom header but without footer
 	 *
 	 * @param headerResourceId  layout resource for its header
 	 * @param itemResourceId    layout resource for its items
@@ -82,7 +82,7 @@ public abstract class Section {
 	}
 
 	/**
-	 * Create a Section object with loading/failed states, with a custom header and a custom footer
+	 * Create drawable Section object with loading/failed states, with drawable custom header and drawable custom footer
 	 *
 	 * @param headerResourceId  layout resource for its header
 	 * @param footerResourceId  layout resource for its footer
@@ -101,7 +101,7 @@ public abstract class Section {
 	}
 
 	/**
-	 * Create a Section object based on {@link SectionParameters}
+	 * Create drawable Section object based on {@link SectionParameters}
 	 *
 	 * @param sectionParameters section parameters
 	 */
@@ -172,9 +172,9 @@ public abstract class Section {
 	}
 
 	/**
-	 * Check if this Section has a header
+	 * Check if this Section has drawable header
 	 *
-	 * @return true if this Section has a header
+	 * @return true if this Section has drawable header
 	 */
 	public final boolean hasHeader() {
 		return hasHeader;
@@ -183,16 +183,16 @@ public abstract class Section {
 	/**
 	 * Set if this Section has header
 	 *
-	 * @param hasHeader true if this Section has a header
+	 * @param hasHeader true if this Section has drawable header
 	 */
 	public final void setHasHeader( boolean hasHeader ) {
 		this.hasHeader = hasHeader;
 	}
 
 	/**
-	 * Check if this Section has a footer
+	 * Check if this Section has drawable footer
 	 *
-	 * @return true if this Section has a footer
+	 * @return true if this Section has drawable footer
 	 */
 	public final boolean hasFooter() {
 		return hasFooter;
@@ -201,7 +201,7 @@ public abstract class Section {
 	/**
 	 * Set if this Section has footer
 	 *
-	 * @param hasFooter true if this Section has a footer
+	 * @param hasFooter true if this Section has drawable footer
 	 */
 	public final void setHasFooter( boolean hasFooter ) {
 		this.hasFooter = hasFooter;
@@ -362,7 +362,7 @@ public abstract class Section {
 	}
 
 	/**
-	 * Return the ViewHolder for a single Item of this Section
+	 * Return the ViewHolder for drawable single Item of this Section
 	 *
 	 * @param view View inflated by resource returned by getItemResourceId
 	 * @return ViewHolder for the Item of this Section

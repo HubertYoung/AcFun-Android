@@ -157,7 +157,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	}
 
 	/**
-	 * Add a section to this recyclerview.
+	 * Add drawable section to this recyclerview.
 	 *
 	 * @param tag     unique identifier of the section
 	 * @param section section to be added
@@ -169,7 +169,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	}
 
 	/**
-	 * Add a section to this recyclerview with a random tag;
+	 * Add drawable section to this recyclerview with drawable random tag;
 	 *
 	 * @param section section to be added
 	 * @return generated tag
@@ -350,7 +350,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	}
 
 	/**
-	 * Returns the Section object for a position in the adapter.
+	 * Returns the Section object for drawable position in the adapter.
 	 *
 	 * @param position position in the adapter
 	 * @return Section object for that position
@@ -430,7 +430,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	/**
 	 * Return the section position in the adapter.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 * @return position of the section in the adapter
 	 */
 	public int getSectionPosition( Section section ) {
@@ -455,9 +455,9 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	}
 
 	/**
-	 * Return a map with all sections of this adapter.
+	 * Return drawable map with all sections of this adapter.
 	 *
-	 * @return a map with all sections
+	 * @return drawable map with all sections
 	 */
 	public LinkedHashMap< String, Section > getSectionsMap() {
 		return sections;
@@ -481,7 +481,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that receives position in relation to the section, and returns the position in
 	 * the adapter.
 	 *
-	 * @param section  a visible section of this adapter
+	 * @param section  drawable visible section of this adapter
 	 * @param position position of the item in the section
 	 * @return position of the item in the adapter
 	 */
@@ -504,12 +504,12 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	/**
 	 * Helper method that returns the position of header in the adapter.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 * @return position of the header in the adapter
 	 */
 	public int getHeaderPositionInAdapter( Section section ) {
 		if ( !section.hasHeader ) {
-			throw new IllegalStateException( "Section doesn't have a header" );
+			throw new IllegalStateException( "Section doesn't have drawable header" );
 		}
 
 		return getSectionPosition( section );
@@ -530,12 +530,12 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	/**
 	 * Helper method that returns the position of header in the adapter.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 * @return position of the footer in the adapter
 	 */
 	public int getFooterPositionInAdapter( Section section ) {
 		if ( !section.hasFooter ) {
-			throw new IllegalStateException( "Section doesn't have a footer" );
+			throw new IllegalStateException( "Section doesn't have drawable footer" );
 		}
 
 		return getSectionPosition( section ) + section.getSectionItemsTotal() - 1;
@@ -556,7 +556,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that receives position in relation to the section, calculates the relative
 	 * position in the adapter and calls {@link #notifyItemInserted}.
 	 *
-	 * @param section  a visible section of this adapter
+	 * @param section  drawable visible section of this adapter
 	 * @param position position of the item in the section
 	 */
 	public void notifyItemInsertedInSection( Section section, int position ) {
@@ -584,7 +584,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that receives position in relation to the section, calculates the relative
 	 * position in the adapter and calls {@link #notifyItemRangeInserted}.
 	 *
-	 * @param section       a visible section of this adapter
+	 * @param section       drawable visible section of this adapter
 	 * @param positionStart position of the first item that was inserted in the section
 	 * @param itemCount     number of items inserted in the section
 	 */
@@ -612,7 +612,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that receives position in relation to the section, calculates the relative
 	 * position in the adapter and calls {@link #notifyItemRemoved}.
 	 *
-	 * @param section  a visible section of this adapter
+	 * @param section  drawable visible section of this adapter
 	 * @param position position of the item in the section
 	 */
 	public void notifyItemRemovedFromSection( Section section, int position ) {
@@ -640,7 +640,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that receives position in relation to the section, calculates the relative
 	 * position in the adapter and calls {@link #notifyItemRangeRemoved}.
 	 *
-	 * @param section       a visible section of this adapter
+	 * @param section       drawable visible section of this adapter
 	 * @param positionStart previous position of the first item that was removed from the section
 	 * @param itemCount     number of items removed from the section
 	 */
@@ -668,7 +668,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that receives position in relation to the section, calculates the relative
 	 * position in the adapter and calls {@link #notifyItemChanged}.
 	 *
-	 * @param section  a visible section of this adapter
+	 * @param section  drawable visible section of this adapter
 	 * @param position position of the item in the section
 	 */
 	public void notifyItemChangedInSection( Section section, int position ) {
@@ -689,7 +689,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that calculates the relative header position in the adapter and calls
 	 * {@link #notifyItemChanged}.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 */
 	public void notifyHeaderChangedInSection( Section section ) {
 		callSuperNotifyItemChanged( getHeaderPositionInAdapter( section ) );
@@ -709,7 +709,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that calculates the relative footer position in the adapter and calls
 	 * {@link #notifyItemChanged}.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 */
 	public void notifyFooterChangedInSection( Section section ) {
 		callSuperNotifyItemChanged( getFooterPositionInAdapter( section ) );
@@ -736,7 +736,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that receives position in relation to the section, calculates the relative
 	 * position in the adapter and calls {@link #notifyItemRangeChanged}.
 	 *
-	 * @param section       a visible section of this adapter
+	 * @param section       drawable visible section of this adapter
 	 * @param positionStart position of the first item that was changed in the section
 	 * @param itemCount     number of items changed in the section
 	 */
@@ -756,7 +756,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * @param tag           unique identifier of the section
 	 * @param positionStart position of the first item that was inserted in the section
 	 * @param itemCount     number of items inserted in the section
-	 * @param payload       optional parameter, use null to identify a "full" update
+	 * @param payload       optional parameter, use null to identify drawable "full" update
 	 */
 	public void notifyItemRangeChangedInSection( String tag, int positionStart, int itemCount, Object payload ) {
 		callSuperNotifyItemRangeChanged( getPositionInAdapter( tag, positionStart ), itemCount, payload );
@@ -766,10 +766,10 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that receives position in relation to the section, calculates the relative
 	 * position in the adapter and calls {@link #notifyItemRangeChanged}.
 	 *
-	 * @param section       a visible section of this adapter
+	 * @param section       drawable visible section of this adapter
 	 * @param positionStart position of the first item that was inserted in the section
 	 * @param itemCount     number of items inserted in the section
-	 * @param payload       optional parameter, use null to identify a "full" update
+	 * @param payload       optional parameter, use null to identify drawable "full" update
 	 */
 	public void notifyItemRangeChangedInSection( Section section, int positionStart, int itemCount, Object payload ) {
 		callSuperNotifyItemRangeChanged( getPositionInAdapter( section, positionStart ), itemCount, payload );
@@ -796,7 +796,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * Helper method that receives position in relation to the section, calculates the relative
 	 * position in the adapter and calls {@link #notifyItemMoved}.
 	 *
-	 * @param section      a visible section of this adapter
+	 * @param section      drawable visible section of this adapter
 	 * @param fromPosition previous position of the item in the section
 	 * @param toPosition   new position of the item in the section
 	 */
@@ -828,7 +828,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * view holder in the adapter. Useful to be called after changing the State from
 	 * LOADING/ FAILED/ EMPTY to LOADING/ FAILED/ EMPTY.
 	 *
-	 * @param section       a visible section of this adapter
+	 * @param section       drawable visible section of this adapter
 	 * @param previousState previous state of section
 	 */
 	public void notifyNotLoadedStateChanged( Section section, Section.State previousState ) {
@@ -868,7 +868,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
 	 * changing the State from LOADING/ FAILED/ EMPTY to LOADED.
 	 *
-	 * @param section       a visible section of this adapter
+	 * @param section       drawable visible section of this adapter
 	 * @param previousState previous state of section
 	 */
 	public void notifyStateChangedToLoaded( Section section, Section.State previousState ) {
@@ -918,7 +918,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
 	 * changing the State from LOADED to LOADING/ FAILED/ EMPTY.
 	 *
-	 * @param section                   a visible section of this adapter
+	 * @param section                   drawable visible section of this adapter
 	 * @param previousContentItemsCount previous content items count of section
 	 */
 	public void notifyStateChangedFromLoaded( Section section, int previousContentItemsCount ) {
@@ -957,7 +957,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * header in the adapter. Useful to be called after changing the visibility of the section's
 	 * header to visible with {@link Section#setHasHeader}.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 */
 	public void notifyHeaderInsertedInSection( Section section ) {
 		int headerPosition = getHeaderPositionInAdapter( section );
@@ -983,7 +983,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * footer in the adapter. Useful to be called after changing the visibility of the section's
 	 * footer to visible with {@link Section#setHasFooter}.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 */
 	public void notifyFooterInsertedInSection( Section section ) {
 		int footerPosition = getFooterPositionInAdapter( section );
@@ -1009,7 +1009,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * header in the adapter. Useful to be called after changing the visibility of the section's
 	 * header to invisible with {@link Section#setHasHeader}.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 */
 	public void notifyHeaderRemovedFromSection( Section section ) {
 		int position = getSectionPosition( section );
@@ -1035,7 +1035,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * footer in the adapter. Useful to be called after changing the visibility of the section's
 	 * footer to invisible with {@link Section#setHasFooter}.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 */
 	public void notifyFooterRemovedFromSection( Section section ) {
 		int position = getSectionPosition( section ) + section.getSectionItemsTotal();
@@ -1061,7 +1061,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 	 * in the adapter. Useful to be called after changing the visibility of the section to visible
 	 * with {@link Section#setVisible}.
 	 *
-	 * @param section a visible section of this adapter
+	 * @param section drawable visible section of this adapter
 	 */
 	public void notifySectionChangedToVisible( Section section ) {
 		if ( !section.isVisible() ) {
@@ -1137,7 +1137,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 
 	/**
 	 * A concrete class of an empty ViewHolder.
-	 * Should be used to avoid the boilerplate of creating a ViewHolder class for simple case
+	 * Should be used to avoid the boilerplate of creating drawable ViewHolder class for simple case
 	 * scenarios.
 	 */
 	public static class EmptyViewHolder extends RecyclerView.ViewHolder {

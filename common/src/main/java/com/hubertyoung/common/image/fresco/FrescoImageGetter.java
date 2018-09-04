@@ -127,7 +127,7 @@ public class FrescoImageGetter implements Drawable.Callback, ImageGetter, Fresco
 					gifDrawable.setCallback( this );
 				}
 				gifDrawable = Drawable.createFromStream( mContext.getAssets().open( processedUrl ), processedUrl );
-				gifDrawable.setBounds( 0, 0, DisplayUtil.px2dip( 48.0f ), DisplayUtil.px2dip( 48.0f ) );
+				gifDrawable.setBounds( 0, 0, DisplayUtil.dip2px( 48.0f ), DisplayUtil.dip2px( 48.0f ) );
 			}
 		} catch ( Exception e ) {
 			CommonLog.loge( e );

@@ -194,7 +194,7 @@
 //                if (i < length - 2) {
 //                    final int index = i;
 //                    final String url = urls[i];
-//                    ImageLoaderUtils.getInstance().display(context, mImageViews[i + 1], url);
+//                    ImageLoaderUtils.getInstance().loadImage(context, mImageViews[i + 1], url);
 //                    mImageViews[i + 1].setOnClickListener(new View.OnClickListener() {
 //
 //                        @Override
@@ -206,8 +206,8 @@
 //                    });
 //                }
 //            }
-//            ImageLoaderUtils.getInstance().display(context, mImageViews[0], urls[urls.length - 1]);
-//            ImageLoaderUtils.getInstance().display(context, mImageViews[length - 1], urls[0]);
+//            ImageLoaderUtils.getInstance().loadImage(context, mImageViews[0], urls[urls.length - 1]);
+//            ImageLoaderUtils.getInstance().loadImage(context, mImageViews[length - 1], urls[0]);
 //        }
 //    }
 //

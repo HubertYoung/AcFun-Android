@@ -244,9 +244,9 @@ public class StringUtil {
 		return builder.toString();
 	}
 
-	public static String formatChineseNum( Context context, int i ) {
-		if ( i > 100000 ) {
-			double doubleValue = new BigDecimal( i / 10000 ).setScale( 1, 4 ).doubleValue();
+	public static String formatChineseNum( Context context, int num ) {
+		if ( num > 100000 ) {
+			double doubleValue = new BigDecimal( num / 10000 ).setScale( 1, 4 ).doubleValue();
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.append( doubleValue );
 			String stringBuilder2 = stringBuilder.toString();
@@ -259,7 +259,7 @@ public class StringUtil {
 			return stringBuilder3.toString();
 		}
 		StringBuilder builder = new StringBuilder();
-		builder.append( i );
+		builder.append( num );
 		return builder.toString();
 	}
 
