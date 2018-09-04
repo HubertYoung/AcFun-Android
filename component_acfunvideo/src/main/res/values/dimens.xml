@@ -9,5 +9,11 @@
     <dimen name="margin_medium">8dp</dimen>
     <dimen name="text_detail_size">12sp</dimen>
     <dimen name="text_title_large_size">15sp</dimen>
+    <dimen name="home_region_hor_margin">10dp</dimen>
+    <dimen name="regions_title_bar_icon_size">25dp</dimen>
+    <dimen name="general_home_tab_text">18sp</dimen>
+    <dimen name="activity_title_size_13sp">13sp</dimen>
+    <dimen name="video_radius_size">3dp</dimen>
+    <dimen name="text_data_prompt_size">10sp</dimen>
 
 </resources>

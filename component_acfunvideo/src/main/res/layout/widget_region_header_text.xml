@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:aapt="http://schemas.android.com/aapt"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/home_title_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp">
+
+    <LinearLayout
+        android:id="@+id/region_top_left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/home_region_hor_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/region_top_left_indicator"
+            android:layout_width="@dimen/regions_title_bar_icon_size"
+            android:layout_height="@dimen/regions_title_bar_icon_size"
+            android:layout_marginRight="8dp"
+            app:failureImage="@color/background_gray_color"
+            app:placeholderImage="@color/background_gray_color"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/region_top_left_no_pic"
+            android:layout_width="3dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            app:backgroundImage="@color/them_color"
+            app:roundedCornerRadius="2dp"/>
+
+        <TextView
+            android:id="@+id/region_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_black_color"
+            android:textSize="@dimen/general_home_tab_text"
+            android:textStyle="bold"
+            tools:text="哈哈哈"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/region_top_right_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/margin_large"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/header_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/activity_title_size_13sp"/>
+
+        <TextView
+            android:id="@+id/dot_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="·"
+            android:textSize="@dimen/activity_title_size_13sp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/header_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/activity_title_size_13sp"/>
+
+        <TextView
+            android:id="@+id/dot_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="·"
+            android:textSize="@dimen/activity_title_size_13sp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/header_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/activity_title_size_13sp"/>
+    </LinearLayout>
+</RelativeLayout>

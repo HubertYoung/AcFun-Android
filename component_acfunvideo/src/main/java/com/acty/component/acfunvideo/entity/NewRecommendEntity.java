@@ -3,9 +3,6 @@ package com.acty.component.acfunvideo.entity;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * <br>
@@ -45,14 +42,14 @@ public class NewRecommendEntity {
 
 	public static class TopContentBean {
 		/**
-		 * img : ["http://imgs.aixifan.com/content/2018_09_03/1535950354.jpg"]
-		 * channel : {"name":"美食","id":89}
+		 * img : ["http://imgs.aixifan.com/content/2018_09_03/1535983360.png"]
+		 * channel : {"name":"生活娱乐","id":86}
 		 * action : 1
-		 * href : 4561672
-		 * time : 1535950377000
-		 * visit : {"banana":153,"stows":8,"comments":26,"danmakuSize":116,"views":16861}
-		 * title : 【品城记】顺德︱跟小姐姐去吃猪杂粥，想吃到新鲜猪杂要靠抢的！
-		 * user : {"img":"http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201702/28151925lez1dr3x.jpg","name":"品城记Video","id":10725427}
+		 * href : 4562904
+		 * time : 1535983410000
+		 * visit : {"banana":4342,"stows":388,"comments":134,"danmakuSize":689,"views":144714}
+		 * title : 电影最TOP 109: 那些年阿汤哥玩过的命，一口气看完《碟中谍》1-5
+		 * user : {"img":"http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201705/02135130i1uit9xz.jpg","name":"电影最TOP","id":4471111}
 		 */
 
 		public ChannelBean channel;
@@ -66,8 +63,8 @@ public class NewRecommendEntity {
 
 		public static class ChannelBean {
 			/**
-			 * name : 美食
-			 * id : 89
+			 * name : 生活娱乐
+			 * id : 86
 			 */
 
 			public String name;
@@ -76,11 +73,11 @@ public class NewRecommendEntity {
 
 		public static class VisitBean {
 			/**
-			 * banana : 153
-			 * stows : 8
-			 * comments : 26
-			 * danmakuSize : 116
-			 * views : 16861
+			 * banana : 4342
+			 * stows : 388
+			 * comments : 134
+			 * danmakuSize : 689
+			 * views : 144714
 			 */
 
 			public int banana;
@@ -92,9 +89,9 @@ public class NewRecommendEntity {
 
 		public static class UserBean {
 			/**
-			 * img : http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201702/28151925lez1dr3x.jpg
-			 * name : 品城记Video
-			 * id : 10725427
+			 * img : http://cdn.aixifan.com/dotnet/artemis/u/cms/www/201705/02135130i1uit9xz.jpg
+			 * name : 电影最TOP
+			 * id : 4471111
 			 */
 
 			public String img;
@@ -104,59 +101,48 @@ public class NewRecommendEntity {
 	}
 
 	public static class BodyContentsBean {
-		@SerializedName("avgScore")
-		public float mAvgScore;
-		@SerializedName("id")
-		public int mBangumiId;
-		@SerializedName("cover")
-		public String mCover;
-		@SerializedName("coverHorizontal")
-		public String mCoverHorizontal;
-		@SerializedName("coverVertical")
-		public String mCoverVertical;
-		@SerializedName("hasScore")
-		public int mHasScore;
-		@SerializedName("intro")
-		public String mIntro;
-		// TODO: 2018/9/4 这里
-		@SerializedName("lastUpdateTime")
-		public Date mLastUpdateTime;
-		@SerializedName("lastVideoName")
-		public String mLastVideoName;
-		@SerializedName("score1Count")
-		public int mScore1Count;
-		@SerializedName("score2Count")
-		public int mScore2Count;
-		@SerializedName("score3Count")
-		public int mScore3Count;
-		@SerializedName("score4Count")
-		public int mScore4Count;
-		@SerializedName("score5Count")
-		public int mScore5Count;
-		@SerializedName("status")
-		public int mStatus;
-		@SerializedName("title")
-		public String mTitle;
-		@SerializedName("totalCount")
-		public int mTotalCount;
-		@SerializedName("totalScore")
-		public int mTotalScore;
-		@SerializedName("type")
-		public int mType;
-		@SerializedName("stows")
-		public int stows;
-		@SerializedName("userScore")
-		public int userScore;
-		@SerializedName("week")
-		public int week;
-
-		public String getAbbrTitle() {
-			if (this.mTitle == null) {
-				return "";
-			}
-			Matcher matcher = Pattern.compile("【.*?】").matcher(this.mTitle);
-			return matcher.find() ? matcher.replaceFirst("") : this.mTitle;
-		}
+		@SerializedName( "action")
+		public int actionId;
+		@SerializedName( "ad")
+		public int ad;
+//		@SerializedName( "channel")
+//		public RegionsType channel;
+//		@SerializedName( "children")
+//		public List<RegionBodyContent> children;
+		@SerializedName( "href")
+		public String contentId;
+		@SerializedName( "extendsStatus")
+		public int extendsStatus;
+		@SerializedName( "img")
+		public List<String> images;
+		@SerializedName( "intro")
+		public String intro;
+		@SerializedName( "lastUpdate")
+		public String lastUpdate;
+//		@SerializedName( "latestBangumiVideo")
+//		public NetVideo latestBangumiVideo;
+		@SerializedName( "reqId")
+		public String reqId;
+		@SerializedName( "stowCount")
+		public int stowCount;
+//		@SerializedName( "subVideo")
+//		public VideoDetail subVideo;
+//		@SerializedName( "subVideos")
+//		public List<VideoDetail> subVideos;
+//		@SerializedName( "time")
+//		public long time;
+//		@SerializedName( "title")
+//		public String title;
+//		@SerializedName( "type")
+//		public RegionsType type;
+//		@SerializedName( "updateTime")
+//		public String updateTime;
+//		@SerializedName( "user")
+//		public RegionsType user;
+//		@SerializedName( "videoId")
+//		public int videoId;
+//		@SerializedName( "visit")
+//		public RegionVisitContent visit;
 	}
 
 	public static class AdvertListsBean {
@@ -185,12 +171,5 @@ public class NewRecommendEntity {
 		public int action;
 		public String href;
 		public String title;
-	}
-
-	@Override
-	public String toString() {
-		return "NewRecommendEntity{" + "schema='" + schema + '\'' + ", img='" + img + '\'' + ", showChange=" + showChange + ", show=" + show + ", id=" + id + ", title='" + title + '\'' + ", " +
-				"maxCount=" + maxCount + ", bottomText=" + bottomText + ", topContent=" + topContent + ", channel=" + channel + ", bodyContents=" + bodyContents + ", advertLists=" + advertLists + "," +
-				" headerText=" + headerText + '}';
 	}
 }

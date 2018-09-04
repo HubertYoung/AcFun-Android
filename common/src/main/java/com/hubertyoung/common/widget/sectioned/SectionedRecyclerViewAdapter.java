@@ -325,7 +325,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 			currentPos += sectionTotal;
 		}
 
-		throw new IndexOutOfBoundsException( "Invalid position" );
+//		throw new IndexOutOfBoundsException( "Invalid position" );
+		return -1;
 	}
 
 	/**

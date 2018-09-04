@@ -2,7 +2,7 @@ package com.acty.component.acfunvideo.index.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -10,12 +10,13 @@ import com.acty.component.acfunvideo.entity.NewRecommendEntity;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.acty.component.acfunvideo.index.model.NewRecommendModelImp;
 import com.acty.component.acfunvideo.index.presenter.NewRecommendPresenterImp;
-import com.acty.component.acfunvideo.index.section.NewBangumiSection;
+import com.acty.component.acfunvideo.index.section.NewRecommendVideosSection;
 import com.acty.component_acfunvideo.R;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
@@ -46,7 +47,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private RecyclerView mHomeRecommendLis;
 	private SectionedRecyclerViewAdapter mAdapter;
 	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
-	private NewBangumiSection mNewBangumiSection;
+//	private NewBangumiSection mNewBangumiSection;
 
 	public static NewRecommendFragment newInstance( String param1, String param2 ) {
 		NewRecommendFragment fragment = new NewRecommendFragment();
@@ -133,14 +134,24 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	}
 
 	private void initRecyclerView() {
-		LinearLayoutManager layoutManager = new LinearLayoutManager( activity );
+		mAdapter = new SectionedRecyclerViewAdapter();
+		GridLayoutManager layoutManager = new GridLayoutManager( activity, 6 );
+		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
+			@Override
+			public int getSpanSize( int position ) {
+				switch ( mAdapter.getSectionItemViewType( position ) ) {
+					case SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER:
+						return 6;
+					default:
+						return 3;
+				}
+			}
+		} );
 		mHomeRecommendLis.setHasFixedSize( true );
 		mHomeRecommendLis.setLayoutManager( layoutManager );
-		mAdapter = new SectionedRecyclerViewAdapter();
 //		mBannerSection = new BannerSection( ( BaseActivity ) activity );
 //		mAdapter.addSection( mBannerSection );
-		mNewBangumiSection = new NewBangumiSection( ( BaseActivity ) activity );
-		mAdapter.addSection( mNewBangumiSection );
+
 //		mNewGoodsSection = new NewGoodsSection( ( BaseActivity ) activity );
 //		mAdapter.addSection( mNewGoodsSection );
 //		mHotGoodsSection = new HotGoodsSection( ( BaseActivity ) activity );
@@ -184,7 +195,17 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 
 	@Override
 	public void setNewRecommendInfo( List< NewRecommendEntity > newRecommendEntityList ) {
-		mNewBangumiSection.setData(newRecommendEntityList);
+//		mNewBangumiSection.setData(newRecommendEntityList);
+		for (NewRecommendEntity recommendEntity : newRecommendEntityList) {
+			switch (recommendEntity.schema) {
+			    case Utils.videos:
+					NewRecommendVideosSection mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );
+					mAdapter.addSection( mNewBangumiSection );
+					mNewBangumiSection.setData( recommendEntity );
+			        break;
+			}
+		}
+
 		mAdapter.notifyDataSetChanged();
 	}
 }
