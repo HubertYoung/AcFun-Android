@@ -41,7 +41,7 @@ import android.view.WindowManager;
  * //           }
  * 3.对应使用Dialog不同部分包括
  * a.xml布局
- * b.宽高
+ * miPushProcess.宽高
  * c.位置
  * d.背景色
  * e.透明度

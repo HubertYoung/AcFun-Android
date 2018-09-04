@@ -107,4 +107,6 @@ public class AppConfig {
     // glide图片缓存子目录
 //    public static final String GLIDE_CARCH_DIR = "glide_dir";
 
+    public static final String EMOTION_FILE_SUFFIX = ".gif";
+
 }

@@ -164,12 +164,12 @@
 //	}
 //
 //	public static boolean cpuType( String str) {
-//		String b = isCpuAbi();
+//		String miPushProcess = isCpuAbi();
 //		boolean flag = true;
-//		if (!TextUtils.isEmpty(b) && b.equalsIgnoreCase(str)) {
+//		if (!TextUtils.isEmpty(miPushProcess) && miPushProcess.equalsIgnoreCase(str)) {
 //			return true;
 //		}
-//		if (TextUtils.isEmpty( getCpuAbi2()) || !b.equalsIgnoreCase(str)) {
+//		if (TextUtils.isEmpty( getCpuAbi2()) || !miPushProcess.equalsIgnoreCase(str)) {
 //			flag = false;
 //		}
 //		return flag;

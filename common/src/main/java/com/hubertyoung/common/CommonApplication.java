@@ -6,7 +6,9 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.stetho.Stetho;
+import com.hubertyoung.common.image.fresco.ImagePipelineConfigFactory;
 import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.http.HttpUtils;
 import com.hubertyoung.common.utils.AppUtils;
@@ -79,9 +81,14 @@ public class CommonApplication extends Application {
 ////                .setSkinWindowBackgroundEnable(false)           // 关闭windowBackground换肤
 //				.setSkinAllActivityEnable( true )                // true: 默认所有的Activity都换肤; false: 只有实现SkinCompatSupportable接口的Activity换肤
 //				.loadSkin();
+		initFresco();
 		//网络框架
 		initOkHttpUtils();
 		initStetho();
+	}
+
+	private void initFresco() {
+		Fresco.initialize(this, ImagePipelineConfigFactory.getOkHttpImagePipelineConfig(this));
 	}
 
 	private void initStetho() {
