@@ -1,6 +1,7 @@
 package com.acty.component.acfunvideo.index.presenter;
 
 
+import com.acty.component.acfunvideo.entity.RegionBodyContent;
 import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.hubertyoung.common.base.BaseActivity;
@@ -23,16 +24,38 @@ import io.reactivex.functions.Consumer;
  */
 public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 	@Override
-	public void requestNewRecommend( MyRequestMap map ) {
+	public void requestRecommend( MyRequestMap map ) {
 		mView.showLoading( "Loading...", 0 );
-		mRxManage.add( mModel.requestNewRecommend( map )
+		mRxManage.add( mModel.requestRecommend( map )
 				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribe( new Consumer< List<Regions > >() {
 
 					@Override
 					public void accept( @NonNull List<Regions > regionsList ) throws Exception {
 						mView.stopLoading();
-						mView.setNewRecommendInfo( regionsList );
+						mView.setRecommendInfo( regionsList );
+
+					}
+				}, new Consumer< Throwable >() {
+					@Override
+					public void accept( @NonNull Throwable throwable ) throws Exception {
+						mView.stopLoading();
+						mView.showErrorTip( throwable.getMessage()
+								.toString() );
+					}
+				} ) );
+	}
+
+	public void requestNewRecommend( MyRequestMap map ) {
+		mView.showLoading( "Loading...", 1 );
+		mRxManage.add( mModel.requestNewRecommend( map )
+				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+				.subscribe( new Consumer< List<RegionBodyContent > >() {
+
+					@Override
+					public void accept( @NonNull List<RegionBodyContent > regionsList ) throws Exception {
+						mView.stopLoading();
+						mView.addNewRecommendInfo( regionsList );
 
 					}
 				}, new Consumer< Throwable >() {

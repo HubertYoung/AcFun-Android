@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 
+import com.acty.component.acfunvideo.entity.RegionBodyContent;
 import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.acty.component.acfunvideo.index.model.NewRecommendModelImp;
@@ -21,6 +23,7 @@ import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.common.utils.Utils;
+import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
@@ -109,12 +112,12 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	public void loadData() {
 		MyRequestMap map = new MyRequestMap();
 		map.put( "channelId", "0" );
-		mPresenter.requestNewRecommend( map );
+		mPresenter.requestRecommend( map );
 	}
 
 	private void loadNewData() {
 		MyRequestMap map = new MyRequestMap();
-		map.put( "pageNo", mAdapter.getPageBean().getLoadPage()+"" );
+		map.put( "pageNo", mAdapter.getPageBean().getLoadPage() + "" );
 		mPresenter.requestNewRecommend( map );
 	}
 
@@ -123,6 +126,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 			@Override
 			public void onRefresh( RefreshLayout refreshLayout ) {
 				mAdapter.getPageBean().refresh = true;
+				mAdapter.getPageBean().page = mAdapter.getPageBean().startPage;
 				mSrlContainer.finishLoadMore();
 				mSrlContainer.setNoMoreData( false );
 				loadData();
@@ -215,8 +219,19 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	}
 
 	@Override
-	public void setNewRecommendInfo( List< Regions > regionsList ) {
+	public void addNewRecommendInfo( List< RegionBodyContent > regionsList ) {
+		Section section = mAdapter.getSection( Utils.videos_new );
+		if ( section != null && section instanceof NewRecommendVideosSection ) {
+			NewRecommendVideosSection videosSection = ( NewRecommendVideosSection ) section;
+			videosSection.addRegions( regionsList );
+			mAdapter.notifyDataSetChanged();
+		}
+	}
+
+	@Override
+	public void setRecommendInfo( List< Regions > regionsList ) {
 //		mNewBangumiSection.setData(newRecommendEntityList);
+		mAdapter.removeAllSections();
 		for (Regions regions : regionsList) {
 			switch ( regions.schema ) {
 				case Utils.carousels:
@@ -237,8 +252,13 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 				case Utils.videos:
 				case Utils.videos_new:
 					if ( mAdapter.getPageBean().refresh ) {
-						mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );
-						mAdapter.addSection( mNewBangumiSection );
+						boolean isVideoNew = TextUtils.equals( Utils.videos_new, regions.schema );
+						mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity, isVideoNew );
+						if ( isVideoNew ) {
+							mAdapter.addSection( Utils.videos_new, mNewBangumiSection );
+						} else {
+							mAdapter.addSection( mNewBangumiSection );
+						}
 						mNewBangumiSection.setRegions( regions );
 					}
 					break;

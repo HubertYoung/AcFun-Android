@@ -68,7 +68,7 @@ public class NewRecommendBangumisSection extends Section {
 	public int getContentItemsTotal() {
 		if ( mRegions != null ) {
 			int count = mRegions.topContent == null ? 0 : 1;
-			return mRegions.bodyContents == null ? count : Math.min( mRegions.bodyContents.size() + count, mRegions.show + 1 );
+			return mRegions.bodyContents == null ? count : Math.min( mRegions.bodyContents.size() + count, mRegions.show + count );
 		} else {
 			return 0;
 		}
@@ -99,16 +99,17 @@ public class NewRecommendBangumisSection extends Section {
 		int count = mRegions.topContent == null ? 0 : 1;
 		if ( mRegions.topContent != null && position == 0 ) {
 			RegionBodyContent topContent = mRegions.topContent;
-			viewHolderBangumi.text.setVisibility( View.GONE );
+			viewHolderBangumi.text.setVisibility( View.VISIBLE );
 			viewHolderBangumi.initCover( viewHolderBangumi.cover );
+			viewHolderBangumi.time.setText( topContent.updateTime );
 			showData( viewHolderBangumi, topContent );
 		} else {
 			int realPosition = position - count;
 			RegionBodyContent regionBodyContent = mRegions.bodyContents.get( realPosition );
-			if ( regionBodyContent == null ) {
-				viewHolderBangumi.root.setVisibility( View.GONE );
-				return;
-			}
+//			if ( regionBodyContent == null ) {
+//				viewHolderBangumi.root.setVisibility( View.GONE );
+//				return;
+//			}
 			if ( realPosition % 3 == 0 ) {
 				viewHolderBangumi.root.setPadding( DisplayUtil.dip2px( 10 ),//
 						0,//
@@ -132,7 +133,6 @@ public class NewRecommendBangumisSection extends Section {
 	}
 
 	private void showData( BangumisViewHolder viewHolderBangumi, RegionBodyContent topContent ) {
-		viewHolderBangumi.itemView.setVisibility( View.VISIBLE );
 		if ( topContent.extendsStatus == 0 ) {
 			viewHolderBangumi.text.setText( mActivity.getString( R.string.bangumi_rss_update_end ) );
 			viewHolderBangumi.updateText.setVisibility( View.GONE );
@@ -188,7 +188,7 @@ public class NewRecommendBangumisSection extends Section {
 		}
 
 		protected void initCover( SimpleDraweeView cover ) {
-			ViewGroup.LayoutParams layoutParams = this.cover.getLayoutParams();
+			ViewGroup.LayoutParams layoutParams = cover.getLayoutParams();
 			if ( layoutParams == null || layoutParams.width <= 0 ) {
 				int screenWidth = DisplayUtil.getScreenWidth( cover.getContext() );
 				layoutParams = new FrameLayout.LayoutParams( screenWidth, ( int ) ( screenWidth / 2.3152175f ) );

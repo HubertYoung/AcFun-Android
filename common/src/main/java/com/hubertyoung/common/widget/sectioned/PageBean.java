@@ -11,7 +11,8 @@ import android.os.Parcelable;
  * @param:分页信息\默认一页20条
  */
 public class PageBean implements Parcelable {
-	private int page = 1;
+	public int startPage = 1;
+	public int page = 1;
 	public int rows = 20;
 	public int totalCount;
 	public int totalPage;

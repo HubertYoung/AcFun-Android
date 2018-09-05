@@ -19,6 +19,8 @@ import com.hubertyoung.common.utils.StringUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 
+import java.util.List;
+
 /**
  * <br>
  * function:
@@ -30,12 +32,14 @@ import com.hubertyoung.common.widget.sectioned.SectionParameters;
  * @desc:com.acty.component.acfunvideo.index.section
  */
 public class NewRecommendVideosSection extends Section {
+	private boolean isVideoNew;
 	private BaseActivity mActivity;
 	private Regions mRegions;
 
-	public NewRecommendVideosSection( BaseActivity activity ) {
+	public NewRecommendVideosSection( BaseActivity activity, boolean isVideoNew ) {
 		super( new SectionParameters.Builder( R.layout.item_home_video ).headerResourceId( R.layout.widget_region_header_text ).build() );
 		this.mActivity = activity;
+		this.isVideoNew = isVideoNew;
 	}
 
 	@Override
@@ -45,14 +49,21 @@ public class NewRecommendVideosSection extends Section {
 
 	@Override
 	public void onBindHeaderViewHolder( RecyclerView.ViewHolder holder ) {
-		BindHeaderTitleViewHolder viewHolder = new BindHeaderTitleViewHolder(mActivity, ( HeadTitleViewHolder ) holder );
-		viewHolder.viewBindData(getContentItemsTotal(),mRegions);
+		BindHeaderTitleViewHolder viewHolder = new BindHeaderTitleViewHolder( mActivity, ( HeadTitleViewHolder ) holder );
+		viewHolder.viewBindData( getContentItemsTotal(), mRegions );
 	}
 
 	@Override
 	public int getContentItemsTotal() {
 		if ( mRegions != null ) {
-			return mRegions.bodyContents == null ? 0 : Math.min( mRegions.bodyContents.size(), mRegions.show + 1);
+			int maxCount = 0;
+			int count = mRegions.topContent == null ? 0 : 1;
+			if ( isVideoNew ) {
+				maxCount = mRegions.bodyContents.size();
+			} else {
+				maxCount = Math.min( mRegions.bodyContents.size(), mRegions.show );
+			}
+			return mRegions.bodyContents == null ? 0 : maxCount + count;
 		} else {
 			return 0;
 		}
@@ -80,8 +91,34 @@ public class NewRecommendVideosSection extends Section {
 	@Override
 	public void onBindItemViewHolder( RecyclerView.ViewHolder holder, int position ) {
 		NewRecommendVideosViewHolder viewHolder = ( NewRecommendVideosViewHolder ) holder;
-		RegionBodyContent regionBodyContent = mRegions.bodyContents.get( position );
+		int count = mRegions.topContent == null ? 0 : 1;
+		if ( mRegions.topContent != null && position == 0 ) {
+			RegionBodyContent topContent = mRegions.topContent;
+			viewHolder.root.setPadding( DisplayUtil.dip2px( 10 ),//
+					0,//
+					DisplayUtil.dip2px( 10 ),//
+					DisplayUtil.dip2px( 10 ) );
+			showData( viewHolder, topContent );
+		} else {
+			int realPosition = position - count;
+			RegionBodyContent regionBodyContent = mRegions.bodyContents.get( realPosition );
+			if ( realPosition % 2 == 0 ) {
+				viewHolder.root.setPadding( DisplayUtil.dip2px( 10 ),//
+						0,//
+						DisplayUtil.dip2px( 5 ),//
+						DisplayUtil.dip2px( 10 ) );
+			} else if ( realPosition % 2 == 1 ) {
+				viewHolder.root.setPadding( DisplayUtil.dip2px( 5 ),//
+						0,//
+						DisplayUtil.dip2px( 10 ),//
+						DisplayUtil.dip2px( 10 ) );
+			}
+			showData( viewHolder, regionBodyContent );
+		}
 
+	}
+
+	private void showData( NewRecommendVideosViewHolder viewHolder, RegionBodyContent regionBodyContent ) {
 		if ( regionBodyContent == null ) {
 			viewHolder.itemView.setVisibility( View.GONE );
 			viewHolder.playsLayout.setVisibility( View.GONE );
@@ -93,25 +130,6 @@ public class NewRecommendVideosSection extends Section {
 			ImageLoaderUtil.loadResourceImage( R.color.transparent, viewHolder.mImg );
 		} else {
 			ImageLoaderUtil.loadNetImage( regionBodyContent.images.get( 0 ), viewHolder.mImg );
-		}
-
-		if ( mRegions.topContent == null ) {
-			viewHolder.root.setPadding( position % 2 == 0 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
-					0,//
-					position % 2 == 1 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
-					DisplayUtil.dip2px( 10 ) );
-		} else {
-			if ( position > 0 ) {
-				viewHolder.root.setPadding( position % 2 == 1 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
-						0,//
-						position % 2 == 0 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
-						DisplayUtil.dip2px( 10 ) );
-			} else {
-				viewHolder.root.setPadding( DisplayUtil.dip2px( 10 ),//
-						0,//
-						DisplayUtil.dip2px( 10 ),//
-						DisplayUtil.dip2px( 10 ) );
-			}
 		}
 
 		viewHolder.mTitle.setText( regionBodyContent.title );
@@ -166,8 +184,8 @@ public class NewRecommendVideosSection extends Section {
 		this.mRegions = mRegions;
 	}
 
-	public void addRegions( Regions regions ) {
-		this.mRegions.bodyContents.addAll( regions.bodyContents );
+	public void addRegions( List< RegionBodyContent > regionBodyContentList ) {
+		this.mRegions.bodyContents.addAll( regionBodyContentList );
 	}
 
 	public interface OnItemClickListener {

@@ -1,6 +1,7 @@
 package com.acty.component.acfunvideo.index.model;
 
 import com.acty.component.acfunvideo.api.ApiHomeService;
+import com.acty.component.acfunvideo.entity.RegionBodyContent;
 import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.hubertyoung.common.api.Api;
@@ -25,7 +26,15 @@ import io.reactivex.Observable;
  */
 public class NewRecommendModelImp implements NewRecommendControl.Model {
 	@Override
-	public Observable< List<Regions > > requestNewRecommend( MyRequestMap map ) {
+	public Observable< List<Regions > > requestRecommend( MyRequestMap map ) {
+		return Api.getDefault( HostType.MY_RESULT )
+				.getRetrofitClient()
+				.builder( ApiHomeService.class )
+				.requestRecommend( map.map )
+				.compose( new DefaultTransformer() );
+	}
+	@Override
+	public Observable< List< RegionBodyContent > > requestNewRecommend( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )

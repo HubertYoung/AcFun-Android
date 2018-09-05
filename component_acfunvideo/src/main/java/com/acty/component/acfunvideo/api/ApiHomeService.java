@@ -1,6 +1,7 @@
 package com.acty.component.acfunvideo.api;
 
 
+import com.acty.component.acfunvideo.entity.RegionBodyContent;
 import com.acty.component.acfunvideo.entity.Regions;
 import com.hubertyoung.common.net.response.BaseResponse;
 
@@ -29,7 +30,10 @@ public interface ApiHomeService {
 	 * @return
 	 */
 	@GET( "v3/regions" )
-	Observable< BaseResponse< List< Regions > > > requestNewRecommend( @QueryMap Map< String, String > map );
+	Observable< BaseResponse< List< Regions > > > requestRecommend( @QueryMap Map< String, String > map );
+
+	@GET( "v3/regions/new/0" )
+	Observable< BaseResponse< List< RegionBodyContent > > > requestNewRecommend( @QueryMap Map< String, String > map );
 
 //	/**
 //	 * 商品详情
