@@ -10,6 +10,7 @@ import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.acty.component.acfunvideo.index.model.NewRecommendModelImp;
 import com.acty.component.acfunvideo.index.presenter.NewRecommendPresenterImp;
+import com.acty.component.acfunvideo.index.section.NewRecommendBannersSection;
 import com.acty.component.acfunvideo.index.section.NewRecommendCarouselsSection;
 import com.acty.component.acfunvideo.index.section.NewRecommendVideosRankSection;
 import com.acty.component.acfunvideo.index.section.NewRecommendVideosSection;
@@ -52,6 +53,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private NewRecommendVideosSection mNewBangumiSection;
 	private NewRecommendVideosRankSection mVideosRankSection;
 	private NewRecommendCarouselsSection mCarouselsSection;
+	private NewRecommendBannersSection mBannersSection;
 	//	private NewBangumiSection mNewBangumiSection;
 
 	public static NewRecommendFragment newInstance( String param1, String param2 ) {
@@ -213,6 +215,11 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 					mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
 					mAdapter.addSection( mCarouselsSection );
 					mCarouselsSection.setRegions( regions );
+					break;
+				case Utils.banners:
+					mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) activity );
+					mAdapter.addSection( mBannersSection );
+					mBannersSection.setRegions( regions );
 					break;
 				case Utils.videos:
 					mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );
