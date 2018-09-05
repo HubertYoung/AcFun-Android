@@ -152,7 +152,7 @@ public class NewRecommendVideosSection extends Section {
 	@Override
 	public int getContentItemsTotal() {
 		if ( mRegions != null ) {
-			return mRegions.bodyContents == null ? 0 : mRegions.bodyContents.size();
+			return mRegions.bodyContents == null ? 0 : Math.min( mRegions.bodyContents.size(), mRegions.show + 1);
 		} else {
 			return 0;
 		}
@@ -161,11 +161,15 @@ public class NewRecommendVideosSection extends Section {
 
 	@Override
 	public int getItemViewType( int position ) {
-//		if ( mRegions.topContent == null ){
-//			return 1;
-//		}else{
-			return 2;
-//		}
+		if ( mRegions.topContent == null ) {
+			return 3;
+		} else {
+			if ( position == 0 ) {
+				return 6;
+			} else {
+				return 3;
+			}
+		}
 	}
 
 	@Override
@@ -191,10 +195,24 @@ public class NewRecommendVideosSection extends Section {
 			ImageLoaderUtil.loadNetImage( regionBodyContent.images.get( 0 ), viewHolder.mImg );
 		}
 
-		viewHolder.root.setPadding( position % 2 == 0 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
-				0,//
-				position % 2 == 1 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
-				DisplayUtil.dip2px( 10 ));
+		if ( mRegions.topContent == null ) {
+			viewHolder.root.setPadding( position % 2 == 0 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
+					0,//
+					position % 2 == 1 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
+					DisplayUtil.dip2px( 10 ) );
+		} else {
+			if ( position > 0 ) {
+				viewHolder.root.setPadding( position % 2 == 1 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
+						0,//
+						position % 2 == 0 ? DisplayUtil.dip2px( 10 ) : DisplayUtil.dip2px( 5 ),//
+						DisplayUtil.dip2px( 10 ) );
+			} else {
+				viewHolder.root.setPadding( DisplayUtil.dip2px( 10 ),//
+						0,//
+						DisplayUtil.dip2px( 10 ),//
+						DisplayUtil.dip2px( 10 ) );
+			}
+		}
 
 		viewHolder.mTitle.setText( regionBodyContent.title );
 		if ( regionBodyContent.actionId == 14 ) {

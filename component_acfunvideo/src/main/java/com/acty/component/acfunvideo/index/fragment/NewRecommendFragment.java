@@ -147,7 +147,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 						return 6;
 					case SectionedRecyclerViewAdapter.VIEW_TYPE_ITEM_LOADED:{
 						int itemViewType = mAdapter.getSectionForPosition( position ).positionType;
-						return itemViewType == 1 ? 3 : 6;
+						return itemViewType;
 					}
 					default:
 						return 6;
