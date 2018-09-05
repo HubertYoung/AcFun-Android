@@ -218,8 +218,8 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 			for (int i = 0; i < count; i++) {
 				View dot = new View( getContext() );
 				dot.setBackgroundResource( unSelcetRes );
-				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( DisplayUtil.dip2px( 5 ), DisplayUtil.dip2px( 5 ) );
-				params.leftMargin = DisplayUtil.dip2px( 5 );
+				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( DisplayUtil.dip2px( 6 ), DisplayUtil.dip2px( 6 ) );
+				params.leftMargin = DisplayUtil.dip2px( 6 );
 				dot.setLayoutParams( params );
 				dot.setEnabled( false );
 				points.addView( dot );

@@ -2,23 +2,26 @@ package com.acty.component.acfunvideo.index.section;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.acty.component.acfunvideo.entity.AdvertLists;
 import com.acty.component.acfunvideo.entity.RegionBodyContent;
 import com.acty.component.acfunvideo.entity.Regions;
-import com.acty.component.acfunvideo.index.section.viewholder.BindBottomMenuViewHolder;
-import com.acty.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
-import com.acty.component.acfunvideo.index.section.viewholder.BottomMenuViewHolder;
-import com.acty.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
 import com.acty.component_acfunvideo.R;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.acty.component_banner.banner.BannerEntity;
+import com.acty.component_banner.banner.BannerView;
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.DisplayUtil;
-import com.hubertyoung.common.utils.StringUtil;
+import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * <br>
@@ -32,42 +35,20 @@ import com.hubertyoung.common.widget.sectioned.SectionParameters;
  */
 public class NewRecommendCarouselsSection extends Section {
 	private BaseActivity mActivity;
-	private Regions mRegions;
+	private Regions regions;
 
 	public NewRecommendCarouselsSection( BaseActivity activity ) {
-		super( new SectionParameters.Builder( R.layout.item_videos_rank_view )//
-				.headerResourceId( R.layout.widget_region_header_text )//
-				.footerResourceId( R.layout.widget_region_bottom_menu )//
+		super( new SectionParameters.Builder( R.layout.item_region_slide_banner )//
+//				.headerResourceId( R.layout.widget_region_header_text )//
+//				.footerResourceId( R.layout.widget_region_bottom_menu )//
 				.build() );
 		this.mActivity = activity;
 	}
 
 	@Override
-	public RecyclerView.ViewHolder getFooterViewHolder( View view ) {
-		return new BottomMenuViewHolder( view );
-	}
-
-	@Override
-	public void onBindFooterViewHolder( RecyclerView.ViewHolder holder ) {
-		BindBottomMenuViewHolder viewHolder = new BindBottomMenuViewHolder( mActivity, (BottomMenuViewHolder) holder );
-		viewHolder.viewBindData( getContentItemsTotal(), mRegions );
-	}
-
-	@Override
-	public RecyclerView.ViewHolder getHeaderViewHolder( View view ) {
-		return new HeadTitleViewHolder( view );
-	}
-
-	@Override
-	public void onBindHeaderViewHolder( RecyclerView.ViewHolder holder ) {
-		BindHeaderTitleViewHolder viewHolder = new BindHeaderTitleViewHolder( mActivity, ( HeadTitleViewHolder ) holder );
-		viewHolder.viewBindData( getContentItemsTotal(), mRegions );
-	}
-
-	@Override
 	public int getContentItemsTotal() {
-		if ( mRegions != null ) {
-			return mRegions.bodyContents == null ? 0 : Math.min( mRegions.bodyContents.size(), Integer.MAX_VALUE );
+		if ( regions != null ) {
+			return regions.bodyContents == null ? 0 : 1;
 		} else {
 			return 0;
 		}
@@ -80,65 +61,60 @@ public class NewRecommendCarouselsSection extends Section {
 
 	@Override
 	public RecyclerView.ViewHolder getItemViewHolder( View view, int itemType ) {
-		return new VideosRankViewHolder( view );
+		return new CarouselsViewHolder( view );
 	}
 
 	@Override
 	public void onBindItemViewHolder( RecyclerView.ViewHolder holder, int position ) {
-		VideosRankViewHolder viewHolder = ( VideosRankViewHolder ) holder;
-		RegionBodyContent bodyContent = mRegions.bodyContents.get( position );
-		viewHolder.root.setPadding( DisplayUtil.dip2px( 10 ),//
-				0,//
-				DisplayUtil.dip2px( 10 ),//
-				0 );
-		if ( position == 0 ) {
-			viewHolder.ranking.setBackgroundResource( R.drawable.banana_rank_no1 );
-			viewHolder.ranking.setVisibility( View.VISIBLE );
-		}
-		if ( position == 1 ) {
-			viewHolder.ranking.setBackgroundResource( R.drawable.banana_rank_no2 );
-			viewHolder.ranking.setVisibility( View.VISIBLE );
-		}
-		if ( position == 2 ) {
-			viewHolder.ranking.setBackgroundResource( R.drawable.banana_rank_no3 );
-			viewHolder.ranking.setVisibility( View.VISIBLE );
-		}
-		if ( position > 2 ) {
-			viewHolder.ranking.setVisibility( View.GONE );
-		}
-		if ( bodyContent != null ) {
-			viewHolder.title.setText( bodyContent.title );
-			if ( bodyContent.images == null || bodyContent.images.size() <= 0 ) {
-				ImageLoaderUtil.loadResourceImage( R.color.transparent, viewHolder.img );
-			} else {
-				ImageLoaderUtil.loadNetImage( bodyContent.images.get( 0 ), viewHolder.img );
+		CarouselsViewHolder viewHolderSlider = ( CarouselsViewHolder ) holder;
+		if ( ( regions.advertLists != null && regions.advertLists.size() != 0 ) || ( regions.bodyContents != null && regions.bodyContents.size() != 0 ) ) {
+
+			ArrayList< BannerEntity > list = new ArrayList<>();
+			for (RegionBodyContent bodyContent : regions.bodyContents) {
+				list.add( new BannerEntity( "", bodyContent.title, bodyContent.images.get( 0 ), "", 0 ) );
 			}
-			viewHolder.upName.setText( bodyContent.user.name );
-			viewHolder.counts.setText( StringUtil.formatChineseNum( mActivity, bodyContent.visit.banana ) );
+			viewHolderSlider.sliderLayout.instance( mActivity );
+			viewHolderSlider.sliderLayout.setCenter( false );
+			viewHolderSlider.sliderLayout.delayTime( 3 );
+			viewHolderSlider.sliderLayout.build( list );
+			//TODO 广告配置
+			AdvertLists advertLists = regions.advertLists.get( 0 );
+			HashMap< String, String > advert = Utils.initAdvert( 1, advertLists.advertId, advertLists.playerId );
 		}
 	}
 
 	public void setRegions( Regions regions ) {
-		this.mRegions = regions;
+		this.regions = regions;
 	}
 
-	static class VideosRankViewHolder extends RecyclerView.ViewHolder {
-		public TextView counts;
-		public SimpleDraweeView img;
-		public TextView ranking;
-		public View root;
-		public TextView title;
-		public TextView upName;
 
-		VideosRankViewHolder( View view ) {
+	static class CarouselsViewHolder extends RecyclerView.ViewHolder {
+		public ImageView ad;
+		public ImageView announcementClose;
+		public View announcementLayout;
+		public TextView announcementText;
+		public LinearLayout rootLayout;
+		public BannerView sliderLayout;
+
+		CarouselsViewHolder( View view ) {
 			super( view );
-			this.img = ( SimpleDraweeView ) view.findViewById( R.id.video_rank_img );
-			this.ranking = ( TextView ) view.findViewById( R.id.video_rank_ranking );
-			this.title = ( TextView ) view.findViewById( R.id.banana_rank_title );
-			this.upName = ( TextView ) view.findViewById( R.id.banana_rank_up_name );
-			this.counts = ( TextView ) view.findViewById( R.id.banana_rank_counts );
-			this.root = ( LinearLayout ) view.findViewById( R.id.home_item_root );
+			sliderLayout = ( BannerView ) view.findViewById( R.id.region_item_slider );
+			ad = ( ImageView ) view.findViewById( R.id.iv_ad );
+			announcementText = ( TextView ) view.findViewById( R.id.home_announcement_text );
+			announcementClose = ( ImageView ) view.findViewById( R.id.home_announcement_close );
+			announcementLayout = ( LinearLayout ) view.findViewById( R.id.home_announcement_layout );
+			initBannerView( sliderLayout );
+		}
+
+		private void initBannerView( BannerView sliderLayout ) {
+			ViewGroup.LayoutParams layoutParams = ( FrameLayout.LayoutParams ) this.sliderLayout.getLayoutParams();
+			if ( layoutParams == null || layoutParams.width <= 0 ) {
+				int widgetWidth = DisplayUtil.getScreenWidth( sliderLayout.getContext() );
+				layoutParams = new FrameLayout.LayoutParams( widgetWidth, ( int ) ( widgetWidth / 2.0833333f ) );
+			} else {
+				layoutParams.height = ( int ) ( layoutParams.width / 2.0833333f );
+			}
+			sliderLayout.setLayoutParams( layoutParams );
 		}
 	}
-
 }

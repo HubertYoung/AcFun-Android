@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+              android:id="@+id/slide_banner_root"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="10dp"
+              android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.acty.component_banner.banner.BannerView
+            android:id="@+id/region_item_slider"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <ImageView
+            android:id="@+id/iv_ad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right|center_vertical|center_horizontal|center"
+            android:src="@drawable/slider_adtip"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/home_announcement_layout"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginLeft="@dimen/home_region_hor_margin"
+        android:layout_marginRight="@dimen/home_region_hor_margin"
+        android:gravity="bottom|left|center_vertical|center_horizontal|center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/home_announcement_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:maxLines="1"
+            android:textColor="@color/text_black_color"
+            android:textSize="13sp"/>
+
+        <ImageView
+            android:id="@+id/home_announcement_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home_announcement_close"/>
+    </LinearLayout>
+</LinearLayout>

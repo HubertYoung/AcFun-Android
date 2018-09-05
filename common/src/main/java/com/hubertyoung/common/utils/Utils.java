@@ -1,5 +1,9 @@
 package com.hubertyoung.common.utils;
 
+import com.hubertyoung.common.constant.AdMapKey;
+
+import java.util.HashMap;
+
 /**
  * <br>
  * function:
@@ -68,7 +72,7 @@ public class Utils {
 	public static final String shiouqi = "shiouqi";
 	public static final String news_down_up = "news_down_up";
 
-	public static boolean b(int i) {
+	public static boolean b( int i ) {
 		return i == -100 || i == 401 || i == 110008;
 	}
 
@@ -250,7 +254,8 @@ public class Utils {
 //				intent.putExtra("type", BindPhoneActivityNew.g);
 //				activity.startActivity(intent);
 //			}
-//		}, activity.getString(R.string.real_name_certify_dialog_title), activity.getString(R.string.real_name_comment_certify_dialog_message), activity.getString(R.string.common_cancel), activity.getString(R.string.real_name_certify_dialog_right_text), true, false).show();
+//		}, activity.getString(R.string.real_name_certify_dialog_title), activity.getString(R.string.real_name_comment_certify_dialog_message), activity.getString(R.string.common_cancel), activity
+// .getString(R.string.real_name_certify_dialog_right_text), true, false).show();
 //	}
 //
 //	public static void b(final Activity activity) {
@@ -264,7 +269,8 @@ public class Utils {
 //				intent.putExtra("type", BindPhoneActivityNew.g);
 //				activity.startActivity(intent);
 //			}
-//		}, activity.getString(R.string.real_name_certify_dialog_title), activity.getString(R.string.real_name_danmu_certify_dialog_message), activity.getString(R.string.common_cancel), activity.getString(R.string.real_name_certify_dialog_right_text), true, false).show();
+//		}, activity.getString(R.string.real_name_certify_dialog_title), activity.getString(R.string.real_name_danmu_certify_dialog_message), activity.getString(R.string.common_cancel), activity
+// .getString(R.string.real_name_certify_dialog_right_text), true, false).show();
 //	}
 //
 //	public static void c(final Activity activity) {
@@ -278,7 +284,8 @@ public class Utils {
 //				intent.putExtra("type", BindPhoneActivityNew.g);
 //				activity.startActivity(intent);
 //			}
-//		}, activity.getString(R.string.real_name_certify_dialog_title), activity.getString(R.string.real_name_upload_certify_dialog_message), activity.getString(R.string.common_cancel), activity.getString(R.string.real_name_upload_certify_dialog_right_text), true, false).show();
+//		}, activity.getString(R.string.real_name_certify_dialog_title), activity.getString(R.string.real_name_upload_certify_dialog_message), activity.getString(R.string.common_cancel), activity
+// .getString(R.string.real_name_upload_certify_dialog_right_text), true, false).show();
 //	}
 //
 //	public static int drawable(View view) {
@@ -329,7 +336,7 @@ public class Utils {
 //
 
 
-//	public static String drawable(int i) {
+	//	public static String drawable(int i) {
 //		StringBuilder stringBuilder = new StringBuilder();
 //		stringBuilder.append("res://tv.acfundanmaku.video/");
 //		stringBuilder.append(i);
@@ -387,7 +394,8 @@ public class Utils {
 //	}
 //
 //	public static void drawable( TextView textView, Link.OnClickListener onClickListener) {
-//		LinkBuilder.drawable(textView).drawable(new Link( Pattern.compile("(aa|AA|ab|AB|ac|AC)\\d+")).drawable(AcFunApplication.b().getResources().getColor(R.color.bangou_clickable_color)).drawable(false).drawable(onClickListener)).drawable();
+//		LinkBuilder.drawable(textView).drawable(new Link( Pattern.compile("(aa|AA|ab|AB|ac|AC)\\d+")).drawable(AcFunApplication.b().getResources().getColor(R.color.bangou_clickable_color)).drawable
+// (false).drawable(onClickListener)).drawable();
 //	}
 //
 //	public static int c(int i) {
@@ -633,7 +641,8 @@ public class Utils {
 //
 //	public static void drawable(SimpleDraweeView simpleDraweeView, String str, int i, int i2) {
 //		try {
-//			simpleDraweeView.setController(((PipelineDraweeControllerBuilder) ((PipelineDraweeControllerBuilder) Fresco.newDraweeControllerBuilder().setOldController(simpleDraweeView.getController())).setImageRequest(ImageRequestBuilder.newBuilderWithSource(Uri.parse(str)).setPostprocessor(new IterativeBoxBlurPostProcessor(i, i2)).build())).build());
+//			simpleDraweeView.setController(((PipelineDraweeControllerBuilder) ((PipelineDraweeControllerBuilder) Fresco.newDraweeControllerBuilder().setOldController(simpleDraweeView.getController()
+// )).setImageRequest(ImageRequestBuilder.newBuilderWithSource(Uri.parse(str)).setPostprocessor(new IterativeBoxBlurPostProcessor(i, i2)).build())).build());
 //		} catch (Throwable e) {
 //			LogUtil.drawable(e);
 //		}
@@ -669,28 +678,28 @@ public class Utils {
 //		}
 //	}
 //
-//	public static HashMap<String, String> drawable( int i, int i2, long j) {
-//		HashMap<String, String> hashMap = new HashMap();
-//		StringBuilder stringBuilder = new StringBuilder();
-//		stringBuilder.append(i);
-//		stringBuilder.append("");
-//		hashMap.put("adZoneType", stringBuilder.toString());
-//		hashMap.put(AdMapKey.ADINFO_TYPE, "1");
-//		String str = AdMapKey.ADZONE_ID;
-//		StringBuilder stringBuilder2 = new StringBuilder();
-//		stringBuilder2.append(i2);
-//		stringBuilder2.append("");
-//		hashMap.put(str, stringBuilder2.toString());
-//		str = AdMapKey.PLAYER_ID;
-//		StringBuilder stringBuilder3 = new StringBuilder();
-//		stringBuilder3.append(j);
-//		stringBuilder3.append("");
-//		hashMap.put(str, stringBuilder3.toString());
-//		hashMap.put(AdMapKey.IS_TEST, AcFunApplication.b().c() ? "1" : "0");
-//		hashMap.put(AdMapKey.IS_DEBUG, AcFunApplication.b().c() ? "1" : "0");
-//		hashMap.put(AdMapKey.IS_CACHE_MATERIAL, "0");
-//		return hashMap;
-//	}
+	public static HashMap< String, String > initAdvert( int type, int advertId, long playerId ) {
+		HashMap< String, String > hashMap = new HashMap();
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append( type );
+		stringBuilder.append( "" );
+		hashMap.put( "adZoneType", stringBuilder.toString() );
+		hashMap.put( AdMapKey.ADINFO_TYPE, "1" );
+		String str = AdMapKey.ADZONE_ID;
+		StringBuilder stringBuilder2 = new StringBuilder();
+		stringBuilder2.append( advertId );
+		stringBuilder2.append( "" );
+		hashMap.put( str, stringBuilder2.toString() );
+		str = AdMapKey.PLAYER_ID;
+		StringBuilder stringBuilder3 = new StringBuilder();
+		stringBuilder3.append( playerId );
+		stringBuilder3.append( "" );
+		hashMap.put( str, stringBuilder3.toString() );
+		hashMap.put( AdMapKey.IS_TEST, AppUtils.isDebuggable() ? "1" : "0" );
+		hashMap.put( AdMapKey.IS_DEBUG, AppUtils.isDebuggable() ? "1" : "0" );
+		hashMap.put( AdMapKey.IS_CACHE_MATERIAL, "0" );
+		return hashMap;
+	}
 //
 //	public static void g(Context context) {
 //		MobclickAgent.onKillProcess(context);
