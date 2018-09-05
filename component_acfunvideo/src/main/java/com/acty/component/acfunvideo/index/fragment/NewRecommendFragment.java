@@ -10,6 +10,7 @@ import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.acty.component.acfunvideo.index.model.NewRecommendModelImp;
 import com.acty.component.acfunvideo.index.presenter.NewRecommendPresenterImp;
+import com.acty.component.acfunvideo.index.section.NewRecommendVideosRankSection;
 import com.acty.component.acfunvideo.index.section.NewRecommendVideosSection;
 import com.acty.component_acfunvideo.R;
 import com.hubertyoung.common.base.BaseActivity;
@@ -48,7 +49,8 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private SectionedRecyclerViewAdapter mAdapter;
 	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
 	private NewRecommendVideosSection mNewBangumiSection;
-//	private NewBangumiSection mNewBangumiSection;
+	private NewRecommendVideosRankSection mVideosRankSection;
+	//	private NewBangumiSection mNewBangumiSection;
 
 	public static NewRecommendFragment newInstance( String param1, String param2 ) {
 		NewRecommendFragment fragment = new NewRecommendFragment();
@@ -146,8 +148,8 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 					case SectionedRecyclerViewAdapter.VIEW_TYPE_FOOTER:
 						return 6;
 					case SectionedRecyclerViewAdapter.VIEW_TYPE_ITEM_LOADED:{
-						int itemViewType = mAdapter.getSectionForPosition( position ).positionType;
-						return itemViewType;
+						int spanSizeLookup = mAdapter.getSectionForPosition( position ).spanSizeLookup;
+						return spanSizeLookup;
 					}
 					default:
 						return 6;
@@ -209,6 +211,11 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 					mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );
 					mAdapter.addSection( mNewBangumiSection );
 					mNewBangumiSection.setRegions( regions );
+					break;
+				case Utils.videos_rank:
+					mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivity ) activity );
+					mAdapter.addSection( mVideosRankSection );
+					mVideosRankSection.setRegions( regions );
 					break;
 			}
 		}

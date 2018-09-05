@@ -14,6 +14,7 @@ import android.view.View;
 public abstract class Section {
 
 	public int positionType;
+	public int spanSizeLookup;
 
 	private String tag;
 
@@ -359,6 +360,10 @@ public abstract class Section {
 	 */
 	public void onBindFooterViewHolder( RecyclerView.ViewHolder holder ) {
 		// Nothing to bind here.
+	}
+
+	public int getSpanSizeLookup( int position ){
+		return position;
 	}
 
 	/**

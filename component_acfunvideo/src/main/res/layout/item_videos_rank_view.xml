@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/home_item_root"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/video_rank_img"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            app:failureImage="@color/background_gray_color"
+            app:placeholderImage="@color/background_gray_color"
+            app:roundWithOverlayColor="@color/white"
+            app:roundedCornerRadius="5dp"
+            app:roundingBorderColor="@color/image_border_color"
+            app:roundingBorderWidth="@dimen/round_border_width"
+            app:viewAspectRatio="1.75"/>
+
+        <TextView
+            android:id="@+id/video_rank_ranking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left|center_vertical|center_horizontal|center"
+            android:background="@drawable/banana_rank_no1"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/banana_rank_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/text_black_color"
+            android:textSize="@dimen/text_title_large_size"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@string/video_uploader_text"
+                    android:textColor="@color/text_gray_color"
+                    android:textSize="@dimen/text_detail_size"/>
+
+                <TextView
+                    android:id="@+id/banana_rank_up_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:maxWidth="80dp"
+                    android:textColor="@color/text_gray_color"
+                    android:textSize="@dimen/text_detail_size"
+                    tools:text="我叫爸爸你怎么"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/banana_rank_counts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:drawableLeft="@mipmap/ic_banana_rank"
+                android:drawablePadding="5.4dp"
+                android:maxLines="1"
+                android:textColor="@color/home_banana_rank_counts"
+                android:textSize="@dimen/text_detail_size"
+                tools:text="120wan"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

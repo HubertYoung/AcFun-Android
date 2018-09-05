@@ -1,8 +1,6 @@
 package com.acty.component.acfunvideo.index.section;
 
 import android.support.v7.widget.RecyclerView;
-import android.text.InputFilter;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -15,7 +13,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.DisplayUtil;
-import com.hubertyoung.common.utils.IntentUtils;
 import com.hubertyoung.common.utils.StringUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
@@ -46,107 +43,8 @@ public class NewRecommendVideosSection extends Section {
 
 	@Override
 	public void onBindHeaderViewHolder( RecyclerView.ViewHolder holder ) {
-		HeadTitleViewHolder viewHolderTitle = ( HeadTitleViewHolder ) holder;
-		if ( getContentItemsTotal() > 0 ) {
-			viewHolderTitle.itemView.setVisibility( View.VISIBLE );
-			if ( mRegions.bottomText != null ) {
-				viewHolderTitle.leftLayout.setOnClickListener( new View.OnClickListener() {
-					@Override
-					public void onClick( View v ) {
-
-					}
-				} );
-			}
-			viewHolderTitle.title.setText( mRegions.title );
-			if ( TextUtils.isEmpty( mRegions.img ) ) {
-				viewHolderTitle.leftIndicator.setVisibility( View.GONE );
-				viewHolderTitle.leftNoPic.setVisibility( View.VISIBLE );
-			} else {
-				viewHolderTitle.leftIndicator.setVisibility( View.VISIBLE );
-				viewHolderTitle.leftNoPic.setVisibility( View.GONE );
-				ImageLoaderUtil.loadNetImage( mRegions.img, viewHolderTitle.leftIndicator );
-			}
-			if ( viewHolderTitle.rightMenu != null && mRegions.headerText != null && mRegions.headerText.size() > 0 ) {
-				viewHolderTitle.rightMenu.setVisibility( View.VISIBLE );
-				switch ( mRegions.headerText.size() ) {
-					case 1:
-						viewHolderTitle.rightMenuText1.setVisibility( View.VISIBLE );
-						viewHolderTitle.rightMenuText2.setVisibility( View.GONE );
-						viewHolderTitle.rightMenuText3.setVisibility( View.GONE );
-						viewHolderTitle.dotOne.setVisibility( View.GONE );
-						viewHolderTitle.dotTwo.setVisibility( View.GONE );
-						viewHolderTitle.rightMenuText1.setFilters( new InputFilter[]{ new InputFilter.LengthFilter( 15 ) } );
-						viewHolderTitle.rightMenuText1.setText( mRegions.headerText.get( 0 ).title );
-						rightMenuText1Click( viewHolderTitle.rightMenuText1, //
-								mRegions.headerText.get( 0 ).actionId, //
-								mRegions.headerText.get( 0 ).contentId, //
-								mRegions, mRegions.headerText.get( 0 ).title );
-						break;
-					case 2:
-						viewHolderTitle.rightMenuText1.setVisibility( View.VISIBLE );
-						viewHolderTitle.rightMenuText2.setVisibility( View.VISIBLE );
-						viewHolderTitle.rightMenuText3.setVisibility( View.GONE );
-						viewHolderTitle.dotOne.setVisibility( View.VISIBLE );
-						viewHolderTitle.dotTwo.setVisibility( View.GONE );
-						viewHolderTitle.rightMenuText1.setFilters( new InputFilter[]{ new InputFilter.LengthFilter( 6 ) } );
-						viewHolderTitle.rightMenuText2.setFilters( new InputFilter[]{ new InputFilter.LengthFilter( 6 ) } );
-						viewHolderTitle.rightMenuText1.setText( mRegions.headerText.get( 1 ).title );
-						rightMenuText1Click( viewHolderTitle.rightMenuText1, //
-								mRegions.headerText.get( 1 ).actionId, //
-								mRegions.headerText.get( 1 ).contentId, //
-								mRegions, mRegions.headerText.get( 1 ).title );
-						viewHolderTitle.rightMenuText2.setText( mRegions.headerText.get( 0 ).title );
-						rightMenuText1Click( viewHolderTitle.rightMenuText2,//
-								mRegions.headerText.get( 0 ).actionId,//
-								mRegions.headerText.get( 0 ).contentId,//
-								mRegions, mRegions.headerText.get( 0 ).title );
-						break;
-					case 3:
-						viewHolderTitle.rightMenuText1.setVisibility( View.VISIBLE );
-						viewHolderTitle.rightMenuText2.setVisibility( View.VISIBLE );
-						viewHolderTitle.rightMenuText3.setVisibility( View.VISIBLE );
-						viewHolderTitle.dotOne.setVisibility( View.VISIBLE );
-						viewHolderTitle.dotTwo.setVisibility( View.VISIBLE );
-						viewHolderTitle.rightMenuText1.setFilters( new InputFilter[]{ new InputFilter.LengthFilter( 5 ) } );
-						viewHolderTitle.rightMenuText2.setFilters( new InputFilter[]{ new InputFilter.LengthFilter( 5 ) } );
-						viewHolderTitle.rightMenuText3.setFilters( new InputFilter[]{ new InputFilter.LengthFilter( 5 ) } );
-						viewHolderTitle.rightMenuText1.setText( mRegions.headerText.get( 2 ).title );
-						rightMenuText1Click( viewHolderTitle.rightMenuText1, //
-								mRegions.headerText.get( 2 ).actionId,//
-								mRegions.headerText.get( 2 ).contentId,//
-								mRegions, mRegions.headerText.get( 2 ).title );
-						viewHolderTitle.rightMenuText2.setText( mRegions.headerText.get( 1 ).title );
-						rightMenuText1Click( viewHolderTitle.rightMenuText2, //
-								mRegions.headerText.get( 1 ).actionId, //
-								mRegions.headerText.get( 1 ).contentId, //
-								mRegions, mRegions.headerText.get( 1 ).title );
-						viewHolderTitle.rightMenuText3.setText( mRegions.headerText.get( 0 ).title );
-						rightMenuText1Click( viewHolderTitle.rightMenuText3, //
-								mRegions.headerText.get( 0 ).actionId, //
-								mRegions.headerText.get( 0 ).contentId,//
-								mRegions, mRegions.headerText.get( 0 ).title );
-						break;
-				}
-			}
-			viewHolderTitle.rightMenu.setVisibility( View.GONE );
-		} else {
-			viewHolderTitle.itemView.setVisibility( View.GONE );
-		}
-	}
-
-	private void rightMenuText1Click( TextView rightMenuText1, int actionId, String contentId, Regions regions, String title ) {
-		rightMenuText1.setOnClickListener( new View.OnClickListener() {
-			public void onClick( View view ) {
-				if ( regions != null ) {
-//					SensorsAnalyticsUtil.e(regions2.title);
-				}
-				if ( actionId == 11 ) {
-					IntentUtils.startActivity( mActivity, actionId, "-1", null );
-				} else {
-					IntentUtils.startActivity( mActivity, actionId, title, null );
-				}
-			}
-		} );
+		BindHeaderTitleViewHolder viewHolder = new BindHeaderTitleViewHolder(mActivity, ( HeadTitleViewHolder ) holder );
+		viewHolder.viewBindData(getContentItemsTotal(),mRegions);
 	}
 
 	@Override
@@ -160,7 +58,7 @@ public class NewRecommendVideosSection extends Section {
 	}
 
 	@Override
-	public int getItemViewType( int position ) {
+	public int getSpanSizeLookup( int position ) {
 		if ( mRegions.topContent == null ) {
 			return 3;
 		} else {
@@ -274,35 +172,6 @@ public class NewRecommendVideosSection extends Section {
 
 	public void setOnItemClickListener( OnItemClickListener onItemClickListener ) {
 		mOnItemClickListener = onItemClickListener;
-	}
-
-
-	static class HeadTitleViewHolder extends RecyclerView.ViewHolder {
-		public TextView dotOne;
-		public TextView dotTwo;
-		public SimpleDraweeView leftIndicator;
-		public LinearLayout leftLayout;
-		public SimpleDraweeView leftNoPic;
-		public LinearLayout rightMenu;
-		public TextView rightMenuText1;
-		public TextView rightMenuText2;
-		public TextView rightMenuText3;
-		public TextView title;
-
-		HeadTitleViewHolder( View view ) {
-			super( view );
-			leftIndicator = ( SimpleDraweeView ) view.findViewById( R.id.region_top_left_indicator );
-			leftNoPic = ( SimpleDraweeView ) view.findViewById( R.id.region_top_left_no_pic );
-			title = ( TextView ) view.findViewById( R.id.region_top_title );
-			leftLayout = ( LinearLayout ) view.findViewById( R.id.region_top_left_layout );
-			rightMenuText3 = ( TextView ) view.findViewById( R.id.header_text3 );
-			dotTwo = ( TextView ) view.findViewById( R.id.dot_two );
-			rightMenuText2 = ( TextView ) view.findViewById( R.id.header_text2 );
-			dotOne = ( TextView ) view.findViewById( R.id.dot_one );
-			rightMenuText1 = ( TextView ) view.findViewById( R.id.header_text1 );
-			rightMenu = ( LinearLayout ) view.findViewById( R.id.region_top_right_menu );
-		}
-
 	}
 
 	static class NewRecommendVideosViewHolder extends RecyclerView.ViewHolder {

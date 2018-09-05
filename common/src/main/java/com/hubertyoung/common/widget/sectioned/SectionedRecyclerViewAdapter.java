@@ -309,6 +309,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
 				switch ( section.getState() ) {
 					case LOADED:
 						section.positionType = section.getItemViewType( getPositionInSection( position ) );
+						section.spanSizeLookup = section.getSpanSizeLookup( getPositionInSection( position ) );
 						return viewType + 2;
 					case LOADING:
 						return viewType + 3;
