@@ -10,6 +10,7 @@ import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.acty.component.acfunvideo.index.model.NewRecommendModelImp;
 import com.acty.component.acfunvideo.index.presenter.NewRecommendPresenterImp;
+import com.acty.component.acfunvideo.index.section.NewRecommendCarouselsSection;
 import com.acty.component.acfunvideo.index.section.NewRecommendVideosRankSection;
 import com.acty.component.acfunvideo.index.section.NewRecommendVideosSection;
 import com.acty.component_acfunvideo.R;
@@ -50,6 +51,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
 	private NewRecommendVideosSection mNewBangumiSection;
 	private NewRecommendVideosRankSection mVideosRankSection;
+	private NewRecommendCarouselsSection mCarouselsSection;
 	//	private NewBangumiSection mNewBangumiSection;
 
 	public static NewRecommendFragment newInstance( String param1, String param2 ) {
@@ -207,6 +209,11 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 //		mNewBangumiSection.setData(newRecommendEntityList);
 		for (Regions regions : regionsList) {
 			switch ( regions.schema ) {
+				case Utils.carousels:
+					mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
+					mAdapter.addSection( mCarouselsSection );
+					mCarouselsSection.setRegions( regions );
+					break;
 				case Utils.videos:
 					mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );
 					mAdapter.addSection( mNewBangumiSection );

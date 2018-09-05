@@ -30,11 +30,11 @@ import com.hubertyoung.common.widget.sectioned.SectionParameters;
  * @since:V$VERSION
  * @desc:com.acty.component.acfunvideo.index.section
  */
-public class NewRecommendVideosRankSection extends Section {
+public class NewRecommendCarouselsSection extends Section {
 	private BaseActivity mActivity;
 	private Regions mRegions;
 
-	public NewRecommendVideosRankSection( BaseActivity activity ) {
+	public NewRecommendCarouselsSection( BaseActivity activity ) {
 		super( new SectionParameters.Builder( R.layout.item_videos_rank_view )//
 				.headerResourceId( R.layout.widget_region_header_text )//
 				.footerResourceId( R.layout.widget_region_bottom_menu )//

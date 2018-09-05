@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.acty.component.acfunvideo.entity.RegionBodyContent;
 import com.acty.component.acfunvideo.entity.Regions;
+import com.acty.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
+import com.acty.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
 import com.acty.component_acfunvideo.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;

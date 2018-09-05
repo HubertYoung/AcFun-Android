@@ -1,4 +1,4 @@
-package com.acty.component.acfunvideo.index.section;
+package com.acty.component.acfunvideo.index.section.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -30,7 +30,7 @@ public class HeadTitleViewHolder extends RecyclerView.ViewHolder {
 	public TextView rightMenuText3;
 	public TextView title;
 
-	HeadTitleViewHolder( View view ) {
+	public HeadTitleViewHolder( View view ) {
 		super( view );
 		leftIndicator = ( SimpleDraweeView ) view.findViewById( R.id.region_top_left_indicator );
 		leftNoPic = ( SimpleDraweeView ) view.findViewById( R.id.region_top_left_no_pic );

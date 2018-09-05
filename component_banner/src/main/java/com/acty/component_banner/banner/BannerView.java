@@ -8,12 +8,13 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.acty.component_banner.R;
 import com.acty.component_banner.banner.transformer.ABaseTransformer;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.DisplayUtil;
 
@@ -58,7 +59,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 	private BannerViewPager viewPager;
 	private LinearLayout points;
 	private CompositeDisposable compositeDisposable;
-//	private JCVideoPlayerStandard videoPlayerStandard;
+	//	private JCVideoPlayerStandard videoPlayerStandard;
 	private Disposable disposable;
 	private int currentItem = 1;
 	private int count = 0;
@@ -101,8 +102,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 	public BannerView( Context context, AttributeSet attrs, int defStyleAttr ) {
 
 		super( context, attrs, defStyleAttr );
-		View view = LayoutInflater.from( context )
-								  .inflate( R.layout.banner_layout_custom, this, true );
+		View view = LayoutInflater.from( context ).inflate( R.layout.banner_layout_custom, this, true );
 		viewPager = ( BannerViewPager ) view.findViewById( R.id.layout_banner_viewpager );
 		points = ( LinearLayout ) view.findViewById( R.id.layout_banner_points_group );
 
@@ -148,6 +148,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 
 	/**
 	 * 是否居中
+	 *
 	 * @param center
 	 */
 	public void setCenter( boolean center ) {
@@ -223,8 +224,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 				dot.setEnabled( false );
 				points.addView( dot );
 			}
-			points.getChildAt( 0 )
-				  .setBackgroundResource( selectRes );
+			points.getChildAt( 0 ).setBackgroundResource( selectRes );
 
 
 			for (int i = 0; i <= count + 1; i++) {
@@ -268,10 +268,8 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 				public void onPageSelected( int position ) {
 
 					if ( points.getChildCount() > 1 ) {
-						points.getChildAt( ( lastPosition - 1 + count ) % count )
-							  .setBackgroundResource( unSelcetRes );
-						points.getChildAt( ( position - 1 + count ) % count )
-							  .setBackgroundResource( selectRes );
+						points.getChildAt( ( lastPosition - 1 + count ) % count ).setBackgroundResource( unSelcetRes );
+						points.getChildAt( ( position - 1 + count ) % count ).setBackgroundResource( selectRes );
 						lastPosition = position;
 					}
 //                if ( position == 0 ) position = count;
@@ -330,13 +328,13 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 	private void initBannerType( BannerEntity entity ) {
 		if ( entity.type == 0 ) {
 //			ShapeImageView mImageView = new ShapeImageView( getContext() );
-			View view = LayoutInflater.from( getContext() )
-									  .inflate( R.layout.banner_shape_imageview, null );
-			ImageView mImageView = ( ImageView ) view.findViewById( R.id.iv_banner_view );
+			View view = LayoutInflater.from( getContext() ).inflate( R.layout.banner_shape_imageview, null );
+			SimpleDraweeView mImageView = ( SimpleDraweeView ) view.findViewById( R.id.iv_banner_view );
 //			mImageView.setRadius( getContext().getResources()
 //											  .getDimensionPixelOffset( R.dimen.DIMEN_2_0DP ) );
 //			ImageLoaderUtils.getInstance()
 //							.loadImage( getContext(), mImageView, entity.Pic, isCenter, R.drawable.banner_default );
+			ImageLoaderUtil.loadNetImage( entity.Pic, mImageView );
 			imageViewList.add( mImageView );
 		} else if ( entity.type == 1 ) {
 //			videoPlayerStandard = new JCVideoPlayerStandard( getContext() );
@@ -405,8 +403,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 			//显示播放的页面
 			Flowable< Long > longFlowable = Flowable.timer( delayTime, TimeUnit.MILLISECONDS )
 
-													.subscribeOn( Schedulers.io() )
-													.observeOn( AndroidSchedulers.mainThread() );
+					.subscribeOn( Schedulers.io() ).observeOn( AndroidSchedulers.mainThread() );
 			if ( activity != null ) {
 //				longFlowable.compose( activity.bindToLifecycle() );
 			}

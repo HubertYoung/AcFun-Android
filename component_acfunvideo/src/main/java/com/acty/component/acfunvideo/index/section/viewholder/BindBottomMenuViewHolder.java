@@ -1,4 +1,4 @@
-package com.acty.component.acfunvideo.index.section;
+package com.acty.component.acfunvideo.index.section.viewholder;
 
 import android.view.View;
 
@@ -16,7 +16,7 @@ import com.hubertyoung.common.utils.DisplayUtil;
  * @since:V$VERSION
  * @desc:com.acty.component.acfunvideo.index.section
  */
-class BindBottomMenuViewHolder{
+public class BindBottomMenuViewHolder{
 	private BottomMenuViewHolder viewHolder;
 	private BaseActivity mActivity;
 

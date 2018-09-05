@@ -1,4 +1,4 @@
-package com.acty.component.acfunvideo.index.section;
+package com.acty.component.acfunvideo.index.section.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

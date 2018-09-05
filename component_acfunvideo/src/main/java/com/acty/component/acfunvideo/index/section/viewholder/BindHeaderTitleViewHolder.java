@@ -1,4 +1,4 @@
-package com.acty.component.acfunvideo.index.section;
+package com.acty.component.acfunvideo.index.section.viewholder;
 
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -20,7 +20,7 @@ import com.hubertyoung.common.utils.IntentUtils;
  * @since:V$VERSION
  * @desc:com.acty.component.acfunvideo.index.section
  */
-class BindHeaderTitleViewHolder {
+public class BindHeaderTitleViewHolder {
 	private BaseActivity mActivity;
 	private HeadTitleViewHolder viewHolderTitle;
 
