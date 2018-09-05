@@ -10,6 +10,7 @@ import com.acty.component.acfunvideo.entity.Regions;
 import com.acty.component.acfunvideo.index.control.NewRecommendControl;
 import com.acty.component.acfunvideo.index.model.NewRecommendModelImp;
 import com.acty.component.acfunvideo.index.presenter.NewRecommendPresenterImp;
+import com.acty.component.acfunvideo.index.section.NewRecommendBangumisSection;
 import com.acty.component.acfunvideo.index.section.NewRecommendBannersSection;
 import com.acty.component.acfunvideo.index.section.NewRecommendCarouselsSection;
 import com.acty.component.acfunvideo.index.section.NewRecommendVideosRankSection;
@@ -54,6 +55,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private NewRecommendVideosRankSection mVideosRankSection;
 	private NewRecommendCarouselsSection mCarouselsSection;
 	private NewRecommendBannersSection mBannersSection;
+	private NewRecommendBangumisSection mBangumisSection;
 	//	private NewBangumiSection mNewBangumiSection;
 
 	public static NewRecommendFragment newInstance( String param1, String param2 ) {
@@ -110,21 +112,27 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 		mPresenter.requestNewRecommend( map );
 	}
 
+	private void loadNewData() {
+		MyRequestMap map = new MyRequestMap();
+		map.put( "pageNo", mAdapter.getPageBean().getLoadPage()+"" );
+		mPresenter.requestNewRecommend( map );
+	}
+
 	private void initAction() {
 		mSrlContainer.setOnRefreshListener( new OnRefreshListener() {
 			@Override
 			public void onRefresh( RefreshLayout refreshLayout ) {
-//				mAdapter.getPageBean().refresh = true;
-//				mSrlRefreshHomeIndex.finishLoadMore();
-//				mSrlRefreshHomeIndex.setNoMoreData( false );
+				mAdapter.getPageBean().refresh = true;
+				mSrlContainer.finishLoadMore();
+				mSrlContainer.setNoMoreData( false );
 				loadData();
 			}
 		} );
 		mSrlContainer.setOnLoadMoreListener( new OnLoadMoreListener() {
 			@Override
 			public void onLoadMore( RefreshLayout refreshLayout ) {
-//				mAdapter.getPageBean().refresh = false;
-				loadData();
+				mAdapter.getPageBean().refresh = false;
+				loadNewData();
 			}
 		} );
 //		mBannerSection.setOnItemClickListener( new BannerSection.OnItemClickListener() {
@@ -151,7 +159,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 						return 6;
 					case SectionedRecyclerViewAdapter.VIEW_TYPE_FOOTER:
 						return 6;
-					case SectionedRecyclerViewAdapter.VIEW_TYPE_ITEM_LOADED:{
+					case SectionedRecyclerViewAdapter.VIEW_TYPE_ITEM_LOADED: {
 						int spanSizeLookup = mAdapter.getSectionForPosition( position ).spanSizeLookup;
 						return spanSizeLookup;
 					}
@@ -212,28 +220,44 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 		for (Regions regions : regionsList) {
 			switch ( regions.schema ) {
 				case Utils.carousels:
-					mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
-					mAdapter.addSection( mCarouselsSection );
+					if ( mAdapter.getPageBean().refresh ) {
+						mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
+						mAdapter.addSection( mCarouselsSection );
+					}
 					mCarouselsSection.setRegions( regions );
 					break;
 				case Utils.banners:
-					mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) activity );
-					mAdapter.addSection( mBannersSection );
-					mBannersSection.setRegions( regions );
+					if ( mAdapter.getPageBean().refresh ) {
+						mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) activity );
+						mAdapter.addSection( mBannersSection );
+						mBannersSection.setRegions( regions );
+					}
 					break;
+
 				case Utils.videos:
-					mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );
-					mAdapter.addSection( mNewBangumiSection );
-					mNewBangumiSection.setRegions( regions );
+				case Utils.videos_new:
+					if ( mAdapter.getPageBean().refresh ) {
+						mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity );
+						mAdapter.addSection( mNewBangumiSection );
+						mNewBangumiSection.setRegions( regions );
+					}
 					break;
 				case Utils.videos_rank:
-					mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivity ) activity );
-					mAdapter.addSection( mVideosRankSection );
-					mVideosRankSection.setRegions( regions );
+					if ( mAdapter.getPageBean().refresh ) {
+						mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivity ) activity );
+						mAdapter.addSection( mVideosRankSection );
+						mVideosRankSection.setRegions( regions );
+					}
+					break;
+				case Utils.bangumis:
+					if ( mAdapter.getPageBean().refresh ) {
+						mBangumisSection = new NewRecommendBangumisSection( ( BaseActivity ) activity );
+						mAdapter.addSection( mBangumisSection );
+						mBangumisSection.setRegions( regions );
+					}
 					break;
 			}
 		}
-
 		mAdapter.notifyDataSetChanged();
 	}
 }

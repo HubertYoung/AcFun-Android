@@ -166,6 +166,10 @@ public class NewRecommendVideosSection extends Section {
 		this.mRegions = mRegions;
 	}
 
+	public void addRegions( Regions regions ) {
+		this.mRegions.bodyContents.addAll( regions.bodyContents );
+	}
+
 	public interface OnItemClickListener {
 		void onClickRecommendBangumiItem( View v, Regions bodyContentsBean );
 	}
