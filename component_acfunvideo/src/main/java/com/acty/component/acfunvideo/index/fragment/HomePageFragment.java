@@ -139,8 +139,8 @@ public class HomePageFragment extends BaseFragment {
 	private void initViewPager() {
 		mHomeViewTab.setCustomTabView( R.layout.widget_home_page_tab_view, R.id.tab_text );
 		mHomePagerAdapter = new HomePagerAdapter( getChildFragmentManager() );
-		mNewRecommendFragment = new NewRecommendFragment();
-		mChannelFragment = new ChannelFragment();
+		mNewRecommendFragment = NewRecommendFragment.newInstance("","");
+		mChannelFragment = ChannelFragment.newInstance( "","" );
 
 		mHomePagerAdapter.add( mNewRecommendFragment, activity.getString( R.string.recommend_text ) );
 		mHomePagerAdapter.add( mChannelFragment, activity.getString( R.string.common_channel ) );

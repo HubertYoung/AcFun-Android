@@ -1,36 +1,54 @@
 package com.acty.component.acfunvideo.index.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.acty.component.acfunvideo.entity.ChannelOperate;
+import com.acty.component.acfunvideo.index.control.ChannelControl;
+import com.acty.component.acfunvideo.index.model.ChannelModelImp;
+import com.acty.component.acfunvideo.index.presenter.ChannelPresenterImp;
+import com.acty.component.acfunvideo.index.section.ChannelSection;
 import com.acty.component_acfunvideo.R;
+import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
+import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
+import com.hubertyoung.component_skeleton.skeleton.Skeleton;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-public class ChannelFragment extends Fragment {
-	// TODO: Rename parameter arguments, choose names that match
-	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+/**
+ * <br>
+ * function:首页视频分区tab
+ * <p>
+ *
+ * @author:HubertYoung
+ * @date:2018/9/7 16:34
+ * @since:V1.0.0
+ * @desc:com.acty.component.acfunvideo.index.fragment
+ */
+public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelModelImp > implements ChannelControl.View {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
+	private SmartRefreshLayout mSrlContainer;
+	private RecyclerView mRecyclerView;
 
-	// TODO: Rename and change types of parameters
 	private String mParam1;
 	private String mParam2;
+	private SectionedRecyclerViewAdapter mAdapter;
+	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
+	private ChannelSection mChannelSection;
 
 	public ChannelFragment() {
-		// Required empty public constructor
 	}
 
-	/**
-	 * Use this factory method to create drawable new instance of
-	 * this fragment using the provided parameters.
-	 *
-	 * @param param1 Parameter 1.
-	 * @param param2 Parameter 2.
-	 * @return A new instance of fragment ChannelFragment.
-	 */
-	// TODO: Rename and change types and number of parameters
 	public static ChannelFragment newInstance( String param1, String param2 ) {
 		ChannelFragment fragment = new ChannelFragment();
 		Bundle args = new Bundle();
@@ -50,8 +68,119 @@ public class ChannelFragment extends Fragment {
 	}
 
 	@Override
-	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
-		// Inflate the layout for this fragment
-		return inflater.inflate( R.layout.fragment_channel, container, false );
+	protected void initToolBar() {
+
+	}
+
+	@Override
+	protected int getLayoutResource() {
+		return R.layout.fragment_channel;
+	}
+
+	@Override
+	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
+		mSrlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
+		mRecyclerView = ( RecyclerView ) findViewById( R.id.fragment_channel_recycler_view );
+		super.onViewCreated( view, savedInstanceState );
+	}
+
+	@Override
+	public void initPresenter() {
+		mPresenter.setVM( this, mModel );
+
+	}
+
+	@Override
+	protected void initView( Bundle savedInstanceState ) {
+		initRecyclerView();
+		initAction();
+		loadData();
+	}
+
+	private void initAction() {
+		mSrlContainer.setOnRefreshListener( new OnRefreshListener() {
+			@Override
+			public void onRefresh( RefreshLayout refreshLayout ) {
+				mAdapter.getPageBean().refresh = true;
+				mAdapter.getPageBean().page = mAdapter.getPageBean().startPage;
+				mSrlContainer.finishLoadMore();
+				mSrlContainer.setNoMoreData( false );
+				loadData();
+			}
+		} );
+		mSrlContainer.setOnLoadMoreListener( new OnLoadMoreListener() {
+			@Override
+			public void onLoadMore( RefreshLayout refreshLayout ) {
+				mAdapter.getPageBean().refresh = false;
+//				loadNewData();
+			}
+		} );
+	}
+
+	private void initRecyclerView() {
+		mAdapter = new SectionedRecyclerViewAdapter();
+		GridLayoutManager layoutManager = new GridLayoutManager( activity, 4 );
+		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
+			@Override
+			public int getSpanSize( int position ) {
+				switch ( mAdapter.getSectionItemViewType( position ) ) {
+					case SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER:
+						return 4;
+					case SectionedRecyclerViewAdapter.VIEW_TYPE_FOOTER:
+						return 4;
+					case SectionedRecyclerViewAdapter.VIEW_TYPE_ITEM_LOADED: {
+						int spanSizeLookup = mAdapter.getSectionForPosition( position ).spanSizeLookup;
+						return spanSizeLookup;
+					}
+					default:
+						return 4;
+				}
+			}
+		} );
+
+		mChannelSection = new ChannelSection( ( BaseActivity ) activity );
+		mAdapter.addSection( mChannelSection );
+
+		mRecyclerView.setHasFixedSize( true );
+		mRecyclerView.setLayoutManager( layoutManager );
+		mViewSkeletonScreen = Skeleton.bind( mRecyclerView )//
+				.adapter( mAdapter )//
+				.shimmer( true )//
+				.duration( 1200 )//
+				.angle( 20 )//
+				.load( R.layout.common_item_skeleton )//
+				.show();
+	}
+
+	@Override
+	public void showLoading( String title, int type ) {
+
+	}
+
+	@Override
+	public void stopLoading() {
+		mSrlContainer.finishRefresh();
+		mSrlContainer.finishLoadMore();
+		if ( mViewSkeletonScreen != null && mViewSkeletonScreen.isShowing() ) {
+			mViewSkeletonScreen.hide();
+		}
+	}
+
+	@Override
+	public void showErrorTip( String msg ) {
+		ToastUtil.showError( msg );
+	}
+
+	@Override
+	public void loadData() {
+		MyRequestMap map = new MyRequestMap();
+		map.put( "pos", "0" );
+		mPresenter.requestChannel( map );
+	}
+
+	@Override
+	public void setChannelOperateInfo( ChannelOperate channelOperate ) {
+		mChannelSection.setChannelList( channelOperate.channelList );
+		mAdapter.notifyDataSetChanged();
 	}
 }

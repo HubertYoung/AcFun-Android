@@ -1,6 +1,7 @@
 package com.acty.component.acfunvideo.api;
 
 
+import com.acty.component.acfunvideo.entity.ChannelOperate;
 import com.acty.component.acfunvideo.entity.RegionBodyContent;
 import com.acty.component.acfunvideo.entity.Regions;
 import com.hubertyoung.common.net.response.BaseResponse;
@@ -32,8 +33,21 @@ public interface ApiHomeService {
 	@GET( "v3/regions" )
 	Observable< BaseResponse< List< Regions > > > requestRecommend( @QueryMap Map< String, String > map );
 
+	/**
+	 * 首页加载更多
+	 * @param map
+	 * @return
+	 */
 	@GET( "v3/regions/new/0" )
 	Observable< BaseResponse< List< RegionBodyContent > > > requestNewRecommend( @QueryMap Map< String, String > map );
+
+	/**
+	 * 首页分区页面数据
+	 * @param map
+	 * @return
+	 */
+	@GET( "v3/channels/channelOperate" )
+	Observable<BaseResponse<ChannelOperate >> requestChannelOperate( @QueryMap Map<String, String> map );
 
 //	/**
 //	 * 商品详情

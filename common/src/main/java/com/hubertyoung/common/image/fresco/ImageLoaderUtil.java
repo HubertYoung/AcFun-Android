@@ -49,6 +49,14 @@ public class ImageLoaderUtil {
 		loadImage( uri, simpleDraweeView );
 	}
 
+	public static void loadNetImage( String url, SimpleDraweeView simpleDraweeView, boolean isAutoPlay, ControllerListener controllerListener ) {
+		if ( TextUtils.isEmpty( url ) ) {
+			url = "http://";
+		}
+		Uri uri = Uri.parse( url );
+		loadImage( uri, simpleDraweeView, isAutoPlay, controllerListener );
+	}
+
 	public static void loadLocalImage( String fileName, SimpleDraweeView simpleDraweeView ) {
 		Uri uri = Uri.parse( "file://" + fileName );
 		loadImage( uri, simpleDraweeView );
@@ -71,6 +79,10 @@ public class ImageLoaderUtil {
 
 	public static void loadImage( Uri uri, SimpleDraweeView simpleDraweeView ) {
 		loadImage( uri, simpleDraweeView, true, null );
+	}
+
+	public static void loadImage( Uri uri, SimpleDraweeView simpleDraweeView, boolean isAutoPlay ) {
+		loadImage( uri, simpleDraweeView, isAutoPlay, null );
 	}
 
 	private static void loadImage( Uri uri, SimpleDraweeView simpleDraweeView, boolean isAutoPlay, ControllerListener controllerListener ) {

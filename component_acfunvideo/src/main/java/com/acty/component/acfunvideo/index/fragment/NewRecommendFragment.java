@@ -139,17 +139,6 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 				loadNewData();
 			}
 		} );
-//		mBannerSection.setOnItemClickListener( new BannerSection.OnItemClickListener() {
-//			@Override
-//			public void onItemClickBanner( String url, String title, String dataJson ) {
-//				ToastUtil.showSuccess( "跳转url ==> " + url );
-//			}
-//
-//			@Override
-//			public void onItemClickChannel( View v, String channelId, String title ) {
-//				BrandDetailActivity.Companion.launch( ( BaseActivity ) activity, channelId );
-//			}
-//		} );
 	}
 
 	private void initRecyclerView() {
@@ -174,15 +163,6 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 		} );
 		mHomeRecommendLis.setHasFixedSize( true );
 		mHomeRecommendLis.setLayoutManager( layoutManager );
-//		mBannerSection = new BannerSection( ( BaseActivity ) activity );
-//		mAdapter.addSection( mBannerSection );
-
-//		mNewGoodsSection = new NewGoodsSection( ( BaseActivity ) activity );
-//		mAdapter.addSection( mNewGoodsSection );
-//		mHotGoodsSection = new HotGoodsSection( ( BaseActivity ) activity );
-//		mAdapter.addSection( mHotGoodsSection );
-//		mTopicSection = new TopicSection( ( BaseActivity ) activity );
-//		mAdapter.addSection( mTopicSection );
 		mViewSkeletonScreen = Skeleton.bind( mHomeRecommendLis )//
 				.adapter( mAdapter )//
 				.shimmer( true )//
@@ -190,13 +170,6 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 				.angle( 20 )//
 				.load( R.layout.common_item_skeleton )//
 				.show();
-//		mHomeRecommendLis.addItemDecoration( //
-//				new HorizontalDividerItemDecoration.Builder( activity )//
-//						.colorResId( R.color.line_bg )//
-//						.size( 20 )//
-//						.showLastDivider()//
-//						.build() //
-//		);
 	}
 
 	@Override
