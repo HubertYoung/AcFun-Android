@@ -8,10 +8,15 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
+ * <br>
+ * function:
+ * <p>
  *
- * Created by ezy on 17/3/18.
+ * @author:HubertYoung
+ * @date:2018/9/10 18:47
+ * @since:V1.0.0
+ * @desc:com.hubertyoung.baseplatform.sdk
  */
-
 public class Sdk<T extends IResult> {
 
     private Map<Activity, Map<String, T>> mMap = new WeakHashMap<>();

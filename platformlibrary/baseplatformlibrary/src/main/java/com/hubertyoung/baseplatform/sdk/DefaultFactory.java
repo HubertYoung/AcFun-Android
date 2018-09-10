@@ -5,9 +5,6 @@ import android.support.annotation.NonNull;
 
 import java.lang.reflect.Constructor;
 
-/**
- * Created by ezy on 17/3/18.
- */
 
 public class DefaultFactory< T extends IResult > implements IFactory< T > {
 	final OtherPlatform platform;

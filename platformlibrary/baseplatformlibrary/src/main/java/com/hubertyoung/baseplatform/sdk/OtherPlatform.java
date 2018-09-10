@@ -5,10 +5,6 @@ import android.support.annotation.NonNull;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by ezy on 17/3/18.
- */
-
 public class OtherPlatform {
     final String name;
     final String appId;

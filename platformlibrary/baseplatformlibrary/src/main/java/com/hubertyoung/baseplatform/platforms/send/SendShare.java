@@ -23,12 +23,6 @@ import com.hubertyoung.baseplatform.share.media.MoImage;
 
 import java.util.List;
 
-
-
-/**
- * Created by ezy on 17/3/18.
- */
-
 public class SendShare implements IShareable {
 	public static final String TAG = SendShare.class.getSimpleName();
 

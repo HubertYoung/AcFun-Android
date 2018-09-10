@@ -2,9 +2,6 @@ package com.hubertyoung.baseplatform.sdk;
 
 import android.app.Activity;
 
-/**
- * Created by ezy on 17/3/18.
- */
 
 public class DefaultCallback< T > implements OnCallback< T > {
     OnCallback< T > onCallback;

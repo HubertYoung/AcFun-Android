@@ -1,9 +1,5 @@
 package com.hubertyoung.baseplatform.sdk;
 
-/**
- * Created by ezy on 17/3/18.
- */
-
 public class ResultCode {
     public static final int RESULT_OK = 0;
     public static final int RESULT_PENDING = 1;
