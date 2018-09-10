@@ -36,7 +36,7 @@ if (runAsApp) {
 
 //模块名称
 def componentName = project.name.replaceAll("component_", "")
-
+println(project.name)
 android {
     compileSdkVersion props["ANDROID_BUILD_SDK_VERSION"] as int
     defaultConfig {
