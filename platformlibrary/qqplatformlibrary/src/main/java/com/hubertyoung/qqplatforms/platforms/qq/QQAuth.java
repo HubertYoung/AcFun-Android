@@ -11,6 +11,7 @@ import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.tools.Hashon;
 import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.common.Constants;
 import com.tencent.tauth.IUiListener;
@@ -46,7 +47,11 @@ public class QQAuth implements IAuthorize {
 	QQAuth( Activity activity, OtherPlatform platform ) {
 		mActivity = activity;
 		mPlatform = platform;
-		mApi = Tencent.createInstance( platform.getAppId(), mActivity );
+		String appId = platform.getAppId();
+		if ( TextUtils.isEmpty( appId ) ){
+			appId = PayXmlPullParser.getInstance().getQQID();
+		}
+		mApi = Tencent.createInstance( appId, mActivity );
 	}
 
 	String toMessage( UiError error ) {

@@ -19,8 +19,8 @@ import com.hubertyoung.baseplatform.sdk.OtherPlatform;
  * @desc:com.hubertyoung.qqplatforms.platforms.qq
  */
 public class WeiboPlatFormConfig {
-	public static void registerShare(  @NonNull String appId, @NonNull String redirectUrl) {
-		OtherPlatform platform = new OtherPlatform( AuthorizeVia.Weibo, appId).extra("redirectUrl", redirectUrl);
+	public static void registerShare(  @NonNull String appId,@NonNull String appSecret, @NonNull String redirectUrl) {
+		OtherPlatform platform = new OtherPlatform( AuthorizeVia.Weibo, appId, appSecret ).extra("redirectUrl", redirectUrl);
 		AuthorizeSDK.register(new DefaultFactory(platform, WBAuth.class));
 		ShareSDK.register(new DefaultFactory(platform, WBShare.class));
 	}

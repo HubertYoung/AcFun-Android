@@ -15,7 +15,7 @@ import java.util.HashMap;
  * 作用：xml解析
  */
 public class PayXmlPullParser {
-	private static String TAG = "DDPSDKXmlPullParser";
+	private static String TAG = "PlatformSDKConfig";
 
 	public HashMap< String, HashMap< String, String > > map = new HashMap<>();
 	private Application application;
@@ -50,7 +50,7 @@ public class PayXmlPullParser {
 
 			try {
 				inputStream = application.getAssets()
-									  .open( "DDPSDKConfig.xml" );
+									  .open( "PlatformSDKConfig.xml" );
 			} catch ( Throwable throwable ) {
 				//                e.b(var11);
 				PayLogUtil.loge( TAG, throwable.toString() );

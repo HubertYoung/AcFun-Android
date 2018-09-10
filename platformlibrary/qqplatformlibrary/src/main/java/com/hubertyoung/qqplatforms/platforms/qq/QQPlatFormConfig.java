@@ -19,11 +19,11 @@ import com.hubertyoung.baseplatform.share.ShareTo;
  * @desc:com.hubertyoung.qqplatforms.platforms.qq
  */
 public class QQPlatFormConfig {
-	public static void registerShare(@NonNull String appId) {
-		AuthorizeSDK.register( AuthorizeVia.QQ, appId, QQAuth.class);
+	public static void registerShare( @NonNull String appId, @NonNull String appSecret ) {
+		AuthorizeSDK.register( AuthorizeVia.QQ, appId, appSecret, QQAuth.class );
 
-		ShareSDK.register( ShareTo.QQ, appId, TXShare.class);
-		ShareSDK.register(ShareTo.QZone, appId, TXShare.class);
-		ShareSDK.register(ShareTo.ToQQ, "", SendShare.class);
+		ShareSDK.register( ShareTo.QQ, appId, appSecret, TXShare.class );
+		ShareSDK.register( ShareTo.QZone, appId, appSecret, TXShare.class );
+		ShareSDK.register( ShareTo.ToQQ, "", appSecret, SendShare.class );
 	}
 }

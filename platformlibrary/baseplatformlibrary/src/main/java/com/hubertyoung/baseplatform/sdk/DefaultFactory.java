@@ -11,8 +11,8 @@ public class DefaultFactory< T extends IResult > implements IFactory< T > {
 
 	final Class< T > clazz;
 
-	public DefaultFactory( @NonNull String name, String appId, Class< T > clazz ) {
-		this.platform = new OtherPlatform( name, appId );
+	public DefaultFactory( @NonNull String name, String appId,String appSecret, Class< T > clazz ) {
+		this.platform = new OtherPlatform( name, appId,appSecret );
 		this.clazz = clazz;
 	}
 

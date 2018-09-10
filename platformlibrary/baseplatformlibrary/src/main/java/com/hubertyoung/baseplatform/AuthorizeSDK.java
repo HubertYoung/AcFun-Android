@@ -20,8 +20,8 @@ public class AuthorizeSDK {
 		sdk.setDefaultCallback( callback );
 	}
 
-	public static < T extends IAuthorize > void register( String name, String appId, Class< T > clazz ) {
-		sdk.register( name, appId, clazz );
+	public static < T extends IAuthorize > void register( String name, String appId,String appSecret, Class< T > clazz ) {
+		sdk.register( name, appId,appSecret, clazz );
 	}
 
 	public static < T extends IAuthorize > void register( IFactory< T > factory ) {

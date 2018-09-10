@@ -23,8 +23,8 @@ public class ShareSDK {
 		sdk.setDefaultCallback( callback );
 	}
 
-	public static < T extends IShareable > void register( String name, String appId, Class< T > clazz ) {
-		sdk.register( name, appId, clazz );
+	public static < T extends IShareable > void register( String name, String appId, String appSecret, Class< T > clazz ) {
+		sdk.register( name, appId, appSecret, clazz );
 	}
 
 	public static < T extends IShareable > void register( IFactory< T > factory ) {
@@ -90,7 +90,7 @@ public class ShareSDK {
 
 	public void share( String platform, OnCallback< String > callback ) {
 		if ( !sdk.isSupport( platform ) ) {
-			callback.onError( mActivity, ResultCode.RESULT_FAILED,"" );
+			callback.onError( mActivity, ResultCode.RESULT_FAILED, "" );
 			return;
 		}
 		IShareable api = sdk.get( mActivity, platform );
