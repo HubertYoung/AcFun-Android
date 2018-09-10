@@ -31,4 +31,5 @@ dependencies {
     implementation "com.android.support:support-annotations:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
     implementation project(':platformlibrary:baseplatformlibrary')
     implementation files('libs/open_sdk_r5793_lite.jar')
+    implementation "com.android.support:support-v4:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
 }
