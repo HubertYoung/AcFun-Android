@@ -17,10 +17,6 @@ import org.json.JSONObject;
 
 
 
-/**
- * Created by ezy on 17/3/18.
- */
-
 public class WXPayment extends WXBase implements IPayable {
 
 

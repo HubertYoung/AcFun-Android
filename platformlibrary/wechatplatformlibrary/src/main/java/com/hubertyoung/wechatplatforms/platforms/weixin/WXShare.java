@@ -26,10 +26,6 @@ import com.tencent.mm.opensdk.modelmsg.WXVideoObject;
 import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 
 
-/**
- * Created by ezy on 17/3/18.
- */
-
 public class WXShare extends WXBase implements IShareable {
 
     WXShare( Activity activity, OtherPlatform platform) {

@@ -9,9 +9,6 @@ import com.hubertyoung.baseplatform.sdk.IResult;
 import com.hubertyoung.baseplatform.tools.PayLogUtil;
 
 
-/**
- * Created by wangfei on 15/12/3.
- */
 public class WBShareActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

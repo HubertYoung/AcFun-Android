@@ -27,10 +27,6 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 
-/**
- * Created by ezy on 17/3/18.
- */
-
 public class WBShare implements IShareable, WbShareCallback {
 	public static final String TAG = WBShare.class.getSimpleName();
 	/**

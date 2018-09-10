@@ -26,10 +26,6 @@ import java.util.HashMap;
 
 
 
-/**
- * Created by ezy on 17/3/18.
- */
-
 public class WBAuth implements IAuthorize {
 	public static final String TAG = WBAuth.class.getSimpleName();
 
