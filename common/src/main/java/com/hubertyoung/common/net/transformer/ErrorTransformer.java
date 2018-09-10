@@ -51,7 +51,7 @@ public class ErrorTransformer< T > implements ObservableTransformer< BaseRespons
 					throw new ServerException( tBaseRespose.getResult() , tBaseRespose.getStatus() );
 				}
 //				if ( !tBaseRespose.success() && !tBaseRespose.isFailed() ) {
-//					DDLogUtils.loge( "http", tBaseRespose.toString() );
+//					PayLogUtil.loge( "http", tBaseRespose.toString() );
 //					//如果服务器端有错误信息返回，那么抛出异常，让下面的方法去捕获异常做统一处理
 //					throw new ServerException( tBaseRespose.getResult(), tBaseRespose.getStatus() );
 //				}

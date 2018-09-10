@@ -20,6 +20,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        //微博
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
     }
 }
 
