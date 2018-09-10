@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.hubertyoung.common.widget.decoration.HorizontalDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.hubertyoung.component_update.R;
+import com.hubertyoung.component_ping.R;
 import com.hubertyoung.ping.PingNet;
 import com.hubertyoung.ping.bean.PingNetEntity;
 

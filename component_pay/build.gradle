@@ -5,8 +5,8 @@ props.load(new FileInputStream(file("../gradle.properties")))
 dependencies {
     implementation project(':common')
     implementation project(':platformlibrary:baseplatformlibrary')
-    implementation project(':platformlibrary:alipayplatformlibrary')
+//    implementation project(':platformlibrary:alipayplatformlibrary')
     implementation project(':platformlibrary:qqplatformlibrary')
-    implementation project(':platformlibrary:wechatplatformlibrary')
-    implementation project(':platformlibrary:weiboplatformlibrary')
+//    implementation project(':platformlibrary:wechatplatformlibrary')
+//    implementation project(':platformlibrary:weiboplatformlibrary')
 }

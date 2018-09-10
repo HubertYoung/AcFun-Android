@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
-import com.hubertyoung.component_update.R;
+import com.hubertyoung.component_ping.R;
 import com.hubertyoung.ping.bean.PingNetEntity;
 
 import java.util.ArrayList;
