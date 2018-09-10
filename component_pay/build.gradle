@@ -4,5 +4,5 @@ Properties props = new Properties()
 props.load(new FileInputStream(file("../gradle.properties")))
 dependencies {
     implementation project(':common')
-    implementation project(':paylibrary:basepaylibrary')
+    implementation project(':platformlibrary:baseplatformlibrary')
 }
