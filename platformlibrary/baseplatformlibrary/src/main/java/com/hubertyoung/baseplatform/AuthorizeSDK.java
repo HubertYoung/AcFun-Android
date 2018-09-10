@@ -2,7 +2,6 @@ package com.hubertyoung.baseplatform;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 
 import com.hubertyoung.baseplatform.authorize.IAuthorize;
 import com.hubertyoung.baseplatform.sdk.DefaultCallback;
@@ -29,11 +28,11 @@ public class AuthorizeSDK {
 		sdk.register( factory );
 	}
 
-	public static void authorize( FragmentActivity activity, String platform, OnSuccess< String > listener ) {
+	public static void authorize( Activity activity, String platform, OnSuccess< String > listener ) {
 		authorize( activity, platform, new DefaultCallback( sdk.getDefaultCallback(), listener ) );
 	}
 
-	public static void authorize( FragmentActivity activity, String platform, OnCallback< String > callback ) {
+	public static void authorize( Activity activity, String platform, OnCallback< String > callback ) {
 		if ( !sdk.isSupport( platform ) ) {
 			callback.onError( activity, ResultCode.RESULT_FAILED, "ddpsdk_not_supported_auth" );
 			return;
