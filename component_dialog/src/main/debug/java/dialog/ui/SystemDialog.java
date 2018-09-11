@@ -36,7 +36,7 @@ public class SystemDialog extends AppCompatActivity {
     public void btnDialog1(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setMessage("内容")
-                .setIcon(R.mipmap.ic_launcher_round)
+                .setIcon(R.mipmap.ic_launcher)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -53,7 +53,7 @@ public class SystemDialog extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("标题")
                 .setMessage("内容")
-                .setIcon(R.mipmap.ic_launcher_round)
+                .setIcon(R.mipmap.ic_launcher)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

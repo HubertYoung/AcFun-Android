@@ -14,6 +14,7 @@ import com.hubertyoung.baseplatform.share.IShareable;
 import com.hubertyoung.baseplatform.share.ShareData;
 import com.hubertyoung.baseplatform.share.image.resource.ImageResource;
 import com.hubertyoung.baseplatform.share.media.IMediaObject;
+import com.hubertyoung.baseplatform.share.media.MoWeb;
 import com.hubertyoung.baseplatformlibrary.R;
 
 /**
@@ -74,7 +75,12 @@ public class ShareSDK {
 	 */
 	@NonNull
 	public static ShareSDK make( Activity activity, IMediaObject media ) {
-		return new ShareSDK( activity, null, media );
+		ShareSDK shareSDK = new ShareSDK( activity, null, media );
+		if ( media instanceof MoWeb ){
+			MoWeb moWeb = ( MoWeb ) media;
+			shareSDK.mData.url = moWeb.url;
+		}
+		return shareSDK;
 	}
 //
 //	@NonNull

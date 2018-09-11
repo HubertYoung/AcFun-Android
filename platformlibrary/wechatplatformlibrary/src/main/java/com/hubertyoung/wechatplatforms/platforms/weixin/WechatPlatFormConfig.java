@@ -27,8 +27,8 @@ public class WechatPlatFormConfig {
 		ShareSDK.register( ShareTo.WXSession, appId, appSecret, WXShare.class );
 		ShareSDK.register( ShareTo.WXTimeline, appId, appSecret, WXShare.class );
 		ShareSDK.register( ShareTo.WXFavorite, appId, appSecret, WXShare.class );
-		ShareSDK.register( ShareTo.ToWXSession, "", appSecret, SendShare.class );
-		ShareSDK.register( ShareTo.ToWXTimeline, "", appSecret, SendShare.class );
+		ShareSDK.register( ShareTo.ToWXSession, appId, appSecret, SendShare.class );
+		ShareSDK.register( ShareTo.ToWXTimeline, appId, appSecret, SendShare.class );
 	}
 
 	public static void registerPay() {
