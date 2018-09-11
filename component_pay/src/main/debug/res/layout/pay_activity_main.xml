@@ -12,16 +12,27 @@
         android:id="@+id/btn_qq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="QQ"
-        />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
-        android:id="@+id/pay_button2"
+        android:id="@+id/btn_wechat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:text=""
+        android:text="wechat"
         app:layout_constraintStart_toEndOf="@+id/btn_qq"
-        tools:layout_editor_absoluteY="0dp"/>
+        app:layout_constraintTop_toTopOf="@+id/btn_qq"/>
+
+    <Button
+        android:id="@+id/btn_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="weibo"
+        app:layout_constraintStart_toEndOf="@+id/btn_wechat"
+        app:layout_constraintTop_toTopOf="@+id/btn_wechat"/>
 </android.support.constraint.ConstraintLayout>

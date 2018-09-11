@@ -3,6 +3,8 @@ package com.hubertyoung.baseplatform.tools;
 import android.app.Application;
 import android.text.TextUtils;
 
+import com.hubertyoung.baseplatform.PlatformSDKConfig;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -49,8 +51,7 @@ public class PayXmlPullParser {
 			InputStream inputStream = null;
 
 			try {
-				inputStream = application.getAssets()
-									  .open( "PlatformSDKConfig.xml" );
+				inputStream = application.getAssets().open( PlatformSDKConfig.FILENAME );
 			} catch ( Throwable throwable ) {
 				//                e.b(var11);
 				PayLogUtil.loge( TAG, throwable.toString() );
@@ -80,15 +81,12 @@ public class PayXmlPullParser {
 			// TODO: 2017/9/5 崩溃日志上传
 		}
 
-		if ( TextUtils.equals( "2", PayXmlPullParser.getInstance()
-													   .othersType() ) || TextUtils.equals( "3", PayXmlPullParser.getInstance()
-																													.othersType() ) ) {
+		if ( TextUtils.equals( "2", PayXmlPullParser.getInstance().othersType() ) || TextUtils.equals( "3", PayXmlPullParser.getInstance().othersType() ) ) {
 //			if ( DDPSDKXmlPullParser.getInstance()
 //									.isEnableFacebook() ) {
 //				FacebookSdk.sdkInitialize( activity );
 //			}
-			if ( PayXmlPullParser.getInstance()
-									.isEnableTwitter() ) {
+			if ( PayXmlPullParser.getInstance().isEnableTwitter() ) {
 
 
 			}
@@ -97,13 +95,11 @@ public class PayXmlPullParser {
 	}
 
 	public String getLanguage() {
-		return getMap().get( "Language" )
-					   .get( "Name" );
+		return getMap().get( PlatformSDKConfig.LANGUAGE ).get( PlatformSDKConfig.NAME );
 	}
 
 	public String getAppKey() {
-		return getMap().get( "DDPSDKAppKey" )
-					   .get( "AppKey" );
+		return getMap().get( PlatformSDKConfig.SDKAPPKEY ).get( PlatformSDKConfig.APPKEY );
 	}
 
 	/**
@@ -111,8 +107,7 @@ public class PayXmlPullParser {
 	 */
 	public String othersType() {
 		try {
-			return getMap().get( "OthersType" )
-						   .get( "Type" );
+			return getMap().get( PlatformSDKConfig.OTHERSTYPE ).get( PlatformSDKConfig.TYPE );
 		} catch ( Exception e ) {
 			return "";
 		}
@@ -120,8 +115,7 @@ public class PayXmlPullParser {
 
 	public boolean isEnablePhone() {
 		try {
-			return TextUtils.equals( "true", getMap().get( "Phone" )
-													 .get( "Enable" ) );
+			return TextUtils.equals( "true", getMap().get( PlatformSDKConfig.PHONE ).get( PlatformSDKConfig.ENABLE ) );
 		} catch ( Exception e ) {
 			return false;
 		}
@@ -129,8 +123,7 @@ public class PayXmlPullParser {
 
 	public boolean isEnableEmail() {
 		try {
-			return TextUtils.equals( "true", getMap().get( "Email" )
-													 .get( "Enable" ) );
+			return TextUtils.equals( "true", getMap().get( PlatformSDKConfig.EMAIL ).get( PlatformSDKConfig.ENABLE ) );
 		} catch ( Exception e ) {
 			return false;
 		}
@@ -138,8 +131,7 @@ public class PayXmlPullParser {
 
 	public boolean isEnableQQ() {
 		try {
-			return TextUtils.equals( "true", getMap().get( "QQ" )
-													 .get( "Enable" ) );
+			return TextUtils.equals( "true", getMap().get( PlatformSDKConfig.QQ ).get( PlatformSDKConfig.ENABLE ) );
 		} catch ( Exception e ) {
 			return false;
 		}
@@ -147,8 +139,7 @@ public class PayXmlPullParser {
 
 	public String getQQID() {
 		try {
-			return getMap().get( "QQ" )
-						   .get( "AppId" );
+			return getMap().get( PlatformSDKConfig.QQ ).get( PlatformSDKConfig.APPID);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getQQID", "QQ AppId is null" );
 			return "";
@@ -157,8 +148,7 @@ public class PayXmlPullParser {
 
 	public boolean isEnableWechat() {
 		try {
-			return TextUtils.equals( "true", getMap().get( "Wechat" )
-													 .get( "Enable" ) );
+			return TextUtils.equals( "true", getMap().get( PlatformSDKConfig.WECHAT).get(PlatformSDKConfig.ENABLE ) );
 		} catch ( Exception e ) {
 			return false;
 		}
@@ -166,8 +156,7 @@ public class PayXmlPullParser {
 
 	public String getWechatID() {
 		try {
-			return getMap().get( "Wechat" )
-						   .get( "AppId" );
+			return getMap().get( PlatformSDKConfig.WECHAT).get( PlatformSDKConfig.APPID );
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getWechatID", "Wechat AppId is null" );
 			return "";
@@ -176,8 +165,7 @@ public class PayXmlPullParser {
 
 	public String getWechatSecret() {
 		try {
-			return getMap().get( "Wechat" )
-						   .get( "AppSecret" );
+			return getMap().get( PlatformSDKConfig.WECHAT ).get( PlatformSDKConfig.APPSECRET);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getWechatSecret", "Wechat AppSecret is null" );
 			return "";
@@ -186,8 +174,7 @@ public class PayXmlPullParser {
 
 	public boolean isEnableSinaWeibo() {
 		try {
-			return TextUtils.equals( "true", getMap().get( "SinaWeibo" )
-													 .get( "Enable" ) );
+			return TextUtils.equals( "true", getMap().get( PlatformSDKConfig.SINAWEIBO).get( PlatformSDKConfig.ENABLE ) );
 		} catch ( Exception e ) {
 			return false;
 		}
@@ -195,8 +182,7 @@ public class PayXmlPullParser {
 
 	public String getSinaWeiboKey() {
 		try {
-			return getMap().get( "SinaWeibo" )
-						   .get( "AppKey" );
+			return getMap().get( PlatformSDKConfig.SINAWEIBO).get( PlatformSDKConfig.APPKEY);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getSinaWeiboKey", "SinaWeibo AppId is null" );
 			return "";
@@ -205,8 +191,7 @@ public class PayXmlPullParser {
 
 	public String getSinaWeiboRedirectUrl() {
 		try {
-			return getMap().get( "SinaWeibo" )
-						   .get( "RedirectUrl" );
+			return getMap().get( PlatformSDKConfig.SINAWEIBO).get( PlatformSDKConfig.REDIRECTURL);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getSinaWeiboKey", "RedirectUrl AppId is null" );
 			return "";
@@ -215,8 +200,7 @@ public class PayXmlPullParser {
 
 	public boolean isEnableFacebook() {
 		try {
-			return TextUtils.equals( "true", getMap().get( "Facebook" )
-													 .get( "Enable" ) );
+			return TextUtils.equals( "true", getMap().get( PlatformSDKConfig.FACEBOOK).get( PlatformSDKConfig.ENABLE) );
 		} catch ( Exception e ) {
 			return false;
 		}
@@ -224,8 +208,7 @@ public class PayXmlPullParser {
 
 	public String getFacebookKey() {
 		try {
-			return getMap().get( "Facebook" )
-						   .get( "ConsumerKey" );
+			return getMap().get( PlatformSDKConfig.FACEBOOK ).get( PlatformSDKConfig.CONSUMERKEY);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getFacebookKey", "Facebook ConsumerKey is null" );
 			return "";
@@ -234,8 +217,7 @@ public class PayXmlPullParser {
 
 	public String getFacebookSecret() {
 		try {
-			return getMap().get( "Facebook" )
-						   .get( "ConsumerSecret" );
+			return getMap().get( PlatformSDKConfig.FACEBOOK).get( PlatformSDKConfig.CONSUMERSECRET);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getFacebookSecret", "Facebook ConsumerSecret is null" );
 			return "";
@@ -244,8 +226,7 @@ public class PayXmlPullParser {
 
 	public boolean isEnableTwitter() {
 		try {
-			return TextUtils.equals( "true", getMap().get( "Twitter" )
-													 .get( "Enable" ) );
+			return TextUtils.equals( "true", getMap().get( PlatformSDKConfig.TWITTER).get( PlatformSDKConfig.ENABLE) );
 		} catch ( Exception e ) {
 			return false;
 		}
@@ -253,8 +234,7 @@ public class PayXmlPullParser {
 
 	public String getTwitterKey() {
 		try {
-			return getMap().get( "Twitter" )
-						   .get( "ConsumerKey" );
+			return getMap().get( PlatformSDKConfig.TWITTER ).get( PlatformSDKConfig.CONSUMERKEY);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getTwitterKey", "Twitter ConsumerKey is null" );
 			return "";
@@ -263,8 +243,7 @@ public class PayXmlPullParser {
 
 	public String getTwitterSecret() {
 		try {
-			return getMap().get( "Twitter" )
-						   .get( "ConsumerSecret" );
+			return getMap().get( PlatformSDKConfig.TWITTER ).get( PlatformSDKConfig.CONSUMERSECRET);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getTwitterSecret", "Twitter ConsumerSecret is null" );
 			return "";
@@ -273,8 +252,7 @@ public class PayXmlPullParser {
 
 	public boolean isEnableGoogle() {
 		try {
-			return TextUtils.equals( "true", getMap().get( "GooglePlus" )
-													 .get( "Enable" ) );
+			return TextUtils.equals( "true", getMap().get( PlatformSDKConfig.GOOGLEPLUS).get( PlatformSDKConfig.ENABLE) );
 		} catch ( Exception e ) {
 			return false;
 		}
@@ -282,8 +260,7 @@ public class PayXmlPullParser {
 
 	public String getGooglePlusClientID() {
 		try {
-			return getMap().get( "GooglePlus" )
-						   .get( "ClientID" );
+			return getMap().get( PlatformSDKConfig.GOOGLEPLUS ).get( PlatformSDKConfig.CLIENTID);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getGooglePlusClientID", "GooglePlus ClientID is null" );
 			return "";
@@ -292,8 +269,7 @@ public class PayXmlPullParser {
 
 	public String getGooglePlusPublicKey() {
 		try {
-			return getMap().get( "GooglePlus" )
-						   .get( "base64EncodedPublicKey" );
+			return getMap().get( PlatformSDKConfig.GOOGLEPLUS).get( PlatformSDKConfig.BASE64ENCODEDPUBLICKEY);
 		} catch ( Exception e ) {
 			PayLogUtil.loge( "getGooglePlusPublicKey", "GooglePlus base64EncodedPublicKey is null" );
 			return "";

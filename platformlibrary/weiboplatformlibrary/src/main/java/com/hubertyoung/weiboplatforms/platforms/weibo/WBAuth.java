@@ -10,9 +10,10 @@ import com.hubertyoung.baseplatform.authorize.IAuthorize;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
-import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
 import com.hubertyoung.baseplatform.tools.Hashon;
 import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
+import com.hubertyoung.baseplatformlibrary.R;
 import com.sina.weibo.sdk.WbSdk;
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
@@ -64,7 +65,7 @@ public class WBAuth implements IAuthorize {
 			@Override
 			public void cancel() {
 				PayLogUtil.loge( TAG, "用户取消了登录" );
-				callback.onError( mActivity, ResultCode.RESULT_CANCELLED, "ddpsdk_cancel_auth" );
+				callback.onError( mActivity, ResultCode.RESULT_CANCELLED, mActivity.getString( R.string.sdk_platform_cancel_auth ) );
 			}
 
 			@Override

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sdk_platform_qq_error">QQ登录失败</string>
+    <string name="sdk_platform_qq_share_error">不支持分享类型</string>
+</resources>

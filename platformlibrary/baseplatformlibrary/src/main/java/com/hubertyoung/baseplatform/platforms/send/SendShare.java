@@ -20,6 +20,7 @@ import com.hubertyoung.baseplatform.share.image.resource.FileResource;
 import com.hubertyoung.baseplatform.share.image.resource.ImageResource;
 import com.hubertyoung.baseplatform.share.media.IMediaObject;
 import com.hubertyoung.baseplatform.share.media.MoImage;
+import com.hubertyoung.baseplatformlibrary.R;
 
 import java.util.List;
 
@@ -43,12 +44,12 @@ public class SendShare implements IShareable {
 		if ( mPlatform.getName()
 					  .equals( ShareTo.ToQQ ) ) {
 			if ( !isApplicationInstalled( mActivity, PACKAGE_QQ ) ) {
-				callback.onError( mActivity, ResultCode.RESULT_FAILED, "ddpsdk_error_operate" + ShareTo.QQ );
+				callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_qq_uninstall ));
 				return;
 			}
 		} else {
 			if ( !isApplicationInstalled( mActivity, PACKAGE_WX ) ) {
-				callback.onError( mActivity, ResultCode.RESULT_FAILED, "ddpsdk_error_operate" + ShareTo.QQ );
+				callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_wechat_uninstall ));
 				return;
 			}
 		}

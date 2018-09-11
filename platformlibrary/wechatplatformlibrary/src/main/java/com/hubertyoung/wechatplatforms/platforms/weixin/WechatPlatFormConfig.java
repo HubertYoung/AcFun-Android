@@ -22,7 +22,7 @@ import com.hubertyoung.baseplatform.share.ShareTo;
  */
 public class WechatPlatFormConfig {
 	public static void registerShare( @NonNull String appId, @NonNull String appSecret ) {
-		AuthorizeSDK.register( AuthorizeVia.Weixin, appId, appSecret, WXAuth.class );
+		AuthorizeSDK.register( AuthorizeVia.Wechat, appId, appSecret, WXAuth.class );
 
 		ShareSDK.register( ShareTo.WXSession, appId, appSecret, WXShare.class );
 		ShareSDK.register( ShareTo.WXTimeline, appId, appSecret, WXShare.class );

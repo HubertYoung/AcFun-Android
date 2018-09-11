@@ -16,6 +16,7 @@ import com.hubertyoung.baseplatform.share.media.MoImage;
 import com.hubertyoung.baseplatform.share.media.MoMusic;
 import com.hubertyoung.baseplatform.share.media.MoVideo;
 import com.hubertyoung.baseplatform.share.media.MoWeb;
+import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.opensdk.modelmsg.WXImageObject;
@@ -36,7 +37,7 @@ public class WXShare extends WXBase implements IShareable {
     public void share( @NonNull final ShareData data, @NonNull final OnCallback<String> callback) {
 
         if (!mApi.isWXAppInstalled()) {
-            callback.onError( mActivity, ResultCode.RESULT_FAILED, "ddpsdk_error_operate wechat" );
+            callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_wechat_uninstall ) );
             return;
         }
         mCallback = callback;

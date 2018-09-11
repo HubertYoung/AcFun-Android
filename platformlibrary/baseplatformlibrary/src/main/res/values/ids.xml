@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="sdk_platform_not_supported_auth" type="id"/>
+    <item name="sdk_platform_cancel_auth" type="id"/>
+    <item name="sdk_platform_qq_uninstall" type="id"/>
+    <item name="sdk_platform_wechat_uninstall" type="id"/>
+</resources>

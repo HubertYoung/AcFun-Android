@@ -9,6 +9,7 @@ import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -86,7 +87,7 @@ abstract class WXBase implements IResult, IWXAPIEventHandler {
 					break;
 			}
 		} else if ( resp.errCode == BaseResp.ErrCode.ERR_USER_CANCEL ) {
-			mCallback.onError( mActivity, ResultCode.RESULT_CANCELLED, "ddpsdk_cancel_auth" );
+			mCallback.onError( mActivity, ResultCode.RESULT_CANCELLED, mActivity.getString( R.string.sdk_platform_cancel_auth ) );
 		} else {
 			mCallback.onError( mActivity, ResultCode.RESULT_FAILED, toMessage( resp ) );
 		}

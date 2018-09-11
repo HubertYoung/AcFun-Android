@@ -13,6 +13,7 @@ import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
 import com.hubertyoung.baseplatform.tools.Hashon;
 import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 
@@ -50,7 +51,7 @@ public class WXAuth extends WXBase implements IAuthorize {
 	public void authorize( @NonNull OnCallback< String > callback ) {
 		mCallback = callback;
 		if ( !mApi.isWXAppInstalled() ) {
-			mCallback.onError( mActivity, ResultCode.RESULT_FAILED, "ddpsdk_error_operate wechat" );
+			mCallback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_wechat_uninstall ) );
 			return;
 		}
 

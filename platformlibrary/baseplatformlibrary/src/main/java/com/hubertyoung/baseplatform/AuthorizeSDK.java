@@ -10,6 +10,7 @@ import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OnSuccess;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.sdk.Sdk;
+import com.hubertyoung.baseplatformlibrary.R;
 
 
 public class AuthorizeSDK {
@@ -20,8 +21,8 @@ public class AuthorizeSDK {
 		sdk.setDefaultCallback( callback );
 	}
 
-	public static < T extends IAuthorize > void register( String name, String appId,String appSecret, Class< T > clazz ) {
-		sdk.register( name, appId,appSecret, clazz );
+	public static < T extends IAuthorize > void register( String name, String appId, String appSecret, Class< T > clazz ) {
+		sdk.register( name, appId, appSecret, clazz );
 	}
 
 	public static < T extends IAuthorize > void register( IFactory< T > factory ) {
@@ -34,7 +35,7 @@ public class AuthorizeSDK {
 
 	public static void authorize( Activity activity, String platform, OnCallback< String > callback ) {
 		if ( !sdk.isSupport( platform ) ) {
-			callback.onError( activity, ResultCode.RESULT_FAILED, "ddpsdk_not_supported_auth" );
+			callback.onError( activity, ResultCode.RESULT_FAILED, activity.getString( R.string.sdk_platform_not_supported_auth ) );
 			return;
 		}
 		IAuthorize api = sdk.get( activity, platform );

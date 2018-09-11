@@ -19,6 +19,7 @@ import com.hubertyoung.baseplatform.share.media.MoVideo;
 import com.hubertyoung.baseplatform.share.media.MoWeb;
 import com.hubertyoung.baseplatform.tools.PayLogUtil;
 import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
+import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.connect.common.Constants;
 import com.tencent.connect.share.QQShare;
 import com.tencent.connect.share.QzonePublish;
@@ -87,7 +88,7 @@ public class TXShare implements IShareable {
 				if ( response instanceof JSONObject && ( ( JSONObject ) response ).length() > 0 ) {
 					callback.onSuccess( mActivity, "" );
 				} else {
-					callback.onError( mActivity, ResultCode.RESULT_FAILED, "分享失败: 返回为空" );
+					callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_qq_error ) );
 				}
 				callback.onCompleted( mActivity );
 			}
@@ -100,7 +101,7 @@ public class TXShare implements IShareable {
 
 			@Override
 			public void onCancel() {
-				callback.onError( mActivity, ResultCode.RESULT_CANCELLED, "用户取消了分享" );
+				callback.onError( mActivity, ResultCode.RESULT_CANCELLED, mActivity.getString( R.string.sdk_platform_cancel_auth ) );
 			}
 		};
 		Bundle bundle = new Bundle();
@@ -159,7 +160,7 @@ public class TXShare implements IShareable {
 				break;
 		}
 		if ( unsupported ) {
-			callback.onError( mActivity, ResultCode.RESULT_FAILED, "不支持的分享类型" );
+			callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_qq_share_error ) );
 		}
 	}
 

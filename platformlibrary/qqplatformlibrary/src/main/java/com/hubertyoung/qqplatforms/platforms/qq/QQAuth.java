@@ -12,6 +12,7 @@ import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.tools.Hashon;
 import com.hubertyoung.baseplatform.tools.PayLogUtil;
 import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
+import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.common.Constants;
 import com.tencent.tauth.IUiListener;
@@ -132,14 +133,14 @@ public class QQAuth implements IAuthorize {
 						@Override
 						public void onCancel() {
 							if ( callback != null ) {
-								callback.onError( mActivity, ResultCode.RESULT_CANCELLED, "" );
+								callback.onError( mActivity, ResultCode.RESULT_CANCELLED,  mActivity.getString( R.string.sdk_platform_cancel_auth ) );
 							}
 						}
 					} );
 
 				} else {
 					if ( callback != null ) {
-						callback.onError( mActivity, ResultCode.RESULT_FAILED, "" );
+						callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_qq_error ) );
 					}
 				}
 				if ( callback != null ) {
@@ -159,7 +160,7 @@ public class QQAuth implements IAuthorize {
 			@Override
 			public void onCancel() {
 				if ( callback != null ) {
-					callback.onError( mActivity, ResultCode.RESULT_CANCELLED, "" );
+					callback.onError( mActivity, ResultCode.RESULT_CANCELLED, mActivity.getString( R.string.sdk_platform_cancel_auth ) );
 				}
 			}
 		};
