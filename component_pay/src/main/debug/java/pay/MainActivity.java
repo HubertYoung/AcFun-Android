@@ -29,6 +29,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity{
 	private Button mBtnQQ;
 	private Button mBtnWechat;
+	private Button mBtnWeibo;
 
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity{
 		setContentView( R.layout.pay_activity_main );
 		mBtnQQ = ( Button ) findViewById( R.id.btn_qq );
 		mBtnWechat = ( Button ) findViewById( R.id.btn_wechat );
+		mBtnWeibo = ( Button ) findViewById( R.id.btn_weibo );
 		initAction();
 	}
 
@@ -50,6 +52,12 @@ public class MainActivity extends AppCompatActivity{
 			@Override
 			public void onClick( View v ) {
 				login(AuthorizeVia.Wechat );
+			}
+		} );
+		mBtnWeibo.setOnClickListener( new View.OnClickListener() {
+			@Override
+			public void onClick( View v ) {
+				login(AuthorizeVia.Weibo );
 			}
 		} );
 	}

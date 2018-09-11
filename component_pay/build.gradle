@@ -8,5 +8,5 @@ dependencies {
 //    implementation project(':platformlibrary:alipayplatformlibrary')
     implementation project(':platformlibrary:qqplatformlibrary')
     implementation project(':platformlibrary:wechatplatformlibrary')
-//    implementation project(':platformlibrary:weiboplatformlibrary')
+    implementation project(':platformlibrary:weiboplatformlibrary')
 }
