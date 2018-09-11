@@ -51,11 +51,26 @@ android {
         multiDexEnabled true
         resourcePrefix componentName + "_"
         resValue "string", componentName + "_module_name", project.name
+        signingConfigs {
+            config {
+                keyAlias localProperties['keyAlias']
+                keyPassword localProperties['keyPassword']
+                storeFile file(localProperties['storeFile'])
+                storePassword localProperties['storePassword']
+//            v2SigningEnabled false
+            }
+        }
     }
 
 
     buildTypes {
         release {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

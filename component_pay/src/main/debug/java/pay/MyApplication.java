@@ -2,6 +2,7 @@ package pay;
 
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.qqplatforms.platforms.qq.QQPlatFormConfig;
+import com.hubertyoung.wechatplatforms.platforms.weixin.WechatPlatFormConfig;
 
 /**
  * <br>
@@ -19,5 +20,6 @@ public class MyApplication extends CommonApplication {
 		super.onCreate();
 
 		QQPlatFormConfig.registerShare( "1106891112","QiIFegOZGaRmeC4S" );
+		WechatPlatFormConfig.registerShare( "wxf143a66eb7528d12","e408746be2a052ae1f294aa91595227c" );
 	}
 }

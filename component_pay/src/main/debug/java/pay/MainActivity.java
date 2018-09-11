@@ -27,8 +27,6 @@ import java.util.Map;
  * @desc:pay
  */
 public class MainActivity extends AppCompatActivity{
-
-
 	private Button mBtnQQ;
 	private Button mBtnWechat;
 

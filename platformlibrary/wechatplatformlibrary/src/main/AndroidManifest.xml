@@ -3,7 +3,23 @@
           package="com.hubertyoung.baseplatformlibrary">
 
     <application>
+        <!-- 微信 -->
+        <activity
+            android:name="com.hubertyoung.wechatplatforms.platforms.weixin.WXCallbackActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
+        <activity-alias
+            android:name="${applicationId}.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.hubertyoung.wechatplatforms.platforms.weixin.WXCallbackActivity"/>
+        <activity-alias
+            android:name="${applicationId}.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.hubertyoung.wechatplatforms.platforms.weixin.WXCallbackActivity"/>
     </application>
 
 </manifest>
