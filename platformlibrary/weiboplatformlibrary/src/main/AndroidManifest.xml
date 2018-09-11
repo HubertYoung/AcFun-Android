@@ -3,7 +3,12 @@
           package="com.hubertyoung.baseplatformlibrary">
 
     <application>
-
+        <!-- 微博 -->
+        <activity
+            android:name="com.hubertyoung.weiboplatforms.platforms.weibo.WBShareActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

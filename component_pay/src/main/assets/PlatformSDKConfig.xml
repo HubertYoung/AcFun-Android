@@ -4,15 +4,15 @@
         <!--AppId="1106891112"-->
         <!--AppKey="QiIFegOZGaRmeC4S"-->
         <!--Enable="true"/>-->
-    <Wechat
-        AppId="wx4868b35061f87885"
-        AppSecret="64020361b8ec4c99936c0e3999a9f249"
-        Enable="true"/>
-    <SinaWeibo
-        AppKey="568898243"
-        AppSecret="38a4f8204cc784f81f9f0daaf31e02e3"
-        RedirectUrl="http://sns.whalecloud.com/sina2/callback"
-        Enable="true"/>
+    <!--<Wechat-->
+        <!--AppId="wx4868b35061f87885"-->
+        <!--AppSecret="64020361b8ec4c99936c0e3999a9f249"-->
+        <!--Enable="true"/>-->
+    <!--<SinaWeibo-->
+        <!--AppKey="568898243"-->
+        <!--AppSecret="38a4f8204cc784f81f9f0daaf31e02e3"-->
+        <!--RedirectUrl="http://sns.whalecloud.com/sina2/callback"-->
+        <!--Enable="true"/>-->
         <!--RedirectUrl="https://api.weibo.com/oauth2/default.html"/>-->
     <!--国内 end-->
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.hubertyoung.baseplatform.PlatformSDKConfig;
 import com.hubertyoung.baseplatform.authorize.IAuthorize;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
@@ -26,7 +27,6 @@ import com.sina.weibo.sdk.net.RequestListener;
 import java.util.HashMap;
 
 
-
 public class WBAuth implements IAuthorize {
 	public static final String TAG = WBAuth.class.getSimpleName();
 
@@ -38,12 +38,18 @@ public class WBAuth implements IAuthorize {
 	WBAuth( Activity activity, OtherPlatform platform ) {
 		mActivity = activity;
 		mPlatform = platform;
+		String sinaWeiboKey = PayXmlPullParser.getInstance().getSinaWeiboKey();
+		sinaWeiboKey = TextUtils.isEmpty( sinaWeiboKey ) ? mPlatform.getAppId() : sinaWeiboKey;
+		String sinaWeiboRedirectUrl = PayXmlPullParser.getInstance().getSinaWeiboRedirectUrl();
+		sinaWeiboRedirectUrl = TextUtils.isEmpty( sinaWeiboRedirectUrl ) ? mPlatform.extra( PlatformSDKConfig.REDIRECTURL) : sinaWeiboRedirectUrl;
+
 		try {
 			WbSdk.checkInit();
 		} catch ( Exception e ) {
-			WbSdk.install( activity.getApplicationContext(), new AuthInfo( activity.getApplicationContext(), PayXmlPullParser.getInstance()
-																																.getSinaWeiboKey(), PayXmlPullParser.getInstance()
-																																									   .getSinaWeiboRedirectUrl(), WBShare.SCOPE ) );
+			WbSdk.install( activity.getApplicationContext(), //
+					new AuthInfo( activity.getApplicationContext(),//
+							sinaWeiboKey, //
+							sinaWeiboRedirectUrl, WBShare.SCOPE ) );
 		}
 
 		mApi = new SsoHandler( mActivity );
@@ -70,10 +76,13 @@ public class WBAuth implements IAuthorize {
 
 			@Override
 			public void onFailure( WbConnectErrorMessage wbConnectErrorMessage ) {
-				PayLogUtil.loge( TAG, wbConnectErrorMessage.toString() );
-				callback.onError( mActivity, ResultCode.RESULT_FAILED, wbConnectErrorMessage.toString() );
+				PayLogUtil.loge( TAG, wbConnectErrorMessage.getErrorCode().toString() );
+				callback.onError( mActivity, ResultCode.RESULT_FAILED, toMessage(wbConnectErrorMessage)  );
 			}
 		} );
+	}
+	String toMessage( WbConnectErrorMessage error ) {
+		return "[" + error.getErrorMessage() + "]" + error.getErrorCode();
 	}
 
 	//                    0 = {HashMap$HashMapEntry@7690} "userID" -> "4C83C7E0DB4A21CE3E618E1A99688CD2"
@@ -95,8 +104,7 @@ public class WBAuth implements IAuthorize {
 		//不校验token
 //		if ( SocialSSOProxy.isTokenValid( context ) ) {
 //		PayLogUtil.loge( TAG, "getUserInfo#isTokenValid true" );
-		UsersAPI usersAPI = new UsersAPI( context, PayXmlPullParser.getInstance()
-																	  .getSinaWeiboKey(), oauth2AccessToken );
+		UsersAPI usersAPI = new UsersAPI( context, PayXmlPullParser.getInstance().getSinaWeiboKey(), oauth2AccessToken );
 		usersAPI.show( Long.parseLong( openId ), new RequestListener() {
 			@Override
 			public void onComplete( String s ) {
@@ -126,8 +134,7 @@ public class WBAuth implements IAuthorize {
 
 			@Override
 			public void onWeiboException( WeiboException e ) {
-				callback.onError( mActivity, -1, e.getMessage()
-												   .toString() );
+				callback.onError( mActivity, -1, e.getMessage().toString() );
 			}
 		} );
 //		} else {
