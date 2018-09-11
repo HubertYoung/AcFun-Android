@@ -2,6 +2,7 @@ package com.hubertyoung.baseplatform;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 
 import com.hubertyoung.baseplatform.sdk.DefaultCallback;
 import com.hubertyoung.baseplatform.sdk.IFactory;
@@ -13,9 +14,18 @@ import com.hubertyoung.baseplatform.share.IShareable;
 import com.hubertyoung.baseplatform.share.ShareData;
 import com.hubertyoung.baseplatform.share.image.resource.ImageResource;
 import com.hubertyoung.baseplatform.share.media.IMediaObject;
-import com.hubertyoung.baseplatform.share.media.MoImage;
+import com.hubertyoung.baseplatformlibrary.R;
 
-
+/**
+ * <br>
+ * function:
+ * <p>
+ *
+ * @author:HubertYoung
+ * @date:2018/9/11 15:52
+ * @since:V1.0.0
+ * @desc:com.hubertyoung.baseplatform
+ */
 public class ShareSDK {
 	static Sdk< IShareable > sdk = new Sdk<>();
 
@@ -41,24 +51,36 @@ public class ShareSDK {
 		mData.media = media;
 	}
 
-	// 文本
-	public static ShareSDK make( Activity activity, String text ) {
-		return new ShareSDK( activity, text, null );
-	}
-
-	// 图片
-	public static ShareSDK make( Activity activity, ImageResource image ) {
-		return new ShareSDK( activity, null, new MoImage( image ) );
-	}
-
-	// 图片、音乐、视频、文件
+//	/**
+//	 * 文本
+//	 * QQ不支持,QQ空间支持
+//	 */
+//	@NonNull
+//	public static ShareSDK make( Activity activity, String text ) {
+//		return new ShareSDK( activity, text, null );
+//	}
+//
+//	/**
+//	 * 图片
+//	 */
+//	@NonNull
+//	public static ShareSDK make( Activity activity, ImageResource image ) {
+//		return new ShareSDK( activity, null, new MoImage( image ) );
+//	}
+//
+	/**
+	 * 图片、音乐、视频、文件
+	 * qq分享图片必须为本地图片意图
+	 */
+	@NonNull
 	public static ShareSDK make( Activity activity, IMediaObject media ) {
 		return new ShareSDK( activity, null, media );
 	}
-
-	public static ShareSDK make( Activity activity, String text, IMediaObject media ) {
-		return new ShareSDK( activity, text, media );
-	}
+//
+//	@NonNull
+//	public static ShareSDK make( Activity activity, String text, IMediaObject media ) {
+//		return new ShareSDK( activity, text, media );
+//	}
 
 	public ShareSDK withUrl( String value ) {
 		mData.url = value;
@@ -90,7 +112,7 @@ public class ShareSDK {
 
 	public void share( String platform, OnCallback< String > callback ) {
 		if ( !sdk.isSupport( platform ) ) {
-			callback.onError( mActivity, ResultCode.RESULT_FAILED, "" );
+			callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_not_supported_auth ) );
 			return;
 		}
 		IShareable api = sdk.get( mActivity, platform );

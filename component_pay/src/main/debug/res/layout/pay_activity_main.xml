@@ -12,8 +12,11 @@
         android:id="@+id/btn_qq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="QQ"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
@@ -35,4 +38,43 @@
         android:text="weibo"
         app:layout_constraintStart_toEndOf="@+id/btn_wechat"
         app:layout_constraintTop_toTopOf="@+id/btn_wechat"/>
+
+    <Button
+        android:id="@+id/btn_qq_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="qq_share"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_qq"/>
+
+    <Button
+        android:id="@+id/btn_wechat_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wechat_share"
+        app:layout_constraintStart_toEndOf="@+id/btn_qq_share"
+        app:layout_constraintTop_toTopOf="@+id/btn_qq_share"/>
+
+    <Button
+        android:id="@+id/btn_weibo_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="weibo_share"
+        app:layout_constraintStart_toEndOf="@+id/btn_wechat_share"
+        app:layout_constraintTop_toTopOf="@+id/btn_qq_share"/>
+
+    <Button
+        android:id="@+id/btn_qqzone_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="qqzone_share"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_qq_share"/>
 </android.support.constraint.ConstraintLayout>

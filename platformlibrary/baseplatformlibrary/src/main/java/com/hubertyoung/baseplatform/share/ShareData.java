@@ -5,7 +5,16 @@ import android.text.TextUtils;
 import com.hubertyoung.baseplatform.share.image.resource.ImageResource;
 import com.hubertyoung.baseplatform.share.media.IMediaObject;
 
-
+/**
+ * <br>
+ * function:
+ * <p>
+ *
+ * @author:HubertYoung
+ * @date:2018/9/11 15:56
+ * @since:V1.0.0
+ * @desc:com.hubertyoung.baseplatform.share
+ */
 public class ShareData {
     public static final int THUMB_LIMIT = 24576;
     public static final int THUMB_LIMIT_WX = 32*1024;

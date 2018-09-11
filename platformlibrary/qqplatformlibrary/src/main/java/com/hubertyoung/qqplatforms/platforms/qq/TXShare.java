@@ -23,6 +23,7 @@ import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.connect.common.Constants;
 import com.tencent.connect.share.QQShare;
 import com.tencent.connect.share.QzonePublish;
+import com.tencent.connect.share.QzoneShare;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
@@ -50,12 +51,14 @@ public class TXShare implements IShareable {
 	private static final String KEY_IMAGE_LOCAL_URL = QQShare.SHARE_TO_QQ_IMAGE_LOCAL_URL;
 	private static final String KEY_AUDIO_URL = QQShare.SHARE_TO_QQ_AUDIO_URL;
 	private static final String KEY_AUDIO_VIDEO_PATH = QzonePublish.PUBLISH_TO_QZONE_VIDEO_PATH;
+	private static final String KEY_SHARE_KEY_TYPE = QzoneShare.SHARE_TO_QZONE_KEY_TYPE;
+	private static final String KEY_SHARE_SUMMARY = QzoneShare.SHARE_TO_QQ_SUMMARY;
 
 	private static final int REQ_TYPE_DEFAULT = 1;
 	private static final int REQ_TYPE_AUDIO = 2;
 	private static final int REQ_TYPE_MOOD = 3;
 	private static final int REQ_TYPE_VIDEO = 4;
-	private static final int REQ_TYPE_IMAGE = 5;
+	private static final int REQ_TYPE_IMAGE = QQShare.SHARE_TO_QQ_TYPE_IMAGE;
 
 	Activity mActivity;
 	OtherPlatform mPlatform;
@@ -63,7 +66,7 @@ public class TXShare implements IShareable {
 
 	IUiListener mListener;
 
-	TXShare(@NonNull Activity activity,@NonNull OtherPlatform platform ) {
+	TXShare( @NonNull Activity activity, @NonNull OtherPlatform platform ) {
 		mActivity = activity;
 		mPlatform = platform;
 		String appId = platform.getAppId();
@@ -79,8 +82,8 @@ public class TXShare implements IShareable {
 
 	@Override
 	public void share( @NonNull final ShareData data, @NonNull final OnCallback< String > callback ) {
-
 		final boolean isShareToQQ = mPlatform.getName().equals( ShareTo.QQ );
+		final boolean isShareToQZone = mPlatform.getName().equals( ShareTo.QZone );
 		mListener = new IUiListener() {
 			@Override
 			public void onComplete( Object response ) {
@@ -145,6 +148,10 @@ public class TXShare implements IShareable {
 				break;
 			case IMediaObject.TYPE_TEXT:
 				bundle.putInt( KEY_REQ_TYPE, REQ_TYPE_MOOD );
+				if ( isShareToQZone ) {
+					bundle.putInt( KEY_SHARE_KEY_TYPE, QzonePublish.PUBLISH_TO_QZONE_TYPE_PUBLISHMOOD );
+					bundle.putString( KEY_SHARE_SUMMARY, data.text );
+				}
 				shareTo( bundle, isShareToQQ, true, callback );
 				unsupported = isShareToQQ;
 				break;
@@ -156,7 +163,6 @@ public class TXShare implements IShareable {
 				break;
 			default:
 				unsupported = true;
-				// unsupported
 				break;
 		}
 		if ( unsupported ) {
