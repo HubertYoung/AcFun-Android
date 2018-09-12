@@ -44,8 +44,11 @@ import okhttp3.Headers;
  */
 @AcraCore( includeDropBoxSystemTags = true, reportFormat = StringFormat.KEY_VALUE_LIST )
 //@AcraToast( resText = R.string.common_res_app_crash_str )
-@AcraHttpSender( uri = "http://d1bustest.d1-bus.com/socialbus/api/coupon/getCouponList", httpMethod = HttpSender.Method.POST, connectionTimeout = 15 * 1000, socketTimeout = 15 * 1000,
-		dropReportsOnTimeout = true )
+@AcraHttpSender( uri = "http://d1bustest.d1-bus.com/socialbus/api/coupon/getCouponList", //
+		httpMethod = HttpSender.Method.POST,//
+		connectionTimeout = 15 * 1000,//
+		socketTimeout = 15 * 1000,//
+		dropReportsOnTimeout = false )
 public class CommonApplication extends Application {
 
 	private static CommonApplication mBaseApplication;
