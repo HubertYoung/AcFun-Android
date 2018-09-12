@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="aggregation.MainActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <Button
+        android:id="@+id/btn_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="QQ"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_wechat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="wechat"
+        app:layout_constraintStart_toEndOf="@+id/btn_qq"
+        app:layout_constraintTop_toTopOf="@+id/btn_qq"/>
+
+    <Button
+        android:id="@+id/btn_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="weibo"
+        app:layout_constraintStart_toEndOf="@+id/btn_wechat"
+        app:layout_constraintTop_toTopOf="@+id/btn_wechat"/>
+
+    <Button
+        android:id="@+id/btn_qq_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="qq_share"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_qq"/>
+
+    <Button
+        android:id="@+id/btn_wechat_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wechat_share"
+        app:layout_constraintStart_toEndOf="@+id/btn_qq_share"
+        app:layout_constraintTop_toTopOf="@+id/btn_qq_share"/>
+
+    <Button
+        android:id="@+id/btn_weibo_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="weibo_share"
+        app:layout_constraintStart_toEndOf="@+id/btn_wechat_share"
+        app:layout_constraintTop_toTopOf="@+id/btn_qq_share"/>
+
+    <Button
+        android:id="@+id/btn_qqzone_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="qqzone_share"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_qq_share"/>
+</android.support.constraint.ConstraintLayout>

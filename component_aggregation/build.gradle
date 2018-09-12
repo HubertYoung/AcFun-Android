@@ -1,0 +1,12 @@
+apply from: rootProject.file('basic_component.gradle')
+//gradle配置属性
+Properties props = new Properties()
+props.load(new FileInputStream(file("../gradle.properties")))
+dependencies {
+    implementation project(':common')
+    implementation project(':platformlibrary:baseplatformlibrary')
+    implementation project(':platformlibrary:alipayplatformlibrary')
+    implementation project(':platformlibrary:qqplatformlibrary')
+    implementation project(':platformlibrary:wechatplatformlibrary')
+    implementation project(':platformlibrary:weiboplatformlibrary')
+}
