@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.hubertyoung.aggregation.dialog.ShareBottomDialog;
 import com.hubertyoung.baseplatform.AuthorizeSDK;
 import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.baseplatform.authorize.AuthorizeVia;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 	private Button mBtnWechatShare;
 	private Button mBtnWeiboShare;
 	private Button mBtnQQZoneShare;
+	private Button mBtnShowShareDialog;
 
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 		mBtnQQZoneShare = ( Button ) findViewById( R.id.btn_qqzone_share );
 		mBtnWechatShare = ( Button ) findViewById( R.id.btn_wechat_share );
 		mBtnWeiboShare = ( Button ) findViewById( R.id.btn_weibo_share );
+		mBtnShowShareDialog = ( Button ) findViewById( R.id.btn_show_share_dialog );
 		initAction();
 	}
 
@@ -96,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick( View v ) {
 				share( ShareTo.Weibo );
+			}
+		} );
+		mBtnShowShareDialog.setOnClickListener( new View.OnClickListener() {
+			@Override
+			public void onClick( View v ) {
+				new ShareBottomDialog(MainActivity.this);
 			}
 		} );
 	}
