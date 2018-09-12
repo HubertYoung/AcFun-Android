@@ -31,7 +31,7 @@ public class MyAlertDialogFragment extends DialogFragment {
         String title = getArguments().getString("title");
 
         return new AlertDialog.Builder(getActivity())
-                .setIcon( R.mipmap.ic_launcher)
+                .setIcon( R.mipmap.ic_launcher_round)
                 .setTitle(title)
                 .setPositiveButton("确定",
                         new DialogInterface.OnClickListener() {

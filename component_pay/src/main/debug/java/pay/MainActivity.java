@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 		UrlResource urlResource = new UrlResource( "https://goss3.vcg.com/creative/vcg/400/version23/VCG41598227336.jpg" );
 		String input = new File( Environment.getExternalStorageDirectory(),"DCIM"+ File.separator +"5211c896758e4d3d8200b9738d509687.jpg").getAbsolutePath();
 
-		ShareSDK.make( MainActivity.this,new MoWeb("http://www.baidu.com" ).setImageResource( new UrlResource(input)))//
+		ShareSDK.make( MainActivity.this,new MoWeb("http://www.baidu.com" ) )//
 				.withTitle( "123123" )//
 				.withDescription( "asdfasdf" )//
 				.withThumb( urlResource )//

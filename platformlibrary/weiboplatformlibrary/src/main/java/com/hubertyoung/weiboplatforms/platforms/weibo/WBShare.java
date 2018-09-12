@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.hubertyoung.baseplatform.PlatformSDKConfig;
 import com.hubertyoung.baseplatform.sdk.IResult;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
@@ -14,10 +13,8 @@ import com.hubertyoung.baseplatform.share.IShareable;
 import com.hubertyoung.baseplatform.share.ShareData;
 import com.hubertyoung.baseplatform.share.image.resource.ImageResource;
 import com.hubertyoung.baseplatform.share.media.MoImage;
-import com.hubertyoung.baseplatform.share.media.MoWeb;
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
 import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
-import com.hubertyoung.baseplatformlibrary.R;
+import com.hubertyoung.baseplatform.tools.PayLogUtil;
 import com.sina.weibo.sdk.WbSdk;
 import com.sina.weibo.sdk.api.ImageObject;
 import com.sina.weibo.sdk.api.TextObject;
@@ -33,7 +30,6 @@ import java.util.WeakHashMap;
 public class WBShare implements IShareable, WbShareCallback {
 	public static final String TAG = WBShare.class.getSimpleName();
 	/**
-	 * 微博分享限制thumb image必须小于2097152，否则点击分享会没有反应
 	 * Scope 是 OAuth2.0 授权机制中 authorize 接口的一个参数。通过 Scope，平台将开放更多的微博
 	 * 核心功能给开发者，同时也加强用户隐私保护，提升了用户体验，用户在新 OAuth2.0 授权页中有权利
 	 * 选择赋予应用的功能。
@@ -47,14 +43,11 @@ public class WBShare implements IShareable, WbShareCallback {
 	 * 关于 Scope 概念及注意事项，请查看：http://open.weibo.com/wiki/Scope
 	 */
 	public static final String SCOPE = "email,direct_messages_read,direct_messages_write," + "friendships_groups_read,friendships_groups_write,statuses_to_me_read," + "follow_app_official_microblog," +
-			"" + "" + "" + "invitation_write";
+			"" + "invitation_write";
 	public static int REQUEST_CODE = 1998;
 
 	static Map< IResult, Boolean > services = new WeakHashMap<>();
 
-	private static final int TARGET_SIZE = 1024;
-
-	private static final int TARGET_LENGTH = 2097152;
 
 	Activity mActivity;
 	OtherPlatform mPlatform;
@@ -65,18 +58,11 @@ public class WBShare implements IShareable, WbShareCallback {
 	WBShare( Activity activity, OtherPlatform platform ) {
 		mActivity = activity;
 		mPlatform = platform;
-		String sinaWeiboKey = PayXmlPullParser.getInstance().getSinaWeiboKey();
-		sinaWeiboKey = TextUtils.isEmpty( sinaWeiboKey ) ? mPlatform.getAppId() : sinaWeiboKey;
-		String sinaWeiboRedirectUrl = PayXmlPullParser.getInstance().getSinaWeiboRedirectUrl();
-		sinaWeiboRedirectUrl = TextUtils.isEmpty( sinaWeiboRedirectUrl ) ? mPlatform.extra( PlatformSDKConfig.REDIRECTURL ) : sinaWeiboRedirectUrl;
-
 		try {
 			WbSdk.checkInit();
 		} catch ( Exception e ) {
-			WbSdk.install( activity.getApplicationContext(), //
-					new AuthInfo( activity.getApplicationContext(),//
-							sinaWeiboKey, //
-							sinaWeiboRedirectUrl, WBShare.SCOPE ) );
+			WbSdk.install( activity.getApplicationContext(), new AuthInfo( activity.getApplicationContext(), PayXmlPullParser.getInstance().getSinaWeiboKey(), PayXmlPullParser.getInstance()
+					.getSinaWeiboRedirectUrl(), WBShare.SCOPE ) );
 		}
 
 		mApi = new WbShareHandler( mActivity );
@@ -88,8 +74,6 @@ public class WBShare implements IShareable, WbShareCallback {
 	TextObject toText( String text ) {
 		TextObject object = new TextObject();
 		object.text = text;
-		object.title = text;
-		object.actionUrl = "http://www.sina.com";
 		return object;
 	}
 
@@ -101,30 +85,27 @@ public class WBShare implements IShareable, WbShareCallback {
 		}
 		return object;
 	}
+
 	@Override
 	public void share( @NonNull final ShareData data, @NonNull final OnCallback< String > callback ) {
+
+//        if (!mApi.isWeiboAppInstalled()) {
+//            callback.onError(mActivity, ResultCode.RESULT_FAILED, "您未安装微博!");
+//            return;
+//        }
 		WeiboMultiMessage message = new WeiboMultiMessage();
 
 		if ( data.hasText() ) {
 			message.textObject = toText( data.hasUrl() ? ( data.text + " " + data.url ) : data.text );
-		} else if ( data.hasTitle() ) {
-			message.textObject = toText( data.hasUrl() ? ( data.title + " " + data.url ) : data.title );
-		}
-		if ( WbSdk.isWbInstall( mActivity ) ) {
-			if ( data.media instanceof MoImage ) {
-				message.imageObject = toImage( ( ( MoImage ) data.media ).resource );
-			}
-			if ( data.hasMedia() && data.media instanceof MoWeb ) {
-				ImageResource imageResource = ( ( MoWeb ) data.media ).mImageResource;
-				if(imageResource != null) {
-					message.imageObject = toImage( imageResource );
-				}
-			}
 		}
 
-		if ( message.textObject == null && message.imageObject == null && message.mediaObject == null ) {
+		if ( data.media instanceof MoImage ) {
+			message.imageObject = toImage( ( ( MoImage ) data.media ).resource );
+		}
+
+		if ( message.textObject == null && message.imageObject == null ) {
 			// unsupported
-			callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_not_supported_auth ) );
+			callback.onError( mActivity, ResultCode.RESULT_FAILED, "不支持的分享类型" );
 			return;
 		}
 
@@ -164,12 +145,12 @@ public class WBShare implements IShareable, WbShareCallback {
 	@Override
 	public void onWbShareCancel() {
 		mCallback.onCompleted( mActivity );
-		mCallback.onError( mActivity, ResultCode.RESULT_CANCELLED, mActivity.getString( R.string.sdk_platform_cancel_auth ) );
+		mCallback.onError( mActivity, ResultCode.RESULT_CANCELLED, TAG + "==> onWbShareCancel()" );
 	}
 
 	@Override
 	public void onWbShareFail() {
 		mCallback.onCompleted( mActivity );
-		mCallback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_weibo_share_error ) );
+		mCallback.onError( mActivity, ResultCode.RESULT_FAILED, TAG + "==> onWbShareFail()" );
 	}
 }
