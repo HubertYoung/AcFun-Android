@@ -1,10 +1,13 @@
 package com.hubertyoung.aggregation.dialog;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +15,10 @@ import android.widget.LinearLayout;
 
 import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
+import com.hubertyoung.baseplatform.share.ShareTo;
 import com.hubertyoung.baseplatform.share.image.resource.UrlResource;
 import com.hubertyoung.baseplatform.share.media.MoWeb;
+import com.hubertyoung.common.os.ClipboardUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_aggregation.R;
 import com.hubertyoung.dialog.TDialog;
@@ -87,9 +92,36 @@ public class ShareBottomDialog {
 		adapter.setOnItemClickListener( new ShareBottomAdapter.OnItemClickListener() {
 			@Override
 			public void onItemClick( View v, String platform ) {
-				initSharePlatform(platform);
+				switch ( platform ) {
+					case ShareTo.Copy:
+						ClipboardUtils.copyText( "url" );
+						ToastUtil.showSuccess( "复制成功" );
+						break;
+					case ShareTo.More:
+						Intent shareIntent = createIntent("title","content");
+						Intent chooser = Intent.createChooser(shareIntent, "分享到：");
+						try {
+							mActivity.startActivity(chooser);
+						} catch (ActivityNotFoundException ignored) {
+//							if (shareListener != null) {
+//								shareListener.onError(getShareMedia(), BiliShareStatusCode.ST_CODE_ERROR, new ShareException("activity not found"));
+//							}
+							Log.e( "TAG", "error" );
+						}
+						break;
+					default:
+						initSharePlatform( platform );
+						break;
+				}
 			}
 		} );
+	}
+	private Intent createIntent(String subject, String text) {
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+		intent.putExtra(Intent.EXTRA_TEXT, text);
+		intent.setType("text/plain");
+		return intent;
 	}
 
 	private void initSharePlatform( String platformName ) {

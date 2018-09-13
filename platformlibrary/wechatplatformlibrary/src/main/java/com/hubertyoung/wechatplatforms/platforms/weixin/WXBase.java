@@ -9,6 +9,7 @@ import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
 import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -50,9 +51,11 @@ abstract class WXBase implements IResult, IWXAPIEventHandler {
 	protected WXBase( Activity activity, OtherPlatform platform ) {
 		mActivity = activity;
 		mPlatform = platform;
-		if ( !TextUtils.isEmpty( platform.getAppId() ) ) {
-			mApi = WXAPIFactory.createWXAPI( activity.getApplicationContext(), platform.getAppId(), true );
-			mApi.registerApp( platform.getAppId() );
+		String wechatID = PayXmlPullParser.getInstance().getWechatID();
+		wechatID = TextUtils.isEmpty( wechatID ) ? mPlatform.getAppId() : wechatID;
+		if ( !TextUtils.isEmpty( wechatID ) ) {
+			mApi = WXAPIFactory.createWXAPI( activity.getApplicationContext(), wechatID, true );
+			mApi.registerApp( wechatID );
 		}
 		services.put( this, true );
 	}

@@ -48,7 +48,8 @@ public class QQAuth implements IAuthorize {
 	QQAuth( Activity activity, OtherPlatform platform ) {
 		mActivity = activity;
 		mPlatform = platform;
-		String appId = platform.getAppId();
+		String appId = PayXmlPullParser.getInstance().getQQID();
+		appId = TextUtils.isEmpty( appId ) ? mPlatform.getAppId() : appId;
 		if ( TextUtils.isEmpty( appId ) ){
 			appId = PayXmlPullParser.getInstance().getQQID();
 		}
