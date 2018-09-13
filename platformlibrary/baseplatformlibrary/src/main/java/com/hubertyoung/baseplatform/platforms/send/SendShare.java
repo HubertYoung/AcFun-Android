@@ -87,13 +87,13 @@ public class SendShare implements IShareable {
 				intent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
 				break;
 			default:
-				callback.onError( mActivity, ResultCode.RESULT_FAILED, "不支持的分享类型" );
+				callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_unsupported_sharing_types ) );
 				return;
 		}
 		if ( isIntentAvailable( mActivity, intent ) ) {
 			mActivity.startActivity( intent );
 		} else {
-			callback.onError( mActivity, ResultCode.RESULT_FAILED, "分享失败" );
+			callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_share_error ) );
 			return;
 		}
 	}

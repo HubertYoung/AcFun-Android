@@ -111,7 +111,7 @@ public class WBAuth implements IAuthorize {
 				PayLogUtil.logi( TAG, "SocialSSOProxy.loginWeibo#getUserInfo onComplete, \n\r" + s );
 				User user = User.parse( s );
 				if ( user == null ) {
-					callback.onError( mActivity, ResultCode.RESULT_FAILED, "Sina user parse error." );
+					callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_share_error ) );
 					return;
 				}
 				HashMap< String, String > map = new HashMap<>();
@@ -134,7 +134,7 @@ public class WBAuth implements IAuthorize {
 
 			@Override
 			public void onWeiboException( WeiboException e ) {
-				callback.onError( mActivity, -1, e.getMessage().toString() );
+				callback.onError( mActivity, ResultCode.RESULT_FAILED, e.getMessage().toString() );
 			}
 		} );
 //		} else {

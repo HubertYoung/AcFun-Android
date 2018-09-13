@@ -16,6 +16,8 @@ public class ShareTo {
   public static final String ToWXSession = "towxsession";
   public static final String ToWXTimeline = "towxtimeline";
   public static final String ToQQ = "toqq";
+  public static final String Copy = "copy";
+  public static final String More = "more";
 
   public static final String Facebook = "facebook";
   public static final String Twitter = "twitter";

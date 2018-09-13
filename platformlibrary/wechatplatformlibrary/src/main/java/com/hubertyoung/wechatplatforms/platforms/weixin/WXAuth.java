@@ -62,7 +62,7 @@ public class WXAuth extends WXBase implements IAuthorize {
 		PayLogUtil.loge( TAG, "send start" );
 		mCallback.onStart( mActivity );
 		if ( !this.mApi.sendReq( req ) ) {
-			callback.onError( mActivity, -1, "sendReq fail" );
+			callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_share_error ) );
 			PayLogUtil.loge( "wxapi sendReq fail" );
 		}
 		PayLogUtil.loge( "send end " + req.scope );
@@ -106,9 +106,8 @@ public class WXAuth extends WXBase implements IAuthorize {
 
 	public void getToken( final String code ) {
 
-		final String tokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + PayXmlPullParser.getInstance()
-																												.getWechatID() + "&secret=" + PayXmlPullParser.getInstance()
-																																								 .getWechatSecret() + "&code=%s&grant_type=authorization_code";
+		final String tokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + PayXmlPullParser.getInstance().getWechatID() + "&secret=" + PayXmlPullParser.getInstance()
+				.getWechatSecret() + "&code=%s&grant_type=authorization_code";
 
 		new Thread( new Runnable() {
 			@Override
@@ -139,8 +138,7 @@ public class WXAuth extends WXBase implements IAuthorize {
 					getUserInfo( result );
 				} catch ( Exception e ) {
 					if ( mCallback != null ) {
-						mCallback.onError( mActivity, -1, e.getMessage()
-															.toString() );
+						mCallback.onError( mActivity, ResultCode.RESULT_FAILED, e.getMessage().toString() );
 					}
 				}
 			}
@@ -190,8 +188,7 @@ public class WXAuth extends WXBase implements IAuthorize {
 					} );
 				} catch ( Exception e ) {
 					if ( mCallback != null ) {
-						mCallback.onError( mActivity, -1, e.getMessage()
-															.toString() );
+						mCallback.onError( mActivity, ResultCode.RESULT_FAILED, e.getMessage().toString() );
 					}
 				}
 			}

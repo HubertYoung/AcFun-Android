@@ -4,4 +4,5 @@
     <item name="sdk_platform_cancel_auth" type="id"/>
     <item name="sdk_platform_qq_uninstall" type="id"/>
     <item name="sdk_platform_wechat_uninstall" type="id"/>
+    <item name="sdk_platform_unsupported_sharing_types" type="id"/>
 </resources>

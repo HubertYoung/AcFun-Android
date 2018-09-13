@@ -113,17 +113,17 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick( View v ) {
 				List< BottomShareEntity > list = new ArrayList<>();
-				list.add( new BottomShareEntity( "动态", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_dynamic ) ) );
-				list.add( new BottomShareEntity( "消息", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_im ) ) );
+				list.add( new BottomShareEntity("", "动态", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_dynamic ) ) );
+				list.add( new BottomShareEntity( "","消息", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_im ) ) );
 
 				List< BottomShareEntity > list2 = new ArrayList<>();
-				list2.add( new BottomShareEntity( "QQ", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_qq_chat ) ) );
-				list2.add( new BottomShareEntity( "QQ空间", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_qq_zone ) ) );
-				list2.add( new BottomShareEntity( "微信", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_wx_chat ) ) );
-				list2.add( new BottomShareEntity( "朋友圈", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_wx_moment ) ) );
-				list2.add( new BottomShareEntity( "微博", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_sina ) ) );
-				list2.add( new BottomShareEntity( "复制链接", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_copy ) ) );
-				list2.add( new BottomShareEntity( "更多", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_generic ) ) );
+				list2.add( new BottomShareEntity( ShareTo.QQ,"QQ", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_qq_chat ) ) );
+				list2.add( new BottomShareEntity( ShareTo.QZone,"QQ空间", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_qq_zone ) ) );
+				list2.add( new BottomShareEntity( ShareTo.WXTimeline,"微信", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_wx_chat ) ) );
+				list2.add( new BottomShareEntity( ShareTo.WXTimeline,"朋友圈", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_wx_moment ) ) );
+				list2.add( new BottomShareEntity( ShareTo.Weibo,"微博", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_sina ) ) );
+				list2.add( new BottomShareEntity( ShareTo.Copy,"复制链接", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_copy ) ) );
+				list2.add( new BottomShareEntity( ShareTo.More,"更多", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_generic ) ) );
 				mBottomDialog.create( list, list2 );
 				mBottomDialog.show();
 			}

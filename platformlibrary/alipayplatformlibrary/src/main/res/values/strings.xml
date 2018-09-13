@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sdk_platform_pay_error">支付宝支付失败</string>
+</resources>

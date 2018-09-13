@@ -6,7 +6,6 @@
               android:id="@+id/share_root_layout"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="@color/theme_color_view_background"
               android:orientation="vertical"
               android:paddingTop="16dp">
 

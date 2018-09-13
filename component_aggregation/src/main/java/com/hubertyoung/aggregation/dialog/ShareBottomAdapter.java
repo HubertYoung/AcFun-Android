@@ -45,11 +45,27 @@ class ShareBottomAdapter extends RecyclerView.Adapter {
 		BottomShareEntity bean = data.get( position );
 		viewHolder.mShareIcon.setImageDrawable( bean.icon );
 		viewHolder.mShareTitle.setText( bean.title );
+		if(mOnItemClickListener != null) {
+			viewHolder.itemView.setOnClickListener( new View.OnClickListener() {
+				@Override
+				public void onClick( View v ) {
+					mOnItemClickListener.onItemClick( v,bean.platform );
+				}
+			} );
+		}
 	}
 
 	@Override
 	public int getItemCount() {
 		return data == null ? 0 : data.size();
+	}
+	public interface OnItemClickListener {
+		void onItemClick( View v, String platform );
+	}
+	private OnItemClickListener mOnItemClickListener;
+
+	public void setOnItemClickListener( OnItemClickListener onItemClickListener ) {
+		mOnItemClickListener = onItemClickListener;
 	}
 
 	static class ShareBottomViewHolder extends RecyclerView.ViewHolder {

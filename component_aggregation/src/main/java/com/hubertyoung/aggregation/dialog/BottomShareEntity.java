@@ -14,15 +14,17 @@ import android.graphics.drawable.Drawable;
  */
 public class BottomShareEntity {
 	public String title;
+	public String platform;
 	public Drawable icon;
 
-	public BottomShareEntity( String title, Drawable icon ) {
+	public BottomShareEntity(String platform, String title, Drawable icon ) {
+		this.platform = platform;
 		this.title = title;
 		this.icon = icon;
 	}
 
 	@Override
 	public String toString() {
-		return "BottomShareEntity{" + "title='" + title + '\'' + ", icon='" + icon + '\'' + '}';
+		return "BottomShareEntity{" + "title='" + title + '\'' + ", platform='" + platform + '\'' + ", icon=" + icon + '}';
 	}
 }

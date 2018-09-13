@@ -71,6 +71,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView( LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         View view = null;
         if (getLayoutRes() > 0) {
             view = inflater.inflate(getLayoutRes(), container, false);
@@ -87,7 +88,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
         //去除Dialog默认头部
         Dialog dialog = getDialog();
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCanceledOnTouchOutside(isCancelableOutside());
         if (dialog.getWindow() != null && getDialogAnimationRes() > 0) {
             dialog.getWindow().setWindowAnimations(getDialogAnimationRes());

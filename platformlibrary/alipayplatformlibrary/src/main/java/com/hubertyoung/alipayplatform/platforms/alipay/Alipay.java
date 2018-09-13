@@ -11,6 +11,7 @@ import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatformlibrary.R;
 
 
 public class Alipay implements IPayable {
@@ -45,7 +46,7 @@ public class Alipay implements IPayable {
 			@Override
 			protected void onPostExecute( Result result ) {
 				if ( result == null ) {
-					callback.onError( mActivity, ResultCode.RESULT_FAILED, "" );
+					callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_pay_error ) );
 					callback.onCompleted( mActivity );
 					return;
 				}
