@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="daynight_color_background_window">#f4f4f4</color>
+    <color name="daynight_color_text_body_secondary_dark">#505050</color>
+    <color name="daynight_color_text_title">#505050</color>
+    <color name="divider_line_for_white">#e7e7e7</color>
+    <color name="theme_color_view_background">#fafafa</color>
+    <color name="dialog_item">#8e8e8e</color>
+
+</resources>

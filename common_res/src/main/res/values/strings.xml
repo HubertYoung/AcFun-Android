@@ -338,7 +338,7 @@
     <string name="caching_all_resume">全部开始</string>
     <string name="caching_count">共 %d 个缓存任务</string>
     <string name="caching_group_info">缓存中：%s</string>
-    <string name="cancel">Cancel</string>
+    <string name="cancel">取消</string>
     <string name="cancel_choose_all_text">取消全选</string>
     <string name="cancel_user_focus_text">是否取消对%s的关注</string>
     <string name="cancle_follow">缘分已尽，祝安好ಥ_ಥ</string>
