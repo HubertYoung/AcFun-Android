@@ -17,7 +17,8 @@ import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.share.SocializeMedia;
 import com.hubertyoung.baseplatform.share.shareparam.BaseShareParam;
-import com.hubertyoung.baseplatform.share.shareparam.ShareParamText;
+import com.hubertyoung.baseplatform.share.shareparam.ShareImage;
+import com.hubertyoung.baseplatform.share.shareparam.ShareParamWebPage;
 import com.hubertyoung.common.os.ClipboardUtils;
 import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
@@ -128,13 +129,14 @@ public class ShareBottomDialog {
 		return intent;
 	}
 
-	private static final String TITLE = "哔哩哔哩2016拜年祭";
-	private static final String CONTENT = "【哔哩哔哩2016拜年祭】 UP主: 哔哩哔哩弹幕网 #哔哩哔哩动画# ";
-	private static final String TARGET_URL = "http://www.bilibili.com/video/av3521416";
+	private static final String TITLE = "哔哩哔哩";
+	private static final String CONTENT = "b站播放破亿以及百万以上追番的5部国漫 #哔哩哔哩动画# ";
+	private static final String TARGET_URL = "http://www.bilibili.com/video/av21227479";
 	private static final String IMAGE_URL = "http://i2.hdslb.com/320_200/video/85/85ae2b17b223a0cd649a49c38c32dd10.jpg";
 
 	private void initSharePlatform( String platformName ) {
-		ShareParamText param = new ShareParamText( TITLE, CONTENT, TARGET_URL );
+		ShareParamWebPage param = new ShareParamWebPage( TITLE, CONTENT, TARGET_URL );
+		param.setThumb(new ShareImage(IMAGE_URL));
 
 		if ( SocializeMedia.Weibo.equals( platformName ) ) {
 			param.setContent( String.format( Locale.CHINA, "%s #%s# ", CONTENT, AppUtils.getAppName() ) );
