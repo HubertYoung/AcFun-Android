@@ -35,4 +35,27 @@
     <style name="ToolBar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">@dimen/text_size13</item>
     </style>
+
+    <style name="text_style_title">
+        <item name="android:textSize">@dimen/text_size10_5dp</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="slide_menu_item">
+        <item name="android:textSize">@dimen/text_size14_0dp</item>
+        <item name="android:textColor">@color/selector_slide_menu_item_text</item>
+        <item name="android:gravity">clip_horizontal|center_vertical</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/DIMEN_48_0DP</item>
+        <item name="android:drawablePadding">15dp</item>
+    </style>
+    <style name="divider">
+        <item name="android:background">@color/divider_color</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/DIMEN_0_5DP</item>
+    </style>
 </resources>

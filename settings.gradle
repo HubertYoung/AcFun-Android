@@ -1,4 +1,4 @@
-include ':studydemo', ':acfun',
+include ':studydemo', ':acfun', ':component_acfunmine',
         ':bottom-navigation-bar',
         ':component_acfunvideo',
 
