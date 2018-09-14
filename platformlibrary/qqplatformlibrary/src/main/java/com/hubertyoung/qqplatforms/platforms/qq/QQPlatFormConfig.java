@@ -6,7 +6,7 @@ import com.hubertyoung.baseplatform.AuthorizeSDK;
 import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.baseplatform.authorize.AuthorizeVia;
 import com.hubertyoung.baseplatform.platforms.send.SendShare;
-import com.hubertyoung.baseplatform.share.ShareTo;
+import com.hubertyoung.baseplatform.share.SocializeMedia;
 
 /**
  * <br>
@@ -22,8 +22,8 @@ public class QQPlatFormConfig {
 	public static void registerShare( @NonNull String appId, @NonNull String appSecret ) {
 		AuthorizeSDK.register( AuthorizeVia.QQ, appId, appSecret, QQAuth.class );
 
-		ShareSDK.register( ShareTo.QQ, appId, appSecret, TXShare.class );
-		ShareSDK.register( ShareTo.QZone, appId, appSecret, TXShare.class );
-		ShareSDK.register( ShareTo.ToQQ, "", appSecret, SendShare.class );
+		ShareSDK.register( SocializeMedia.QQ, appId, appSecret, QQChatShareHandler.class );
+		ShareSDK.register( SocializeMedia.QZone, appId, appSecret, QQZoneShareHandler.class );
+		ShareSDK.register( SocializeMedia.ToQQ, "", appSecret, SendShare.class );
 	}
 }

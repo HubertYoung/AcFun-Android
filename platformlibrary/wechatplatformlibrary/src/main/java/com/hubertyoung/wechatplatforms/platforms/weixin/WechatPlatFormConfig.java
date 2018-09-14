@@ -8,7 +8,7 @@ import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.baseplatform.authorize.AuthorizeVia;
 import com.hubertyoung.baseplatform.payment.PaymentVia;
 import com.hubertyoung.baseplatform.platforms.send.SendShare;
-import com.hubertyoung.baseplatform.share.ShareTo;
+import com.hubertyoung.baseplatform.share.SocializeMedia;
 
 /**
  * <br>
@@ -24,11 +24,11 @@ public class WechatPlatFormConfig {
 	public static void registerShare( @NonNull String appId, @NonNull String appSecret ) {
 		AuthorizeSDK.register( AuthorizeVia.Wechat, appId, appSecret, WXAuth.class );
 
-		ShareSDK.register( ShareTo.WXSession, appId, appSecret, WXShare.class );
-		ShareSDK.register( ShareTo.WXTimeline, appId, appSecret, WXShare.class );
-		ShareSDK.register( ShareTo.WXFavorite, appId, appSecret, WXShare.class );
-		ShareSDK.register( ShareTo.ToWXSession, appId, appSecret, SendShare.class );
-		ShareSDK.register( ShareTo.ToWXTimeline, appId, appSecret, SendShare.class );
+		ShareSDK.register( SocializeMedia.WXSession, appId, appSecret, WXChatShareHandler.class );
+		ShareSDK.register( SocializeMedia.WXTimeline, appId, appSecret, WXMomentShareHandler.class );
+		ShareSDK.register( SocializeMedia.WXFavorite, appId, appSecret, WXFavoriteShareHandler.class );
+		ShareSDK.register( SocializeMedia.ToWXSession, appId, appSecret, SendShare.class );
+		ShareSDK.register( SocializeMedia.ToWXTimeline, appId, appSecret, SendShare.class );
 	}
 
 	public static void registerPay() {

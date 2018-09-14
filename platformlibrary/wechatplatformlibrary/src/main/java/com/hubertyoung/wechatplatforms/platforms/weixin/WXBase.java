@@ -8,8 +8,8 @@ import com.hubertyoung.baseplatform.sdk.IResult;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
-import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
+import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformXmlPullParser;
 import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -51,7 +51,7 @@ abstract class WXBase implements IResult, IWXAPIEventHandler {
 	protected WXBase( Activity activity, OtherPlatform platform ) {
 		mActivity = activity;
 		mPlatform = platform;
-		String wechatID = PayXmlPullParser.getInstance().getWechatID();
+		String wechatID = PlatformXmlPullParser.getInstance().getWechatID();
 		wechatID = TextUtils.isEmpty( wechatID ) ? mPlatform.getAppId() : wechatID;
 		if ( !TextUtils.isEmpty( wechatID ) ) {
 			mApi = WXAPIFactory.createWXAPI( activity.getApplicationContext(), wechatID, true );
@@ -70,12 +70,12 @@ abstract class WXBase implements IResult, IWXAPIEventHandler {
 
 	@Override
 	public void onReq( BaseReq req ) {
-		PayLogUtil.loge( TAG, "transaction = " + req.transaction + ", type = " + req.getType() + ", openId = " + req.openId );
+		PlatformLogUtil.loge( TAG, "transaction = " + req.transaction + ", type = " + req.getType() + ", openId = " + req.openId );
 	}
 
 	@Override
 	public void onResp( BaseResp resp ) {
-		PayLogUtil.loge( TAG, "transaction = " + resp.transaction + ", type = " + resp.getType() + ", errCode = " + resp.errCode + ", err = " + resp.errStr );
+		PlatformLogUtil.loge( TAG, "transaction = " + resp.transaction + ", type = " + resp.getType() + ", errCode = " + resp.errCode + ", err = " + resp.errStr );
 
 		if ( resp.errCode == BaseResp.ErrCode.ERR_OK ) {
 			switch ( resp.getType() ) {

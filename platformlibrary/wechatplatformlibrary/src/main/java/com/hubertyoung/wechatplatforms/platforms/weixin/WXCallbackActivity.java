@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.hubertyoung.baseplatform.sdk.IResult;
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
 
 
 public class WXCallbackActivity extends Activity {
@@ -21,7 +21,7 @@ public class WXCallbackActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-		PayLogUtil.loge( WXBase.TAG, "==> " + ((getIntent() == null) ? "" : getIntent().getExtras()));
+		PlatformLogUtil.loge( WXBase.TAG, "==> " + ((getIntent() == null) ? "" : getIntent().getExtras()));
 
         for (IResult service: WXBase.services.keySet()) {
             if (service != null) {

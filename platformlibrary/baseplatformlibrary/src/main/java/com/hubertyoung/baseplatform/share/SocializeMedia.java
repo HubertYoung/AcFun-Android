@@ -1,6 +1,6 @@
 package com.hubertyoung.baseplatform.share;
 
-public class ShareTo {
+public class SocializeMedia {
   public static final String Weibo = "weibo";
 
   public static final String QQ = "qq";

@@ -17,7 +17,6 @@ import com.hubertyoung.common.CommonApplication;
 
 import java.io.File;
 import java.security.SecureRandom;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -36,17 +35,33 @@ public class AppUtils {
 	}
 
 	/**
+	 * 获取应用程序名称
+	 */
+	public static synchronized String getAppName() {
+		try {
+			Context context = CommonApplication.getAppContext();
+			PackageManager packageManager = context.getPackageManager();
+			PackageInfo packageInfo = packageManager.getPackageInfo( context.getPackageName(), 0 );
+			int labelRes = packageInfo.applicationInfo.labelRes;
+			return context.getResources().getString( labelRes );
+		} catch ( Exception e ) {
+			CommonLog.loge( e );
+			return "";
+		}
+	}
+
+	/**
 	 * 获取app版本号
 	 *
 	 * @return
 	 */
-	public static String getAppVersionName() {
+	public static synchronized String getAppVersionName() {
 		try {
 			String pkName = CommonApplication.getAppContext().getPackageName();
 			String versionName = CommonApplication.getAppContext().getPackageManager().getPackageInfo( pkName, 0 ).versionName;
 			return versionName;
 		} catch ( Exception e ) {
-			// TODO: 2017/6/25 崩溃日志
+			CommonLog.loge( e );
 		}
 		return "";
 	}
@@ -56,26 +71,18 @@ public class AppUtils {
 	 *
 	 * @return
 	 */
-	public static int getAppVersionCode() {
+	public static synchronized int getAppVersionCode() {
 		try {
 			String pkName = CommonApplication.getAppContext().getPackageName();
 			int versionCode = CommonApplication.getAppContext().getPackageManager().getPackageInfo( pkName, 0 ).versionCode;
 			return versionCode;
 		} catch ( Exception e ) {
-			// TODO: 2017/6/25 崩溃日志
+			CommonLog.loge( e );
 			return 0;
 		}
 	}
 
-	public static String getDeviceID() {
-		String strID = Settings.Secure.getString( CommonApplication.getAppContext().getContentResolver(), Settings.Secure.ANDROID_ID );
-		if ( strID == null || strID.equals( "" ) ) {
-			strID = getRandom( 16 );
-		}
-		return strID;
-	}
-
-	public static String getUUID() {
+	public static synchronized String getUUID() {
 		if ( uuid == null ) {
 			synchronized ( AppUtils.class ) {
 				if ( uuid == null ) {
@@ -118,13 +125,13 @@ public class AppUtils {
 		return uuid;
 	}
 
-	private static String getRandom( int var0 ) {
-		String var1 = "0123456789abcdefghijklmnopqrstuvwxyz";
-		StringBuilder stringBuilder = new StringBuilder( var0 );
+	private static synchronized String getRandom( int count ) {
+		String str = "0123456789abcdefghijklmnopqrstuvwxyz";
+		StringBuilder stringBuilder = new StringBuilder( count );
 		SecureRandom secureRandom = new SecureRandom();
 
-		for (int i = 0; i < var0; ++i) {
-			stringBuilder.append( var1.charAt( secureRandom.nextInt( var1.length() ) ) );
+		for (int i = 0; i < count; ++i) {
+			stringBuilder.append( str.charAt( secureRandom.nextInt( str.length() ) ) );
 		}
 
 		return stringBuilder.toString();
@@ -137,7 +144,7 @@ public class AppUtils {
 	 * @param packageName 包名
 	 * @return {@code true}: 已安装<br>{@code false}: 未安装
 	 */
-	public static boolean isInstallApp( final String packageName ) {
+	public static synchronized boolean isInstallApp( final String packageName ) {
 		return !TextUtils.isEmpty( packageName ) && IntentUtils.getLaunchAppIntent( packageName ) != null;
 	}
 
@@ -148,7 +155,7 @@ public class AppUtils {
 	 * @param authority 7.0及以上安装需要传入清单文件中的{@code <provider>}的authorities属性
 	 *                  <br>参看https://developer.android.com/reference/android/support/v4/content/FileProvider.html
 	 */
-	public static void installApp( final String filePath, final String authority ) {
+	public static synchronized void installApp( final String filePath, final String authority ) {
 		installApp( FileUtils.getFileByPath( filePath ), authority );
 	}
 
@@ -159,7 +166,7 @@ public class AppUtils {
 	 * @param authority 7.0及以上安装需要传入清单文件中的{@code <provider>}的authorities属性
 	 *                  <br>参看https://developer.android.com/reference/android/support/v4/content/FileProvider.html
 	 */
-	public static void installApp( final File file, final String authority ) {
+	public static synchronized void installApp( final File file, final String authority ) {
 		if ( !FileUtils.isFileExists( file ) ) return;
 		CommonApplication.getAppContext().startActivity( IntentUtils.getInstallAppIntent( file, authority ) );
 	}
@@ -173,7 +180,7 @@ public class AppUtils {
 	 *                    <br>参看https://developer.android.com/reference/android/support/v4/content/FileProvider.html
 	 * @param requestCode 请求值
 	 */
-	public static void installApp( final Activity activity, final String filePath, final String authority, final int requestCode ) {
+	public static synchronized void installApp( final Activity activity, final String filePath, final String authority, final int requestCode ) {
 		installApp( activity, FileUtils.getFileByPath( filePath ), authority, requestCode );
 	}
 
@@ -186,7 +193,7 @@ public class AppUtils {
 	 *                    <br>参看https://developer.android.com/reference/android/support/v4/content/FileProvider.html
 	 * @param requestCode 请求值
 	 */
-	public static void installApp( final Activity activity, final File file, final String authority, final int requestCode ) {
+	public static synchronized void installApp( final Activity activity, final File file, final String authority, final int requestCode ) {
 		if ( !FileUtils.isFileExists( file ) ) return;
 		activity.startActivityForResult( IntentUtils.getInstallAppIntent( file, authority ), requestCode );
 	}
@@ -198,7 +205,7 @@ public class AppUtils {
 	 * @param filePath 文件路径
 	 * @return {@code true}: 安装成功<br>{@code false}: 安装失败
 	 */
-	public static boolean installAppSilent( final String filePath ) {
+	public static synchronized boolean installAppSilent( final String filePath ) {
 		File file = FileUtils.getFileByPath( filePath );
 		if ( !FileUtils.isFileExists( file ) ) return false;
 		String command = "LD_LIBRARY_PATH=/vendor/lib:/system/lib pm install " + filePath;
@@ -211,7 +218,7 @@ public class AppUtils {
 	 *
 	 * @return {@code true}: 是<br>{@code false}: 否
 	 */
-	public static boolean isSystemApp() {
+	public static synchronized boolean isSystemApp() {
 		return isSystemApp( CommonApplication.getAppContext().getPackageName() );
 	}
 
@@ -221,7 +228,7 @@ public class AppUtils {
 	 * @param packageName 包名
 	 * @return {@code true}: 是<br>{@code false}: 否
 	 */
-	public static boolean isSystemApp( final String packageName ) {
+	public static synchronized boolean isSystemApp( final String packageName ) {
 		if ( TextUtils.isEmpty( packageName ) ) return false;
 		try {
 			PackageManager pm = CommonApplication.getAppContext().getPackageManager();
@@ -238,7 +245,7 @@ public class AppUtils {
 	 *
 	 * @return 是否是Debug版本
 	 */
-	public static boolean isDebuggable() {
+	public static synchronized boolean isDebuggable() {
 		return CommonApplication.getAppContext().getApplicationInfo() != null && ( CommonApplication.getAppContext().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE ) != 0;
 	}
 
@@ -246,7 +253,7 @@ public class AppUtils {
 	 * 跳转到应用市场
 	 * 去评分
 	 */
-	public static void mark() {
+	public static synchronized void mark() {
 		try {
 			Intent viewIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=" + CommonApplication.getAppContext().getPackageName() ) );
 			CommonApplication.getAppContext().startActivity( viewIntent );
@@ -262,7 +269,7 @@ public class AppUtils {
 	 * @param version2
 	 * @return
 	 */
-	public static int compareVersion( String version1, String version2 ) throws Exception {
+	public static synchronized int compareVersion( String version1, String version2 ) throws Exception {
 		if ( TextUtils.isEmpty( version1 ) || TextUtils.isEmpty( version2 ) ) {
 			throw new Exception( "compareVersion error:illegal params." );
 		}
@@ -278,19 +285,5 @@ public class AppUtils {
 		//如果已经分出大小，则直接返回，如果未分出大小，则再比较位数，有子版本的为大；
 		diff = ( diff != 0 ) ? diff : versionArray1.length - versionArray2.length;
 		return diff;
-	}
-
-	public static boolean isWeixinAvilible( Context context ) {
-		final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
-		List< PackageInfo > pinfo = packageManager.getInstalledPackages( 0 );// 获取所有已安装程序的包信息
-		if ( pinfo != null ) {
-			for (int i = 0; i < pinfo.size(); i++) {
-				String pn = pinfo.get( i ).packageName;
-				if ( pn.equals( "com.tencent.mm" ) ) {
-					return true;
-				}
-			}
-		}
-		return false;
 	}
 }

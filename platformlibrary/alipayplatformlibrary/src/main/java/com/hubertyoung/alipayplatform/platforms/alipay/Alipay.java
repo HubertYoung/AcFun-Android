@@ -10,7 +10,7 @@ import com.hubertyoung.baseplatform.payment.IPayable;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
 import com.hubertyoung.baseplatformlibrary.R;
 
 
@@ -38,7 +38,7 @@ public class Alipay implements IPayable {
 					final PayTask task = new PayTask( mActivity );
 					return new Result( task.payV2( data, true ) );
 				} catch ( Exception e ) {
-					PayLogUtil.loge( "TAG", "e->" + e );
+					PlatformLogUtil.loge( "TAG", "e->" + e );
 					return null;
 				}
 			}
@@ -68,6 +68,6 @@ public class Alipay implements IPayable {
 
 	@Override
 	public void onResult( int requestCode, int resultCode, Intent data ) {
-		PayLogUtil.loge( resultCode + "" );
+		PlatformLogUtil.loge( resultCode + "" );
 	}
 }

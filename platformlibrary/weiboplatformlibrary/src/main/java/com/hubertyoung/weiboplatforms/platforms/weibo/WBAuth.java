@@ -12,8 +12,8 @@ import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.tools.Hashon;
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
-import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
+import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformXmlPullParser;
 import com.hubertyoung.baseplatformlibrary.R;
 import com.sina.weibo.sdk.WbSdk;
 import com.sina.weibo.sdk.auth.AuthInfo;
@@ -38,9 +38,9 @@ public class WBAuth implements IAuthorize {
 	WBAuth( Activity activity, OtherPlatform platform ) {
 		mActivity = activity;
 		mPlatform = platform;
-		String sinaWeiboKey = PayXmlPullParser.getInstance().getSinaWeiboKey();
+		String sinaWeiboKey = PlatformXmlPullParser.getInstance().getSinaWeiboKey();
 		sinaWeiboKey = TextUtils.isEmpty( sinaWeiboKey ) ? mPlatform.getAppId() : sinaWeiboKey;
-		String sinaWeiboRedirectUrl = PayXmlPullParser.getInstance().getSinaWeiboRedirectUrl();
+		String sinaWeiboRedirectUrl = PlatformXmlPullParser.getInstance().getSinaWeiboRedirectUrl();
 		sinaWeiboRedirectUrl = TextUtils.isEmpty( sinaWeiboRedirectUrl ) ? mPlatform.extra( PlatformSDKConfig.REDIRECTURL) : sinaWeiboRedirectUrl;
 
 		try {
@@ -62,7 +62,7 @@ public class WBAuth implements IAuthorize {
 		mApi.authorize( new WbAuthListener() {
 			@Override
 			public void onSuccess( Oauth2AccessToken oauth2AccessToken ) {
-				PayLogUtil.loge( TAG, oauth2AccessToken.toString() );
+				PlatformLogUtil.loge( TAG, oauth2AccessToken.toString() );
 				if ( oauth2AccessToken.isSessionValid() ) {
 					getUserInfo( mActivity, oauth2AccessToken, callback );
 				}
@@ -70,13 +70,13 @@ public class WBAuth implements IAuthorize {
 
 			@Override
 			public void cancel() {
-				PayLogUtil.loge( TAG, "用户取消了登录" );
+				PlatformLogUtil.loge( TAG, "用户取消了登录" );
 				callback.onError( mActivity, ResultCode.RESULT_CANCELLED, mActivity.getString( R.string.sdk_platform_cancel_auth ) );
 			}
 
 			@Override
 			public void onFailure( WbConnectErrorMessage wbConnectErrorMessage ) {
-				PayLogUtil.loge( TAG, wbConnectErrorMessage.getErrorCode().toString() );
+				PlatformLogUtil.loge( TAG, wbConnectErrorMessage.getErrorCode().toString() );
 				callback.onError( mActivity, ResultCode.RESULT_FAILED, toMessage(wbConnectErrorMessage)  );
 			}
 		} );
@@ -100,15 +100,15 @@ public class WBAuth implements IAuthorize {
 //                    12 = {HashMap$HashMapEntry@7702} "pay_token" -> "D3ECC43B74D0C3BE407D413C3E3485B6"
 	public void getUserInfo( Context context, final Oauth2AccessToken oauth2AccessToken, @NonNull final OnCallback< String > callback ) {
 		final String openId = oauth2AccessToken.getUid();
-		PayLogUtil.loge( TAG, "getUserInfo" );
+		PlatformLogUtil.loge( TAG, "getUserInfo" );
 		//不校验token
 //		if ( SocialSSOProxy.isTokenValid( context ) ) {
 //		PayLogUtil.loge( TAG, "getUserInfo#isTokenValid true" );
-		UsersAPI usersAPI = new UsersAPI( context, PayXmlPullParser.getInstance().getSinaWeiboKey(), oauth2AccessToken );
+		UsersAPI usersAPI = new UsersAPI( context, PlatformXmlPullParser.getInstance().getSinaWeiboKey(), oauth2AccessToken );
 		usersAPI.show( Long.parseLong( openId ), new RequestListener() {
 			@Override
 			public void onComplete( String s ) {
-				PayLogUtil.logi( TAG, "SocialSSOProxy.loginWeibo#getUserInfo onComplete, \n\r" + s );
+				PlatformLogUtil.logi( TAG, "SocialSSOProxy.loginWeibo#getUserInfo onComplete, \n\r" + s );
 				User user = User.parse( s );
 				if ( user == null ) {
 					callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_share_error ) );

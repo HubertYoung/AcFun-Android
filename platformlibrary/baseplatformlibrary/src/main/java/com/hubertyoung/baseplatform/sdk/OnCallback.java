@@ -2,6 +2,8 @@ package com.hubertyoung.baseplatform.sdk;
 
 import android.app.Activity;
 
+import com.hubertyoung.baseplatform.share.shareparam.BaseShareParam;
+
 /**
  * <br>
  * function:方法回调
@@ -17,4 +19,6 @@ public interface OnCallback<T> {
     void onCompleted( Activity activity );
     void onSuccess( Activity activity, T result );
     void onError( Activity activity, int code, String message );
+
+    void onProgress(  Activity activity,BaseShareParam params, T msg );
 }

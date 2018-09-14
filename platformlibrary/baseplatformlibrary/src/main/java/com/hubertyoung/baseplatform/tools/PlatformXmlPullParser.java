@@ -16,7 +16,7 @@ import java.util.HashMap;
  * QQ号：1344393464
  * 作用：xml解析
  */
-public class PayXmlPullParser {
+public class PlatformXmlPullParser {
 	private static String TAG = "PlatformSDKConfig";
 
 	public HashMap< String, HashMap< String, String > > map = new HashMap<>();
@@ -29,13 +29,13 @@ public class PayXmlPullParser {
 		return map;
 	}
 
-	private static volatile PayXmlPullParser xmlPullParserLoginPay;
+	private static volatile PlatformXmlPullParser xmlPullParserLoginPay;
 
-	public static PayXmlPullParser getInstance() {
+	public static PlatformXmlPullParser getInstance() {
 		if ( xmlPullParserLoginPay == null ) {
-			synchronized ( PayXmlPullParser.class ) {
+			synchronized ( PlatformXmlPullParser.class ) {
 				if ( xmlPullParserLoginPay == null ) {
-					xmlPullParserLoginPay = new PayXmlPullParser();
+					xmlPullParserLoginPay = new PlatformXmlPullParser();
 				}
 			}
 		}
@@ -54,7 +54,7 @@ public class PayXmlPullParser {
 				inputStream = application.getAssets().open( PlatformSDKConfig.FILENAME );
 			} catch ( Throwable throwable ) {
 				//                e.b(var11);
-				PayLogUtil.loge( TAG, throwable.toString() );
+				PlatformLogUtil.loge( TAG, throwable.toString() );
 				//                inputStream = context.getAssets().open("ShareSDK.conf");
 			}
 
@@ -81,12 +81,12 @@ public class PayXmlPullParser {
 			// TODO: 2017/9/5 崩溃日志上传
 		}
 
-		if ( TextUtils.equals( "2", PayXmlPullParser.getInstance().othersType() ) || TextUtils.equals( "3", PayXmlPullParser.getInstance().othersType() ) ) {
+		if ( TextUtils.equals( "2", PlatformXmlPullParser.getInstance().othersType() ) || TextUtils.equals( "3", PlatformXmlPullParser.getInstance().othersType() ) ) {
 //			if ( DDPSDKXmlPullParser.getInstance()
 //									.isEnableFacebook() ) {
 //				FacebookSdk.sdkInitialize( activity );
 //			}
-			if ( PayXmlPullParser.getInstance().isEnableTwitter() ) {
+			if ( PlatformXmlPullParser.getInstance().isEnableTwitter() ) {
 
 
 			}
@@ -141,7 +141,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.QQ ).get( PlatformSDKConfig.APPID);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getQQID", "QQ AppId is null" );
+			PlatformLogUtil.loge( "getQQID", "QQ AppId is null" );
 			return "";
 		}
 	}
@@ -158,7 +158,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.WECHAT).get( PlatformSDKConfig.APPID );
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getWechatID", "Wechat AppId is null" );
+			PlatformLogUtil.loge( "getWechatID", "Wechat AppId is null" );
 			return "";
 		}
 	}
@@ -167,7 +167,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.WECHAT ).get( PlatformSDKConfig.APPSECRET);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getWechatSecret", "Wechat AppSecret is null" );
+			PlatformLogUtil.loge( "getWechatSecret", "Wechat AppSecret is null" );
 			return "";
 		}
 	}
@@ -184,7 +184,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.SINAWEIBO).get( PlatformSDKConfig.APPKEY);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getSinaWeiboKey", "SinaWeibo AppId is null" );
+			PlatformLogUtil.loge( "getSinaWeiboKey", "SinaWeibo AppId is null" );
 			return "";
 		}
 	}
@@ -193,7 +193,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.SINAWEIBO).get( PlatformSDKConfig.REDIRECTURL);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getSinaWeiboKey", "RedirectUrl AppId is null" );
+			PlatformLogUtil.loge( "getSinaWeiboKey", "RedirectUrl AppId is null" );
 			return "";
 		}
 	}
@@ -210,7 +210,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.FACEBOOK ).get( PlatformSDKConfig.CONSUMERKEY);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getFacebookKey", "Facebook ConsumerKey is null" );
+			PlatformLogUtil.loge( "getFacebookKey", "Facebook ConsumerKey is null" );
 			return "";
 		}
 	}
@@ -219,7 +219,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.FACEBOOK).get( PlatformSDKConfig.CONSUMERSECRET);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getFacebookSecret", "Facebook ConsumerSecret is null" );
+			PlatformLogUtil.loge( "getFacebookSecret", "Facebook ConsumerSecret is null" );
 			return "";
 		}
 	}
@@ -236,7 +236,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.TWITTER ).get( PlatformSDKConfig.CONSUMERKEY);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getTwitterKey", "Twitter ConsumerKey is null" );
+			PlatformLogUtil.loge( "getTwitterKey", "Twitter ConsumerKey is null" );
 			return "";
 		}
 	}
@@ -245,7 +245,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.TWITTER ).get( PlatformSDKConfig.CONSUMERSECRET);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getTwitterSecret", "Twitter ConsumerSecret is null" );
+			PlatformLogUtil.loge( "getTwitterSecret", "Twitter ConsumerSecret is null" );
 			return "";
 		}
 	}
@@ -262,7 +262,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.GOOGLEPLUS ).get( PlatformSDKConfig.CLIENTID);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getGooglePlusClientID", "GooglePlus ClientID is null" );
+			PlatformLogUtil.loge( "getGooglePlusClientID", "GooglePlus ClientID is null" );
 			return "";
 		}
 	}
@@ -271,7 +271,7 @@ public class PayXmlPullParser {
 		try {
 			return getMap().get( PlatformSDKConfig.GOOGLEPLUS).get( PlatformSDKConfig.BASE64ENCODEDPUBLICKEY);
 		} catch ( Exception e ) {
-			PayLogUtil.loge( "getGooglePlusPublicKey", "GooglePlus base64EncodedPublicKey is null" );
+			PlatformLogUtil.loge( "getGooglePlusPublicKey", "GooglePlus base64EncodedPublicKey is null" );
 			return "";
 		}
 	}

@@ -6,14 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.hubertyoung.baseplatform.sdk.IResult;
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
 
 
 public class WBShareActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        PayLogUtil.loge(WBShare.TAG, "==> onCreate");
+        PlatformLogUtil.loge(WBShare.TAG, "==> onCreate");
         onNewIntent(getIntent());
     }
 
@@ -21,7 +21,7 @@ public class WBShareActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        PayLogUtil.loge(WBShare.TAG, "==> " + getIntent());
+        PlatformLogUtil.loge(WBShare.TAG, "==> " + getIntent());
 
         for (IResult service: WBShare.services.keySet()) {
             if (service != null) {

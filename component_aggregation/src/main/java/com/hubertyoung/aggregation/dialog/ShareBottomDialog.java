@@ -3,7 +3,6 @@ package com.hubertyoung.aggregation.dialog;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,12 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.hubertyoung.baseplatform.PlatformShareConfiguration;
 import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
-import com.hubertyoung.baseplatform.share.ShareTo;
-import com.hubertyoung.baseplatform.share.image.resource.UrlResource;
-import com.hubertyoung.baseplatform.share.media.MoWeb;
+import com.hubertyoung.baseplatform.share.SocializeMedia;
+import com.hubertyoung.baseplatform.share.shareparam.BaseShareParam;
+import com.hubertyoung.baseplatform.share.shareparam.ShareParamText;
 import com.hubertyoung.common.os.ClipboardUtils;
+import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_aggregation.R;
 import com.hubertyoung.dialog.TDialog;
@@ -26,8 +27,10 @@ import com.hubertyoung.dialog.base.BindViewHolder;
 import com.hubertyoung.dialog.listener.OnBindViewListener;
 import com.hubertyoung.dialog.listener.OnViewClickListener;
 
-import java.io.File;
 import java.util.List;
+import java.util.Locale;
+
+import aggregation.ShareFrescoImageDownloader;
 
 /**
  * <br>
@@ -93,16 +96,16 @@ public class ShareBottomDialog {
 			@Override
 			public void onItemClick( View v, String platform ) {
 				switch ( platform ) {
-					case ShareTo.Copy:
+					case SocializeMedia.Copy:
 						ClipboardUtils.copyText( "url" );
 						ToastUtil.showSuccess( "复制成功" );
 						break;
-					case ShareTo.More:
-						Intent shareIntent = createIntent("title","content");
-						Intent chooser = Intent.createChooser(shareIntent, "分享到：");
+					case SocializeMedia.More:
+						Intent shareIntent = createIntent( "title", "content" );
+						Intent chooser = Intent.createChooser( shareIntent, "分享到：" );
 						try {
-							mActivity.startActivity(chooser);
-						} catch (ActivityNotFoundException ignored) {
+							mActivity.startActivity( chooser );
+						} catch ( ActivityNotFoundException ignored ) {
 //							if (shareListener != null) {
 //								shareListener.onError(getShareMedia(), BiliShareStatusCode.ST_CODE_ERROR, new ShareException("activity not found"));
 //							}
@@ -116,22 +119,36 @@ public class ShareBottomDialog {
 			}
 		} );
 	}
-	private Intent createIntent(String subject, String text) {
-		Intent intent = new Intent(Intent.ACTION_SEND);
-		intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-		intent.putExtra(Intent.EXTRA_TEXT, text);
-		intent.setType("text/plain");
+
+	private Intent createIntent( String subject, String text ) {
+		Intent intent = new Intent( Intent.ACTION_SEND );
+		intent.putExtra( Intent.EXTRA_SUBJECT, subject );
+		intent.putExtra( Intent.EXTRA_TEXT, text );
+		intent.setType( "text/plain" );
 		return intent;
 	}
 
-	private void initSharePlatform( String platformName ) {
-		UrlResource urlResource = new UrlResource( "https://goss3.vcg.com/creative/vcg/400/version23/VCG41598227336.jpg" );
-		String input = new File( Environment.getExternalStorageDirectory(), "DCIM" + File.separator + "5211c896758e4d3d8200b9738d509687.jpg" ).getAbsolutePath();
+	private static final String TITLE = "哔哩哔哩2016拜年祭";
+	private static final String CONTENT = "【哔哩哔哩2016拜年祭】 UP主: 哔哩哔哩弹幕网 #哔哩哔哩动画# ";
+	private static final String TARGET_URL = "http://www.bilibili.com/video/av3521416";
+	private static final String IMAGE_URL = "http://i2.hdslb.com/320_200/video/85/85ae2b17b223a0cd649a49c38c32dd10.jpg";
 
-		ShareSDK.make( mActivity, new MoWeb( "http://www.baidu.com" ) )//
-				.withTitle( "123123" )//
-				.withDescription( "asdfasdf" )//
-				.withThumb( urlResource )//
+	private void initSharePlatform( String platformName ) {
+		ShareParamText param = new ShareParamText( TITLE, CONTENT, TARGET_URL );
+
+		if ( SocializeMedia.Weibo.equals( platformName ) ) {
+			param.setContent( String.format( Locale.CHINA, "%s #%s# ", CONTENT, AppUtils.getAppName() ) );
+		} else if ( SocializeMedia.Copy.equals( platformName ) || SocializeMedia.More.equals( platformName ) ) {
+			param.setContent( CONTENT + " " + TARGET_URL );
+		}
+		PlatformShareConfiguration configuration = new PlatformShareConfiguration.Builder( mActivity )//
+				.imageDownloader( new ShareFrescoImageDownloader() )//
+				.defaultShareImage( R.mipmap.ic_launcher )//
+				.build();
+		ShareSDK.make( mActivity, param, configuration )//
+//				.withTitle( "123123" )//
+//				.withDescription( "asdfasdf" )//
+//				.withThumb( urlResource )//
 				.share( platformName, new OnCallback< String >() {
 					@Override
 					public void onStart( Activity activity ) {
@@ -151,6 +168,11 @@ public class ShareBottomDialog {
 					@Override
 					public void onError( Activity activity, int code, String message ) {
 						ToastUtil.showSuccess( message );
+					}
+
+					@Override
+					public void onProgress( Activity activity, BaseShareParam params, String msg ) {
+
 					}
 				} );
 	}

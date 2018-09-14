@@ -19,7 +19,7 @@ package com.hubertyoung.weiboplatforms.platforms.weibo;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.net.AsyncWeiboRunner;
 import com.sina.weibo.sdk.net.RequestListener;
@@ -60,7 +60,7 @@ public abstract class AbsOpenAPI {
 	 */
 	protected void requestAsync( String url, WeiboParameters params, String httpMethod, RequestListener listener ) {
 		if ( null == mAccessToken || TextUtils.isEmpty( url ) || null == params || TextUtils.isEmpty( httpMethod ) || null == listener ) {
-			PayLogUtil.loge( TAG, "Argument error!" );
+			PlatformLogUtil.loge( TAG, "Argument error!" );
 			return;
 		}
 
@@ -72,7 +72,7 @@ public abstract class AbsOpenAPI {
 	 */
 	protected String requestSync( String url, WeiboParameters params, String httpMethod ) {
 		if ( null == mAccessToken || TextUtils.isEmpty( url ) || null == params || TextUtils.isEmpty( httpMethod ) ) {
-			PayLogUtil.loge( TAG, "Argument error!" );
+			PlatformLogUtil.loge( TAG, "Argument error!" );
 			return "";
 		}
 

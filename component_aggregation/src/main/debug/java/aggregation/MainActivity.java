@@ -3,7 +3,6 @@ package aggregation;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,19 +11,21 @@ import android.widget.Button;
 import com.hubertyoung.aggregation.dialog.BottomShareEntity;
 import com.hubertyoung.aggregation.dialog.ShareBottomDialog;
 import com.hubertyoung.baseplatform.AuthorizeSDK;
+import com.hubertyoung.baseplatform.PlatformShareConfiguration;
 import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.baseplatform.authorize.AuthorizeVia;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
-import com.hubertyoung.baseplatform.share.ShareTo;
-import com.hubertyoung.baseplatform.share.image.resource.UrlResource;
-import com.hubertyoung.baseplatform.share.media.MoWeb;
+import com.hubertyoung.baseplatform.share.SocializeMedia;
+import com.hubertyoung.baseplatform.share.shareparam.BaseShareParam;
+import com.hubertyoung.baseplatform.share.shareparam.ShareParamText;
 import com.hubertyoung.baseplatform.tools.Hashon;
+import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_aggregation.R;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -88,25 +89,25 @@ public class MainActivity extends AppCompatActivity {
 		mBtnQQShare.setOnClickListener( new View.OnClickListener() {
 			@Override
 			public void onClick( View v ) {
-				share( ShareTo.QQ );
+				share( SocializeMedia.QQ );
 			}
 		} );
 		mBtnQQZoneShare.setOnClickListener( new View.OnClickListener() {
 			@Override
 			public void onClick( View v ) {
-				share( ShareTo.QZone );
+				share( SocializeMedia.QZone );
 			}
 		} );
 		mBtnWechatShare.setOnClickListener( new View.OnClickListener() {
 			@Override
 			public void onClick( View v ) {
-				share( ShareTo.WXSession );
+				share( SocializeMedia.WXSession );
 			}
 		} );
 		mBtnWeiboShare.setOnClickListener( new View.OnClickListener() {
 			@Override
 			public void onClick( View v ) {
-				share( ShareTo.Weibo );
+				share( SocializeMedia.Weibo );
 			}
 		} );
 		mBtnShowShareDialog.setOnClickListener( new View.OnClickListener() {
@@ -117,27 +118,38 @@ public class MainActivity extends AppCompatActivity {
 				list.add( new BottomShareEntity( "","消息", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_im ) ) );
 
 				List< BottomShareEntity > list2 = new ArrayList<>();
-				list2.add( new BottomShareEntity( ShareTo.QQ,"QQ", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_qq_chat ) ) );
-				list2.add( new BottomShareEntity( ShareTo.QZone,"QQ空间", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_qq_zone ) ) );
-				list2.add( new BottomShareEntity( ShareTo.WXTimeline,"微信", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_wx_chat ) ) );
-				list2.add( new BottomShareEntity( ShareTo.WXTimeline,"朋友圈", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_wx_moment ) ) );
-				list2.add( new BottomShareEntity( ShareTo.Weibo,"微博", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_sina ) ) );
-				list2.add( new BottomShareEntity( ShareTo.Copy,"复制链接", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_copy ) ) );
-				list2.add( new BottomShareEntity( ShareTo.More,"更多", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_generic ) ) );
+				list2.add( new BottomShareEntity( SocializeMedia.QQ,"QQ", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_qq_chat ) ) );
+				list2.add( new BottomShareEntity( SocializeMedia.QZone,"QQ空间", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_qq_zone ) ) );
+				list2.add( new BottomShareEntity( SocializeMedia.WXTimeline,"微信", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_wx_chat ) ) );
+				list2.add( new BottomShareEntity( SocializeMedia.WXTimeline,"朋友圈", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_wx_moment ) ) );
+				list2.add( new BottomShareEntity( SocializeMedia.Weibo,"微博", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_sina ) ) );
+				list2.add( new BottomShareEntity( SocializeMedia.Copy,"复制链接", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_copy ) ) );
+				list2.add( new BottomShareEntity( SocializeMedia.More,"更多", ContextCompat.getDrawable( MainActivity.this, R.drawable.bili_socialize_generic ) ) );
 				mBottomDialog.create( list, list2 );
 				mBottomDialog.show();
 			}
 		} );
 	}
-
+	private static final String TITLE = "哔哩哔哩2016拜年祭";
+	private static final String CONTENT = "【哔哩哔哩2016拜年祭】 UP主: 哔哩哔哩弹幕网 #哔哩哔哩动画# ";
+	private static final String TARGET_URL = "http://www.bilibili.com/video/av3521416";
+	private static final String IMAGE_URL = "http://i2.hdslb.com/320_200/video/85/85ae2b17b223a0cd649a49c38c32dd10.jpg";
 	private void share( String platformName ) {
-		UrlResource urlResource = new UrlResource( "https://goss3.vcg.com/creative/vcg/400/version23/VCG41598227336.jpg" );
-		String input = new File( Environment.getExternalStorageDirectory(), "DCIM" + File.separator + "5211c896758e4d3d8200b9738d509687.jpg" ).getAbsolutePath();
+		ShareParamText param = new ShareParamText( TITLE, CONTENT, TARGET_URL );
 
-		ShareSDK.make( MainActivity.this, new MoWeb( "http://www.baidu.com" ) )//
-				.withTitle( "123123" )//
-				.withDescription( "asdfasdf" )//
-				.withThumb( urlResource )//
+		if ( SocializeMedia.Weibo.equals( platformName ) ) {
+			param.setContent( String.format( Locale.CHINA, "%s #%s# ", CONTENT, AppUtils.getAppName() ) );
+		} else if ( SocializeMedia.Copy.equals( platformName ) || SocializeMedia.More.equals( platformName ) ) {
+			param.setContent( CONTENT + " " + TARGET_URL );
+		}
+		PlatformShareConfiguration configuration = new PlatformShareConfiguration.Builder(this)
+				.imageDownloader(new ShareFrescoImageDownloader())
+				.defaultShareImage(R.mipmap.ic_launcher)
+				.build();
+		ShareSDK.make( MainActivity.this, param,configuration )//
+//				.withTitle( "123123" )//
+//				.withDescription( "asdfasdf" )//
+//				.withThumb( urlResource )//
 				.share( platformName, new OnCallback< String >() {
 					@Override
 					public void onStart( Activity activity ) {
@@ -157,6 +169,11 @@ public class MainActivity extends AppCompatActivity {
 					@Override
 					public void onError( Activity activity, int code, String message ) {
 						ToastUtil.showSuccess( message );
+					}
+
+					@Override
+					public void onProgress( Activity activity, BaseShareParam params, String msg ) {
+
 					}
 				} );
 	}
@@ -182,6 +199,11 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onError( Activity activity, int code, String message ) {
 				ToastUtil.showError( message );
+			}
+
+			@Override
+			public void onProgress( Activity activity, BaseShareParam params, String msg ) {
+
 			}
 		} );
 	}

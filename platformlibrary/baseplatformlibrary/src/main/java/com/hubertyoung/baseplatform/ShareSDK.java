@@ -10,11 +10,11 @@ import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OnSuccess;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.sdk.Sdk;
-import com.hubertyoung.baseplatform.share.IShareable;
-import com.hubertyoung.baseplatform.share.ShareData;
-import com.hubertyoung.baseplatform.share.image.resource.ImageResource;
-import com.hubertyoung.baseplatform.share.media.IMediaObject;
+import com.hubertyoung.baseplatform.share.IShareHandler;
+import com.hubertyoung.baseplatform.share.shareparam.BaseShareParam;
 import com.hubertyoung.baseplatformlibrary.R;
+
+import java.lang.ref.WeakReference;
 
 /**
  * <br>
@@ -26,80 +26,39 @@ import com.hubertyoung.baseplatformlibrary.R;
  * @since:V1.0.0
  * @desc:com.hubertyoung.baseplatform
  */
-public class ShareSDK {
-	static Sdk< IShareable > sdk = new Sdk<>();
+public final class ShareSDK {
+	static Sdk< IShareHandler > sdk = new Sdk<>();
 
 	public static void setDefaultCallback( OnCallback callback ) {
 		sdk.setDefaultCallback( callback );
 	}
 
-	public static < T extends IShareable > void register( String name, String appId, String appSecret, Class< T > clazz ) {
+	public static < T extends IShareHandler > void register( String name, String appId, String appSecret, Class< T > clazz ) {
 		sdk.register( name, appId, appSecret, clazz );
 	}
 
-	public static < T extends IShareable > void register( IFactory< T > factory ) {
+	public static < T extends IShareHandler > void register( IFactory< T > factory ) {
 		sdk.register( factory );
 	}
 
-	private ShareData mData = new ShareData();
+	private BaseShareParam param;
+	private PlatformShareConfiguration configuration;
 
-	private Activity mActivity;
+	private WeakReference< Activity > mActivityWeakReference;
 
-	private ShareSDK( Activity activity, String text, IMediaObject media ) {
-		mActivity = activity;
-		mData.text = text;
-		mData.media = media;
+	private ShareSDK( Activity activity, BaseShareParam param, PlatformShareConfiguration configuration ) {
+		mActivityWeakReference = new WeakReference( activity );
+		this.param = param;
+		this.configuration = configuration;
 	}
 
-//	/**
-//	 * 文本
-//	 * QQ不支持,QQ空间支持
-//	 */
-//	@NonNull
-//	public static ShareSDK make( Activity activity, String text ) {
-//		return new ShareSDK( activity, text, null );
-//	}
-//
-//	/**
-//	 * 图片
-//	 */
-//	@NonNull
-//	public static ShareSDK make( Activity activity, ImageResource image ) {
-//		return new ShareSDK( activity, null, new MoImage( image ) );
-//	}
-//
-	/**
-	 * 图片、音乐、视频、文件
-	 * qq分享图片必须为本地图片意图
-	 */
 	@NonNull
-	public static ShareSDK make( Activity activity, IMediaObject media ) {
-		return new ShareSDK( activity, null, media );
-	}
-//
-//	@NonNull
-//	public static ShareSDK make( Activity activity, String text, IMediaObject media ) {
-//		return new ShareSDK( activity, text, media );
-//	}
-
-	public ShareSDK withUrl( String value ) {
-		mData.url = value;
-		return this;
-	}
-
-	public ShareSDK withTitle( String value ) {
-		mData.title = value;
-		return this;
-	}
-
-	public ShareSDK withDescription( String value ) {
-		mData.description = value;
-		return this;
-	}
-
-	public ShareSDK withThumb( ImageResource thumb ) {
-		mData.thumb = thumb;
-		return this;
+	public static ShareSDK make( Activity activity, BaseShareParam param, PlatformShareConfiguration configuration ) {
+		if (activity == null) {
+			throw new NullPointerException();
+		}
+		ShareSDK shareSDK = new ShareSDK( activity, param ,configuration);
+		return shareSDK;
 	}
 
 	public void share( String platform ) {
@@ -112,14 +71,22 @@ public class ShareSDK {
 
 	public void share( String platform, OnCallback< String > callback ) {
 		if ( !sdk.isSupport( platform ) ) {
-			callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_not_supported_auth ) );
+			callback.onError( mActivityWeakReference.get(), ResultCode.RESULT_FAILED, mActivityWeakReference.get().getString( R.string.sdk_platform_not_supported_auth ) );
 			return;
 		}
-		IShareable api = sdk.get( mActivity, platform );
+		IShareHandler api = sdk.get( mActivityWeakReference.get(), platform );
 		if ( api == null ) {
 			return;
 		}
-		api.share( mData, callback );
+		if ( param == null ) {
+			callback.onError( mActivityWeakReference.get(), ResultCode.RESULT_FAILED, mActivityWeakReference.get().getString( R.string.sdk_platform_unsupported_sharing_types ) );
+			return;
+		}
+		try {
+			api.share( param, configuration, callback );
+		} catch ( Exception e ) {
+			callback.onError( mActivityWeakReference.get(), ResultCode.RESULT_FAILED, mActivityWeakReference.get().getString( R.string.sdk_platform_unsupported_sharing_types ) );
+		}
 	}
 
 	public static void onHandleResult( Activity activity, int requestCode, int resultCode, Intent data ) {

@@ -10,9 +10,9 @@ import com.hubertyoung.baseplatform.authorize.IAuthorize;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
-import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
+import com.hubertyoung.baseplatform.tools.PlatformXmlPullParser;
 import com.hubertyoung.baseplatform.tools.Hashon;
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
 import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
@@ -59,13 +59,13 @@ public class WXAuth extends WXBase implements IAuthorize {
 		req.scope = "snsapi_userinfo";
 		req.state = "wechat";
 
-		PayLogUtil.loge( TAG, "send start" );
+		PlatformLogUtil.loge( TAG, "send start" );
 		mCallback.onStart( mActivity );
 		if ( !this.mApi.sendReq( req ) ) {
 			callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_share_error ) );
-			PayLogUtil.loge( "wxapi sendReq fail" );
+			PlatformLogUtil.loge( "wxapi sendReq fail" );
 		}
-		PayLogUtil.loge( "send end " + req.scope );
+		PlatformLogUtil.loge( "send end " + req.scope );
 	}
 
 	@Override
@@ -106,7 +106,7 @@ public class WXAuth extends WXBase implements IAuthorize {
 
 	public void getToken( final String code ) {
 
-		final String tokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + PayXmlPullParser.getInstance().getWechatID() + "&secret=" + PayXmlPullParser.getInstance()
+		final String tokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + PlatformXmlPullParser.getInstance().getWechatID() + "&secret=" + PlatformXmlPullParser.getInstance()
 				.getWechatSecret() + "&code=%s&grant_type=authorization_code";
 
 		new Thread( new Runnable() {

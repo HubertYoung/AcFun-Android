@@ -35,7 +35,7 @@ public class Hashon {
 				JSONObject t = new JSONObject( jsonStr );
 				return this.fromJson( t );
 			} catch ( Throwable var3 ) {
-				PayLogUtil.loge( var3.getMessage().toString() );
+				PlatformLogUtil.loge( var3.getMessage().toString() );
 				return new HashMap();
 			}
 		}
@@ -89,7 +89,7 @@ public class Hashon {
 			JSONObject t = this.getJSONObject( map );
 			return t == null ? "" : t.toString();
 		} catch ( Throwable var3 ) {
-			PayLogUtil.loge( var3.getMessage().toString() );
+			PlatformLogUtil.loge( var3.getMessage().toString() );
 			return "";
 		}
 	}
@@ -248,7 +248,7 @@ public class Hashon {
 		try {
 			return this.format( "", this.fromJson( jsonStr ) );
 		} catch ( Throwable var3 ) {
-			PayLogUtil.loge( var3.getMessage().toString() );
+			PlatformLogUtil.loge( var3.getMessage().toString() );
 			return "";
 		}
 	}

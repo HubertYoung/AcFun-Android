@@ -8,7 +8,7 @@ import com.hubertyoung.baseplatform.payment.IPayable;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
 import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.modelpay.PayResp;
@@ -28,8 +28,6 @@ import org.json.JSONObject;
  * @desc:com.hubertyoung.wechatplatforms.platforms.weixin
  */
 public class WXPayment extends WXBase implements IPayable {
-
-
 	WXPayment( Activity activity, OtherPlatform platform ) {
 		super( activity, platform );
 	}
@@ -37,7 +35,7 @@ public class WXPayment extends WXBase implements IPayable {
 	@Override
 	public void pay( String data, final @NonNull OnCallback< String > callback ) {
 		PayReq req = new PayReq();
-		PayLogUtil.loge( TAG, "data ==> " + data );
+		PlatformLogUtil.loge( TAG, "data ==> " + data );
 		try {
 			JSONObject o = new JSONObject( data );
 			req.appId = o.getString( "appid" );
@@ -49,7 +47,7 @@ public class WXPayment extends WXBase implements IPayable {
 			req.sign = o.getString( "sign" );
 			req.transaction = req.nonceStr;
 		} catch ( Exception e ) {
-			PayLogUtil.loge( TAG, "parse error ==> " + e.toString() );
+			PlatformLogUtil.loge( TAG, "parse error ==> " + e.toString() );
 		}
 		if ( !TextUtils.isEmpty( req.appId ) ) {
 			mApi = WXAPIFactory.createWXAPI( mActivity.getApplicationContext(), req.appId, true );
@@ -62,7 +60,7 @@ public class WXPayment extends WXBase implements IPayable {
 		}
 		mCallback.onStart( mActivity );
 		boolean ret = mApi.sendReq( req );
-		PayLogUtil.loge( TAG, "send end, pay request  ==> " + ret );
+		PlatformLogUtil.loge( TAG, "send end, pay request  ==> " + ret );
 
 		if ( ret ) {
 		}
@@ -70,7 +68,7 @@ public class WXPayment extends WXBase implements IPayable {
 
 	@Override
 	protected void onResultOk( PayResp resp ) {
-		PayLogUtil.loge( TAG, "prepayId = " + resp.prepayId );
+		PlatformLogUtil.loge( TAG, "prepayId = " + resp.prepayId );
 		mCallback.onSuccess( mActivity, resp.prepayId );
 	}
 }

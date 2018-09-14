@@ -10,8 +10,8 @@ import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.tools.Hashon;
-import com.hubertyoung.baseplatform.tools.PayLogUtil;
-import com.hubertyoung.baseplatform.tools.PayXmlPullParser;
+import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformXmlPullParser;
 import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.common.Constants;
@@ -48,10 +48,10 @@ public class QQAuth implements IAuthorize {
 	QQAuth( Activity activity, OtherPlatform platform ) {
 		mActivity = activity;
 		mPlatform = platform;
-		String appId = PayXmlPullParser.getInstance().getQQID();
+		String appId = PlatformXmlPullParser.getInstance().getQQID();
 		appId = TextUtils.isEmpty( appId ) ? mPlatform.getAppId() : appId;
 		if ( TextUtils.isEmpty( appId ) ){
-			appId = PayXmlPullParser.getInstance().getQQID();
+			appId = PlatformXmlPullParser.getInstance().getQQID();
 		}
 		mApi = Tencent.createInstance( appId, mActivity );
 	}
@@ -65,7 +65,7 @@ public class QQAuth implements IAuthorize {
 		mListener = new IUiListener() {
 			@Override
 			public void onComplete( final Object response ) {
-				PayLogUtil.loge(TAG,"complete ==> " + response );
+				PlatformLogUtil.loge(TAG,"complete ==> " + response );
 				if ( response instanceof JSONObject && ( ( JSONObject ) response ).length() > 0 ) {
 					JSONObject jo = ( JSONObject ) response;
 					if( data == null) {
@@ -125,7 +125,7 @@ public class QQAuth implements IAuthorize {
 
 						@Override
 						public void onError( UiError uiError ) {
-							PayLogUtil.loge(TAG, "error ==> " + uiError.errorDetail );
+							PlatformLogUtil.loge(TAG, "error ==> " + uiError.errorDetail );
 							if ( callback != null ) {
 								callback.onError( mActivity, ResultCode.RESULT_FAILED, toMessage( uiError ) );
 							}
@@ -152,7 +152,7 @@ public class QQAuth implements IAuthorize {
 
 			@Override
 			public void onError( UiError e ) {
-				PayLogUtil.loge(TAG, "error ==> " + e.errorDetail );
+				PlatformLogUtil.loge(TAG, "error ==> " + e.errorDetail );
 				if ( callback != null ) {
 					callback.onError( mActivity, ResultCode.RESULT_FAILED, toMessage( e ) );
 				}

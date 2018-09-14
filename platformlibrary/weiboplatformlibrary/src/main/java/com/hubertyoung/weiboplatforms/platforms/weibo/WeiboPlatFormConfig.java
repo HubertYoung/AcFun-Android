@@ -7,7 +7,7 @@ import com.hubertyoung.baseplatform.PlatformSDKConfig;
 import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.baseplatform.sdk.DefaultFactory;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
-import com.hubertyoung.baseplatform.share.ShareTo;
+import com.hubertyoung.baseplatform.share.SocializeMedia;
 
 /**
  * <br>
@@ -21,7 +21,7 @@ import com.hubertyoung.baseplatform.share.ShareTo;
  */
 public class WeiboPlatFormConfig {
 	public static void registerShare(  @NonNull String appId,@NonNull String appSecret, @NonNull String redirectUrl) {
-		OtherPlatform platform = new OtherPlatform( ShareTo.Weibo, appId, appSecret ).extra( PlatformSDKConfig.REDIRECTURL, redirectUrl);
+		OtherPlatform platform = new OtherPlatform( SocializeMedia.Weibo, appId, appSecret ).extra( PlatformSDKConfig.REDIRECTURL, redirectUrl);
 		AuthorizeSDK.register(new DefaultFactory(platform, WBAuth.class));
 		ShareSDK.register(new DefaultFactory(platform, WBShare.class));
 	}
