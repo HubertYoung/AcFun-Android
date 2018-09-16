@@ -16,6 +16,7 @@ import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
+import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_acfunmine.entity.User;
 import com.hubertyoung.component_acfunmine.mine.control.MineControl;
@@ -114,6 +115,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 	private RelativeLayout mMarketLayout;
 	private RelativeLayout mSettingLayout;
 	private RelativeLayout mFeedbackLayout;
+	private RelativeLayout mDebugLayout;
 
 
 	public MineFragment() {
@@ -195,6 +197,8 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		mMarketLayout = ( RelativeLayout ) view.findViewById( R.id.market_layout );
 		mSettingLayout = ( RelativeLayout ) view.findViewById( R.id.setting_layout );
 		mFeedbackLayout = ( RelativeLayout ) view.findViewById( R.id.feedback_layout );
+		mDebugLayout = ( RelativeLayout ) view.findViewById( R.id.debug_layout );
+		mDebugLayout.setVisibility( AppUtils.isDebuggable() ? View.VISIBLE : View.GONE );
 		initAction();
 		super.onViewCreated( view, savedInstanceState );
 	}
@@ -220,6 +224,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		mMarketLayout.setOnClickListener( this );
 		mSettingLayout.setOnClickListener( this );
 		mFeedbackLayout.setOnClickListener( this );
+		mDebugLayout.setOnClickListener( this );
 	}
 
 	@Override
@@ -252,6 +257,9 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 	@Override
 	public void onClick( View v ) {
 		switch ( v.getId() ) {
+			case R.id.debug_layout:
+				ToastUtil.showSuccess( "debug" );
+				break;
 			case R.id.ac_flow_layout:
 //				this.f.o();
 				break;
