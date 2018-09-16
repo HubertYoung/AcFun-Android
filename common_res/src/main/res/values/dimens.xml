@@ -13,6 +13,7 @@
     <dimen name="DIMEN_8_0DP">8.0dp</dimen>
     <dimen name="DIMEN_9_0DP">9.0dp</dimen>
     <dimen name="DIMEN_10_0DP">10.0dp</dimen>
+    <dimen name="DIMEN_11_0DP">11.0dp</dimen>
     <dimen name="DIMEN_12_0DP">12.0dp</dimen>
     <dimen name="DIMEN_12_5DP">12.5dp</dimen>
     <dimen name="DIMEN_13_0DP">13.0dp</dimen>

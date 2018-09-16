@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.acty.component_acfunmine.R;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
@@ -20,6 +21,7 @@ import com.hubertyoung.component_acfunmine.entity.User;
 import com.hubertyoung.component_acfunmine.mine.control.MineControl;
 import com.hubertyoung.component_acfunmine.mine.model.MineModelImp;
 import com.hubertyoung.component_acfunmine.mine.presenter.MinePresenterImp;
+import com.hubertyoung.component_acfunmine.setting.activity.SettingsActivity;
 import com.hubertyoung.component_acfunmine.utils.SigninHelper;
 
 
@@ -227,7 +229,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		mPresenter.requestCheckOfflineInfo( map );
 
 		MyRequestMap map2 = new MyRequestMap();
-		map.put( "userId", SigninHelper.getInstance().getUserUid()+"" );
+		map.put( "userId", SigninHelper.getInstance().getUserUid() + "" );
 		mPresenter.requestUserInfo( map2 );
 //		Log.e( "TAG", "123123" );
 	}
@@ -353,6 +355,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 				break;
 			case R.id.setting_layout:
 //				startActivityForResult(new Intent(getContext(), SettingsActivity.class), 8);
+				SettingsActivity.launch( ( BaseActivity ) activity );
 				break;
 			case R.id.shop_layout:
 //				String y = SettingHelper.a().y();
@@ -414,7 +417,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //					break;
 //				}
 //				this.g.startActivityForResult(new Intent(this.g, ModifyUserInfoActivity.class), 0);
-				String s=null;
+				String s = null;
 				s.equals( "" );
 				break;
 		}

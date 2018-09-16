@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/toolbar_view"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_gray_color2"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="50dp"
+            android:paddingTop="0dp">
+
+            <LinearLayout style="@style/SettingSortBox">
+
+                <TextView
+                    style="@style/SettingsNavText"
+                    android:text="@string/activity_setting_video"/>
+
+                <LinearLayout style="@style/SettingItemsBox">
+
+                    <LinearLayout
+                        android:id="@+id/hardware_linear"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/activity_setting_video_decoder"
+                            android:textColor="@color/primary_text"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:id="@+id/hardware_desc_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/activity_setting_video_decoder_desc"
+                            android:textColor="@color/secondary_text"
+                            android:textSize="13sp"/>
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_arrow_setting"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/divider3"/>
+
+                    <LinearLayout
+                        android:id="@+id/allow_play_nowifi_linear"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="2dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/activity_setting_allowed_play_nowifi"
+                            android:textColor="@color/primary_text"
+                            android:textSize="15sp"/>
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/cb_nowifi_play"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingSortBox">
+
+                <TextView
+                    style="@style/SettingsNavText"
+                    android:text="@string/activity_setting_danmaku"/>
+
+                <LinearLayout style="@style/SettingItemsBox">
+
+                    <LinearLayout
+                        android:id="@+id/danmaku_size_linear"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/activity_setting_danmaku_size"
+                            android:textColor="@color/primary_text"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:id="@+id/danmaku_size_desc_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/activity_setting_danmaku_size_desc"
+                            android:textColor="@color/secondary_text"
+                            android:textSize="13sp"/>
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_arrow_setting"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingSortBox">
+
+                <TextView
+                    style="@style/SettingsNavText"
+                    android:text="@string/activity_setting_other"/>
+
+                <LinearLayout style="@style/SettingItemsBox">
+
+                    <LinearLayout
+                        android:id="@+id/cache_quality_linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            style="@style/SettingItem"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/activity_setting_video_quality"
+                                android:textColor="@color/primary_text"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:id="@+id/quality_desc_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:text="@string/activity_setting_video_quality_desc"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="13sp"/>
+
+                            <ImageView
+                                android:layout_width="9dp"
+                                android:layout_height="13dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="4dp"
+                                android:src="@drawable/icon_arrow_setting"/>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/divider3"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/cache_linear"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/setting_cache_dir"
+                            android:textColor="@color/primary_text"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:id="@+id/cache_dir"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/activity_setting_cache_device_storage"
+                            android:textColor="@color/secondary_text"
+                            android:textSize="13sp"/>
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_arrow_setting"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/divider3"/>
+
+                    <LinearLayout
+                        android:id="@+id/allow_cache_nowifi_linear"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="2dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/activity_setting_allowed_cache_nowifi"
+                            android:textColor="@color/primary_text"
+                            android:textSize="15sp"/>
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/cb_nowifi_cache"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingSortBox">
+
+                <TextView
+                    style="@style/SettingsNavText"
+                    android:text="@string/setting_about_message"/>
+
+                <LinearLayout style="@style/SettingItemsBox">
+
+                    <LinearLayout
+                        android:id="@+id/notify_toggle_linear"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="2dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/activity_setting_notify_push"
+                                android:textColor="@color/primary_text"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/cb_push_notify"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/divider3"/>
+
+                    <LinearLayout
+                        android:id="@+id/allow_accpet_bangumi_push"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="2dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/accpet_push"
+                            android:textColor="@color/primary_text"
+                            android:textSize="15sp"/>
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/cb_accpet_push"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingSortBox">
+
+                <TextView
+                    style="@style/SettingsNavText"
+                    android:text="@string/setting_about_article"/>
+
+                <LinearLayout style="@style/SettingItemsBox">
+
+                    <LinearLayout
+                        android:id="@+id/load_image_linear"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="2dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/activity_setting_load_image_with_3g"
+                                android:textColor="@color/primary_text"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/cb_load_3g_image"
+                            
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/divider3"/>
+
+                    <LinearLayout
+                        android:id="@+id/article_fontsize_linear"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/setting_activity_article_fontsize"
+                            android:textColor="@color/primary_text"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:id="@+id/article_size_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:text="标准"
+                            android:textColor="@color/secondary_text"
+                            android:textSize="13sp"/>
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_arrow_setting"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_account_setting"
+                style="@style/SettingSortBox"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/SettingsNavText"
+                    android:text="@string/setting_about_account"/>
+
+                <LinearLayout style="@style/SettingItemsBox">
+
+                    <LinearLayout
+                        android:id="@+id/ll_change_passward"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/change_password"
+                                android:textColor="@color/primary_text"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_arrow_setting"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/divider3"/>
+
+                    <LinearLayout
+                        android:id="@+id/ll_account_bind"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/account_bind"
+                                android:textColor="@color/primary_text"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_arrow_setting"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/SettingSortBox">
+
+                <TextView
+                    style="@style/SettingsNavText"
+                    android:text="@string/activity_setting_other_help"/>
+
+                <LinearLayout style="@style/SettingItemsBox">
+
+                    <LinearLayout
+                        android:id="@+id/resetall_linear"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/activity_setting_other_resetall"
+                                android:textColor="@color/primary_text"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_arrow_setting"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/divider3"/>
+
+                    <LinearLayout
+                        android:id="@+id/update_layout"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/settings_check_update_text"
+                                android:textColor="@color/primary_text"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_arrow_setting"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/divider3"/>
+
+                    <LinearLayout
+                        android:id="@+id/debug_model_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/debug_model"
+                            style="@style/SettingItem"
+                            android:drawableRight="@drawable/icon_arrow_setting"
+                            android:gravity="center_vertical"
+                            android:text="@string/debug_model_open_text"
+                            android:textColor="@color/primary_text"
+                            android:textSize="15sp"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/divider3"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/about_layout"
+                        style="@style/SettingItem"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/settings_about_us_text"
+                                android:textColor="@color/primary_text"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="9dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_arrow_setting"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/logout_textView"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/selector_logout"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/fragment_more_signOut"
+                android:textColor="#fd4c5b"
+                android:textSize="@dimen/text_size16_0dp"
+                android:textStyle="normal"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

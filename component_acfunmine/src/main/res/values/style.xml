@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SettingItem">
+        <item name="android:background">@drawable/selector_transparent</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">46dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
+    <style name="SettingSortBox">
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+    <style name="SettingsNavText">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+    </style>
+    <style name="SettingItemsBox">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
+</resources>
