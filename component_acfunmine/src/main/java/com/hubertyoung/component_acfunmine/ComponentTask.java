@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.hubertyoung.component_acfunmine.mine.MineFragment;
+import com.hubertyoung.component_acfunmine.mine.fragment.MineFragment;
 
 /**
  * <br>

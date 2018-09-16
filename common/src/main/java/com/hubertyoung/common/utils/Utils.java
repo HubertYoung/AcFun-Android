@@ -72,7 +72,7 @@ public class Utils {
 	public static final String shiouqi = "shiouqi";
 	public static final String news_down_up = "news_down_up";
 
-	public static boolean b( int i ) {
+	public static boolean isSuccess( int i ) {
 		return i == -100 || i == 401 || i == 110008;
 	}
 

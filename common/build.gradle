@@ -51,8 +51,8 @@ dependencies {
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'
     //没有使用特殊Header，可以不加这行
     //    compile "com.android.support:appcompat-v7:"+props.getAt("ANDROID_BUILD_SDK_TOOLS_VERSION")//版本 23以上（必须）
-    implementation "ch.acra:acra-http:${props["ACRAVERSION"]}"
-    implementation "ch.acra:acra-toast:${props["ACRAVERSION"]}"
+    api "ch.acra:acra-http:${props["ACRAVERSION"]}"
+    api "ch.acra:acra-toast:${props["ACRAVERSION"]}"
 }
 repositories {
     mavenCentral()
