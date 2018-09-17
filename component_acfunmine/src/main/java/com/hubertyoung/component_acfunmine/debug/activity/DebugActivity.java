@@ -1,18 +1,18 @@
 package com.hubertyoung.component_acfunmine.debug.activity;
 
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
-import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.component_acfunmine.R;
 
 /**
  * <br>
@@ -68,7 +68,7 @@ public class DebugActivity extends BaseActivity {
 //		if (a(str)) {
 			setTitle(charSequence);
 			Fragment instantiate = Fragment.instantiate(this, str, bundle);
-			FragmentTransaction beginTransaction = getFragmentManager().beginTransaction();
+			FragmentTransaction beginTransaction = getFragmentTransaction();
 //			if (!TextUtils.equals(str, BiliPreferencesFragment.class.getName())) {
 //				beginTransaction.setCustomAnimations(this.j, 0, 0, 0);
 //			}
@@ -87,21 +87,18 @@ public class DebugActivity extends BaseActivity {
 	}
 
 
-	public static class BiliPreferencesFragment extends PreferenceFragment {
+	public static class BiliPreferencesFragment extends PreferenceFragmentCompat {
+
 		@Override
-		public void onCreate( @Nullable Bundle savedInstanceState ) {
-			super.onCreate( savedInstanceState );
-			addPreferencesFromResource(R.xml.preferences);
-
-		}
-
+		public void onCreatePreferences( Bundle savedInstanceState, String rootKey ) {
+			addPreferencesFromResource( R.xml.main_preferences );
 //
-//			findPreference(getString(R.string.pref_key_feed_back)).compareTo( new Preference.OnPreferenceClickListener() {
-//				@Override
-//				public boolean onPreferenceClick( Preference preference ) {
-//					return false;
-//				}
-//			} );
+			findPreference( getString( R.string.pref_key_feed_back ) ).setOnPreferenceClickListener( new Preference.OnPreferenceClickListener() {
+				@Override
+				public boolean onPreferenceClick( Preference preference ) {
+					return false;
+				}
+			} );
 //
 //			Preference findPreference = findPreference(getString(R.string.pref_key_wifi_auto_update));
 //			if (findPreference != null) {
@@ -121,6 +118,7 @@ public class DebugActivity extends BaseActivity {
 //					return true;
 //				}
 //			});
+		}
 	}
 
 
