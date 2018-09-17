@@ -31,7 +31,6 @@ import com.hubertyoung.dialog.listener.OnViewClickListener;
 import java.util.List;
 import java.util.Locale;
 
-import aggregation.ShareFrescoImageDownloader;
 
 /**
  * <br>
@@ -79,10 +78,9 @@ public class ShareBottomDialog {
 		} ).setOnViewClickListener( new OnViewClickListener() {
 			@Override
 			public void onViewClick( BindViewHolder viewHolder, View view, TDialog tDialog ) {
-				switch ( view.getId() ) {
-					case R.id.cancel:
-						tDialog.dismiss();
-						break;
+				int i = view.getId();
+				if ( i == R.id.cancel ) {
+					tDialog.dismiss();
 				}
 			}
 		} ).create();

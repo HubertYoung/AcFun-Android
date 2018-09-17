@@ -4,5 +4,4 @@ Properties props = new Properties()
 props.load(new FileInputStream(file("../gradle.properties")))
 dependencies {
     implementation project(':common')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 }

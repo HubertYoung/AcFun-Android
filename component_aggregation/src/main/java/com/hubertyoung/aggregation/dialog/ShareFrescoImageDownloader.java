@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package aggregation;
+package com.hubertyoung.aggregation.dialog;
 
 import com.facebook.binaryresource.BinaryResource;
 import com.facebook.binaryresource.FileBinaryResource;

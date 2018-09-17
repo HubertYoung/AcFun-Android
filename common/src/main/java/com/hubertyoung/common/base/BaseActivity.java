@@ -90,7 +90,6 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 		doBeforeSetContentView();
 		if ( getLayoutId() != 0 ) {
 			setContentView( getLayoutId() );
-			//初始化黄油刀控件绑定框架
 			mContext = this;
 			mPresenter = TUtil.getT( this, 0 );
 			mModel = TUtil.getT( this, 1 );

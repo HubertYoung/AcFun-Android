@@ -33,7 +33,7 @@
 
     <!--ToolBar TextSize style-->
     <style name="ToolBar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textSize">@dimen/text_size13</item>
+        <item name="android:textSize">@dimen/text_size13_0dp</item>
     </style>
 
     <style name="text_style_title">
