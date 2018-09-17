@@ -18,9 +18,6 @@ import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.TUtil;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 /**
  * 基类
  */
@@ -67,7 +64,6 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 	public Context mContext;
 	public RxManager mRxManager;
 	private boolean isConfigChange = false;
-	private Unbinder bind;
 	private boolean statusBarTranslucent;
 
 	@Override
@@ -95,7 +91,6 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 		if ( getLayoutId() != 0 ) {
 			setContentView( getLayoutId() );
 			//初始化黄油刀控件绑定框架
-			bind = ButterKnife.bind( this );
 			mContext = this;
 			mPresenter = TUtil.getT( this, 0 );
 			mModel = TUtil.getT( this, 1 );
@@ -257,7 +252,6 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 			AppActivityManager.getAppManager()
 					  .finishActivity( this );
 		}
-		if ( bind != null ) bind.unbind();
 
 	}
 

@@ -1,4 +1,5 @@
 import java.util.regex.Pattern
+
 //先加载local.properties文件
 Properties localProperties = new Properties()
 try {
@@ -9,8 +10,6 @@ try {
 } catch (Exception ignored) {
     println("local.properties not found")
 }
-//读取本地gradle version
-def dependencyMode = (project.gradle.gradleVersion as float)
 //读取build.gradle中的设置
 // 2018-04-06修改：
 //  为了更利于理解，将ext.runAsApp 改名为 ext.mainApp
@@ -26,19 +25,14 @@ if (runAsApp) {
     //再从local.properties中读取配置，例如： demo_component_a=true
     //注：如果采用local.properties读取配置，每次修改需要重新同步(Sync Project)一下
     runAsApp = 'true' == localProperties.getProperty(project.name)
-    //设置到ext中，供module的build.gradle使用（例如用于设置sourceSets配置）
-    ext.runAsApp = runAsApp
 }
+//设置到ext中，供module的build.gradle使用（例如用于设置sourceSets配置）
+ext.runAsApp = runAsApp
 if (runAsApp) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
-    apply plugin: 'com.jakewharton.butterknife'
 }
-//kotlin
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 //对组件库的依赖格式： addComponent dependencyName [, realDependency]
 // 使用示例见demo/build.gradle
@@ -75,19 +69,18 @@ ext.addComponent = { dependencyName, realDependency = null ->
         app = 'true' == localProperties.getProperty(dependencyName)
     }
     if (!app) {
-        def dependencyModeStr = dependencyMode >= 4.1F ? 'api' : 'compile'
+        def dependencyMode = (project.gradle.gradleVersion as float) >= 4.1F ? 'api' : 'compile'
         if (realDependency) {
             //通过参数传递的依赖方式，如：
             // project(':moduleName')
             // 或
             // 'com.billy.demo:demoA:1.1.0'
-            project.dependencies.add(dependencyModeStr, realDependency)
+            project.dependencies.add(dependencyMode, realDependency)
             println "CC >>>> add $realDependency to ${project.name}'s dependencies"
         } else if (componentProject) {
             //第二个参数未传，默认为按照module来进行依赖
-            project.dependencies.add(dependencyModeStr, project(":$dependencyName"))
+            project.dependencies.add(dependencyMode, project(":$dependencyName"))
             println "CC >>>> add project(\":$dependencyName\") to ${project.name}'s dependencies"
-            println "CC >>>>  " + project(":$dependencyName").path
         } else {
             throw new RuntimeException(
                     "CC >>>> add dependency by [ addComponent '$dependencyName' ] occurred an error:" +
@@ -121,7 +114,7 @@ android {
                     exclude 'debug/**'
                 }
             }
-            // 注：2018-03-12推荐：将源码放到src/main/debug/java目录下
+            // 注：2018-03-12推荐：将组件单独以app运行时的测试代码及资源放到src/main/debug/目录下
             if (runAsApp) {
                 //debug模式下，如果存在src/main/debug/assets，则自动将其添加到assets源码目录
                 if (project.file('src/main/debug/assets').exists()) {
@@ -139,7 +132,9 @@ android {
         }
     }
 }
-project.dependencies.add(dependencyMode >= 4.1F  ? 'api' : 'compile', "com.billy.android:cc:0.5.0")
+def dependencyMode = (project.gradle.gradleVersion as float) >= 4.1F ? 'api' : 'compile'
+//project.dependencies.add(dependencyMode, project(":cc"))
+project.dependencies.add(dependencyMode, "com.billy.android:cc:1.1.0")
 
 
 
@@ -163,15 +158,31 @@ project.dependencies.add(dependencyMode >= 4.1F  ? 'api' : 'compile', "com.billy
   }
  */
 project.apply plugin: 'auto-register'
+project.ext.registerInfoList = [
+        [ //自动注册组件
+          'scanInterface'             : 'com.billy.cc.core.component.IComponent'
+          , 'codeInsertToClassName'   : 'com.billy.cc.core.component.ComponentManager'
+          , 'registerMethodName'      : 'registerComponent'
+          , 'exclude'                 : [//排除的类，支持正则表达式（包分隔符需要用/表示，不能用.）
+                                         'com.billy.cc.core.component.'.replaceAll("\\.", "/") + ".*"
+        ]
+        ],[//自动注册全局拦截器
+           'scanInterface'             : 'com.billy.cc.core.component.IGlobalCCInterceptor'
+           , 'codeInsertToClassName'   : 'com.billy.cc.core.component.GlobalCCInterceptorManager'
+           , 'registerMethodName'      : 'registerGlobalInterceptor'
+           , 'exclude'                 : [//排除的类，支持正则表达式（包分隔符需要用/表示，不能用.）
+                                          'com.billy.cc.core.component.'.replaceAll("\\.", "/") + ".*"
+]
+        ],[//自动注册跨进程通信时自定义类型的json转换器，可以用Gson、FastJson等工具来实现
+           // 参考： demo_base/src/main/java/com.billy.cc.demo.base.GsonParamConverter
+           'scanInterface'             : 'com.billy.cc.core.component.IParamJsonConverter'
+           , 'codeInsertToClassName'   : 'com.billy.cc.core.component.RemoteParamUtil'
+           , 'registerMethodName'      : 'initRemoteCCParamJsonConverter'
+           , 'exclude'                 : [//排除的类，支持正则表达式（包分隔符需要用/表示，不能用.）
+                                          'com.billy.cc.core.component.'.replaceAll("\\.", "/") + ".*"
+]
+        ]
+]
 autoregister {
-    registerInfo = [
-            [
-                    'scanInterface'             : 'com.billy.cc.core.component.IComponent'
-                    , 'codeInsertToClassName'   : 'com.billy.cc.core.component.ComponentManager'
-                    , 'registerMethodName'      : 'registerComponent'
-                    , 'exclude'                 : [//排除的类，支持正则表达式（包分隔符需要用/表示，不能用.）
-                                                   'com.billy.cc.core.component.'.replaceAll("\\.", "/") + ".*"
-            ]
-            ]
-    ]
+    registerInfo = registerInfoList
 }

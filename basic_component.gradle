@@ -84,9 +84,9 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
-    androidExtensions {
-        experimental = true
-    }
+//    androidExtensions {
+//        experimental = true
+//    }
 }
 
 
@@ -100,8 +100,8 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //view注解
-    implementation 'com.jakewharton:butterknife:8.4.0'
-    kapt 'com.jakewharton:butterknife-compiler:8.4.0'
+//    implementation 'com.jakewharton:butterknife:8.4.0'
+//    kapt 'com.jakewharton:butterknife-compiler:8.4.0'
 
     //retrofit和rxjava
     api 'com.squareup.retrofit2:retrofit:2.3.0'

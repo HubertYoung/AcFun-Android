@@ -17,8 +17,6 @@ import com.hubertyoung.common.utils.CommonLog;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-
 /**
  * <br>
  * function:
@@ -31,10 +29,8 @@ import butterknife.BindView;
  */
 public class MainActivity extends BaseActivity {
 
-	@BindView( R.id.fl_container )
-	FrameLayout mFlContainer;
-	@BindView( R.id.bnb_main_view )
-	BottomNavigationBar mBnbMainView;
+	private FrameLayout mFlContainer;
+	private BottomNavigationBar mBnbMainView;
 	private ArrayList< BaseFragment > mFragments = new ArrayList<>();
 	private BaseFragment mFragment;
 	private long keyDownFirstTime;
@@ -48,13 +44,18 @@ public class MainActivity extends BaseActivity {
 	public void initPresenter() {
 
 	}
+
 	@Override
 	public void doBeforeSetContentView() {
-		BarUtils.setStatusBarTranslucent(getWindow(), true);
+		BarUtils.setStatusBarTranslucent( getWindow(), true );
 //		BarUtils.statusBarLightMode(getWindow(), true);
 	}
+
 	@Override
 	public void initView( Bundle savedInstanceState ) {
+		mFlContainer = findViewById( R.id.fl_container );
+		mBnbMainView = findViewById( R.id.bnb_main_view );
+
 		initFragment( savedInstanceState );
 
 		mBnbMainView.clearAll();
@@ -70,6 +71,7 @@ public class MainActivity extends BaseActivity {
 				.initialise();
 		initAction();
 		mBnbMainView.selectTab( 0 );
+
 	}
 
 	private void initFragment( Bundle savedInstanceState ) {

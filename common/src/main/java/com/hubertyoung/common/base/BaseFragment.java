@@ -20,9 +20,6 @@ import com.hubertyoung.common.baserx.RxManager;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.TUtil;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 
 /***************使用例子*********************/
 //1.mvp模式
@@ -62,7 +59,6 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	public T mPresenter;
 	public E mModel;
 	public RxManager mRxManager;
-	private Unbinder bind;
 	// 标志位 标志已经初始化完成。
 	protected boolean isPrepared;
 
@@ -96,7 +92,6 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 			mPresenter.mContext = this.getActivity();
 		}
 		activity = this.getActivity();
-		bind = ButterKnife.bind( this, rootView );
 		return rootView;
 	}
 
@@ -254,7 +249,6 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
-		if ( bind != null ) bind.unbind();
 		if ( mPresenter != null ) mPresenter.onDestroy();
 		mRxManager.clear();
 	}
