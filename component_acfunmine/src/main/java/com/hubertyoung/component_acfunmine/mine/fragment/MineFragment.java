@@ -18,6 +18,7 @@ import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.component_acfunmine.debug.activity.DebugActivity;
 import com.hubertyoung.component_acfunmine.entity.User;
 import com.hubertyoung.component_acfunmine.mine.control.MineControl;
 import com.hubertyoung.component_acfunmine.mine.model.MineModelImp;
@@ -258,7 +259,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 	public void onClick( View v ) {
 		switch ( v.getId() ) {
 			case R.id.debug_layout:
-				ToastUtil.showSuccess( "debug" );
+				DebugActivity.launch((BaseActivity)activity);
 				break;
 			case R.id.ac_flow_layout:
 //				this.f.o();
