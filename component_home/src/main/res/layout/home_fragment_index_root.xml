@@ -9,7 +9,7 @@
     app:srlEnableLoadMore="false"
     app:srlEnableHeaderTranslationContent="false"
     android:fitsSystemWindows="true"
-    tools:context="com.acty.component.home.index.fragment.IndexRootFragment">
+    tools:context="com.hubertyoung.component.home.index.fragment.IndexRootFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_home_index"

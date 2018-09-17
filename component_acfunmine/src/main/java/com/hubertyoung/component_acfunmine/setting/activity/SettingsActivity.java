@@ -2,7 +2,7 @@ package com.hubertyoung.component_acfunmine.setting.activity;
 
 import android.os.Bundle;
 
-import com.acty.component_acfunmine.R;
+import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.common.base.BaseActivity;
 
 /**

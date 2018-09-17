@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.acty.component_acfunmine.R;
+import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.common.base.BaseActivity;
 
 /**

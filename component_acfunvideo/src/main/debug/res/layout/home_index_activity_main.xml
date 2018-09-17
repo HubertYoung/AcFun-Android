@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/begin_fragment"
-        android:name="com.acty.component.acfunvideo.index.fragment.HomePageFragment"
+        android:name="com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

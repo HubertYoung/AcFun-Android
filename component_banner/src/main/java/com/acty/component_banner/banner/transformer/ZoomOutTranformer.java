@@ -1,4 +1,4 @@
-package com.acty.component_banner.banner.transformer;
+package com.hubertyoung.component_banner.banner.transformer;
 
 import android.view.View;
 

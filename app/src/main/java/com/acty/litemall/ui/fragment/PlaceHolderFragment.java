@@ -1,4 +1,4 @@
-package com.acty.litemall.ui.fragment;
+package com.hubertyoung.litemall.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.acty.litemall.R;
+import com.hubertyoung.litemall.R;
 import com.hubertyoung.common.base.BaseFragment;
 
 

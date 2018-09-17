@@ -6,9 +6,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.acty.component_dynamicsoreview.R;
-import com.acty.component_dynamicsoreview.dynamicsoreview.DynamicSoreView;
-import com.acty.component_dynamicsoreview.dynamicsoreview.Interface.IDynamicSore;
+import com.hubertyoung.component_dynamicsoreview.R;
+import com.hubertyoung.component_dynamicsoreview.dynamicsoreview.DynamicSoreView;
+import com.hubertyoung.component_dynamicsoreview.dynamicsoreview.Interface.IDynamicSore;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.zhy.autolayout.utils.AutoUtils;

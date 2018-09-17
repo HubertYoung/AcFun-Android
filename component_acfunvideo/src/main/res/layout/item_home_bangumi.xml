@@ -3,11 +3,13 @@
               xmlns:aapt="http://schemas.android.com/aapt"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/home_item_root"
               android:layout_gravity="center_horizontal"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -44,6 +46,7 @@
         android:ellipsize="end"
         android:includeFontPadding="false"
         android:lineSpacingExtra="1.5dp"
+        tools:text="是是是"
         android:textColor="@color/text_black_color"
         android:textSize="@dimen/text_title_large_size"/>
 

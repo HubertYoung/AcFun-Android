@@ -1,4 +1,4 @@
-package com.acty.litemall.ui.activity;
+package com.hubertyoung.litemall.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.acty.litemall.R;
-import com.acty.litemall.ui.fragment.PlaceHolderFragment;
+import com.hubertyoung.litemall.R;
+import com.hubertyoung.litemall.ui.fragment.PlaceHolderFragment;
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;

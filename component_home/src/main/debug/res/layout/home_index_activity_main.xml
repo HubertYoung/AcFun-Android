@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/begin_fragment"
-        android:name="com.acty.component.home.index.fragment.IndexRootFragment"
+        android:name="com.hubertyoung.component.home.index.fragment.IndexRootFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

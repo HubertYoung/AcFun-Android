@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.acty.component_acfunmine.R;
+import com.hubertyoung.component_acfunmine.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
@@ -257,72 +257,62 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 
 	@Override
 	public void onClick( View v ) {
-		switch ( v.getId() ) {
-			case R.id.debug_layout:
-				DebugActivity.launch((BaseActivity)activity);
-				break;
-			case R.id.ac_flow_layout:
-//				this.f.o();
-				break;
-			case R.id.chockin_layout:
-//				if (!SigninHelper.a().s()) {
+		int i = v.getId();
+		if ( i == R.id.debug_layout ) {
+			DebugActivity.launch( ( BaseActivity ) activity );
+
+		} else if ( i == R.id.ac_flow_layout ) {//				this.f.o();
+
+		} else if ( i == R.id.chockin_layout || i == R.id.downloaded_layout ) {//				if (!SigninHelper.a().s()) {
 //					IntentHelper.e(this.g, 7);
 //					break;
 //				} else {
 //					this.f.f();
 //					break;
 //				}
-			case R.id.downloaded_layout:
+
 //				if (s()) {
 //					DownloadManager.a();
 //					IntentHelper.a(this.g, CacheManageActivity.class);
 //					break;
 //				}
-				break;
-			case R.id.draft_layout:
-//				KanasUtil.c(KanasConstants.bG, null);
+
+		} else if ( i == R.id.draft_layout ) {//				KanasUtil.c(KanasConstants.bG, null);
 //				IntentHelper.a(getActivity(), DraftBoxActivity.class);
-				break;
-			case R.id.fans_count_layout:
-//				if (!SigninHelper.a().s()) {
+
+		} else if ( i == R.id.fans_count_layout ) {//				if (!SigninHelper.a().s()) {
 //					IntentHelper.e(this.g, 7);
 //					break;
 //				}
 //				bundle = new Bundle();
 //				bundle.putInt("selectPage", 1);
 //				IntentHelper.a(this.g, AttentionAndFansActivity.class, bundle);
-				break;
-			case R.id.favorite_layout:
-//				if (!SigninHelper.a().s()) {
+
+		} else if ( i == R.id.favorite_layout || i == R.id.feedback_layout ) {//				if (!SigninHelper.a().s()) {
 //					IntentHelper.e(this.g, 7);
 //					break;
 //				} else {
 //					IntentHelper.a(this.g, NewFavoritiesActivity.class);
 //					break;
 //				}
-			case R.id.feedback_layout:
+
 //				IntentHelper.a(this.g, FeedBackActivity.class);
-				break;
-			case R.id.follow_count_layout:
-//				if (!SigninHelper.a().s()) {
+
+		} else if ( i == R.id.follow_count_layout ) {//				if (!SigninHelper.a().s()) {
 //					IntentHelper.e(this.g, 7);
 //					break;
 //				}
 //				bundle = new Bundle();
 //				bundle.putInt("selectPage", 0);
 //				IntentHelper.a(this.g, AttentionAndFansActivity.class, bundle);
-				break;
-			case R.id.game_layout:
-//				this.f.a(this.g);
-				break;
-			case R.id.history_layout:
-//				IntentHelper.a(this.g, NewHistoryActivity.class);
-				break;
-			case R.id.market_layout:
-//				this.f.b(this.g);
-				break;
-			case R.id.message_layout:
-//				if (!SigninHelper.a().s()) {
+
+		} else if ( i == R.id.game_layout ) {//				this.f.a(this.g);
+
+		} else if ( i == R.id.history_layout ) {//				IntentHelper.a(this.g, NewHistoryActivity.class);
+
+		} else if ( i == R.id.market_layout ) {//				this.f.b(this.g);
+
+		} else if ( i == R.id.message_layout ) {//				if (!SigninHelper.a().s()) {
 //					IntentHelper.e(this.g, 7);
 //					break;
 //				} else {
@@ -361,13 +351,11 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //					this.i.dismiss();
 //					break;
 //				}
-				break;
-			case R.id.setting_layout:
-//				startActivityForResult(new Intent(getContext(), SettingsActivity.class), 8);
-				SettingsActivity.launch( ( BaseActivity ) activity );
-				break;
-			case R.id.shop_layout:
-//				String y = SettingHelper.a().y();
+
+		} else if ( i == R.id.setting_layout ) {//				startActivityForResult(new Intent(getContext(), SettingsActivity.class), 8);
+			SettingsActivity.launch( ( BaseActivity ) activity );
+
+		} else if ( i == R.id.shop_layout || i == R.id.test_layout || i == R.id.tv_login ) {//				String y = SettingHelper.a().y();
 //				try {
 //					startActivity(new Intent(ACTION.HWID_SCHEME_URL, Uri.parse(y)));
 //					break;
@@ -377,7 +365,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //					startActivity(intent);
 //					break;
 //				}
-			case R.id.test_layout:
+
 //				if (!SigninHelper.a().s()) {
 //					IntentHelper.e(this.g, 7);
 //					break;
@@ -385,14 +373,12 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //					startActivityForResult(new Intent(getContext(), QuestionActivity.class), 9);
 //					break;
 //				}
-			case R.id.tv_login:
+
 //				IntentHelper.e(this.g, 7);
-				break;
-			case R.id.tv_register:
-//				startActivityForResult(new Intent(getContext(), RegisterActivity.class), 10);
-				break;
-			case R.id.upload_count_layout:
-//				if (SigninHelper.a().s()) {
+
+		} else if ( i == R.id.tv_register ) {//				startActivityForResult(new Intent(getContext(), RegisterActivity.class), 10);
+
+		} else if ( i == R.id.upload_count_layout || i == R.id.upload_layout ) {//				if (SigninHelper.a().s()) {
 //					if (s()) {
 //						bundle = new Bundle();
 //						Serializable user2 = new User();
@@ -405,7 +391,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //				IntentHelper.e(this.g, 7);
 //				break;
 //			break;
-			case R.id.upload_layout:
+
 //				KanasUtil.c(KanasConstants.bF, null);
 //				if (!SigninHelper.a().s()) {
 //					IntentHelper.e(this.g, 7);
@@ -419,16 +405,15 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //					Utils.c(getActivity());
 //					return;
 //				}
-				break;
-			case R.id.user_avatar:
-//				if (!SigninHelper.a().s()) {
+
+		} else if ( i == R.id.user_avatar ) {//				if (!SigninHelper.a().s()) {
 //					IntentHelper.e(this.g, 7);
 //					break;
 //				}
 //				this.g.startActivityForResult(new Intent(this.g, ModifyUserInfoActivity.class), 0);
-				String s = null;
-				s.equals( "" );
-				break;
+			String s = null;
+			s.equals( "" );
+
 		}
 	}
 

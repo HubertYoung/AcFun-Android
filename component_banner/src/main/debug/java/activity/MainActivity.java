@@ -3,9 +3,9 @@ package activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.acty.component_banner.R;
-import com.acty.component_banner.banner.BannerEntity;
-import com.acty.component_banner.banner.BannerView;
+import com.hubertyoung.component_banner.R;
+import com.hubertyoung.component_banner.banner.BannerEntity;
+import com.hubertyoung.component_banner.banner.BannerView;
 
 import java.util.ArrayList;
 

@@ -2,7 +2,7 @@ package activity;
 
 import android.os.Bundle;
 
-import com.acty.component_home.R;
+import com.hubertyoung.component_home.R;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.utils.BarUtils;
 

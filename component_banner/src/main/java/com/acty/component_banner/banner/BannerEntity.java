@@ -1,4 +1,4 @@
-package com.acty.component_banner.banner;
+package com.hubertyoung.component_banner.banner;
 
 /**
  * @author:Yang

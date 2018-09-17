@@ -145,7 +145,7 @@ public class AppIncrementalUpdateUtil {
 //		i.setDataAndType( Uri.fromFile(new File(apkPath)),
 //				"application/vnd.android.package-archive");
 //		mContext.startActivity(i);
-		AppUtils.installApp( apkPath, "com.acty.litemallupdate.fileprovider" );
+		AppUtils.installApp( apkPath, "com.hubertyoung.litemallupdate.fileprovider" );
 	}
 
 //	/**

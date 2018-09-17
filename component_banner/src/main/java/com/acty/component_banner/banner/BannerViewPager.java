@@ -1,4 +1,4 @@
-package com.acty.component_banner.banner;
+package com.hubertyoung.component_banner.banner;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

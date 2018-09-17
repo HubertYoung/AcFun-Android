@@ -6,7 +6,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.acty.component_dynamicsoreview.R;
+import com.hubertyoung.component_dynamicsoreview.R;
 import com.hubertyoung.common.ImageLoaderUtils;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;

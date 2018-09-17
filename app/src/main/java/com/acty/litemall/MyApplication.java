@@ -1,4 +1,4 @@
-package com.acty.litemall;
+package com.hubertyoung.litemall;
 
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.CommonApplication;

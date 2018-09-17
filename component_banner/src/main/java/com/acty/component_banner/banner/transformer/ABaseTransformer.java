@@ -1,4 +1,4 @@
-package com.acty.component_banner.banner.transformer;
+package com.hubertyoung.component_banner.banner.transformer;
 
 import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;

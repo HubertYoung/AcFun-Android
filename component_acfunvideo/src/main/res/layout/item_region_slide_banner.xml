@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.acty.component_banner.banner.BannerView
+        <com.hubertyoung.component_banner.banner.BannerView
             android:id="@+id/region_item_slider"
             android:layout_width="match_parent"
             android:layout_height="100dp"/>

@@ -21,7 +21,7 @@
         <!-- 支持7.0安装文件 -->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.acty.litemallupdate.fileprovider"
+            android:authorities="com.hubertyoung.litemallupdate.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

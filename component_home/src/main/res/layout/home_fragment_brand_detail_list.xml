@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:srlEnableHeaderTranslationContent="false"
     app:srlEnableLoadMore="false"
-    tools:context="com.acty.component.home.branddetail.fragment.BrandDetailListFragment">
+    tools:context="com.hubertyoung.component.home.branddetail.fragment.BrandDetailListFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_body"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:fitsSystemWindows="true"
-    tools:context="com.acty.component.home.branddetail.activity.BrandDetailActivity">
+    tools:context="com.hubertyoung.component.home.branddetail.activity.BrandDetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"

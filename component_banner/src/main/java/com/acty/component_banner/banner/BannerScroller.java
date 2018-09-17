@@ -1,4 +1,4 @@
-package com.acty.component_banner.banner;
+package com.hubertyoung.component_banner.banner;
 
 import android.content.Context;
 import android.view.animation.Interpolator;

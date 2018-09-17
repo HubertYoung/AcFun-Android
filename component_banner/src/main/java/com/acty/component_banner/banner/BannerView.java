@@ -1,4 +1,4 @@
-package com.acty.component_banner.banner;
+package com.hubertyoung.component_banner.banner;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
@@ -11,8 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.acty.component_banner.R;
-import com.acty.component_banner.banner.transformer.ABaseTransformer;
+import com.hubertyoung.component_banner.R;
+import com.hubertyoung.component_banner.banner.transformer.ABaseTransformer;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.CommonLog;
