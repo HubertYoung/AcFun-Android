@@ -92,7 +92,6 @@ public class DebugActivity extends BaseActivity {
 		@Override
 		public void onCreatePreferences( Bundle savedInstanceState, String rootKey ) {
 			addPreferencesFromResource( R.xml.main_preferences );
-//
 			findPreference( getString( R.string.pref_key_feed_back ) ).setOnPreferenceClickListener( new Preference.OnPreferenceClickListener() {
 				@Override
 				public boolean onPreferenceClick( Preference preference ) {
