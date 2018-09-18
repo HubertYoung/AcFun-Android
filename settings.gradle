@@ -1,4 +1,4 @@
-include ':studydemo', ':acfun', ':component_acfunmine',
+include ':studydemo', ':acfun', ':component_acfunmine', ':javapoet:annotation', ':javapoet:compiler',
         ':bottom-navigation-bar',
         ':component_acfunvideo',
 
