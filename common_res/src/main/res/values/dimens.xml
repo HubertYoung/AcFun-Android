@@ -157,4 +157,7 @@
 
     <!-- 顶部按钮栏高度 -->
     <dimen name="pickerview_topbar_height">45dp</dimen>
+
+    <dimen name="preference_regulable_fill_height_default">64dp</dimen>
+    <dimen name="preference_regulable_wrap_height_default">44dp</dimen>
 </resources>

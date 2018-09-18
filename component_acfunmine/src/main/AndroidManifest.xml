@@ -2,7 +2,8 @@
           package="com.hubertyoung.component_acfunmine">
 
     <application>
-        <activity android:name="com.hubertyoung.component_acfunmine.debug.activity.DebugActivity">
+        <activity android:name="com.hubertyoung.component_acfunmine.debug.activity.DebugActivity"
+            android:theme="@style/AppTheme.Preference.Ios">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 

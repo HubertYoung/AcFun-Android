@@ -72,4 +72,5 @@
         <attr name="android:indeterminateDrawable" />
         <attr name="android:progressDrawable" />
     </declare-styleable>
+
 </resources>

@@ -11,6 +11,8 @@ android {
         targetSdkVersion props["ANDROID_BUILD_TARGET_SDK_VERSION"] as int
         versionCode props["VERSION_CODE"] as int
         versionName props["VERSION_NAME"]
+        vectorDrawables.useSupportLibrary = true
+
     }
     buildTypes {
         release {

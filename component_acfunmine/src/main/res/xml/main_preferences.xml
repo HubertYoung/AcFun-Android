@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
+<android.support.v7.preference.PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,87 +9,94 @@
     android:summary="@string/pref_summary_preferences"
     android:title="@string/pref_title_preferences"
     tools:ignore="ResourceName">
-    <PreferenceCategory
+    <android.support.v7.preference.PreferenceCategory
         android:key="@string/pref_key_account_and_security"
         android:title="@string/pref_title_account_and_security">
-        <Preference
+        <android.support.v7.preference.Preference
             android:defaultValue="@null"
             android:key="@string/pref_key_person_info"
             android:persistent="false"
             android:title="@string/person_info_title">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:targetClass="tv.danmaku.bili.ui.personinfo.PersonInfoActivity"
-                android:targetPackage="@string/package_name"/>
-        </Preference>
+            <!--<intent-->
+                <!--android:action="android.intent.action.VIEW"-->
+                <!--android:targetClass="tv.danmaku.bili.ui.personinfo.PersonInfoActivity"-->
+                <!--android:targetPackage="@string/package_name"/>-->
+        </android.support.v7.preference.Preference>
         <!--android:fragment="tv.danmaku.bili.preferences.PreferenceSecurityPrivacy$SecurityPrivacySettingFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_security_privacy"
             android:title="@string/pref_title_security_privacy"/>
         <!--android:fragment="tv.danmaku.bili.preferences.PreferenceSecurityPrivacy$ShoppingInfoSettingFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_shopping_info"
             android:title="@string/pref_title_shopping_info"/>
-    </PreferenceCategory>
-    <PreferenceCategory
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
         android:key="@string/pref_key_tools_setting"
         android:title="@string/pref_title_tools_setting">
         <!--android:fragment="tv.danmaku.bili.preferences.BiliPreferencesActivity$PlaySettingPrefFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_play_setting"
             android:title="@string/pref_title_play_setting"/>
         <!--android:fragment="tv.danmaku.bili.preferences.PreferenceTools$CodecPrefFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_screen_codecPref"
             android:title="@string/pref_title_screen_codecPref"/>
         <!--android:fragment="tv.danmaku.bili.preferences.PreferenceTools$DanmakuPrefFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_screen_danmakuPref"
             android:title="@string/pref_title_screen_danmakuPref"/>
         <!--android:fragment="tv.danmaku.bili.preferences.PreferenceTools$DownloadPrefFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_screen_downloadPref"
             android:title="@string/pref_title_screen_downloadPref"/>
         <!--android:fragment="com.bilibili.bangumi.ui.preference.TimelinePreferenceFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_screen_bangumi"
             android:title="@string/pref_bangumi_title"/>
-    </PreferenceCategory>
-    <PreferenceCategory
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
         android:key="@string/pref_key_category_advanced"
         android:title="@string/pref_title_category_advanced">
         <!--android:fragment="tv.danmaku.bili.preferences.PreferenceAdvancedSetting$PushMessagePrefFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_screen_pushPref"
             android:title="@string/pref_title_push"/>
         <!--android:fragment="tv.danmaku.bili.preferences.PreferenceAdvancedSetting$ClearStoragePrefFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_clear_storage"
             android:title="@string/pref_title_clear_storage"/>
         <!--android:fragment="tv.danmaku.bili.preferences.PreferenceAdvancedSetting$AdvancedOtherPrefFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_advanced_other"
             android:title="@string/pref_title_advanced_other"/>
-    </PreferenceCategory>
-    <PreferenceCategory
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
         android:key="@string/pref_key_about_us"
         android:title="@string/pref_title_about_us">
-        <Preference
+        <android.support.v7.preference.Preference
             android:defaultValue="@null"
             android:key="@string/pref_key_feed_back"
             android:persistent="false"
             android:title="@string/pref_title_feed_back"/>
         <!--android:fragment="tv.danmaku.bili.preferences.HelpFragment"-->
-        <PreferenceScreen
+        <android.support.v7.preference.PreferenceScreen
             android:key="@string/pref_key_help_preferences"
             android:title="@string/pref_title_help_preferences"/>
-    </PreferenceCategory>
-    <PreferenceCategory
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
         android:key="@string/pref_key_logout_category"
         android:title="@string/pref_title_logout_category">
-        <!--android:layout="@layout/bili_app_layout_preference_logout"-->
-        <Preference
+        <android.support.v7.preference.Preference
             android:key="@string/pref_key_logout"
+            android:layout="@layout/common_app_layout_preference_logout"
             android:persistent="false"/>
-    </PreferenceCategory>
-</PreferenceScreen>
+    </android.support.v7.preference.PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory>
+
+    </android.support.v7.preference.PreferenceCategory>
+</android.support.v7.preference.PreferenceScreen>

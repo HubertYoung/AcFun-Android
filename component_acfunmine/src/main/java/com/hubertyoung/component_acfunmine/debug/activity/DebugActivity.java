@@ -6,12 +6,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.widget.preference.BasePreferenceFragment;
 import com.hubertyoung.component_acfunmine.R;
 
 /**
@@ -87,7 +87,7 @@ public class DebugActivity extends BaseActivity {
 	}
 
 
-	public static class BiliPreferencesFragment extends PreferenceFragmentCompat {
+	public static class BiliPreferencesFragment extends BasePreferenceFragment {
 
 		@Override
 		public void onCreatePreferences( Bundle savedInstanceState, String rootKey ) {

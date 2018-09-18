@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:aapt="http://schemas.android.com/aapt"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:fresco="http://schemas.android.com/apk/com.facebook.drawee"
+      android:layout_width="match_parent"
+      android:layout_height="16dp"
+      android:background="@color/grey200"/>
