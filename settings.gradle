@@ -1,4 +1,4 @@
-include ':studydemo', ':acfun', ':component_acfunmine', ':javapoet:annotation', ':javapoet:compiler',
+include ':studydemo', ':acfun', ':component_acfunmine', ':javapoet:annotation', ':javapoet:compiler',':javapoet:compiler-release',
         ':bottom-navigation-bar',
         ':component_acfunvideo',
 
@@ -8,6 +8,7 @@ include ':studydemo', ':acfun', ':component_acfunmine', ':javapoet:annotation', 
         ':android-support:skin-support-constraint-layout',
         ':android-support:skin-support-design',
         ':component_banner',
+        ':component_developer',
         ':component_dynamicsoreview',
 //        ':component_bankcard',
 //        ':component_filter',

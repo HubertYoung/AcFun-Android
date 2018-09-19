@@ -1,6 +1,8 @@
-package com.hubertyoung.component_acfunmine.debug.activity;
+package com.hubertyoung.developer;
 
-
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -12,18 +14,9 @@ import android.widget.LinearLayout;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.widget.preference.BasePreferenceFragment;
-import com.hubertyoung.component_acfunmine.R;
+import com.hubertyoung.component_developer.R;
 
-/**
- * <br>
- * function:
- * <p>
- *
- * @author:HubertYoung
- * @date:2018/9/17 14:43
- * @since:V1.0.0
- * @desc:com.hubertyoung.component_acfunmine.debug.activity
- */
+
 public class DebugActivity extends BaseActivity {
 
 	private LinearLayout mActivityRoot;
@@ -32,7 +25,7 @@ public class DebugActivity extends BaseActivity {
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.acfunmine_activity_debug;
+		return R.layout.developer_activity_main;
 	}
 
 	@Override
@@ -61,27 +54,27 @@ public class DebugActivity extends BaseActivity {
 		if ( actionBar != null ) {
 			actionBar.setDisplayHomeAsUpEnabled( true );
 		}
-		getFragment( "",BiliPreferencesFragment.class.getName(),null,false );
+		getFragment( "", BiliPreferencesFragment.class.getName(), null, false );
 	}
 
-	private Fragment getFragment( CharSequence charSequence, String str, Bundle bundle, boolean isBackStack) {
+	private Fragment getFragment( CharSequence charSequence, String str, Bundle bundle, boolean isBackStack ) {
 //		if (a(str)) {
-			setTitle(charSequence);
-			Fragment instantiate = Fragment.instantiate(this, str, bundle);
-			FragmentTransaction beginTransaction = getFragmentTransaction();
+		setTitle( charSequence );
+		Fragment instantiate = Fragment.instantiate( this, str, bundle );
+		FragmentTransaction beginTransaction = getFragmentTransaction();
 //			if (!TextUtils.equals(str, BiliPreferencesFragment.class.getName())) {
 //				beginTransaction.setCustomAnimations(this.j, 0, 0, 0);
 //			}
-			beginTransaction.replace(R.id.content_layout, instantiate, str);
-			if (isBackStack) {
-				beginTransaction.addToBackStack("a");
-			}
-			if (charSequence != null) {
-				beginTransaction.setBreadCrumbTitle(charSequence);
-			}
-			beginTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-			beginTransaction.commitAllowingStateLoss();
-			return instantiate;
+		beginTransaction.replace( R.id.content_layout, instantiate, str );
+		if ( isBackStack ) {
+			beginTransaction.addToBackStack( "a" );
+		}
+		if ( charSequence != null ) {
+			beginTransaction.setBreadCrumbTitle( charSequence );
+		}
+		beginTransaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_FADE );
+		beginTransaction.commitAllowingStateLoss();
+		return instantiate;
 //		}
 //		throw new IllegalArgumentException("error");
 	}
@@ -104,7 +97,9 @@ public class DebugActivity extends BaseActivity {
 ////				findPreference.a(new b() {
 ////					public boolean a(Preference preference, Object obj) {
 ////						if (obj.equals(Boolean.valueOf(false))) {
-////							hdp.a(jsx.a(new byte[]{(byte) 107, (byte) 96, (byte) 114, (byte) 100, (byte) 117, (byte) 117, (byte) 90, (byte) 114, (byte) 108, (byte) 99, (byte) 108, (byte) 97, (byte) 106, (byte) 114, (byte) 107, (byte) 105, (byte) 106, (byte) 100, (byte) 97, (byte) 100, (byte) 117, (byte) 117, (byte) 90, (byte) 118, (byte) 96, (byte) 113, (byte) 113, (byte) 108, (byte) 107, (byte) 98, (byte) 118, (byte) 90, (byte) 113, (byte) 112, (byte) 119, (byte) 107, (byte) 106, (byte) 99, (byte) 99}), new String[0]);
+////							hdp.a(jsx.a(new byte[]{(byte) 107, (byte) 96, (byte) 114, (byte) 100, (byte) 117, (byte) 117, (byte) 90, (byte) 114, (byte) 108, (byte) 99, (byte) 108, (byte) 97,
+/// (byte) 106, (byte) 114, (byte) 107, (byte) 105, (byte) 106, (byte) 100, (byte) 97, (byte) 100, (byte) 117, (byte) 117, (byte) 90, (byte) 118, (byte) 96, (byte) 113, (byte) 113, (byte) 108,
+/// (byte) 107, (byte) 98, (byte) 118, (byte) 90, (byte) 113, (byte) 112, (byte) 119, (byte) 107, (byte) 106, (byte) 99, (byte) 99}), new String[0]);
 ////						}
 ////						return true;
 ////					}
@@ -121,8 +116,17 @@ public class DebugActivity extends BaseActivity {
 	}
 
 
-	public static void launch( BaseActivity activity ) {
-		activity.startActivity( DebugActivity.class );
+	public static void launch( Context context ) {
+		if ( context instanceof BaseActivity ) {
+			( ( BaseActivity ) context ).startActivity( DebugActivity.class );
+		} else {
+			Intent intent = new Intent( context, DebugActivity.class );
+			if ( !( context instanceof Activity ) ) {
+				//调用方没有设置context或app间组件跳转，context为application
+				intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+			}
+			context.startActivity( intent );
+		}
 	}
 
 }

@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.component_acfunmine.R;
+import com.billy.cc.core.component.CC;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
@@ -18,7 +18,7 @@ import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
-import com.hubertyoung.component_acfunmine.debug.activity.DebugActivity;
+import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.entity.User;
 import com.hubertyoung.component_acfunmine.mine.control.MineControl;
 import com.hubertyoung.component_acfunmine.mine.model.MineModelImp;
@@ -259,7 +259,8 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 	public void onClick( View v ) {
 		int i = v.getId();
 		if ( i == R.id.debug_layout ) {
-			DebugActivity.launch( ( BaseActivity ) activity );
+//			DebugActivity.launch( ( BaseActivity ) activity );
+			CC.obtainBuilder( "ComponentDebug" ).setContext( activity ).setActionName( "toDebugActivity" ).build().call();
 
 		} else if ( i == R.id.ac_flow_layout ) {//				this.f.o();
 

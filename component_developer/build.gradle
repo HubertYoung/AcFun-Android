@@ -4,8 +4,4 @@ Properties props = new Properties()
 props.load(new FileInputStream(file("../gradle.properties")))
 dependencies {
     implementation project(':common')
-    addComponent 'component_developer'
 }
-
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'

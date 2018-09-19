@@ -3,7 +3,7 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.auto.service:auto-service:1.0-rc2'
-    api project(':javapoet:annotation')
+    implementation project(':javapoet:compiler')
 }
 
 sourceCompatibility = "1.7"
