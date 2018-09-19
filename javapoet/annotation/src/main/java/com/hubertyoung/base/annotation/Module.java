@@ -11,11 +11,12 @@ import java.lang.annotation.Target;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/18 20:51
+ * @date:2018/9/19 10:47
  * @since:V$VERSION
  * @desc:com.hubertyoung.base.annotation
  */
-@Target( ElementType.TYPE)
-@Retention( RetentionPolicy.CLASS)
-public @interface Test {
+@Target( ElementType.TYPE )
+@Retention( RetentionPolicy.CLASS )
+public @interface Module {
+	String alias() default "";
 }
