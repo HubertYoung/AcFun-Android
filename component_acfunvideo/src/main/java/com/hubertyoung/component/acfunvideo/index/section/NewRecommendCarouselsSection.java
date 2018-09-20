@@ -78,8 +78,8 @@ public class NewRecommendCarouselsSection extends Section {
 			viewHolderSlider.sliderLayout.delayTime( 3 );
 			viewHolderSlider.sliderLayout.build( list );
 			//TODO 广告配置
-			AdvertLists advertLists = regions.advertLists.get( 0 );
-			HashMap< String, String > advert = Utils.initAdvert( 1, advertLists.advertId, advertLists.playerId );
+//			AdvertLists advertLists = regions.advertLists.get( 0 );
+//			HashMap< String, String > advert = Utils.initAdvert( 1, advertLists.advertId, advertLists.playerId );
 		}
 	}
 
