@@ -2,11 +2,19 @@
 Litemall-Android
 Please edit local.properties and add the following
 ```properties
+keyAlias=test
+keyPassword=123456
+storeFile=../acfun/test.jks
+storePassword=123456
+
 app=true
 acfun=true
-component_acfunvideo=true
+component_acfunmine=true
+component_acfunvideo=false
 #component_basic=false
 component_banner=false
+component_developer=false
+component_aggregation=false
 component_dynamicsoreview=false
 component_bankcard=false
 component_filter=false
@@ -20,9 +28,5 @@ component_bar=false
 component_titlebar=false
 component_update=false
 component_ping=false
-component_dialog=true
-
+component_dialog=false
 ```
-
-## 相关项目
-[一个小商城。litemall = Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端](https://github.com/linlinjava/litemall)
