@@ -1,5 +1,5 @@
-# Litemall-Android
-Litemall-Android
+# AcFun-Android
+AcFun-Android
 Please edit local.properties and add the following
 ```properties
 keyAlias=test
