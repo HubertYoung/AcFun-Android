@@ -25,9 +25,11 @@ public class MineModelImp implements MineControl.Model {
 	public Observable< Boolean > requestCheckOfflineInfo( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
+//				.setBaseUrl( EnvironmentSwitcher.getMusicEnvironment(context, BuildConfig.DEBUG) )
 				.builder( ApiHomeService.class )
 				.requestCheckOfflineInfo( map.map )
 				.compose( new DefaultTransformer() );
+//		new TextView(mContext);
 	}
 
 	@Override

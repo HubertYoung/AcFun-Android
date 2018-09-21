@@ -3,8 +3,16 @@
           package="com.hubertyoung.component_developer">
 
     <application>
-        <activity android:name="com.hubertyoung.developer.DebugActivity"
-                  android:theme="@style/AppTheme.Preference.Ios">
+        <activity
+            android:name="com.hubertyoung.developer.DebugActivity"
+            android:theme="@style/AppTheme.Preference.Ios">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hubertyoung.developer.EnvironmentSwitchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 

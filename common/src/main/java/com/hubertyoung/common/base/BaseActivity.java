@@ -7,12 +7,19 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.facebook.stetho.common.LogUtil;
+import com.hubertyoung.base.bean.EnvironmentBean;
+import com.hubertyoung.base.bean.ModuleBean;
+import com.hubertyoung.base.listener.OnEnvironmentChangeListener;
 import com.hubertyoung.common.BuildConfig;
+import com.hubertyoung.common.api.EnvironmentSwitcher;
 import com.hubertyoung.common.baserx.RxManager;
 import com.hubertyoung.common.utils.AppActivityManager;
+import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.TUtil;
@@ -54,9 +61,8 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 //    public void initView() {
 //    }
 //}
-public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel > extends RxAppCompatActivity {
-	public String TAG = this.getClass()
-							.getSimpleName();
+public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel > extends RxAppCompatActivity implements OnEnvironmentChangeListener {
+	public String TAG = this.getClass().getSimpleName();
 	private static final String SAVED_STATE_STATUS_BAR_TRANSLUCENT = "saved_state_status_bar_translucent";
 
 	public T mPresenter;
@@ -75,16 +81,15 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 			mRxManager.mRxBus.register( this );
 		}
 		// 把actvity放到application栈中管理
-		AppActivityManager.getAppManager()
-				  .addActivity( this );
+		AppActivityManager.getAppManager().addActivity( this );
 		// 无标题
 		requestWindowFeature( Window.FEATURE_NO_TITLE );
 		// 设置竖屏
 		setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
 
-		if (savedInstanceState != null) {
-			statusBarTranslucent = savedInstanceState.getBoolean(SAVED_STATE_STATUS_BAR_TRANSLUCENT);
-			BarUtils.setStatusBarTranslucent(getWindow(), statusBarTranslucent);
+		if ( savedInstanceState != null ) {
+			statusBarTranslucent = savedInstanceState.getBoolean( SAVED_STATE_STATUS_BAR_TRANSLUCENT );
+			BarUtils.setStatusBarTranslucent( getWindow(), statusBarTranslucent );
 		}
 
 		doBeforeSetContentView();
@@ -101,6 +106,7 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 			this.initPresenter();
 			this.initView( savedInstanceState );
 			loadData();
+			EnvironmentSwitcher.addOnEnvironmentChangeListener( this );
 		} else {
 			LogUtil.e( "--->bindLayout() return 0" );
 		}
@@ -208,8 +214,7 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 	 * @return
 	 */
 	public FragmentTransaction getFragmentTransaction() {
-		return this.getSupportFragmentManager()
-				   .beginTransaction();
+		return this.getSupportFragmentManager().beginTransaction();
 	}
 
 	@Override
@@ -240,6 +245,7 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 
 	@Override
 	protected void onDestroy() {
+		EnvironmentSwitcher.removeOnEnvironmentChangeListener( this );
 		super.onDestroy();
 		CommonLog.loge( "activity: " + getClass().getSimpleName() + " onDestroy()" );
 		if ( mPresenter != null ) mPresenter.onDestroy();
@@ -248,15 +254,24 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 			mRxManager.clear();
 		}
 		if ( !isConfigChange ) {
-			AppActivityManager.getAppManager()
-					  .finishActivity( this );
+			AppActivityManager.getAppManager().finishActivity( this );
 		}
 
 	}
 
 	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		outState.putBoolean(SAVED_STATE_STATUS_BAR_TRANSLUCENT, statusBarTranslucent);
+	protected void onSaveInstanceState( Bundle outState ) {
+		super.onSaveInstanceState( outState );
+		outState.putBoolean( SAVED_STATE_STATUS_BAR_TRANSLUCENT, statusBarTranslucent );
+	}
+
+	@Override
+	public void onEnvironmentChanged( ModuleBean module, EnvironmentBean oldEnvironment, EnvironmentBean newEnvironment ) {
+		if ( AppUtils.isDebuggable() ) {
+			Log.e( TAG, module.getName() + "由" + oldEnvironment.getName() + "环境，Url=" + oldEnvironment.getUrl() + ",切换为" + newEnvironment.getName() + "环境，Url=" + newEnvironment.getUrl() );
+			Toast.makeText( this, module.getName() + "由" + oldEnvironment.getName() + "环境，Url=" + oldEnvironment.getUrl() + "切换为" + newEnvironment.getName() + "环境，Url=" + newEnvironment.getUrl(),
+					Toast.LENGTH_SHORT )
+					.show();
+		}
 	}
 }

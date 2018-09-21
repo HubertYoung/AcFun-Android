@@ -18,10 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
 }
 
 dependencies {
@@ -53,6 +53,10 @@ dependencies {
     //    compile "com.android.support:appcompat-v7:"+props.getAt("ANDROID_BUILD_SDK_TOOLS_VERSION")//版本 23以上（必须）
     api "ch.acra:acra-http:${props["ACRAVERSION"]}"
     api "ch.acra:acra-toast:${props["ACRAVERSION"]}"
+
+    api project(':javapoet:annotation')
+    debugAnnotationProcessor project(':javapoet:compiler')
+    releaseAnnotationProcessor project(':javapoet:compiler-release')
 }
 repositories {
     mavenCentral()

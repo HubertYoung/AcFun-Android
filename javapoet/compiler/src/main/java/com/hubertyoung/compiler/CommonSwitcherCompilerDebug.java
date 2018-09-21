@@ -134,151 +134,165 @@ public class CommonSwitcherCompilerDebug extends AbstractProcessor {
 
 		Set< ? extends Element > elements = roundEnvironment.getElementsAnnotatedWith( Module.class );
 		CodeBlock.Builder staticCodeBlockBuilder = CodeBlock.builder();
-		for (Element element : elements) {
-			Module moduleAnnotation = element.getAnnotation( Module.class );
-			if ( moduleAnnotation == null ) {
+		String cacheModulePackageName = null;
+		for (Element ele : elements) {
+			Module module = ele.getAnnotation( Module.class );
+			if ( module == null ) {
 				continue;
 			}
-			String moduleName = element.getSimpleName().toString();
-			String moduleUpperCaseName = moduleName.toUpperCase();
-			String moduleLowerCaseName = moduleName.toLowerCase();
-			String moduleAliasName = moduleAnnotation.alias();
+			String modulePackageName = ele.asType().toString();
+			String tmp = modulePackageName.substring(0,modulePackageName.lastIndexOf("."));
+			modulePackageName = tmp.substring(0,tmp.lastIndexOf("."));
+			System.out.println("#"+modulePackageName);
+			if (! modulePackageName.equals( cacheModulePackageName ) ){
+				for (Element element : elements) {
+					Module moduleAnnotation = element.getAnnotation( Module.class );
+					if ( moduleAnnotation == null ) {
+						continue;
+					}
+					String moduleName = element.getSimpleName().toString();
+					String moduleUpperCaseName = moduleName.toUpperCase();
+					String moduleLowerCaseName = moduleName.toLowerCase();
+					String moduleAliasName = moduleAnnotation.alias();
 
-			FieldSpec moduleXXField = FieldSpec//
-					.builder( ModuleBean.class, String.format( "%s%s", VAR_MODULE_PREFIX, moduleUpperCaseName ) )//
-					.addModifiers( Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL )//
-					.initializer( String.format( "new %s(\"%s\", \"%s\")", ModuleBean.class.getSimpleName(), moduleName, moduleAliasName ) )//
-					.build();
-			environmentSwitcherClassBuilder.addField( moduleXXField );
+					FieldSpec moduleXXField = FieldSpec//
+							.builder( ModuleBean.class, String.format( "%s%s", VAR_MODULE_PREFIX, moduleUpperCaseName ) )//
+							.addModifiers( Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL )//
+							.initializer( String.format( "new %s(\"%s\", \"%s\")", ModuleBean.class.getSimpleName(), moduleName, moduleAliasName ) )//
+							.build();
+					environmentSwitcherClassBuilder.addField( moduleXXField );
 
-			staticCodeBlockBuilder//
-					.add( "\n" )//
-					.addStatement( String.format( "%s.add(%s%s)", VAR_MODULE_LIST, VAR_MODULE_PREFIX, moduleUpperCaseName ) );
+					staticCodeBlockBuilder//
+							.add( "\n" )//
+							.addStatement( String.format( "%s.add(%s%s)", VAR_MODULE_LIST, VAR_MODULE_PREFIX, moduleUpperCaseName ) );
 
-			FieldSpec xxModuleCurrentEnvironmentField = FieldSpec//
-					.builder( EnvironmentBean.class, String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ) )//
-					.addModifiers( Modifier.PRIVATE, Modifier.STATIC )//
-					.build();
-			environmentSwitcherClassBuilder.addField( xxModuleCurrentEnvironmentField );
+					FieldSpec xxModuleCurrentEnvironmentField = FieldSpec//
+							.builder( EnvironmentBean.class, String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ) )//
+							.addModifiers( Modifier.PRIVATE, Modifier.STATIC )//
+							.build();
+					environmentSwitcherClassBuilder.addField( xxModuleCurrentEnvironmentField );
 
-			MethodSpec getXXEnvironmentMethod = MethodSpec//
-					.methodBuilder( String.format( METHOD_NAME_GET_XX_ENVIRONMENT, moduleName ) )//
-					.addModifiers( Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL )//
-					.returns( String.class )//
-					.addParameter( CONTEXT_TYPE_NAME, VAR_CONTEXT )//
-					.addParameter( boolean.class, VAR_PARAMETER_IS_DEBUG )//
-					.addStatement( String.format( "return get%sEnvironmentBean(%s, %s).getUrl()", moduleName, VAR_CONTEXT, VAR_PARAMETER_IS_DEBUG ) )//
-					.build();
-			environmentSwitcherClassBuilder.addMethod( getXXEnvironmentMethod );
+					MethodSpec getXXEnvironmentMethod = MethodSpec//
+							.methodBuilder( String.format( METHOD_NAME_GET_XX_ENVIRONMENT, moduleName ) )//
+							.addModifiers( Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL )//
+							.returns( String.class )//
+							.addParameter( CONTEXT_TYPE_NAME, VAR_CONTEXT )//
+							.addParameter( boolean.class, VAR_PARAMETER_IS_DEBUG )//
+							.addStatement( String.format( "return get%sEnvironmentBean(%s, %s).getUrl()", moduleName, VAR_CONTEXT, VAR_PARAMETER_IS_DEBUG ) )//
+							.build();
+					environmentSwitcherClassBuilder.addMethod( getXXEnvironmentMethod );
 
-			MethodSpec getXXEnvironmentBeanMethod = MethodSpec//
-					.methodBuilder( String.format( METHOD_NAME_GET_XX_ENVIRONMENT_BEAN, moduleName ) )//
-					.addModifiers( Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL )//
-					.returns( EnvironmentBean.class )//
-					.addParameter( CONTEXT_TYPE_NAME, VAR_CONTEXT )//
-					.addParameter( boolean.class, VAR_PARAMETER_IS_DEBUG )//
-					.addCode( String.format(//
-							"if (!%s) {\n" +//
-									"    return %s%s%s;\n" +//
-									"}\n",//
-							VAR_PARAMETER_IS_DEBUG,//
-							VAR_DEFAULT_ENVIRONMENT_PREFIX,//
-							moduleUpperCaseName, //
-							VAR_DEFAULT_ENVIRONMENT_SUFFIX ) )//
-					.addCode( String.format(//
-							"if (%s == null) {\n" +//
-									"    android.content.SharedPreferences sharedPreferences = %s.getSharedPreferences(%s.getPackageName() + \".%s\", %s);\n" +//
-									"    String url = sharedPreferences.getString(\"%s%s%s\", %s%s%s.getUrl());\n" +//
-									"    String environmentName = sharedPreferences.getString(\"%s%s%s\", %s%s%s.getName());\n" +//
-									"    String appAlias = sharedPreferences.getString(\"%s%s%s\", %s%s%s.getAlias());\n" +//
-									"    for (EnvironmentBean environmentBean : MODULE_%s.getEnvironments()) {\n" +//
-									"        if (android.text.TextUtils.equals(environmentBean.getUrl(), url)) {\n" +//
-									"            %s = environmentBean;\n" +//
-									"            break;\n" +//
-									"        }\n" +//
-									"    }\n" +//
-									"}\n",//
-							String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ),//
-							VAR_CONTEXT, VAR_CONTEXT, Constants.ENVIRONMENT_SWITCHER_FILE_NAME.toLowerCase(), MODE_PRIVATE,//
-							moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_URL_SUFFIX, VAR_DEFAULT_ENVIRONMENT_PREFIX, moduleUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX,//
-							moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_NAME_SUFFIX, VAR_DEFAULT_ENVIRONMENT_PREFIX, moduleUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX,//
-							moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_ALIAS_SUFFIX, VAR_DEFAULT_ENVIRONMENT_PREFIX, moduleUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX,//
-							moduleUpperCaseName,//
-							String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ) ) )//
-					.addStatement( String.format( "return " + VAR_CURRENT_XX_ENVIRONMENT, moduleName ) )//
-					.build();
-			environmentSwitcherClassBuilder.addMethod( getXXEnvironmentBeanMethod );
+					MethodSpec getXXEnvironmentBeanMethod = MethodSpec//
+							.methodBuilder( String.format( METHOD_NAME_GET_XX_ENVIRONMENT_BEAN, moduleName ) )//
+							.addModifiers( Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL )//
+							.returns( EnvironmentBean.class )//
+							.addParameter( CONTEXT_TYPE_NAME, VAR_CONTEXT )//
+							.addParameter( boolean.class, VAR_PARAMETER_IS_DEBUG )//
+							.addCode( String.format(//
+									"if (!%s) {\n" +//
+											"    return %s%s%s;\n" +//
+											"}\n",//
+									VAR_PARAMETER_IS_DEBUG,//
+									VAR_DEFAULT_ENVIRONMENT_PREFIX,//
+									moduleUpperCaseName, //
+									VAR_DEFAULT_ENVIRONMENT_SUFFIX ) )//
+							.addCode( String.format(//
+									"if (%s == null) {\n" +//
+											"    android.content.SharedPreferences sharedPreferences = %s.getSharedPreferences(%s.getPackageName() + \".%s\", %s);\n" +//
+											"    String url = sharedPreferences.getString(\"%s%s%s\", %s%s%s.getUrl());\n" +//
+											"    String environmentName = sharedPreferences.getString(\"%s%s%s\", %s%s%s.getName());\n" +//
+											"    String appAlias = sharedPreferences.getString(\"%s%s%s\", %s%s%s.getAlias());\n" +//
+											"    for (EnvironmentBean environmentBean : MODULE_%s.getEnvironments()) {\n" +//
+											"        if (android.text.TextUtils.equals(environmentBean.getUrl(), url)) {\n" +//
+											"            %s = environmentBean;\n" +//
+											"            break;\n" +//
+											"        }\n" +//
+											"    }\n" +//
+											"}\n",//
+									String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ),//
+									VAR_CONTEXT, VAR_CONTEXT, Constants.ENVIRONMENT_SWITCHER_FILE_NAME.toLowerCase(), MODE_PRIVATE,//
+									moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_URL_SUFFIX, VAR_DEFAULT_ENVIRONMENT_PREFIX, moduleUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX,//
+									moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_NAME_SUFFIX, VAR_DEFAULT_ENVIRONMENT_PREFIX, moduleUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX,//
+									moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_ALIAS_SUFFIX, VAR_DEFAULT_ENVIRONMENT_PREFIX, moduleUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX,//
+									moduleUpperCaseName,//
+									String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ) ) )//
+							.addStatement( String.format( "return " + VAR_CURRENT_XX_ENVIRONMENT, moduleName ) )//
+							.build();
+					environmentSwitcherClassBuilder.addMethod( getXXEnvironmentBeanMethod );
 
-			MethodSpec setXXEnvironmentMethod = MethodSpec.methodBuilder( String.format( METHOD_NAME_SET_XX_ENVIRONMENT, moduleName ) )//
-					.addModifiers( Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL )//
-					.returns( void.class )//
-					.addParameter( CONTEXT_TYPE_NAME, VAR_CONTEXT )//
-					.addParameter( EnvironmentBean.class, VAR_PARAMETER_NEW_ENVIRONMENTBEAN )//
-					.addStatement( String.format(//
-							"%s.getSharedPreferences(%s.getPackageName() + \".%s\", %s).edit()\n" +//
-									".putString(\"%s%s%s\", %s.getUrl())\n" +//
-									".putString(\"%s%s%s\", %s.getName())\n" +//
-									".putString(\"%s%s%s\", %s.getAlias())\n" +//
-									".apply()",//
-							VAR_CONTEXT, VAR_CONTEXT, Constants.ENVIRONMENT_SWITCHER_FILE_NAME.toLowerCase(), MODE_PRIVATE,//
-							moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_URL_SUFFIX, VAR_PARAMETER_NEW_ENVIRONMENTBEAN,//
-							moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_NAME_SUFFIX, VAR_PARAMETER_NEW_ENVIRONMENTBEAN,//
-							moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_ALIAS_SUFFIX, VAR_PARAMETER_NEW_ENVIRONMENTBEAN//
-					) ).addCode( String.format(//
-							"if (!%s.equals(%s)) {\n" +//
-									"    EnvironmentBean oldEnvironmentBean = %s;\n" +//
-									"    %s = %s;\n" +//
-									"    onEnvironmentChange(%s%s, oldEnvironmentBean, %s);\n" +//
-									"}\n", VAR_PARAMETER_NEW_ENVIRONMENTBEAN, String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ),//
-							String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ),//
-							String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ), VAR_PARAMETER_NEW_ENVIRONMENTBEAN,//
-							VAR_MODULE_PREFIX, moduleUpperCaseName, VAR_PARAMETER_NEW_ENVIRONMENTBEAN ) )//
-					.build();
-			environmentSwitcherClassBuilder.addMethod( setXXEnvironmentMethod );
+					MethodSpec setXXEnvironmentMethod = MethodSpec.methodBuilder( String.format( METHOD_NAME_SET_XX_ENVIRONMENT, moduleName ) )//
+							.addModifiers( Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL )//
+							.returns( void.class )//
+							.addParameter( CONTEXT_TYPE_NAME, VAR_CONTEXT )//
+							.addParameter( EnvironmentBean.class, VAR_PARAMETER_NEW_ENVIRONMENTBEAN )//
+							.addStatement( String.format(//
+									"%s.getSharedPreferences(%s.getPackageName() + \".%s\", %s).edit()\n" +//
+											".putString(\"%s%s%s\", %s.getUrl())\n" +//
+											".putString(\"%s%s%s\", %s.getName())\n" +//
+											".putString(\"%s%s%s\", %s.getAlias())\n" +//
+											".apply()",//
+									VAR_CONTEXT, VAR_CONTEXT, Constants.ENVIRONMENT_SWITCHER_FILE_NAME.toLowerCase(), MODE_PRIVATE,//
+									moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_URL_SUFFIX, VAR_PARAMETER_NEW_ENVIRONMENTBEAN,//
+									moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_NAME_SUFFIX, VAR_PARAMETER_NEW_ENVIRONMENTBEAN,//
+									moduleLowerCaseName, ENVIRONMENT, VAR_ENVIRONMENT_ALIAS_SUFFIX, VAR_PARAMETER_NEW_ENVIRONMENTBEAN//
+							) ).addCode( String.format(//
+									"if (!%s.equals(%s)) {\n" +//
+											"    EnvironmentBean oldEnvironmentBean = %s;\n" +//
+											"    %s = %s;\n" +//
+											"    onEnvironmentChange(%s%s, oldEnvironmentBean, %s);\n" +//
+											"}\n", VAR_PARAMETER_NEW_ENVIRONMENTBEAN, String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ),//
+									String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ),//
+									String.format( VAR_CURRENT_XX_ENVIRONMENT, moduleName ), VAR_PARAMETER_NEW_ENVIRONMENTBEAN,//
+									VAR_MODULE_PREFIX, moduleUpperCaseName, VAR_PARAMETER_NEW_ENVIRONMENTBEAN ) )//
+							.build();
+					environmentSwitcherClassBuilder.addMethod( setXXEnvironmentMethod );
 
-			FieldSpec.Builder defaultXXEnvironmentFiledBuilder = FieldSpec//
-					.builder( EnvironmentBean.class, String.format( "%s%s%s", VAR_DEFAULT_ENVIRONMENT_PREFIX, moduleUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX ),//
-							Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL );
-			System.out.println( defaultXXEnvironmentFiledBuilder.toString() );
-			List< ? extends Element > allMembers = processingEnv.getElementUtils().getAllMembers( ( TypeElement ) element );
+					FieldSpec.Builder defaultXXEnvironmentFiledBuilder = FieldSpec//
+							.builder( EnvironmentBean.class, String.format( "%s%s%s", VAR_DEFAULT_ENVIRONMENT_PREFIX, moduleUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX ),//
+									Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL );
+					System.out.println( defaultXXEnvironmentFiledBuilder.toString() );
+					List< ? extends Element > allMembers = processingEnv.getElementUtils().getAllMembers( ( TypeElement ) element );
 
-			for (Element member : allMembers) {
-				Environment environmentAnnotation = member.getAnnotation( Environment.class );
-				if ( environmentAnnotation == null ) {
-					continue;
+					for (Element member : allMembers) {
+						Environment environmentAnnotation = member.getAnnotation( Environment.class );
+						if ( environmentAnnotation == null ) {
+							continue;
+						}
+
+						String environmentName = member.getSimpleName().toString();
+						String environmentUpperCaseName = environmentName.toUpperCase();
+						String url = environmentAnnotation.url();
+						String alias = environmentAnnotation.alias();
+
+						FieldSpec environmentField = generateEnvironmentField( environmentAnnotation, defaultXXEnvironmentFiledBuilder,//
+								moduleUpperCaseName, environmentName, environmentUpperCaseName, url, alias );
+
+						environmentSwitcherClassBuilder.addField( environmentField );
+
+						staticCodeBlockBuilder.addStatement( String.format( "%s%s.getEnvironments().add(%s)", //
+								VAR_MODULE_PREFIX, moduleUpperCaseName,//
+								String.format( "%s_%s%s", moduleUpperCaseName, environmentUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX ) ) );
+					}
+
+					environmentSwitcherClassBuilder.addField( defaultXXEnvironmentFiledBuilder.build() ).build();
 				}
 
-				String environmentName = member.getSimpleName().toString();
-				String environmentUpperCaseName = environmentName.toUpperCase();
-				String url = environmentAnnotation.url();
-				String alias = environmentAnnotation.alias();
+				getModuleListMethodBuilder.addStatement(String.format("return %s", VAR_MODULE_LIST));
 
-				FieldSpec environmentField = generateEnvironmentField( environmentAnnotation, defaultXXEnvironmentFiledBuilder,//
-						moduleUpperCaseName, environmentName, environmentUpperCaseName, url, alias );
+				environmentSwitcherClassBuilder.addMethod(getModuleListMethodBuilder.build());
 
-				environmentSwitcherClassBuilder.addField( environmentField );
+				environmentSwitcherClassBuilder.addStaticBlock(staticCodeBlockBuilder.build());
 
-				staticCodeBlockBuilder.addStatement( String.format( "%s%s.getEnvironments().add(%s)", //
-						VAR_MODULE_PREFIX, moduleUpperCaseName,//
-						String.format( "%s_%s%s", moduleUpperCaseName, environmentUpperCaseName, VAR_DEFAULT_ENVIRONMENT_SUFFIX ) ) );
+				JavaFile switchEnvironmentJavaFile = JavaFile.builder(modulePackageName, environmentSwitcherClassBuilder.build()).build();
+
+				try {
+					switchEnvironmentJavaFile.writeTo(processingEnv.getFiler());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
-
-			environmentSwitcherClassBuilder.addField( defaultXXEnvironmentFiledBuilder.build() ).build();
 		}
 
-		getModuleListMethodBuilder.addStatement(String.format("return %s", VAR_MODULE_LIST));
-
-		environmentSwitcherClassBuilder.addMethod(getModuleListMethodBuilder.build());
-
-		environmentSwitcherClassBuilder.addStaticBlock(staticCodeBlockBuilder.build());
-
-		JavaFile switchEnvironmentJavaFile = JavaFile.builder(Constants.PACKAGE_NAME, environmentSwitcherClassBuilder.build()).build();
-
-		try {
-			switchEnvironmentJavaFile.writeTo(processingEnv.getFiler());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		return true;
 	}
 

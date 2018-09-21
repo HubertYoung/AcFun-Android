@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.common.widget.preference.BasePreferenceFragment;
 import com.hubertyoung.component_developer.R;
 
@@ -25,6 +25,7 @@ public class DebugActivity extends BaseActivity implements FragmentManager.OnBac
 	private LinearLayout mActivityRoot;
 	private FrameLayout mContentLayout;
 	private Toolbar mToolbar;
+	public static DebugActivity mActivity;
 
 	@Override
 	public int getLayoutId() {
@@ -48,6 +49,7 @@ public class DebugActivity extends BaseActivity implements FragmentManager.OnBac
 
 	@Override
 	public void initToolBar() {
+		mActivity = this;
 		mToolbar = findViewById( R.id.view_toolbar );
 		mActivityRoot = findViewById( R.id.activity_root );
 		mContentLayout = findViewById( R.id.content_layout );
@@ -113,7 +115,7 @@ public class DebugActivity extends BaseActivity implements FragmentManager.OnBac
 			findPreference( getString( R.string.pref_key_switch_environment ) ).setOnPreferenceClickListener( new Preference.OnPreferenceClickListener() {
 				@Override
 				public boolean onPreferenceClick( Preference preference ) {
-					ToastUtil.showSuccess( "切换环境" );
+					CC.obtainBuilder( "ComponentDebug" ).setContext( mActivity ).setActionName( "toEnvironmentSwitchActivity" ).build().call();
 					return false;
 				}
 			} );
@@ -144,6 +146,7 @@ public class DebugActivity extends BaseActivity implements FragmentManager.OnBac
 	@Override
 	protected void onDestroy() {
 		getSupportFragmentManager().removeOnBackStackChangedListener( this );
+		mActivity = null;
 		super.onDestroy();
 	}
 

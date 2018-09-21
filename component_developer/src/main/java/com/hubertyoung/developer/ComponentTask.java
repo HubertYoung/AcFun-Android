@@ -30,8 +30,8 @@ public class ComponentTask implements IComponent {
 				DebugActivity.launch( context );
 				CC.sendCCResult( cc.getCallId(), CCResult.success( ) );
 				break;
-            case "toPatrolPlanActivity":
-				DebugActivity.launch( context );
+            case "toEnvironmentSwitchActivity":
+				EnvironmentSwitchActivity.launch( context );
                 CC.sendCCResult(cc.getCallId(), CCResult.success());
                 break;
 //            case "toIssueActivity":

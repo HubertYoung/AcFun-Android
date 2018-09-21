@@ -27,4 +27,12 @@ public class ModuleBean {
 	public List< EnvironmentBean > getEnvironments() {
 		return environments;
 	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public String getName() {
+		return name;
+	}
 }

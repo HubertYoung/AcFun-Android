@@ -24,6 +24,7 @@ import com.hubertyoung.common.utils.SPUtils;
 public class ApiConstants {
 	public static final String BASE_PATH = "/";
 	public static final String NETEAST_HOST = "http://apipc.app.acfun.cn";
+	public static final String NETEAST_TEST_HOST = "http://testpc.app.acfun.cn";
 //	public static final String NETEAST_HOST = "http://192.168.2.60:9006";
 
 	/**

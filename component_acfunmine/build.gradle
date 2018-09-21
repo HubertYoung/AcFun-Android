@@ -5,6 +5,8 @@ props.load(new FileInputStream(file("../gradle.properties")))
 dependencies {
     implementation project(':common')
     addComponent 'component_developer'
+    debugAnnotationProcessor project(':javapoet:compiler')
+    releaseAnnotationProcessor project(':javapoet:compiler-release')
 }
 
 apply plugin: 'kotlin-android'
