@@ -30,3 +30,8 @@ component_update=false
 component_ping=false
 component_dialog=false
 ```
+
+The demo picture is as follows
+
+![image](image/device-2018-09-21-161031.png)
+![image](image/device-2018-09-21-161100.png)
