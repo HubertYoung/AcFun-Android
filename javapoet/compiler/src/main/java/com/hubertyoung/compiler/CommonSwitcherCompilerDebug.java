@@ -42,6 +42,7 @@ import javax.lang.model.element.TypeElement;
 @AutoService( Processor.class )
 public class CommonSwitcherCompilerDebug extends AbstractProcessor {
 	public static final String VAR_ENVIRONMENTLIST = "environmentList";
+	public static final String VAR_ENVIRONMENTSWITCHERLIST = "environmentSwitcherList";
 	public static final String METHOD_NAME_ADD_ON_ENVIRONMENT_CHANGE_LISTENER = "addOnEnvironmentChangeListener";
 	public static final String METHOD_NAME_REMOVE_ON_ENVIRONMENT_CHANGE_LISTENER = "removeOnEnvironmentChangeListener";
 	public static final String METHOD_NAME_REMOVE_ALL_ON_ENVIRONMENT_CHANGE_LISTENER = "removeAllOnEnvironmentChangeListener";
@@ -71,6 +72,60 @@ public class CommonSwitcherCompilerDebug extends AbstractProcessor {
 
 	@Override
 	public boolean process( Set< ? extends TypeElement > set, RoundEnvironment roundEnvironment ) {
+		generateEnvironmentSwitcher( roundEnvironment );
+//		generateEnvironmentSwitcherList( roundEnvironment );
+
+		return true;
+	}
+
+	/**
+	 * 生成 EnvironmentSwitcher包名集合
+	 * @param roundEnvironment
+	 */
+	private void generateEnvironmentSwitcherList( RoundEnvironment roundEnvironment ) {
+		TypeSpec.Builder environmentSwitcherListClassBuilder = //
+				TypeSpec.classBuilder( Constants.ENVIRONMENT_SWITCHER_PACKAGE_FILE_NAME )//
+						.addModifiers( Modifier.PUBLIC,Modifier.FINAL );
+		FieldSpec environmentSwitcherListBuild = FieldSpec.builder( ArrayList.class, VAR_ENVIRONMENTSWITCHERLIST )//
+				.addModifiers( Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL )//
+				.initializer( String.format( "new %s<String>()", ArrayList.class.getSimpleName() ) )//
+				.build();
+		environmentSwitcherListClassBuilder.addField( environmentSwitcherListBuild );
+		MethodSpec.Builder getSwitcherListMethodBuilder = MethodSpec//
+				.methodBuilder( Constants.METHOD_NAME_GET_SWITCHER_LIST )//
+				.addModifiers( Modifier.PUBLIC, Modifier.STATIC )//
+				.returns( ArrayList.class );
+		getSwitcherListMethodBuilder.addStatement(String.format("return %s", VAR_ENVIRONMENTSWITCHERLIST));
+
+		environmentSwitcherListClassBuilder.addMethod(getSwitcherListMethodBuilder.build());
+		Set< ? extends Element > elements = roundEnvironment.getElementsAnnotatedWith( Module.class );
+		CodeBlock.Builder staticCodeBlockBuilder = CodeBlock.builder();
+		for (Element element : elements) {
+			Module elementAnnotation = element.getAnnotation( Module.class );
+			if ( elementAnnotation == null ) {
+				continue;
+			}
+			String modulePackageName = element.asType().toString();
+			String tmp = modulePackageName.substring(0,modulePackageName.lastIndexOf("."));
+			modulePackageName = tmp.substring(0,tmp.lastIndexOf("."));
+			staticCodeBlockBuilder.add( "\n" )//
+			.addStatement( String.format( "%s.add(\"%s\")", VAR_ENVIRONMENTSWITCHERLIST,modulePackageName) );
+		}
+		environmentSwitcherListClassBuilder.addStaticBlock(staticCodeBlockBuilder.build());
+		JavaFile switchEnvironmentJavaFile = JavaFile.builder(Constants.PACKAGE_NAME, environmentSwitcherListClassBuilder.build()).build();
+
+		try {
+			switchEnvironmentJavaFile.writeTo(processingEnv.getFiler());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 生成 EnvironmentSwitcher
+	 * @param roundEnvironment
+	 */
+	private void generateEnvironmentSwitcher( RoundEnvironment roundEnvironment ) {
 		TypeSpec.Builder environmentSwitcherClassBuilder = //
 				TypeSpec.classBuilder( Constants.ENVIRONMENT_SWITCHER_FILE_NAME )//
 						.addModifiers( Modifier.PUBLIC, Modifier.FINAL );
@@ -292,8 +347,6 @@ public class CommonSwitcherCompilerDebug extends AbstractProcessor {
 				}
 			}
 		}
-
-		return true;
 	}
 
 	protected FieldSpec generateEnvironmentField( Environment environmentAnnotation,//
