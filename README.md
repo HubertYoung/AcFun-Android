@@ -31,7 +31,7 @@ component_ping=false
 component_dialog=false
 ```
 
-The demo picture is as follows
 
-![image](image/device-2018-09-21-161031.png)
-![image](image/device-2018-09-21-161100.png)
+## Screenshots
+<a href="image/device-2018-09-21-161031.png"><img src="image/device-2018-09-21-161031.png" width="30%"/></a><a href="image/device-2018-09-21-161100.png"><img src="image/device-2018-09-21-161100.png" width="30%"/></a>
+
