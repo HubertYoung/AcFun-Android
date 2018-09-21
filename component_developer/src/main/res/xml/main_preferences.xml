@@ -14,6 +14,21 @@
         android:title="@string/pref_title_account_and_security">
         <Preference
             android:defaultValue="@null"
+            android:key="@string/pref_key_switch_environment"
+            android:persistent="false"
+            android:title="切换环境">
+            <!--<intent-->
+            <!--android:action="android.intent.action.VIEW"-->
+            <!--android:targetClass="tv.danmaku.bili.ui.personinfo.PersonInfoActivity"-->
+            <!--android:targetPackage="@string/package_name"/>-->
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="@string/pref_key_account_and_security"
+        android:title="@string/pref_title_account_and_security">
+        <Preference
+            android:defaultValue="@null"
             android:key="@string/pref_key_person_info"
             android:persistent="false"
             android:title="@string/person_info_title">

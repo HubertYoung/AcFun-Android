@@ -5,19 +5,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.preference.Preference;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.common.widget.preference.BasePreferenceFragment;
 import com.hubertyoung.component_developer.R;
 
 
-public class DebugActivity extends BaseActivity {
+public class DebugActivity extends BaseActivity implements FragmentManager.OnBackStackChangedListener {
 
 	private LinearLayout mActivityRoot;
 	private FrameLayout mContentLayout;
@@ -54,7 +57,19 @@ public class DebugActivity extends BaseActivity {
 		if ( actionBar != null ) {
 			actionBar.setDisplayHomeAsUpEnabled( true );
 		}
+		mToolbar.setTitle( "开发设置" );
+
+		initAction();
 		getFragment( "", BiliPreferencesFragment.class.getName(), null, false );
+	}
+
+	private void initAction() {
+		mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				DebugActivity.this.onBackPressed();
+			}
+		});
+		getSupportFragmentManager().addOnBackStackChangedListener( this );
 	}
 
 	private Fragment getFragment( CharSequence charSequence, String str, Bundle bundle, boolean isBackStack ) {
@@ -79,15 +94,26 @@ public class DebugActivity extends BaseActivity {
 //		throw new IllegalArgumentException("error");
 	}
 
+	@Override
+	public void onBackStackChanged() {
+		int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
+		if ( backStackEntryCount == 0 ) {
+			setTitle( "设置" );
+		} else {
+			setTitle( getSupportFragmentManager().getBackStackEntryAt( backStackEntryCount - 1 ).getBreadCrumbTitle() );
+		}
+	}
+
 
 	public static class BiliPreferencesFragment extends BasePreferenceFragment {
 
 		@Override
 		public void onCreatePreferences( Bundle savedInstanceState, String rootKey ) {
 			addPreferencesFromResource( R.xml.main_preferences );
-			findPreference( getString( R.string.pref_key_feed_back ) ).setOnPreferenceClickListener( new Preference.OnPreferenceClickListener() {
+			findPreference( getString( R.string.pref_key_switch_environment ) ).setOnPreferenceClickListener( new Preference.OnPreferenceClickListener() {
 				@Override
 				public boolean onPreferenceClick( Preference preference ) {
+					ToastUtil.showSuccess( "切换环境" );
 					return false;
 				}
 			} );
@@ -115,6 +141,11 @@ public class DebugActivity extends BaseActivity {
 		}
 	}
 
+	@Override
+	protected void onDestroy() {
+		getSupportFragmentManager().removeOnBackStackChangedListener( this );
+		super.onDestroy();
+	}
 
 	public static void launch( Context context ) {
 		if ( context instanceof BaseActivity ) {
