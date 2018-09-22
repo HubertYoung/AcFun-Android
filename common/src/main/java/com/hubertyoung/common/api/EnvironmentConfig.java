@@ -30,7 +30,7 @@ public class EnvironmentConfig {
 	 * 特殊模块 Music 的环境
 	 */
 	@Module(alias = "我的")
-	private class Music {
+	private class Mine {
 		@Environment(url = ApiConstants.NETEAST_HOST, isRelease = true, alias = "正式")
 		private String online;
 

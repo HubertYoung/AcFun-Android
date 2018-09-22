@@ -1,12 +1,15 @@
 package com.hubertyoung.component_acfunmine.mine.model;
 
+import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
+import com.hubertyoung.component_acfunmine.BuildConfig;
 import com.hubertyoung.component_acfunmine.api.ApiHomeService;
 import com.hubertyoung.component_acfunmine.entity.User;
 import com.hubertyoung.component_acfunmine.mine.control.MineControl;
+import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import io.reactivex.Observable;
 
@@ -25,7 +28,7 @@ public class MineModelImp implements MineControl.Model {
 	public Observable< Boolean > requestCheckOfflineInfo( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
-//				.setBaseUrl( EnvironmentSwitcher.getMusicEnvironment(context, BuildConfig.DEBUG) )
+				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )
 				.builder( ApiHomeService.class )
 				.requestCheckOfflineInfo( map.map )
 				.compose( new DefaultTransformer() );
@@ -36,6 +39,7 @@ public class MineModelImp implements MineControl.Model {
 	public Observable< User > requestUserInfo( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
+				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )
 				.builder( ApiHomeService.class )
 				.requestUserInfo( map.map )
 				.compose( new DefaultTransformer() );
