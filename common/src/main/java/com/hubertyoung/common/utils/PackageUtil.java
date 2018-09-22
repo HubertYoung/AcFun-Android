@@ -1,5 +1,7 @@
 package com.hubertyoung.common.utils;
 
+import android.content.Context;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -11,6 +13,8 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+
+import dalvik.system.DexFile;
 
 /**
  * <br>
@@ -166,6 +170,24 @@ public class PackageUtil {
 			}
 		}
 		return myClassName;
+	}
+
+	public static List getClasses(Context mContext, String packageName) {
+		ArrayList classes = new ArrayList<>();
+		try {
+			String packageCodePath = mContext.getPackageCodePath();
+			DexFile df = new DexFile(packageCodePath);
+			String regExp = "^" + packageName + ".\\w+$";
+			for (Enumeration iter = df.entries(); iter.hasMoreElements(); ) {
+				String className = ( String ) iter.nextElement();
+				if (className.matches(regExp)) {
+					classes.add(className);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return classes;
 	}
 
 }

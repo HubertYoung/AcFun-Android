@@ -16,13 +16,13 @@ import com.hubertyoung.base.bean.EnvironmentBean;
 import com.hubertyoung.base.bean.ModuleBean;
 import com.hubertyoung.base.listener.OnEnvironmentChangeListener;
 import com.hubertyoung.common.BuildConfig;
-import com.hubertyoung.common.api.EnvironmentSwitcher;
 import com.hubertyoung.common.baserx.RxManager;
 import com.hubertyoung.common.utils.AppActivityManager;
 import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.TUtil;
+import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 /**

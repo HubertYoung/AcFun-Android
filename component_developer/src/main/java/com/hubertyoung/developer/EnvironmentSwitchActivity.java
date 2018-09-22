@@ -18,10 +18,8 @@ import com.hubertyoung.base.Constants;
 import com.hubertyoung.base.bean.EnvironmentBean;
 import com.hubertyoung.base.bean.ModuleBean;
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.utils.PackageUtil;
 import com.hubertyoung.component_developer.R;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -64,11 +62,6 @@ public class EnvironmentSwitchActivity extends BaseActivity {
 	public void initView( Bundle savedInstanceState ) {
 		mToolbar = findViewById( R.id.view_toolbar );
 		try {
-			try {
-				List< String > list = PackageUtil.getClassName( "com", true );
-			} catch ( IOException e ) {
-				e.printStackTrace();
-			}
 			Class< ? > environmentSwitcherClass = Class.forName( Constants.PACKAGE_NAME + "." + Constants.ENVIRONMENT_SWITCHER_FILE_NAME );
 			Method getEnvironmentConfigMethod = environmentSwitcherClass.getMethod( Constants.METHOD_NAME_GET_MODULE_LIST );
 			ArrayList< ModuleBean > modules = ( ArrayList< ModuleBean > ) getEnvironmentConfigMethod.invoke( environmentSwitcherClass.newInstance() );
