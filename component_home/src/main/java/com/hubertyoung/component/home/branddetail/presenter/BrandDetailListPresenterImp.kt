@@ -20,7 +20,7 @@ class BrandDetailListPresenterImp : BrandDetailListControl.Presenter() {
 	override fun requestBrandDetailList(map: MyRequestMap) {
 		mView.showLoading("Loading...", 0)
 		mRxManage.add(mModel.requestBrandDetailList(map)
-				.compose((mContext as BaseActivity<*, *>).bindToLifecycle<BrandDetailBodyEntity>())
+//				.compose((mContext as BaseActivity<*, *>).bindToLifecycle<BrandDetailBodyEntity>())
 				.subscribe(Consumer<BrandDetailBodyEntity> { brandDetailBodyEntity ->
 					mView.stopLoading()
 					mView.setBrandDetailListInfo(brandDetailBodyEntity)

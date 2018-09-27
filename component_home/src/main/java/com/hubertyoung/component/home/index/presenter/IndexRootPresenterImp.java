@@ -24,7 +24,7 @@ public class IndexRootPresenterImp extends IndexRootControl.Presenter {
 	public void requestHomeIndex( MyRequestMap map ) {
 		mView.showLoading( "Loading...", 0 );
 		mRxManage.add( mModel.requestHomeIndex( map )
-				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+//				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribe( new Consumer< HomeIndexEntity >() {
 
 					@Override
