@@ -18,7 +18,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="5.0dp"
-        tools:layoutManager="android.support.v7.widget.GridLayoutManager"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/home_item_new_goods_body"
         tools:spanCount="2"/>
 </android.support.v7.widget.LinearLayoutCompat>

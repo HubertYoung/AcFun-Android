@@ -1,7 +1,7 @@
 package com.hubertyoung.common.utils;
 
 import android.app.Activity;
-import android.support.design.widget.TabLayout;
+import com.google.android.material.tabs.TabLayout;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.LinearLayout;

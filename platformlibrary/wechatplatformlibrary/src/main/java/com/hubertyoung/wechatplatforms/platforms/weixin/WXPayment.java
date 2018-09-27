@@ -1,7 +1,7 @@
 package com.hubertyoung.wechatplatforms.platforms.weixin;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.hubertyoung.baseplatform.payment.IPayable;

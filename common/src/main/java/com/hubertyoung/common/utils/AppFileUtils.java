@@ -9,7 +9,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.constant.AppConfig;

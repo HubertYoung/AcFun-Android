@@ -20,7 +20,7 @@
         </activity>
         <!-- 支持7.0安装文件 -->
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="com.hubertyoung.litemallupdate.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">

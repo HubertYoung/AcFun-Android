@@ -11,7 +11,7 @@ android {
         versionName var.versionName
         flavorDimensions var.versionName
         multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 //    sourceSets {
 //        main {
@@ -42,11 +42,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:$var.supportLibraryVersion"
-    implementation "com.android.support:design:$var.supportLibraryVersion"
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     //    implementation 'com.jakewharton:butterknife:8.4.0'
     //    kapt 'com.jakewharton:butterknife-compiler:8.4.0'
     implementation project(':bottom-navigation-bar')

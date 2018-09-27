@@ -1,7 +1,7 @@
 package activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hubertyoung.component_banner.R;
 import com.hubertyoung.component_banner.banner.BannerEntity;

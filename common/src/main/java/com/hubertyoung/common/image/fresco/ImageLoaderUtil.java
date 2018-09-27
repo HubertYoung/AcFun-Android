@@ -2,9 +2,9 @@ package com.hubertyoung.common.image.fresco;
 
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IdRes;
-import android.support.annotation.Nullable;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.facebook.drawee.backends.pipeline.Fresco;

@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        tools:layoutManager="android.support.v7.widget.GridLayoutManager"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/home_item_floor_goods_body"
         tools:spanCount="2"/>
 </android.support.v7.widget.LinearLayoutCompat>

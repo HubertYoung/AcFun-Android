@@ -1,6 +1,6 @@
 package com.hubertyoung.qqplatforms.platforms.qq;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.hubertyoung.baseplatform.AuthorizeSDK;
 import com.hubertyoung.baseplatform.ShareSDK;

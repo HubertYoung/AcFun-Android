@@ -1,11 +1,10 @@
 package com.hubertyoung.component.acfunvideo.index.presenter;
 
 
+import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
-import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.basebean.MyRequestMap;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 	public void requestRecommend( MyRequestMap map ) {
 		mView.showLoading( "Loading...", 0 );
 		mRxManage.add( mModel.requestRecommend( map )
-				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+//				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribe( new Consumer< List<Regions > >() {
 
 					@Override
@@ -49,7 +48,7 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 	public void requestNewRecommend( MyRequestMap map ) {
 		mView.showLoading( "Loading...", 1 );
 		mRxManage.add( mModel.requestNewRecommend( map )
-				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+//				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribe( new Consumer< List<RegionBodyContent > >() {
 
 					@Override

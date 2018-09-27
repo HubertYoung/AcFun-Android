@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
@@ -23,7 +22,9 @@ import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.TUtil;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * 基类
@@ -61,7 +62,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 //    public void initView() {
 //    }
 //}
-public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel > extends RxAppCompatActivity implements OnEnvironmentChangeListener {
+public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel > extends AppCompatActivity implements OnEnvironmentChangeListener {
 	public String TAG = this.getClass().getSimpleName();
 	private static final String SAVED_STATE_STATUS_BAR_TRANSLUCENT = "saved_state_status_bar_translucent";
 

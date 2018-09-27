@@ -28,6 +28,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation project(':platformlibrary:baseplatformlibrary')
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
-    implementation "com.android.support:support-annotations:$var.supportLibraryVersion"
+    implementation 'androidx.annotation:annotation:1.0.0'
 
 }

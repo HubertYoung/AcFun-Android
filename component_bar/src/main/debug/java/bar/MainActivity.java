@@ -3,7 +3,7 @@ package bar;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;

@@ -1,24 +1,24 @@
 package com.hubertyoung.litemall.ui.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.hubertyoung.litemall.R;
-import com.hubertyoung.litemall.ui.fragment.PlaceHolderFragment;
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.CommonLog;
+import com.hubertyoung.litemall.R;
+import com.hubertyoung.litemall.ui.fragment.PlaceHolderFragment;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;

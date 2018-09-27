@@ -23,6 +23,6 @@
         android:paddingBottom="10dp"
         android:paddingLeft="5.0dp"
         android:paddingRight="5.0dp"
-        tools:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/home_item_hot_goods_body"/>
 </android.support.v7.widget.LinearLayoutCompat>

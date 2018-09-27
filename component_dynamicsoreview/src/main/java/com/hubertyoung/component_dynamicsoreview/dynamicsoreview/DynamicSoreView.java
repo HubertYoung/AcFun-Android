@@ -2,9 +2,9 @@ package com.hubertyoung.component_dynamicsoreview.dynamicsoreview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.DrawableRes;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.GridLayoutManager;
+import androidx.annotation.DrawableRes;
+import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;

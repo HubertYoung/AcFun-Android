@@ -1,8 +1,8 @@
 package com.hubertyoung.component.home.index.section;
 
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.hubertyoung.component.home.entity.HomeIndexEntity;

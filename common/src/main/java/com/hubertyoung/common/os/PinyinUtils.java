@@ -1,6 +1,6 @@
 package com.hubertyoung.common.os;
 
-import android.support.v4.util.SimpleArrayMap;
+import androidx.collection.SimpleArrayMap;
 
 /**
  * 作者：JIUU on 2017/6/18 21:35

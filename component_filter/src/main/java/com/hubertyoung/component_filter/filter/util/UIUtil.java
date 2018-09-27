@@ -1,7 +1,7 @@
 package com.hubertyoung.component_filter.filter.util;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;

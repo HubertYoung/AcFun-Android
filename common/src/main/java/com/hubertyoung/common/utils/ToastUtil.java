@@ -1,6 +1,6 @@
 package com.hubertyoung.common.utils;
 
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;

@@ -26,8 +26,8 @@ android {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    implementation "com.android.support:support-annotations:$var.supportLibraryVersion"
+    implementation 'androidx.annotation:annotation:1.0.0'
     implementation project(':platformlibrary:baseplatformlibrary')
     implementation files('libs/open_sdk_r5793_lite.jar')
-    implementation "com.android.support:support-v4:$var.supportLibraryVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

@@ -1,7 +1,7 @@
 package com.hubertyoung.common.net.interceptor;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.hubertyoung.common.BuildConfig;
 import com.hubertyoung.common.utils.CommonLog;

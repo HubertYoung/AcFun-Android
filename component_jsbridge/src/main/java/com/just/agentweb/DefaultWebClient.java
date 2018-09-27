@@ -9,7 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.webkit.HttpAuthHandler;

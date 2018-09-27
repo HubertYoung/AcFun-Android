@@ -17,7 +17,7 @@
         android:text="@string/acfun_socialize_selector_title"
         android:textSize="12sp"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         android:text="@string/acfun_socialize_selector_3p_title"
         android:textSize="12sp"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_third_party_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

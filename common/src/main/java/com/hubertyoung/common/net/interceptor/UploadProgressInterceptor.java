@@ -1,6 +1,6 @@
 package com.hubertyoung.common.net.interceptor;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.hubertyoung.common.net.body.UploadProgressRequestBody;
 import com.hubertyoung.common.net.callback.UCallback;

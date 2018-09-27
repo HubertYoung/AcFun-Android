@@ -1,7 +1,7 @@
 package com.hubertyoung.acfun.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;

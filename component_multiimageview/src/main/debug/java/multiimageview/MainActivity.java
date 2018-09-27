@@ -1,8 +1,8 @@
 package multiimageview;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.jakewharton.rxbinding2.view.RxView;
 import com.hubertyoung.component_multiimageview.R;

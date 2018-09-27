@@ -1,6 +1,6 @@
 package com.hubertyoung.weiboplatforms.platforms.weibo;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.hubertyoung.baseplatform.AuthorizeSDK;
 import com.hubertyoung.baseplatform.PlatformSDKConfig;

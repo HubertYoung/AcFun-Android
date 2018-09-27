@@ -1,6 +1,6 @@
 package com.hubertyoung.common.net.body;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.hubertyoung.common.net.callback.UCallback;

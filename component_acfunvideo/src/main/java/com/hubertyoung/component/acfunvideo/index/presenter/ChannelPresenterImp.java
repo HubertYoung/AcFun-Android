@@ -1,10 +1,9 @@
 package com.hubertyoung.component.acfunvideo.index.presenter;
 
 
+import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
-import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.basebean.MyRequestMap;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
@@ -24,7 +23,7 @@ public class ChannelPresenterImp extends ChannelControl.Presenter {
 	public void requestChannel( MyRequestMap map ) {
 		mView.showLoading( "Loading...", 0 );
 		mRxManage.add( mModel.requestChannel( map )
-				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+//				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribe( new Consumer< ChannelOperate >() {
 
 					@Override

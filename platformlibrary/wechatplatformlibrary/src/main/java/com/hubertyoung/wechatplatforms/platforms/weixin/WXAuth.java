@@ -3,16 +3,15 @@ package com.hubertyoung.wechatplatforms.platforms.weixin;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.hubertyoung.baseplatform.authorize.IAuthorize;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
-import com.hubertyoung.baseplatform.tools.PlatformXmlPullParser;
 import com.hubertyoung.baseplatform.tools.Hashon;
 import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
+import com.hubertyoung.baseplatform.tools.PlatformXmlPullParser;
 import com.hubertyoung.baseplatformlibrary.R;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
@@ -26,6 +25,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+
+import androidx.annotation.NonNull;
 
 
 /**

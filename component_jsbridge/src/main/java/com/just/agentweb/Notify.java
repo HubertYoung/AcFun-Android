@@ -7,7 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.os.Build;
 import android.os.SystemClock;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 import static com.just.agentweb.AgentWebConfig.AGENTWEB_VERSION;

@@ -1,6 +1,6 @@
 package com.just.agentweb;
 
-import android.support.v4.util.ArrayMap;
+import androidx.collection.ArrayMap;
 
 /**
  * Created by cenxiaozhong on 2017/5/13.
