@@ -1,5 +1,4 @@
 apply from: rootProject.file('basic_component.gradle')
-//gradle配置属性
 
 dependencies {
     implementation project(':common')

@@ -1,8 +1,5 @@
 apply from: rootProject.file('cc-settings.gradle')
 
-//gradle配置属性
-
-
 android {
     compileSdkVersion var.compileSdkVersion
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
