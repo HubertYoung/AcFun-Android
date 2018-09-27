@@ -25,12 +25,12 @@ android {
 }
 
 dependencies {
-    api 'androidx.legacy:legacy-support-v4:1.0.0'
-    api 'androidx.appcompat:appcompat:1.0.0'
-    api 'com.google.android.material:material:1.0.0'
-    api 'androidx.cardview:cardview:1.0.0'
-    api 'androidx.gridlayout:gridlayout:1.0.0'
-    api 'androidx.preference:preference:1.0.0'
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    api "androidx.legacy:legacy-support-v4:$var.androidxLegacySupportV4"
+    api "androidx.appcompat:appcompat:$var.androidxAppcompat"
+    api "com.google.android.material:material:$var.androidxMaterial"
+    api "androidx.cardview:cardview:$var.androidxCardview"
+    api "androidx.gridlayout:gridlayout:$var.androidxGridlayout"
+    api "androidx.preference:preference:$var.androidxPreference"
+    api "androidx.constraintlayout:constraintlayout:$var.androidxConstraintlayout"
 }
 

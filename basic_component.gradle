@@ -89,13 +89,13 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api 'androidx.legacy:legacy-support-v4:1.0.0'
-    api 'androidx.appcompat:appcompat:1.0.0'
-    api 'com.google.android.material:material:1.0.0'
-    api 'androidx.cardview:cardview:1.0.0'
-    api 'androidx.gridlayout:gridlayout:1.0.0'
-    api 'androidx.preference:preference:1.0.0'
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    api "androidx.legacy:legacy-support-v4:$var.androidxLegacySupportV4"
+    api "androidx.appcompat:appcompat:$var.androidxAppcompat"
+    api "com.google.android.material:material:$var.androidxMaterial"
+    api "androidx.cardview:cardview:$var.androidxCardview"
+    api "androidx.gridlayout:gridlayout:$var.androidxGridlayout"
+    api "androidx.preference:preference:$var.androidxPreference"
+    api "androidx.constraintlayout:constraintlayout:$var.androidxConstraintlayout"
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
@@ -104,18 +104,16 @@ dependencies {
 //    kapt 'com.jakewharton:butterknife-compiler:8.4.0'
 
     //retrofit和rxjava
-    api 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
-    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
-    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api "com.squareup.retrofit2:retrofit:$var.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$var.retrofit"
+    implementation "com.squareup.retrofit2:converter-scalars:$var.retrofit"
+    api "com.squareup.retrofit2:adapter-rxjava2:$var.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$var.okhttplog"
+    api "io.reactivex.rxjava2:rxandroid:$var.rxandroid"
     // explicitly depend on RxJava's latest version for bug fixes and new features.
-    api 'io.reactivex.rxjava2:rxjava:2.1.0'
-    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
-    api 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
-    //分包
-    api 'com.android.support:multidex:1.0.3'
+    api "io.reactivex.rxjava2:rxjava:$var.rxjava"
+//    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
+    api "com.jakewharton.rxbinding2:rxbinding:$var.rxbinding"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'

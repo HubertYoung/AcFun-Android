@@ -4,13 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.ColorRes;
-import androidx.annotation.IdRes;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.core.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +12,15 @@ import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.baserx.RxManager;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.TUtil;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
 /***************使用例子*********************/
@@ -53,7 +55,7 @@ import com.hubertyoung.common.utils.TUtil;
 //    public void initView() {
 //    }
 //}
-public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel > extends com.trello.rxlifecycle2.components.support.RxFragment {
+public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel > extends Fragment {
 	public String TAG = this.getClass().getSimpleName();
 	protected ViewGroup rootView;
 	public T mPresenter;

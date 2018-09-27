@@ -33,17 +33,17 @@ dependencies {
 
     api 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
     //显示图片框架
-    api 'com.facebook.fresco:fresco:1.10.0'
-    implementation "com.facebook.fresco:imagepipeline-okhttp3:1.10.0"
+    api "com.facebook.fresco:fresco:$var.fresco"
+    implementation "com.facebook.fresco:imagepipeline-okhttp3:$var.fresco"
 // 支持 GIF 动图，需要添加
-    implementation 'com.facebook.fresco:animated-gif:1.10.0'
+    implementation "com.facebook.fresco:animated-gif:$var.fresco"
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
     implementation 'jp.wasabeef:fresco-processors:2.1.0'
 //打印日志
     implementation 'com.orhanobut:logger:1.13'
     //    网络调试工具
-    implementation 'com.facebook.stetho:stetho:1.4.2'
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.4.2'
+    implementation "com.facebook.stetho:stetho:$var.facebookStetho"
+    implementation "com.facebook.stetho:stetho-okhttp3:$var.facebookStetho"
     //1.1.0 API改动过大，老用户升级需谨慎
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5'
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'

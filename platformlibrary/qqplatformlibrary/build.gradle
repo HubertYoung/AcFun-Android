@@ -29,5 +29,5 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.0.0'
     implementation project(':platformlibrary:baseplatformlibrary')
     implementation files('libs/open_sdk_r5793_lite.jar')
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.legacy:legacy-support-v4:$var.androidxLegacySupportV4"
 }
