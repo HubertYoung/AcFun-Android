@@ -1,18 +1,17 @@
 apply from: rootProject.file('cc-settings.gradle')
 
 //gradle配置属性
-Properties props = new Properties()
-props.load(new FileInputStream(file("../gradle.properties")))
+
 
 android {
-    compileSdkVersion props["ANDROID_BUILD_SDK_VERSION"] as int
+    compileSdkVersion var.compileSdkVersion
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
         applicationId props["ANDROID_APPLICATIONID"]
-        minSdkVersion props["ANDROID_BUILD_MIN_SDK_VERSION"] as int
-        targetSdkVersion props["ANDROID_BUILD_TARGET_SDK_VERSION"] as int
-        versionCode props["VERSION_CODE"] as int
-        versionName props["VERSION_NAME"]
+        minSdkVersion var.minSdkVersion
+        targetSdkVersion var.targetSdkVersion
+        versionCode var.versionCode
+        versionName var.versionName
         flavorDimensions props['VERSION_NAME']
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -46,8 +45,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
-    implementation "com.android.support:design:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
+    implementation "com.android.support:appcompat-v7:$var.supportLibraryVersion"
+    implementation "com.android.support:design:$var.supportLibraryVersion"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

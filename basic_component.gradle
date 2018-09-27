@@ -11,10 +11,6 @@ try {
     println("local.properties not found")
 }
 
-//gradle配置属性
-Properties props = new Properties()
-props.load(new FileInputStream(file("../gradle.properties")))
-
 //读取build.gradle中的设置
 // 2018-04-06修改：
 //  为了更利于理解，将ext.runAsApp 改名为 ext.mainApp
@@ -38,14 +34,14 @@ if (runAsApp) {
 def componentName = project.name.replaceAll("component_", "")
 println(project.name)
 android {
-    compileSdkVersion props["ANDROID_BUILD_SDK_VERSION"] as int
+    compileSdkVersion var.compileSdkVersion
     defaultConfig {
-        minSdkVersion props["ANDROID_BUILD_MIN_SDK_VERSION"] as int
-        targetSdkVersion props["ANDROID_BUILD_TARGET_SDK_VERSION"] as int
-        versionCode props["VERSION_CODE"] as int
-        versionName props["VERSION_NAME"]
+        minSdkVersion var.minSdkVersion
+        targetSdkVersion var.targetSdkVersion
+        versionCode var.versionCode
+        versionName var.versionName
         if (runAsApp) {
-            applicationId props["ANDROID_APPLICATIONID"] + componentName
+            applicationId var.applicationId + componentName
         }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -94,10 +90,10 @@ android {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     api 'com.android.support.constraint:constraint-layout:+'
-    api "com.android.support:appcompat-v7:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
-    api "com.android.support:cardview-v7:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
-    api "com.android.support:design:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
-    api "com.android.support:preference-v7:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
+    api "com.android.support:appcompat-v7:$var.supportLibraryVersion"
+    api "com.android.support:cardview-v7:$var.supportLibraryVersion"
+    api "com.android.support:design:$var.supportLibraryVersion"
+    api "com.android.support:preference-v7:$var.supportLibraryVersion"
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

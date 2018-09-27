@@ -1,18 +1,16 @@
 apply plugin: 'com.android.library'
 
-Properties props = new Properties()
-props.load(new FileInputStream(rootProject.file("gradle.properties")))
 
 android {
 
-    compileSdkVersion props["ANDROID_BUILD_SDK_VERSION"] as int
+    compileSdkVersion var.compileSdkVersion
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
 
     defaultConfig {
-        minSdkVersion props["ANDROID_BUILD_MIN_SDK_VERSION"] as int
-        targetSdkVersion props["ANDROID_BUILD_TARGET_SDK_VERSION"] as int
-        versionCode props["VERSION_CODE"] as int
-        versionName props["VERSION_NAME"]
+        minSdkVersion var.minSdkVersion
+        targetSdkVersion var.targetSdkVersion
+        versionCode var.versionCode
+        versionName var.versionName
     }
     buildTypes {
         release {
@@ -28,8 +26,8 @@ android {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    implementation "com.android.support:support-annotations:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
+    implementation "com.android.support:support-annotations:$var.supportLibraryVersion"
     implementation project(':platformlibrary:baseplatformlibrary')
     implementation files('libs/open_sdk_r5793_lite.jar')
-    implementation "com.android.support:support-v4:${props["ANDROID_SUPPORT_LIB_VERSION"]}"
+    implementation "com.android.support:support-v4:$var.supportLibraryVersion"
 }
