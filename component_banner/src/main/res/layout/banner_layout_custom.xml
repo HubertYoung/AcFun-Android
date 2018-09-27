@@ -18,8 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/layout_banner_viewpager"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/DIMEN_8_0DP"
-        android:layout_marginBottom="@dimen/DIMEN_10_0DP"
+        android:layout_marginRight="8.0dp"
+        android:layout_marginBottom="10dp"
         android:clipChildren="false"
         android:orientation="horizontal"
         android:visibility="visible"/>

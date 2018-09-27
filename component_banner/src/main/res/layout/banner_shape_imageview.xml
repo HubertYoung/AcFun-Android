@@ -4,6 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/iv_banner_view"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/DIMEN_100_0DP"
+    android:layout_height="100dp"
     app:failureImage="@color/background_gray_color"
     app:placeholderImage="@color/background_gray_color"/>

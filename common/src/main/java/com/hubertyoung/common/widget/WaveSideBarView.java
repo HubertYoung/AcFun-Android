@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.hubertyoung.common.R;
+import com.hubertyoung.common.utils.DisplayUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -123,10 +124,8 @@ public class WaveSideBarView extends View {
 			mTextSize = a.getFloat( R.styleable.WaveSideBarView_sidebarTextSize, mTextSize );
 			mLargeTextSize = a.getFloat( R.styleable.WaveSideBarView_sidebarLargeTextSize, mLargeTextSize );
 			mWaveColor = a.getColor( R.styleable.WaveSideBarView_sidebarBackgroundColor, mWaveColor );
-			mRadius = a.getInt( R.styleable.WaveSideBarView_sidebarRadius, context.getResources()
-																				  .getDimensionPixelSize( R.dimen.DIMEN_20_0DP ) );
-			mBallRadius = a.getInt( R.styleable.WaveSideBarView_sidebarBallRadius, context.getResources()
-																						  .getDimensionPixelSize( R.dimen.DIMEN_24_0DP ) );
+			mRadius = a.getInt( R.styleable.WaveSideBarView_sidebarRadius, DisplayUtil.dip2px( 20 ) );
+			mBallRadius = a.getInt( R.styleable.WaveSideBarView_sidebarBallRadius, DisplayUtil.dip2px( 24 ) );
 			mLetters = Arrays.asList( context.getResources()
 											 .getStringArray( a.getResourceId( R.styleable.WaveSideBarView_sidebarLetters, R.array.waveSideBarLetters ) ) );
 			a.recycle();

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="item_game_center_card_view">
-        <item name="android:layout_width">@dimen/DIMEN_81_0DP</item>
-        <item name="android:layout_height">@dimen/DIMEN_81_0DP</item>
+        <item name="android:layout_width">81dp</item>
+        <item name="android:layout_height">81dp</item>
         <item name="android:layout_marginLeft">4dp</item>
         <item name="android:layout_marginRight">4dp</item>
         <item name="android:layout_marginTop">5dp</item>

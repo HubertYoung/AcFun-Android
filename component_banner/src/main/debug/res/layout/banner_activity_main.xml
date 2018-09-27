@@ -9,6 +9,6 @@
     <com.hubertyoung.component_banner.banner.BannerView
         android:id="@+id/bv_main"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_100_0DP"/>
+        android:layout_height="100dp"/>
 
 </LinearLayout>

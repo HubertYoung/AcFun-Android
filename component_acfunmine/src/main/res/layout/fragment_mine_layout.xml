@@ -31,8 +31,8 @@
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/user_avatar"
-                    android:layout_width="@dimen/DIMEN_60_0DP"
-                    android:layout_height="@dimen/DIMEN_60_0DP"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="15dp"
@@ -131,7 +131,7 @@
                 <TextView
                     android:id="@+id/user_level"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/DIMEN_17_0DP"
+                    android:layout_height="17dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/shape_bg_green"
                     android:gravity="center"

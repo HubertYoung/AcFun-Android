@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:paddingBottom="@dimen/DIMEN_17_5DP"
-        android:paddingTop="@dimen/DIMEN_17_5DP"
+        android:paddingBottom="17.5dp"
+        android:paddingTop="17.5dp"
         android:textColor="@color/text_color_normal"
         android:textSize="@dimen/text_size18_0dp"
         tools:text="品牌只在是"/>

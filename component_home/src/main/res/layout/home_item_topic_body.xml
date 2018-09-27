@@ -8,11 +8,11 @@
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/iv_index_topic_icon"
-        android:layout_width="@dimen/DIMEN_345_0DP"
-        android:layout_height="@dimen/DIMEN_200_0DP"
-        android:layout_marginTop="@dimen/DIMEN_5_0DP"
-        android:layout_marginRight="@dimen/DIMEN_10_0DP"
-        android:layout_marginLeft="@dimen/DIMEN_10_0DP"
+        android:layout_width="345dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="5.0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:scaleType="fitXY"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="@dimen/DIMEN_20_0DP"
+        android:layout_marginTop="20dp"
         android:ellipsize="end"
         android:gravity="left"
         android:singleLine="true"
@@ -38,8 +38,8 @@
         app:layout_constraintTop_toBottomOf="@id/iv_index_topic_icon"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintWidth_max="wrap"
-        app:layout_goneMarginLeft="@dimen/DIMEN_10_0DP"
-        android:maxWidth="@dimen/DIMEN_250_0DP"
+        app:layout_goneMarginLeft="10dp"
+        android:maxWidth="250dp"
         tools:text="笔记笔记笔记笔笔笔记笔笔记笔笔记笔笔记笔记笔记"
         tools:visibility="visible"/>
 
@@ -57,7 +57,7 @@
         app:layout_constraintRight_toRightOf="@id/iv_index_topic_icon"
         app:layout_constraintTop_toTopOf="@id/tv_index_topic_name"
         app:layout_goneMarginLeft="0dp"
-        app:layout_goneMarginTop="@dimen/DIMEN_20_0DP"
+        app:layout_goneMarginTop="20dp"
         tools:text="￥12.4433"
         tools:visibility="visible"/>
 
@@ -65,8 +65,8 @@
         android:id="@+id/tv_index_topic_dec"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/DIMEN_10_0DP"
-        android:layout_marginTop="@dimen/DIMEN_5_0DP"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5.0dp"
         android:ellipsize="end"
         android:gravity="left"
         android:singleLine="true"
@@ -77,7 +77,7 @@
         app:layout_constraintLeft_toLeftOf="@id/tv_index_topic_name"
         app:layout_constraintRight_toRightOf="@id/iv_index_topic_icon"
         app:layout_constraintTop_toBottomOf="@id/tv_index_topic_price"
-        app:layout_constraintWidth_max="@dimen/DIMEN_345_0DP"
+        app:layout_constraintWidth_max="345dp"
         tools:text="笔记本笔记本笔记本笔记本笔记本笔记本笔记本笔记本笔记本笔记本"
         tools:visibility="visible"/>
 

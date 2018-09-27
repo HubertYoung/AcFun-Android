@@ -3,14 +3,14 @@
     <item>
         <shape>
             <stroke
-                android:width="@dimen/DIMEN_0_5DP"
+                android:width="0.5dp"
                 android:color="@color/color_bgc9"/>
             <solid android:color="@color/line_bg"/>
             <padding
-                android:bottom="@dimen/DIMEN_50_0DP"
-                android:left="@dimen/DIMEN_100_0DP"
-                android:right="@dimen/DIMEN_100_0DP"
-                android:top="@dimen/DIMEN_50_0DP"/>
+                android:bottom="50dp"
+                android:left="100dp"
+                android:right="100dp"
+                android:top="50dp"/>
         </shape>
     </item>
     <item android:gravity="center">

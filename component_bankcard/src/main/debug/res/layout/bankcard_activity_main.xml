@@ -18,15 +18,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/text_color_gray64"
-        android:layout_marginTop="@dimen/DIMEN_10_0DP"
+        android:layout_marginTop="10dp"
         tools:text="asdfasdfasdf"/>
 
     <RadioGroup
         android:id="@+id/rg_bankcard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/DIMEN_10_0DP"
-        android:layout_marginLeft="@dimen/DIMEN_15_0DP">
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

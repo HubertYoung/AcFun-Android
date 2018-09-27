@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_details_button_bar_root"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/DIMEN_48_0DP"
+    android:layout_height="48dp"
     android:layout_alignParentBottom="true"
     android:clipChildren="false"
     android:gravity="center"
@@ -13,7 +13,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_0_5DP"
+        android:layout_height="0.5dp"
         android:background="@color/line_bg"/>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -29,8 +29,8 @@
             android:layout_weight="1"
             android:background="@drawable/item_bg_selector"
             android:gravity="center"
-            android:paddingBottom="@dimen/DIMEN_5_0DP"
-            android:paddingTop="@dimen/DIMEN_7_0DP"
+            android:paddingBottom="5.0dp"
+            android:paddingTop="7.0dp"
             android:text="收藏"
             android:visibility="visible"
             android:textColor="@color/text_color_gray64"
@@ -44,8 +44,8 @@
             android:layout_weight="1"
             android:background="@drawable/item_bg_selector"
             android:gravity="center"
-            android:paddingLeft="@dimen/DIMEN_10_0DP"
-            android:paddingRight="@dimen/DIMEN_10_0DP"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="消费记录"
             android:visibility="gone"
             android:textColor="@color/text_color_normal"

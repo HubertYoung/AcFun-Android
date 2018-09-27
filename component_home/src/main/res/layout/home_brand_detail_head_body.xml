@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:paddingTop="@dimen/DIMEN_12_5DP"
+        android:paddingTop="12.5dp"
         android:textColor="@color/text_color_normal"
         android:textSize="@dimen/text_size16_0dp"
         tools:text="品牌只在是"/>
@@ -22,8 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:paddingBottom="@dimen/DIMEN_12_5DP"
-        android:paddingTop="@dimen/DIMEN_5_0DP"
+        android:paddingBottom="12.5dp"
+        android:paddingTop="5.0dp"
         android:textColor="@color/text_color_gray99"
         android:textSize="@dimen/text_size13_0dp"
         tools:text="品牌只在是"/>

@@ -27,12 +27,12 @@
             android:layout_weight="1.0"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/DIMEN_2_5DP"
-            android:paddingTop="@dimen/DIMEN_5_0DP">
+            android:paddingBottom="2.5dp"
+            android:paddingTop="5.0dp">
 
             <ImageView
-                android:layout_width="@dimen/DIMEN_25_0DP"
-                android:layout_height="@dimen/DIMEN_25_0DP"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:background="@drawable/tabbar_home_page_selector"
                 android:scaleType="center"/>
@@ -53,12 +53,12 @@
             android:layout_weight="1.0"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/DIMEN_2_5DP"
-            android:paddingTop="@dimen/DIMEN_5_0DP">
+            android:paddingBottom="2.5dp"
+            android:paddingTop="5.0dp">
 
             <ImageView
-                android:layout_width="@dimen/DIMEN_25_0DP"
-                android:layout_height="@dimen/DIMEN_25_0DP"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:background="@drawable/tabbar_classification_page_selector"
                 android:scaleType="center"/>
@@ -79,12 +79,12 @@
             android:layout_weight="1.0"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/DIMEN_2_5DP"
-            android:paddingTop="@dimen/DIMEN_5_0DP">
+            android:paddingBottom="2.5dp"
+            android:paddingTop="5.0dp">
 
             <ImageView
-                android:layout_width="@dimen/DIMEN_25_0DP"
-                android:layout_height="@dimen/DIMEN_25_0DP"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:background="@drawable/tabbar_cart_page_selector"
                 android:scaleType="center"/>
@@ -105,12 +105,12 @@
             android:layout_weight="1.0"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/DIMEN_2_5DP"
-            android:paddingTop="@dimen/DIMEN_5_0DP">
+            android:paddingBottom="2.5dp"
+            android:paddingTop="5.0dp">
 
             <ImageView
-                android:layout_width="@dimen/DIMEN_25_0DP"
-                android:layout_height="@dimen/DIMEN_25_0DP"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:background="@drawable/tabbar_mine_page_selector"
                 android:scaleType="center"/>
