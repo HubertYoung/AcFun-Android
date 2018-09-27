@@ -1,7 +1,6 @@
 package com.hubertyoung.component_acfunmine.mine.presenter;
 
 
-import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.constant.AppSpConfig;
 import com.hubertyoung.common.constant.Constants;
@@ -46,7 +45,7 @@ public class MinePresenterImp extends MineControl.Presenter {
 		mView.showLoading( "Loading...", 0 );
 
 		mRxManage.add( mModel.requestUserInfo( map )
-				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+//				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribe( new Consumer< User >() {
 
 					@Override
@@ -74,7 +73,7 @@ public class MinePresenterImp extends MineControl.Presenter {
 	public void requestCheckOfflineInfo( MyRequestMap map ) {
 		mView.showLoading( "Loading...", 1 );
 		mRxManage.add( mModel.requestCheckOfflineInfo( map )
-				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+//				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribe( new Consumer< Boolean >() {
 
 					@Override
