@@ -96,7 +96,8 @@ dependencies {
     api "androidx.gridlayout:gridlayout:$var.androidxGridlayout"
     api "androidx.preference:preference:$var.androidxPreference"
     api "androidx.constraintlayout:constraintlayout:$var.androidxConstraintlayout"
-
+    //Paging的依赖
+    implementation "android.arch.paging:runtime:$var.pagingVersion"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //view注解

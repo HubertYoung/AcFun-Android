@@ -55,6 +55,8 @@ ext {
             androidxPreference: "1.0.0",
             androidxConstraintlayout: "2.0.0-alpha2",
 
+            pagingVersion: "2.0.0",
+
             retrofit: "2.4.0",
             okhttplog: "3.10.0",
             rxjava: "2.2.2",
