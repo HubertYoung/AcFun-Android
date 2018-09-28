@@ -2,6 +2,7 @@ package com.hubertyoung.component.acfunvideo.index.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
@@ -28,12 +29,31 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 		mRxManage.add( mModel.requestRecommend( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribe( new Consumer< List<Regions > >() {
-
 					@Override
 					public void accept( @NonNull List<Regions > regionsList ) throws Exception {
 						mView.stopLoading();
-						mView.setRecommendInfo( regionsList );
-
+						mView.refreshViewInfo(0);
+						for (Regions regions : regionsList) {
+							switch ( regions.schema ) {
+								case Utils.carousels:
+									mView.showNewRecommendCarouselsSection(regions);
+									break;
+								case Utils.banners:
+									mView.showNewRecommendBannersSection(regions);
+									break;
+								case Utils.videos:
+								case Utils.videos_new:
+									mView.showNewRecommendVideosSection(regions);
+									break;
+								case Utils.videos_rank:
+									mView.showNewRecommendVideosRankSection(regions);
+									break;
+								case Utils.bangumis:
+									mView.showNewRecommendBangumisSection(regions);
+									break;
+							}
+						}
+						mView.refreshViewInfo(1);
 					}
 				}, new Consumer< Throwable >() {
 					@Override

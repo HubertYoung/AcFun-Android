@@ -1,28 +1,29 @@
 package com.hubertyoung.component.acfunvideo.index.fragment;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
+import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
 import com.hubertyoung.component.acfunvideo.index.model.ChannelModelImp;
 import com.hubertyoung.component.acfunvideo.index.presenter.ChannelPresenterImp;
 import com.hubertyoung.component.acfunvideo.index.section.ChannelSection;
 import com.hubertyoung.component_acfunvideo.R;
-import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.ToastUtil;
-import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>
@@ -118,7 +119,7 @@ public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelM
 	}
 
 	private void initRecyclerView() {
-		mAdapter = new SectionedRecyclerViewAdapter();
+		mAdapter = new SectionedRecyclerViewAdapter(null);
 		GridLayoutManager layoutManager = new GridLayoutManager( activity, 4 );
 		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
 			@Override

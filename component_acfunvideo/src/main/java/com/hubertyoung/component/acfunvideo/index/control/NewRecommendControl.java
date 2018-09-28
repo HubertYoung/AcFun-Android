@@ -31,9 +31,21 @@ public interface NewRecommendControl {
 	}
 
 	interface View extends BaseView {
-		void setRecommendInfo( List< Regions > regionsList );
+//		void setRecommendInfo( List< Regions > regionsList );
 
 		void addNewRecommendInfo( List< RegionBodyContent > regionsList );
+
+		void showNewRecommendCarouselsSection( Regions regions );
+
+		void showNewRecommendBannersSection( Regions regions );
+
+		void showNewRecommendVideosSection( Regions regions );
+
+		void showNewRecommendVideosRankSection( Regions regions );
+
+		void showNewRecommendBangumisSection( Regions regions );
+
+		void refreshViewInfo( int i );
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {

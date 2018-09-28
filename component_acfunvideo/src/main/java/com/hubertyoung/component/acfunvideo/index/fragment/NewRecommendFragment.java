@@ -1,12 +1,16 @@
 package com.hubertyoung.component.acfunvideo.index.fragment;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.Utils;
+import com.hubertyoung.common.widget.sectioned.Section;
+import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
@@ -18,13 +22,6 @@ import com.hubertyoung.component.acfunvideo.index.section.NewRecommendCarouselsS
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendVideosRankSection;
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendVideosSection;
 import com.hubertyoung.component_acfunvideo.R;
-import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.ToastUtil;
-import com.hubertyoung.common.utils.Utils;
-import com.hubertyoung.common.widget.sectioned.Section;
-import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -33,6 +30,10 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>
@@ -142,7 +143,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	}
 
 	private void initRecyclerView() {
-		mAdapter = new SectionedRecyclerViewAdapter();
+		mAdapter = new SectionedRecyclerViewAdapter(null);
 		GridLayoutManager layoutManager = new GridLayoutManager( activity, 6 );
 		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
 			@Override
@@ -202,55 +203,61 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	}
 
 	@Override
-	public void setRecommendInfo( List< Regions > regionsList ) {
-//		mNewBangumiSection.setData(newRecommendEntityList);
-		mAdapter.removeAllSections();
-		for (Regions regions : regionsList) {
-			switch ( regions.schema ) {
-				case Utils.carousels:
-					if ( mAdapter.getPageBean().refresh ) {
-						mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
-						mAdapter.addSection( mCarouselsSection );
-					}
-					mCarouselsSection.setRegions( regions );
-					break;
-				case Utils.banners:
-					if ( mAdapter.getPageBean().refresh ) {
-						mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) activity );
-						mAdapter.addSection( mBannersSection );
-						mBannersSection.setRegions( regions );
-					}
-					break;
-
-				case Utils.videos:
-				case Utils.videos_new:
-					if ( mAdapter.getPageBean().refresh ) {
-						boolean isVideoNew = TextUtils.equals( Utils.videos_new, regions.schema );
-						mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity, isVideoNew );
-						if ( isVideoNew ) {
-							mAdapter.addSection( Utils.videos_new, mNewBangumiSection );
-						} else {
-							mAdapter.addSection( mNewBangumiSection );
-						}
-						mNewBangumiSection.setRegions( regions );
-					}
-					break;
-				case Utils.videos_rank:
-					if ( mAdapter.getPageBean().refresh ) {
-						mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivity ) activity );
-						mAdapter.addSection( mVideosRankSection );
-						mVideosRankSection.setRegions( regions );
-					}
-					break;
-				case Utils.bangumis:
-					if ( mAdapter.getPageBean().refresh ) {
-						mBangumisSection = new NewRecommendBangumisSection( ( BaseActivity ) activity );
-						mAdapter.addSection( mBangumisSection );
-						mBangumisSection.setRegions( regions );
-					}
-					break;
-			}
+	public void showNewRecommendCarouselsSection( Regions regions ) {
+		if ( mAdapter.getPageBean().refresh ) {
+			mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
+			mAdapter.addSection( mCarouselsSection );
 		}
-		mAdapter.notifyDataSetChanged();
+		mCarouselsSection.setRegions( regions );
+	}
+
+	@Override
+	public void showNewRecommendBannersSection( Regions regions ) {
+		if ( mAdapter.getPageBean().refresh ) {
+			mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) activity );
+			mAdapter.addSection( mBannersSection );
+			mBannersSection.setRegions( regions );
+		}
+	}
+
+	@Override
+	public void showNewRecommendVideosSection( Regions regions ) {
+		if ( mAdapter.getPageBean().refresh ) {
+			boolean isVideoNew = TextUtils.equals( Utils.videos_new, regions.schema );
+			mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity, isVideoNew );
+			if ( isVideoNew ) {
+				mAdapter.addSection( Utils.videos_new, mNewBangumiSection );
+			} else {
+				mAdapter.addSection( mNewBangumiSection );
+			}
+			mNewBangumiSection.setRegions( regions );
+		}
+	}
+
+	@Override
+	public void showNewRecommendVideosRankSection( Regions regions ) {
+		if ( mAdapter.getPageBean().refresh ) {
+			mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivity ) activity );
+			mAdapter.addSection( mVideosRankSection );
+			mVideosRankSection.setRegions( regions );
+		}
+	}
+
+	@Override
+	public void showNewRecommendBangumisSection( Regions regions ) {
+		if ( mAdapter.getPageBean().refresh ) {
+			mBangumisSection = new NewRecommendBangumisSection( ( BaseActivity ) activity );
+			mAdapter.addSection( mBangumisSection );
+			mBangumisSection.setRegions( regions );
+		}
+	}
+
+	@Override
+	public void refreshViewInfo( int i ) {
+		if ( i == 0){
+			mAdapter.removeAllSections();
+		}else {
+			mAdapter.notifyDataSetChanged();
+		}
 	}
 }
