@@ -1,0 +1,11 @@
+apply plugin: 'com.novoda.bintray-release'//添加
+//添加
+publish{
+    userOrg = user_org
+    groupId = group_id
+    repoName = repoNameExt//远程仓库名字,不指明，默认是上传到maven
+    artifactId = artifactIdExt
+    publishVersion = publishVersionExt
+    desc = ''
+    website = web_site
+}

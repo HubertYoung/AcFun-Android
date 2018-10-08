@@ -8,4 +8,15 @@ dependencies {
     implementation 'com.google.auto.service:auto-service:1.0-rc2'
     api project(':javapoet:annotation')
 }
-
+//ext {
+//    artifactIdExt = 'javapoet_environment_compiler'
+//    repoNameExt ='javapoet_environment'
+//    publishVersionExt = '1.0.0'
+//    user_org = "hubertyoung"
+//    user_emial = "cnbjyangjian@gmail.com"
+//    group_id = "com.hubertyoung.javapoet_environment"
+//    web_site = "https://github.com/HubertYoung/AcFun-Android/tree/master/javapoet/annotation"
+//    gitUrl = "git@github.com:HubertYoung/AcFun-Android.git"
+//}
+//
+//apply from: rootProject.file('bintray.gradle')

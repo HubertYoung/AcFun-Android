@@ -31,7 +31,9 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -123,6 +125,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	}
 
 	private void initAction() {
+//		mSrlContainer.setEnableLoadMore( false );
 		mSrlContainer.setOnRefreshListener( new OnRefreshListener() {
 			@Override
 			public void onRefresh( RefreshLayout refreshLayout ) {
@@ -143,7 +146,17 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	}
 
 	private void initRecyclerView() {
-		mAdapter = new SectionedRecyclerViewAdapter(null);
+		mAdapter = new SectionedRecyclerViewAdapter( new DiffUtil.ItemCallback< RegionBodyContent >() {
+			@Override
+			public boolean areItemsTheSame( @NonNull RegionBodyContent oldItem, @NonNull RegionBodyContent newItem ) {
+				return oldItem.reqId == newItem.reqId;
+			}
+
+			@Override
+			public boolean areContentsTheSame( @NonNull RegionBodyContent oldItem, @NonNull RegionBodyContent newItem ) {
+				return oldItem == newItem;
+			}
+		} );
 		GridLayoutManager layoutManager = new GridLayoutManager( activity, 6 );
 		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
 			@Override

@@ -1,9 +1,6 @@
 package ping;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +15,9 @@ import com.hubertyoung.ping.bean.PingNetEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		LinearLayoutManager layoutManager = new LinearLayoutManager( this );
 		mRvPing.setHasFixedSize( true );
 		mRvPing.setLayoutManager( layoutManager );
-		mAdapter = new SectionedRecyclerViewAdapter();
+		mAdapter = new SectionedRecyclerViewAdapter(null);
 
 		mPingSection = new PingSection( this );
 		mAdapter.addSection( mPingSection );

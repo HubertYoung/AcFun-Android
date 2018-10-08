@@ -52,7 +52,6 @@ public class SectionedRecyclerViewAdapter< T > extends PagedListAdapter< T, Recy
 		sections = new LinkedHashMap<>();
 		sectionViewTypeNumbers = new HashMap<>();
 		mPageBean = new PageBean();
-
 	}
 
 	@Override
