@@ -11,9 +11,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -30,6 +27,10 @@ import com.hubertyoung.common.os.OSUtil;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.UUID;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 /**
  * <pre>
@@ -140,7 +141,7 @@ public final class BarUtils {
 		setStatusBarColor( window, color, animated );
 	}
 
-	public static void setStatusBarColor( @NonNull Window window, @ColorInt int color, boolean animated ) {
+	public static void setStatusBarColor( @NonNull final Window window, @ColorInt int color, boolean animated ) {
 		if ( ( window.getAttributes().flags & WindowManager.LayoutParams.FLAG_FULLSCREEN ) == WindowManager.LayoutParams.FLAG_FULLSCREEN ) {
 			color = Color.TRANSPARENT;
 		}

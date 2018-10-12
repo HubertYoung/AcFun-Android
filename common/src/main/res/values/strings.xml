@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">common</string>
+    <string name="common_res_app_crash_str">崩溃日志已上传,耐心等待工程师修复</string>
+
 </resources>

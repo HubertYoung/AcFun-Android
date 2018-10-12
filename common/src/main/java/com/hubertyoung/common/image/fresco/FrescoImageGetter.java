@@ -140,8 +140,8 @@ public class FrescoImageGetter implements Drawable.Callback, ImageGetter, Fresco
 		stringBuilder.append( "loadUrlDrawable:" );
 		stringBuilder.append( url );
 		CommonLog.logi( TAG, stringBuilder.toString() );
-		URLDrawable uRLDrawable = new URLDrawable();
-		DraweeHolder draweeHolder = new DraweeHolder( new GenericDraweeHierarchyBuilder( mContext.getResources() ).build() );
+		final URLDrawable uRLDrawable = new URLDrawable();
+		final DraweeHolder draweeHolder = new DraweeHolder( new GenericDraweeHierarchyBuilder( mContext.getResources() ).build() );
 		mMultiDraweeHolder.add( draweeHolder );
 		draweeHolder.setController( ( ( Fresco.newDraweeControllerBuilder()//
 				.setUri( Uri.parse( url ) )//

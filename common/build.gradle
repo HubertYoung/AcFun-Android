@@ -16,10 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -47,9 +47,8 @@ dependencies {
     //1.1.0 API改动过大，老用户升级需谨慎
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5'
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'
-    api "ch.acra:acra-http:$var.acraVersion"
-    api "ch.acra:acra-toast:$var.acraVersion"
-
+//    api 'ch.acra:acra:4.9.0'
+    implementation "ch.acra:acra:$var.acraVersion"
     api project(':javapoet:annotation')
     debugAnnotationProcessor project(':javapoet:compiler')
     releaseAnnotationProcessor project(':javapoet:compiler-release')

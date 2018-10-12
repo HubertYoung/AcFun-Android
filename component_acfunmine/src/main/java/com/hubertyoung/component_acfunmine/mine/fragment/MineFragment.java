@@ -2,7 +2,6 @@ package com.hubertyoung.component_acfunmine.mine.fragment;
 
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -25,6 +24,8 @@ import com.hubertyoung.component_acfunmine.mine.model.MineModelImp;
 import com.hubertyoung.component_acfunmine.mine.presenter.MinePresenterImp;
 import com.hubertyoung.component_acfunmine.setting.activity.SettingsActivity;
 import com.hubertyoung.component_acfunmine.utils.SigninHelper;
+
+import androidx.annotation.Nullable;
 
 
 /**
@@ -298,7 +299,8 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //				}
 
 //				IntentHelper.a(this.g, FeedBackActivity.class);
-
+				String s = null;
+				s.indexOf( 1 );
 		} else if ( i == R.id.follow_count_layout ) {//				if (!SigninHelper.a().s()) {
 //					IntentHelper.e(this.g, 7);
 //					break;

@@ -1,6 +1,5 @@
 <resources>
     <string name="common_res_app_name">common_res</string>
-    <string name="common_res_app_crash_str">崩溃日志已上传,工程师会优先修复</string>
 
     <string name="pref_title_logout">退出登录</string>
 

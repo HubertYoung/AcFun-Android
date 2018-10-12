@@ -3,11 +3,11 @@ package com.hubertyoung.common;
 import android.app.Application;
 import android.content.Context;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.multidex.MultiDex;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.stetho.Stetho;
+import com.hubertyoung.common.api.ApiConstants;
+import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.image.fresco.ImagePipelineConfigFactory;
 import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.http.HttpUtils;
@@ -23,13 +23,14 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import org.acra.ACRA;
-import org.acra.annotation.AcraCore;
-import org.acra.annotation.AcraHttpSender;
-import org.acra.data.StringFormat;
+import org.acra.ReportingInteractionMode;
+import org.acra.config.ConfigurationBuilder;
 import org.acra.sender.HttpSender;
 
 import java.util.UUID;
 
+import androidx.annotation.NonNull;
+import androidx.multidex.MultiDex;
 import okhttp3.Headers;
 
 /**
@@ -42,13 +43,6 @@ import okhttp3.Headers;
  * @since:V1.0
  * @desc:com.hubertyoung.component.basic
  */
-@AcraCore( includeDropBoxSystemTags = true, reportFormat = StringFormat.KEY_VALUE_LIST )
-//@AcraToast( resText = R.string.common_res_app_crash_str )
-@AcraHttpSender( uri = "http://d1bustest.d1-bus.com/socialbus/api/coupon/getCouponList", //
-		httpMethod = HttpSender.Method.POST,//
-		connectionTimeout = 15 * 1000,//
-		socketTimeout = 15 * 1000,//
-		dropReportsOnTimeout = false )
 public class CommonApplication extends Application {
 
 	private static CommonApplication mBaseApplication;
@@ -91,7 +85,7 @@ public class CommonApplication extends Application {
 	}
 
 	private void initFresco() {
-		Fresco.initialize(this, ImagePipelineConfigFactory.getOkHttpImagePipelineConfig(this));
+		Fresco.initialize( this, ImagePipelineConfigFactory.getOkHttpImagePipelineConfig( this ) );
 	}
 
 	private void initStetho() {
@@ -150,7 +144,13 @@ public class CommonApplication extends Application {
 		super.attachBaseContext( base );
 		MultiDex.install( this );
 //		If you are using legacy multidex, ensure that ACRA.init(...) is called after Multidex.install().
-		ACRA.init( this );
+		ConfigurationBuilder builder = new ConfigurationBuilder( this );
+		builder.setBuildConfigClass( BuildConfig.class )//
+				.setFormUri( BuildConfig.DEBUG ? ApiConstants.getDebugHost( HostType.MY_RESULT ) : ApiConstants.getHost( HostType.MY_RESULT ) )//
+				.setReportType( HttpSender.Type.FORM )//
+				.setReportingInteractionMode( ReportingInteractionMode.TOAST )//
+				.setResToastText( R.string.common_res_app_crash_str );
+		ACRA.init( this, builder );
 	}
 
 	public static Context getAppContext() {
