@@ -61,6 +61,7 @@ public class TcStatiPollMgr {
 	 * loop
 	 */
 	private void loop() {
+		stop();
 		Message msg = sPrivateHandler.get().obtainMessage(MSG_TIMEOUT, this);
 		sPrivateHandler.get().sendMessageDelayed(msg, mCardiacCycle);
 	}

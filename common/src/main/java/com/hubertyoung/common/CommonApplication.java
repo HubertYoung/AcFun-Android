@@ -146,7 +146,7 @@ public class CommonApplication extends Application {
 //		If you are using legacy multidex, ensure that ACRA.init(...) is called after Multidex.install().
 		ConfigurationBuilder builder = new ConfigurationBuilder( this );
 		builder.setBuildConfigClass( BuildConfig.class )//
-				.setFormUri( BuildConfig.DEBUG ? ApiConstants.getDebugHost( HostType.MY_RESULT ) : ApiConstants.getHost( HostType.MY_RESULT ) )//
+				.setFormUri( ApiConstants.getHost( HostType.MY_RESULT ) )//
 				.setReportType( HttpSender.Type.FORM )//
 				.setReportingInteractionMode( ReportingInteractionMode.TOAST )//
 				.setResToastText( R.string.common_res_app_crash_str );
