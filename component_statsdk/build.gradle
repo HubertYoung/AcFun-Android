@@ -1,0 +1,7 @@
+apply from: rootProject.file('basic_component.gradle')
+
+dependencies {
+    implementation project(':common')
+    implementation 'com.alibaba:fastjson:1.2.8+'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+}
