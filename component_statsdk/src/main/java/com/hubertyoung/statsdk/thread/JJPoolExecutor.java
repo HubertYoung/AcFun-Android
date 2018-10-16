@@ -24,8 +24,8 @@ import java.util.concurrent.TimeUnit;
 
 public class JJPoolExecutor extends ThreadPoolExecutor {
 
-    private static  final  int MAX_THREAD_COUNT=Runtime.getRuntime().availableProcessors()+1;
-    private static final int INIT_THREAD_COUNT = MAX_THREAD_COUNT;
+    private static  final  int MAX_THREAD_COUNT = Runtime.getRuntime().availableProcessors() + 1;
+    private static final int INIT_THREAD_COUNT = 2;
     private static final long SURPLUS_THREAD_LIFE = 30L;
 
 
