@@ -1,8 +1,6 @@
 package com.hubertyoung.acfun.ui.activity;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import android.widget.FrameLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
@@ -16,6 +14,9 @@ import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.CommonLog;
 
 import java.util.ArrayList;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * <br>
@@ -76,7 +77,7 @@ public class MainActivity extends BaseActivity {
 	private void initFragment( Bundle savedInstanceState ) {
 		mFragments.clear();
 		mFragments.add( getFragment( "ComponentAcFunIndex", "getHomePageFragment" ) );
-		mFragments.add( getFragment( "ComponentClassification", "getClassificationFragment" ) );
+		mFragments.add( getFragment( "ComponentArticle", "getArticleFragment" ) );
 		mFragments.add( getFragment( "ComponentCart", "getCartRootFragment" ) );
 		mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );
 	}

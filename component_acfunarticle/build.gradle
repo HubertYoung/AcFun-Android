@@ -1,0 +1,8 @@
+apply from: rootProject.file('basic_component.gradle')
+
+dependencies {
+    implementation project(':common')
+}
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'

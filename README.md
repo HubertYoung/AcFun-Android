@@ -9,7 +9,8 @@ storePassword=123456
 
 app=true
 acfun=true
-component_acfunmine=true
+component_acfunarticle=true
+component_acfunmine=false
 component_acfunvideo=false
 #component_basic=false
 component_banner=false
@@ -29,6 +30,7 @@ component_titlebar=false
 component_update=false
 component_ping=false
 component_dialog=false
+component_statsdk=true
 ```
 
 

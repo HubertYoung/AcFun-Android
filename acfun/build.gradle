@@ -50,5 +50,6 @@ dependencies {
     implementation project(':bottom-navigation-bar')
     implementation project(':common')
     addComponent 'component_acfunvideo'
+    addComponent 'component_acfunarticle'
     addComponent 'component_acfunmine'
 }
