@@ -88,7 +88,6 @@ public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelM
 	@Override
 	public void initPresenter() {
 		mPresenter.setVM( this, mModel );
-
 	}
 
 	@Override

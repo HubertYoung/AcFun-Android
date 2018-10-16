@@ -47,8 +47,8 @@ dependencies {
     implementation "com.facebook.stetho:stetho:$var.facebookStetho"
     implementation "com.facebook.stetho:stetho-okhttp3:$var.facebookStetho"
     //1.1.0 API改动过大，老用户升级需谨慎
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5'
-    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
 //    api 'ch.acra:acra:4.9.0'
     implementation "ch.acra:acra:$var.acraVersion"
     api project(':javapoet:annotation')
