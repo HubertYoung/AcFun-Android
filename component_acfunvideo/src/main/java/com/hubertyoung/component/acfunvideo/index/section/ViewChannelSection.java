@@ -28,11 +28,11 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
-public class ChannelSection extends Section {
+public class ViewChannelSection extends Section {
 	private BaseActivity mActivity;
 	private List< ChannelOperate.ChannelData > data;
 
-	public ChannelSection( BaseActivity activity ) {
+	public ViewChannelSection( BaseActivity activity ) {
 		super( new SectionParameters.Builder( R.layout.item_channel )//
 				.headerResourceId( R.layout.item_channel_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//

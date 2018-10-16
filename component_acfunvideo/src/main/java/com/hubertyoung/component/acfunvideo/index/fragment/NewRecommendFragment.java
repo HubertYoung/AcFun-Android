@@ -267,7 +267,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 
 	@Override
 	public void refreshViewInfo( int i ) {
-		if ( i == 0){
+		if ( i == 0 ){
 			mAdapter.removeAllSections();
 		}else {
 			mAdapter.notifyDataSetChanged();

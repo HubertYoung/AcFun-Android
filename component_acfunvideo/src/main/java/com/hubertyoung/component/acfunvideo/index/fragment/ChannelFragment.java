@@ -12,7 +12,8 @@ import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
 import com.hubertyoung.component.acfunvideo.index.model.ChannelModelImp;
 import com.hubertyoung.component.acfunvideo.index.presenter.ChannelPresenterImp;
-import com.hubertyoung.component.acfunvideo.index.section.ChannelSection;
+import com.hubertyoung.component.acfunvideo.index.section.ViewChannelSection;
+import com.hubertyoung.component.acfunvideo.index.section.ViewActivitySection;
 import com.hubertyoung.component_acfunvideo.R;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
@@ -45,7 +46,9 @@ public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelM
 	private String mParam2;
 	private SectionedRecyclerViewAdapter mAdapter;
 	private RecyclerViewSkeletonScreen mViewSkeletonScreen;
-	private ChannelSection mChannelSection;
+	private ViewChannelSection mChannelSection;
+	private ViewActivitySection mViewActivitySection;
+	private int mNext;
 
 	public ChannelFragment() {
 	}
@@ -112,13 +115,13 @@ public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelM
 			@Override
 			public void onLoadMore( RefreshLayout refreshLayout ) {
 				mAdapter.getPageBean().refresh = false;
-//				loadNewData();
+				loadNewData();
 			}
 		} );
 	}
 
 	private void initRecyclerView() {
-		mAdapter = new SectionedRecyclerViewAdapter(null);
+		mAdapter = new SectionedRecyclerViewAdapter( null );
 		GridLayoutManager layoutManager = new GridLayoutManager( activity, 4 );
 		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
 			@Override
@@ -138,8 +141,10 @@ public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelM
 			}
 		} );
 
-		mChannelSection = new ChannelSection( ( BaseActivity ) activity );
+		mChannelSection = new ViewChannelSection( ( BaseActivity ) activity );
 		mAdapter.addSection( mChannelSection );
+		mViewActivitySection = new ViewActivitySection( ( BaseActivity ) activity );
+		mAdapter.addSection( mViewActivitySection );
 
 		mRecyclerView.setHasFixedSize( true );
 		mRecyclerView.setLayoutManager( layoutManager );
@@ -175,12 +180,31 @@ public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelM
 	public void loadData() {
 		MyRequestMap map = new MyRequestMap();
 		map.put( "pos", "0" );
-		mPresenter.requestChannel( map );
+		mPresenter.requestChannel( map,0 );
+	}
+
+	private void loadNewData() {
+		MyRequestMap map = new MyRequestMap();
+		map.put( "pos", mNext + "" );
+		mPresenter.requestChannel( map, 1 );
 	}
 
 	@Override
 	public void setChannelOperateInfo( ChannelOperate channelOperate ) {
+		mNext = channelOperate.next;
 		mChannelSection.setChannelList( channelOperate.channelList );
+		mViewActivitySection.setOperateList( channelOperate.operateList );
 		mAdapter.notifyDataSetChanged();
+	}
+
+	@Override
+	public void addChannelOperateInfo( ChannelOperate channelOperate ) {
+		mNext = channelOperate.next;
+		if( channelOperate != null && channelOperate.operateList != null && !channelOperate.operateList.isEmpty()) {
+			mViewActivitySection.addOperateList( channelOperate.operateList );
+			mAdapter.notifyDataSetChanged();
+		}else{
+			mSrlContainer.setNoMoreData( true );
+		}
 	}
 }

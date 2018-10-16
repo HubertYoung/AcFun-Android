@@ -20,7 +20,7 @@ import io.reactivex.functions.Consumer;
  */
 public class ChannelPresenterImp extends ChannelControl.Presenter {
 	@Override
-	public void requestChannel( MyRequestMap map ) {
+	public void requestChannel( MyRequestMap map, int isAddInfo ) {
 		mView.showLoading( "Loading...", 0 );
 		mRxManage.add( mModel.requestChannel( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
@@ -29,7 +29,11 @@ public class ChannelPresenterImp extends ChannelControl.Presenter {
 					@Override
 					public void accept( @NonNull ChannelOperate channelOperate ) throws Exception {
 						mView.stopLoading();
-						mView.setChannelOperateInfo( channelOperate );
+						if ( isAddInfo == 0 ) {
+							mView.setChannelOperateInfo( channelOperate );
+						}else {
+							mView.addChannelOperateInfo( channelOperate );
+						}
 
 					}
 				}, new Consumer< Throwable >() {

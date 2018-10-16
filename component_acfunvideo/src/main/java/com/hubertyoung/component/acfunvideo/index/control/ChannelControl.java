@@ -27,9 +27,11 @@ public interface ChannelControl {
 
 	interface View extends BaseView {
 		void setChannelOperateInfo( ChannelOperate channelOperate );
+
+		void addChannelOperateInfo( ChannelOperate channelOperate );
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
-		public abstract void requestChannel( MyRequestMap map );
+		public abstract void requestChannel( MyRequestMap map, int i );
 	}
 }

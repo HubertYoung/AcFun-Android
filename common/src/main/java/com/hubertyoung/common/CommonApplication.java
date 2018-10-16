@@ -62,7 +62,7 @@ public class CommonApplication extends Application {
 			@Override
 			public RefreshHeader createRefreshHeader( @NonNull Context context, @NonNull RefreshLayout layout ) {
 				layout.setPrimaryColorsId( R.color.colorPrimary, android.R.color.white );//全局设置主题颜色
-				layout.setHeaderHeight( 100 );
+				layout.setHeaderHeight( 150 );
 				return new MaterialHeader( context );
 			}
 		} );
