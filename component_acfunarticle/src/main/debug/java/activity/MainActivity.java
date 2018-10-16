@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.utils.BarUtils;
-import com.hubertyoung.component_acfunmine.R;
+import com.hubertyoung.component_acfunarticle.R;
 
 
 public class MainActivity extends BaseActivity {

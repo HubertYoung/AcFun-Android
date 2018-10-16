@@ -8,5 +8,20 @@
         <!--<item name="colorAccent">@color/colorAccent</item>-->
         <!--<item name="preferenceTheme">@style/PreferenceThemeOverlay.Ios</item>-->
     <!--</style>-->
-
+    <style name="secondary_tab">
+        <item name="android:background">@color/them_color</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="stl_defaultTabTextColor">@color/selector_home_nav_bar</item>
+        <item name="stl_defaultTabTextSize">@dimen/text_title_large_size</item>
+        <item name="stl_distributeEvenly">false</item>
+        <item name="stl_dividerThickness">0dp</item>
+        <item name="stl_indicatorColor">@color/background_white_color</item>
+        <item name="stl_indicatorCornerRadius">2dp</item>
+        <item name="stl_indicatorThickness">3dp</item>
+        <item name="stl_indicatorWidth">@dimen/tab_indicator_default_width</item>
+        <item name="stl_underlineColor">@color/divider_gray_color</item>
+        <item name="stl_underlineThickness">0dp</item>
+    </style>
 </resources>

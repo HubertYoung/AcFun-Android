@@ -2,16 +2,20 @@ package com.hubertyoung.component_acfunarticle.mine.fragment;
 
 
 import android.os.Bundle;
-import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_acfunarticle.R;
 import com.hubertyoung.component_acfunarticle.mine.control.ArticleControl;
 import com.hubertyoung.component_acfunarticle.mine.model.ArticleModelImp;
 import com.hubertyoung.component_acfunarticle.mine.presenter.ArticlePresenterImp;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
-import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
 
 /**
@@ -30,6 +34,12 @@ public class ArticleFragment extends BaseFragment< ArticlePresenterImp, ArticleM
 
 	private String mParam1;
 	private String mParam2;
+
+	private LinearLayout mContent;
+	private Toolbar mTlHead;
+	private SmartTabLayout mArticleViewTab;
+	private ImageView mIvSearch;
+	private ViewPager mArticleViewPager;
 
 	public ArticleFragment() {
 		// Required empty public constructor
@@ -55,7 +65,7 @@ public class ArticleFragment extends BaseFragment< ArticlePresenterImp, ArticleM
 
 	@Override
 	protected void initToolBar() {
-//		BarUtils.setPaddingSmart( mVTopRoot );
+		BarUtils.setPaddingSmart( mTlHead );
 	}
 
 	@Override
@@ -68,17 +78,17 @@ public class ArticleFragment extends BaseFragment< ArticlePresenterImp, ArticleM
 		mPresenter.setVM( this, mModel );
 	}
 
-	@Override
-	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
-		initAction();
-		super.onViewCreated( view, savedInstanceState );
-	}
-
 	private void initAction() {
 	}
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
+		mContent = findViewById( R.id.content );
+		mTlHead = findViewById( R.id.tl_head );
+		mArticleViewTab = findViewById( R.id.article_view_tab );
+		mIvSearch = findViewById( R.id.iv_search );
+		mArticleViewPager = findViewById( R.id.article_view_pager );
+		initAction();
 	}
 
 	@Override

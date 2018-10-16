@@ -75,21 +75,16 @@ public class HomePageFragment extends BaseFragment {
 	}
 
 	@Override
-	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
-		mToolbar = ( Toolbar ) findViewById( R.id.toolbar );
-		mHomeViewTab = ( SmartTabLayout ) findViewById( R.id.home_view_tab );
-		mIvSearch = ( ImageView ) findViewById( R.id.iv_search );
-		mIvGame = ( ImageView ) findViewById( R.id.iv_game );
-		mHomeViewPager = ( ViewPager ) findViewById( R.id.home_view_pager );
-		super.onViewCreated( view, savedInstanceState );
-	}
-
-	@Override
 	public void initPresenter() {
 	}
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
+		mToolbar = ( Toolbar ) findViewById( R.id.toolbar );
+		mHomeViewTab = ( SmartTabLayout ) findViewById( R.id.home_view_tab );
+		mIvSearch = ( ImageView ) findViewById( R.id.iv_search );
+		mIvGame = ( ImageView ) findViewById( R.id.iv_game );
+		mHomeViewPager = ( ViewPager ) findViewById( R.id.home_view_pager );
 		initViewPager();
 		initAction();
 		initData();
