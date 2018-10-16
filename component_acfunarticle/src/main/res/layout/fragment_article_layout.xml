@@ -12,6 +12,7 @@
         android:id="@+id/tl_head"
         android:layout_width="match_parent"
         android:layout_height="@dimen/pickerview_topbar_height"
+        app:contentInsetStart="0dp"
         android:background="@color/them_color">
 
         <LinearLayout

@@ -2,6 +2,9 @@ apply from: rootProject.file('basic_component.gradle')
 
 dependencies {
     implementation project(':common')
+    implementation project(':component_skeleton')
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
 }
 
 apply plugin: 'kotlin-android'

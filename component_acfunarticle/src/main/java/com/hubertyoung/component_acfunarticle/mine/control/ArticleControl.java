@@ -4,6 +4,10 @@ package com.hubertyoung.component_acfunarticle.mine.control;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
+import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.component_acfunarticle.entity.Channel;
+
+import io.reactivex.Observable;
 
 /**
  * <br>
@@ -18,12 +22,11 @@ import com.hubertyoung.common.base.BaseView;
 public interface ArticleControl {
 
 	interface Model extends BaseModel {
-//		Observable<Boolean> requestCheckOfflineInfo( MyRequestMap map );
-//
-//		Observable<User> requestUserInfo( MyRequestMap map );
+		Observable< Channel > requestAllChannel( MyRequestMap map );
 	}
 
 	interface View extends BaseView {
+		void setAllChannelInfo( Channel channel );
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {

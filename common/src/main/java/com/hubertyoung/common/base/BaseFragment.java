@@ -101,9 +101,9 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated( view, savedInstanceState );
 
+		initPresenter();
 		initView( savedInstanceState );
 		initToolBar();
-		initPresenter();
 	}
 
 //	protected void addStatusBar() {

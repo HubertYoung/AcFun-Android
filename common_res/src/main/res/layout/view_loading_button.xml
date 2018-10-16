@@ -14,7 +14,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:indeterminateOnly="true"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <TextSwitcher
         android:id="@+id/pb_text"

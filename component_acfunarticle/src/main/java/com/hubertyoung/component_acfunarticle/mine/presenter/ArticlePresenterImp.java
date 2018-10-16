@@ -1,7 +1,12 @@
 package com.hubertyoung.component_acfunarticle.mine.presenter;
 
 
+import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.component_acfunarticle.entity.Channel;
 import com.hubertyoung.component_acfunarticle.mine.control.ArticleControl;
+
+import androidx.annotation.NonNull;
+import io.reactivex.functions.Consumer;
 
 /**
  * <br>
@@ -14,52 +19,26 @@ import com.hubertyoung.component_acfunarticle.mine.control.ArticleControl;
  * @desc:com.hubertyoung.component_acfunarticle.mine.presenter
  */
 public class ArticlePresenterImp extends ArticleControl.Presenter {
-//	<int name="thirdChannel" value="0" />
-//	<int name="userGroupLevel" value="0" />
-//	<int name="mobileCheck" value="1" />
-//    <string name="mobile">17600696672</string>
-//    <string name="avatar">http://cdn.aixifan.com/dotnet/20120923/style/image/avatar.jpg</string>
-//	<int name="initPassword" value="0" />
-//    <string name="token">f8ddb49692a3d844d616afe4002cf5e6</string>
-//	<int name="check_real" value="0" />
-//	<int name="uid" value="13608720" />
-//    <string name="s2sCode">7ffebd6b6148780efc8ed462c8a84a16</string>
-//	<long name="expire" value="1539197055" />
-//	<int name="oauth" value="0" />
-//    <string name="username">hubert520</string>
-//	@Override
-//	public void requestUserInfo( MyRequestMap map ) {
-//		if ( !SigninHelper.getInstance().isLogin() || SigninHelper.getInstance().getUserUid() <= 0){
-//			mView.setLoginState( false );
-//			return;
-//		}
-//		mView.showLoading( "Loading...", 0 );
-//
-//		mRxManage.add( mModel.requestUserInfo( map )
-////				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-//				.subscribe( new Consumer< User >() {
-//
-//					@Override
-//					public void accept( @NonNull User user ) throws Exception {
-//						if(user != null) {
-//							SigninHelper.getInstance().setUserInfo(user);
-//							SPUtils.setSharedStringData( AppSpConfig.USERGROUPLEVEL ,user.getUserGroupLevel() +"");
-//							SPUtils.setSharedStringData( AppSpConfig.MOBILECHECK ,user.getMobileCheck() +"");
-//						}
-//						mView.stopLoading();
-//						mView.setUserInfo( user );
-//						mView.setUserGroupInfo( user.getUserGroupLevel() == Constants.USER_GROUP_LEVEL_FORMAL );
-//					}
-//				}, new Consumer< Throwable >() {
-//					@Override
-//					public void accept( @NonNull Throwable throwable ) throws Exception {
-//						mView.stopLoading();
-//						mView.showErrorTip( throwable.getMessage()
-//								.toString() );
-//					}
-//				} ) );
-//	}
-//
+	public void requestAllChannel( MyRequestMap map ) {
+		mView.showLoading( "Loading...", 0 );
+		mRxManage.add( mModel.requestAllChannel( map )
+//				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+				.subscribe( new Consumer< Channel >() {
+
+					@Override
+					public void accept( @NonNull Channel channel ) throws Exception {
+						mView.stopLoading();
+						mView.setAllChannelInfo(channel);
+					}
+				}, new Consumer< Throwable >() {
+					@Override
+					public void accept( @NonNull Throwable throwable ) throws Exception {
+						mView.stopLoading();
+						mView.showErrorTip( throwable.getMessage() );
+					}
+				} ) );
+	}
+
 //	@Override
 //	public void requestCheckOfflineInfo( MyRequestMap map ) {
 //		mView.showLoading( "Loading...", 1 );
