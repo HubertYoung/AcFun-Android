@@ -21,6 +21,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.tencent.mmkv.MMKV;
 
 import org.acra.ACRA;
 import org.acra.ReportingInteractionMode;
@@ -53,6 +54,9 @@ public class CommonApplication extends Application {
 		mBaseApplication = this;
 		CommonLog.logInit( BuildConfig.DEBUG );
 
+		String rootDir = "mmkv root: " + MMKV.initialize(this);
+		CommonLog.logd( rootDir );
+
 		SmartRefreshLayout.setDefaultRefreshHeaderCreator( new DefaultRefreshHeaderCreator() {
 			@NonNull
 			@Override
@@ -82,6 +86,7 @@ public class CommonApplication extends Application {
 		//网络框架
 		initOkHttpUtils();
 		initStetho();
+
 	}
 
 	private void initFresco() {

@@ -44,7 +44,7 @@ ext {
             applicationId           : "com.hubertyoung.acfun",
             compileSdkVersion       : 28,
             buildToolsVersion       : "28.0.2",
-            minSdkVersion           : 15,
+            minSdkVersion           : 16,
             targetSdkVersion        : 22,
             versionCode             : 540,
             versionName             : "5.4.0",
@@ -57,6 +57,8 @@ ext {
             androidxRecyclerview    : "1.0.0",
             androidxPreference      : "1.0.0",
             androidxConstraintlayout: "2.0.0-alpha2",
+
+            mmkv                    : "1.0.11",
 
             pagingVersion           : "2.0.0",
 

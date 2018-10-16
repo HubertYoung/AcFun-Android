@@ -1,9 +1,7 @@
 package com.hubertyoung.common.utils;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
-import com.hubertyoung.common.CommonApplication;
+import com.tencent.mmkv.MMKV;
 
 
 /**
@@ -12,11 +10,12 @@ import com.hubertyoung.common.CommonApplication;
 public class SPUtils {
 
 
-	private static SharedPreferences sp;
+	private static MMKV sp;
 
 	private static void init() {
 		if ( sp == null ) {
-			sp = PreferenceManager.getDefaultSharedPreferences( CommonApplication.getAppContext() );
+//			sp = PreferenceManager.getDefaultSharedPreferences( CommonApplication.getAppContext() );
+			sp = MMKV.mmkvWithID("myData");
 		}
 	}
 
@@ -24,7 +23,7 @@ public class SPUtils {
 		if ( sp == null ) {
 			init();
 		}
-		sp.edit().putInt( key, value ).commit();
+		sp.edit().putInt( key, value );
 	}
 
 	public static int getSharedIntData( String key ) {
@@ -38,7 +37,7 @@ public class SPUtils {
 		if ( sp == null ) {
 			init();
 		}
-		sp.edit().putLong( key, value ).commit();
+		sp.edit().putLong( key, value );
 	}
 
 	public static long getSharedlongData( String key ) {
@@ -52,7 +51,7 @@ public class SPUtils {
 		if ( sp == null ) {
 			init();
 		}
-		sp.edit().putFloat( key, value ).commit();
+		sp.edit().putFloat( key, value );
 	}
 
 	public static Float getSharedFloatData( String key ) {
@@ -66,7 +65,7 @@ public class SPUtils {
 		if ( sp == null ) {
 			init();
 		}
-		sp.edit().putBoolean( key, value ).commit();
+		sp.edit().putBoolean( key, value );
 	}
 
 	public static Boolean getSharedBooleanData( String key ) {
@@ -87,7 +86,7 @@ public class SPUtils {
 		if ( sp == null ) {
 			init();
 		}
-		sp.edit().putString( key, value ).commit();
+		sp.edit().putString( key, value );
 	}
 
 	public static String getSharedStringData( String key ) {

@@ -31,6 +31,8 @@ dependencies {
 //    implementation project(':android-support:skin-support-constraint-layout')
 //    implementation project(':android-support:skin-support-design')
 
+    implementation "com.tencent:mmkv:$var.mmkv"
+
     api 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
     //显示图片框架
     api "com.facebook.fresco:fresco:$var.fresco"
@@ -50,8 +52,13 @@ dependencies {
 //    api 'ch.acra:acra:4.9.0'
     implementation "ch.acra:acra:$var.acraVersion"
     api project(':javapoet:annotation')
+//    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+//    implementation 'com.squareup:javapoet:1.11.1'
+//    api 'com.hubertyoung.javapoet_environment:javapoet_environment_base:1.0.0'
     debugAnnotationProcessor project(':javapoet:compiler')
+//    debugAnnotationProcessor 'com.hubertyoung.javapoet_environment:javapoet_environment_compiler:1.0.0'
     releaseAnnotationProcessor project(':javapoet:compiler-release')
+//    releaseAnnotationProcessor 'com.hubertyoung.javapoet_environment:javapoet_environment_compiler-release:1.0.0'
 }
 repositories {
     mavenCentral()
