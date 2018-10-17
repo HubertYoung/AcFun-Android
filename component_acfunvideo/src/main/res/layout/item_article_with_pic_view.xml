@@ -42,7 +42,7 @@
             android:textColor="@color/text_gray_color"
             android:textSize="@dimen/text_data_prompt_size"
             android:visibility="visible"
-            tools:text="@string/article_commends_text"/>
+            android:text="@string/article_commends_text"/>
     </LinearLayout>
 
     <LinearLayout
