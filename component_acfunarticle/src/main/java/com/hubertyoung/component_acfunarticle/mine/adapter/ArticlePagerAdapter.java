@@ -1,9 +1,9 @@
 package com.hubertyoung.component_acfunarticle.mine.adapter;
 
+import com.billy.cc.core.component.CC;
 import com.hubertyoung.component_acfunarticle.R;
 import com.hubertyoung.component_acfunarticle.entity.ServerChannel;
 import com.hubertyoung.component_acfunarticle.mine.fragment.ArticleGeneralSecondFragment;
-import com.hubertyoung.component_acfunarticle.mine.fragment.ArticleRecommendFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
  */
 public class ArticlePagerAdapter extends FragmentPagerAdapter {
 	private FragmentActivity mActivity;
-	private ArrayList< ServerChannel > data = new ArrayList<>(  );
+	private ArrayList< ServerChannel > data = new ArrayList<>();
 	private List< String > mTitles;
 	private List< String > dataID;
 	private List< Fragment > mFragments;
@@ -75,7 +75,13 @@ public class ArticlePagerAdapter extends FragmentPagerAdapter {
 			mTitles.add( ( data.get( i ) ).name );
 		}
 		mFragments = new ArrayList();
-		mFragments.add( ArticleRecommendFragment.newInstance( "", "" ) );
+//		mFragments.add( ArticleRecommendFragment.newInstance( "63", "" ) );
+		mFragments.add( CC.obtainBuilder( "ComponentAcFunIndex" )//
+				.setActionName( "getNewRecommendFragment" )//
+				.addParam( "channelId", "63" )//
+				.build()//
+				.call()//
+				.getDataItem( "fragment" ) );
 		for (int i = 1; i < dataID.size(); i++) {
 			mFragments.add( ArticleGeneralSecondFragment.newInstance( dataID.get( i ), "" ) );
 		}

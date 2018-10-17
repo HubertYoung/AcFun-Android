@@ -3,10 +3,11 @@ package com.hubertyoung.component.acfunvideo;
 import android.content.Context;
 import android.content.Intent;
 
-import com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
+import com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment;
+import com.hubertyoung.component.acfunvideo.index.fragment.NewRecommendFragment;
 
 /**
  * <br>
@@ -32,16 +33,10 @@ public class ComponentTask implements IComponent {
 			case "getHomePageFragment":
 				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", HomePageFragment.newInstance( "", "" ) ) );
 				break;
-//            case "toPatrolPlanActivity":
-//                intent = new Intent(context, PatrolPlanActivity.class);
-//                intent.putExtra("callId", cc.getCallId());
-//                if (!(context instanceof Activity )) {
-//                    //调用方没有设置context或app间组件跳转，context为application
-//                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
-//                }
-//                context.startActivity(intent);
-//                CC.sendCCResult(cc.getCallId(), CCResult.success());
-//                break;
+            case "getNewRecommendFragment":
+            	String channelId = cc.getParamItem( "channelId" );
+				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", NewRecommendFragment.newInstance( channelId, "" ) ) );
+                break;
 //            case "toIssueActivity":
 //                intent = new Intent(context, IssueActivity.class);
 //                intent.putExtra("callId", cc.getCallId());

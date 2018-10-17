@@ -2,7 +2,6 @@ package com.hubertyoung.component.acfunvideo.index.fragment;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
@@ -32,7 +31,6 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,7 +49,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private static final String ARG_PARAM1 = "id";
 	private static final String ARG_PARAM2 = "param2";
 
-	private String id;
+	private String channelId;
 	private String mParam2;
 	private SmartRefreshLayout mSrlContainer;
 	private RecyclerView mHomeRecommendLis;
@@ -77,16 +75,9 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	public void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		if ( getArguments() != null ) {
-			id = getArguments().getString( ARG_PARAM1 );
+			channelId = getArguments().getString( ARG_PARAM1 );
 			mParam2 = getArguments().getString( ARG_PARAM2 );
 		}
-	}
-
-	@Override
-	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
-		mSrlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
-		mHomeRecommendLis = ( RecyclerView ) findViewById( R.id.home_recommend_lis );
-		super.onViewCreated( view, savedInstanceState );
 	}
 
 	@Override
@@ -106,6 +97,8 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
+		mSrlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
+		mHomeRecommendLis = ( RecyclerView ) findViewById( R.id.home_recommend_lis );
 		initRecyclerView();
 		initAction();
 		loadData();
@@ -114,7 +107,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	@Override
 	public void loadData() {
 		MyRequestMap map = new MyRequestMap();
-		map.put( "channelId", "0" );
+		map.put( "channelId", channelId );
 		mPresenter.requestRecommend( map );
 	}
 
