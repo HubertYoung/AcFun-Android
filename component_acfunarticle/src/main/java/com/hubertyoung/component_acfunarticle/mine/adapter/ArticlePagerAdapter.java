@@ -77,24 +77,8 @@ public class ArticlePagerAdapter extends FragmentPagerAdapter {
 		mFragments = new ArrayList();
 		mFragments.add( ArticleRecommendFragment.newInstance( "", "" ) );
 		for (int i = 1; i < dataID.size(); i++) {
-			mFragments.add( ArticleGeneralSecondFragment.newInstance( ( String ) dataID.get( i ), "" ) );
+			mFragments.add( ArticleGeneralSecondFragment.newInstance( dataID.get( i ), "" ) );
 		}
-//		for (int i3 = 0; i3 < dataID.size(); i3++) {
-//			View b = ArticleFragment.mTab.b(i3);
-//			if (b instanceof TextView ) {
-//				TextView textView = (TextView) b;
-//				if (i3 == 0) {
-//					textView.setTypeface(Typeface.DEFAULT_BOLD);
-//					textView.setTextSize(17.0f);
-//					textView.setAlpha(1.0f);
-//				} else {
-//					textView.setTypeface(Typeface.DEFAULT);
-//					textView.setTextSize(15.0f);
-//					textView.setAlpha(0.8f);
-//				}
-//			}
-//		}
-
 		notifyDataSetChanged();
 	}
 }

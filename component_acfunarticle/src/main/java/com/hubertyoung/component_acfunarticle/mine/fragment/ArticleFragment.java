@@ -139,40 +139,45 @@ public class ArticleFragment extends BaseFragment< ArticlePresenterImp, ArticleM
 	}
 
 	private void initViewPager( List< ServerChannel > article ) {
-		this.mArticleViewTab.setCustomTabView( R.layout.widget_secondary_tab_view, R.id.secondary_tab_text);
-		if(mArticlePagerAdapter == null) {
-			mArticlePagerAdapter = new ArticlePagerAdapter(activity, getSupportFragmentManager( activity ) );
+		this.mArticleViewTab.setCustomTabView( R.layout.widget_secondary_tab_view, R.id.secondary_tab_text );
+		if ( mArticlePagerAdapter == null ) {
+			mArticlePagerAdapter = new ArticlePagerAdapter( activity, getSupportFragmentManager( activity ) );
 		}
-
-		mArticlePagerAdapter.setInfo(article);
-
-		this.mArticleViewPager.setAdapter(mArticlePagerAdapter);
-		this.mArticleViewPager.setCurrentItem(0);
-		this.mArticleViewTab.setViewPager(mArticleViewPager);
-		this.mArticleViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-			public void onPageScrollStateChanged(int i) {
+		mArticlePagerAdapter.setInfo( article );
+		this.mArticleViewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
+			public void onPageScrollStateChanged( int i ) {
 			}
 
-			public void onPageScrolled(int i, float f, int i2) {
+			public void onPageScrolled( int i, float f, int i2 ) {
 			}
 
-			public void onPageSelected(int i) {
-				for (int j = 0; j < mArticlePagerAdapter.getCount(); j++) {
-					View b = mArticleViewTab.getTabAt(j);
-					if (b instanceof TextView ) {
-						TextView textView = (TextView) b;
-						if (i == j) {
-							textView.setTypeface(Typeface.DEFAULT_BOLD);
-							textView.setTextSize(17.0f);
-							textView.setAlpha(1.0f);
-						} else {
-							textView.setTypeface(Typeface.DEFAULT);
-							textView.setTextSize(15.0f);
-							textView.setAlpha(0.8f);
-						}
-					}
+			public void onPageSelected( int i ) {
+				selectorTextView( i );
+			}
+		} );
+
+
+		this.mArticleViewPager.setAdapter( mArticlePagerAdapter );
+		this.mArticleViewPager.setCurrentItem( 0 );
+		this.mArticleViewTab.setViewPager( mArticleViewPager );
+		selectorTextView( 0 );
+	}
+
+	private void selectorTextView( int i ) {
+		for (int j = 0; j < mArticlePagerAdapter.getCount(); j++) {
+			View tab = mArticleViewTab.getTabAt( j );
+			if ( tab instanceof TextView ) {
+				TextView textView = ( TextView ) tab;
+				if ( i == j ) {
+					textView.setTypeface( Typeface.DEFAULT_BOLD );
+					textView.setTextSize( 17.0f );
+					textView.setAlpha( 1.0f );
+				} else {
+					textView.setTypeface( Typeface.DEFAULT );
+					textView.setTextSize( 15.0f );
+					textView.setAlpha( 0.8f );
 				}
 			}
-		});
+		}
 	}
 }
