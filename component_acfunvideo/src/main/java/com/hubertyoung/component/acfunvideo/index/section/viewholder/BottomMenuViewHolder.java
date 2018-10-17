@@ -1,11 +1,12 @@
 package com.hubertyoung.component.acfunvideo.index.section.viewholder;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hubertyoung.component_acfunvideo.R;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>
@@ -22,6 +23,7 @@ public class BottomMenuViewHolder extends RecyclerView.ViewHolder {
 	public TextView bottomChange;
 	public View bottomChangeLayout;
 	public View bottomMoreLayout;
+	public View vBottomLine;
 
 	public BottomMenuViewHolder( View view ) {
 		super( view );
@@ -29,5 +31,6 @@ public class BottomMenuViewHolder extends RecyclerView.ViewHolder {
 		this.bottomChangeLayout = ( LinearLayout ) view.findViewById( R.id.region_menu_change_layout );
 		this.bottom = ( TextView ) view.findViewById( R.id.region_menu_more );
 		this.bottomMoreLayout = ( LinearLayout ) view.findViewById( R.id.region_menu_more_layout );
+		this.vBottomLine = ( View ) view.findViewById( R.id.v_bottom_line );
 	}
 }

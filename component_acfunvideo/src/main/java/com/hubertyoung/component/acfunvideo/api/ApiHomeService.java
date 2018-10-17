@@ -11,6 +11,7 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 /**
@@ -35,19 +36,22 @@ public interface ApiHomeService {
 
 	/**
 	 * 首页加载更多
+	 *
+	 * @param channelId
 	 * @param map
 	 * @return
 	 */
-	@GET( "v3/regions/new/0" )
-	Observable< BaseResponse< List< RegionBodyContent > > > requestNewRecommend( @QueryMap Map< String, String > map );
+	@GET( "v3/regions/new/{channelId}" )
+	Observable< BaseResponse< List< RegionBodyContent > > > requestNewRecommend( @Path( "channelId" ) String channelId, @QueryMap Map< String, String > map );
 
 	/**
 	 * 首页分区页面数据
+	 *
 	 * @param map
 	 * @return
 	 */
 	@GET( "v3/channels/channelOperate" )
-	Observable<BaseResponse<ChannelOperate >> requestChannelOperate( @QueryMap Map<String, String> map );
+	Observable< BaseResponse< ChannelOperate > > requestChannelOperate( @QueryMap Map< String, String > map );
 
 //	/**
 //	 * 商品详情

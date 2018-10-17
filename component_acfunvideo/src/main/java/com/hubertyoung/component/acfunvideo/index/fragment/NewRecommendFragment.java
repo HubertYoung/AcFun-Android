@@ -15,6 +15,9 @@ import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
 import com.hubertyoung.component.acfunvideo.index.model.NewRecommendModelImp;
 import com.hubertyoung.component.acfunvideo.index.presenter.NewRecommendPresenterImp;
+import com.hubertyoung.component.acfunvideo.index.section.ArticlesNewSection;
+import com.hubertyoung.component.acfunvideo.index.section.ArticlesRankRecommendSection;
+import com.hubertyoung.component.acfunvideo.index.section.ArticlesRecommendSection;
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendBangumisSection;
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendBannersSection;
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendCarouselsSection;
@@ -49,7 +52,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private static final String ARG_PARAM1 = "id";
 	private static final String ARG_PARAM2 = "param2";
 
-	private String channelId;
+	private String channelId = "";
 	private String mParam2;
 	private SmartRefreshLayout mSrlContainer;
 	private RecyclerView mHomeRecommendLis;
@@ -60,6 +63,12 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private NewRecommendCarouselsSection mCarouselsSection;
 	private NewRecommendBannersSection mBannersSection;
 	private NewRecommendBangumisSection mBangumisSection;
+	/**
+	 * 推荐选择的id
+	 */
+	private String articlesChannelId = "";
+	private ArticlesRankRecommendSection mArticlesRankRecommendSection;
+	private ArticlesNewSection mArticlesNewSection;
 	//	private NewBangumiSection mNewBangumiSection;
 
 	public static NewRecommendFragment newInstance( String param1, String param2 ) {
@@ -114,7 +123,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	private void loadNewData() {
 		MyRequestMap map = new MyRequestMap();
 		map.put( "pageNo", mAdapter.getPageBean().getLoadPage() + "" );
-		mPresenter.requestNewRecommend( map );
+		mPresenter.requestNewRecommend(channelId, map );
 	}
 
 	private void initAction() {
@@ -200,11 +209,20 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 
 	@Override
 	public void addNewRecommendInfo( List< RegionBodyContent > regionsList ) {
-		Section section = mAdapter.getSection( Utils.videos_new );
-		if ( section != null && section instanceof NewRecommendVideosSection ) {
-			NewRecommendVideosSection videosSection = ( NewRecommendVideosSection ) section;
-			videosSection.addRegions( regionsList );
-			mAdapter.notifyDataSetChanged();
+		if ( TextUtils.equals( channelId,articlesChannelId ) ){
+			Section section = mAdapter.getSection( Utils.articles_new );
+			if ( section != null && section instanceof ArticlesNewSection ) {
+				ArticlesNewSection articlesNewSection = ( ArticlesNewSection ) section;
+				articlesNewSection.addRegions( regionsList );
+				mAdapter.notifyDataSetChanged();
+			}
+		}else {
+			Section section = mAdapter.getSection( Utils.videos_new );
+			if ( section != null && section instanceof NewRecommendVideosSection ) {
+				NewRecommendVideosSection videosSection = ( NewRecommendVideosSection ) section;
+				videosSection.addRegions( regionsList );
+				mAdapter.notifyDataSetChanged();
+			}
 		}
 	}
 
@@ -264,6 +282,39 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 			mAdapter.removeAllSections();
 		}else {
 			mAdapter.notifyDataSetChanged();
+		}
+	}
+
+	@Override
+	public void showArticlesRecommendSection( Regions regions ) {
+		if ( mAdapter.getPageBean().refresh ) {
+			articlesChannelId = channelId;
+			ArticlesRecommendSection mArticlesRecommendSection = new ArticlesRecommendSection( ( BaseActivity ) activity );
+			mAdapter.addSection( mArticlesRecommendSection );
+			mArticlesRecommendSection.setRegions( regions );
+		}
+	}
+
+	@Override
+	public void showArticlesRankRecommendSection( Regions regions ) {
+		if ( mAdapter.getPageBean().refresh ) {
+			mArticlesRankRecommendSection = new ArticlesRankRecommendSection( ( BaseActivity ) activity );
+			mAdapter.addSection( mArticlesRankRecommendSection );
+			mArticlesRankRecommendSection.setRegions( regions );
+		}
+	}
+
+	@Override
+	public void showArticlesNewRecommendSection( Regions regions ) {
+		if ( mAdapter.getPageBean().refresh ) {
+			boolean isArticlesNew = TextUtils.equals( Utils.articles_new, regions.schema );
+			mArticlesNewSection = new ArticlesNewSection( ( BaseActivity ) activity );
+			if ( isArticlesNew ) {
+				mAdapter.addSection( Utils.articles_new, mArticlesNewSection );
+			} else {
+				mAdapter.addSection( mArticlesNewSection );
+			}
+			mArticlesNewSection.setRegions( regions );
 		}
 	}
 }

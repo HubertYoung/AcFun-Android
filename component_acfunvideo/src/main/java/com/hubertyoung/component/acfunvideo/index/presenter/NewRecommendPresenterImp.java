@@ -51,6 +51,15 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 								case Utils.bangumis:
 									mView.showNewRecommendBangumisSection(regions);
 									break;
+								case Utils.articles:
+									mView.showArticlesRecommendSection(regions);
+									break;
+								case Utils.articles_rank:
+									mView.showArticlesRankRecommendSection(regions);
+									break;
+								case Utils.articles_new:
+									mView.showArticlesNewRecommendSection(regions);
+									break;
 							}
 						}
 						mView.refreshViewInfo(1);
@@ -65,9 +74,9 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 				} ) );
 	}
 
-	public void requestNewRecommend( MyRequestMap map ) {
+	public void requestNewRecommend( String channelId, MyRequestMap map ) {
 		mView.showLoading( "Loading...", 1 );
-		mRxManage.add( mModel.requestNewRecommend( map )
+		mRxManage.add( mModel.requestNewRecommend(channelId, map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribe( new Consumer< List<RegionBodyContent > >() {
 

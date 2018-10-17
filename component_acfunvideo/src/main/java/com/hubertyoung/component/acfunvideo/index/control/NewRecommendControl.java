@@ -27,7 +27,7 @@ public interface NewRecommendControl {
 	interface Model extends BaseModel {
 		Observable< List< Regions > > requestRecommend( MyRequestMap map );
 
-		Observable< List< RegionBodyContent > > requestNewRecommend( MyRequestMap map );
+		Observable< List< RegionBodyContent > > requestNewRecommend( String channelId, MyRequestMap map );
 	}
 
 	interface View extends BaseView {
@@ -46,6 +46,12 @@ public interface NewRecommendControl {
 		void showNewRecommendBangumisSection( Regions regions );
 
 		void refreshViewInfo( int i );
+
+		void showArticlesRecommendSection( Regions regions );
+
+		void showArticlesRankRecommendSection( Regions regions );
+
+		void showArticlesNewRecommendSection( Regions regions );
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {

@@ -1,17 +1,9 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
-import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindBottomMenuViewHolder;
-import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
-import com.hubertyoung.component.acfunvideo.index.section.viewholder.BottomMenuViewHolder;
-import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
-import com.hubertyoung.component_acfunvideo.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
@@ -19,6 +11,15 @@ import com.hubertyoung.common.utils.DisplayUtil;
 import com.hubertyoung.common.utils.StringUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
+import com.hubertyoung.component.acfunvideo.entity.Regions;
+import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindBottomMenuViewHolder;
+import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
+import com.hubertyoung.component.acfunvideo.index.section.viewholder.BottomMenuViewHolder;
+import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
+import com.hubertyoung.component_acfunvideo.R;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>
@@ -114,7 +115,7 @@ public class NewRecommendVideosRankSection extends Section {
 				ImageLoaderUtil.loadNetImage( bodyContent.images.get( 0 ), viewHolder.img );
 			}
 			viewHolder.upName.setText( bodyContent.user.name );
-			viewHolder.counts.setText( StringUtil.formatChineseNum( mActivity, bodyContent.visit.banana ) );
+			viewHolder.counts.setText( StringUtil.formatChineseNum( bodyContent.visit.banana ) );
 		}
 	}
 

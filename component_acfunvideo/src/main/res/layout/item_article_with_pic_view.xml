@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:aapt="http://schemas.android.com/aapt"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/home_item_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp">
+
+    <LinearLayout
+        android:id="@+id/item_article_view_comments_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/item_article_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:src="@mipmap/article_state_review"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/item_article_view_comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/actionbar_bg"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            tools:text="12312"/>
+
+        <TextView
+            android:id="@+id/comment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_gray_color"
+            android:textSize="@dimen/text_data_prompt_size"
+            android:visibility="visible"
+            tools:text="@string/article_commends_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/item_article_view_comments_layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_article_view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lineSpacingExtra="2dp"
+            android:maxLines="2"
+            android:textColor="#ff000000"
+            android:textSize="16sp"
+            tools:text="d分手了地方d就接收"/>
+
+        <FrameLayout
+            android:id="@+id/framelayout_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/item_article_view_single_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone"
+                app:failureImage="@color/background_gray_color"
+                app:placeholderImage="@color/background_gray_color"
+                app:roundedCornerRadius="5dp"
+                app:viewAspectRatio="3.13"/>
+
+            <LinearLayout
+                android:id="@+id/item_article_view_triple_img_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/item_article_view_triple_img1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    app:failureImage="@color/background_gray_color"
+                    app:placeholderImage="@color/background_gray_color"
+                    app:roundedCornerRadius="5dp"
+                    app:viewAspectRatio="1.65"/>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/item_article_view_triple_img2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    app:failureImage="@color/background_gray_color"
+                    app:placeholderImage="@color/background_gray_color"
+                    app:roundedCornerRadius="5dp"
+                    app:viewAspectRatio="1.65"/>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/item_article_view_triple_img3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    app:failureImage="@color/background_gray_color"
+                    app:placeholderImage="@color/background_gray_color"
+                    app:roundedCornerRadius="5dp"
+                    app:viewAspectRatio="1.65"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/item_article_view_uploader_avatar"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_centerVertical="true"
+                app:failureImage="@mipmap/ic_slide_menu_avatar_no_login"
+                app:placeholderImage="@color/background_gray_color"
+                app:roundAsCircle="true"/>
+
+            <TextView
+                android:id="@+id/item_article_view_uploader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/item_article_view_uploader_avatar"
+                android:ellipsize="end"
+                android:maxWidth="120dp"
+                android:maxLines="1"
+                android:textColor="@color/text_black_color"
+                android:textSize="@dimen/text_detail_size"
+                tools:text="ddd"/>
+
+            <TextView
+                android:id="@+id/item_article_view_relasetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/item_article_view_uploader"
+                android:maxLines="1"
+                android:textColor="@color/text_gray2_color"
+                android:textSize="@dimen/text_detail_size"
+                tools:text="ddd"/>
+
+            <TextView
+                android:id="@+id/item_article_view_views"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/item_article_view_relasetime"
+                android:drawableLeft="@mipmap/ic_home_article_view"
+                android:drawablePadding="6dp"
+                android:maxLines="1"
+                android:textColor="@color/text_gray2_color"
+                android:textSize="@dimen/text_detail_size"
+                tools:text="dddd"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/item_article_view_relasetime"
+                    android:maxLines="1"
+                    android:textColor="@color/text_gray_color"
+                    android:textSize="@dimen/text_detail_size"
+                    tools:text="来自: "/>
+
+                <TextView
+                    android:id="@+id/item_article_view_subchannel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:textColor="#5b99ff"
+                    android:textSize="@dimen/text_detail_size"
+                    tools:text="1111"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/ll_info"
+        android:layout_marginTop="15dp"
+        android:background="#0d000000"/>
+</RelativeLayout>

@@ -34,11 +34,11 @@ public class NewRecommendModelImp implements NewRecommendControl.Model {
 				.compose( new DefaultTransformer() );
 	}
 	@Override
-	public Observable< List< RegionBodyContent > > requestNewRecommend( MyRequestMap map ) {
+	public Observable< List< RegionBodyContent > > requestNewRecommend( String channelId, MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )
-				.requestNewRecommend( map.map )
+				.requestNewRecommend(channelId, map.map )
 				.compose( new DefaultTransformer() );
 	}
 }

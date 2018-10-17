@@ -1,16 +1,10 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
-import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
-import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
-import com.hubertyoung.component_acfunvideo.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
@@ -18,8 +12,15 @@ import com.hubertyoung.common.utils.DisplayUtil;
 import com.hubertyoung.common.utils.StringUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
+import com.hubertyoung.component.acfunvideo.entity.Regions;
+import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
+import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
+import com.hubertyoung.component_acfunvideo.R;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>
@@ -142,10 +143,10 @@ public class NewRecommendVideosSection extends Section {
 		} else if ( regionBodyContent.actionId == 10 ) {
 			if ( regionBodyContent.visit != null ) {
 				viewHolder.playsLayout.setVisibility( View.VISIBLE );
-				viewHolder.mPlays.setText( StringUtil.formatChineseNum( mActivity, regionBodyContent.visit.views ) );
+				viewHolder.mPlays.setText( StringUtil.formatChineseNum( regionBodyContent.visit.views ) );
 				viewHolder.mPlays.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_home_item_video_views, 0, 0, 0 );
 				viewHolder.mPlays.setVisibility( View.VISIBLE );
-				viewHolder.mDanmus.setText( StringUtil.formatChineseNum( mActivity, regionBodyContent.visit.comments ) );
+				viewHolder.mDanmus.setText( StringUtil.formatChineseNum( regionBodyContent.visit.comments ) );
 				viewHolder.mDanmus.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_home_item_video_comments, 0, 0, 0 );
 				viewHolder.mDanmus.setVisibility( View.VISIBLE );
 			} else {
@@ -164,9 +165,9 @@ public class NewRecommendVideosSection extends Section {
 				viewHolder.mPlays.setVisibility( View.VISIBLE );
 				viewHolder.mDanmus.setVisibility( View.VISIBLE );
 				viewHolder.playsLayout.setVisibility( View.VISIBLE );
-				viewHolder.mPlays.setText( StringUtil.formatChineseNum( mActivity, regionBodyContent.visit.views ) );
+				viewHolder.mPlays.setText( StringUtil.formatChineseNum( regionBodyContent.visit.views ) );
 				viewHolder.mPlays.setCompoundDrawablesWithIntrinsicBounds( R.mipmap.icon_video_plays, 0, 0, 0 );
-				viewHolder.mDanmus.setText( StringUtil.formatChineseNum( mActivity, regionBodyContent.visit.danmakuSize ) );
+				viewHolder.mDanmus.setText( StringUtil.formatChineseNum( regionBodyContent.visit.danmakuSize ) );
 			} else {
 				viewHolder.playsLayout.setVisibility( View.GONE );
 			}

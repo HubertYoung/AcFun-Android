@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -244,7 +245,7 @@ public class StringUtil {
 		return builder.toString();
 	}
 
-	public static String formatChineseNum( Context context, int num ) {
+	public static String formatChineseNum( int num ) {
 		if ( num > 100000 ) {
 			double doubleValue = new BigDecimal( num / 10000 ).setScale( 1, 4 ).doubleValue();
 			StringBuilder stringBuilder = new StringBuilder();
@@ -255,7 +256,7 @@ public class StringUtil {
 			}
 			StringBuilder stringBuilder3 = new StringBuilder();
 			stringBuilder3.append( stringBuilder2 );
-			stringBuilder3.append( context.getResources().getString( R.string.wan_text ) );
+			stringBuilder3.append( CommonApplication.getAppContext().getResources().getString( R.string.wan_text ) );
 			return stringBuilder3.toString();
 		}
 		StringBuilder builder = new StringBuilder();
@@ -308,5 +309,30 @@ public class StringUtil {
 			}
 		}
 		return str2;
+	}
+
+	public static String formatNumTime( long time ) {
+		Context context = CommonApplication.getAppContext();
+		long currentTimeMillis = System.currentTimeMillis() - time;
+		if ( currentTimeMillis > 0 && currentTimeMillis < ( 60 * 1000 ) ) {
+			return context.getResources().getString( R.string.now_time_text );
+		}
+		StringBuilder stringBuilder;
+		if ( currentTimeMillis > 0 && currentTimeMillis < 3600000 ) {
+			stringBuilder = new StringBuilder();
+			stringBuilder.append( ( int ) ( currentTimeMillis / ( 60 * 1000 ) ) );
+			stringBuilder.append( context.getResources().getString( R.string.minutes_time_text ) );
+			return stringBuilder.toString();
+		} else if ( currentTimeMillis <= 3600000 || currentTimeMillis >= 86400000 ) {
+			Date date = new Date( time );
+			GregorianCalendar gregorianCalendar = new GregorianCalendar();
+			gregorianCalendar.setTime( date );
+			return new SimpleDateFormat( context.getResources().getString( R.string.data_time_format_text ) ).format( gregorianCalendar.getTime() );
+		} else {
+			stringBuilder = new StringBuilder();
+			stringBuilder.append( ( int ) ( currentTimeMillis / 3600000 ) );
+			stringBuilder.append( context.getResources().getString( R.string.hour_time_text ) );
+			return stringBuilder.toString();
+		}
 	}
 }

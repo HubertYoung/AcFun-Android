@@ -1,6 +1,5 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -19,6 +18,8 @@ import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderT
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BottomMenuViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
 import com.hubertyoung.component_acfunvideo.R;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>
@@ -72,7 +73,6 @@ public class NewRecommendBangumisSection extends Section {
 		} else {
 			return 0;
 		}
-
 	}
 
 	@Override
