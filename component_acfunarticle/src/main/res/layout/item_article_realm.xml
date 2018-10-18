@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:aapt="http://schemas.android.com/aapt"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+                android:id="@+id/rootView"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+    <TextView
+        android:id="@+id/article_realm_title"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/selector_bt_realm"
+        android:enabled="true"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:text="acfun"
+        android:textColor="@color/selector_text_realm"
+        android:textSize="12sp"/>
+</RelativeLayout>

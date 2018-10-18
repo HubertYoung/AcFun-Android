@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunarticle.mine.model;
+package com.hubertyoung.component_acfunarticle.article.model;
 
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.Api;
@@ -8,7 +8,7 @@ import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component_acfunarticle.BuildConfig;
 import com.hubertyoung.component_acfunarticle.api.ApiArticleService;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
-import com.hubertyoung.component_acfunarticle.mine.control.ArticleControl;
+import com.hubertyoung.component_acfunarticle.article.control.ArticleControl;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import io.reactivex.Observable;

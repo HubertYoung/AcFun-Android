@@ -1,13 +1,67 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.hubertyoung.component_acfunarticle.mine.fragment.ArticleGeneralSecondFragment">
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:aapt="http://schemas.android.com/aapt"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/article_realm_view_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+
+            <com.hubertyoung.common.widget.DropDownOptionList
+                android:id="@+id/article_secondary_view_drop_down_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/article_secondary_view_ptr_divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/transparent"/>
+
+                    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                        android:id="@+id/srl_article_secondary_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/article_secondary_view_ptr_divider">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/article_secondary_view_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/article_secondary_view_shader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/description_dark_bg"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

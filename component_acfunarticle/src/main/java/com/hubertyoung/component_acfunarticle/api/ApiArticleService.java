@@ -4,6 +4,7 @@ package com.hubertyoung.component_acfunarticle.api;
 import com.hubertyoung.common.net.response.BaseResponse;
 import com.hubertyoung.component_acfunarticle.entity.ArticleRecommendEntity;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
+import com.hubertyoung.component_acfunarticle.entity.RankAc;
 
 import java.util.List;
 import java.util.Map;
@@ -29,4 +30,7 @@ public interface ApiArticleService {
 
 	@GET( "v3/regions" )
 	Observable< BaseResponse< List< ArticleRecommendEntity > > > requestArticleRecommend( @QueryMap Map< String, String > map );
+
+	@GET( "v3/regions/search" )
+	Observable< BaseResponse< RankAc > > requestArticleGeneralSecond( @QueryMap Map< String, String > map );
 }

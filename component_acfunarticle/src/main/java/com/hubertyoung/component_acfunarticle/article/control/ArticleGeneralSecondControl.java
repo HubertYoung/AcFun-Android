@@ -1,13 +1,11 @@
-package com.hubertyoung.component_acfunarticle.mine.control;
+package com.hubertyoung.component_acfunarticle.article.control;
 
 
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.component_acfunarticle.entity.ArticleRecommendEntity;
-
-import java.util.List;
+import com.hubertyoung.component_acfunarticle.entity.RankAc;
 
 import io.reactivex.Observable;
 
@@ -21,18 +19,16 @@ import io.reactivex.Observable;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunarticle.mine.control
  */
-public interface ArticleRecommendControl {
+public interface ArticleGeneralSecondControl {
 
 	interface Model extends BaseModel {
-		Observable< List< ArticleRecommendEntity > > requestArticleRecommend( MyRequestMap map );
+		Observable< RankAc > requestArticleGeneralSecond( MyRequestMap map );
 	}
 
 	interface View extends BaseView {
-		void setArticleRecommend( List<ArticleRecommendEntity> articleRecommendEntityList );
-
+		void setArticleGeneralSecondInfo( RankAc rankAc );
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
-		public abstract void requestArticleRecommend( MyRequestMap map );
 	}
 }

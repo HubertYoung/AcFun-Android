@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.hubertyoung.component_acfunarticle.mine.fragment.ArticleFragment;
+import com.hubertyoung.component_acfunarticle.article.fragment.ArticleFragment;
 
 /**
  * <br>

@@ -86,7 +86,7 @@ public final class NetWorkConfiguration {
 		int maxTimeOut = AppUtils.isDebuggable() ? 60 : 10;
 		this.connectTimeout = 1000 * maxTimeOut;
 		this.readTimeout = 1000 * maxTimeOut;
-		this.connectionPool = new ConnectionPool( 50, 60, TimeUnit.SECONDS );
+		this.connectionPool = new ConnectionPool( 5, 60, TimeUnit.SECONDS );
 		certificates = null;
 		baseUrl = null;
 	}

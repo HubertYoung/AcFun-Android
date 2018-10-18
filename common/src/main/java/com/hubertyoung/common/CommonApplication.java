@@ -29,6 +29,7 @@ import org.acra.config.ConfigurationBuilder;
 import org.acra.sender.HttpSender;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
@@ -54,7 +55,7 @@ public class CommonApplication extends Application {
 		mBaseApplication = this;
 		CommonLog.logInit( BuildConfig.DEBUG );
 
-		String rootDir = "mmkv root: " + MMKV.initialize(this);
+		String rootDir = "mmkv root: " + MMKV.initialize( this );
 		CommonLog.logd( rootDir );
 
 		SmartRefreshLayout.setDefaultRefreshHeaderCreator( new DefaultRefreshHeaderCreator() {
@@ -141,6 +142,7 @@ public class CommonApplication extends Application {
 				.add( "uid", "0" )//
 				.add( "udid", AppUtils.getUUID() );
 		configuration.setHeaders( builder.build() );
+		configuration.connectionPool( 5, 5, TimeUnit.MINUTES );
 		HttpUtils.setConFiguration( configuration );
 	}
 

@@ -335,4 +335,13 @@ public class StringUtil {
 			return stringBuilder.toString();
 		}
 	}
+
+	private String formatList(List list) {
+		if (list == null || list.isEmpty()) {
+			return "";
+		}
+		String s = list.toString();
+		return s.substring(1, s.length() - 1).replaceAll("\\s*", "");
+	}
+
 }

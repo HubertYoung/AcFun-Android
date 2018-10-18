@@ -85,10 +85,13 @@ public class HomePageFragment extends BaseFragment {
 		mIvSearch = ( ImageView ) findViewById( R.id.iv_search );
 		mIvGame = ( ImageView ) findViewById( R.id.iv_game );
 		mHomeViewPager = ( ViewPager ) findViewById( R.id.home_view_pager );
-		initViewPager();
-		initAction();
-		initData();
-		loadData();
+		if ( isPrepared == false ) {
+			initViewPager();
+			initAction();
+			initData();
+			loadData();
+			isPrepared = true;
+		}
 	}
 
 	private void initData() {

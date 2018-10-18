@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:aapt="http://schemas.android.com/aapt"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/order_by_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        android:layout_toLeftOf="@id/range_select"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingTop="15dp"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:id="@+id/order_by_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/activity_channel_filter_default"
+            android:textColor="@color/primary_text"
+            android:textSize="14sp"/>
+
+        <ImageView
+            android:id="@+id/order_by_image"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/icon_folder"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/range_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingTop="15dp"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:id="@+id/filter_range_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/activity_channel_filter_one_month"
+            android:textColor="@color/primary_text"
+            android:textSize="14sp"/>
+
+        <ImageView
+            android:id="@+id/filter_range_image"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/icon_folder"/>
+    </LinearLayout>
+</RelativeLayout>

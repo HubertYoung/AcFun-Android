@@ -1,9 +1,9 @@
-package com.hubertyoung.component_acfunarticle.mine.presenter;
+package com.hubertyoung.component_acfunarticle.article.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
-import com.hubertyoung.component_acfunarticle.mine.control.ArticleControl;
+import com.hubertyoung.component_acfunarticle.article.control.ArticleControl;
 
 import androidx.annotation.NonNull;
 import io.reactivex.functions.Consumer;

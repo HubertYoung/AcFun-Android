@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunarticle.mine.fragment;
+package com.hubertyoung.component_acfunarticle.article.fragment;
 
 
 import android.graphics.Typeface;
@@ -15,10 +15,10 @@ import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_acfunarticle.R;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
 import com.hubertyoung.component_acfunarticle.entity.ServerChannel;
-import com.hubertyoung.component_acfunarticle.mine.adapter.ArticlePagerAdapter;
-import com.hubertyoung.component_acfunarticle.mine.control.ArticleControl;
-import com.hubertyoung.component_acfunarticle.mine.model.ArticleModelImp;
-import com.hubertyoung.component_acfunarticle.mine.presenter.ArticlePresenterImp;
+import com.hubertyoung.component_acfunarticle.article.adapter.ArticlePagerAdapter;
+import com.hubertyoung.component_acfunarticle.article.control.ArticleControl;
+import com.hubertyoung.component_acfunarticle.article.model.ArticleModelImp;
+import com.hubertyoung.component_acfunarticle.article.presenter.ArticlePresenterImp;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
 import com.hubertyoung.component_skeleton.skeleton.ViewSkeletonScreen;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;

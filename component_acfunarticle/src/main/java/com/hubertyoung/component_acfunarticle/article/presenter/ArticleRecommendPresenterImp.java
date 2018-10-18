@@ -1,9 +1,9 @@
-package com.hubertyoung.component_acfunarticle.mine.presenter;
+package com.hubertyoung.component_acfunarticle.article.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.component_acfunarticle.entity.ArticleRecommendEntity;
-import com.hubertyoung.component_acfunarticle.mine.control.ArticleRecommendControl;
+import com.hubertyoung.component_acfunarticle.article.control.ArticleRecommendControl;
 
 import java.util.List;
 
