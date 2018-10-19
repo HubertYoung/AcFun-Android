@@ -25,7 +25,7 @@ import javax.net.ssl.X509TrustManager;
  * QQ号：1344393464
  * 作用：通过Https带证书访问服务器
  */
-public class HttpsUtils {
+public class HttpsSsl {
 	public static SSLSocketFactory getSslSocketFactory( InputStream bksFile, String password, InputStream... certificates ) {
 		try {
 			TrustManager[] trustManagers = prepareTrustManager( certificates );

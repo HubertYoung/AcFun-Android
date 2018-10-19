@@ -133,7 +133,7 @@ public class HttpUtils {
 		 *
 		 */
 		if ( configuration.getCertificates() != null ) {
-			mOkHttpClient = getOkHttpClient().newBuilder().sslSocketFactory( HttpsUtils.getSslSocketFactory( null, null, configuration.getCertificates() ) ).build();
+			mOkHttpClient = getOkHttpClient().newBuilder().sslSocketFactory( HttpsSsl.getSslSocketFactory( null, null, configuration.getCertificates() ) ).build();
 		}
 	}
 
@@ -169,7 +169,7 @@ public class HttpUtils {
 	 * @param certificates 本地证书
 	 */
 	public HttpUtils setCertificates( InputStream... certificates ) {
-		mOkHttpClient = getOkHttpClient().newBuilder().sslSocketFactory( HttpsUtils.getSslSocketFactory( null, null, certificates ) ).build();
+		mOkHttpClient = getOkHttpClient().newBuilder().sslSocketFactory( HttpsSsl.getSslSocketFactory( null, null, certificates ) ).build();
 		return this;
 	}
 
