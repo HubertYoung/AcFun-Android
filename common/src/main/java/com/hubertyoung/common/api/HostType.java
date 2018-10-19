@@ -21,7 +21,7 @@ public class HostType {
     /**
      * 多少种Host类型
      */
-    public static final int TYPE_COUNT = 4;
+    public static final int TYPE_COUNT = 5;
 
     /**
      * 我的host
@@ -38,5 +38,8 @@ public class HostType {
     public static final int NEWS_DETAIL_HTML_PHOTO = 3;
 
     public static final int TEST = 4;
-
+    /**
+     * ssl——app
+     */
+    public static final int SSL_APP_HOST = 5;
 }

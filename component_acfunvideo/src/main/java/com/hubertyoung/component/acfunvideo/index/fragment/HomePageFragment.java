@@ -1,18 +1,22 @@
 package com.hubertyoung.component.acfunvideo.index.fragment;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.hubertyoung.component.acfunvideo.index.adapter.HomePagerAdapter;
-import com.hubertyoung.component_acfunvideo.R;
 import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.component.acfunvideo.index.adapter.HomePagerAdapter;
+import com.hubertyoung.component.acfunvideo.index.control.HomePageControl;
+import com.hubertyoung.component.acfunvideo.index.model.HomePageModelImp;
+import com.hubertyoung.component.acfunvideo.index.presenter.HomePagePresenterImp;
+import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * <br>
@@ -24,7 +28,7 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
  * @since:V1.0
  * @desc:com.hubertyoung.component.home.index.fragment
  */
-public class HomePageFragment extends BaseFragment {
+public class HomePageFragment extends BaseFragment< HomePagePresenterImp, HomePageModelImp > implements HomePageControl.View {
 
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
@@ -76,6 +80,7 @@ public class HomePageFragment extends BaseFragment {
 
 	@Override
 	public void initPresenter() {
+		mPresenter.setVM( this,mModel );
 	}
 
 	@Override
@@ -92,6 +97,12 @@ public class HomePageFragment extends BaseFragment {
 			loadData();
 			isPrepared = true;
 		}
+	}
+
+	@Override
+	public void loadData() {
+		MyRequestMap map = new MyRequestMap();
+		mPresenter.requestDomainAndroidCfg( map );
 	}
 
 	private void initData() {
@@ -137,8 +148,8 @@ public class HomePageFragment extends BaseFragment {
 	private void initViewPager() {
 		mHomeViewTab.setCustomTabView( R.layout.widget_home_page_tab_view, R.id.tab_text );
 		mHomePagerAdapter = new HomePagerAdapter( getChildFragmentManager() );
-		mNewRecommendFragment = NewRecommendFragment.newInstance("0","");
-		mChannelFragment = ChannelFragment.newInstance( "","" );
+		mNewRecommendFragment = NewRecommendFragment.newInstance( "0", "" );
+		mChannelFragment = ChannelFragment.newInstance( "", "" );
 
 		mHomePagerAdapter.add( mNewRecommendFragment, activity.getString( R.string.recommend_text ) );
 		mHomePagerAdapter.add( mChannelFragment, activity.getString( R.string.common_channel ) );
@@ -146,5 +157,20 @@ public class HomePageFragment extends BaseFragment {
 		mHomeViewPager.setOffscreenPageLimit( 1 );
 		mHomeViewPager.setCurrentItem( 0 );
 		mHomeViewTab.setViewPager( mHomeViewPager );
+	}
+
+	@Override
+	public void showLoading( String title, int type ) {
+
+	}
+
+	@Override
+	public void stopLoading() {
+
+	}
+
+	@Override
+	public void showErrorTip( String msg ) {
+
 	}
 }

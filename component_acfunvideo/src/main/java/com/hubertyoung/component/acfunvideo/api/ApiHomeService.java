@@ -6,6 +6,7 @@ import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.common.net.response.BaseResponse;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +26,10 @@ import retrofit2.http.QueryMap;
  * @desc:api
  */
 public interface ApiHomeService {
+
+	@GET( "/mobile/domain_android.cfg" )
+	Observable< HashMap< String, String > > requestDomainAndroidCfg( @QueryMap Map< String, String > map );
+
 	/**
 	 * 首页index
 	 *

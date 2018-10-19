@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config>
+        <domain includeSubdomains="true">https://ssl.app.acfun.cn</domain>
+        <trust-anchors>
+            <!--信任用户自己安装的证书-->
+            <certificates src="@raw/charles"/>
+        </trust-anchors>
+    </domain-config>
+</network-security-config>

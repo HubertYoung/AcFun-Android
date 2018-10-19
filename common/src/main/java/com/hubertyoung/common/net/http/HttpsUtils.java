@@ -64,10 +64,7 @@ public class HttpsUtils {
 				} catch ( IOException e ) {
 				}
 			}
-			TrustManagerFactory trustManagerFactory = null;
-
-			trustManagerFactory = TrustManagerFactory.
-															 getInstance( TrustManagerFactory.getDefaultAlgorithm() );
+			TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance( TrustManagerFactory.getDefaultAlgorithm() );
 			trustManagerFactory.init( keyStore );
 
 			TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
@@ -127,9 +124,9 @@ public class HttpsUtils {
 		private X509TrustManager localTrustManager;
 
 		public MyTrustManager( X509TrustManager localTrustManager ) throws NoSuchAlgorithmException, KeyStoreException {
-			TrustManagerFactory var4 = TrustManagerFactory.getInstance( TrustManagerFactory.getDefaultAlgorithm() );
-			var4.init( ( KeyStore ) null );
-			defaultTrustManager = chooseTrustManager( var4.getTrustManagers() );
+			TrustManagerFactory instance = TrustManagerFactory.getInstance( TrustManagerFactory.getDefaultAlgorithm() );
+			instance.init( ( KeyStore ) null );
+			defaultTrustManager = chooseTrustManager( instance.getTrustManagers() );
 			this.localTrustManager = localTrustManager;
 		}
 

@@ -80,7 +80,6 @@ public class Api {
 			retrofitManager = new Api( hostType, true );
 		}
 		return retrofitManager;
-
 	}
 
 	/**

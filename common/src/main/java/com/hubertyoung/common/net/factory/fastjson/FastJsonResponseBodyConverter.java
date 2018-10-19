@@ -48,7 +48,7 @@ final class FastJsonResponseBodyConverter< T > implements Converter< ResponseBod
 			CommonLog.logi( "value ==> " + value );
 			if ( ( status == NetStatus.Success.getIndex() ) || ( status == NetStatus.Server_Success.getIndex() ) ) {
 				return com.alibaba.fastjson.JSONObject.parseObject( value, mType, config, featureValues, features != null ? features : EMPTY_SERIALIZER_FEATURES );
-			} else {
+			} else if ( response.has( "code" ) && response.has( "vdata" ) && response.has( "message" ) ) {
 				baseRespose.setStatus( status );
 				if ( response.has( "code" ) ) {
 					baseRespose.setCode( response.getInt( "code" ) );
@@ -60,7 +60,9 @@ final class FastJsonResponseBodyConverter< T > implements Converter< ResponseBod
 					baseRespose.setResult( response.getString( "message" ) );
 				}
 //				return ( T ) gson.fromJson( value, baseRespose.getClass() );
-				return ( T ) com.alibaba.fastjson.JSONObject.parseObject( value, baseRespose.getClass() );
+				return ( T ) com.alibaba.fastjson.JSONObject.parseObject( value, baseRespose.getClass(), config, featureValues, features != null ? features : EMPTY_SERIALIZER_FEATURES );
+			} else {
+				return JSON.parseObject( value, mType, config, featureValues, features != null ? features : EMPTY_SERIALIZER_FEATURES );
 			}
 		} catch ( JSONException e ) {
 
