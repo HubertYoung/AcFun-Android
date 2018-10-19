@@ -1,6 +1,6 @@
 package com.hubertyoung.component_acfunarticle.entity;
 
-import com.google.gson.annotations.SerializedName;
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * <br>
@@ -13,8 +13,8 @@ import com.google.gson.annotations.SerializedName;
  * @desc:com.hubertyoung.component_acfunarticle.entity
  */
 public class RankChannel {
-	@SerializedName("id")
+	@JSONField(name ="id")
 	public int id;
-	@SerializedName("name")
+	@JSONField(name ="name")
 	public String name;
 }

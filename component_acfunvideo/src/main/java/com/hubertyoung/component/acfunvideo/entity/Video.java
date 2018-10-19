@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.google.gson.annotations.SerializedName;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +22,12 @@ public class Video {
 	public static final String TUDOU = "tudou";
 	public static final String TUDOU2 = "tudou2";
 	public static final String YOUKU = "youku";
-	@SerializedName("allowDanmaku")
+	@JSONField(name ="allowDanmaku")
 	private int allowDanmaku;
-	@SerializedName("bangumiId")
+	@JSONField(name ="bangumiId")
 //	@Column(name = "bid")
 	private int bid;
-	@SerializedName("danmakuId")
+	@JSONField(name ="danmakuId")
 //	@Column(name = "danmakuid")
 	private String danmakuID;
 	public boolean isAutoPlay;
@@ -37,31 +37,31 @@ public class Video {
 //	@JSONField(serialize = false)
 //	@Column(name = "corder")
 	private int order;
-	@SerializedName("sourceId")
+	@JSONField(name ="sourceId")
 //	@Column(name = "sid")
 	private String sid;
-	@SerializedName("sort")
+	@JSONField(name ="sort")
 //	@Column(name = "sort")
 	private int sort;
-	@SerializedName("startTime")
+	@JSONField(name ="startTime")
 //	@Column(name = "starttime")
 	private long startTime;
-	@SerializedName("sourceType")
+	@JSONField(name ="sourceType")
 //	@Column(name = "stype")
 	private String stype;
-	@SerializedName("name")
+	@JSONField(name ="name")
 //	@Column(name = "title")
 	private String title;
-	@SerializedName("type")
+	@JSONField(name ="type")
 //	@Column(name = "type")
 	private String type;
-	@SerializedName("url")
+	@JSONField(name ="url")
 //	@Column(name = "url")
 	private String url;
-	@SerializedName("videoId")
+	@JSONField(name ="videoId")
 //	@Column(autoGen = false, isId = true, name = "vid")
 	private int vid;
-	@SerializedName("visibleLevel")
+	@JSONField(name ="visibleLevel")
 	public int visibleLevel;
 
 	public boolean isLocal() {

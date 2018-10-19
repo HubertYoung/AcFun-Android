@@ -13,18 +13,18 @@ import com.google.gson.annotations.SerializedName;
  * @desc:com.hubertyoung.component_acfunmine.entity
  */
 public class Sign {
-	@SerializedName( "check_real")
+	@JSONField(name = "check_real")
 	public int check_real;
-	@SerializedName( "expiration")
+	@JSONField(name = "expiration")
 	public Long expires;
-	@SerializedName( "info")
+	@JSONField(name = "info")
 	public SignInfo info;
-	@SerializedName( "check_password")
+	@JSONField(name = "check_password")
 	public int isInitPassword;
-	@SerializedName( "oauth")
+	@JSONField(name = "oauth")
 	public int oauth;
-	@SerializedName( "s2s-code")
+	@JSONField(name = "s2s-code")
 	public String s2sCode;
-	@SerializedName( "token")
+	@JSONField(name = "token")
 	public String token;
 }

@@ -3,12 +3,8 @@ package com.hubertyoung.common.utils;
 
 import android.text.TextUtils;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 
 import org.json.JSONObject;
 
@@ -22,11 +18,8 @@ import java.util.List;
  */
 public class JsonUtils {
 
-	// 采取单例模式
-	private volatile static Gson gson = new Gson();
-
 	private JsonUtils() {
-		gson.serializeNulls();
+//		sJSONObject.serializeNulls();
 		//                gson.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE) //设置字段(即Key值)首字母大写——暂时没用
 //                gson.setPrettyPrinting()   //对JSON结果格式化，添加换行等——生成JSON数据的时候用
 //                gson.setVersion(1.0)       //设置版本号——暂时没用
@@ -38,16 +31,10 @@ public class JsonUtils {
 	 * @MethodName : toJson
 	 * @Description : 将对象转为JSON串，此方法能够满足大部分需求
 	 */
-	public static String gsonToString( Object object ) {
-		if ( null == object ) {
-			return gson.toJson( JsonNull.INSTANCE );
-		}
-		try {
-			return gson.toJson( object );
-		} catch ( JsonSyntaxException e ) {
-			e.printStackTrace();
-		}
-		return null;
+	public static String objToString( Object object ) {
+		String objString = null;
+		objString = com.alibaba.fastjson.JSONObject.toJSONString( object );
+		return objString;
 	}
 
 	/**
@@ -57,23 +44,23 @@ public class JsonUtils {
 	 * @MethodName : fromJson
 	 * @Description : 用来将JSON串转为对象，但此方法不可用来转带泛型的集合
 	 */
-	public static < T > T gsonToBean( String json, Class< T > classOfT ) {
+	public static < T > T jsonToBean( String json, Class< T > classOfT ) {
 		try {
-			return gson.fromJson( json, ( Type ) classOfT );
-		} catch ( JsonSyntaxException e ) {
+			return JSON.parseObject( json, classOfT );
+		} catch ( Exception e ) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	public static < T > T gsonToBean( InputStream is, Class< T > classOfT ) {
+	public static < T > T jsonToBean( InputStream is, Class< T > classOfT ) {
 		try {
 			StringBuffer out = new StringBuffer();
 			byte[] b = new byte[ 4096 ];
 			for (int n; ( n = is.read( b ) ) != -1; ) {
 				out.append( new String( b, 0, n ) );
 			}
-			return gson.fromJson( out.toString(), ( Type ) classOfT );
+			return JSON.parseObject( out.toString(), classOfT );
 		} catch ( Exception e ) {
 			e.printStackTrace();
 		}
@@ -87,22 +74,15 @@ public class JsonUtils {
 	 * @desc:com.hubertyoung.common.commonutils
 	 * @param: 用来将JSON串转为对象，但此方法不可用来转带泛型的集合
 	 */
-	public static < T > List< T > gsonToList( String json, Class< T > cls ) {
+	public static < T > List< T > jsonToList( String json, Class< T > cls ) {
 		List< T > result = new ArrayList<>();
 		if ( TextUtils.isEmpty( json ) ) return result;
 		try {
-			if ( null != gson ) {
-				JsonArray array = new JsonParser().parse( json )
-												  .getAsJsonArray();
-				for (final JsonElement elem : array) {
-					result.add( gson.fromJson( elem, cls ) );
-				}
-			}
+			result.addAll( JSONArray.parseArray( json, cls ) );
 			return result;
 		} catch ( Exception e ) {
-			CommonLog.loge( e.getMessage()
-							  .toString() );
-			return new ArrayList< T >();
+			result.clear();
+			return result;
 		}
 	}
 
@@ -117,8 +97,8 @@ public class JsonUtils {
 	 */
 	public static Object fromJson( String json, Type typeOfT ) {
 		try {
-			return gson.fromJson( json, typeOfT );
-		} catch ( JsonSyntaxException e ) {
+			return JSON.parseObject( json, typeOfT );
+		} catch ( Exception e ) {
 			e.printStackTrace();
 		}
 		return null;

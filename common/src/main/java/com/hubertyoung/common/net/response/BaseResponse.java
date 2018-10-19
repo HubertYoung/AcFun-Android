@@ -1,6 +1,6 @@
 package com.hubertyoung.common.net.response;
 
-import com.google.gson.annotations.SerializedName;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.hubertyoung.common.net.config.NetStatus;
 
 import java.io.Serializable;
@@ -14,15 +14,15 @@ import java.io.Serializable;
  * @param:封装服务器返回数据
  */
 public class BaseResponse< T > implements Serializable {
-	@SerializedName( "errorid" )
+	@JSONField(name = "errorid" )
 	public int errno;
 
 	public int code;
-	@SerializedName( "message" )
+	@JSONField(name = "message" )
 	public String errmsg;
 
 //	public String requestid;
-	@SerializedName( "vdata" )
+	@JSONField(name = "vdata" )
 	public T data;
 
 	public boolean success( ) {

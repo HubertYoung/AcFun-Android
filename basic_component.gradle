@@ -107,8 +107,10 @@ dependencies {
 
     //retrofit和rxjava
     api "com.squareup.retrofit2:retrofit:$var.retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$var.retrofit"
-    implementation "com.squareup.retrofit2:converter-scalars:$var.retrofit"
+//    implementation "com.squareup.retrofit2:converter-gson:$var.retrofit"
+//    implementation "com.squareup.retrofit2:converter-fastjson:$var.retrofit"
+    implementation 'com.alibaba:fastjson:1.1.70.android'
+//    implementation "com.squareup.retrofit2:converter-scalars:$var.retrofit"
     api "com.squareup.retrofit2:adapter-rxjava2:$var.retrofit"
     implementation "com.squareup.okhttp3:logging-interceptor:$var.okhttplog"
     api "io.reactivex.rxjava2:rxandroid:$var.rxandroid"

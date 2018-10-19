@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.google.gson.annotations.SerializedName;
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * <br>
@@ -13,10 +13,10 @@ import com.google.gson.annotations.SerializedName;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class VideoDetailAlbum {
-	@SerializedName( "id")
+	@JSONField(name = "id")
 	public int albumID;
-	@SerializedName( "coverImageV")
+	@JSONField(name = "coverImageV")
 	public String coverImageV;
-	@SerializedName( "title")
+	@JSONField(name = "title")
 	public String title;
 }

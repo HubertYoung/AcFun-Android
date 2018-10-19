@@ -16,19 +16,19 @@ import java.util.Date;
  * @desc:com.hubertyoung.component_acfunmine.entity
  */
 public class Token implements Serializable{
-	@SerializedName( "userImg" )
+	@JSONField(name = "userImg" )
 	private String avater;
-	@SerializedName( "expires" )
+	@JSONField(name = "expires" )
 	private Date expire;
-	@SerializedName( "mobileCheck" )
+	@JSONField(name = "mobileCheck" )
 	private int mobileCheck;
-	@SerializedName( "access_token" )
+	@JSONField(name = "access_token" )
 	private String token;
-	@SerializedName( "userId" )
+	@JSONField(name = "userId" )
 	private int uid;
-	@SerializedName( "userGroupLevel" )
+	@JSONField(name = "userGroupLevel" )
 	private int userGroupLevel;
-	@SerializedName( "username" )
+	@JSONField(name = "username" )
 	private String userName;
 
 	public int getMobileCheck() {

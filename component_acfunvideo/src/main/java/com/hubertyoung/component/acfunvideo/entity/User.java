@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.google.gson.annotations.SerializedName;
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * <br>
@@ -13,39 +13,39 @@ import com.google.gson.annotations.SerializedName;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class User {
-	@SerializedName( "userImg")
+	@JSONField(name = "userImg")
 	private String avatar;
-	@SerializedName( "banana")
+	@JSONField(name = "banana")
 	private int bananaCount;
-	@SerializedName( "contributes")
+	@JSONField(name = "contributes")
 	private String contributes;
-	@SerializedName( "followed")
+	@JSONField(name = "followed")
 	private String followed;
-	@SerializedName( "following")
+	@JSONField(name = "following")
 	private String following;
-	@SerializedName( "bananaGold")
+	@JSONField(name = "bananaGold")
 	private int goldBananaCount;
-	@SerializedName( "level")
+	@JSONField(name = "level")
 	private int level;
-	@SerializedName( "mobile")
+	@JSONField(name = "mobile")
 	private String mobile;
-	@SerializedName( "mobileCheck")
+	@JSONField(name = "mobileCheck")
 	private int mobileCheck;
-	@SerializedName( "username")
+	@JSONField(name = "username")
 	private String name;
-	@SerializedName( "nextLevelNeed")
+	@JSONField(name = "nextLevelNeed")
 	private int nextLevelExp;
-	@SerializedName( "currExp")
+	@JSONField(name = "currExp")
 	private int previousLevelExp;
-	@SerializedName( "gender")
+	@JSONField(name = "gender")
 	private int sex;
-	@SerializedName( "signature")
+	@JSONField(name = "signature")
 	private String signature;
-	@SerializedName( "userId")
+	@JSONField(name = "userId")
 	private int uid;
-	@SerializedName( "exp")
+	@JSONField(name = "exp")
 	private int userExp;
-	@SerializedName( "userGroupLevel")
+	@JSONField(name = "userGroupLevel")
 	private int userGroupLevel;
 
 	public String getContributes() {

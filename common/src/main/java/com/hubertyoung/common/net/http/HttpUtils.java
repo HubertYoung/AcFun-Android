@@ -7,6 +7,7 @@ import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.cookie.PersistentCookieJar;
 import com.hubertyoung.common.net.cookie.cache.SetCookieCache;
 import com.hubertyoung.common.net.cookie.persistence.SharedPrefsCookiePersistor;
+import com.hubertyoung.common.net.interceptor.GzipRequestInterceptor;
 import com.hubertyoung.common.net.interceptor.LogInterceptor;
 import com.hubertyoung.common.net.interceptor.UploadProgressInterceptor;
 import com.hubertyoung.common.net.request.RetrofitClient;
@@ -109,6 +110,7 @@ public class HttpUtils {
 				.addInterceptor( headerInterceptor )
 				//                    自定义网络Log显示
 				.addInterceptor( new LogInterceptor() )
+				.addInterceptor( new GzipRequestInterceptor() )
 				.readTimeout( configuration.getReadTimeOut(), TimeUnit.MILLISECONDS )
 				.connectTimeout( configuration.getConnectTimeOut(), TimeUnit.MILLISECONDS )
 				.connectionPool( configuration.getConnectionPool() )

@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.google.gson.annotations.SerializedName;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.List;
 
@@ -15,66 +15,66 @@ import java.util.List;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class Regions {
-	@SerializedName( "advertLists")
+	@JSONField(name = "advertLists")
 	public List<AdvertLists> advertLists;
-	@SerializedName( "belong")
+	@JSONField(name = "belong")
 	public int belong;
-	@SerializedName( "bodyContents")
+	@JSONField(name = "bodyContents")
 	public List<RegionBodyContent> bodyContents;
-	@SerializedName( "bottomText")
+	@JSONField(name = "bottomText")
 	public RegionHeaderAndBottomContent bottomText;
 	public List<RegionBodyContent> changeContents;
 	public int changeCount = 0;
-	@SerializedName( "channel")
+	@JSONField(name = "channel")
 	public int channel;
-	@SerializedName( "channelId")
+	@JSONField(name = "channelId")
 	public int channelId;
-	@SerializedName( "children")
+	@JSONField(name = "children")
 	public List<Regions> children;
-	@SerializedName( "contentCount")
+	@JSONField(name = "contentCount")
 	public int contentCount;
-	@SerializedName( "contents")
+	@JSONField(name = "contents")
 	public List<RegionsContent> contents;
-	@SerializedName( "goText")
+	@JSONField(name = "goText")
 	public String goText;
-	@SerializedName( "headerText")
+	@JSONField(name = "headerText")
 	public List<RegionHeaderAndBottomContent> headerText;
-	@SerializedName( "hide")
+	@JSONField(name = "hide")
 	public int hide;
-	@SerializedName( "id")
+	@JSONField(name = "id")
 	public int id;
-	@SerializedName( "image")
+	@JSONField(name = "image")
 	public String image;
-	@SerializedName( "img")
+	@JSONField(name = "img")
 	public String img;
-	@SerializedName( "menuCount")
+	@JSONField(name = "menuCount")
 	public int menuCount;
-	@SerializedName( "menus")
+	@JSONField(name = "menus")
 	public List<RegionsMenu> menus;
-	@SerializedName( "name")
+	@JSONField(name = "name")
 	public String name;
-	@SerializedName( "schema")
+	@JSONField(name = "schema")
 	public String schema;
-	@SerializedName( "show")
+	@JSONField(name = "show")
 	public int show;
-	@SerializedName( "showChange")
+	@JSONField(name = "showChange")
 	public int showChange = 0;
-	@SerializedName( "showLine")
+	@JSONField(name = "showLine")
 	public int showLine;
-	@SerializedName( "showMore")
+	@JSONField(name = "showMore")
 	public int showMore;
-	@SerializedName( "showName")
+	@JSONField(name = "showName")
 	public int showName;
-	@SerializedName( "sort")
+	@JSONField(name = "sort")
 	public int sort;
-	@SerializedName( "statu")
+	@JSONField(name = "statu")
 	public int statu;
-	@SerializedName( "title")
+	@JSONField(name = "title")
 	public String title;
-	@SerializedName( "topContent")
+	@JSONField(name = "topContent")
 	public RegionBodyContent topContent;
-	@SerializedName( "type")
+	@JSONField(name = "type")
 	public RegionsType type;
-	@SerializedName( "url")
+	@JSONField(name = "url")
 	public String url;
 }

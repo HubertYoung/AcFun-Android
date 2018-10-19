@@ -13,19 +13,19 @@ import com.google.gson.annotations.SerializedName;
  * @desc:com.hubertyoung.component_acfunmine.entity
  */
 public class SignInfo {
-	@SerializedName( "avatar")
+	@JSONField(name = "avatar")
 	public String avatar;
-	@SerializedName( "group-level")
+	@JSONField(name = "group-level")
 	public int groupLevel;
-	@SerializedName( "third-channel")
+	@JSONField(name = "third-channel")
 	public int isThirdLogin;
-	@SerializedName( "mobile")
+	@JSONField(name = "mobile")
 	public String mobile;
-	@SerializedName( "mobile-check")
+	@JSONField(name = "mobile-check")
 	public int mobileCheck;
-	@SerializedName( "userid")
+	@JSONField(name = "userid")
 	public int userid;
-	@SerializedName( "username")
+	@JSONField(name = "username")
 	public String username;
 
 	public String toString() {

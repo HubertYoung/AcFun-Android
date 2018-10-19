@@ -1,6 +1,6 @@
 package com.hubertyoung.component_acfunarticle.entity;
 
-import com.google.gson.annotations.SerializedName;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.List;
 
@@ -15,13 +15,13 @@ import java.util.List;
  * @desc:com.hubertyoung.component_acfunarticle.entity
  */
 public class RankContentBase {
-	@SerializedName( "action" )
+	@JSONField(name = "action" )
 	public int action;
-	@SerializedName( "href" )
+	@JSONField(name = "href" )
 	public String href;
-	@SerializedName( "img" )
+	@JSONField(name = "img" )
 	public List< String > img;
-	@SerializedName( "title" )
+	@JSONField(name = "title" )
 	public String title;
 
 	public String getFirstImg() {
