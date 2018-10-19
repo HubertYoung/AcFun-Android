@@ -1,5 +1,6 @@
 include ':studydemo', ':acfun', ':component_acfunmine','component_acfunarticle', ':javapoet:annotation', ':javapoet:compiler',':javapoet:compiler-release',
         ':bottom-navigation-bar',
+        ':component_acfundynamic',
         ':component_acfunvideo',
 
 //        ':android-support:skin-support',

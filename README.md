@@ -9,7 +9,8 @@ storePassword=123456
 
 app=true
 acfun=true
-component_acfunarticle=true
+component_acfundynamic=true
+component_acfunarticle=false
 component_acfunmine=false
 component_acfunvideo=false
 #component_basic=false

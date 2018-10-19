@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity {
 		mFragments.clear();
 		mFragments.add( getFragment( "ComponentAcFunIndex", "getHomePageFragment" ) );
 		mFragments.add( getFragment( "ComponentArticle", "getArticleFragment" ) );
-		mFragments.add( getFragment( "ComponentCart", "getCartRootFragment" ) );
+		mFragments.add( getFragment( "ComponentDynamic", "getDynamicFragment" ) );
 		mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );
 	}
 
