@@ -1,6 +1,6 @@
 package com.hubertyoung.component_acfunmine.entity;
 
-import com.google.gson.annotations.SerializedName;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 
@@ -49,6 +49,9 @@ public class User implements Serializable {
 	private int userExp;
 	@JSONField(name = "userGroupLevel" )
 	private int userGroupLevel;
+
+	public User() {
+	}
 
 	public String getContributes() {
 		return this.contributes;

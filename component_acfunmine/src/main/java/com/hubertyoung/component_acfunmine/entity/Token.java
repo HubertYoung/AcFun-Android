@@ -1,6 +1,7 @@
 package com.hubertyoung.component_acfunmine.entity;
 
-import com.google.gson.annotations.SerializedName;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
 import java.util.Date;
