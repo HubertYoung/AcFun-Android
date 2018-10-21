@@ -2,7 +2,7 @@ package com.hubertyoung.component_acfunmine.api;
 
 
 import com.hubertyoung.common.net.response.BaseResponse;
-import com.hubertyoung.component_acfunmine.entity.User;
+import com.hubertyoung.common.entity.User;
 
 import java.util.Map;
 

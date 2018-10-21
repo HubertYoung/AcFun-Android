@@ -32,7 +32,7 @@ public class ComponentTask implements IComponent {
 			case "getMineRootFragment":
 				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", MineFragment.newInstance( "", "" ) ) );
 				break;
-//            case "toPatrolPlanActivity":
+            case "startLoginActivity":
 //                intent = new Intent(context, PatrolPlanActivity.class);
 //                intent.putExtra("callId", cc.getCallId());
 //                if (!(context instanceof Activity )) {
@@ -40,8 +40,8 @@ public class ComponentTask implements IComponent {
 //                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
 //                }
 //                context.startActivity(intent);
-//                CC.sendCCResult(cc.getCallId(), CCResult.success());
-//                break;
+                CC.sendCCResult(cc.getCallId(), CCResult.success());
+                break;
 //            case "toIssueActivity":
 //                intent = new Intent(context, IssueActivity.class);
 //                intent.putExtra("callId", cc.getCallId());

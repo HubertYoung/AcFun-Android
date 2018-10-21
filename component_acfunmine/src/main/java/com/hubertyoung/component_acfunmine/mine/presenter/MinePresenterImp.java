@@ -5,9 +5,9 @@ import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.constant.AppSpConfig;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.utils.SPUtils;
-import com.hubertyoung.component_acfunmine.entity.User;
+import com.hubertyoung.common.entity.User;
 import com.hubertyoung.component_acfunmine.mine.control.MineControl;
-import com.hubertyoung.component_acfunmine.utils.SigninHelper;
+import com.hubertyoung.common.utils.SigninHelper;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
@@ -38,7 +38,7 @@ public class MinePresenterImp extends MineControl.Presenter {
 //    <string name="username">hubert520</string>
 	@Override
 	public void requestUserInfo( MyRequestMap map ) {
-		if ( !SigninHelper.getInstance().isLogin() || SigninHelper.getInstance().getUserUid() <= 0){
+		if ( !SigninHelper.getInstance().isUnLogin() || SigninHelper.getInstance().getUserUid() <= 0){
 			mView.setLoginState( false );
 			return;
 		}

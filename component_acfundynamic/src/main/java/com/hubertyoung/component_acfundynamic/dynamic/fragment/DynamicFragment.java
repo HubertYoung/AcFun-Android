@@ -2,13 +2,24 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.utils.BarUtils;
+import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_acfundynamic.R;
+import com.hubertyoung.component_acfundynamic.dynamic.adapter.DynamicPagerAdapter;
 import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicControl;
 import com.hubertyoung.component_acfundynamic.dynamic.model.DynamicModelImp;
 import com.hubertyoung.component_acfundynamic.dynamic.presenter.DynamicPresenterImp;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
+
+import androidx.viewpager.widget.ViewPager;
 
 
 /**
@@ -27,6 +38,17 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 
 	private String mParam1;
 	private String mParam2;
+	private FrameLayout mContent;
+	private LinearLayout normalLayout;
+	private SmartTabLayout mTab;
+	private ViewPager mPager;
+	private LinearLayout unLoginLayout;
+	private TextView mLogin;
+	private DynamicPagerAdapter mPagerAdapter;
+	private DynamicFollowBangumiFragment mFollowBangumiFragment;
+	private DynamicAcfunFragment mDynamicAcfunFragment;
+
+	private int selectedPagePosition;
 
 
 	public DynamicFragment() {
@@ -53,7 +75,8 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 
 	@Override
 	protected void initToolBar() {
-//		BarUtils.setPaddingSmart( mTlHead );
+		BarUtils.setPaddingSmart( mTab );
+		BarUtils.setPaddingSmart( unLoginLayout );
 	}
 
 	@Override
@@ -67,16 +90,112 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 	}
 
 	private void initAction() {
+		mLogin.setOnClickListener( new View.OnClickListener() {
+			@Override
+			public void onClick( View v ) {
+				CC.obtainBuilder( "ComponentMine" ).setActionName( "startLoginActivity" ).build().call();
+			}
+		} );
 	}
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
+		mContent = findViewById( R.id.content );
+		normalLayout = findViewById( R.id.normal_layout );
+		mTab = findViewById( R.id.general_tab );
+		mPager = findViewById( R.id.general_view_pager );
+		unLoginLayout = findViewById( R.id.un_login_layout );
+		mLogin = findViewById( R.id.login );
 		initAction();
-		loadData();
+		boolean isUnLogin = SigninHelper.getInstance().isUnLogin();
+		if ( isUnLogin ) {
+			showLoginStatus( false );
+			initViewpager();
+		} else {
+			showLoginStatus( true );
+		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		if ( isPrepared == false ){
+			loadData();
+			isPrepared = true;
+		}
+	}
+
+	private void initViewpager() {
+		mTab.setCustomTabView( R.layout.widget_home_tab_view, R.id.secondary_tab_text );
+		mPagerAdapter = new DynamicPagerAdapter( getChildFragmentManager() );
+		mFollowBangumiFragment = DynamicFollowBangumiFragment.newInstance( "", "" );
+		mDynamicAcfunFragment = DynamicAcfunFragment.newInstance( "", "" );
+		mPagerAdapter.add( mFollowBangumiFragment, getString( R.string.bangumi_detail_feed ) );
+		mPagerAdapter.add( mDynamicAcfunFragment, getString( R.string.home_ac_dynamic ) );
+		mPager.setAdapter( mPagerAdapter );
+		mPager.setOffscreenPageLimit( 1 );
+		int i = 0;
+		mPager.setCurrentItem( 0 );
+		mTab.setViewPager( mPager );
+		while ( i < mPagerAdapter.getCount() ) {
+			View view = mTab.getTabAt( i );
+			if ( view instanceof TextView ) {
+				TextView textView = ( TextView ) view;
+				if ( i == 0 ) {
+					textView.setAlpha( 1.0f );
+				} else {
+					textView.setAlpha( 0.8f );
+				}
+			}
+			i++;
+		}
+		mPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
+			@Override
+			public void onPageScrollStateChanged( int state ) {
+
+			}
+
+			@Override
+			public void onPageScrolled( int position, float positionOffset, int positionOffsetPixels ) {
+
+			}
+
+			@Override
+			public void onPageSelected( int position ) {
+				selectedPagePosition = position;
+				for (int i = 0; i < mPagerAdapter.getCount(); i++) {
+					View view = mTab.getTabAt( i );
+					if ( view instanceof TextView ) {
+						TextView textView = ( TextView ) view;
+						if ( i == position ) {
+							textView.setAlpha( 1.0f );
+						} else {
+							textView.setAlpha( 0.8f );
+						}
+					}
+				}
+			}
+		} );
+	}
+
+	private void showLoginStatus( boolean isUnLogin ) {
+		if ( isUnLogin ) {
+			normalLayout.setVisibility( View.GONE );
+			unLoginLayout.setVisibility( View.VISIBLE );
+		} else {
+			normalLayout.setVisibility( View.VISIBLE );
+			unLoginLayout.setVisibility( View.GONE );
+		}
 	}
 
 	@Override
 	public void loadData() {
+		boolean isUnLogin = SigninHelper.getInstance().isUnLogin();
+//		if (isUnLogin) {
+//			a(selectedPagePosition);
+//		} else {
+//			a(-1);
+//		}
 //		MyRequestMap map = new MyRequestMap();
 //		mPresenter.requestAllChannel( map );
 	}

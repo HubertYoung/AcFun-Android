@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.utils;
+package com.hubertyoung.common.utils;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.constant.AppSpConfig;
 import com.hubertyoung.common.constant.Constants;
-import com.hubertyoung.component_acfunmine.entity.Sign;
-import com.hubertyoung.component_acfunmine.entity.Token;
-import com.hubertyoung.component_acfunmine.entity.User;
+import com.hubertyoung.common.entity.Sign;
+import com.hubertyoung.common.entity.Token;
+import com.hubertyoung.common.entity.User;
 
 import java.util.Date;
 
@@ -127,10 +127,9 @@ public class SigninHelper {
 		return 1 == this.mSharedPreferences.getInt("mobileCheck", -1);
 	}
 
-	public boolean isLogin() {
+	public boolean isUnLogin() {
 		long expire = getExpire();
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("");
 		stringBuilder.append(expire);
 		if (stringBuilder.toString().length() < 13) {
 			expire *= 1000;

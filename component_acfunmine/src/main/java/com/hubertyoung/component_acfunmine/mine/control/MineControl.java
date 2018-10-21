@@ -5,7 +5,7 @@ import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.component_acfunmine.entity.User;
+import com.hubertyoung.common.entity.User;
 
 import io.reactivex.Observable;
 

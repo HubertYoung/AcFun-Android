@@ -1,41 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:aapt="http://schemas.android.com/aapt"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:internal="http://schemas.android.com/apk/prv/res/android"
-              android:id="@+id/content"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:aapt="http://schemas.android.com/aapt"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+             android:id="@+id/content"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tl_head"
+    <LinearLayout
+        android:id="@+id/normal_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/pickerview_topbar_height"
-        app:contentInsetStart="0dp"
-        android:background="@color/them_color">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
+            android:id="@+id/general_tab"
+            style="@style/secondary_tab"
+            app:stl_distributeEvenly="true"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/general_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/un_login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="48dp">
-
+            android:layout_height="match_parent"
+            android:background="?android:windowBackground"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/iv_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="right|center_vertical|center_horizontal|center"
-                android:layout_marginRight="10dp"
-                android:padding="6dp"
-                android:src="@mipmap/ic_ab_search"/>
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
+                android:layout_marginBottom="38dp"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/dynamic_login_pic"/>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/article_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</LinearLayout>
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/button_bg"
+                android:gravity="center"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/dynamic_login_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_title_large_size"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

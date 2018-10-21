@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.entity;
+package com.hubertyoung.common.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

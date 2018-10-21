@@ -18,12 +18,12 @@ import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_acfunmine.R;
-import com.hubertyoung.component_acfunmine.entity.User;
+import com.hubertyoung.common.entity.User;
 import com.hubertyoung.component_acfunmine.mine.control.MineControl;
 import com.hubertyoung.component_acfunmine.mine.model.MineModelImp;
 import com.hubertyoung.component_acfunmine.mine.presenter.MinePresenterImp;
 import com.hubertyoung.component_acfunmine.setting.activity.SettingsActivity;
-import com.hubertyoung.component_acfunmine.utils.SigninHelper;
+import com.hubertyoung.common.utils.SigninHelper;
 
 import androidx.annotation.Nullable;
 
