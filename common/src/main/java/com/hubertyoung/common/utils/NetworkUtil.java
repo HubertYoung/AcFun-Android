@@ -11,6 +11,8 @@ import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import com.hubertyoung.common.CommonApplication;
+
 
 public class NetworkUtil {
 
@@ -194,11 +196,10 @@ public class NetworkUtil {
 	/**
 	 * 判断是否有网络可用
 	 * 
-	 * @param context
 	 * @return
 	 */
-	public static boolean isNetAvailable(Context context) {
-		NetworkInfo networkInfo = getActiveNetworkInfo(context);
+	public static boolean isNetAvailable() {
+		NetworkInfo networkInfo = getActiveNetworkInfo(CommonApplication.getAppContext());
 		if (networkInfo != null) {
 			return networkInfo.isAvailable();
 		} else {

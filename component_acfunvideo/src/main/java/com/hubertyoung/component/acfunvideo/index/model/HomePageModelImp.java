@@ -25,7 +25,7 @@ import io.reactivex.Observable;
 public class HomePageModelImp implements HomePageControl.Model {
 	@Override
 	public Observable< HashMap< String, String > > requestDomainAndroidCfg( MyRequestMap map ) {
-		return Api.getDefault( HostType.SSL_APP_HOST )
+		return Api.getDefault( HostType.APP_HOST_SLL )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )
 				.requestDomainAndroidCfg( map.map )

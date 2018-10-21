@@ -102,10 +102,11 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 			if ( mPresenter != null ) {
 				mPresenter.mContext = this;
 			}
-			//初始化ToolBar
-			initToolBar();
 			this.initPresenter();
 			this.initView( savedInstanceState );
+			//初始化ToolBar
+			initToolBar();
+
 			loadData();
 			EnvironmentSwitcher.addOnEnvironmentChangeListener( this );
 		} else {

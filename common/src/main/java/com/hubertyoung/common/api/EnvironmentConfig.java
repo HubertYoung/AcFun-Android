@@ -27,11 +27,22 @@ public class EnvironmentConfig {
 	}
 
 	/**
-	 * 特殊模块 Music 的环境
+	 * 特殊模块 我的 的环境
 	 */
 	@Module(alias = "我的")
 	private class Mine {
 		@Environment(url = ApiConstants.NETEAST_HOST, isRelease = true, alias = "正式")
+		private String online;
+
+		@Environment(url = ApiConstants.NETEAST_TEST_HOST, alias = "测试")
+		private String test;
+	}
+	/**
+	 * 特殊模块 账号 的环境
+	 */
+	@Module(alias = "账号")
+	private class Account {
+		@Environment(url = ApiConstants.APP_HOST_ACCOUNT, isRelease = true, alias = "正式")
 		private String online;
 
 		@Environment(url = ApiConstants.NETEAST_TEST_HOST, alias = "测试")

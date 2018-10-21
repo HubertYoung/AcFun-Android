@@ -17,6 +17,9 @@ public class BaseResponse< T > implements Serializable {
 	@JSONField(name = "errorid" )
 	public int errno;
 
+	@JSONField(name = "errordesc" )
+	public int errordesc;
+
 	public int code;
 	@JSONField(name = "message" )
 	public String errmsg;

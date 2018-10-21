@@ -1,13 +1,17 @@
 package com.hubertyoung.component_acfunmine.api;
 
 
-import com.hubertyoung.common.net.response.BaseResponse;
+import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
+import com.hubertyoung.common.net.response.BaseResponse;
 
 import java.util.Map;
 
 import io.reactivex.Observable;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
 /**
@@ -32,6 +36,11 @@ public interface ApiHomeService {
 	@GET( "v2/offlines/checkOffline" )
 	Observable< BaseResponse< Boolean > > requestCheckOfflineInfo( @QueryMap Map< String, String > map );
 //	http://apipc.app.acfun.cn/v2/user/content/profile?userId=13608720
+
 	@GET( "v2/user/content/profile" )
 	Observable< BaseResponse< User > > requestUserInfo( @QueryMap Map< String, String > map );
+
+	@FormUrlEncoded
+	@POST( "api/account/signin/normal" )
+	Observable< BaseResponse< Sign > > requestLoginInfo( @FieldMap Map< String, String > map );
 }

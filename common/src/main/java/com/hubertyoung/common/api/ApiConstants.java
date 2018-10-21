@@ -16,16 +16,12 @@
  */
 package com.hubertyoung.common.api;
 
-import android.text.TextUtils;
-
-import com.hubertyoung.common.utils.SPUtils;
-
-
 public class ApiConstants {
 	public static final String BASE_PATH = "/";
 	public static final String NETEAST_HOST = "http://apipc.app.acfun.cn";
 	public static final String NETEAST_TEST_HOST = "http://testpc.app.acfun.cn";
-	public static final String SSL_APP_HOST = "https://ssl.app.acfun.cn";
+	public static final String APP_HOST_SLL = "https://ssl.app.acfun.cn";
+	public static final String APP_HOST_ACCOUNT = "https://account.app.acfun.cn";
 //	public static final String NETEAST_HOST = "http://192.168.2.60:9006";
 
 	/**
@@ -42,49 +38,14 @@ public class ApiConstants {
 				break;
 			case HostType.MY_TEST_DOWN:
 				break;
-			case HostType.SSL_APP_HOST:
-				host = SSL_APP_HOST;
+			case HostType.APP_HOST_SLL:
+				host = APP_HOST_SLL;
+				break;
+			case HostType.APP_HOST_ACCOUNT:
+				host = APP_HOST_ACCOUNT;
 				break;
 			case HostType.NEWS_DETAIL_HTML_PHOTO:
 				host = "http://kaku.com/";
-				break;
-			case HostType.TEST:
-				break;
-			default:
-				host = "";
-				break;
-		}
-		return host + BASE_PATH;
-	}
-
-	/**
-	 * 获取对应的host
-	 *
-	 * @param hostType host类型
-	 * @return host
-	 */
-	public static String getDebugHost( int hostType ) {
-		String host = "";
-		switch ( hostType ) {
-			case 0:
-				host = NETEAST_HOST;
-//                host = ZHANGDI_HOST;
-				break;
-			case HostType.MY_RESULT:
-				if ( TextUtils.isEmpty( SPUtils.getSharedStringData( "testUrlKey" ) ) ) {
-					host = NETEAST_HOST;
-					SPUtils.setSharedStringData( "testUrlKey", host );
-				} else {
-					host = SPUtils.getSharedStringData( "testUrlKey" )
-								  .replaceAll( " ", "" );
-				}
-				break;
-			case HostType.SSL_APP_HOST:
-				host = SSL_APP_HOST;
-				break;
-			case HostType.MY_TEST_DOWN:
-				break;
-			case HostType.NEWS_DETAIL_HTML_PHOTO:
 				break;
 			case HostType.TEST:
 				break;

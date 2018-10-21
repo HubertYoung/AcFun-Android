@@ -6,7 +6,6 @@ import android.util.SparseArray;
 import com.hubertyoung.common.net.config.MediaTypes;
 import com.hubertyoung.common.net.http.HttpUtils;
 import com.hubertyoung.common.net.request.RetrofitClient;
-import com.hubertyoung.common.utils.AppUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,8 +25,7 @@ public class Api {
 	 * 构造方法私有
 	 */
 	private Api() {
-		RetrofitClient retofitClinet = HttpUtils.getInstance()
-												.getRetofitClinet();
+		RetrofitClient retofitClinet = HttpUtils.getInstance().getRetofitClinet();
 		retrofitClient = retofitClinet.setBaseUrl( "" );
 	}
 
@@ -36,16 +34,9 @@ public class Api {
 	 *
 	 * @param hostType 网络配置
 	 */
-	private Api( int hostType, boolean isUrlDebug ) {
-		if ( isUrlDebug ) {
-			RetrofitClient retofitClinet = HttpUtils.getInstance()
-													.getRetofitClinet();
-			retrofitClient = retofitClinet.setBaseUrl( ApiConstants.getDebugHost( hostType ) );
-		} else {
-			RetrofitClient retofitClinet = HttpUtils.getInstance()
-													.getRetofitClinet();
-			retrofitClient = retofitClinet.setBaseUrl( ApiConstants.getHost( hostType ) );
-		}
+	private Api( int hostType ) {
+		RetrofitClient retofitClinet = HttpUtils.getInstance().getRetofitClinet();
+		retrofitClient = retofitClinet.setBaseUrl( ApiConstants.getHost( hostType ) );
 	}
 
 	/**
@@ -54,8 +45,7 @@ public class Api {
 	 * @return
 	 */
 	public OkHttpClient getOkHttpClient() {
-		return HttpUtils.getInstance()
-						.getOkHttpClient();
+		return HttpUtils.getInstance().getOkHttpClient();
 	}
 
 	public HttpUtils getHttpUtils() {
@@ -72,18 +62,15 @@ public class Api {
 	public static Api getDefault( int hostType ) {
 		Api retrofitManager = sRetrofitManager.get( hostType );
 		if ( retrofitManager == null ) {
-			retrofitManager = new Api( hostType, false );
+			retrofitManager = new Api( hostType );
 			sRetrofitManager.put( hostType, retrofitManager );
-		}
-		if ( AppUtils.isDebuggable() ) {
-//			int index = SPUtils.getSharedIntData( AppConstant.SWITCHURLINDEX );
-			retrofitManager = new Api( hostType, true );
 		}
 		return retrofitManager;
 	}
 
 	/**
 	 * 必须传baseurl 否则报错
+	 *
 	 * @return
 	 */
 	public static Api getDefault() {

@@ -1,5 +1,6 @@
 package com.hubertyoung.component_acfunmine;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -7,6 +8,7 @@ import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
 import com.hubertyoung.component_acfunmine.mine.fragment.MineFragment;
+import com.hubertyoung.component_acfunmine.sign.activity.SignInActivity;
 
 /**
  * <br>
@@ -33,13 +35,13 @@ public class ComponentTask implements IComponent {
 				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", MineFragment.newInstance( "", "" ) ) );
 				break;
             case "startLoginActivity":
-//                intent = new Intent(context, PatrolPlanActivity.class);
+                intent = new Intent(context, SignInActivity.class);
 //                intent.putExtra("callId", cc.getCallId());
-//                if (!(context instanceof Activity )) {
-//                    //调用方没有设置context或app间组件跳转，context为application
-//                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
-//                }
-//                context.startActivity(intent);
+                if (!(context instanceof Activity )) {
+                    //调用方没有设置context或app间组件跳转，context为application
+                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
+                }
+                context.startActivity(intent);
                 CC.sendCCResult(cc.getCallId(), CCResult.success());
                 break;
 //            case "toIssueActivity":

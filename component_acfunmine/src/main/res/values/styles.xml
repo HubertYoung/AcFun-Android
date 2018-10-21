@@ -42,4 +42,14 @@
         <item name="android:layout_marginLeft">16dp</item>
     </style>
 
+    <style name="input_wrap_layout">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_gray_round_bg</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+    </style>
 </resources>

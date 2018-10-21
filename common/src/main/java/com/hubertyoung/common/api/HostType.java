@@ -21,7 +21,7 @@ public class HostType {
     /**
      * 多少种Host类型
      */
-    public static final int TYPE_COUNT = 5;
+    public static final int TYPE_COUNT = 6;
 
     /**
      * 我的host
@@ -41,5 +41,9 @@ public class HostType {
     /**
      * ssl——app
      */
-    public static final int SSL_APP_HOST = 5;
+    public static final int APP_HOST_SLL = 5;
+	/**
+	 * 账号相关app
+	 */
+	public static final int APP_HOST_ACCOUNT = 6;
 }
