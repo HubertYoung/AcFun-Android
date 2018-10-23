@@ -7,8 +7,8 @@ import android.util.Log;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
-import com.hubertyoung.common.utils.NetworkUtil;
-import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.common.utils.os.NetworkUtil;
 import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.sign.control.SignInControl;
 

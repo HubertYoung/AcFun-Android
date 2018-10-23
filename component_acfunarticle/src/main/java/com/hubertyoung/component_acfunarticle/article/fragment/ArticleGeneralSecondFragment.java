@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.DropDownOptionList;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component_acfunarticle.R;

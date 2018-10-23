@@ -18,8 +18,8 @@ import com.facebook.drawee.view.DraweeHolder;
 import com.facebook.drawee.view.MultiDraweeHolder;
 import com.facebook.imagepipeline.image.ImageInfo;
 import com.hubertyoung.common.constant.AppConfig;
-import com.hubertyoung.common.utils.CommonLog;
-import com.hubertyoung.common.utils.DisplayUtil;
+import com.hubertyoung.common.utils.display.DisplayUtil;
+import com.hubertyoung.common.utils.log.CommonLog;
 
 import org.jetbrains.annotations.Contract;
 

@@ -2,23 +2,24 @@ package com.hubertyoung.component_dynamicsoreview.dynamicsoreview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.annotation.DrawableRes;
-import androidx.viewpager.widget.ViewPager;
-import androidx.recyclerview.widget.GridLayoutManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.hubertyoung.common.utils.display.DisplayUtil;
+import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.component_dynamicsoreview.R;
 import com.hubertyoung.component_dynamicsoreview.dynamicsoreview.Interface.IDynamicSore;
 import com.hubertyoung.component_dynamicsoreview.dynamicsoreview.adapter.ViewPagerAdapter;
-import com.hubertyoung.common.utils.CommonLog;
-import com.hubertyoung.common.utils.DisplayUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.DrawableRes;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.viewpager.widget.ViewPager;
 
 
 /**

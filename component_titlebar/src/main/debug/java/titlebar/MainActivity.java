@@ -6,7 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.widget.Toast;
 
-import com.hubertyoung.common.utils.DisplayUtil;
+import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.component_titlebar.R;
 import com.hubertyoung.titilebar.widget.CommonTitleBar;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;

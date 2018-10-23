@@ -1,6 +1,7 @@
 package com.hubertyoung.common.utils;
 
 import com.hubertyoung.common.constant.AdMapKey;
+import com.hubertyoung.common.utils.os.AppUtils;
 
 import java.util.HashMap;
 

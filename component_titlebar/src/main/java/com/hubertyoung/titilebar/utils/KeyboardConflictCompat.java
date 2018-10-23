@@ -7,7 +7,7 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.FrameLayout;
 
-import com.hubertyoung.common.utils.BarUtils;
+import com.hubertyoung.common.utils.bar.BarUtils;
 
 /**
  * 解决沉浸式标题栏下，键盘兼容问题

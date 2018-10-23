@@ -6,8 +6,8 @@ import android.widget.ImageView;
 
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.BarUtils;
-import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.bar.BarUtils;
+import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.index.adapter.HomePagerAdapter;
 import com.hubertyoung.component.acfunvideo.index.control.HomePageControl;
 import com.hubertyoung.component.acfunvideo.index.model.HomePageModelImp;

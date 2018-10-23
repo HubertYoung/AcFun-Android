@@ -6,7 +6,7 @@ import android.view.View;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;

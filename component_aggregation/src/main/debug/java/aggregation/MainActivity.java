@@ -19,7 +19,7 @@ import com.hubertyoung.baseplatform.share.SocializeMedia;
 import com.hubertyoung.baseplatform.share.shareparam.BaseShareParam;
 import com.hubertyoung.baseplatform.share.shareparam.ShareParamText;
 import com.hubertyoung.baseplatform.tools.Hashon;
-import com.hubertyoung.common.utils.AppUtils;
+import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_aggregation.R;
 

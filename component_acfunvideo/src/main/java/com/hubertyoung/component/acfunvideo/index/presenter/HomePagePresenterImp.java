@@ -2,7 +2,7 @@ package com.hubertyoung.component.acfunvideo.index.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.CommonLog;
+import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.component.acfunvideo.index.control.HomePageControl;
 
 import java.util.HashMap;

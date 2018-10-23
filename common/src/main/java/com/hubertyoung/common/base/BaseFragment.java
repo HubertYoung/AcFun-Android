@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.baserx.RxManager;
-import com.hubertyoung.common.utils.CommonLog;
+import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.utils.TUtil;
 
 import androidx.annotation.ColorRes;

@@ -10,8 +10,8 @@ import com.hubertyoung.acfun.R;
 import com.hubertyoung.acfun.ui.fragment.PlaceHolderFragment;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.utils.BarUtils;
-import com.hubertyoung.common.utils.CommonLog;
+import com.hubertyoung.common.utils.bar.BarUtils;
+import com.hubertyoung.common.utils.log.CommonLog;
 
 import java.util.ArrayList;
 

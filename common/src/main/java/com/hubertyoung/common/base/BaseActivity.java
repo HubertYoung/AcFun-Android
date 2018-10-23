@@ -16,11 +16,11 @@ import com.hubertyoung.base.bean.ModuleBean;
 import com.hubertyoung.base.listener.OnEnvironmentChangeListener;
 import com.hubertyoung.common.BuildConfig;
 import com.hubertyoung.common.baserx.RxManager;
-import com.hubertyoung.common.utils.AppActivityManager;
-import com.hubertyoung.common.utils.AppUtils;
-import com.hubertyoung.common.utils.BarUtils;
-import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.TUtil;
+import com.hubertyoung.common.utils.activitymanager.AppActivityManager;
+import com.hubertyoung.common.utils.bar.BarUtils;
+import com.hubertyoung.common.utils.log.CommonLog;
+import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import androidx.appcompat.app.AppCompatActivity;

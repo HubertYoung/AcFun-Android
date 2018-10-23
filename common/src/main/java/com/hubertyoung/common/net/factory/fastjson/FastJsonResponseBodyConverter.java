@@ -5,7 +5,7 @@ import com.alibaba.fastjson.parser.Feature;
 import com.alibaba.fastjson.parser.ParserConfig;
 import com.hubertyoung.common.net.config.NetStatus;
 import com.hubertyoung.common.net.response.BaseResponse;
-import com.hubertyoung.common.utils.CommonLog;
+import com.hubertyoung.common.utils.log.CommonLog;
 
 import org.json.JSONException;
 import org.json.JSONObject;

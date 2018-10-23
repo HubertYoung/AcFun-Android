@@ -1,6 +1,6 @@
 package com.hubertyoung.common.baserx;
 
-import com.hubertyoung.common.utils.ACache;
+import com.hubertyoung.common.utils.cache.ACache;
 
 import java.io.Serializable;
 

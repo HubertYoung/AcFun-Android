@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.component_acfunarticle.R;

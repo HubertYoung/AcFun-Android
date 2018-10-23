@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.constant.Constants;
-import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.sign.control.SignInControl;
 import com.hubertyoung.component_acfunmine.sign.model.SignInModelImp;

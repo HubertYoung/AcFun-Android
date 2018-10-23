@@ -14,16 +14,16 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
-import com.hubertyoung.common.utils.AppUtils;
-import com.hubertyoung.common.utils.ToastUtil;
-import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.common.entity.User;
+import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
+import com.hubertyoung.common.utils.SigninHelper;
+import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.common.utils.os.AppUtils;
+import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.mine.control.MineControl;
 import com.hubertyoung.component_acfunmine.mine.model.MineModelImp;
 import com.hubertyoung.component_acfunmine.mine.presenter.MinePresenterImp;
 import com.hubertyoung.component_acfunmine.setting.activity.SettingsActivity;
-import com.hubertyoung.common.utils.SigninHelper;
 
 import androidx.annotation.Nullable;
 

@@ -28,7 +28,7 @@ import android.widget.ProgressBar;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.just.agentweb.ChromeClientCallbackManager;
 import com.hubertyoung.common.net.http.HttpUtils;
-import com.hubertyoung.common.os.ClipboardUtils;
+import com.hubertyoung.common.utils.os.ClipboardUtils;
 import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.common.utils.ToastUtil;

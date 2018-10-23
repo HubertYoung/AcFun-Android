@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.hubertyoung.component_acfunvideo.R;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.utils.DisplayUtil;
+import com.hubertyoung.common.utils.display.DisplayUtil;
 
 /**
  * <br>

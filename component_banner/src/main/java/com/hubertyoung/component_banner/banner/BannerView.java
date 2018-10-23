@@ -1,8 +1,6 @@
 package com.hubertyoung.component_banner.banner;
 
 import android.content.Context;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -11,18 +9,20 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.hubertyoung.component_banner.R;
-import com.hubertyoung.component_banner.banner.transformer.ABaseTransformer;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
-import com.hubertyoung.common.utils.CommonLog;
-import com.hubertyoung.common.utils.DisplayUtil;
+import com.hubertyoung.common.utils.display.DisplayUtil;
+import com.hubertyoung.common.utils.log.CommonLog;
+import com.hubertyoung.component_banner.R;
+import com.hubertyoung.component_banner.banner.transformer.ABaseTransformer;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.ViewPager;
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;

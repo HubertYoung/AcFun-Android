@@ -14,7 +14,7 @@ import com.hubertyoung.component_acfunvideo.R;
 import com.hubertyoung.component_banner.banner.BannerEntity;
 import com.hubertyoung.component_banner.banner.BannerView;
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.utils.DisplayUtil;
+import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 

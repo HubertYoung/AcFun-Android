@@ -14,7 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.hubertyoung.common.R;
-import com.hubertyoung.common.utils.DisplayUtil;
+import com.hubertyoung.common.utils.display.DisplayUtil;
 
 import java.util.Arrays;
 import java.util.List;

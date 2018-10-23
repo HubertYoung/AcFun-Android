@@ -4,7 +4,7 @@ package com.hubertyoung.common.net.interceptor;
 import androidx.annotation.NonNull;
 
 import com.hubertyoung.common.BuildConfig;
-import com.hubertyoung.common.utils.CommonLog;
+import com.hubertyoung.common.utils.log.CommonLog;
 
 import java.io.IOException;
 import java.net.URLDecoder;

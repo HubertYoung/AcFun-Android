@@ -3,7 +3,6 @@ package com.hubertyoung.common.widget;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -12,8 +11,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import com.hubertyoung.common.R;
-import com.hubertyoung.common.utils.DisplayUtil;
+import com.hubertyoung.common.utils.display.DisplayUtil;
 
+import androidx.appcompat.widget.AppCompatEditText;
 
 
 /**

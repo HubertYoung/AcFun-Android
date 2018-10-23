@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.utils.BarUtils;
+import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.SigninHelper;
-import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfundynamic.R;
 import com.hubertyoung.component_acfundynamic.dynamic.adapter.DynamicPagerAdapter;
 import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicControl;

@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.BarUtils;
-import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.bar.BarUtils;
+import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfunarticle.R;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
 import com.hubertyoung.component_acfunarticle.entity.ServerChannel;

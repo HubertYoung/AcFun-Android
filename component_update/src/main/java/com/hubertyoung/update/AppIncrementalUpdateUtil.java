@@ -4,7 +4,7 @@ import android.net.Uri;
 import androidx.core.content.FileProvider;
 import android.util.Log;
 
-import com.hubertyoung.common.utils.AppUtils;
+import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 
 import java.io.File;

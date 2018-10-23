@@ -26,10 +26,10 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.common.os.OSUtil;
-import com.hubertyoung.common.utils.BarUtils;
-import com.hubertyoung.common.utils.DisplayUtil;
-import com.hubertyoung.common.utils.KeyBordUtil;
+import com.hubertyoung.common.utils.bar.BarUtils;
+import com.hubertyoung.common.utils.display.DisplayUtil;
+import com.hubertyoung.common.utils.os.KeyBordUtil;
+import com.hubertyoung.common.utils.os.OSUtil;
 import com.hubertyoung.component_titlebar.R;
 import com.hubertyoung.titilebar.utils.KeyboardConflictCompat;
 

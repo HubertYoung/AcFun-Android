@@ -11,8 +11,8 @@ import com.hubertyoung.common.net.interceptor.GzipRequestInterceptor;
 import com.hubertyoung.common.net.interceptor.LogInterceptor;
 import com.hubertyoung.common.net.interceptor.UploadProgressInterceptor;
 import com.hubertyoung.common.net.request.RetrofitClient;
-import com.hubertyoung.common.utils.CommonLog;
-import com.hubertyoung.common.utils.NetworkUtil;
+import com.hubertyoung.common.utils.log.CommonLog;
+import com.hubertyoung.common.utils.os.NetworkUtil;
 
 import java.io.IOException;
 import java.io.InputStream;

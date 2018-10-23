@@ -3,9 +3,6 @@ package com.hubertyoung.aggregation.dialog;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,9 +16,9 @@ import com.hubertyoung.baseplatform.share.SocializeMedia;
 import com.hubertyoung.baseplatform.share.shareparam.BaseShareParam;
 import com.hubertyoung.baseplatform.share.shareparam.ShareImage;
 import com.hubertyoung.baseplatform.share.shareparam.ShareParamWebPage;
-import com.hubertyoung.common.os.ClipboardUtils;
-import com.hubertyoung.common.utils.AppUtils;
-import com.hubertyoung.common.utils.ToastUtil;
+import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.common.utils.os.AppUtils;
+import com.hubertyoung.common.utils.os.ClipboardUtils;
 import com.hubertyoung.component_aggregation.R;
 import com.hubertyoung.dialog.TDialog;
 import com.hubertyoung.dialog.base.BindViewHolder;
@@ -30,6 +27,10 @@ import com.hubertyoung.dialog.listener.OnViewClickListener;
 
 import java.util.List;
 import java.util.Locale;
+
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 /**

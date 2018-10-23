@@ -2,7 +2,7 @@ package com.hubertyoung.update;
 
 import android.util.Log;
 
-import com.hubertyoung.common.utils.AppUtils;
+import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.common.utils.ToastUtil;
 
 import java.io.File;

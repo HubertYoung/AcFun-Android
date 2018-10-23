@@ -3,8 +3,8 @@ package com.hubertyoung.common.net.config;
 import android.content.Context;
 
 import com.facebook.stetho.common.LogUtil;
-import com.hubertyoung.common.utils.AppFileUtils;
-import com.hubertyoung.common.utils.AppUtils;
+import com.hubertyoung.common.utils.file.AppFileUtils;
+import com.hubertyoung.common.utils.os.AppUtils;
 
 import java.io.File;
 import java.io.InputStream;
