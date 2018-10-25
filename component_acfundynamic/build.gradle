@@ -5,6 +5,3 @@ dependencies {
     implementation project(':component_skeleton')
     addComponent 'component_acfunmine'
 }
-
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'

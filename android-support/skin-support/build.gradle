@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion var.compileSdkVersion
+    compileSdkVersion build_versions.target_sdk
 
     defaultConfig {
-        minSdkVersion var.minSdkVersion
-        targetSdkVersion var.targetSdkVersion
-        versionCode var.versionCode
-        versionName var.versionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
     }
     buildTypes {
         release {
@@ -19,5 +19,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.legacy:legacy-support-v4:$var.androidxLegacySupportV4"
+    implementation deps.support.v4
 }

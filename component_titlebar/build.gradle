@@ -2,6 +2,5 @@ apply from: rootProject.file('basic_component.gradle')
 
 dependencies {
     implementation project(':common')
-    implementation 'com.jude:swipebackhelper:2.1.5'
-    implementation 'com.ogaclejapan.smarttablayout:library:1.6.1'
+    implementation deps.swipebackhelper
 }

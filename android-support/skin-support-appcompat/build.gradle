@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 
 
 android {
-    compileSdkVersion var.compileSdkVersion
+    compileSdkVersion build_versions.target_sdk
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
-        minSdkVersion var.minSdkVersion
-        targetSdkVersion var.targetSdkVersion
-        versionCode var.versionCode
-        versionName var.versionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
     }
     buildTypes {
         release {
@@ -25,6 +25,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.appcompat:appcompat:$var.androidxAppcompat"
+    implementation deps.support.app_compat
     api project(':android-support:skin-support')
 }

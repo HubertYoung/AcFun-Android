@@ -2,13 +2,13 @@ apply from: rootProject.file('basic_component.gradle')
 
 
 android {
-    compileSdkVersion var.compileSdkVersion
+    compileSdkVersion build_versions.target_sdk
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
-        minSdkVersion var.minSdkVersion
-        targetSdkVersion var.targetSdkVersion
-        versionCode var.versionCode
-        versionName var.versionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
     }
     buildTypes {
         release {
@@ -31,26 +31,20 @@ dependencies {
 //    implementation project(':android-support:skin-support-constraint-layout')
 //    implementation project(':android-support:skin-support-design')
 
-    implementation "com.tencent:mmkv:$var.mmkv"
+    implementation deps.tencent.mmkv
 
-    api 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
-    //显示图片框架
-    api "com.facebook.fresco:fresco:$var.fresco"
-    implementation "com.facebook.fresco:imagepipeline-okhttp3:$var.fresco"
-// 支持 GIF 动图，需要添加
-    implementation "com.facebook.fresco:animated-gif:$var.fresco"
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
-    implementation 'jp.wasabeef:fresco-processors:2.1.0'
-//打印日志
-    implementation 'com.orhanobut:logger:1.13'
-    //    网络调试工具
-    implementation "com.facebook.stetho:stetho:$var.facebookStetho"
-    implementation "com.facebook.stetho:stetho-okhttp3:$var.facebookStetho"
-    //1.1.0 API改动过大，老用户升级需谨慎
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
-    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
-//    api 'ch.acra:acra:4.9.0'
-    implementation "ch.acra:acra:$var.acraVersion"
+    api deps.smarttablayout
+    api deps.facebook.fresco
+    implementation deps.facebook.imagepipeline_okhttp3
+    implementation deps.facebook.animated_gif
+    implementation deps.android_gif_drawable
+    implementation deps.fresco_processors
+    implementation deps.logger
+    implementation deps.facebook.stetho
+    implementation deps.facebook.stetho_okhttp3
+    api deps.smartrefresh.SmartRefreshLayout
+    api deps.smartrefresh.SmartRefreshHeader
+    implementation deps.acra
     api project(':annotation')
 //    implementation 'com.google.auto.service:auto-service:1.0-rc2'
 //    implementation 'com.squareup:javapoet:1.11.1'

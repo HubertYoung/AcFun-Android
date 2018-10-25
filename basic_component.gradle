@@ -34,14 +34,14 @@ if (runAsApp) {
 def componentName = project.name.replaceAll("component_", "")
 println(project.name)
 android {
-    compileSdkVersion var.compileSdkVersion
+    compileSdkVersion build_versions.target_sdk
     defaultConfig {
-        minSdkVersion var.minSdkVersion
-        targetSdkVersion var.targetSdkVersion
-        versionCode var.versionCode
-        versionName var.versionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
         if (runAsApp) {
-            applicationId var.applicationId + componentName
+            applicationId buildApplicationId + componentName
         }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -86,35 +86,23 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api "androidx.legacy:legacy-support-v4:$var.androidxLegacySupportV4"
-    api "androidx.appcompat:appcompat:$var.androidxAppcompat"
-    api "com.google.android.material:material:$var.androidxMaterial"
-    api "androidx.cardview:cardview:$var.androidxCardview"
-//    api "androidx.gridlayout:gridlayout:$var.androidxGridlayout"
-    api "androidx.preference:preference:$var.androidxPreference"
-    api "androidx.constraintlayout:constraintlayout:$var.androidxConstraintlayout"
+    api deps.support.v4
+    api deps.support.app_compat
+    api deps.support.design
+    api deps.support.cardview
+    api deps.preference.preference
+    api deps.constraint_layout
     //Paging的依赖
-    implementation "android.arch.paging:runtime:$var.pagingVersion"
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    //view注解
-//    implementation 'com.jakewharton:butterknife:8.4.0'
-//    kapt 'com.jakewharton:butterknife-compiler:8.4.0'
-
-    //retrofit和rxjava
-    api "com.squareup.retrofit2:retrofit:$var.retrofit"
-//    implementation "com.squareup.retrofit2:converter-gson:$var.retrofit"
-//    implementation "com.squareup.retrofit2:converter-fastjson:$var.retrofit"
-    implementation 'com.alibaba:fastjson:1.1.70.android'
-//    implementation "com.squareup.retrofit2:converter-scalars:$var.retrofit"
-    api "com.squareup.retrofit2:adapter-rxjava2:$var.retrofit"
-    implementation "com.squareup.okhttp3:logging-interceptor:$var.okhttplog"
-    api "io.reactivex.rxjava2:rxandroid:$var.rxandroid"
-    // explicitly depend on RxJava's latest version for bug fixes and new features.
-    api "io.reactivex.rxjava2:rxjava:$var.rxjava"
-//    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
-    api "com.jakewharton.rxbinding2:rxbinding:$var.rxbinding"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    api deps.paging
+    api deps.kotlin.stdlib
+    api deps.retrofit.runtime
+    api deps.alibaba.fastjson
+    api deps.retrofit.rxjava2
+    api deps.okhttp_logging_interceptor
+    api deps.rx_android
+    api deps.rxjava2
+    api deps.rxbinding
+    testImplementation deps.junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
 }

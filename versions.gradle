@@ -1,0 +1,211 @@
+/*
+ * Copyright (C) 2018 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+ext.deps = [:]
+def versions = [:]
+versions.arch_core = "2.0.0"
+versions.room = "2.0.0"
+versions.lifecycle = "2.0.0"
+versions.support = "1.0.0"
+versions.dagger = "2.16"
+versions.junit = "4.12"
+versions.espresso = "3.1.0-alpha4"
+versions.retrofit = "2.4.0"
+versions.rxbinding = "2.2.0"
+versions.fastjson = "1.1.70"
+versions.okhttp_logging_interceptor = "3.10.0"
+versions.mockwebserver = "3.8.1"
+versions.apache_commons = "2.5"
+versions.mockito = "2.7.19"
+versions.mockito_all = "1.10.19"
+versions.mockito_android = "2.22.0"
+versions.dexmaker = "2.2.0"
+versions.constraint_layout = "2.0.0-alpha2"
+versions.glide = "4.8.0"
+versions.timber = "4.5.1"
+versions.android_gradle_plugin = '3.2.1'
+versions.rxjava2 = "2.1.3"
+versions.rx_android = "2.0.1"
+versions.atsl_runner = "1.1.0-alpha4"
+versions.atsl_rules = "1.1.0-alpha4"
+versions.hamcrest = "1.3"
+versions.kotlin = "1.2.71"
+versions.paging = "2.1.0-alpha01"
+versions.navigation = "1.0.0-alpha06"
+versions.work = "1.0.0-alpha10"
+versions.mmkv = "1.0.11"
+versions.fresco = "1.10.0"
+versions.facebookStetho = "1.4.2"
+versions.acraVersion = "4.9.0"
+def deps = [:]
+
+def support = [:]
+support.annotations = "androidx.annotation:annotation:$versions.support"
+support.app_compat = "androidx.appcompat:appcompat:$versions.support"
+support.recyclerview = "androidx.recyclerview:recyclerview:$versions.support"
+support.cardview = "androidx.cardview:cardview:$versions.support"
+support.design = "com.google.android.material:material:$versions.support"
+support.v4 = "androidx.legacy:legacy-support-v4:$versions.support"
+support.core_utils = "androidx.legacy:legacy-support-core-utils:$versions.support"
+deps.support = support
+
+def preference = [:]
+preference.preference = "androidx.preference:preference:$versions.support"
+deps.preference = preference
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+room.rxjava2 = "androidx.room:room-rxjava2:$versions.room"
+room.testing = "androidx.room:room-testing:$versions.room"
+deps.room = room
+
+def lifecycle = [:]
+lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle"
+lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
+lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
+deps.lifecycle = lifecycle
+
+def arch_core = [:]
+arch_core.testing = "androidx.arch.core:core-testing:$versions.arch_core"
+deps.arch_core = arch_core
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+deps.retrofit = retrofit
+deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+
+deps.dagger = dagger
+
+def espresso = [:]
+espresso.core = "androidx.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "androidx.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "androidx.test.espresso:espresso-intents:$versions.espresso"
+deps.espresso = espresso
+
+def atsl = [:]
+atsl.runner = "androidx.test:runner:$versions.atsl_runner"
+atsl.rules = "androidx.test:rules:$versions.atsl_runner"
+deps.atsl = atsl
+
+def alibaba = [:]
+alibaba.fastjson = "com.alibaba:fastjson:${versions.fastjson}.android"
+deps.alibaba = alibaba
+
+def mockito = [:]
+mockito.core = "org.mockito:mockito-core:$versions.mockito"
+mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
+mockito.android = "org.mockito:mockito-android:$versions.mockito_android"
+deps.mockito = mockito
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
+
+deps.kotlin = kotlin
+
+deps.paging_ktx = "androidx.paging:paging-runtime-ktx:$versions.paging"
+deps.paging = "android.arch.paging:runtime:$versions.paging"
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+deps.dexmaker = "com.linkedin.dexmaker:dexmaker-mockito:$versions.dexmaker"
+deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+deps.junit = "junit:junit:$versions.junit"
+deps.mock_web_server = "com.squareup.okhttp3:mockwebserver:$versions.mockwebserver"
+deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+deps.rxbinding = "com.jakewharton.rxbinding2:rxbinding:$versions.rxbinding"
+deps.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 16
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.3"
+build_versions.versionCode = 540
+build_versions.versionName = "5.4.0"
+ext.build_versions = build_versions
+ext.buildApplicationId = "com.hubertyoung.acfun"
+
+def work = [:]
+work.runtime = "android.arch.work:work-runtime:$versions.work"
+work.testing = "android.arch.work:work-testing:$versions.work"
+work.firebase = "android.arch.work:work-firebase:$versions.work"
+work.runtime_ktx = "android.arch.work:work-runtime-ktx:$versions.work"
+deps.work = work
+
+def navigation = [:]
+navigation.runtime = "android.arch.navigation:navigation-runtime:$versions.navigation"
+navigation.runtime_ktx = "android.arch.navigation:navigation-runtime-ktx:$versions.navigation"
+navigation.fragment = "android.arch.navigation:navigation-fragment:$versions.navigation"
+navigation.fragment_ktx = "android.arch.navigation:navigation-fragment-ktx:$versions.navigation"
+navigation.safe_args_plugin = "android.arch.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+navigation.testing_ktx = "android.arch.navigation:navigation-testing-ktx:$versions.navigation"
+deps.navigation = navigation
+ext.deps = deps
+
+def facebook = [:]
+facebook.fresco = "com.facebook.fresco:fresco:$versions.fresco"
+facebook.imagepipeline_okhttp3 = "com.facebook.fresco:imagepipeline-okhttp3:$versions.fresco"
+facebook.animated_gif = "com.facebook.fresco:animated-gif:$versions.fresco"
+facebook.stetho = "com.facebook.stetho:stetho:$versions.facebookStetho"
+facebook.stetho_okhttp3 = "com.facebook.stetho:stetho-okhttp3:$versions.facebookStetho"
+deps.facebook = facebook
+
+def tencent = [:]
+tencent.mmkv = "com.tencent:mmkv:$versions.mmkv"
+tencent.wechat = 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+deps.tencent = tencent
+
+def weibo = [:]
+weibo.sdk_core = 'com.sina.weibo.sdk:core:4.3.0:openDefaultRelease@aar'
+deps.weibo = weibo
+
+def smartrefresh = [:]
+smartrefresh.SmartRefreshLayout = 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+smartrefresh.SmartRefreshHeader = 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+smartrefresh.smartrefresh = smartrefresh
+deps.smartrefresh = smartrefresh
+
+deps.smarttablayout = 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+deps.android_gif_drawable = 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
+deps.fresco_processors = 'jp.wasabeef:fresco-processors:2.1.0'
+deps.logger = 'com.orhanobut:logger:1.13'
+deps.acra = "ch.acra:acra:$versions.acraVersion"
+deps.swipebackhelper = 'com.jude:swipebackhelper:2.1.5'
+ext.deps = deps

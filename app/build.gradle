@@ -1,14 +1,14 @@
 apply from: rootProject.file('cc-settings.gradle')
 
 android {
-    compileSdkVersion var.compileSdkVersion
+    compileSdkVersion build_versions.target_sdk
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
         applicationId props["ANDROID_APPLICATIONID"]
-        minSdkVersion var.minSdkVersion
-        targetSdkVersion var.targetSdkVersion
-        versionCode var.versionCode
-        versionName var.versionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
         flavorDimensions props['VERSION_NAME']
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -42,7 +42,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation 'junit:junit:4.12'
+    testImplementation deps.junit
 
 //    implementation 'com.jakewharton:butterknife:8.4.0'
 //    kapt 'com.jakewharton:butterknife-compiler:8.4.0'

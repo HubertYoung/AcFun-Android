@@ -6,6 +6,3 @@ dependencies {
     debugAnnotationProcessor project(':compiler')
     releaseAnnotationProcessor project(':compiler-release')
 }
-
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'

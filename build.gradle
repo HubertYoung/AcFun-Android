@@ -1,6 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    apply from: 'versions.gradle'
+
     ext.kotlin_version = '1.2.71'
 
     repositories {
@@ -30,47 +32,47 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext {
-    var = [
-            // SDK And Tools
-//            minSdkVersion        : 14,
-//            targetSdkVersion     : 25,
-//            compileSdkVersion    : 25,
-//            buildToolsVersion    : "25.0.2",
-//            versionName              : "1.0.0",
-//            //Dependencies
-//            supportLibraryVersion: "25.2.0"
-
-            applicationId           : "com.hubertyoung.acfun",
-            compileSdkVersion       : 28,
-            buildToolsVersion       : "28.0.2",
-            minSdkVersion           : 16,
-            targetSdkVersion        : 22,
-            versionCode             : 540,
-            versionName             : "5.4.0",
-
-            androidxAppcompat       : "1.0.0",
-            androidxLegacySupportV4 : "1.0.0",
-            androidxMaterial        : "1.0.0",
-            androidxCardview        : "1.0.0",
-            androidxGridlayout      : "1.0.0",
-            androidxRecyclerview    : "1.0.0",
-            androidxPreference      : "1.0.0",
-            androidxConstraintlayout: "2.0.0-alpha2",
-
-            mmkv                    : "1.0.11",
-
-            pagingVersion           : "2.0.0",
-
-            retrofit                : "2.4.0",
-            okhttplog               : "3.10.0",
-            rxjava                  : "2.2.2",
-            rxandroid               : "2.1.0",
-            rxbinding               : "2.2.0",
-
-            fresco                  : "1.10.0",
-            facebookStetho          : "1.4.2",
-
-            acraVersion             : "4.9.0"
-    ]
-}
+//ext {
+//    var = [
+//            // SDK And Tools
+////            minSdkVersion        : 14,
+////            targetSdkVersion     : 25,
+////            compileSdkVersion    : 25,
+////            buildToolsVersion    : "25.0.2",
+////            versionName              : "1.0.0",
+////            //Dependencies
+////            supportLibraryVersion: "25.2.0"
+//
+//            applicationId           : "com.hubertyoung.acfun",
+//            compileSdkVersion       : 28,
+//            buildToolsVersion       : "28.0.2",
+//            minSdkVersion           : 16,
+//            targetSdkVersion        : 22,
+//            versionCode             : 540,
+//            versionName             : "5.4.0",
+//
+//            androidxAppcompat       : "1.0.0",
+//            androidxLegacySupportV4 : "1.0.0",
+//            androidxMaterial        : "1.0.0",
+//            androidxCardview        : "1.0.0",
+//            androidxGridlayout      : "1.0.0",
+//            androidxRecyclerview    : "1.0.0",
+//            androidxPreference      : "1.0.0",
+//            androidxConstraintlayout: "2.0.0-alpha2",
+//
+//            mmkv                    : "1.0.11",
+//
+//            pagingVersion           : "2.0.0",
+//
+//            retrofit                : "2.4.0",
+//            okhttplog               : "3.10.0",
+//            rxjava                  : "2.2.2",
+//            rxandroid               : "2.1.0",
+//            rxbinding               : "2.2.0",
+//
+//            fresco                  : "1.10.0",
+//            facebookStetho          : "1.4.2",
+//
+//            acraVersion             : "4.9.0"
+//    ]
+//}

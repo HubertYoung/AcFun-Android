@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 
 
 android {
-    compileSdkVersion var.compileSdkVersion
+    compileSdkVersion build_versions.target_sdk
 //    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
     defaultConfig {
-        minSdkVersion var.minSdkVersion
-        targetSdkVersion var.targetSdkVersion
-        versionCode var.versionCode
-        versionName var.versionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
         vectorDrawables.useSupportLibrary = true
 
     }
@@ -25,13 +25,12 @@ android {
 }
 
 dependencies {
-    api "androidx.legacy:legacy-support-v4:$var.androidxLegacySupportV4"
-    api "androidx.appcompat:appcompat:$var.androidxAppcompat"
-    api "com.google.android.material:material:$var.androidxMaterial"
-    api "androidx.cardview:cardview:$var.androidxCardview"
-//    api "androidx.gridlayout:gridlayout:$var.androidxGridlayout"
-    api "androidx.preference:preference:$var.androidxPreference"
-    api "androidx.constraintlayout:constraintlayout:$var.androidxConstraintlayout"
-    api "androidx.recyclerview:recyclerview:$var.androidxRecyclerview"
+    api deps.support.v4
+    api deps.support.app_compat
+    api deps.support.design
+    api deps.support.cardview
+    api deps.support.recyclerview
+    api deps.preference.preference
+    api deps.constraint_layout
 }
 
