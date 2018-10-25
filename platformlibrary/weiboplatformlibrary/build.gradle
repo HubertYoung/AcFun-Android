@@ -26,7 +26,7 @@ android {
 
 dependencies {
     testImplementation deps.junit
-    implementation project(':platformlibrary:baseplatformlibrary')
+    implementation project(':baseplatformlibrary')
     implementation deps.weibo.sdk_core
     implementation deps.support.annotations
 

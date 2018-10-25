@@ -27,11 +27,11 @@ include ':studydemo',
         ':component_ping',
         ':component_statsdk',
         ':component_aggregation',
-        ':platformlibrary:baseplatformlibrary',
-        ':platformlibrary:alipayplatformlibrary',
-        ':platformlibrary:wechatplatformlibrary',
-        ':platformlibrary:qqplatformlibrary',
-        ':platformlibrary:weiboplatformlibrary',
+        ':baseplatformlibrary',
+        ':alipayplatformlibrary',
+        ':wechatplatformlibrary',
+        ':qqplatformlibrary',
+        ':weiboplatformlibrary',
         ':component_dialog',
 //        ':library_update',
         ':common_res',
@@ -40,7 +40,12 @@ include ':studydemo',
         ':annotation',
         ':compiler',
         ':compiler-release'
-//':javapoet:annotation', ':javapoet:compiler',':javapoet:compiler-release',
+project(':baseplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/baseplatformlibrary')
+project(':alipayplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/alipayplatformlibrary')
+project(':wechatplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/wechatplatformlibrary')
+project(':qqplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/qqplatformlibrary')
+project(':weiboplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/weiboplatformlibrary')
+
 project(':annotation').projectDir = new File(rootDir, 'javapoet/annotation')
 project(':compiler').projectDir = new File(rootDir, 'javapoet/compiler')
 project(':compiler-release').projectDir = new File(rootDir, 'javapoet/compiler-release')

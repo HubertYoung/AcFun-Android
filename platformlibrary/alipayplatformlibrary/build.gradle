@@ -26,7 +26,7 @@ android {
 
 dependencies {
     testImplementation deps.junit
-    implementation project(':platformlibrary:baseplatformlibrary')
+    implementation project(':baseplatformlibrary')
     implementation files('libs/alipaySdk-20170309.jar')
     implementation deps.support.annotations
 

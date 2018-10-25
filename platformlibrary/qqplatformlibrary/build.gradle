@@ -27,7 +27,7 @@ android {
 dependencies {
     testImplementation deps.junit
     implementation deps.support.annotations
-    implementation project(':platformlibrary:baseplatformlibrary')
+    implementation project(':baseplatformlibrary')
     implementation files('libs/open_sdk_r5793_lite.jar')
     implementation deps.support.v4
 }
