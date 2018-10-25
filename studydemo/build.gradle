@@ -30,7 +30,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
-    api project(':javapoet:annotation')
-    debugAnnotationProcessor project(':javapoet:compiler')
-    releaseAnnotationProcessor project(':javapoet:compiler-release')
+    api project(':annotation')
+    debugAnnotationProcessor project(':compiler')
+    releaseAnnotationProcessor project(':compiler-release')
 }

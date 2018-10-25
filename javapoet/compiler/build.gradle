@@ -6,7 +6,7 @@ targetCompatibility = "1.7"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.auto.service:auto-service:1.0-rc2'
-    api project(':javapoet:annotation')
+    api project(':annotation')
 }
 //ext {
 //    artifactIdExt = 'javapoet_environment_compiler'

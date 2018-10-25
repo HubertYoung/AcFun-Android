@@ -1,4 +1,4 @@
-include ':studydemo', ':acfun', ':component_acfunmine','component_acfunarticle', ':javapoet:annotation', ':javapoet:compiler',':javapoet:compiler-release',
+include ':studydemo', ':acfun', ':component_acfunmine','component_acfunarticle',
         ':bottom-navigation-bar',
         ':component_acfundynamic',
         ':component_acfunvideo',
@@ -32,4 +32,12 @@ include ':studydemo', ':acfun', ':component_acfunmine','component_acfunarticle',
         ':component_dialog',
 //        ':library_update',
         ':common_res',
-        ':common'
+        ':common',
+
+        ':annotation',
+        ':compiler',
+        ':compiler-release'
+//':javapoet:annotation', ':javapoet:compiler',':javapoet:compiler-release',
+project(':annotation').projectDir = new File(rootDir,'javapoet/annotation')
+project(':compiler').projectDir = new File(rootDir,'javapoet/compiler')
+project(':compiler-release').projectDir = new File(rootDir,'javapoet/compiler-release')

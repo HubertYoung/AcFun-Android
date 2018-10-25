@@ -3,8 +3,8 @@ apply from: rootProject.file('basic_component.gradle')
 dependencies {
     implementation project(':common')
     addComponent 'component_developer'
-    debugAnnotationProcessor project(':javapoet:compiler')
-    releaseAnnotationProcessor project(':javapoet:compiler-release')
+    debugAnnotationProcessor project(':compiler')
+    releaseAnnotationProcessor project(':compiler-release')
 }
 
 apply plugin: 'kotlin-android'
