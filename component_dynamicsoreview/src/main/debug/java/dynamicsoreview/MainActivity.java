@@ -1,36 +1,29 @@
 package dynamicsoreview;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
+import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component_dynamicsoreview.R;
 import com.hubertyoung.component_dynamicsoreview.dynamicsoreview.DynamicSoreView;
 import com.hubertyoung.component_dynamicsoreview.dynamicsoreview.Interface.IDynamicSore;
-import com.hubertyoung.common.utils.ToastUtil;
-import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
-	@BindView( R.id.ds_main )
 	DynamicSoreView mDsMain;
 
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.dynamicsoreview_activity_main );
-		ButterKnife.bind( this );
-
-
+		mDsMain = findViewById( R.id.ds_main );
 		ArrayList< DynamicEntity > list = new ArrayList<>();
 		list.add( new DynamicEntity( "https://i0.hdslb.com/bfs/archive/5e5902b22d98f873b2eb79c5a5c05be739b60dc2.png","11" ) );
 		list.add( new DynamicEntity( "https://i0.hdslb.com/bfs/archive/5e5902b22d98f873b2eb79c5a5c05be739b60dc2.png","12" ) );
@@ -51,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void setGridView( View view, int type, List< DynamicEntity > data ) {
 				GridLayoutManager manager = new GridLayoutManager( MainActivity.this, 4 );
-				mDsMain.setNumColumns( manager );
+				mDsMain.setNumColumns( manager,8 );
 
 				RecyclerView rvBody = ( RecyclerView ) view.findViewById( R.id.rv_body );
-				rvBody.setPadding( AutoUtils.getPercentHeightSizeBigger( 30 ), AutoUtils.getPercentHeightSizeBigger( 20 ), AutoUtils.getPercentHeightSizeBigger( 30 ), AutoUtils.getPercentHeightSizeBigger( 20 ) );
+//				rvBody.setPadding( AutoUtils.getPercentHeightSizeBigger( 30 ), AutoUtils.getPercentHeightSizeBigger( 20 ), AutoUtils.getPercentHeightSizeBigger( 30 ), AutoUtils.getPercentHeightSizeBigger( 20 ) );
 				rvBody.setHasFixedSize( true );
 
 				rvBody.setNestedScrollingEnabled( false );
-				SectionedRecyclerViewAdapter menuAdapter = new SectionedRecyclerViewAdapter();
+				SectionedRecyclerViewAdapter menuAdapter = new SectionedRecyclerViewAdapter( null );
 				DynamicSection cardShareMenuBodySection = new DynamicSection( MainActivity.this, data );
 				menuAdapter.addSection( cardShareMenuBodySection );
 				rvBody.setAdapter( menuAdapter );

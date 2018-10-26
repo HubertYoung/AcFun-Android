@@ -19,11 +19,6 @@ import com.hubertyoung.baseplatform.share.shareparam.ShareParamWebPage;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.common.utils.os.ClipboardUtils;
-import com.hubertyoung.component_aggregation.R;
-import com.hubertyoung.dialog.TDialog;
-import com.hubertyoung.dialog.base.BindViewHolder;
-import com.hubertyoung.dialog.listener.OnBindViewListener;
-import com.hubertyoung.dialog.listener.OnViewClickListener;
 
 import java.util.List;
 import java.util.Locale;

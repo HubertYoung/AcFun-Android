@@ -1,9 +1,9 @@
+ext.alwaysLib = true
 apply from: rootProject.file('basic_component.gradle')
-
 
 android {
     compileSdkVersion build_versions.target_sdk
-//    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
+    buildToolsVersion build_versions.build_tools
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk

@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/iv_menu"
         android:layout_width="50dp"
         android:layout_height="32dp"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:layout_marginTop="@dimen/10dp"
+        android:layout_marginTop="10dp"
         android:text="名称"
         android:textSize="@dimen/text_size12_0dp"/>
 

@@ -1,8 +1,8 @@
-apply from: rootProject.file('cc-settings.gradle')
+apply from: rootProject.file('cc-settings-2.gradle')
 
 android {
     compileSdkVersion build_versions.target_sdk
-//    buildToolsVersion props["ANDROID_BUILD_SDK_TOOLS_VERSION"]
+    buildToolsVersion build_versions.build_tools
     defaultConfig {
         applicationId props["ANDROID_APPLICATIONID"]
         minSdkVersion build_versions.min_sdk

@@ -1,4 +1,4 @@
-apply from: rootProject.file('cc-settings.gradle')
+apply from: rootProject.file('cc-settings-2.gradle')
 //apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
 //先加载local.properties文件
 Properties localProperties = new Properties()
@@ -10,38 +10,21 @@ try {
 } catch (Exception ignored) {
     println("local.properties not found")
 }
-
-//读取build.gradle中的设置
-// 2018-04-06修改：
-//  为了更利于理解，将ext.runAsApp 改名为 ext.mainApp
-//  ext.mainApp的将仅代表是否作为主app，为true时以application方式编译，为false或未配置时以local.properties中的配置为准
-//  兼容以前的runAsApp设置，ext.runAsApp的功能保持不变，runAsApp优先级高于local.properties
-def runAsApp = ext.has('runAsApp')
-if (runAsApp) {
-    runAsApp = ext.runAsApp
-} else if(ext.has('mainApp') && ext.mainApp) { //ext.mainApp为true时，代表以app方式运行
-    runAsApp = true
-} else {
-    //build.gradle中没有配置runAsApp，且ext.mainApp=false或未配置
-    //再从local.properties中读取配置，例如： demo_component_a=true
-    //注：如果采用local.properties读取配置，每次修改需要重新同步(Sync Project)一下
-    runAsApp = 'true' == localProperties.getProperty(project.name)
-    //设置到ext中，供module的build.gradle使用（例如用于设置sourceSets配置）
-    ext.runAsApp = runAsApp
-}
+//runAsApp = ('true' == localProperties.getProperty(project.name))
 
 //模块名称
 def componentName = project.name.replaceAll("component_", "")
-println(project.name)
+println(project.name + "--" + project.ext.runAsApp)
 android {
     compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode build_versions.versionCode
         versionName build_versions.versionName
-        if (runAsApp) {
-            applicationId buildApplicationId + componentName
+        if (project.ext.runAsApp) {
+            applicationId deps.buildApplicationId + componentName
         }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true

@@ -3,33 +3,24 @@ package bar;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.utils.BarUtils;
-import com.hubertyoung.component_bar.R;
+import com.hubertyoung.common.utils.bar.BarUtils;
 
-import butterknife.BindView;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener {
 
-	@BindView( R.id.toolbar )
-	Toolbar mToolbar;
-	@BindView( R.id.insets )
-	CheckBox mInsets;
-	@BindView( R.id.tinting )
-	CheckBox mTinting;
-	@BindView( R.id.dark )
-	CheckBox mDark;
-	@BindView( R.id.hidden )
-	CheckBox mHidden;
-	@BindView( R.id.adjust )
-	CheckBox mAdjust;
-	@BindView( R.id.hint )
-	TextView mHint;
+	private Toolbar mToolbar;
+	private CheckBox mInsets;
+	private CheckBox mTinting;
+	private CheckBox mDark;
+	private CheckBox mHidden;
+	private CheckBox mAdjust;
+	private TextView mHint;
 
 	@Override
 	public int getLayoutId() {
@@ -40,9 +31,15 @@ public class MainActivity extends BaseActivity implements CompoundButton.OnCheck
 	public void initPresenter() {
 
 	}
-
 	@Override
 	public void initView( Bundle savedInstanceState ) {
+		mToolbar = findViewById( R.id.toolbar );
+		mInsets = findViewById( R.id.insets );
+		mTinting = findViewById( R.id.tinting );
+		mDark = findViewById( R.id.dark );
+		mHidden = findViewById( R.id.hidden );
+		mAdjust = findViewById( R.id.adjust );
+		mHint = findViewById( R.id.hint );
 		initAction();
 	}
 
@@ -83,7 +80,7 @@ public class MainActivity extends BaseActivity implements CompoundButton.OnCheck
 				break;
 			case R.id.tinting:
 				statusBarColor = isChecked ? Color.MAGENTA : Color.TRANSPARENT;
-				BarUtils.setStatusBarColor( this, statusBarColor ,true);
+				BarUtils.setStatusBarColor( this, statusBarColor, true );
 				if ( statusBarHidden && isChecked ) {
 					mHint.setText( "只有显示状态栏才能看到效果" );
 				}
@@ -119,4 +116,5 @@ public class MainActivity extends BaseActivity implements CompoundButton.OnCheck
 		AppUtils.setStatusBarTranslucent( getWindow(), translucent );
 //		this.setStatusBarTranslucent( translucent );
 	}
+
 }

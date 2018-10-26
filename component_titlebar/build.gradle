@@ -1,3 +1,4 @@
+ext.alwaysLib = true
 apply from: rootProject.file('basic_component.gradle')
 
 dependencies {

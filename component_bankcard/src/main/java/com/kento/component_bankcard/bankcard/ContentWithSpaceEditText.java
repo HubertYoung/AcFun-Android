@@ -1,8 +1,7 @@
-package com.hubertyoung.component_bankcard.bankcard;
+package com.kento.component_bankcard.bankcard;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -13,6 +12,8 @@ import android.util.AttributeSet;
 import android.widget.Toast;
 
 import com.hubertyoung.component_bankcard.R;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 
 /**

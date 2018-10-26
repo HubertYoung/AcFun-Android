@@ -1,10 +1,11 @@
-apply from: rootProject.file('cc-settings.gradle')
+ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
+apply from: rootProject.file('cc-settings-2.gradle')
 
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
     defaultConfig {
-        applicationId buildApplicationId
+        applicationId deps.buildApplicationId
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode build_versions.versionCode
@@ -51,5 +52,6 @@ dependencies {
     implementation project(':common')
     addComponent 'component_acfunvideo'
     addComponent 'component_acfunarticle'
+    addComponent 'component_acfundynamic'
     addComponent 'component_acfunmine'
 }

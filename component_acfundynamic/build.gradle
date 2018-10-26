@@ -2,6 +2,6 @@ apply from: rootProject.file('basic_component.gradle')
 
 dependencies {
     implementation project(':common')
-    implementation project(':component_skeleton')
+    addComponent 'component_skeleton'
     addComponent 'component_acfunmine'
 }

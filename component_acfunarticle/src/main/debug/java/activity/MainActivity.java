@@ -3,7 +3,7 @@ package activity;
 import android.os.Bundle;
 
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.utils.BarUtils;
+import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.component_acfunarticle.R;
 
 

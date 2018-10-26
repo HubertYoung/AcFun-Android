@@ -1,20 +1,18 @@
 package dynamicsoreview;
 
 import android.app.Activity;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-import com.hubertyoung.component_dynamicsoreview.R;
-import com.hubertyoung.common.ImageLoaderUtils;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.component_dynamicsoreview.R;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>
@@ -49,7 +47,7 @@ public class DynamicSection extends Section {
 	public void onBindItemViewHolder( RecyclerView.ViewHolder holder, int position ) {
 		CardShareMenuBodyViewHolder viewHolder = ( CardShareMenuBodyViewHolder ) holder;
 		DynamicEntity bean = data.get( position );
-		ImageLoaderUtils.getInstance().display( activity, viewHolder.mIvMenu, bean.Pic );
+		ImageLoaderUtil.loadNetImage( bean.Pic,viewHolder.mIvMenu );
 		viewHolder.mTvMenu.setText( bean.title );
 		if ( mOnItemClickListener != null ) {
 			viewHolder.itemView.setOnClickListener( new View.OnClickListener() {
@@ -72,14 +70,13 @@ public class DynamicSection extends Section {
 	}
 
 	static class CardShareMenuBodyViewHolder extends RecyclerView.ViewHolder {
-		@BindView( R.id.iv_menu )
-		AppCompatImageView mIvMenu;
-		@BindView( R.id.tv_menu )
+		SimpleDraweeView mIvMenu;
 		AppCompatTextView mTvMenu;
 
 		CardShareMenuBodyViewHolder( View view ) {
 			super( view );
-			ButterKnife.bind( this, view );
+			mIvMenu = view.findViewById( R.id.iv_menu );
+			mTvMenu = view.findViewById( R.id.tv_menu );
 		}
 	}
 }

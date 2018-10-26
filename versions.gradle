@@ -51,7 +51,7 @@ versions.paging = "2.1.0-alpha01"
 versions.navigation = "1.0.0-alpha06"
 versions.work = "1.0.0-alpha10"
 versions.mmkv = "1.0.11"
-versions.fresco = "1.10.0"
+versions.fresco = "1.11.0"
 versions.facebookStetho = "1.4.2"
 versions.acraVersion = "4.9.0"
 def deps = [:]
@@ -160,7 +160,9 @@ build_versions.build_tools = "28.0.3"
 build_versions.versionCode = 540
 build_versions.versionName = "5.4.0"
 ext.build_versions = build_versions
-ext.buildApplicationId = "com.hubertyoung.acfun"
+
+deps.buildApplicationId = "com.hubertyoung.acfun"
+ext.deps = deps
 
 def work = [:]
 work.runtime = "android.arch.work:work-runtime:$versions.work"

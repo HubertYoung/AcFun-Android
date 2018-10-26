@@ -2,6 +2,7 @@ apply from: rootProject.file('basic_component.gradle')
 
 dependencies {
     implementation project(':common')
+    addComponent 'component_bar'
     implementation project(':component_skeleton')
     addComponent 'component_acfunvideo'
 }
