@@ -1,6 +1,6 @@
 package com.hubertyoung.component_acfunarticle.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ import java.util.List;
  * @desc:com.hubertyoung.component_acfunarticle.entity
  */
 public class Channel {
-	@JSONField(name = "article" )
+	@SerializedName("article" )
 	public List< ServerChannel > article;
-	@JSONField(name = "video" )
+	@SerializedName("video" )
 	public List< ServerChannel > video;
 
 }

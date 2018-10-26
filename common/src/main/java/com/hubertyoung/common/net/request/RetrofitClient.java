@@ -3,7 +3,8 @@ package com.hubertyoung.common.net.request;
 
 import android.text.TextUtils;
 
-import com.hubertyoung.common.net.factory.fastjson.FastJsonConverterFactory;
+
+import com.hubertyoung.common.net.factory.gson.ExGsonConverterFactory;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -79,7 +80,7 @@ public class RetrofitClient {
 				.baseUrl( baseUrl )
 				//增加返回值为String的支持
 //				.addConverterFactory( ScalarsConverterFactory.create() )
-				.addConverterFactory( FastJsonConverterFactory.create() )
+				.addConverterFactory( ExGsonConverterFactory.create() )
 				.addCallAdapterFactory( RxJava2CallAdapterFactory.create() )
 				.build();
 		return retrofit.create( service );

@@ -1,6 +1,6 @@
 package com.hubertyoung.component_acfunarticle.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -39,12 +39,12 @@ public class ArticleRecommendEntity {
 
 		public String requestid;
 		public String groupid;
-		@JSONField(name = "action")
+		@SerializedName("action")
 		public int actionId;
-		@JSONField(name ="href")
+		@SerializedName("href")
 		public String contentId;
 		public String title;
-		@JSONField(name ="img")
+		@SerializedName("img")
 		public List<String> images;
 	}
 }

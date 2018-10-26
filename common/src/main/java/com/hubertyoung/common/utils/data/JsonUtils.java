@@ -3,8 +3,13 @@ package com.hubertyoung.common.utils.data;
 
 import android.text.TextUtils;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.hubertyoung.common.utils.log.CommonLog;
 
 import org.json.JSONObject;
 
@@ -18,8 +23,11 @@ import java.util.List;
  */
 public class JsonUtils {
 
+	// 采取单例模式
+	private volatile static Gson gson = new Gson();
+
 	private JsonUtils() {
-//		sJSONObject.serializeNulls();
+		gson.serializeNulls();
 		//                gson.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE) //设置字段(即Key值)首字母大写——暂时没用
 //                gson.setPrettyPrinting()   //对JSON结果格式化，添加换行等——生成JSON数据的时候用
 //                gson.setVersion(1.0)       //设置版本号——暂时没用
@@ -32,9 +40,15 @@ public class JsonUtils {
 	 * @Description : 将对象转为JSON串，此方法能够满足大部分需求
 	 */
 	public static String objToString( Object object ) {
-		String objString = null;
-		objString = com.alibaba.fastjson.JSONObject.toJSONString( object );
-		return objString;
+		if ( null == object ) {
+			return gson.toJson( JsonNull.INSTANCE );
+		}
+		try {
+			return gson.toJson( object );
+		} catch ( JsonSyntaxException e ) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**
@@ -46,8 +60,8 @@ public class JsonUtils {
 	 */
 	public static < T > T jsonToBean( String json, Class< T > classOfT ) {
 		try {
-			return JSON.parseObject( json, classOfT );
-		} catch ( Exception e ) {
+			return gson.fromJson( json, ( Type ) classOfT );
+		} catch ( JsonSyntaxException e ) {
 			e.printStackTrace();
 		}
 		return null;
@@ -60,7 +74,7 @@ public class JsonUtils {
 			for (int n; ( n = is.read( b ) ) != -1; ) {
 				out.append( new String( b, 0, n ) );
 			}
-			return JSON.parseObject( out.toString(), classOfT );
+			return gson.fromJson( out.toString(), ( Type ) classOfT );
 		} catch ( Exception e ) {
 			e.printStackTrace();
 		}
@@ -78,11 +92,17 @@ public class JsonUtils {
 		List< T > result = new ArrayList<>();
 		if ( TextUtils.isEmpty( json ) ) return result;
 		try {
-			result.addAll( JSONArray.parseArray( json, cls ) );
+			if ( null != gson ) {
+				JsonArray array = new JsonParser().parse( json )
+												  .getAsJsonArray();
+				for (final JsonElement elem : array) {
+					result.add( gson.fromJson( elem, cls ) );
+				}
+			}
 			return result;
 		} catch ( Exception e ) {
-			result.clear();
-			return result;
+			CommonLog.loge( e.getMessage() );
+			return new ArrayList< T >();
 		}
 	}
 
@@ -97,8 +117,8 @@ public class JsonUtils {
 	 */
 	public static Object fromJson( String json, Type typeOfT ) {
 		try {
-			return JSON.parseObject( json, typeOfT );
-		} catch ( Exception e ) {
+			return gson.fromJson( json, typeOfT );
+		} catch ( JsonSyntaxException e ) {
 			e.printStackTrace();
 		}
 		return null;

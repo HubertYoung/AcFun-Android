@@ -47,7 +47,7 @@ public class HomeIndexEntity {
 		 * addTime : 2018-02-01T00:00:00
 		 * deleted : false
 		 */
-		@JSONField(name = "id" )
+		@SerializedName("id" )
 		public int newGoodsId;
 		public String goodsSn;
 		public String name;
@@ -75,7 +75,7 @@ public class HomeIndexEntity {
 		 * name : 居家
 		 * iconUrl : http://yanxuan.nosdn.127.net/a45c2c262a476fea0b9fc684fed91ef5.png
 		 */
-		@JSONField(name = "id" )
+		@SerializedName("id" )
 		public int channelId;
 		public String name;
 		public String iconUrl;
@@ -92,7 +92,7 @@ public class HomeIndexEntity {
 		 * enabled : true
 		 * deleted : false
 		 */
-		@JSONField(name = "id" )
+		@SerializedName("id" )
 		public int bannerId;
 		public int position;
 		public String name;
@@ -122,7 +122,7 @@ public class HomeIndexEntity {
 		 * addTime : 2018-02-01T00:00:00
 		 * deleted : false
 		 */
-		@JSONField(name = "id" )
+		@SerializedName("id" )
 		public int brandId;
 		public String name;
 		public String listPicUrl;
@@ -162,7 +162,7 @@ public class HomeIndexEntity {
 		 * addTime : 2018-02-01T00:00:00
 		 * deleted : false
 		 */
-		@JSONField(name = "id" )
+		@SerializedName("id" )
 		public int hotGoodsId;
 		public String goodsSn;
 		public String name;
@@ -206,7 +206,7 @@ public class HomeIndexEntity {
 		 * .nosdn.127.net/0d4004e19728f2707f08f4be79bbc774.jpg" data-mce-src="//yanxuan.nosdn.127.net/0d4004e19728f2707f08f4be79bbc774.jpg"> <img src="//yanxuan
 		 * .nosdn.127.net/79ee021bbe97de7ecda691de6787241f.jpg" data-mce-src="//yanxuan.nosdn.127.net/79ee021bbe97de7ecda691de6787241f.jpg"></p>
 		 */
-		@JSONField(name = "id" )
+		@SerializedName("id" )
 		public int topicId;
 		public String title;
 		public String avatar;
@@ -252,7 +252,7 @@ public class HomeIndexEntity {
 		 */
 
 		public String name;
-		@JSONField(name = "id" )
+		@SerializedName("id" )
 		public int floorGoodsid;
 		public List< GoodsListBean > goodsList;
 
@@ -279,7 +279,7 @@ public class HomeIndexEntity {
 			 * addTime : 2018-02-01T00:00:00
 			 * deleted : false
 			 */
-			@JSONField(name = "id" )
+			@SerializedName("id" )
 			public int goodsId;
 			public String goodsSn;
 			public String name;

@@ -1,7 +1,7 @@
 package com.hubertyoung.common.entity;
 
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * <br>
@@ -14,19 +14,19 @@ import com.alibaba.fastjson.annotation.JSONField;
  * @desc:com.hubertyoung.component_acfunmine.entity
  */
 public class SignInfo {
-	@JSONField(name = "avatar")
+	@SerializedName("avatar")
 	public String avatar;
-	@JSONField(name = "group-level")
+	@SerializedName("group-level")
 	public int groupLevel;
-	@JSONField(name = "third-channel")
+	@SerializedName("third-channel")
 	public int isThirdLogin;
-	@JSONField(name = "mobile")
+	@SerializedName("mobile")
 	public String mobile;
-	@JSONField(name = "mobile-check")
+	@SerializedName("mobile-check")
 	public int mobileCheck;
-	@JSONField(name = "userid")
+	@SerializedName("userid")
 	public int userid;
-	@JSONField(name = "username")
+	@SerializedName("username")
 	public String username;
 
 	public String toString() {

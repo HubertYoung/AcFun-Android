@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,45 +17,45 @@ import java.util.List;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class VideoDetail {
-	@JSONField(name = "album")
+	@SerializedName("album")
 	public VideoDetailAlbum album;
-	@JSONField(name = "detailsShow")
+	@SerializedName("detailsShow")
 	public int detailsShow;
-	@JSONField(name = "isComment")
+	@SerializedName("isComment")
 	public boolean isComment;
-	@JSONField(name = "channelId")
+	@SerializedName("channelId")
 	public int mChannelId;
-	@JSONField(name = "contentId")
+	@SerializedName("contentId")
 	public int mContentId;
-	@JSONField(name = "cover")
+	@SerializedName("cover")
 	public String mCoverUrl;
-	@JSONField(name = "description")
+	@SerializedName("description")
 	public String mDescription;
-	@JSONField(name = "isArticle")
+	@SerializedName("isArticle")
 	public int mIsArticle;
-	@JSONField(name = "isRecommend")
+	@SerializedName("isRecommend")
 	public int mIsRecommend;
-	@JSONField(name = "owner")
+	@SerializedName("owner")
 	public Owner mOwner;
-	@JSONField(name = "parentChannelId")
+	@SerializedName("parentChannelId")
 	public int mParentChannelId;
-	@JSONField(name = "releaseDate")
+	@SerializedName("releaseDate")
 	public long mReleaseDate;
-	@JSONField(name = "tags")
+	@SerializedName("tags")
 	public ArrayList<String> mTags;
-	@JSONField(name = "title")
+	@SerializedName("title")
 	public String mTitle;
-	@JSONField(name = "topLevel")
+	@SerializedName("topLevel")
 	public int mTopLevel;
-	@JSONField(name = "videos")
+	@SerializedName("videos")
 	public ArrayList<NetVideo> mVideos;
-	@JSONField(name = "viewOnly")
+	@SerializedName("viewOnly")
 	public int mViewOnly;
-	@JSONField(name = "visit")
+	@SerializedName("visit")
 	public Visits mVisit;
-	@JSONField(name = "redirect")
+	@SerializedName("redirect")
 	public String redirect;
-	@JSONField(name = "shareUrl")
+	@SerializedName("shareUrl")
 	public String shareUrl;
 
 	public FullContent convertToFullContent() {

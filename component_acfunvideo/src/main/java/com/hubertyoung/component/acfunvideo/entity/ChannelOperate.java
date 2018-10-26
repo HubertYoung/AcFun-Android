@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -15,34 +15,34 @@ import java.util.List;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class ChannelOperate {
-	@JSONField(name = "channelList" )
+	@SerializedName("channelList" )
 	public List< ChannelData > channelList;
-	@JSONField(name = "next" )
+	@SerializedName("next" )
 	public int next;
-	@JSONField(name = "operateList" )
+	@SerializedName("operateList" )
 	public List< ChannelActivity > operateList;
 
 	public static class ChannelData {
-		@JSONField(name = "id" )
+		@SerializedName("id" )
 		public int id;
-		@JSONField(name = "img" )
+		@SerializedName("img" )
 		public String img;
-		@JSONField(name = "name" )
+		@SerializedName("name" )
 		public String name;
 	}
 
 	public static class ChannelActivity {
-		@JSONField(name = "action" )
+		@SerializedName("action" )
 		public int action;
-		@JSONField(name = "activityStatus" )
+		@SerializedName("activityStatus" )
 		public int activityStatus;
-		@JSONField(name = "activityTime" )
+		@SerializedName("activityTime" )
 		public String activityTime;
-		@JSONField(name = "href" )
+		@SerializedName("href" )
 		public String href;
-		@JSONField(name = "img" )
+		@SerializedName("img" )
 		public String img;
-		@JSONField(name = "title" )
+		@SerializedName("title" )
 		public String title;
 	}
 }

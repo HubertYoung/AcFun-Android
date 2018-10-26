@@ -96,7 +96,8 @@ dependencies {
     api deps.paging
     api deps.kotlin.stdlib
     api deps.retrofit.runtime
-    api deps.alibaba.fastjson
+    api deps.retrofit.gson
+//    api deps.alibaba.fastjson
     api deps.retrofit.rxjava2
     api deps.okhttp_logging_interceptor
     api deps.rx_android

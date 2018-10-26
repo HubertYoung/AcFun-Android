@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * <br>
@@ -13,26 +13,26 @@ import com.alibaba.fastjson.annotation.JSONField;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class BangumiVideo {
-	@JSONField(name ="bangumiId")
+	@SerializedName("bangumiId")
 	public int bid;
-	@JSONField(name ="danmakuId")
+	@SerializedName("danmakuId")
 	public String danmakuID;
 	public int order;
-	@JSONField(name ="sourceId")
+	@SerializedName("sourceId")
 	public String sid;
-	@JSONField(name ="sort")
+	@SerializedName("sort")
 	public int sort;
-	@JSONField(name ="startTime")
+	@SerializedName("startTime")
 	public long startTime;
-	@JSONField(name ="sourceType")
+	@SerializedName("sourceType")
 	public String stype;
-	@JSONField(name ="title")
+	@SerializedName("title")
 	public String title;
-	@JSONField(name ="type")
+	@SerializedName("type")
 	public String type;
-	@JSONField(name ="url")
+	@SerializedName("url")
 	public String url;
-	@JSONField(name ="id")
+	@SerializedName("id")
 	public int vid;
 
 }

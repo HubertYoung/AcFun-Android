@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -15,66 +15,66 @@ import java.util.List;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class Regions {
-	@JSONField(name = "advertLists")
+	@SerializedName("advertLists")
 	public List<AdvertLists> advertLists;
-	@JSONField(name = "belong")
+	@SerializedName("belong")
 	public int belong;
-	@JSONField(name = "bodyContents")
+	@SerializedName("bodyContents")
 	public List<RegionBodyContent> bodyContents;
-	@JSONField(name = "bottomText")
+	@SerializedName("bottomText")
 	public RegionHeaderAndBottomContent bottomText;
 	public List<RegionBodyContent> changeContents;
 	public int changeCount = 0;
-	@JSONField(name = "channel")
+	@SerializedName("channel")
 	public int channel;
-	@JSONField(name = "channelId")
+	@SerializedName("channelId")
 	public int channelId;
-	@JSONField(name = "children")
+	@SerializedName("children")
 	public List<Regions> children;
-	@JSONField(name = "contentCount")
+	@SerializedName("contentCount")
 	public int contentCount;
-	@JSONField(name = "contents")
+	@SerializedName("contents")
 	public List<RegionsContent> contents;
-	@JSONField(name = "goText")
+	@SerializedName("goText")
 	public String goText;
-	@JSONField(name = "headerText")
+	@SerializedName("headerText")
 	public List<RegionHeaderAndBottomContent> headerText;
-	@JSONField(name = "hide")
+	@SerializedName("hide")
 	public int hide;
-	@JSONField(name = "id")
+	@SerializedName("id")
 	public int id;
-	@JSONField(name = "image")
+	@SerializedName("image")
 	public String image;
-	@JSONField(name = "img")
+	@SerializedName("img")
 	public String img;
-	@JSONField(name = "menuCount")
+	@SerializedName("menuCount")
 	public int menuCount;
-	@JSONField(name = "menus")
+	@SerializedName("menus")
 	public List<RegionsMenu> menus;
-	@JSONField(name = "name")
+	@SerializedName("name")
 	public String name;
-	@JSONField(name = "schema")
+	@SerializedName("schema")
 	public String schema;
-	@JSONField(name = "show")
+	@SerializedName("show")
 	public int show;
-	@JSONField(name = "showChange")
+	@SerializedName("showChange")
 	public int showChange = 0;
-	@JSONField(name = "showLine")
+	@SerializedName("showLine")
 	public int showLine;
-	@JSONField(name = "showMore")
+	@SerializedName("showMore")
 	public int showMore;
-	@JSONField(name = "showName")
+	@SerializedName("showName")
 	public int showName;
-	@JSONField(name = "sort")
+	@SerializedName("sort")
 	public int sort;
-	@JSONField(name = "statu")
+	@SerializedName("statu")
 	public int statu;
-	@JSONField(name = "title")
+	@SerializedName("title")
 	public String title;
-	@JSONField(name = "topContent")
+	@SerializedName("topContent")
 	public RegionBodyContent topContent;
-	@JSONField(name = "type")
+	@SerializedName("type")
 	public RegionsType type;
-	@JSONField(name = "url")
+	@SerializedName("url")
 	public String url;
 }

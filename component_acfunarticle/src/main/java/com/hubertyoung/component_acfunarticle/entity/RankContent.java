@@ -1,6 +1,6 @@
 package com.hubertyoung.component_acfunarticle.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * <br>
@@ -13,12 +13,12 @@ import com.alibaba.fastjson.annotation.JSONField;
  * @desc:com.hubertyoung.component_acfunarticle.entity
  */
 public class RankContent extends RankContentBase {
-	@JSONField(name ="channel")
+	@SerializedName("channel")
 	public RankChannel channel;
-	@JSONField(name ="time")
+	@SerializedName("time")
 	public long time;
-	@JSONField(name ="user")
+	@SerializedName("user")
 	public RankUser user;
-	@JSONField(name ="visit")
+	@SerializedName("visit")
 	public Visit visit;
 }

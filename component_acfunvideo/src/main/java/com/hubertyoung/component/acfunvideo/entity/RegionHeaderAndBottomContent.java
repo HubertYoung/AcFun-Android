@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * <br>
@@ -13,16 +13,16 @@ import com.alibaba.fastjson.annotation.JSONField;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class RegionHeaderAndBottomContent {
-	@JSONField(name ="action")
+	@SerializedName("action")
 	public int actionId;
-	@JSONField(name ="ad")
+	@SerializedName("ad")
 	public int ad;
-	@JSONField(name ="color")
+	@SerializedName("color")
 	public String color;
-	@JSONField(name ="href")
+	@SerializedName("href")
 	public String contentId;
-	@JSONField(name ="img")
+	@SerializedName("img")
 	public String image;
-	@JSONField(name ="title")
+	@SerializedName("title")
 	public String title;
 }

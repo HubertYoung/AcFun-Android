@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * <br>
@@ -19,61 +19,61 @@ public class NetVideo {
 	public static final int MEDIA_TYPE_WEB_PLAYER = 3;
 	public static final int REGIESTLEVEL = 0;
 	public static final int VIPLEVEL = 1;
-	@JSONField(name ="allowDanmaku")
+	@SerializedName("allowDanmaku")
 //	@Column(name = "allowDanmaku")
 	public int allowDanmaku;
-	@JSONField(name ="bangumiId")
+	@SerializedName("bangumiId")
 //	@Column(name = "bangumiId")
 	public int mBangumiId;
-	@JSONField(name ="commentId")
+	@SerializedName("commentId")
 //	@Column(name = "commentId")
 	public int mCommentId;
-	@JSONField(name ="danmakuId")
+	@SerializedName("danmakuId")
 //	@Column(name = "danmakuId")
 	public String mDanmakuId;
-	@JSONField(name ="mediaType")
+	@SerializedName("mediaType")
 //	@Column(name = "mediaType")
 	public int mMediaType;
-	@JSONField(name ="sort")
+	@SerializedName("sort")
 //	@Column(name = "sort")
 	public int mSort;
-	@JSONField(name ="sourceId")
+	@SerializedName("sourceId")
 //	@Column(name = "sourceId")
 	public String mSourceId;
-	@JSONField(name ="sourceIdBackup")
+	@SerializedName("sourceIdBackup")
 //	@Column(name = "sourceIdBackup")
 	public String mSourceIdBackup;
-	@JSONField(name ="sourceType")
+	@SerializedName("sourceType")
 //	@Column(name = "sourceType")
 	public String mSourceType;
-	@JSONField(name ="sourceTypeBackup")
+	@SerializedName("sourceTypeBackup")
 //	@Column(name = "sourceTypeBackup")
 	public String mSourceTypeBackup;
-	@JSONField(name ="startTime")
+	@SerializedName("startTime")
 //	@Column(name = "startTime")
 	public long mStartTime;
-	@JSONField(name ="time")
+	@SerializedName("time")
 //	@Column(name = "time")
 	public long mTime;
-	@JSONField(name ="title")
+	@SerializedName("title")
 //	@Column(name = "title")
 	public String mTitle;
-	@JSONField(name ="updateTime")
+	@SerializedName("updateTime")
 //	@Column(name = "updateTime")
 	public long mUpdateTime;
-	@JSONField(name ="url")
+	@SerializedName("url")
 //	@Column(name = "url")
 	public String mUrl;
-	@JSONField(name ="urlMobile")
+	@SerializedName("urlMobile")
 //	@Column(name = "urlMobile")
 	public String mUrlMobile;
-	@JSONField(name ="urlWeb")
+	@SerializedName("urlWeb")
 //	@Column(name = "urlWeb")
 	public String mUrlWeb;
-	@JSONField(name ="videoId")
+	@SerializedName("videoId")
 //	@Column(autoGen = false, isId = true, name = "videoId")
 	public int mVideoId;
-	@JSONField(name ="visibleLevel")
+	@SerializedName("visibleLevel")
 	public int mVisibleLevel;
 
 	public Video convertToVideo() {

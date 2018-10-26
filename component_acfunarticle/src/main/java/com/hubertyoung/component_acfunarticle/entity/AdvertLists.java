@@ -1,6 +1,6 @@
 package com.hubertyoung.component_acfunarticle.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * <br>
@@ -13,14 +13,14 @@ import com.alibaba.fastjson.annotation.JSONField;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class AdvertLists {
-	@JSONField(name = "advert_id")
+	@SerializedName("advert_id")
 	public int advertId;
-	@JSONField(name = "advert_type")
+	@SerializedName("advert_type")
 	public int advertType;
-	@JSONField(name = "channel_id")
+	@SerializedName("channel_id")
 	public int channelId;
-	@JSONField(name = "player_id")
+	@SerializedName("player_id")
 	public long playerId;
-	@JSONField(name = "position_id")
+	@SerializedName("position_id")
 	public int positionId;
 }

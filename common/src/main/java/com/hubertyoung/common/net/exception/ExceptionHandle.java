@@ -2,6 +2,7 @@ package com.hubertyoung.common.net.exception;
 
 import android.net.ParseException;
 
+import com.google.gson.JsonParseException;
 import com.hubertyoung.common.net.config.NetStatus;
 import com.hubertyoung.common.net.processserver.ProcessServerException;
 
@@ -63,7 +64,7 @@ public class ExceptionHandle {
 
             ex.result = resultException.result;
             return ex;
-        } else if ( e instanceof com.alibaba.fastjson.JSONException || e instanceof JSONException || e instanceof ParseException ) {
+        } else if ( e instanceof JsonParseException || e instanceof JSONException || e instanceof ParseException ) {
             ex = new ResponeThrowable( e, ERROR.PARSE_ERROR );
             ex.result = "解析异常";
             return ex;

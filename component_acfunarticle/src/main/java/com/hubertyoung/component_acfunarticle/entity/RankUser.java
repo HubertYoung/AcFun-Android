@@ -1,6 +1,6 @@
 package com.hubertyoung.component_acfunarticle.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * <br>
@@ -13,10 +13,10 @@ import com.alibaba.fastjson.annotation.JSONField;
  * @desc:com.hubertyoung.component_acfunarticle.entity
  */
 public class RankUser {
-	@JSONField(name = "id")
+	@SerializedName("id")
 	public int id;
-	@JSONField(name = "img")
+	@SerializedName("img")
 	public String img;
-	@JSONField(name = "name")
+	@SerializedName("name")
 	public String name;
 }

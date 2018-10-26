@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * <br>
@@ -13,11 +13,11 @@ import com.alibaba.fastjson.annotation.JSONField;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class Owner {
-	@JSONField(name = "avatar")
+	@SerializedName("avatar")
 	public String avatar;
-	@JSONField(name = "id")
+	@SerializedName("id")
 	public int id;
-	@JSONField(name = "name")
+	@SerializedName("name")
 	public String name;
 
 	public String getName() {

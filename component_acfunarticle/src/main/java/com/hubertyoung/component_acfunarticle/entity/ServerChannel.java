@@ -3,7 +3,7 @@ package com.hubertyoung.component_acfunarticle.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,19 +24,19 @@ public class ServerChannel implements Parcelable {
 	}
 
 	public static final int CAN_CONTRIBUTE = 1;
-	@JSONField(name = "contributeStatus" )
+	@SerializedName("contributeStatus" )
 	public int contributeStatus;
-	@JSONField(name = "id" )
+	@SerializedName("id" )
 	public int id;
-	@JSONField(name = "img" )
+	@SerializedName("img" )
 	public String img;
-	@JSONField(name = "name" )
+	@SerializedName("name" )
 	public String name;
-	@JSONField(name = "pid" )
+	@SerializedName("pid" )
 	public int pid;
-	@JSONField(name = "realm" )
+	@SerializedName("realm" )
 	public List< ServerChannel > realm;
-	@JSONField(name = "children" )
+	@SerializedName("children" )
 	public List< ServerChannel > subChannels;
 
 	public String toString() {

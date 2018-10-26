@@ -1,7 +1,7 @@
 package com.hubertyoung.common.entity;
 
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,19 +17,19 @@ import java.util.Date;
  * @desc:com.hubertyoung.component_acfunmine.entity
  */
 public class Token implements Serializable{
-	@JSONField(name = "userImg" )
+	@SerializedName("userImg" )
 	private String avater;
-	@JSONField(name = "expires" )
+	@SerializedName("expires" )
 	private Date expire;
-	@JSONField(name = "mobileCheck" )
+	@SerializedName("mobileCheck" )
 	private int mobileCheck;
-	@JSONField(name = "access_token" )
+	@SerializedName("access_token" )
 	private String token;
-	@JSONField(name = "userId" )
+	@SerializedName("userId" )
 	private int uid;
-	@JSONField(name = "userGroupLevel" )
+	@SerializedName("userGroupLevel" )
 	private int userGroupLevel;
-	@JSONField(name = "username" )
+	@SerializedName("username" )
 	private String userName;
 
 	public int getMobileCheck() {

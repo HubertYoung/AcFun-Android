@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -15,46 +15,46 @@ import java.util.List;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class RegionBodyContent {
-	@JSONField(name = "action")
+	@SerializedName("action")
 	public int actionId;
-	@JSONField(name ="ad")
+	@SerializedName("ad")
 	public int ad;
-	@JSONField(name ="channel")
+	@SerializedName("channel")
 	public RegionsType channel;
-	@JSONField(name ="children")
+	@SerializedName("children")
 	public List<RegionBodyContent> children;
-	@JSONField(name ="href")
+	@SerializedName("href")
 	public String contentId;
-	@JSONField(name ="extendsStatus")
+	@SerializedName("extendsStatus")
 	public int extendsStatus;
-	@JSONField(name ="img")
+	@SerializedName("img")
 	public List<String> images;
-	@JSONField(name ="intro")
+	@SerializedName("intro")
 	public String intro;
-	@JSONField(name ="lastUpdate")
+	@SerializedName("lastUpdate")
 	public String lastUpdate;
-	@JSONField(name ="latestBangumiVideo")
+	@SerializedName("latestBangumiVideo")
 	public NetVideo latestBangumiVideo;
-	@JSONField(name ="reqId")
+	@SerializedName("reqId")
 	public String reqId;
-	@JSONField(name ="stowCount")
+	@SerializedName("stowCount")
 	public int stowCount;
-	@JSONField(name ="subVideo")
+	@SerializedName("subVideo")
 	public VideoDetail subVideo;
-	@JSONField(name ="subVideos")
+	@SerializedName("subVideos")
 	public List<VideoDetail> subVideos;
-	@JSONField(name ="time")
+	@SerializedName("time")
 	public long time;
-	@JSONField(name ="title")
+	@SerializedName("title")
 	public String title;
-	@JSONField(name ="type")
+	@SerializedName("type")
 	public RegionsType type;
-	@JSONField(name ="updateTime")
+	@SerializedName("updateTime")
 	public String updateTime;
-	@JSONField(name ="user")
+	@SerializedName("user")
 	public RegionsType user;
-	@JSONField(name ="videoId")
+	@SerializedName("videoId")
 	public int videoId;
-	@JSONField(name ="visit")
+	@SerializedName("visit")
 	public RegionVisitContent visit;
 }

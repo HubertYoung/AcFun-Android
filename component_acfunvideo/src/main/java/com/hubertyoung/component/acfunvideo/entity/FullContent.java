@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,53 +20,53 @@ public class FullContent {
 	private String albumCoverImg;
 	private int albumID;
 	private String albumTitle;
-	@JSONField(name = "channelId")
+	@SerializedName("channelId")
 	private int channelId;
-	@JSONField(name = "contentId")
+	@SerializedName("contentId")
 	private int cid;
-	@JSONField(name = "comments")
+	@SerializedName("comments")
 	private int comments;
-	@JSONField(name = "cover")
+	@SerializedName("cover")
 	private String cover;
 //	@JSONField(serialize = false)
 	private int danmakuCount;
-	@JSONField(name = "description")
+	@SerializedName("description")
 	private String description;
-	@JSONField(name = "detailsShow")
+	@SerializedName("detailsShow")
 	public int detailsShow;
 //	@JSONField(serialize = false)
 	private int goldBananaCount;
-	@JSONField(name = "isArticle")
+	@SerializedName("isArticle")
 	private int isArticle;
-	@JSONField(name = "isComment")
+	@SerializedName("isComment")
 	private boolean isComment;
-	@JSONField(name = "isRecommend")
+	@SerializedName("isRecommend")
 	private int isRecommend;
-	@JSONField(name = "parentChannelId")
+	@SerializedName("parentChannelId")
 	private int parentChannelId;
-	@JSONField(name = "redirect")
+	@SerializedName("redirect")
 	public String redirect;
-	@JSONField(name = "releaseDate")
+	@SerializedName("releaseDate")
 	private long releaseDate;
-	@JSONField(name = "shareUrl")
+	@SerializedName("shareUrl")
 	private String shareUrl;
-	@JSONField(name = "stows")
+	@SerializedName("stows")
 	private int stows;
-	@JSONField(name = "tags")
+	@SerializedName("tags")
 	private ArrayList<String> tags;
-	@JSONField(name = "time")
+	@SerializedName("time")
 	private int time;
-	@JSONField(name = "title")
+	@SerializedName("title")
 	private String title;
-	@JSONField(name = "toplevel")
+	@SerializedName("toplevel")
 	private int topLevel;
-	@JSONField(name = "user")
+	@SerializedName("user")
 	private User user;
-	@JSONField(name = "videos")
+	@SerializedName("videos")
 	private List<Video> videos;
-	@JSONField(name = "viewOnly")
+	@SerializedName("viewOnly")
 	private int viewOnly;
-	@JSONField(name = "views")
+	@SerializedName("views")
 	private int views;
 
 	public int getDetailsShow() {
