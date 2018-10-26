@@ -209,3 +209,13 @@ deps.logger = 'com.orhanobut:logger:1.13'
 deps.acra = "ch.acra:acra:$versions.acraVersion"
 deps.swipebackhelper = 'com.jude:swipebackhelper:2.1.5'
 ext.deps = deps
+
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    //微博
+    handler.maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+}
+ext.addRepos = this.&addRepos
+
