@@ -153,6 +153,7 @@
     <color name="button_def_color">#1dccb8</color>
     <color name="button_def_new_color">#fffd4c5b</color>
     <color name="button_def_new_color2">#ff4fc6ec</color>
+    <color name="button_login_def_color">#feb7bd</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
     <color name="button_sel_new_color">#ffe54250</color>

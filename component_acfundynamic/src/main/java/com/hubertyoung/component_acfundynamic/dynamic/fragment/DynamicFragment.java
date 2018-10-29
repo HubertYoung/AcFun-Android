@@ -4,22 +4,27 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.SigninHelper;
+import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfundynamic.R;
 import com.hubertyoung.component_acfundynamic.dynamic.adapter.DynamicPagerAdapter;
 import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicControl;
 import com.hubertyoung.component_acfundynamic.dynamic.model.DynamicModelImp;
 import com.hubertyoung.component_acfundynamic.dynamic.presenter.DynamicPresenterImp;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
+import java.util.concurrent.TimeUnit;
+
 import androidx.viewpager.widget.ViewPager;
+import io.reactivex.functions.Consumer;
 
 
 /**
@@ -39,11 +44,14 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 	private String mParam1;
 	private String mParam2;
 	private FrameLayout mContent;
-	private LinearLayout normalLayout;
-	private SmartTabLayout mTab;
-	private ViewPager mPager;
-	private LinearLayout unLoginLayout;
-	private TextView mLogin;
+	ViewPager mPager;
+	SmartTabLayout mTab;
+	ImageView moreButton;
+	LinearLayout normalLayout;
+	ImageView phoneButton;
+	ImageView qqButton;
+	LinearLayout unLoginLayout;
+	ImageView weChatButton;
 	private DynamicPagerAdapter mPagerAdapter;
 	private DynamicFollowBangumiFragment mFollowBangumiFragment;
 	private DynamicAcfunFragment mDynamicAcfunFragment;
@@ -90,12 +98,14 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 	}
 
 	private void initAction() {
-		mLogin.setOnClickListener( new View.OnClickListener() {
-			@Override
-			public void onClick( View v ) {
-				CC.obtainBuilder( "ComponentMine" ).setActionName( "startLoginActivity" ).build().call();
-			}
-		} );
+		RxView.clicks( phoneButton )//
+				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
+				.subscribe( new Consumer< Object >() {
+					@Override
+					public void accept( Object o ) throws Exception {
+						CC.obtainBuilder( "ComponentMine" ).setActionName( "startLoginActivity" ).build().call();
+					}
+				} );
 	}
 
 	@Override
@@ -105,7 +115,10 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 		mTab = findViewById( R.id.general_tab );
 		mPager = findViewById( R.id.general_view_pager );
 		unLoginLayout = findViewById( R.id.un_login_layout );
-		mLogin = findViewById( R.id.login );
+		moreButton = findViewById( R.id.iv_more_login );
+		phoneButton = findViewById( R.id.iv_phone_login );
+		qqButton = findViewById( R.id.iv_qq_login );
+		weChatButton = findViewById( R.id.iv_wechat_login );
 		initAction();
 		boolean isUnLogin = SigninHelper.getInstance().isUnLogin();
 		if ( isUnLogin ) {
@@ -119,7 +132,7 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 	@Override
 	public void onResume() {
 		super.onResume();
-		if ( isPrepared == false ){
+		if ( isPrepared == false ) {
 			loadData();
 			isPrepared = true;
 		}

@@ -41,6 +41,7 @@
     <style name="ToolBarStyle" parent="Widget.AppCompat.Toolbar">
         <item name="android:textSize">@dimen/text_actionbar_title_size</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:subtitleTextColor" tools:ignore="NewApi">@color/white</item>
         <item name="android:gravity">center</item>
         <item name="android:background">?attr/colorPrimary</item>
         <item name="collapseIcon">@mipmap/ic_return</item>
@@ -53,8 +54,13 @@
         <item name="android:layout_gravity">center_vertical</item>
         <item name="actionMenuTextColor">@color/white</item>
         <item name="selectableItemBackground">@drawable/toolbar_button_bg</item>
+        <item name="titleTextAppearance">@style/Toolbar.TitleText</item>
     </style>
-
+    <!-- 设置Toolbar标题字体的大小 -->
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
     <!--溢出[弹出]菜单样式 parent相当于继承【可以不要parent】-->
     <style name="OverflowMenuStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
         <!-- 是否覆盖锚点，默认为true，即盖住Toolbar -->

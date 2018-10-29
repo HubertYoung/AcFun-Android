@@ -136,9 +136,10 @@ public class SignInActivity extends BaseActivity<SignInPresenterImp,SignInModelI
 	@Override
 	public void initToolBar() {
 		if ( mToolbar != null ) {
-			mToolbar.setTitle( "" );
-			mToolbar.inflateMenu( R.menu.menu_signin );
-			mToolbarTitle.setText( R.string.login );
+			mToolbar.setTitle( R.string.login );
+//			mToolbar.inflateMenu( R.menu.menu_signin );
+//			mToolbarTitle.setText( R.string.login );
+			mToolbarTitle.setVisibility( View.GONE );
 		}
 	}
 

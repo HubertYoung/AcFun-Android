@@ -19,18 +19,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:src="@drawable/image_logo"/>
-
             <LinearLayout
                 android:id="@+id/login_view_username_layout"
                 style="@style/input_wrap_layout"
+                android:layout_marginTop="50dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -50,13 +42,13 @@
                     android:paddingRight="5dp"
                     android:singleLine="true"
                     android:textColor="@color/login_input_def_color"
-                    android:textSize="15sp"/>
+                    android:textSize="16sp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/login_view_password_layout"
                 style="@style/input_wrap_layout"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -76,13 +68,13 @@
                     android:paddingRight="5dp"
                     android:singleLine="true"
                     android:textColor="@color/login_input_def_color"
-                    android:textSize="15sp"/>
+                    android:textSize="16sp"/>
             </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/login_view_validation_layout"
                 style="@style/input_wrap_layout"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:visibility="gone">
 
                 <ImageView
@@ -114,7 +106,7 @@
                     android:inputType="none"
                     android:singleLine="true"
                     android:textColor="@color/login_input_def_color"
-                    android:textSize="15sp"/>
+                    android:textSize="16sp"/>
             </RelativeLayout>
 
             <Button
@@ -122,10 +114,11 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="40dp"
                 android:background="@drawable/button_bg"
+                android:enabled="false"
                 android:text="@string/login_view_login_text"
                 android:textColor="@color/white"
                 android:textSize="18sp"/>
@@ -133,7 +126,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -144,7 +137,7 @@
                     android:padding="5dp"
                     android:text="@string/login_view_forget_password_text"
                     android:textColor="@color/text_deep_gray_color"
-                    android:textSize="15sp"/>
+                    android:textSize="14sp"/>
 
                 <View
                     android:layout_width="0.1dp"
@@ -160,7 +153,7 @@
                     android:padding="5dp"
                     android:text="@string/login_view_can_not_login_text"
                     android:textColor="@color/text_deep_gray_color"
-                    android:textSize="15sp"/>
+                    android:textSize="14sp"/>
             </LinearLayout>
 
             <ImageView
@@ -169,7 +162,8 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="50dp"
-                android:src="@drawable/icon_wechat_login"/>
+                android:src="@drawable/icon_wechat_login"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/login_view_wechat_text"
@@ -179,7 +173,8 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/login_wechat_text"
                 android:textColor="@color/login_input_def_color"
-                android:textSize="15sp"/>
+                android:textSize="15sp"
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

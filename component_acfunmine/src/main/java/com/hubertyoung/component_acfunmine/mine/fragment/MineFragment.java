@@ -230,15 +230,15 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 	}
 
 	@Override
+	@SuppressWarnings( "all" )
 	public void onClick( View v ) {
 //		CC.obtainBuilder( "ComponentDebug" ).setContext( activity ).setActionName( "toDebugActivity" ).build().call();
 		Bundle bundle;
 		Serializable user;
-		switch ( v.getId() ) {
-			case R.id.ac_flow_layout:
+		int viewId = v.getId();
+		if ( viewId == R.id.ac_flow_layout ) {
 //				this.f.o();
-				break;
-			case R.id.chockin_layout:
+		} else if ( viewId == R.id.chockin_layout ) {
 //				KanasCommonUtil.c( KanasConstants.de, null );
 //				if ( !SigninHelper.a().u() ) {
 //					IntentHelper.e( this.g, 7 );
@@ -247,76 +247,64 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //					this.f.f();
 //					break;
 //				}
-			case R.id.downloaded_layout:
+		} else if ( viewId == R.id.downloaded_layout ) {
 //				if ( t() ) {
 //					DownloadManager.a();
 //					IntentHelper.a( this.g, CacheManageActivity.class );
-//					break;
+//					}
 //				}
-				break;
-			case R.id.draft_layout:
+		} else if ( viewId == R.id.draft_layout ) {
 //				KanasCommonUtil.c( KanasConstants.cE, null );
 //				IntentHelper.a( getActivity(), DraftBoxActivity.class );
-				break;
-			case R.id.fans_count_layout:
+		} else if ( viewId == R.id.fans_count_layout ) {
 //				if ( !SigninHelper.a().u() ) {
 //					IntentHelper.e( this.g, 7 );
-//					break;
+//					}
 //				}
 //				bundle = new Bundle();
 //				bundle.putInt( "selectPage", 1 );
 //				IntentHelper.a( this.g, AttentionAndFansActivity.class, bundle );
-				break;
-			case R.id.favorite_layout:
+		} else if ( viewId == R.id.favorite_layout ) {
 //				if ( !SigninHelper.a().u() ) {
 //					IntentHelper.a( this.g, DialogLoginActivity.class );
-//					break;
+//					}
 //				} else {
 //					IntentHelper.a( this.g, NewFavoritiesActivity.class );
-//					break;
+//					}
 //				}
-			case R.id.feedback_layout:
+		} else if ( viewId == R.id.feedback_layout ) {
 //				IntentHelper.a( this.g, FeedBackActivity.class );
-				break;
-			case R.id.follow_count_layout:
+		} else if ( viewId == R.id.follow_count_layout ) {
 //				if ( !SigninHelper.a().u() ) {
 //					IntentHelper.e( this.g, 7 );
-//					break;
+//					}
 //				}
 //				bundle = new Bundle();
 //				bundle.putInt( "selectPage", 0 );
 //				IntentHelper.a( this.g, AttentionAndFansActivity.class, bundle );
-				break;
-			case R.id.game_layout:
+		} else if ( viewId == R.id.game_layout ) {
 //				this.f.a( this.g );
-				break;
-			case R.id.history_layout:
+		} else if ( viewId == R.id.history_layout ) {
 //				IntentHelper.a( this.g, NewHistoryActivity.class );
-				break;
-			case R.id.iv_more_login:
+		} else if ( viewId == R.id.iv_more_login ) {
 //				this.k.a( 4 );
-				break;
-			case R.id.iv_phone_login:
+		} else if ( viewId == R.id.iv_phone_login ) {
 //				this.k.a( 3 );
-				break;
-			case R.id.iv_qq_login:
+		} else if ( viewId == R.id.iv_qq_login ) {
 //				this.k.a( 1 );
-				break;
-			case R.id.iv_wechat_login:
+		} else if ( viewId == R.id.iv_wechat_login ) {
 //				this.k.a( 2 );
-				break;
-			case R.id.market_layout:
+		} else if ( viewId == R.id.market_layout ) {
 //				this.f.b( this.g );
-				break;
-			case R.id.message_layout:
+		} else if ( viewId == R.id.message_layout ) {
 //				if ( !SigninHelper.a().u() ) {
 //					IntentHelper.a( this.g, DialogLoginActivity.class );
-//					break;
+//					}
 //				} else {
 //					IntentHelper.a( this.g, MessageAndAtmeActivity.class );
-//					break;
+//					}
 //				}
-//			case R.id.pop_window_upload_view_article:
+//			else if ( viewId == R.id.pop_window_upload_view_article){
 //				bundle = new Bundle();
 //				bundle.putString( "name", KanasConstants.aZ );
 //				KanasCommonUtil.c( KanasConstants.cF, bundle );
@@ -325,16 +313,16 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //				}
 //				if ( this.i != null ) {
 //					this.i.dismiss();
-//					break;
+//					}
 //				}
-//				break;
-//			case R.id.pop_window_upload_view_close:
+//				}
+//			else if ( viewId == R.id.pop_window_upload_view_close){
 //				if ( this.i != null ) {
 //					this.i.dismiss();
-//					break;
+//					}
 //				}
-//				break;
-//			case R.id.pop_window_upload_view_video:
+//				}
+//			else if ( viewId == R.id.pop_window_upload_view_video){
 //				bundle = new Bundle();
 //				bundle.putString( "name", "video" );
 //				KanasCommonUtil.c( KanasConstants.cF, bundle );
@@ -346,15 +334,14 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //				IntentHelper.a( this.g, MyselfContributionActivity.class, bundle );
 //				if ( this.i != null ) {
 //					this.i.dismiss();
-//					break;
+//					}
 //				}
-//				break;
-			case R.id.qr_scan_layout:
+		} else if ( viewId == R.id.qr_scan_layout ) {
 //				if ( SigninHelper.a().u() ) {
 //					if ( h( "android.permission.CAMERA" ) == 0 ) {
 //						QrScanActivity.a( getContext() );
 //						KanasCommonUtil.c( KanasConstants.dl, null );
-//						break;
+//						}
 //					}
 //					PermissionUtils.a( getActivity(), "android.permission.CAMERA" ).b( new Consumer< Permission >() {
 //						public /* synthetic */ void accept( Object obj ) throws Exception {
@@ -368,33 +355,31 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //							}
 //						}
 //					}, Functions.b() );
-//					break;
+//					}
 //				}
 //				IntentHelper.a( this.g, DialogLoginActivity.class );
-				break;
-			case R.id.setting_layout:
-				startActivityForResult( new Intent( getContext(), SettingsActivity.class ), 8 );
-				break;
-			case R.id.shop_layout:
+		} else if ( viewId == R.id.setting_layout ) {
+			startActivityForResult( new Intent( getContext(), SettingsActivity.class ), 8 );
+		} else if ( viewId == R.id.shop_layout ) {
 //				String y = SettingHelper.a().y();
 //				try {
 //					startActivity( new Intent( AndroidConstants.a, Uri.parse( y ) ) );
-//					break;
+//					}
 //				} catch ( Exception unused ) {
 //					Intent intent = new Intent( getActivity(), WebViewActivity.class );
 //					intent.putExtra( "url", y );
 //					startActivity( intent );
-//					break;
+//					}
 //				}
-			case R.id.test_layout:
+		} else if ( viewId == R.id.test_layout ) {
 //				if ( !SigninHelper.a().u() ) {
 //					IntentHelper.e( this.g, 7 );
-//					break;
+//					}
 //				} else {
 //					startActivityForResult( new Intent( getContext(), QuestionActivity.class ), 9 );
-//					break;
+//					}
 //				}
-			case R.id.upload_count_layout:
+		} else if ( viewId == R.id.upload_count_layout ) {
 //				if ( SigninHelper.a().u() ) {
 //					if ( t() ) {
 //						bundle = new Bundle();
@@ -402,34 +387,32 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 //						user.setUid( SigninHelper.a().b() );
 //						bundle.putSerializable( "user", user );
 //						IntentHelper.a( this.g, MyselfContributionActivity.class, bundle );
-//						break;
+//						}
 //					}
 //				}
 //				IntentHelper.e( this.g, 7 );
-				break;
-//			break;
-			case R.id.upload_layout:
+		}
+//			}
+		else if ( viewId == R.id.upload_layout ) {
 //				KanasCommonUtil.c( KanasConstants.cD, null );
 //				if ( !SigninHelper.a().u() ) {
 //					IntentHelper.e( this.g, 7 );
-//					break;
+//					}
 //				} else if ( SigninHelper.a().t() || !AcFunApplication.t ) {
 //					if ( t() ) {
 //						w();
-//						break;
+//						}
 //					}
 //				} else {
 //					Utils.c( getActivity() );
 //					return;
 //				}
-				break;
-			case R.id.user_avatar:
+		} else if ( viewId == R.id.user_avatar ) {
 //				if ( !SigninHelper.a().u() ) {
 //					IntentHelper.e( this.g, 7 );
-//					break;
+//					}
 //				}
 //				this.g.startActivityForResult( new Intent( this.g, ModifyUserInfoActivity.class ), 0 );
-				break;
 		}
 	}
 
