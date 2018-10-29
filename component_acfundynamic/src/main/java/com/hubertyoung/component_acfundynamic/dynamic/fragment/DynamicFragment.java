@@ -2,6 +2,7 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 
 
 import android.os.Bundle;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -18,8 +19,10 @@ import com.hubertyoung.component_acfundynamic.dynamic.adapter.DynamicPagerAdapte
 import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicControl;
 import com.hubertyoung.component_acfundynamic.dynamic.model.DynamicModelImp;
 import com.hubertyoung.component_acfundynamic.dynamic.presenter.DynamicPresenterImp;
-import com.jakewharton.rxbinding2.view.RxView;
+import com.jakewharton.rxbinding3.view.RxView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+
+import org.intellij.lang.annotations.RegExp;
 
 import java.util.concurrent.TimeUnit;
 
@@ -137,7 +140,6 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 			isPrepared = true;
 		}
 	}
-
 	private void initViewpager() {
 		mTab.setCustomTabView( R.layout.widget_home_tab_view, R.id.secondary_tab_text );
 		mPagerAdapter = new DynamicPagerAdapter( getChildFragmentManager() );

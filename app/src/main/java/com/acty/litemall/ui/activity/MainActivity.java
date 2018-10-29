@@ -12,7 +12,7 @@ import com.hubertyoung.common.utils.BarUtils;
 import com.hubertyoung.common.utils.CommonLog;
 import com.hubertyoung.litemall.R;
 import com.hubertyoung.litemall.ui.fragment.PlaceHolderFragment;
-import com.jakewharton.rxbinding2.view.RxView;
+import com.jakewharton.rxbinding3.view.RxView;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;

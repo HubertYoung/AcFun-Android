@@ -28,7 +28,8 @@ public class ScreenHelper {
 	 */
 	private static float design_width = 360;
 
-	public static void initCustomDensity( @NonNull final Application application ) {
+	public static void initCustomDensity( @NonNull final Application application ,float designWidth) {
+		if ( designWidth > 0 ) design_width = designWidth;
 		application.registerActivityLifecycleCallbacks( new Application.ActivityLifecycleCallbacks() {
 			@Override
 			public void onActivityCreated( Activity activity, Bundle savedInstanceState ) {

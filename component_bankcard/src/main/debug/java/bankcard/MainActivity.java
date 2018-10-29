@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.jakewharton.rxbinding2.widget.RxRadioGroup;
-import com.jakewharton.rxbinding2.widget.RxTextView;
+import com.jakewharton.rxbinding3.widget.RxRadioGroup;
+import com.jakewharton.rxbinding3.widget.RxTextView;
 import com.hubertyoung.component_bankcard.R;
 import com.hubertyoung.component_bankcard.bankcard.BankInfoUtil;
 import com.hubertyoung.component_bankcard.bankcard.ContentWithSpaceEditText;

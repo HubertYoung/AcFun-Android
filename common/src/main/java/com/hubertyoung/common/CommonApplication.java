@@ -77,7 +77,7 @@ public class CommonApplication extends Application {
 				return new ClassicsFooter( context );
 			}
 		} );
-		ScreenHelper.initCustomDensity( this );
+		ScreenHelper.initCustomDensity( this,400 );
 		// 框架换肤日志打印
 //		Slog.DEBUG = BuildConfig.DEBUG;
 //		SkinCompatManager.withoutActivity( this )

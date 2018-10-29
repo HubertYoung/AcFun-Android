@@ -1,19 +1,19 @@
 package multiimageview;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
-import com.jakewharton.rxbinding2.view.RxView;
 import com.hubertyoung.component_multiimageview.R;
 import com.hubertyoung.component_multiimageview.multiimageview.ImageAttr;
 import com.hubertyoung.component_multiimageview.multiimageview.MultiImageView;
+import com.jakewharton.rxbinding3.view.RxView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.functions.Consumer;

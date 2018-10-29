@@ -1,6 +1,8 @@
 package com.hubertyoung.component_acfunmine.sign.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,11 +19,17 @@ import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.sign.control.SignInControl;
 import com.hubertyoung.component_acfunmine.sign.model.SignInModelImp;
 import com.hubertyoung.component_acfunmine.sign.presenter.SignInPresenterImp;
-import com.jakewharton.rxbinding2.view.RxView;
+import com.jakewharton.rxbinding3.InitialValueObservable;
+import com.jakewharton.rxbinding3.view.RxView;
+import com.jakewharton.rxbinding3.widget.RxTextView;
 
 import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.widget.Toolbar;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Consumer;
 
 /**
  * <br>
@@ -33,7 +41,7 @@ import androidx.appcompat.widget.Toolbar;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component_acfunmine.sign.activity
  */
-public class SignInActivity extends BaseActivity<SignInPresenterImp,SignInModelImp > implements SignInControl.View {
+public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInModelImp > implements SignInControl.View {
 	private Toolbar mToolbar;
 	private TextView mToolbarTitle;
 	private LinearLayout userNameLayout;
@@ -60,7 +68,7 @@ public class SignInActivity extends BaseActivity<SignInPresenterImp,SignInModelI
 
 	@Override
 	public void initPresenter() {
-		mPresenter.setVM( this,mModel );
+		mPresenter.setVM( this, mModel );
 	}
 
 	@Override
@@ -91,6 +99,7 @@ public class SignInActivity extends BaseActivity<SignInPresenterImp,SignInModelI
 
 	}
 
+	@SuppressLint( "NewApi" )
 	private void initAction() {
 		mToolbar.setNavigationOnClickListener( new View.OnClickListener() {
 			@Override
@@ -112,19 +121,37 @@ public class SignInActivity extends BaseActivity<SignInPresenterImp,SignInModelI
 				return true;
 			}
 		} );
+//		RxToolbar.navigationClicks( mToolbar )//
+//				.subscribeOn( AndroidSchedulers.mainThread() )//
+//				.subscribe( o -> finish() );
 		RxView.clicks( mValidationImage )//
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
+				.subscribeOn( AndroidSchedulers.mainThread() )//
 				.subscribe( o -> {
 					ToastUtil.showSuccess( "更改验证图片" );
 				} );
+		InitialValueObservable< CharSequence > userNameEditeObservable = RxTextView.textChanges( userNameEdit );
+		InitialValueObservable< CharSequence > passWordEditObservable = RxTextView.textChanges( passWordEdit );
+		Observable.combineLatest( userNameEditeObservable, passWordEditObservable, new BiFunction< CharSequence, CharSequence, Boolean >() {
+			@Override
+			public Boolean apply( CharSequence charSequence, CharSequence charSequence2 ) throws Exception {
+				return !TextUtils.isEmpty( charSequence ) && !TextUtils.isEmpty( charSequence2 );
+			}
+		} ).subscribeOn( AndroidSchedulers.mainThread() )//
+				.subscribe( new Consumer< Boolean >() {
+					@Override
+					public void accept( Boolean aBoolean ) throws Exception {
+						mLoginViewLogin.setEnabled( aBoolean );
+					}
+				} );
 		RxView.clicks( mLoginViewLogin )//
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
+				.subscribeOn( AndroidSchedulers.mainThread() )//
 				.subscribe( o -> {
-
 					String userNameStr = userNameEdit.getText().toString().trim();
 					String passwordStr = passWordEdit.getText().toString().trim();
 					String validationStr = mValidationEdit.getText().toString().trim();
-					mPresenter.requestLoginInfo( userNameStr,passwordStr,validationStr );
+					mPresenter.requestLoginInfo( userNameStr, passwordStr, validationStr );
 				} );
 	}
 
