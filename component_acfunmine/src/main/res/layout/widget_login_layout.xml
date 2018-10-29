@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_wechat_login_long"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:background="@mipmap/btn_login_wechat"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_wechat_login"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@mipmap/icon_login_wechat"/>
+
+        <ImageView
+            android:id="@+id/iv_qq_login"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@mipmap/icon_login_qq"/>
+
+        <ImageView
+            android:id="@+id/iv_phone_login"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@mipmap/icon_login_phone"/>
+
+        <ImageView
+            android:id="@+id/iv_more_login"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@mipmap/icon_login_more"/>
+    </LinearLayout>
+</LinearLayout>

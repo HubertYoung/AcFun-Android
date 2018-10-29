@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
-import androidx.annotation.NonNull;
 
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
@@ -17,6 +16,8 @@ import com.hubertyoung.baseplatform.share.shareparam.ShareParamText;
 import com.hubertyoung.baseplatform.share.shareparam.ShareParamVideo;
 import com.hubertyoung.baseplatform.share.shareparam.ShareParamWebPage;
 import com.hubertyoung.baseplatformlibrary.R;
+
+import androidx.annotation.NonNull;
 
 public class SendShare extends AbsShareHandler {
 	public static final String TAG = SendShare.class.getSimpleName();
@@ -45,7 +46,7 @@ public class SendShare extends AbsShareHandler {
 		return intent;
 	}
 
-	private boolean isQQInstalled( @NonNull OnCallback< String > callback ) {
+	private boolean isQQUnInstalled( @NonNull OnCallback< String > callback ) {
 		if ( mPlatform.getName().equals( SocializeMedia.ToQQ ) ) {
 			if ( !isApplicationInstalled( mActivity, PACKAGE_QQ ) ) {
 				callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_qq_uninstall ) );
@@ -62,7 +63,7 @@ public class SendShare extends AbsShareHandler {
 
 	@Override
 	public void shareText( ShareParamText params, OnCallback< String > callback ) {
-		if ( isQQInstalled( callback ) ) return;
+		if ( isQQUnInstalled( callback ) ) return;
 
 		Intent intent = getIntent();
 		intent.setType( "text/plain" );
@@ -76,7 +77,7 @@ public class SendShare extends AbsShareHandler {
 
 	@Override
 	public void shareImage( ShareParamImage params, OnCallback< String > callback ) {
-		if ( isQQInstalled( callback ) ) return;
+		if ( isQQUnInstalled( callback ) ) return;
 		Intent intent = getIntent();
 
 		intent.setType( "image/*" );
@@ -96,19 +97,19 @@ public class SendShare extends AbsShareHandler {
 
 	@Override
 	public void shareWebPage( ShareParamWebPage params, OnCallback< String > callback ) {
-		if ( isQQInstalled( callback ) ) return;
+		if ( isQQUnInstalled( callback ) ) return;
 		callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_unsupported_sharing_types ) );
 	}
 
 	@Override
 	public void shareAudio( ShareParamAudio params, OnCallback< String > callback ) {
-		if ( isQQInstalled( callback ) ) return;
+		if ( isQQUnInstalled( callback ) ) return;
 		callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_unsupported_sharing_types ) );
 	}
 
 	@Override
 	public void shareVideo( ShareParamVideo params, OnCallback< String > callback ) {
-		if ( isQQInstalled( callback ) ) return;
+		if ( isQQUnInstalled( callback ) ) return;
 		callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_unsupported_sharing_types ) );
 	}
 

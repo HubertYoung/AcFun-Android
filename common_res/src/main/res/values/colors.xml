@@ -356,6 +356,7 @@
     <color name="trans_black_40">#66000000</color>
     <color name="trans_black_55">#8c000000</color>
     <color name="trans_black_70">#b3000000</color>
+    <color name="trans_black_80">#cc000000</color>
     <color name="trans_white">#45ffffff</color>
     <!--<color name="transparent">#00ffffff</color>-->
     <color name="transparent_white_ten_percent">#dcffffff</color>
@@ -395,6 +396,7 @@
     <color name="white_10">#1affffff</color>
     <color name="white_20">#33ffffff</color>
     <color name="white_30">#48ffffff</color>
+    <color name="white_50">#80ffffff</color>
     <color name="white_70">#b3ffffff</color>
 
     <color name="theme_color_text_primary">#333333</color>
