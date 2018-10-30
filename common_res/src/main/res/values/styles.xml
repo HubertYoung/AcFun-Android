@@ -12,7 +12,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:windowIsTranslucent">true</item>-->
-        <item name="android:windowBackground">@color/grey50</item>
+        <item name="android:windowBackground">@color/background</item>
         <!--<item name="preferenceTheme">@style/PreferenceThemeOverlay</item>-->
         <item name="toolbarStyle">@style/ToolBarStyle</item>
         <item name="android:toolbarStyle" tools:ignore="NewApi">@style/ToolBarStyle</item>
@@ -36,7 +36,26 @@
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
 
+    <style name="notitle_dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
 
+    <style name="page_loading_style">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_width">163dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="actualImageScaleType">centerCrop</item>
+        <item name="fadeDuration">400</item>
+        <item name="failureImage">@color/background_gray_color</item>
+        <item name="failureImageScaleType">centerInside</item>
+        <item name="placeholderImageScaleType">centerCrop</item>
+        <item name="viewAspectRatio">1.513</item>
+    </style>
     <!-- ToolBar -->
     <style name="ToolBarStyle" parent="Widget.AppCompat.Toolbar">
         <item name="android:textSize">@dimen/text_actionbar_title_size</item>

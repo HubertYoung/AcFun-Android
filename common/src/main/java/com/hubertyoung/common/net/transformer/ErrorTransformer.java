@@ -48,17 +48,12 @@ public class ErrorTransformer< T > implements ObservableTransformer< BaseRespons
 			@Override
 			public T apply( @NonNull BaseResponse< T > tBaseRespose ) throws Exception {
 				if ( !tBaseRespose.success() ) {
-					throw new ServerException( tBaseRespose.getResult() , tBaseRespose.getStatus() );
+					throw new ServerException( tBaseRespose.getErrordesc() , tBaseRespose.getStatus() );
 				}
-//				if ( !tBaseRespose.success() && !tBaseRespose.isFailed() ) {
-//					PayLogUtil.loge( "http", tBaseRespose.toString() );
-//					//如果服务器端有错误信息返回，那么抛出异常，让下面的方法去捕获异常做统一处理
-//					throw new ServerException( tBaseRespose.getResult(), tBaseRespose.getStatus() );
-//				}
 //                //服务器请求数据成功，返回里面的数据实体
 				if ( ( tBaseRespose.getData() == null )){
 					try {
-						return ( T ) tBaseRespose.getResult();
+						return ( T ) tBaseRespose.getErrordesc();
 					} catch ( Exception e ) {
 
 					}

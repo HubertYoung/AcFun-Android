@@ -5,6 +5,7 @@
               xmlns:internal="http://schemas.android.com/apk/prv/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical">
 
     <include layout="@layout/toolbar_title_center_view"/>
@@ -75,7 +76,8 @@
                 android:id="@+id/login_view_validation_layout"
                 style="@style/input_wrap_layout"
                 android:layout_marginTop="10dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <ImageView
                     android:id="@+id/login_view_validation_icon"

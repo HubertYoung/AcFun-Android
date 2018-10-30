@@ -1,11 +1,15 @@
 package com.hubertyoung.component_acfunmine.sign.control;
 
 
+import android.graphics.Bitmap;
+
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.entity.Sign;
+import com.hubertyoung.common.net.response.BaseResponse;
+import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
 
 import io.reactivex.Observable;
 
@@ -22,13 +26,26 @@ import io.reactivex.Observable;
 public interface SignInControl {
 
 	interface Model extends BaseModel {
-		Observable<Sign > requestLoginInfo( MyRequestMap map );
+		Observable< BaseResponse< Sign > > requestLoginInfo( MyRequestMap map );
+
+		Observable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo();
 	}
 
 	interface View extends BaseView {
+		boolean getValidationLayoutShown();
+
+		void setValidationLayoutShown();
+
+		void setValidationLayoutText( String text );
+
+		void setValidationImage( Bitmap bitmap );
+
+		void showLoginSuccess( Sign sign );
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
 		public abstract void requestLoginInfo( String userNameStr, String passwordStr, String validationStr );
+
+		protected abstract void requestVerificationCodeInfo();
 	}
 }

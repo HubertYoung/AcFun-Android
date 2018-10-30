@@ -4,6 +4,7 @@ package com.hubertyoung.component_acfunmine.api;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.net.response.BaseResponse;
+import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
 
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import io.reactivex.Observable;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
@@ -42,5 +44,10 @@ public interface ApiHomeService {
 
 	@FormUrlEncoded
 	@POST( "api/account/signin/normal" )
+	@Headers( { "Accept:application/vdata+json+version:1.1", "Content-Type:application/x-www-form-urlencoded; charset=UTF-8" } )
 	Observable< BaseResponse< Sign > > requestLoginInfo( @FieldMap Map< String, String > map );
+
+	@GET( "api/account/verification/captcha" )
+	@Headers( { "Accept:application/vdata+json+version:1.1", "Content-Type:application/x-www-form-urlencoded; charset=UTF-8" } )
+	Observable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo( );
 }

@@ -3,18 +3,10 @@ package com.hubertyoung.common.api;
 
 import android.util.SparseArray;
 
-import com.hubertyoung.common.net.config.MediaTypes;
 import com.hubertyoung.common.net.http.HttpUtils;
 import com.hubertyoung.common.net.request.RetrofitClient;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 
 public class Api {
 	private static SparseArray< Api > sRetrofitManager = new SparseArray<>( HostType.TYPE_COUNT );
@@ -77,19 +69,19 @@ public class Api {
 		return new Api();
 	}
 
-	public List< MultipartBody.Part > addFile( String key, List< File > files ) {
-		List< MultipartBody.Part > multipartBodyParts = new ArrayList<>();
-		for (File file : files) {
-			RequestBody requestBody = RequestBody.create( MediaTypes.APPLICATION_OCTET_STREAM_TYPE, file );
-			MultipartBody.Part part = MultipartBody.Part.createFormData( key, file.getName(), requestBody );
-			multipartBodyParts.add( part );
-		}
-		return multipartBodyParts;
-	}
-
-
-	public RequestBody convertToRequestBody( String param ) {
-		RequestBody requestBody = RequestBody.create( MediaType.parse( "image/jpg" ), param );
-		return requestBody;
-	}
+//	public List< MultipartBody.Part > addFile( String key, List< File > files ) {
+//		List< MultipartBody.Part > multipartBodyParts = new ArrayList<>();
+//		for (File file : files) {
+//			RequestBody requestBody = RequestBody.create( MediaTypes.APPLICATION_OCTET_STREAM_TYPE, file );
+//			MultipartBody.Part part = MultipartBody.Part.createFormData( key, file.getName(), requestBody );
+//			multipartBodyParts.add( part );
+//		}
+//		return multipartBodyParts;
+//	}
+//
+//
+//	public RequestBody convertToRequestBody( String param ) {
+//		RequestBody requestBody = RequestBody.create( MediaType.parse( "image/jpg" ), param );
+//		return requestBody;
+//	}
 }

@@ -18,18 +18,14 @@ public class BaseResponse< T > implements Serializable {
 	public int errno;
 
 	@SerializedName("errordesc" )
-	public int errordesc;
-
-	public int code;
-	@SerializedName("message" )
-	public String errmsg;
+	public String errordesc;
 
 //	public String requestid;
 	@SerializedName("vdata" )
 	public T data;
 
 	public boolean success( ) {
-		return errno == NetStatus.Success.getIndex() || errno == NetStatus.Server_Success.getIndex() || code == 0;
+		return errno == NetStatus.Success.getIndex() || errno == NetStatus.Server_Success.getIndex();
 	}
 	public boolean isFailed( ) {
 		return errno == NetStatus.Server_Fail.getIndex();
@@ -41,21 +37,16 @@ public class BaseResponse< T > implements Serializable {
 	public void setStatus( int status ) {
 		this.errno = status;
 	}
-
-	public String getResult() {
-		return errmsg;
-	}
-
-	public void setResult( String errmsg ) {
-		this.errmsg = errmsg;
-	}
-
-	public void setCode( int code ) {
-		this.code = code;
-	}
-
 	public T getData() {
 		return data;
+	}
+
+	public void setErrordesc( String errordesc ) {
+		this.errordesc = errordesc;
+	}
+
+	public String getErrordesc() {
+		return errordesc;
 	}
 
 	public void setData( T data ) {
@@ -64,6 +55,6 @@ public class BaseResponse< T > implements Serializable {
 
 	@Override
 	public String toString() {
-		return "BaseResponse{" + "errno=" + errno + ", errmsg='" + errmsg + '\'' + ", data=" + data + '}';
+		return "BaseResponse{" + "errno=" + errno + ", errordesc='" + errordesc + '\'' + ", data=" + data + '}';
 	}
 }

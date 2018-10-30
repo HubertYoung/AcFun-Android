@@ -2,17 +2,20 @@ package com.hubertyoung.component_acfunmine.sign.presenter;
 
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
+import com.hubertyoung.common.net.response.BaseResponse;
+import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.utils.os.NetworkUtil;
+import com.hubertyoung.common.widget.ImageUtil;
 import com.hubertyoung.component_acfunmine.R;
+import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
 import com.hubertyoung.component_acfunmine.sign.control.SignInControl;
 
-import io.reactivex.annotations.NonNull;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 
 /**
@@ -37,14 +40,13 @@ public class SignInPresenterImp extends SignInControl.Presenter {
 			} else if ( TextUtils.isEmpty( passwordStr ) || passwordStr.contains( " " ) ) {
 				ToastUtil.showError( R.string.activity_signin_password_validation );
 			} else if ( tryConnectCount < 3 || !TextUtils.isEmpty( validationStr ) ) {
-				requestLogin(userNameStr, passwordStr, validationStr,Constants.cidKey );
+				requestLogin( userNameStr, passwordStr, validationStr, Constants.cidKey );
 			} else {
 				ToastUtil.showError( R.string.login_view_image_code_empty_error_text );
-				return;
 			}
-			return;
+		} else {
+			ToastUtil.showError( R.string.net_status_not_work );
 		}
-		ToastUtil.showError( R.string.net_status_not_work );
 	}
 
 	private void requestLogin( String userNameStr, String passwordStr, String validationStr, String cidKey ) {
@@ -61,20 +63,62 @@ public class SignInPresenterImp extends SignInControl.Presenter {
 		map.put( "username", userNameStr );
 		map.put( "cid", cidKey );
 		map.put( "password", passwordStr );
-		mView.showLoading( "Loading...", 0 );
-		mRxManage.add( mModel.requestLoginInfo( map )
-//				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< Sign >() {
-
-					@Override
-					public void accept( @NonNull Sign sign ) throws Exception {
-						Log.e( "TAG", "" );
+		mRxManage.add( mModel.requestLoginInfo( map ).subscribe( response -> {
+					if ( response.errno == 0 ) {
+						//success
+//						{
+//							"token": "935b4692999e2fc654146ab35c21595e",
+//								"expiration": 1543015656,
+//								"check_password": 0,
+//								"check_real": 0,
+//								"oauth": 0,
+//								"acPasstoken": "ChVpbmZyYS5hY2Z1bi5wYXNzdG9rZW4SYDo57DP6CfhrceiovnpfJl5BwiW9eZT26NWQbClyfMTe4
+// -wGVcqUdLc_UM4ev2dRxVjUHpHJsObDvWLFMP85t9WEuVoUAJ1c_lwm6V31iq7mnx09dj8sbS1-aNZrLuhunRoSY5RL5hdSyg5ILxKRSiTMY7LUIiD6Te0ntRdYMdM4ZURXXiAOHrapG573gd9Oe-F8t-OOqygFMAE",
+//								"acSecurity": "gPTOOAPz9QJJ5tQ6DxbXFQ==",
+//								"acPostHint": "3332540703dc3d5982c019ddf863c42dea5c",
+//								"passCheck": true,
+//								"info": {
+//							"avatar": "http:\/\/cdn.aixifan.com\/dotnet\/20120923\/style\/image\/avatar.jpg",
+//									"username": "hubert520",
+//									"userid": 13608720,
+//									"mobile": "17600696672",
+//									"group-level": 0,
+//									"mobile-check": 1
+//						},
+//							"s2s-code": "22015c03c407892f84112603e131217d"
+//						}
+						Sign sign = response.getData();
+						SigninHelper.getInstance().setUserSign( sign );
+						mView.showLoginSuccess(sign);
+					} else {
+						tryConnectCount++;
+						if ( response.errno == 20285 ) {
+							tryConnectCount = 3;
+							response.errordesc = mContext.getResources().getString( R.string.login_view_need_input_image_code_text );
+						}
+						if ( tryConnectCount > 2 && !mView.getValidationLayoutShown() ) {
+							mView.setValidationLayoutShown();
+						}
+						if ( tryConnectCount > 2 ) {
+							requestVerificationCodeInfo();
+							mView.setValidationLayoutText( "" );
+						}
+						mView.showErrorTip( response.errordesc );
 					}
-				}, new Consumer< Throwable >() {
+				}, throwable -> mView.showErrorTip( throwable.getMessage() ),//
+				() -> mView.stopLoading(), //
+				disposable -> mView.showLoading( "Loading...", 0 ) ) );
+	}
+
+	@Override
+	public void requestVerificationCodeInfo() {
+		mRxManage.add( mModel.requestVerificationCodeInfo()//
+				.subscribeOn( AndroidSchedulers.mainThread() ).subscribe( new Consumer< BaseResponse< VerificationCodeEntity > >() {
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
-						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage() );
+					public void accept( BaseResponse< VerificationCodeEntity > verificationCodeEntityBaseResponse ) throws Exception {
+						VerificationCodeEntity codeInfo = verificationCodeEntityBaseResponse.getData();
+						captchaKey = codeInfo.key;
+						mView.setValidationImage( ImageUtil.customBase64ToBitmap( codeInfo.image ) );
 					}
 				} ) );
 	}

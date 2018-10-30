@@ -34,16 +34,15 @@ dependencies {
     implementation deps.tencent.mmkv
 
     api deps.smarttablayout
-    api deps.facebook.fresco
+    
     implementation deps.facebook.imagepipeline_okhttp3
     implementation deps.facebook.animated_gif
     implementation deps.android_gif_drawable
     implementation deps.fresco_processors
+
     implementation deps.logger
     implementation deps.facebook.stetho
     implementation deps.facebook.stetho_okhttp3
-    api deps.smartrefresh.SmartRefreshLayout
-    api deps.smartrefresh.SmartRefreshHeader
     implementation deps.acra
     api project(':annotation')
 //    implementation 'com.google.auto.service:auto-service:1.0-rc2'

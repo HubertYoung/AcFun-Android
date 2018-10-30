@@ -1,8 +1,10 @@
 package com.hubertyoung.component_acfunmine.sign.activity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,13 +15,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.baserx.event.Subscribe;
+import com.hubertyoung.common.baserx.event.inner.EventBean;
+import com.hubertyoung.common.baserx.event.inner.ThreadMode;
 import com.hubertyoung.common.constant.Constants;
+import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.common.widget.LoadingDialog;
 import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.sign.control.SignInControl;
 import com.hubertyoung.component_acfunmine.sign.model.SignInModelImp;
 import com.hubertyoung.component_acfunmine.sign.presenter.SignInPresenterImp;
-import com.jakewharton.rxbinding3.InitialValueObservable;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.jakewharton.rxbinding3.widget.RxTextView;
 
@@ -60,6 +66,7 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 	private ImageView mWeChatImg;
 	private TextView mWeChatText;
 	private boolean mIsStartForVipLevel;
+	private LoadingDialog mLoadingDialog;
 
 	@Override
 	public int getLayoutId() {
@@ -69,6 +76,11 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 	@Override
 	public void initPresenter() {
 		mPresenter.setVM( this, mModel );
+	}
+
+	@Override
+	protected boolean isRegisterEvent() {
+		return true;
 	}
 
 	@Override
@@ -130,9 +142,7 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 				.subscribe( o -> {
 					ToastUtil.showSuccess( "更改验证图片" );
 				} );
-		InitialValueObservable< CharSequence > userNameEditeObservable = RxTextView.textChanges( userNameEdit );
-		InitialValueObservable< CharSequence > passWordEditObservable = RxTextView.textChanges( passWordEdit );
-		Observable.combineLatest( userNameEditeObservable, passWordEditObservable, new BiFunction< CharSequence, CharSequence, Boolean >() {
+		Observable.combineLatest( RxTextView.textChanges( userNameEdit ), RxTextView.textChanges( passWordEdit ), new BiFunction< CharSequence, CharSequence, Boolean >() {
 			@Override
 			public Boolean apply( CharSequence charSequence, CharSequence charSequence2 ) throws Exception {
 				return !TextUtils.isEmpty( charSequence ) && !TextUtils.isEmpty( charSequence2 );
@@ -153,6 +163,18 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 					String validationStr = mValidationEdit.getText().toString().trim();
 					mPresenter.requestLoginInfo( userNameStr, passwordStr, validationStr );
 				} );
+		RxView.clicks( mValidationImage )//
+				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
+				.subscribeOn( AndroidSchedulers.mainThread() )//
+				.subscribe( o -> {
+					mPresenter.requestVerificationCodeInfo( );
+				} );
+		RxView.clicks( mLoginViewForgetPassword )//
+				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
+				.subscribeOn( AndroidSchedulers.mainThread() )//
+				.subscribe( o -> {
+					mRxManager.mRxBus.post(new EventBean("1","loginSuccess" ));
+				} );
 	}
 
 	@Override
@@ -164,24 +186,74 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 	public void initToolBar() {
 		if ( mToolbar != null ) {
 			mToolbar.setTitle( R.string.login );
-//			mToolbar.inflateMenu( R.menu.menu_signin );
-//			mToolbarTitle.setText( R.string.login );
 			mToolbarTitle.setVisibility( View.GONE );
 		}
 	}
 
 	@Override
 	public void showLoading( String title, int type ) {
-
+		if ( mLoadingDialog == null ) {
+			mLoadingDialog = new LoadingDialog( this );
+			mLoadingDialog.setText( R.string.login_view_loading_text );
+		}
+		mLoadingDialog.show();
 	}
 
 	@Override
 	public void stopLoading() {
-
+		if ( mLoadingDialog != null ) {
+			mLoadingDialog.dismiss();
+		}
 	}
 
 	@Override
 	public void showErrorTip( String msg ) {
-		ToastUtil.showError( msg );
+		if ( TextUtils.isEmpty( msg ) ) {
+			ToastUtil.showError( R.string.activity_signin_error );
+		} else {
+			ToastUtil.showError( msg );
+		}
+	}
+
+	@Override
+	public boolean getValidationLayoutShown() {
+		return mValidationLayout == null ? false : mValidationLayout.isShown();
+	}
+
+	@Override
+	public void setValidationLayoutShown() {
+		if ( mValidationLayout != null ) {
+			mValidationLayout.setVisibility( View.VISIBLE );
+		}
+	}
+
+	@Override
+	public void setValidationLayoutText( String text ) {
+		if ( mValidationEdit != null ) {
+			mValidationEdit.setText( text );
+		}
+	}
+
+	@Override
+	public void setValidationImage( Bitmap bitmap ) {
+		mValidationImage.setImageBitmap( bitmap );
+	}
+
+	@Subscribe(threadMode = ThreadMode.MAIN_THREAD)
+	private void test2(){
+		Log.e( "TAG", "" );
+	}
+	@Subscribe(threadMode = ThreadMode.MAIN_THREAD)
+	private void test(EventBean eventBean){
+		Log.e( "TAG", "" );
+	}
+
+	@Override
+	public void showLoginSuccess( Sign sign ) {
+		Bundle bundle = new Bundle();
+		bundle.putInt("uid", sign.info.userid);
+		bundle.putString("status", "success");
+//		mRxManager.post( "1","loginSuccess" );
+		ToastUtil.showSuccess( R.string.activity_signin_success );
 	}
 }

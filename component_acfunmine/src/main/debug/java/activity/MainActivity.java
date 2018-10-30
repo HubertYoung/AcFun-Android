@@ -38,4 +38,5 @@ public class MainActivity extends BaseActivity {
     public void initToolBar() {
 
     }
+
 }

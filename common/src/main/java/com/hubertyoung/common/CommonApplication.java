@@ -147,9 +147,10 @@ public class CommonApplication extends Application {
 				.add( "User-agent", stringBuffer.toString() )//
 				.add( "resolution", DisplayUtil.getScreenWidth( this ) + "x" + DisplayUtil.getScreenHeight( this ) )//
 				.add( "uuid", UUID.randomUUID().toString() )//
-				.add( "market", "portal" )//
+				.add( "market", "portal" )//TODO 渠道
 				.add( "requestTime", TimeUtil.getCurrentDate( TimeUtil.dateFormatYMDHMSSSS ) )//
 				.add( "uid", "0" )//
+				.add("acPlatform", "ANDROID_PHONE")
 				.add( "udid", AppUtils.getUUID() );
 		configuration.setHeaders( builder.build() );
 		configuration.connectionPool( 5, 5, TimeUnit.MINUTES );

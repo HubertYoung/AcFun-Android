@@ -2,11 +2,9 @@ package com.hubertyoung.common.image.fresco;
 
 import android.net.Uri;
 import android.os.Build;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.IdRes;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
+import com.facebook.common.util.UriUtil;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 import com.facebook.drawee.controller.ControllerListener;
@@ -21,6 +19,9 @@ import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.hubertyoung.common.CommonApplication;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.Nullable;
 import jp.wasabeef.fresco.processors.BlurPostprocessor;
 import jp.wasabeef.fresco.processors.CombinePostProcessors;
 import jp.wasabeef.fresco.processors.GrayscalePostprocessor;
@@ -63,17 +64,18 @@ public class ImageLoaderUtil {
 	}
 
 	public static void loadResourceImage( @DrawableRes int resId, SimpleDraweeView simpleDraweeView ) {
-		Uri uri = Uri.parse( "res:///" + resId );
+		Uri uri = Uri.parse( "res://" + CommonApplication.getAppContext().getPackageName() + "/" + resId );
+//		Uri uri = new Uri.Builder().scheme( UriUtil.LOCAL_RESOURCE_SCHEME ).path( String.valueOf( resId ) ).build();
 		loadImage( uri, simpleDraweeView );
 	}
 
 	public static void loadContentProviderImage( @IdRes int resId, SimpleDraweeView simpleDraweeView ) {
-		Uri uri = Uri.parse( "content:///" + resId );
+		Uri uri = new Uri.Builder().scheme( UriUtil.LOCAL_CONTENT_SCHEME ).path( String.valueOf( resId ) ).build();
 		loadImage( uri, simpleDraweeView );
 	}
 
 	public static void loadAssetImage( int resId, SimpleDraweeView simpleDraweeView ) {
-		Uri uri = Uri.parse( "asset:///" + resId );
+		Uri uri = new Uri.Builder().scheme( UriUtil.LOCAL_ASSET_SCHEME ).path( String.valueOf( resId ) ).build();
 		loadImage( uri, simpleDraweeView );
 	}
 

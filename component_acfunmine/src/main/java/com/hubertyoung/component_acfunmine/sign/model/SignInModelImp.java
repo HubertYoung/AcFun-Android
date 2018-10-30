@@ -4,10 +4,12 @@ import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.baserx.RxSchedulers;
 import com.hubertyoung.common.entity.Sign;
-import com.hubertyoung.common.net.transformer.DefaultTransformer;
+import com.hubertyoung.common.net.response.BaseResponse;
 import com.hubertyoung.component_acfunmine.BuildConfig;
 import com.hubertyoung.component_acfunmine.api.ApiHomeService;
+import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
 import com.hubertyoung.component_acfunmine.sign.control.SignInControl;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
@@ -25,12 +27,22 @@ import io.reactivex.Observable;
  */
 public class SignInModelImp implements SignInControl.Model {
 	@Override
-	public Observable< Sign > requestLoginInfo( MyRequestMap map ) {
+	public Observable< BaseResponse< Sign > > requestLoginInfo( MyRequestMap map ) {
 		return Api.getDefault( HostType.APP_HOST_ACCOUNT )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
 				.builder( ApiHomeService.class )
 				.requestLoginInfo( map.map )
-				.compose( new DefaultTransformer() );
+				.compose( RxSchedulers.io_main() );
+	}
+
+	@Override
+	public Observable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo() {
+		return Api.getDefault( HostType.APP_HOST_ACCOUNT )
+				.getRetrofitClient()
+				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
+				.builder( ApiHomeService.class )
+				.requestVerificationCodeInfo()
+				.compose( RxSchedulers.io_main() );
 	}
 }

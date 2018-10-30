@@ -23,19 +23,19 @@ import java.util.Date;
  * @desc:com.hubertyoung.common.utils
  */
 public class SigninHelper {
-//	private static final int a = -1;
+	//	private static final int a = -1;
 //	private static final int b = 1;
 //	private static final int c = 0;
 	private static SigninHelper sSigninHelper;
-	private SharedPreferences mSharedPreferences = CommonApplication.getAppContext().getSharedPreferences( AppSpConfig.SIGNINSP, 0);
+	private SharedPreferences mSharedPreferences = CommonApplication.getAppContext().getSharedPreferences( AppSpConfig.SIGNINSP, 0 );
 
 	private SigninHelper() {
 	}
 
 	public static synchronized SigninHelper getInstance() {
 		SigninHelper signinHelper;
-		synchronized (SigninHelper.class) {
-			if ( sSigninHelper == null) {
+		synchronized ( SigninHelper.class ) {
+			if ( sSigninHelper == null ) {
 				sSigninHelper = new SigninHelper();
 			}
 			signinHelper = sSigninHelper;
@@ -44,15 +44,15 @@ public class SigninHelper {
 	}
 
 	public int getUserUid() {
-		return this.mSharedPreferences.getInt("uid", 0);
+		return this.mSharedPreferences.getInt( "uid", 0 );
 	}
 
 	public int getUserGroupLevel() {
-		return this.mSharedPreferences.getInt("userGroupLevel", -1);
+		return this.mSharedPreferences.getInt( "userGroupLevel", -1 );
 	}
 
-	public void setUserGroupLevel(int i) {
-		this.mSharedPreferences.edit().putInt("userGroupLevel", i).apply();
+	public void setUserGroupLevel( int i ) {
+		this.mSharedPreferences.edit().putInt( "userGroupLevel", i ).apply();
 	}
 
 	public boolean isUserGroup() {
@@ -60,99 +60,121 @@ public class SigninHelper {
 	}
 
 	public String getUsername() {
-		return this.mSharedPreferences.getString("username", "");
+		return this.mSharedPreferences.getString( "username", "" );
 	}
 
 	public String getAvatar() {
-		return this.mSharedPreferences.getString("avatar", "");
+		return this.mSharedPreferences.getString( "avatar", "" );
 	}
 
 	public String getUserToken() {
-		return this.mSharedPreferences.getString("token", "");
+		return this.mSharedPreferences.getString( "token", "" );
 	}
 
 	public Date getExpireDate() {
-		return new Date(this.mSharedPreferences.getLong("expire", 0));
+		return new Date( this.mSharedPreferences.getLong( "expire", 0 ) );
 	}
 
 	private long getExpire() {
-		return this.mSharedPreferences.getLong("expire", 0);
+		return this.mSharedPreferences.getLong( "expire", 0 );
 	}
 
 	public boolean isInitPassword() {
-		return this.mSharedPreferences.getInt("initPassword", 0) == 0;
+		return this.mSharedPreferences.getInt( "initPassword", 0 ) == 0;
 	}
 
 	public boolean isCheckReal() {
-		return this.mSharedPreferences.getInt("check_real", 0) != 0;
+		return this.mSharedPreferences.getInt( "check_real", 0 ) != 0;
 	}
 
 	public void setInitPassword() {
-		this.mSharedPreferences.edit().putInt("initPassword", 0).apply();
+		this.mSharedPreferences.edit().putInt( "initPassword", 0 ).apply();
 	}
 
 	public boolean isThirdChannel() {
-		return this.mSharedPreferences.getInt("thirdChannel", 0) != 0;
+		return this.mSharedPreferences.getInt( "thirdChannel", 0 ) != 0;
 	}
 
 	public String getMobile() {
-		return this.mSharedPreferences.getString("mobile", "");
+		return this.mSharedPreferences.getString( "mobile", "" );
 	}
 
 	public boolean isOauth() {
-		return this.mSharedPreferences.getInt("oauth", -1) == 1;
+		return this.mSharedPreferences.getInt( "oauth", -1 ) == 1;
 	}
 
 	public void setOauth1() {
-		this.mSharedPreferences.edit().putInt("oauth", 1).apply();
+		this.mSharedPreferences.edit().putInt( "oauth", 1 ).apply();
 	}
 
 	public void setOauth0() {
-		this.mSharedPreferences.edit().putInt("oauth", 0).apply();
+		this.mSharedPreferences.edit().putInt( "oauth", 0 ).apply();
 	}
 
-	public void setMobile(String str) {
-		this.mSharedPreferences.edit().putString("mobile", str).apply();
+	public void setMobile( String str ) {
+		this.mSharedPreferences.edit().putString( "mobile", str ).apply();
 	}
 
-	public void setMobileCheck(int i) {
-		this.mSharedPreferences.edit().putInt("mobileCheck", i).apply();
+	public void setMobileCheck( int i ) {
+		this.mSharedPreferences.edit().putInt( "mobileCheck", i ).apply();
 	}
 
 	public void completeSetMobileCheck() {
-		setMobileCheck(1);
+		setMobileCheck( 1 );
 	}
 
 	public boolean isMobileCheck() {
-		return 1 == this.mSharedPreferences.getInt("mobileCheck", -1);
+		return 1 == this.mSharedPreferences.getInt( "mobileCheck", -1 );
 	}
 
 	public boolean isUnLogin() {
 		long expire = getExpire();
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(expire);
-		if (stringBuilder.toString().length() < 13) {
+		stringBuilder.append( expire );
+		if ( stringBuilder.toString().length() < 13 ) {
 			expire *= 1000;
 		}
-		Date date = new Date(expire);
-		int isEmpty = TextUtils.isEmpty(getUserToken()) ? 0 : 1;
-		boolean before = new Date().before(date);
-		if (isEmpty == 0 || !before) {
+		Date date = new Date( expire );
+		int isEmpty = TextUtils.isEmpty( getUserToken() ) ? 0 : 1;
+		boolean before = new Date().before( date );
+		if ( isEmpty == 0 || !before ) {
 			return false;
 		}
 		return true;
 	}
 
-	public void setUserToken(Token token) {
-		this.mSharedPreferences.edit().putInt("mobileCheck", token.getMobileCheck()).putInt("uid", token.getUid()).putInt("userGroupLevel", token.getUserGroupLevel()).putString("username", token.getUserName()).putString("avatar", token.getAvater()).putString("token", token.getToken()).putLong("expire", token.getExpire().getTime()).apply();
+	public void setUserToken( Token token ) {
+		this.mSharedPreferences.edit()
+				.putInt( "mobileCheck", token.getMobileCheck() )
+				.putInt( "uid", token.getUid() )
+				.putInt( "userGroupLevel", token.getUserGroupLevel() )
+				.putString( "username", token.getUserName() )
+				.putString( "avatar", token.getAvater() )
+				.putString( "token", token.getToken() )
+				.putLong( "expire", token.getExpire().getTime() )
+				.apply();
 	}
 
-	public void setUserSign(Sign sign) {
-		this.mSharedPreferences.edit().putInt("uid", sign.info.userid).putInt("userGroupLevel", sign.info.groupLevel).putString("username", sign.info.username).putString("avatar", sign.info.avatar).putString("token", sign.token).putLong("expire", sign.expires.longValue()).putInt("initPassword", sign.isInitPassword).putInt("thirdChannel", sign.info.isThirdLogin).putString("s2sCode", sign.s2sCode).putString("mobile", sign.info.mobile).putInt("mobileCheck", sign.info.mobileCheck).putInt("oauth", sign.oauth).putInt("check_real", sign.check_real).apply();
+	public void setUserSign( Sign sign ) {
+		this.mSharedPreferences.edit()
+				.putInt( "uid", sign.info.userid )
+				.putInt( "userGroupLevel", sign.info.groupLevel )
+				.putString( "username", sign.info.username )
+				.putString( "avatar", sign.info.avatar )
+				.putString( "token", sign.token )
+				.putLong( "expire", sign.expires.longValue() )
+				.putInt( "initPassword", sign.isInitPassword )
+				.putInt( "thirdChannel", sign.info.isThirdLogin )
+				.putString( "s2sCode", sign.s2sCode )
+				.putString( "mobile", sign.info.mobile )
+				.putInt( "mobileCheck", sign.info.mobileCheck )
+				.putInt( "oauth", sign.oauth )
+				.putInt( "check_real", sign.check_real )
+				.apply();
 	}
 
-	public void setUserInfo(User user) {
-		this.mSharedPreferences.edit().putString("username", user.getName()).putString("avatar", user.getAvatar()).apply();
+	public void setUserInfo( User user ) {
+		this.mSharedPreferences.edit().putString( "username", user.getName() ).putString( "avatar", user.getAvatar() ).apply();
 	}
 
 //	public void t() {

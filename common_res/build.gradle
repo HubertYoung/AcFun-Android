@@ -31,5 +31,10 @@ dependencies {
     api deps.support.recyclerview
     api deps.preference.preference
     api deps.constraint_layout
+
+    api deps.facebook.fresco
+
+    api deps.smartrefresh.SmartRefreshLayout
+    api deps.smartrefresh.SmartRefreshHeader
 }
 

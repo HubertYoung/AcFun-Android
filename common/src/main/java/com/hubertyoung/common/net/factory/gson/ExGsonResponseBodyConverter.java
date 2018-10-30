@@ -45,9 +45,9 @@ public class ExGsonResponseBodyConverter< T > implements Converter< ResponseBody
 
         BaseResponse baseRespose = new BaseResponse();
 //		Type objectType = type( baseRespose.getClass(), type );
-        try {
-            JSONObject response = new JSONObject( value );
-			int status = NetStatus.Server_Fail.getIndex();
+		int status = NetStatus.Server_Fail.getIndex();
+		try {
+			JSONObject response = new JSONObject( value );
 			if ( response.has("errorid")){
 				status = response.getInt( "errorid" );
 			}
@@ -57,19 +57,21 @@ public class ExGsonResponseBodyConverter< T > implements Converter< ResponseBody
             }else{
 				baseRespose.setStatus( status );
 				if ( response.has( "code" ) ) {
-					baseRespose.setCode( response.getInt( "code" ) );
+					baseRespose.setStatus( response.getInt( "code" ) );
 				}
 				if(response.has( "vdata" )) {
 					baseRespose.setData( response.getString( "vdata" ) );
 				}
 				if ( response.has( "message" ) ) {
-					baseRespose.setResult( response.getString( "message" ) );
+					baseRespose.setErrordesc( response.getString( "message" ) );
 				}
 				return ( T ) gson.fromJson( value, baseRespose.getClass() );
 			}
         } catch ( JSONException e ) {
+			baseRespose.setStatus( status );
+			baseRespose.setErrordesc( NetStatus.Server_Fail.getName() );
+			return ( T ) gson.fromJson( baseRespose.toString(), baseRespose.getClass() );
         }
-        return gson.fromJson( value, type );
     }
 
 //	public ParameterizedType type( final Class raw, final Type... args ) {

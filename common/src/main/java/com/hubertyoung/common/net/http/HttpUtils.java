@@ -7,7 +7,6 @@ import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.cookie.PersistentCookieJar;
 import com.hubertyoung.common.net.cookie.cache.SetCookieCache;
 import com.hubertyoung.common.net.cookie.persistence.SharedPrefsCookiePersistor;
-import com.hubertyoung.common.net.interceptor.GzipRequestInterceptor;
 import com.hubertyoung.common.net.interceptor.LogInterceptor;
 import com.hubertyoung.common.net.interceptor.UploadProgressInterceptor;
 import com.hubertyoung.common.net.request.RetrofitClient;
@@ -93,7 +92,7 @@ public class HttpUtils {
 		Interceptor headerInterceptor = new Interceptor() {
 			@Override
 			public Response intercept( Chain chain ) throws IOException {
-				Request.Builder builder = chain.request().newBuilder().addHeader( "Content-Type", "application/json" );
+				Request.Builder builder = chain.request().newBuilder().addHeader( "Content-Type", "application/x-www-form-urlencoded;charset=UTF-8" );
 				Headers headers = configuration.getHeaders();
 				for (int i = 0; i < headers.size(); i++) {
 					builder.addHeader( headers.name( i ), headers.value( i ) );
@@ -110,7 +109,7 @@ public class HttpUtils {
 				.addInterceptor( headerInterceptor )
 				//                    自定义网络Log显示
 				.addInterceptor( new LogInterceptor() )
-				.addInterceptor( new GzipRequestInterceptor() )
+//				.addInterceptor( new GzipRequestInterceptor() )
 				.readTimeout( configuration.getReadTimeOut(), TimeUnit.MILLISECONDS )
 				.connectTimeout( configuration.getConnectTimeOut(), TimeUnit.MILLISECONDS )
 				.connectionPool( configuration.getConnectionPool() )
