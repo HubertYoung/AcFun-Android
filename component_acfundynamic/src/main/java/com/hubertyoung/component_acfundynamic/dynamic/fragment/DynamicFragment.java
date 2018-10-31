@@ -2,7 +2,7 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.media.session.PlaybackStateCompat;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.baserx.event.Subscribe;
+import com.hubertyoung.common.baserx.event.inner.EventBean;
+import com.hubertyoung.common.baserx.event.inner.ThreadMode;
+import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
@@ -21,8 +25,6 @@ import com.hubertyoung.component_acfundynamic.dynamic.model.DynamicModelImp;
 import com.hubertyoung.component_acfundynamic.dynamic.presenter.DynamicPresenterImp;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
-
-import org.intellij.lang.annotations.RegExp;
 
 import java.util.concurrent.TimeUnit;
 
@@ -91,6 +93,11 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 	}
 
 	@Override
+	protected boolean isRegisterEvent() {
+		return true;
+	}
+
+	@Override
 	protected int getLayoutResource() {
 		return R.layout.fragment_dynamic_layout;
 	}
@@ -101,7 +108,7 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 	}
 
 	private void initAction() {
-		RxView.clicks( phoneButton )//
+		RxView.clicks( moreButton )//
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
 				.subscribe( new Consumer< Object >() {
 					@Override
@@ -123,6 +130,7 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 		qqButton = findViewById( R.id.iv_qq_login );
 		weChatButton = findViewById( R.id.iv_wechat_login );
 		initAction();
+
 		boolean isUnLogin = SigninHelper.getInstance().isUnLogin();
 		if ( isUnLogin ) {
 			showLoginStatus( false );
@@ -140,6 +148,7 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 			isPrepared = true;
 		}
 	}
+
 	private void initViewpager() {
 		mTab.setCustomTabView( R.layout.widget_home_tab_view, R.id.secondary_tab_text );
 		mPagerAdapter = new DynamicPagerAdapter( getChildFragmentManager() );
@@ -203,13 +212,33 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 		}
 	}
 
+	@Subscribe( threadMode = ThreadMode.MAIN_THREAD )
+	public void loginStatus( EventBean eventBean ) {
+		if ( eventBean.getTag() instanceof String && eventBean.getContent() instanceof String ) {
+			String tag = ( String ) eventBean.getTag();
+			String content = ( String ) eventBean.getContent();
+			if ( TextUtils.equals( tag, Constants.LoginStatus ) && TextUtils.equals( content, Constants.LoginSuccess ) ) {
+				showLoginStatus( false );
+				initViewpager();
+			} else if ( TextUtils.equals( tag, Constants.LogoutStatus ) && TextUtils.equals( content, Constants.LogoutSuccess ) ) {
+				mPagerAdapter.clear();
+				mFollowBangumiFragment = null;
+				mDynamicAcfunFragment = null;
+				mPager.setAdapter( null );
+				mPagerAdapter = null;
+				showLoginStatus( true );
+			}
+
+		}
+	}
+
 	@Override
 	public void loadData() {
 		boolean isUnLogin = SigninHelper.getInstance().isUnLogin();
-//		if (isUnLogin) {
-//			a(selectedPagePosition);
+//		if ( isUnLogin ) {
+//			a( selectedPagePosition );
 //		} else {
-//			a(-1);
+//			a( -1 );
 //		}
 //		MyRequestMap map = new MyRequestMap();
 //		mPresenter.requestAllChannel( map );

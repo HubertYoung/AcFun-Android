@@ -249,6 +249,8 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 		Bundle bundle = new Bundle();
 		bundle.putInt( "uid", sign.info.userid );
 		bundle.putString( "status", "success" );
+		mRxManager.post( Constants.LoginStatus, Constants.LoginSuccess );
 		ToastUtil.showSuccess( R.string.activity_signin_success );
+		finish();
 	}
 }

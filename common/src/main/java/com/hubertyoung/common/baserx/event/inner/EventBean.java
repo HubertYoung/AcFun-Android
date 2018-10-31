@@ -18,4 +18,12 @@ public class EventBean implements IEvent {
 		this.tag = tag;
 		this.content = content;
 	}
+
+	public Object getTag() {
+		return tag;
+	}
+
+	public Object getContent() {
+		return content;
+	}
 }

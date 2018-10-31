@@ -68,14 +68,13 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	protected boolean isVisible = true;
 
 	public FragmentActivity activity;
-	private boolean mIsRegisterEvent = false;
 //	protected View mStatusBarView;
 
 	@Override
 	public void onAttach( Activity activity ) {
 		super.onAttach( activity );
 		mRxManager = new RxManager();
-		if ( mIsRegisterEvent ) {
+		if ( isRegisterEvent() ) {
 			mRxManager.mRxBus.register( this );
 		}
 	}
@@ -117,7 +116,14 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 //			if ( rootView != null ) rootView.addView( mStatusBarView, 0 );
 //		}
 //	}
-
+	/**
+	 * 是否开启事件订阅
+	 *
+	 * @return
+	 */
+	protected boolean isRegisterEvent() {
+		return false;
+	}
 	/**
 	 * 初始化toolbar
 	 */
@@ -243,7 +249,7 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		if ( mRxManager != null && mIsRegisterEvent ) {
+		if ( mRxManager != null && isRegisterEvent() ) {
 			mRxManager.mRxBus.unregister( this );
 		}
 	}

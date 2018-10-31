@@ -18,31 +18,41 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
  * @desc:com.hubertyoung.component_acfundynamic.dynamic.adapter
  */
 public class DynamicPagerAdapter extends FragmentStatePagerAdapter {
-	private List<Fragment> mFragments = new ArrayList();
-	private List<String> mStrings = new ArrayList();
+	private List< Fragment > mFragments = new ArrayList();
+	private List< String > mStrings = new ArrayList();
+
 	public DynamicPagerAdapter( FragmentManager fm ) {
 		super( fm );
 	}
 
-	public List<Fragment> getFragments() {
+	public List< Fragment > getFragments() {
 		return mFragments;
 	}
+
 	@Override
-	public Fragment getItem(int position) {
-		return mFragments.get(position);
+	public Fragment getItem( int position ) {
+		return mFragments.get( position );
 	}
+
 	@Override
 	public int getCount() {
 		return mFragments == null ? 0 : mFragments.size();
 	}
+
 	@Override
-	public CharSequence getPageTitle(int position) {
-		return mStrings.get(position);
+	public CharSequence getPageTitle( int position ) {
+
+		return mStrings.get( position );
 	}
 
-	public void add(Fragment fragment, String str) {
-		mFragments.add(fragment);
-		mStrings.add(str);
+	public void clear() {
+		mFragments.clear();
+		notifyDataSetChanged();
+	}
+
+	public void add( Fragment fragment, String str ) {
+		mFragments.add( fragment );
+		mStrings.add( str );
 		notifyDataSetChanged();
 	}
 }
