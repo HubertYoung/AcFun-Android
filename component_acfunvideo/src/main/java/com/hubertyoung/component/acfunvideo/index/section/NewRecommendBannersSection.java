@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component_acfunvideo.R;
 import com.facebook.drawee.view.SimpleDraweeView;

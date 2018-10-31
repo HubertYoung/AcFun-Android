@@ -1,6 +1,15 @@
 package com.hubertyoung.component_acfundynamic.api;
 
 
+import com.hubertyoung.common.net.response.BaseResponse;
+import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
+
+import java.util.Map;
+
+import io.reactivex.Observable;
+import retrofit2.http.GET;
+import retrofit2.http.QueryMap;
+
 /**
  * <br>
  * function:
@@ -12,4 +21,6 @@ package com.hubertyoung.component_acfundynamic.api;
  * @desc:api
  */
 public interface ApiDynamicService {
+	@GET( "v3/regions/recommendBangumi" )
+	Observable< BaseResponse< RecommendBangumiEntity > > requestRecommendBangumi( @QueryMap Map< String, String > map );
 }

@@ -10,7 +10,7 @@ import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
 import com.hubertyoung.component.acfunvideo.index.model.NewRecommendModelImp;

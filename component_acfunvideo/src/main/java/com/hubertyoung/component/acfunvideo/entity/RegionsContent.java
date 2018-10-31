@@ -1,6 +1,10 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
 import com.google.gson.annotations.SerializedName;
+import com.hubertyoung.common.entity.NetVideo;
+import com.hubertyoung.common.entity.RegionsType;
+import com.hubertyoung.common.entity.VideoDetail;
+import com.hubertyoung.common.entity.Visits;
 
 import java.security.acl.Owner;
 import java.util.List;

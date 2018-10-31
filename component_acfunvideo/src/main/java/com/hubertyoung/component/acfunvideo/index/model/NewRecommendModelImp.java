@@ -1,7 +1,7 @@
 package com.hubertyoung.component.acfunvideo.index.model;
 
 import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
-import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
 import com.hubertyoung.common.api.Api;

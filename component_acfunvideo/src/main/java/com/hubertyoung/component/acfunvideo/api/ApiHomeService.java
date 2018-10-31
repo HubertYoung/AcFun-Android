@@ -2,7 +2,7 @@ package com.hubertyoung.component.acfunvideo.api;
 
 
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
-import com.hubertyoung.component.acfunvideo.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.common.net.response.BaseResponse;
 

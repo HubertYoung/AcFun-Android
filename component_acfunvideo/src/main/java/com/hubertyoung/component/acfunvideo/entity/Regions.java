@@ -1,6 +1,8 @@
 package com.hubertyoung.component.acfunvideo.entity;
 
 import com.google.gson.annotations.SerializedName;
+import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.RegionsType;
 
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class Regions {
 	@SerializedName("belong")
 	public int belong;
 	@SerializedName("bodyContents")
-	public List<RegionBodyContent> bodyContents;
+	public List<RegionBodyContent > bodyContents;
 	@SerializedName("bottomText")
 	public RegionHeaderAndBottomContent bottomText;
 	public List<RegionBodyContent> changeContents;
