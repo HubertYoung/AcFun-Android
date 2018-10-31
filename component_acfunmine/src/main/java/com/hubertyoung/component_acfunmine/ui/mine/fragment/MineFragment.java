@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.mine.fragment;
+package com.hubertyoung.component_acfunmine.ui.mine.fragment;
 
 
 import android.content.Intent;
@@ -19,10 +19,10 @@ import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfunmine.R;
-import com.hubertyoung.component_acfunmine.mine.control.MineControl;
-import com.hubertyoung.component_acfunmine.mine.model.MineModelImp;
-import com.hubertyoung.component_acfunmine.mine.presenter.MinePresenterImp;
-import com.hubertyoung.component_acfunmine.setting.activity.SettingsActivity;
+import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
+import com.hubertyoung.component_acfunmine.ui.mine.model.MineModelImp;
+import com.hubertyoung.component_acfunmine.ui.mine.presenter.MinePresenterImp;
+import com.hubertyoung.component_acfunmine.ui.setting.activity.SettingsActivity;
 
 import java.io.Serializable;
 

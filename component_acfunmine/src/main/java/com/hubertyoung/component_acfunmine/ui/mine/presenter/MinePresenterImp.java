@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.mine.presenter;
+package com.hubertyoung.component_acfunmine.ui.mine.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
@@ -6,7 +6,7 @@ import com.hubertyoung.common.constant.AppSpConfig;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.utils.data.SPUtils;
 import com.hubertyoung.common.entity.User;
-import com.hubertyoung.component_acfunmine.mine.control.MineControl;
+import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
 import com.hubertyoung.common.utils.SigninHelper;
 
 import io.reactivex.annotations.NonNull;

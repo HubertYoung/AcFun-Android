@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/begin_fragment"
-        android:name="com.hubertyoung.component_acfunmine.mine.fragment.MineFragment"
+        android:name="com.hubertyoung.component_acfunmine.ui.mine.fragment.MineFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

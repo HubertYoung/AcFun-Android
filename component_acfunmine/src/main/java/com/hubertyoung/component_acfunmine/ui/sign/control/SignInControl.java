@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.sign.control;
+package com.hubertyoung.component_acfunmine.ui.sign.control;
 
 
 import android.graphics.Bitmap;

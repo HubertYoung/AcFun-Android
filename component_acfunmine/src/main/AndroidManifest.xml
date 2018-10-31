@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".sign.activity.SignInActivity"
+            android:name=".ui.sign.activity.SignInActivity"
             android:label="@string/title_activity_signin"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -12,5 +12,11 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.findpassword.activity.FindPasswordActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/find_password_text"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 </manifest>

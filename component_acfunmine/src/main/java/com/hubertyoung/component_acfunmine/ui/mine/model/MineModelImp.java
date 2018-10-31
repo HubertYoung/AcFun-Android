@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.mine.model;
+package com.hubertyoung.component_acfunmine.ui.mine.model;
 
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.Api;
@@ -8,7 +8,7 @@ import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component_acfunmine.BuildConfig;
 import com.hubertyoung.component_acfunmine.api.ApiHomeService;
 import com.hubertyoung.common.entity.User;
-import com.hubertyoung.component_acfunmine.mine.control.MineControl;
+import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import io.reactivex.Observable;

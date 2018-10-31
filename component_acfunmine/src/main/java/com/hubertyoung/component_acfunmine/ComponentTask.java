@@ -7,8 +7,8 @@ import android.content.Intent;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.hubertyoung.component_acfunmine.mine.fragment.MineFragment;
-import com.hubertyoung.component_acfunmine.sign.activity.SignInActivity;
+import com.hubertyoung.component_acfunmine.ui.mine.fragment.MineFragment;
+import com.hubertyoung.component_acfunmine.ui.sign.activity.SignInActivity;
 
 /**
  * <br>

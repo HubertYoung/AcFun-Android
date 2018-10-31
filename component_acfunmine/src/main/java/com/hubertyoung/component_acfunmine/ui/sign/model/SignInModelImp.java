@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.sign.model;
+package com.hubertyoung.component_acfunmine.ui.sign.model;
 
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.Api;
@@ -10,7 +10,7 @@ import com.hubertyoung.common.net.response.BaseResponse;
 import com.hubertyoung.component_acfunmine.BuildConfig;
 import com.hubertyoung.component_acfunmine.api.ApiHomeService;
 import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
-import com.hubertyoung.component_acfunmine.sign.control.SignInControl;
+import com.hubertyoung.component_acfunmine.ui.sign.control.SignInControl;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import io.reactivex.Observable;

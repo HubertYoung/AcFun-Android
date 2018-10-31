@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.mine.control;
+package com.hubertyoung.component_acfunmine.ui.mine.control;
 
 
 import com.hubertyoung.common.base.BaseModel;

@@ -1,6 +1,7 @@
-package com.hubertyoung.component_acfunmine.sign.activity;
+package com.hubertyoung.component_acfunmine.ui.sign.activity;
 
-import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,15 +15,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.baserx.event.inner.EventBean;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.LoadingDialog;
 import com.hubertyoung.component_acfunmine.R;
-import com.hubertyoung.component_acfunmine.sign.control.SignInControl;
-import com.hubertyoung.component_acfunmine.sign.model.SignInModelImp;
-import com.hubertyoung.component_acfunmine.sign.presenter.SignInPresenterImp;
+import com.hubertyoung.component_acfunmine.ui.findpassword.activity.FindPasswordActivity;
+import com.hubertyoung.component_acfunmine.ui.sign.control.SignInControl;
+import com.hubertyoung.component_acfunmine.ui.sign.model.SignInModelImp;
+import com.hubertyoung.component_acfunmine.ui.sign.presenter.SignInPresenterImp;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.jakewharton.rxbinding3.widget.RxTextView;
 
@@ -103,7 +104,6 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 
 	}
 
-	@SuppressLint( "NewApi" )
 	private void initAction() {
 		mToolbar.setNavigationOnClickListener( new View.OnClickListener() {
 			@Override
@@ -159,13 +159,26 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
 				.subscribeOn( AndroidSchedulers.mainThread() )//
 				.subscribe( o -> {
-					mPresenter.requestVerificationCodeInfo( );
+					mPresenter.requestVerificationCodeInfo();
 				} );
 		RxView.clicks( mLoginViewForgetPassword )//
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
 				.subscribeOn( AndroidSchedulers.mainThread() )//
 				.subscribe( o -> {
-					mRxManager.mRxBus.post(new EventBean("1","loginSuccess" ));
+					FindPasswordActivity.launch( this, 2 );
+				} );
+		RxView.clicks( mLoginViewCanNotLogin )//
+				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
+				.subscribeOn( AndroidSchedulers.mainThread() )//
+				.subscribe( o -> {
+					new AlertDialog.Builder( this )//
+							.setTitle( R.string.login_view_can_not_login_title_text )//
+							.setMessage( R.string.login_view_can_not_login_content_text )//
+							.setNegativeButton( R.string.other_regist_btn_text, new DialogInterface.OnClickListener() {
+								public void onClick( DialogInterface dialogInterface, int i ) {
+									dialogInterface.dismiss();
+								}
+							} ).create().show();
 				} );
 	}
 
@@ -234,8 +247,8 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 	@Override
 	public void showLoginSuccess( Sign sign ) {
 		Bundle bundle = new Bundle();
-		bundle.putInt("uid", sign.info.userid);
-		bundle.putString("status", "success");
+		bundle.putInt( "uid", sign.info.userid );
+		bundle.putString( "status", "success" );
 		ToastUtil.showSuccess( R.string.activity_signin_success );
 	}
 }

@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.setting.activity;
+package com.hubertyoung.component_acfunmine.ui.setting.activity;
 
 import android.os.Bundle;
 

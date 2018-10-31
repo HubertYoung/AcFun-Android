@@ -606,6 +606,7 @@ AppStore Open and connect it"</string>
     <string name="feedback_danmu_send_failed_text">弹幕发送失败</string>
     <string name="feedback_prompt_text">请勿提交不良信息, 否则将导致你的帐号被封禁</string>
     <string name="feedback_share_failed_text">分享失败</string>
+    <string name="find_password_step2_new_password">请输入新密码</string>
     <string name="find_password_step2_sub_title">输入并重复新密纹，密纹修改就完成啦！</string>
     <string name="find_password_step2_title">设置新密纹</string>
     <string name="find_password_sub_title">亲爱的用户,您可以通过手机短信验证码修改密纹</string>

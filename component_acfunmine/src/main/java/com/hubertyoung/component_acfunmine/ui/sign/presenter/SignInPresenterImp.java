@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfunmine.sign.presenter;
+package com.hubertyoung.component_acfunmine.ui.sign.presenter;
 
 
 import android.text.TextUtils;
@@ -13,7 +13,7 @@ import com.hubertyoung.common.utils.os.NetworkUtil;
 import com.hubertyoung.common.widget.ImageUtil;
 import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
-import com.hubertyoung.component_acfunmine.sign.control.SignInControl;
+import com.hubertyoung.component_acfunmine.ui.sign.control.SignInControl;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
