@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,9 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseActivity;
-import com.hubertyoung.common.baserx.event.Subscribe;
 import com.hubertyoung.common.baserx.event.inner.EventBean;
-import com.hubertyoung.common.baserx.event.inner.ThreadMode;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.utils.display.ToastUtil;
@@ -76,11 +73,6 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 	@Override
 	public void initPresenter() {
 		mPresenter.setVM( this, mModel );
-	}
-
-	@Override
-	protected boolean isRegisterEvent() {
-		return true;
 	}
 
 	@Override
@@ -239,21 +231,11 @@ public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInMode
 		mValidationImage.setImageBitmap( bitmap );
 	}
 
-	@Subscribe(threadMode = ThreadMode.MAIN_THREAD)
-	private void test2(){
-		Log.e( "TAG", "" );
-	}
-	@Subscribe(threadMode = ThreadMode.MAIN_THREAD)
-	private void test(EventBean eventBean){
-		Log.e( "TAG", "" );
-	}
-
 	@Override
 	public void showLoginSuccess( Sign sign ) {
 		Bundle bundle = new Bundle();
 		bundle.putInt("uid", sign.info.userid);
 		bundle.putString("status", "success");
-//		mRxManager.post( "1","loginSuccess" );
 		ToastUtil.showSuccess( R.string.activity_signin_success );
 	}
 }
