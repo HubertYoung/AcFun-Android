@@ -43,15 +43,14 @@ public class ExceptionHandle {
                 case UNAUTHORIZED:
                 case FORBIDDEN:
                 case NOT_FOUND:
-                    ex.result = "网速不给力!";
                 case REQUEST_TIMEOUT:
                 case GATEWAY_TIMEOUT:
-                    ex.result = "网速不给力!!";
                 case INTERNAL_SERVER_ERROR:
                 case BAD_GATEWAY:
                 case SERVICE_UNAVAILABLE:
+                    ex.result = "网速不给力!!(" + httpException.code()+")";
                 default:
-                    ex.result = "无网络,请重试!";
+                    ex.result = "网速不给力!!(" + httpException.code()+")";
                     break;
             }
             return ex;

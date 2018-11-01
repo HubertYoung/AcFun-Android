@@ -14,6 +14,8 @@ import com.facebook.stetho.common.LogUtil;
 import com.hubertyoung.base.bean.EnvironmentBean;
 import com.hubertyoung.base.bean.ModuleBean;
 import com.hubertyoung.base.listener.OnEnvironmentChangeListener;
+import com.hubertyoung.baseplatform.AuthorizeSDK;
+import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.common.BuildConfig;
 import com.hubertyoung.common.baserx.RxManager;
 import com.hubertyoung.common.utils.TUtil;
@@ -23,6 +25,7 @@ import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -275,5 +278,12 @@ public abstract class BaseActivity< T extends BasePresenter, E extends BaseModel
 					Toast.LENGTH_SHORT )
 					.show();
 		}
+	}
+
+	@Override
+	protected void onActivityResult( int requestCode, int resultCode, @Nullable Intent data ) {
+		AuthorizeSDK.onHandleResult( this, requestCode, resultCode, data );
+		ShareSDK.onHandleResult( this, requestCode, resultCode, data );
+		super.onActivityResult( requestCode, resultCode, data );
 	}
 }

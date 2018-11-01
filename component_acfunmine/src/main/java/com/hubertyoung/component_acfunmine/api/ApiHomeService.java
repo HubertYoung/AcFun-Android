@@ -50,4 +50,8 @@ public interface ApiHomeService {
 	@GET( "api/account/verification/captcha" )
 	@Headers( { "Accept:application/vdata+json+version:1.1", "Content-Type:application/x-www-form-urlencoded; charset=UTF-8" } )
 	Observable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo( );
+
+	@FormUrlEncoded
+	@POST("api/account/oauth/login")
+	Observable< BaseResponse<Sign> > requestPlatformLogin(@FieldMap Map< String, String > map );
 }

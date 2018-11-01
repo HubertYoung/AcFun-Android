@@ -5,7 +5,10 @@ import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
+
+import java.util.Map;
 
 import io.reactivex.Observable;
 
@@ -22,9 +25,11 @@ import io.reactivex.Observable;
 public interface MineControl {
 
 	interface Model extends BaseModel {
-		Observable<Boolean> requestCheckOfflineInfo( MyRequestMap map );
+		Observable< Boolean > requestCheckOfflineInfo( MyRequestMap map );
 
-		Observable<User> requestUserInfo( MyRequestMap map );
+		Observable< User > requestUserInfo( MyRequestMap map );
+
+		Observable< Sign > requestPlatformLogin( Map< String, String > map );
 	}
 
 	interface View extends BaseView {
@@ -34,12 +39,18 @@ public interface MineControl {
 
 		void setUserGroupInfo( boolean b );
 
-		void setLoginState( boolean b );
+		void setLoginState( boolean isLogin );
+
+		void stopDialogLoading();
+
+		void setPlatformLoginInfo( Sign sign );
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
 		public abstract void requestUserInfo( MyRequestMap map );
 
 		public abstract void requestCheckOfflineInfo( MyRequestMap map );
+
+		public abstract void requestPlatformLogin( Map< String, String > hashMap );
 	}
 }

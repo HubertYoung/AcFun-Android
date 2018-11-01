@@ -14,18 +14,26 @@ import com.google.gson.annotations.SerializedName;
  * @desc:com.hubertyoung.component_acfunmine.entity
  */
 public class Sign {
-	@SerializedName("check_real")
+	@SerializedName( "acPasstoken" )
+	public String acPasstoken;
+	@SerializedName( "acSecurity" )
+	public String acSecurity;
+	@SerializedName( "check_real" )
 	public int check_real;
-	@SerializedName("expiration")
+	@SerializedName( "expiration" )
 	public Long expires;
-	@SerializedName("info")
+	@SerializedName( "info" )
 	public SignInfo info;
-	@SerializedName("check_password")
+	@SerializedName( "first_login" )
+	public boolean isFirstLogin;
+	@SerializedName( "check_password" )
 	public int isInitPassword;
-	@SerializedName("oauth")
+	@SerializedName( "oauth" )
 	public int oauth;
-	@SerializedName("s2s-code")
+	@SerializedName( "passCheck" )
+	public boolean passCheck;
+	@SerializedName( "s2s-code" )
 	public String s2sCode;
-	@SerializedName("token")
+	@SerializedName( "token" )
 	public String token;
 }

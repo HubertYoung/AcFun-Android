@@ -16,6 +16,9 @@ import com.hubertyoung.common.utils.display.ScreenHelper;
 import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.common.utils.os.TimeUtil;
+import com.hubertyoung.qqplatforms.platforms.qq.QQPlatFormConfig;
+import com.hubertyoung.wechatplatforms.platforms.weixin.WechatPlatFormConfig;
+import com.hubertyoung.weiboplatforms.platforms.weibo.WeiboPlatFormConfig;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
@@ -98,6 +101,9 @@ public class CommonApplication extends Application {
 		initOkHttpUtils();
 		initStetho();
 
+		QQPlatFormConfig.registerShare( "1106891112","QiIFegOZGaRmeC4S" );
+		WechatPlatFormConfig.registerShare( "wxf143a66eb7528d12","e408746be2a052ae1f294aa91595227c" );
+		WeiboPlatFormConfig.registerShare( "3136498027","","http://sns.whalecloud.com/sina2/callback" );
 	}
 
 	private void initFresco() {

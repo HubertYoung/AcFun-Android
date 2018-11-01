@@ -3,4 +3,6 @@
 
     <string name="package_name">tv.danmaku.bili</string>
 
+    <string name="login_success_toast">欢迎回到AcFun，天下漫友是一家</string>
+    <string name="login_success_toast_for_fresh">欢迎加入AcFun，天下漫友是一家</string>
 </resources>

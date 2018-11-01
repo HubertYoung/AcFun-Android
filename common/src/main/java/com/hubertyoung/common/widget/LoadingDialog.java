@@ -30,7 +30,7 @@ public class LoadingDialog {
 		mText.setText( str );
 	}
 
-	public void setText(@StringRes int stringRes ) {
+	public void setText( @StringRes int stringRes ) {
 		mText.setText( stringRes );
 	}
 
@@ -42,6 +42,13 @@ public class LoadingDialog {
 		} catch ( Throwable e ) {
 			CommonLog.loge( e );
 		}
+	}
+
+	public boolean isShowing() {
+		if ( mDialog != null ) {
+			return mDialog.isShowing();
+		}
+		return false;
 	}
 
 	public void dismiss() {

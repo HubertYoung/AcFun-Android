@@ -19,31 +19,31 @@
             android:label="@string/title_activity_signin"
             android:windowSoftInputMode="stateHidden">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.VIEW"/> -->
+             <intent-filter>
+             <action android:name="android.intent.action.VIEW"/>
 
 
-            <!-- <category android:name="android.intent.category.DEFAULT"/> -->
-            <!-- </intent-filter> -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+             <category android:name="android.intent.category.DEFAULT"/>
+             </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name="activity.MainActivity">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN"/>
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+             <category android:name="android.intent.category.LAUNCHER"/>
+             </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW"/>-->
 
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+                <!--<category android:name="android.intent.category.DEFAULT"/>-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".ui.setting.activity.SettingsActivity">
             <intent-filter>

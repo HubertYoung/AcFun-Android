@@ -41,7 +41,9 @@ public class RetrofitClient {
 	 * @param baseUrl
 	 */
 	public RetrofitClient setBaseUrl( String baseUrl ) {
-		this.baseUrl = baseUrl;
+		if ( !TextUtils.isEmpty( baseUrl ) ) {
+			this.baseUrl = baseUrl;
+		}
 		return this;
 	}
 

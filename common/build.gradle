@@ -25,11 +25,11 @@ android {
 dependencies {
     api project(':common_res')
 
-//    implementation project(':android-support:skin-support')
-//    implementation project(':android-support:skin-support-appcompat')
-//    implementation project(':android-support:skin-support-cardview')
-//    implementation project(':android-support:skin-support-constraint-layout')
-//    implementation project(':android-support:skin-support-design')
+    implementation project(':baseplatformlibrary')
+    implementation project(':alipayplatformlibrary')
+    implementation project(':qqplatformlibrary')
+    implementation project(':wechatplatformlibrary')
+    implementation project(':weiboplatformlibrary')
 
     implementation deps.tencent.mmkv
 
@@ -44,6 +44,7 @@ dependencies {
     implementation deps.facebook.stetho
     implementation deps.facebook.stetho_okhttp3
     implementation deps.acra
+
     api project(':annotation')
 //    implementation 'com.google.auto.service:auto-service:1.0-rc2'
 //    implementation 'com.squareup:javapoet:1.11.1'

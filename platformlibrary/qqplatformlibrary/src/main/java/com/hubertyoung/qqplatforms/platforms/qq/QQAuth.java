@@ -2,7 +2,6 @@ package com.hubertyoung.qqplatforms.platforms.qq;
 
 import android.app.Activity;
 import android.content.Intent;
-import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.hubertyoung.baseplatform.authorize.IAuthorize;
@@ -22,6 +21,8 @@ import com.tencent.tauth.UiError;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+
+import androidx.annotation.NonNull;
 
 
 /**
@@ -120,6 +121,7 @@ public class QQAuth implements IAuthorize {
 							String fromHashMap = new Hashon().fromHashMap( data );
 							if ( callback != null ) {
 								callback.onSuccess( mActivity, fromHashMap );
+								callback.onCompleted( mActivity );
 							}
 						}
 
@@ -128,6 +130,7 @@ public class QQAuth implements IAuthorize {
 							PlatformLogUtil.loge(TAG, "error ==> " + uiError.errorDetail );
 							if ( callback != null ) {
 								callback.onError( mActivity, ResultCode.RESULT_FAILED, toMessage( uiError ) );
+								callback.onCompleted( mActivity );
 							}
 						}
 
@@ -135,6 +138,7 @@ public class QQAuth implements IAuthorize {
 						public void onCancel() {
 							if ( callback != null ) {
 								callback.onError( mActivity, ResultCode.RESULT_CANCELLED,  mActivity.getString( R.string.sdk_platform_cancel_auth ) );
+								callback.onCompleted( mActivity );
 							}
 						}
 					} );
@@ -142,10 +146,8 @@ public class QQAuth implements IAuthorize {
 				} else {
 					if ( callback != null ) {
 						callback.onError( mActivity, ResultCode.RESULT_FAILED, mActivity.getString( R.string.sdk_platform_qq_error ) );
+						callback.onCompleted( mActivity );
 					}
-				}
-				if ( callback != null ) {
-					callback.onCompleted( mActivity );
 				}
 			}
 
@@ -155,6 +157,7 @@ public class QQAuth implements IAuthorize {
 				PlatformLogUtil.loge(TAG, "error ==> " + e.errorDetail );
 				if ( callback != null ) {
 					callback.onError( mActivity, ResultCode.RESULT_FAILED, toMessage( e ) );
+					callback.onCompleted( mActivity );
 				}
 			}
 
@@ -162,6 +165,7 @@ public class QQAuth implements IAuthorize {
 			public void onCancel() {
 				if ( callback != null ) {
 					callback.onError( mActivity, ResultCode.RESULT_CANCELLED, mActivity.getString( R.string.sdk_platform_cancel_auth ) );
+					callback.onCompleted( mActivity );
 				}
 			}
 		};

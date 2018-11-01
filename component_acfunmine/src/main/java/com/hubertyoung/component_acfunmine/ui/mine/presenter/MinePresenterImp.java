@@ -4,10 +4,13 @@ package com.hubertyoung.component_acfunmine.ui.mine.presenter;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.constant.AppSpConfig;
 import com.hubertyoung.common.constant.Constants;
-import com.hubertyoung.common.utils.data.SPUtils;
+import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
-import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
 import com.hubertyoung.common.utils.SigninHelper;
+import com.hubertyoung.common.utils.data.SPUtils;
+import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
+
+import java.util.Map;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
@@ -88,6 +91,28 @@ public class MinePresenterImp extends MineControl.Presenter {
 						mView.stopLoading();
 						mView.showErrorTip( throwable.getMessage()
 								.toString() );
+					}
+				} ) );
+	}
+
+	@Override
+	public void requestPlatformLogin( Map map ) {
+		mView.showLoading( "Loading...", 2 );
+		mRxManage.add( mModel.requestPlatformLogin( map )
+//				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+				.subscribe( new Consumer< Sign >() {
+
+					@Override
+					public void accept( @NonNull Sign sign ) throws Exception {
+						mView.stopDialogLoading();
+						mView.setPlatformLoginInfo( sign );
+
+					}
+				}, new Consumer< Throwable >() {
+					@Override
+					public void accept( @NonNull Throwable throwable ) throws Exception {
+						mView.stopDialogLoading();
+						mView.showErrorTip( throwable.getMessage());
 					}
 				} ) );
 	}

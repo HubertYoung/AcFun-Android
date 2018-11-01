@@ -21,7 +21,7 @@ public class PlatformUtils {
 	static final String PACKAGE_WX = "com.tencent.mm";
 
 	public static boolean isQQInstalled( Context context ) {
-		return isApplicationInstalled( context, PACKAGE_QQ );
+		return true || isApplicationInstalled( context, PACKAGE_QQ );
 	}
 
 	public static boolean isWxInstalled( Context context ) {

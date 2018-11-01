@@ -27,7 +27,7 @@ buildToolsVersion build_versions.build_tools
 dependencies {
     testImplementation deps.junit
     implementation project(':baseplatformlibrary')
-    implementation files('libs/alipaySdk-20170309.jar')
+    api files('libs/alipaySdk-20170309.jar')
     implementation deps.support.annotations
 
 }

@@ -3,8 +3,9 @@ apply from: rootProject.file('basic_component.gradle')
 
 dependencies {
     implementation project(':common')
-    addComponent 'component_dialog'
-    addComponent 'component_titlebar'
+    implementation project(':component_dialog')
+//    implementation project(':component_titlebar')
+
     implementation project(':baseplatformlibrary')
     implementation project(':alipayplatformlibrary')
     implementation project(':qqplatformlibrary')

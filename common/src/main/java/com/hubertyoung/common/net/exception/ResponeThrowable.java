@@ -14,4 +14,9 @@ public class ResponeThrowable extends Exception {
         super(throwable);
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return result;
+    }
 }

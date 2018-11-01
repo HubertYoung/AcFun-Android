@@ -14,10 +14,13 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.baseplatform.tools.PlatformUtils;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.constant.Constants;
+import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.common.utils.sign.SignInUtil;
 import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
 import com.hubertyoung.component_acfunmine.ui.mine.model.MineModelImp;
@@ -25,6 +28,8 @@ import com.hubertyoung.component_acfunmine.ui.mine.presenter.MinePresenterImp;
 import com.hubertyoung.component_acfunmine.ui.setting.activity.SettingsActivity;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -88,6 +93,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 	private RelativeLayout marketLayout;
 	private RelativeLayout settingtLayout;
 	private RelativeLayout feedbackLayout;
+	private SignInUtil mSignInUtil;
 
 
 	public MineFragment() {
@@ -152,6 +158,19 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		phoneButton.setOnClickListener( this );
 		moreButton.setOnClickListener( this );
 		qrScanLayout.setOnClickListener( this );
+
+		mSignInUtil.setOnPlatformNameListener( new SignInUtil.OnPlatformNameListener() {
+			@Override
+			public void onSuccess( String platformName, Map< String, String > map ) {
+				Map< String, String > hashMap = new HashMap();
+				hashMap.put("clientId", Constants.cidKey );
+				hashMap.put("accessToken", map.get("token"));
+				hashMap.put("openId", map.get("openid"));
+				hashMap.put("type", platformName);
+				mPresenter.requestPlatformLogin(hashMap);
+			}
+		} );
+
 	}
 
 	@Override
@@ -201,8 +220,8 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		marketLayout = findViewById( R.id.market_layout );
 		settingtLayout = findViewById( R.id.setting_layout );
 		feedbackLayout = findViewById( R.id.feedback_layout );
+		mSignInUtil = new SignInUtil( activity );
 		initAction();
-
 		MyRequestMap map = new MyRequestMap();
 //		http://apipc.app.acfun.cn/v2/offlines/checkOffline
 		mPresenter.requestCheckOfflineInfo( map );
@@ -216,12 +235,13 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 
 	@Override
 	public void showLoading( String title, int type ) {
-
+		if ( type == 2 ){
+			mSignInUtil.showLoading();
+		}
 	}
 
 	@Override
 	public void stopLoading() {
-
 	}
 
 	@Override
@@ -287,13 +307,13 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		} else if ( viewId == R.id.history_layout ) {
 //				IntentHelper.a( this.g, NewHistoryActivity.class );
 		} else if ( viewId == R.id.iv_more_login ) {
-//				this.k.a( 4 );
+			mSignInUtil.loginAccount();
 		} else if ( viewId == R.id.iv_phone_login ) {
-//				this.k.a( 3 );
+//			mSignInUtil.loginQQ();
 		} else if ( viewId == R.id.iv_qq_login ) {
-//				this.k.a( 1 );
+			mSignInUtil.loginQQ();
 		} else if ( viewId == R.id.iv_wechat_login ) {
-//				this.k.a( 2 );
+			mSignInUtil.loginWechat();
 		} else if ( viewId == R.id.market_layout ) {
 //				this.f.b( this.g );
 		} else if ( viewId == R.id.message_layout ) {
@@ -483,8 +503,8 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		ImageLoaderUtil.loadResourceImage( R.mipmap.ic_slide_menu_avatar_no_login, avatar );
 		userInfolayout.setVisibility( View.GONE );
 		loginLayout.setVisibility( View.VISIBLE );
-		weChatButton.setVisibility( PlatformUtils.isQQInstalled( activity ) ? View.VISIBLE : View.GONE );
-		qqButton.setVisibility( PlatformUtils.isWxInstalled( activity ) ? View.VISIBLE : View.GONE );
+		weChatButton.setVisibility( PlatformUtils.isWxInstalled( activity ) ? View.VISIBLE : View.GONE );
+		qqButton.setVisibility( PlatformUtils.isQQInstalled( activity ) ? View.VISIBLE : View.GONE );
 		gender.setVisibility( View.GONE );
 		nickName.setVisibility( View.GONE );
 		userInfo.setVisibility( View.GONE );
@@ -495,6 +515,30 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		uploadContributorsLayout.setVisibility( View.GONE );
 		ivHeaddress.setVisibility( View.GONE );
 		setRedDot( false );
+	}
+
+	@Override
+	public void stopDialogLoading() {
+		if ( mSignInUtil.isShowing() ){
+			mSignInUtil.dismissLoading();
+		}
+	}
+
+	@Override
+	public void setPlatformLoginInfo( Sign sign ) {
+		SigninHelper.getInstance().setUserSign(sign);
+		Bundle bundle = new Bundle();
+		bundle.putInt( "uid", sign.info.userid );
+		bundle.putString( "status", "success" );
+
+		if (sign.isFirstLogin) {
+			ToastUtil.showSuccess( R.string.login_success_toast_for_fresh);
+		} else {
+			ToastUtil.showSuccess( R.string.login_success_toast);
+		}
+
+		mRxManager.post( Constants.LoginStatus, Constants.LoginSuccess );
+
 	}
 
 	public void setRedDot( boolean isShowRedDot ) {

@@ -3,13 +3,12 @@ package aggregation;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.hubertyoung.aggregation.dialog.BottomShareEntity;
 import com.hubertyoung.aggregation.dialog.ShareBottomDialog;
+import com.hubertyoung.aggregation.dialog.ShareFrescoImageDownloader;
 import com.hubertyoung.baseplatform.AuthorizeSDK;
 import com.hubertyoung.baseplatform.PlatformShareConfiguration;
 import com.hubertyoung.baseplatform.ShareSDK;
@@ -19,14 +18,17 @@ import com.hubertyoung.baseplatform.share.SocializeMedia;
 import com.hubertyoung.baseplatform.share.shareparam.BaseShareParam;
 import com.hubertyoung.baseplatform.share.shareparam.ShareParamText;
 import com.hubertyoung.baseplatform.tools.Hashon;
+import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.utils.os.AppUtils;
-import com.hubertyoung.common.utils.ToastUtil;
 import com.hubertyoung.component_aggregation.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 /**
  * <br>
