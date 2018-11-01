@@ -23,4 +23,6 @@ import retrofit2.http.QueryMap;
 public interface ApiDynamicService {
 	@GET( "v3/regions/recommendBangumi" )
 	Observable< BaseResponse< RecommendBangumiEntity > > requestRecommendBangumi( @QueryMap Map< String, String > map );
+	@GET( "v3/regions/recommendUp" )
+	Observable< BaseResponse< RecommendBangumiEntity > > requestRecommendUp( @QueryMap Map< String, String > map );
 }

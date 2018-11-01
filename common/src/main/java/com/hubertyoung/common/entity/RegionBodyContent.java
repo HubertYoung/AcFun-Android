@@ -15,46 +15,48 @@ import java.util.List;
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
 public class RegionBodyContent {
-	@SerializedName("action")
+	@SerializedName( "action" )
 	public int actionId;
-	@SerializedName("ad")
+	@SerializedName( "ad" )
 	public int ad;
-	@SerializedName("channel")
+	@SerializedName( "channel" )
 	public RegionsType channel;
-	@SerializedName("children")
-	public List<RegionBodyContent> children;
-	@SerializedName("href")
+	@SerializedName( "children" )
+	public List< RegionBodyContent > children;
+	@SerializedName( "href" )
 	public String contentId;
-	@SerializedName("extendsStatus")
+	@SerializedName( "extendsStatus" )
 	public int extendsStatus;
-	@SerializedName("img")
-	public List<String> images;
-	@SerializedName("intro")
+	@SerializedName( "groupid" )
+	public String groupId;
+	@SerializedName( "img" )
+	public List< String > images;
+	@SerializedName( "intro" )
 	public String intro;
-	@SerializedName("lastUpdate")
+	@SerializedName( "lastUpdate" )
 	public String lastUpdate;
-	@SerializedName("latestBangumiVideo")
+	@SerializedName( "latestBangumiVideo" )
 	public NetVideo latestBangumiVideo;
-	@SerializedName("reqId")
+	@SerializedName( "reqId" )
 	public String reqId;
-	@SerializedName("stowCount")
+	@SerializedName( "stowCount" )
 	public int stowCount;
-	@SerializedName("subVideo")
+	@SerializedName( "subVideo" )
 	public VideoDetail subVideo;
-	@SerializedName("subVideos")
-	public List<VideoDetail> subVideos;
-	@SerializedName("time")
+	@SerializedName( "subVideos" )
+	public List< VideoDetail > subVideos;
+	@SerializedName( "time" )
 	public long time;
-	@SerializedName("title")
+	@SerializedName( "title" )
 	public String title;
-	@SerializedName("type")
+	@SerializedName( "type" )
 	public RegionsType type;
-	@SerializedName("updateTime")
+	@SerializedName( "updateTime" )
 	public String updateTime;
-	@SerializedName("user")
+	@SerializedName( "user" )
 	public RegionsType user;
-	@SerializedName("videoId")
+	@SerializedName( "videoId" )
 	public int videoId;
-	@SerializedName("visit")
+	@SerializedName( "visit" )
 	public RegionVisitContent visit;
 }
