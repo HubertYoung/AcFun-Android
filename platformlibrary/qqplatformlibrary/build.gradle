@@ -28,6 +28,6 @@ dependencies {
     testImplementation deps.junit
     implementation deps.support.annotations
     implementation project(':baseplatformlibrary')
-    api files('libs/open_sdk_r5793_lite.jar')
+    implementation files('libs/open_sdk_r5793_lite.jar')
     implementation deps.support.v4
 }

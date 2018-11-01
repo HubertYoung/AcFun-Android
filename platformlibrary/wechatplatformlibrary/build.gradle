@@ -27,7 +27,7 @@ buildToolsVersion build_versions.build_tools
 dependencies {
     testImplementation deps.junit
     implementation project(':baseplatformlibrary')
-    api deps.tencent.wechat
+    implementation deps.tencent.wechat
     implementation deps.support.annotations
 
 }

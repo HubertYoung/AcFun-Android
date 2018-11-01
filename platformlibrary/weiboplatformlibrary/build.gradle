@@ -27,7 +27,7 @@ buildToolsVersion build_versions.build_tools
 dependencies {
     testImplementation deps.junit
     implementation project(':baseplatformlibrary')
-    api deps.weibo.sdk_core
+    implementation deps.weibo.sdk_core
     implementation deps.support.annotations
 
 }
