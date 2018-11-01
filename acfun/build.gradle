@@ -44,14 +44,14 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation deps.junit
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
     //    implementation 'com.jakewharton:butterknife:8.4.0'
     //    kapt 'com.jakewharton:butterknife-compiler:8.4.0'
     implementation project(':bottom-navigation-bar')
     implementation project(':common')
+    addComponent 'component_acfundynamic'
     addComponent 'component_acfunvideo'
     addComponent 'component_acfunarticle'
-    addComponent 'component_acfundynamic'
     addComponent 'component_acfunmine'
 }

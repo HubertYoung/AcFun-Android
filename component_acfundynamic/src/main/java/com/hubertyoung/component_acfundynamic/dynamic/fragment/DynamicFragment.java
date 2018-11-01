@@ -89,7 +89,6 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 	@Override
 	protected void initToolBar() {
 		BarUtils.setPaddingSmart( mTab );
-		BarUtils.setPaddingSmart( unLoginLayout );
 	}
 
 	@Override

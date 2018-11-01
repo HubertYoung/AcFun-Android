@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:internal="http://schemas.android.com/apk/prv/res/android"
     android:id="@+id/view_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
-    app:titleTextAppearance="@style/Toolbar.TitleText"
-    android:theme="@style/ToolBarStyle">
+    android:layout_height="@dimen/pickerview_topbar_height"
+    android:background="@color/white"
+    android:contentInsetStart="0dp"
+    android:gravity="center"
+    android:theme="@style/ToolBarStyle"
+    app:contentInsetEnd="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    app:layout_collapseMode="pin"
+    app:popupTheme="@style/OverflowMenuStyle"
+    app:titleTextAppearance="@style/Toolbar.TitleText">
 
     <TextView
         android:id="@+id/toolbar_title"

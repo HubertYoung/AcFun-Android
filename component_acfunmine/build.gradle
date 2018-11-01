@@ -3,8 +3,6 @@ apply from: rootProject.file('basic_component.gradle')
 dependencies {
     implementation project(':common')
     implementation project(':baseplatformlibrary')
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation project(':component_aggregation')
     addComponent 'component_developer'
     debugAnnotationProcessor project(':compiler')
