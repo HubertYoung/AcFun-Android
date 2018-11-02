@@ -30,5 +30,6 @@ public interface ArticleControl {
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
+		public abstract void requestAllChannel( MyRequestMap map );
 	}
 }

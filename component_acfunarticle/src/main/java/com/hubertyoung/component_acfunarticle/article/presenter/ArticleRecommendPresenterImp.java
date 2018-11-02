@@ -2,13 +2,11 @@ package com.hubertyoung.component_acfunarticle.article.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.component_acfunarticle.entity.ArticleRecommendEntity;
+import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component_acfunarticle.article.control.ArticleRecommendControl;
+import com.hubertyoung.component_acfunarticle.entity.ArticleRecommendEntity;
 
 import java.util.List;
-
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
 
 /**
  * <br>
@@ -23,23 +21,29 @@ import io.reactivex.functions.Consumer;
 public class ArticleRecommendPresenterImp extends ArticleRecommendControl.Presenter {
 	@Override
 	public void requestArticleRecommend( MyRequestMap map ) {
-				mView.showLoading( "Loading...", 1 );
 		mRxManage.add( mModel.requestArticleRecommend( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< List< ArticleRecommendEntity > >() {
-
+				.subscribeWith( new RxSubscriber< List< ArticleRecommendEntity > >() {
 					@Override
-					public void accept( @NonNull List< ArticleRecommendEntity > articleRecommendEntityList ) throws Exception {
-						mView.stopLoading();
-						mView.setArticleRecommend( articleRecommendEntityList );
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 1 );
 
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
+					public void onComplete() {
 						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage()
-								.toString() );
+					}
+
+					@Override
+					public void onSuccess( List< ArticleRecommendEntity > articleRecommendEntities ) {
+						mView.setArticleRecommend( articleRecommendEntities );
+
+					}
+
+					@Override
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
 					}
 				} ) );
 	}

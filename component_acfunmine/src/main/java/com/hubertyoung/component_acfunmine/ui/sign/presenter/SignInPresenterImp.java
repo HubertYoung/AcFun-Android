@@ -4,6 +4,7 @@ package com.hubertyoung.component_acfunmine.ui.sign.presenter;
 import android.text.TextUtils;
 
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.net.response.BaseResponse;
@@ -63,9 +64,22 @@ public class SignInPresenterImp extends SignInControl.Presenter {
 		map.put( "username", userNameStr );
 		map.put( "cid", cidKey );
 		map.put( "password", passwordStr );
-		mRxManage.add( mModel.requestLoginInfo( map ).subscribe( response -> {
-					if ( response.errno == 0 ) {
-						//success
+		mRxManage.add( mModel.requestLoginInfo( map )//
+				.subscribeWith( new RxSubscriber< BaseResponse< Sign > >() {
+					@Override
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 0 );
+					}
+
+					@Override
+					public void onComplete() {
+						mView.stopLoading();
+					}
+
+					@Override
+					public void onSuccess( BaseResponse< Sign > response ) {
+						if ( response.errno == 0 ) {
+							//success
 //						{
 //							"token": "935b4692999e2fc654146ab35c21595e",
 //								"expiration": 1543015656,
@@ -87,38 +101,48 @@ public class SignInPresenterImp extends SignInControl.Presenter {
 //						},
 //							"s2s-code": "22015c03c407892f84112603e131217d"
 //						}
-						Sign sign = response.getData();
-						SigninHelper.getInstance().setUserSign( sign );
-						mView.showLoginSuccess(sign);
-					} else {
-						tryConnectCount++;
-						if ( response.errno == 20285 ) {
-							tryConnectCount = 3;
-							response.errordesc = mContext.getResources().getString( R.string.login_view_need_input_image_code_text );
+							Sign sign = response.getData();
+							SigninHelper.getInstance().setUserSign( sign );
+							mView.showLoginSuccess( sign );
+						} else {
+							tryConnectCount++;
+							if ( response.errno == 20285 ) {
+								tryConnectCount = 3;
+								response.errordesc = mContext.getResources().getString( R.string.login_view_need_input_image_code_text );
+							}
+							if ( tryConnectCount > 2 && !mView.getValidationLayoutShown() ) {
+								mView.setValidationLayoutShown();
+							}
+							if ( tryConnectCount > 2 ) {
+								requestVerificationCodeInfo();
+								mView.setValidationLayoutText( "" );
+							}
+							mView.showErrorTip( response.errordesc );
 						}
-						if ( tryConnectCount > 2 && !mView.getValidationLayoutShown() ) {
-							mView.setValidationLayoutShown();
-						}
-						if ( tryConnectCount > 2 ) {
-							requestVerificationCodeInfo();
-							mView.setValidationLayoutText( "" );
-						}
-						mView.showErrorTip( response.errordesc );
 					}
-				}, throwable -> mView.showErrorTip( throwable.getMessage() ),//
-				() -> mView.stopLoading(), //
-				disposable -> mView.showLoading( "Loading...", 0 ) ) );
+
+					@Override
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
+					}
+				} ) );
 	}
 
 	@Override
 	public void requestVerificationCodeInfo() {
 		mRxManage.add( mModel.requestVerificationCodeInfo()//
-				.subscribeOn( AndroidSchedulers.mainThread() ).subscribe( new Consumer< BaseResponse< VerificationCodeEntity > >() {
+				.subscribeOn( AndroidSchedulers.mainThread() )//
+				.subscribeWith( new RxSubscriber< BaseResponse< VerificationCodeEntity > >() {
 					@Override
-					public void accept( BaseResponse< VerificationCodeEntity > verificationCodeEntityBaseResponse ) throws Exception {
+					public void onSuccess( BaseResponse< VerificationCodeEntity > verificationCodeEntityBaseResponse ) {
 						VerificationCodeEntity codeInfo = verificationCodeEntityBaseResponse.getData();
 						captchaKey = codeInfo.key;
 						mView.setValidationImage( ImageUtil.customBase64ToBitmap( codeInfo.image ) );
+					}
+
+					@Override
+					public void onFailure( String msg ) {
+
 					}
 				} ) );
 	}

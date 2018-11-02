@@ -2,6 +2,7 @@ package com.hubertyoung.component_acfunmine.ui.mine.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.constant.AppSpConfig;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
@@ -11,9 +12,6 @@ import com.hubertyoung.common.utils.data.SPUtils;
 import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
 
 import java.util.Map;
-
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
 
 /**
  * <br>
@@ -26,7 +24,7 @@ import io.reactivex.functions.Consumer;
  * @desc:com.hubertyoung.component_acfunmine.mine.presenter
  */
 public class MinePresenterImp extends MineControl.Presenter {
-//	<int name="thirdChannel" value="0" />
+	//	<int name="thirdChannel" value="0" />
 //	<int name="userGroupLevel" value="0" />
 //	<int name="mobileCheck" value="1" />
 //    <string name="mobile">17600696672</string>
@@ -41,78 +39,92 @@ public class MinePresenterImp extends MineControl.Presenter {
 //    <string name="username">hubert520</string>
 	@Override
 	public void requestUserInfo( MyRequestMap map ) {
-		if ( !SigninHelper.getInstance().isUnLogin() || SigninHelper.getInstance().getUserUid() <= 0){
+		if ( !SigninHelper.getInstance().isUnLogin() || SigninHelper.getInstance().getUserUid() <= 0 ) {
 			mView.setLoginState( false );
 			return;
 		}
-		mView.showLoading( "Loading...", 0 );
 
 		mRxManage.add( mModel.requestUserInfo( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< User >() {
+				.subscribeWith( new RxSubscriber< User >() {
+					@Override
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 0 );
+					}
 
 					@Override
-					public void accept( @NonNull User user ) throws Exception {
-						if(user != null) {
-							SigninHelper.getInstance().setUserInfo(user);
-							SPUtils.setSharedStringData( AppSpConfig.USERGROUPLEVEL ,user.getUserGroupLevel() +"");
-							SPUtils.setSharedStringData( AppSpConfig.MOBILECHECK ,user.getMobileCheck() +"");
-						}
+					public void onComplete() {
 						mView.stopLoading();
+					}
+
+					@Override
+					public void onSuccess( User user ) {
+						if ( user != null ) {
+							SigninHelper.getInstance().setUserInfo( user );
+							SPUtils.setSharedStringData( AppSpConfig.USERGROUPLEVEL, user.getUserGroupLevel() + "" );
+							SPUtils.setSharedStringData( AppSpConfig.MOBILECHECK, user.getMobileCheck() + "" );
+						}
 						mView.setUserInfo( user );
 						mView.setUserGroupInfo( user.getUserGroupLevel() == Constants.USER_GROUP_LEVEL_FORMAL );
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
-						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage()
-								.toString() );
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
 					}
 				} ) );
 	}
 
 	@Override
 	public void requestCheckOfflineInfo( MyRequestMap map ) {
-		mView.showLoading( "Loading...", 1 );
 		mRxManage.add( mModel.requestCheckOfflineInfo( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< Boolean >() {
-
+				.subscribeWith( new RxSubscriber< Boolean >() {
 					@Override
-					public void accept( @NonNull Boolean b ) throws Exception {
-						mView.stopLoading();
-						mView.setCheckOfflineInfo( b );
-
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 1 );
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
+					public void onComplete() {
 						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage()
-								.toString() );
+					}
+
+					@Override
+					public void onSuccess( Boolean aBoolean ) {
+						mView.setCheckOfflineInfo( aBoolean );
+					}
+
+					@Override
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
 					}
 				} ) );
 	}
 
 	@Override
-	public void requestPlatformLogin( Map map ) {
-		mView.showLoading( "Loading...", 2 );
+	public void requestPlatformLogin( Map<String,String> map ) {
 		mRxManage.add( mModel.requestPlatformLogin( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< Sign >() {
-
+				.subscribeWith( new RxSubscriber< Sign >() {
 					@Override
-					public void accept( @NonNull Sign sign ) throws Exception {
-						mView.stopDialogLoading();
-						mView.setPlatformLoginInfo( sign );
-
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 2 );
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
-						mView.stopDialogLoading();
-						mView.showErrorTip( throwable.getMessage());
+					public void onComplete() {
+						mView.stopLoading();
+					}
+
+					@Override
+					public void onSuccess( Sign sign ) {
+						mView.setPlatformLoginInfo( sign );
+					}
+
+					@Override
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
 					}
 				} ) );
 	}

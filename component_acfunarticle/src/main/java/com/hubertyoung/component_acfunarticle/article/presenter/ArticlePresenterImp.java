@@ -2,11 +2,9 @@ package com.hubertyoung.component_acfunarticle.article.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.component_acfunarticle.entity.Channel;
+import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component_acfunarticle.article.control.ArticleControl;
-
-import androidx.annotation.NonNull;
-import io.reactivex.functions.Consumer;
+import com.hubertyoung.component_acfunarticle.entity.Channel;
 
 /**
  * <br>
@@ -19,22 +17,29 @@ import io.reactivex.functions.Consumer;
  * @desc:com.hubertyoung.component_acfunarticle.mine.presenter
  */
 public class ArticlePresenterImp extends ArticleControl.Presenter {
+	@Override
 	public void requestAllChannel( MyRequestMap map ) {
-		mView.showLoading( "Loading...", 0 );
 		mRxManage.add( mModel.requestAllChannel( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< Channel >() {
+				.subscribeWith( new RxSubscriber< Channel >() {
+					@Override
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 0 );
+					}
 
 					@Override
-					public void accept( @NonNull Channel channel ) throws Exception {
+					public void onComplete() {
 						mView.stopLoading();
-						mView.setAllChannelInfo(channel);
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
-						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage() );
+					public void onSuccess( Channel channel ) {
+						mView.setAllChannelInfo( channel );
+					}
+
+					@Override
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
 					}
 				} ) );
 	}

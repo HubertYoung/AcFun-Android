@@ -2,11 +2,9 @@ package com.hubertyoung.component_acfunarticle.article.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component_acfunarticle.article.control.ArticleGeneralSecondControl;
 import com.hubertyoung.component_acfunarticle.entity.RankAc;
-
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
 
 /**
  * <br>
@@ -20,22 +18,31 @@ import io.reactivex.functions.Consumer;
  */
 public class ArticleGeneralSecondPresenterImp extends ArticleGeneralSecondControl.Presenter {
 	public void requestArticleGeneralSecond( MyRequestMap map ) {
-		mView.showLoading( "Loading...", 1 );
 		mRxManage.add( mModel.requestArticleGeneralSecond( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< RankAc >() {
+				.subscribeWith( new RxSubscriber< RankAc >() {
+					@Override
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 1 );
+
+					}
 
 					@Override
-					public void accept( @NonNull RankAc rankAc ) throws Exception {
+					public void onComplete() {
 						mView.stopLoading();
+
+					}
+
+					@Override
+					public void onSuccess( RankAc rankAc ) {
 						mView.setArticleGeneralSecondInfo( rankAc );
 
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
-						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage().toString() );
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
+
 					}
 				} ) );
 	}

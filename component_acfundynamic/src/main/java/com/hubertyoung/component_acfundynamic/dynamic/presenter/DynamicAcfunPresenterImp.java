@@ -2,11 +2,9 @@ package com.hubertyoung.component_acfundynamic.dynamic.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicAcfunControl;
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
-
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
 
 /**
  * <br>
@@ -30,22 +28,29 @@ public class DynamicAcfunPresenterImp extends DynamicAcfunControl.Presenter {
 //
 //					}
 //				} ));
-		mView.showLoading( "Loading...", 1 );
 		mRxManage.add( mModel.requestRecommendUp( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< RecommendBangumiEntity >() {
+				.subscribeWith( new RxSubscriber< RecommendBangumiEntity >() {
+					@Override
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 1 );
+					}
 
 					@Override
-					public void accept( @NonNull RecommendBangumiEntity recommendBangumiEntity ) throws Exception {
+					public void onComplete() {
 						mView.stopLoading();
+					}
+
+					@Override
+					public void onSuccess( RecommendBangumiEntity recommendBangumiEntity ) {
 						mView.setRecommendUpInfo( recommendBangumiEntity.list );
 
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
-						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage() );
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
+
 					}
 				} ) );
 	}

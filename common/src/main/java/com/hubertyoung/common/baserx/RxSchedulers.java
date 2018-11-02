@@ -1,5 +1,7 @@
 package com.hubertyoung.common.baserx;
 
+import android.util.Log;
+
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscription;
 
@@ -20,7 +22,9 @@ public class RxSchedulers {
 				return upstream.subscribeOn( Schedulers.io() ).doOnSubscribe( new Consumer< Subscription >() {
 					@Override
 					public void accept( Subscription subscription ) throws Exception {
-
+						if(subscription != null) {
+							Log.e( "TAG", subscription.toString() );
+						}
 					}
 				} ).observeOn( AndroidSchedulers.mainThread() );
 			}

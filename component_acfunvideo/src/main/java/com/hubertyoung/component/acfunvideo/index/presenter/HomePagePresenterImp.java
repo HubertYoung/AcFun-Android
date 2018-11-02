@@ -2,13 +2,11 @@ package com.hubertyoung.component.acfunvideo.index.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.component.acfunvideo.index.control.HomePageControl;
 
 import java.util.HashMap;
-
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
 
 /**
  * <br>
@@ -23,19 +21,28 @@ import io.reactivex.functions.Consumer;
 public class HomePagePresenterImp extends HomePageControl.Presenter {
 	@Override
 	public void requestDomainAndroidCfg( MyRequestMap map ) {
-		mView.showLoading( "Loading...", 0 );
 		mRxManage.add( mModel.requestDomainAndroidCfg( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< HashMap< String, String > >() {
+				.subscribeWith( new RxSubscriber< HashMap< String, String > >() {
 					@Override
-					public void accept( HashMap< String, String > stringStringHashMap ) throws Exception {
-						CommonLog.logd( stringStringHashMap.toString() );
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 0 );
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
+					public void onComplete() {
 						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage() );
+					}
+
+					@Override
+					public void onSuccess( HashMap< String, String > stringStringHashMap ) {
+						CommonLog.logd( stringStringHashMap.toString() );
+
+					}
+
+					@Override
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
 					}
 				} ) );
 	}

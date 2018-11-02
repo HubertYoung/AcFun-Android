@@ -5,7 +5,6 @@ import com.hubertyoung.common.net.config.NetStatus;
 import com.hubertyoung.common.net.response.BaseResponse;
 import com.hubertyoung.common.utils.log.CommonLog;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -23,56 +22,56 @@ import retrofit2.Converter;
 
 public class ExGsonResponseBodyConverter< T > implements Converter< ResponseBody, T > {
 
-    private final Gson gson;
-    private final Type type;
+	private final Gson gson;
+	private final Type type;
 
-    ExGsonResponseBodyConverter( Gson gson, Type type ) {
-        this.gson = gson;
-        this.type = type;
+	ExGsonResponseBodyConverter( Gson gson, Type type ) {
+		this.gson = gson;
+		this.type = type;
 
-    }
+	}
 
-    /**
-     * 进行解析预处理操作
-     *
-     * @param responseBody
-     * @return
-     * @throws IOException
-     */
-    @Override
-    public T convert( ResponseBody responseBody ) throws IOException {
-        String value = responseBody.string();
+	/**
+	 * 进行解析预处理操作
+	 *
+	 * @param responseBody
+	 * @return
+	 * @throws IOException
+	 */
+	@Override
+	public T convert( ResponseBody responseBody ) throws IOException {
+		String value = responseBody.string();
 
-        BaseResponse baseRespose = new BaseResponse();
+		BaseResponse baseRespose = new BaseResponse();
 //		Type objectType = type( baseRespose.getClass(), type );
-		int status = NetStatus.Server_Fail.getIndex();
 		try {
 			JSONObject response = new JSONObject( value );
-			if ( response.has("errorid")){
+			int status = NetStatus.Server_Fail.getIndex();
+			if ( response.has( "errorid" ) ) {
 				status = response.getInt( "errorid" );
 			}
-            CommonLog.loge("status：" + status);
-            if ( ( status == NetStatus.Success.getIndex() ) || ( status == NetStatus.Server_Success.getIndex() ) ) {
+			CommonLog.loge( "status：" + status );
+			if ( ( status == NetStatus.Success.getIndex() ) || ( status == NetStatus.Server_Success.getIndex() ) ) {
 				return gson.fromJson( value, type );
-            }else{
+			} else if ( type instanceof BaseResponse ){
 				baseRespose.setStatus( status );
 				if ( response.has( "code" ) ) {
 					baseRespose.setStatus( response.getInt( "code" ) );
 				}
-				if(response.has( "vdata" )) {
+				if ( response.has( "vdata" ) ) {
 					baseRespose.setData( response.getString( "vdata" ) );
 				}
 				if ( response.has( "message" ) ) {
 					baseRespose.setErrordesc( response.getString( "message" ) );
 				}
 				return ( T ) gson.fromJson( value, baseRespose.getClass() );
+			}else{
+				return gson.fromJson( value, type );
 			}
-        } catch ( JSONException e ) {
-			baseRespose.setStatus( status );
-			baseRespose.setErrordesc( NetStatus.Server_Fail.getName() );
-			return ( T ) gson.fromJson( baseRespose.toString(), baseRespose.getClass() );
-        }
-    }
+		} catch ( Exception e ) {
+		}
+		return gson.fromJson( value, type );
+	}
 
 //	public ParameterizedType type( final Class raw, final Type... args ) {
 //		return new ParameterizedType() {

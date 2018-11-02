@@ -2,15 +2,13 @@ package com.hubertyoung.component.acfunvideo.index.presenter;
 
 
 import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.Utils;
+import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
 
 import java.util.List;
-
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
 
 /**
  * <br>
@@ -25,13 +23,21 @@ import io.reactivex.functions.Consumer;
 public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 	@Override
 	public void requestRecommend( MyRequestMap map ) {
-		mView.showLoading( "Loading...", 0 );
 		mRxManage.add( mModel.requestRecommend( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< List< Regions > >() {
+				.subscribeWith( new RxSubscriber< List< Regions > >() {
 					@Override
-					public void accept( @NonNull List< Regions > regionsList ) throws Exception {
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 0 );
+					}
+
+					@Override
+					public void onComplete() {
 						mView.stopLoading();
+					}
+
+					@Override
+					public void onSuccess( List< Regions > regionsList ) {
 						mView.refreshViewInfo( 0 );
 						for (Regions regions : regionsList) {
 							switch ( regions.schema ) {
@@ -64,32 +70,37 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 						}
 						mView.refreshViewInfo( 1 );
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
-						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage().toString() );
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
+
 					}
 				} ) );
 	}
 
 	public void requestNewRecommend( String channelId, MyRequestMap map ) {
-		mView.showLoading( "Loading...", 1 );
 		mRxManage.add( mModel.requestNewRecommend( channelId, map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribe( new Consumer< List< RegionBodyContent > >() {
-
+				.subscribeWith( new RxSubscriber< List< RegionBodyContent > >() {
 					@Override
-					public void accept( @NonNull List< RegionBodyContent > regionsList ) throws Exception {
-						mView.stopLoading();
-						mView.addNewRecommendInfo( regionsList );
-
+					protected void showLoading() {
+						mView.showLoading( "Loading...", 1 );
 					}
-				}, new Consumer< Throwable >() {
+
 					@Override
-					public void accept( @NonNull Throwable throwable ) throws Exception {
+					public void onComplete() {
 						mView.stopLoading();
-						mView.showErrorTip( throwable.getMessage().toString() );
+					}
+
+					@Override
+					public void onSuccess( List< RegionBodyContent > regionBodyContents ) {
+						mView.addNewRecommendInfo( regionBodyContents );
+					}
+
+					@Override
+					public void onFailure( String msg ) {
+						mView.showErrorTip( msg );
 					}
 				} ) );
 	}
