@@ -11,7 +11,7 @@ import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.net.response.BaseResponse;
 import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -26,9 +26,9 @@ import io.reactivex.Observable;
 public interface SignInControl {
 
 	interface Model extends BaseModel {
-		Observable< BaseResponse< Sign > > requestLoginInfo( MyRequestMap map );
+		Flowable< BaseResponse< Sign > > requestLoginInfo( MyRequestMap map );
 
-		Observable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo();
+		Flowable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo();
 	}
 
 	interface View extends BaseView {

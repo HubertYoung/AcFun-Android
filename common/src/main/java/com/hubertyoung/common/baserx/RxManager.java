@@ -8,7 +8,7 @@ import com.hubertyoung.common.baserx.event.inner.EventBean;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -19,7 +19,7 @@ import io.reactivex.disposables.Disposable;
 public class RxManager {
 	public IBus mRxBus = BusManager.getInstance();
 	//管理rxbus订阅
-	private Map< String, Observable< ? > > mObservables = new HashMap<>();
+	private Map< String, Flowable< ? > > mObservables = new HashMap<>();
 	/*管理Observables 和 Subscribers订阅*/
 	private CompositeDisposable composite = new CompositeDisposable();
 
@@ -30,7 +30,7 @@ public class RxManager {
 //	 * @param action1
 //	 */
 //	public < T > void on( String eventName, Consumer< T > action1 ) {
-//		Observable< T > mObservable = mRxBus.register( eventName );
+//		Flowable< T > mObservable = mRxBus.register( eventName );
 //		mObservables.put( eventName, mObservable );
 //		/*订阅管理*/
 //		composite.add( mObservable.observeOn( AndroidSchedulers.mainThread() )
@@ -57,7 +57,7 @@ public class RxManager {
 	 */
 	public void clear() {
 		composite.clear();// 取消所有订阅
-		for (Map.Entry< String, Observable< ? > > entry : mObservables.entrySet()) {
+		for (Map.Entry< String, Flowable< ? > > entry : mObservables.entrySet()) {
 			mRxBus.unregister( entry.getKey());// 移除rxbus观察
 		}
 	}

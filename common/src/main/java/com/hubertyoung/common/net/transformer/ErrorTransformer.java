@@ -5,9 +5,10 @@ import com.hubertyoung.common.net.exception.ExceptionHandle;
 import com.hubertyoung.common.net.exception.ServerException;
 import com.hubertyoung.common.net.response.BaseResponse;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.ObservableTransformer;
+import org.reactivestreams.Publisher;
+
+import io.reactivex.Flowable;
+import io.reactivex.FlowableTransformer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 
@@ -17,7 +18,7 @@ import io.reactivex.functions.Function;
  * 作用：异常处理类
  */
 
-public class ErrorTransformer< T > implements ObservableTransformer< BaseResponse< T >, T > {
+public class ErrorTransformer< T > implements FlowableTransformer< BaseResponse< T >, T > {
 
 	public static < T > ErrorTransformer< T > create() {
 		return new ErrorTransformer<>();
@@ -43,7 +44,7 @@ public class ErrorTransformer< T > implements ObservableTransformer< BaseRespons
 	}
 
 	@Override
-	public ObservableSource< T > apply( @NonNull Observable< BaseResponse< T > > upstream ) {
+	public Publisher< T > apply( Flowable< BaseResponse< T > > upstream ) {
 		return upstream.map( new Function< BaseResponse< T >, T >() {
 			@Override
 			public T apply( @NonNull BaseResponse< T > tBaseRespose ) throws Exception {
@@ -61,14 +62,14 @@ public class ErrorTransformer< T > implements ObservableTransformer< BaseRespons
 				return tBaseRespose.getData();
 			}
 		} )
-					   .onErrorResumeNext( new Function< Throwable, ObservableSource< ? extends T > >() {
-						   @Override
-						   public ObservableSource< ? extends T > apply( @NonNull Throwable throwable ) throws Exception {
-							   throwable.printStackTrace();
-							   //如果是测试环境 访问错误证明服务没开 强制改成正式环境
+				.onErrorResumeNext( new Function< Throwable, Publisher< ? extends T > >() {
+					@Override
+					public Publisher< ? extends T > apply( Throwable throwable ) throws Exception {
+						throwable.printStackTrace();
+						//如果是测试环境 访问错误证明服务没开 强制改成正式环境
 //							   if ( AppUtils.isDebuggable() ) SPUtils.setSharedIntData( "switchUrlIndex", 0 );
-							   return Observable.error( ExceptionHandle.handleException( throwable ) );
-						   }
-					   } );
+						return Flowable.error( ExceptionHandle.handleException( throwable ) );
+					}
+				} );
 	}
 }

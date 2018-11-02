@@ -4,9 +4,10 @@ import com.hubertyoung.common.utils.cache.ACache;
 
 import java.io.Serializable;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -16,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 //################################使用例子#############################
 /*
-Observable<LoginData> fromNetwork = Api.getDefault()
+Flowable<LoginData> fromNetwork = Api.getDefault()
         .login(phone, password)
         .compose(RxHelper.handleResult());
 
@@ -44,10 +45,10 @@ public class RxCache {
 	 * @param <T>
 	 * @return
 	 */
-	public static < T > Observable< T > load( final String cacheKey, final int expireTime, Observable< T > fromNetwork, boolean forceRefresh ) {
-		Observable< T > fromCache = Observable.create( new ObservableOnSubscribe< T >() {
+	public static < T > Flowable< T > load( final String cacheKey, final int expireTime, Flowable< T > fromNetwork, boolean forceRefresh ) {
+		Flowable< T > fromCache = Flowable.create( new FlowableOnSubscribe< T >() {
 			@Override
-			public void subscribe( ObservableEmitter< T > emitter ) throws Exception {
+			public void subscribe( FlowableEmitter< T > emitter ) throws Exception {
 				//获取缓存
 				T cache = ( T ) ACache.get().getAsObject( cacheKey );
 				if ( cache != null ) {
@@ -56,7 +57,7 @@ public class RxCache {
 					emitter.onComplete();
 				}
 			}
-		} ).subscribeOn( Schedulers.io() ).observeOn( AndroidSchedulers.mainThread() );
+		}, BackpressureStrategy.BUFFER ).subscribeOn( Schedulers.io() ).observeOn( AndroidSchedulers.mainThread() );
 		/**
 		 * 这里的fromNetwork 不需要指定Schedule,在handleRequest中已经变换了
 		 */
@@ -73,7 +74,7 @@ public class RxCache {
 			return fromNetwork;
 		} else {
 			//优先返回缓存
-			return Observable.concat( fromCache, fromNetwork ).firstElement().toObservable();
+			return Flowable.concat( fromCache, fromNetwork ).firstElement().toFlowable();
 		}
 	}
 }

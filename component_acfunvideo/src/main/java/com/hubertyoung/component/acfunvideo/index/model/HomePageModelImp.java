@@ -9,7 +9,7 @@ import com.hubertyoung.component.acfunvideo.index.control.HomePageControl;
 
 import java.util.HashMap;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 
 /**
@@ -24,7 +24,7 @@ import io.reactivex.Observable;
  */
 public class HomePageModelImp implements HomePageControl.Model {
 	@Override
-	public Observable< HashMap< String, String > > requestDomainAndroidCfg( MyRequestMap map ) {
+	public Flowable< HashMap< String, String > > requestDomainAndroidCfg( MyRequestMap map ) {
 		return Api.getDefault( HostType.APP_HOST_SLL )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )

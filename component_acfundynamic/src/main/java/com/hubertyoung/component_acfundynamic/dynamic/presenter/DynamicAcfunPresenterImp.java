@@ -21,6 +21,15 @@ import io.reactivex.functions.Consumer;
 public class DynamicAcfunPresenterImp extends DynamicAcfunControl.Presenter {
 	@Override
 	public void requestRecommendUp( MyRequestMap map ) {
+//		mView.showLoading( "Loading...", 1 );
+//		mRxManage.add( mModel.requestRecommendUp( map )
+////				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
+//				.subscribe( new Consumer< RecommendBangumiEntity >() {
+//					@Override
+//					public void accept( RecommendBangumiEntity recommendBangumiEntity ) throws Exception {
+//
+//					}
+//				} ));
 		mView.showLoading( "Loading...", 1 );
 		mRxManage.add( mModel.requestRecommendUp( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )

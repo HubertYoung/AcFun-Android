@@ -11,7 +11,7 @@ import com.hubertyoung.component_acfunarticle.article.control.ArticleGeneralSeco
 import com.hubertyoung.component_acfunarticle.entity.RankAc;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -25,7 +25,7 @@ import io.reactivex.Observable;
  */
 public class ArticleGeneralSecondModelImp implements ArticleGeneralSecondControl.Model {
 	@Override
-	public Observable< RankAc > requestArticleGeneralSecond( MyRequestMap map ) {
+	public Flowable< RankAc > requestArticleGeneralSecond( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )

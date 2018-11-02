@@ -9,7 +9,7 @@ import com.hubertyoung.component_acfunarticle.entity.ArticleRecommendEntity;
 
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -24,7 +24,7 @@ import io.reactivex.Observable;
 public interface ArticleRecommendControl {
 
 	interface Model extends BaseModel {
-		Observable< List< ArticleRecommendEntity > > requestArticleRecommend( MyRequestMap map );
+		Flowable< List< ArticleRecommendEntity > > requestArticleRecommend( MyRequestMap map );
 	}
 
 	interface View extends BaseView {

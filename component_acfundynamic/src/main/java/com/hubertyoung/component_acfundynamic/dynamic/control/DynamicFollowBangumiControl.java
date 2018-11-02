@@ -10,7 +10,7 @@ import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -25,7 +25,7 @@ import io.reactivex.Observable;
 public interface DynamicFollowBangumiControl {
 
 	interface Model extends BaseModel {
-		Observable< RecommendBangumiEntity > requestRecommendBangumi( MyRequestMap map );
+		Flowable< RecommendBangumiEntity > requestRecommendBangumi( MyRequestMap map );
 	}
 
 	interface View extends BaseView {

@@ -6,6 +6,7 @@ import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 
 import java.util.Map;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
@@ -22,7 +23,7 @@ import retrofit2.http.QueryMap;
  */
 public interface ApiDynamicService {
 	@GET( "v3/regions/recommendBangumi" )
-	Observable< BaseResponse< RecommendBangumiEntity > > requestRecommendBangumi( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< RecommendBangumiEntity > > requestRecommendBangumi( @QueryMap Map< String, String > map );
 	@GET( "v3/regions/recommendUp" )
-	Observable< BaseResponse< RecommendBangumiEntity > > requestRecommendUp( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< RecommendBangumiEntity > > requestRecommendUp( @QueryMap Map< String, String > map );
 }

@@ -9,7 +9,7 @@ import com.hubertyoung.component_acfunarticle.entity.RankAc;
 import java.util.List;
 import java.util.Map;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 
@@ -26,11 +26,11 @@ import retrofit2.http.QueryMap;
 public interface ApiArticleService {
 
 	@GET( "v3/channels/allChannels" )
-	Observable< BaseResponse< Channel > > requestAllChannel( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< Channel > > requestAllChannel( @QueryMap Map< String, String > map );
 
 	@GET( "v3/regions" )
-	Observable< BaseResponse< List< ArticleRecommendEntity > > > requestArticleRecommend( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< List< ArticleRecommendEntity > > > requestArticleRecommend( @QueryMap Map< String, String > map );
 
 	@GET( "v3/regions/search" )
-	Observable< BaseResponse< RankAc > > requestArticleGeneralSecond( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< RankAc > > requestArticleGeneralSecond( @QueryMap Map< String, String > map );
 }

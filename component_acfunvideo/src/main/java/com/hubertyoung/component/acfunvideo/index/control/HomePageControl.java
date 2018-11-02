@@ -8,7 +8,7 @@ import com.hubertyoung.common.basebean.MyRequestMap;
 
 import java.util.HashMap;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -23,7 +23,7 @@ import io.reactivex.Observable;
 public interface HomePageControl {
 
 	interface Model extends BaseModel {
-		Observable< HashMap< String, String > > requestDomainAndroidCfg( MyRequestMap map );
+		Flowable< HashMap< String, String > > requestDomainAndroidCfg( MyRequestMap map );
 	}
 
 	interface View extends BaseView {

@@ -1,14 +1,14 @@
 package com.hubertyoung.component.acfunvideo.index.model;
 
-import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
-import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
-import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
 import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
+import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
+import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
+import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 
 /**
@@ -23,7 +23,7 @@ import io.reactivex.Observable;
  */
 public class ChannelModelImp implements ChannelControl.Model {
 	@Override
-	public Observable< ChannelOperate > requestChannel( MyRequestMap map ) {
+	public Flowable< ChannelOperate > requestChannel( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )

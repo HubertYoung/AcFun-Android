@@ -13,7 +13,7 @@ import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
 import com.hubertyoung.component_acfunmine.ui.sign.control.SignInControl;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -27,7 +27,7 @@ import io.reactivex.Observable;
  */
 public class SignInModelImp implements SignInControl.Model {
 	@Override
-	public Observable< BaseResponse< Sign > > requestLoginInfo( MyRequestMap map ) {
+	public Flowable< BaseResponse< Sign > > requestLoginInfo( MyRequestMap map ) {
 		return Api.getDefault( HostType.APP_HOST_ACCOUNT )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
@@ -37,7 +37,7 @@ public class SignInModelImp implements SignInControl.Model {
 	}
 
 	@Override
-	public Observable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo() {
+	public Flowable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo() {
 		return Api.getDefault( HostType.APP_HOST_ACCOUNT )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )

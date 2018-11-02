@@ -22,7 +22,7 @@ import io.reactivex.Observable;
 public interface IndexRootControl {
 
 	interface Model extends BaseModel {
-		Observable< HomeIndexEntity > requestHomeIndex( MyRequestMap map );
+		Flowable< HomeIndexEntity > requestHomeIndex( MyRequestMap map );
 	}
 
 	interface View extends BaseView {

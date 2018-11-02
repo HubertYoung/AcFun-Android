@@ -1,13 +1,13 @@
 package com.hubertyoung.component.acfunvideo.index.control;
 
 
-import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -22,7 +22,7 @@ import io.reactivex.Observable;
 public interface ChannelControl {
 
 	interface Model extends BaseModel {
-		Observable< ChannelOperate > requestChannel( MyRequestMap map );
+		Flowable< ChannelOperate > requestChannel( MyRequestMap map );
 	}
 
 	interface View extends BaseView {

@@ -30,7 +30,7 @@ public interface ApiHomeService {
 	 * @return
 	 */
 	@GET( "home/index" )
-	Observable< BaseResponse< HomeIndexEntity > > requestHomeIndex( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< HomeIndexEntity > > requestHomeIndex( @QueryMap Map< String, String > map );
 
 	/**
 	 * 商品详情
@@ -38,12 +38,12 @@ public interface ApiHomeService {
 	 * @return
 	 */
 	@GET( "goods/category" )
-	Observable< BaseResponse< BrandDetailEntity > > requestBrandDetail( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< BrandDetailEntity > > requestBrandDetail( @QueryMap Map< String, String > map );
 	/**
 	 * 商品列表
 	 * @param map
 	 * @return
 	 */
 	@GET("goods/list" )
-	Observable< BaseResponse< BrandDetailBodyEntity > > requestBrandDetailList( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< BrandDetailBodyEntity > > requestBrandDetailList( @QueryMap Map< String, String > map );
 }

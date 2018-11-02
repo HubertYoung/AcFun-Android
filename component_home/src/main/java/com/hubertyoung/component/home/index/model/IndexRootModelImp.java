@@ -23,7 +23,7 @@ import io.reactivex.Observable;
  */
 public class IndexRootModelImp implements IndexRootControl.Model {
 	@Override
-	public Observable< HomeIndexEntity > requestHomeIndex( MyRequestMap map ) {
+	public Flowable< HomeIndexEntity > requestHomeIndex( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )

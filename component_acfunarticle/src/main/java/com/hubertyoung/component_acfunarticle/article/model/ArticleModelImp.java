@@ -7,11 +7,11 @@ import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component_acfunarticle.BuildConfig;
 import com.hubertyoung.component_acfunarticle.api.ApiArticleService;
-import com.hubertyoung.component_acfunarticle.entity.Channel;
 import com.hubertyoung.component_acfunarticle.article.control.ArticleControl;
+import com.hubertyoung.component_acfunarticle.entity.Channel;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -25,7 +25,7 @@ import io.reactivex.Observable;
  */
 public class ArticleModelImp implements ArticleControl.Model {
 	@Override
-	public Observable< Channel > requestAllChannel( MyRequestMap map ) {
+	public Flowable< Channel > requestAllChannel( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )
@@ -34,7 +34,7 @@ public class ArticleModelImp implements ArticleControl.Model {
 				.compose( new DefaultTransformer() );
 	}
 //	@Override
-//	public Observable< User > requestUserInfo( MyRequestMap map ) {
+//	public Flowable< User > requestUserInfo( MyRequestMap map ) {
 //		return Api.getDefault( HostType.MY_RESULT )
 //				.getRetrofitClient()
 //				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )

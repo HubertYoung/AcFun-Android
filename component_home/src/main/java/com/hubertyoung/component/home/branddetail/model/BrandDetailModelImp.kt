@@ -19,7 +19,7 @@ import io.reactivex.Observable
  * @desc:com.gent.youxidandan.ddsocial.ui.mytest.model
  */
 class BrandDetailModelImp : BrandDetailControl.Model {
-	override fun requestBrandDetail(map: MyRequestMap): Observable<BrandDetailEntity> {
+	override fun requestBrandDetail(map: MyRequestMap): Flowable<BrandDetailEntity> {
 			return Api.getDefault(HostType.MY_RESULT)
 					.retrofitClient.builder(ApiHomeService::class.java)
 					.requestBrandDetail(map.map)

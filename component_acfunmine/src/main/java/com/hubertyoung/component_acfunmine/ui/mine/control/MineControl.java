@@ -10,7 +10,7 @@ import com.hubertyoung.common.entity.User;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -25,11 +25,11 @@ import io.reactivex.Observable;
 public interface MineControl {
 
 	interface Model extends BaseModel {
-		Observable< Boolean > requestCheckOfflineInfo( MyRequestMap map );
+		Flowable< Boolean > requestCheckOfflineInfo( MyRequestMap map );
 
-		Observable< User > requestUserInfo( MyRequestMap map );
+		Flowable< User > requestUserInfo( MyRequestMap map );
 
-		Observable< Sign > requestPlatformLogin( Map< String, String > map );
+		Flowable< Sign > requestPlatformLogin( Map< String, String > map );
 	}
 
 	interface View extends BaseView {

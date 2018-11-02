@@ -1,16 +1,16 @@
 package com.hubertyoung.component.acfunvideo.index.control;
 
 
-import com.hubertyoung.common.entity.RegionBodyContent;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
 import com.hubertyoung.common.basebean.MyRequestMap;
+import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.component.acfunvideo.entity.Regions;
 
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -25,9 +25,9 @@ import io.reactivex.Observable;
 public interface NewRecommendControl {
 
 	interface Model extends BaseModel {
-		Observable< List< Regions > > requestRecommend( MyRequestMap map );
+		Flowable< List< Regions > > requestRecommend( MyRequestMap map );
 
-		Observable< List< RegionBodyContent > > requestNewRecommend( String channelId, MyRequestMap map );
+		Flowable< List< RegionBodyContent > > requestNewRecommend( String channelId, MyRequestMap map );
 	}
 
 	interface View extends BaseView {

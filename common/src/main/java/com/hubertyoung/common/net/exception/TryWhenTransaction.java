@@ -18,7 +18,7 @@ package com.hubertyoung.common.net.exception;//package com.hubertyoung.common.ne
 // * @since:V$VERSION
 // * @desc:com.hubertyoung.common.net.exception
 // */
-//public class TryWhenTransaction implements Function< Observable< Object >, ObservableSource< ? > > {
+//public class TryWhenTransaction implements Function< Flowable< Object >, ObservableSource< ? > > {
 //	/***
 //	 * 重试间隔时间
 //	 */
@@ -30,7 +30,7 @@ package com.hubertyoung.common.net.exception;//package com.hubertyoung.common.ne
 //	}
 //
 //	@Override
-//	public ObservableSource< ? > apply( Observable< Object > objectObservable ) throws Exception {
+//	public ObservableSource< ? > apply( Flowable< Object > objectObservable ) throws Exception {
 //		return objectObservable.flatMap( new Function< Object, ObservableSource<?> >() {
 //			@Override
 //			public ObservableSource< ? > apply( Object o ) throws Exception {

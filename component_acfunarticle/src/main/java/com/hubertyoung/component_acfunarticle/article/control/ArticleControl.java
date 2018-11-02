@@ -7,7 +7,7 @@ import com.hubertyoung.common.base.BaseView;
 import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -22,7 +22,7 @@ import io.reactivex.Observable;
 public interface ArticleControl {
 
 	interface Model extends BaseModel {
-		Observable< Channel > requestAllChannel( MyRequestMap map );
+		Flowable< Channel > requestAllChannel( MyRequestMap map );
 	}
 
 	interface View extends BaseView {

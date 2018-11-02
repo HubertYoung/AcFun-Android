@@ -1,10 +1,11 @@
 package com.hubertyoung.common.baserx;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.ObservableTransformer;
+import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscription;
+
+import io.reactivex.Flowable;
+import io.reactivex.FlowableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -12,18 +13,16 @@ import io.reactivex.schedulers.Schedulers;
  * RxJava调度管理
  */
 public class RxSchedulers {
-	public static < T > ObservableTransformer< T, T > io_main() {
-		return new ObservableTransformer< T, T >() {
+	public static < T > FlowableTransformer< T, T > io_main() {
+		return new FlowableTransformer< T, T >() {
 			@Override
-			public ObservableSource< T > apply( Observable< T > upstream ) {
-				return upstream.subscribeOn( Schedulers.io() )
-							   .doOnSubscribe( new Consumer< Disposable >() {
-								   @Override
-								   public void accept( Disposable disposable ) throws Exception {
+			public Publisher< T > apply( Flowable< T > upstream ) {
+				return upstream.subscribeOn( Schedulers.io() ).doOnSubscribe( new Consumer< Subscription >() {
+					@Override
+					public void accept( Subscription subscription ) throws Exception {
 
-								   }
-							   } )
-						.observeOn( AndroidSchedulers.mainThread() );
+					}
+				} ).observeOn( AndroidSchedulers.mainThread() );
 			}
 		};
 	}

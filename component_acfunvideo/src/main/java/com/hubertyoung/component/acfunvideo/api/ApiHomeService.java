@@ -1,16 +1,16 @@
 package com.hubertyoung.component.acfunvideo.api;
 
 
-import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.common.entity.RegionBodyContent;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.common.net.response.BaseResponse;
+import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
+import com.hubertyoung.component.acfunvideo.entity.Regions;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
@@ -28,7 +28,7 @@ import retrofit2.http.QueryMap;
 public interface ApiHomeService {
 
 	@GET( "/mobile/domain_android.cfg" )
-	Observable< HashMap< String, String > > requestDomainAndroidCfg( @QueryMap Map< String, String > map );
+	Flowable< HashMap< String, String > > requestDomainAndroidCfg( @QueryMap Map< String, String > map );
 
 	/**
 	 * 首页index
@@ -37,7 +37,7 @@ public interface ApiHomeService {
 	 * @return
 	 */
 	@GET( "v3/regions" )
-	Observable< BaseResponse< List< Regions > > > requestRecommend( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< List< Regions > > > requestRecommend( @QueryMap Map< String, String > map );
 
 	/**
 	 * 首页加载更多
@@ -47,7 +47,7 @@ public interface ApiHomeService {
 	 * @return
 	 */
 	@GET( "v3/regions/new/{channelId}" )
-	Observable< BaseResponse< List< RegionBodyContent > > > requestNewRecommend( @Path( "channelId" ) String channelId, @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< List< RegionBodyContent > > > requestNewRecommend( @Path( "channelId" ) String channelId, @QueryMap Map< String, String > map );
 
 	/**
 	 * 首页分区页面数据
@@ -56,7 +56,7 @@ public interface ApiHomeService {
 	 * @return
 	 */
 	@GET( "v3/channels/channelOperate" )
-	Observable< BaseResponse< ChannelOperate > > requestChannelOperate( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< ChannelOperate > > requestChannelOperate( @QueryMap Map< String, String > map );
 
 //	/**
 //	 * 商品详情
@@ -65,7 +65,7 @@ public interface ApiHomeService {
 //	 * @return
 //	 */
 //	@GET( "goods/category" )
-//	Observable< BaseResponse< BrandDetailEntity > > requestBrandDetail( @QueryMap Map< String, String > map );
+//	Flowable< BaseResponse< BrandDetailEntity > > requestBrandDetail( @QueryMap Map< String, String > map );
 //
 //	/**
 //	 * 商品列表
@@ -74,5 +74,5 @@ public interface ApiHomeService {
 //	 * @return
 //	 */
 //	@GET( "goods/list" )
-//	Observable< BaseResponse< BrandDetailBodyEntity > > requestBrandDetailList( @QueryMap Map< String, String > map );
+//	Flowable< BaseResponse< BrandDetailBodyEntity > > requestBrandDetailList( @QueryMap Map< String, String > map );
 }

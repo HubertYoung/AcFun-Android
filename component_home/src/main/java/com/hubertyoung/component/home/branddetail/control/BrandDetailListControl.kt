@@ -19,7 +19,7 @@ import io.reactivex.Observable
 interface BrandDetailListControl {
 
 	interface Model : BaseModel {
-		abstract fun requestBrandDetailList(map: MyRequestMap): Observable<BrandDetailBodyEntity>
+		abstract fun requestBrandDetailList(map: MyRequestMap): Flowable<BrandDetailBodyEntity>
 	}
 
 	interface View : BaseView {

@@ -14,7 +14,7 @@ import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicControl;
  */
 public class DynamicModelImp implements DynamicControl.Model {
 //	@Override
-//	public Observable< User > requestUserInfo( MyRequestMap map ) {
+//	public Flowable< User > requestUserInfo( MyRequestMap map ) {
 //		return Api.getDefault( HostType.MY_RESULT )
 //				.getRetrofitClient()
 //				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )

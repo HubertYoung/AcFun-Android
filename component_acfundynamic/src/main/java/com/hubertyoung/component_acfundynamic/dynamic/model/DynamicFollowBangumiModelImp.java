@@ -11,7 +11,7 @@ import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicFollowBangu
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 /**
  * <br>
@@ -25,7 +25,7 @@ import io.reactivex.Observable;
  */
 public class DynamicFollowBangumiModelImp implements DynamicFollowBangumiControl.Model {
 	@Override
-	public Observable< RecommendBangumiEntity > requestRecommendBangumi( MyRequestMap map ) {
+	public Flowable< RecommendBangumiEntity > requestRecommendBangumi( MyRequestMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )
