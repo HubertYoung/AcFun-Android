@@ -153,7 +153,7 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 		startActivityForResult( cls, null, requestCode );
 	}
 
-	protected <T extends View> T findViewById(@IdRes int id) {
+	protected <V extends View> V findViewById(@IdRes int id) {
 		return rootView.findViewById(id);
 	}
 	/**
