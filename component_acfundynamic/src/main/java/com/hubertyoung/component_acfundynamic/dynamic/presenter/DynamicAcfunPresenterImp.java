@@ -1,10 +1,11 @@
 package com.hubertyoung.component_acfundynamic.dynamic.presenter;
 
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicAcfunControl;
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
+
+import java.util.HashMap;
 
 /**
  * <br>
@@ -18,7 +19,7 @@ import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
  */
 public class DynamicAcfunPresenterImp extends DynamicAcfunControl.Presenter {
 	@Override
-	public void requestRecommendUp( MyRequestMap map ) {
+	public void requestRecommendUp( HashMap map ) {
 //		mView.showLoading( "Loading...", 1 );
 //		mRxManage.add( mModel.requestRecommendUp( map )
 ////				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )

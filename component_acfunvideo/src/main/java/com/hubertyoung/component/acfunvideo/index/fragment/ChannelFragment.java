@@ -1,19 +1,17 @@
 package com.hubertyoung.component.acfunvideo.index.fragment;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
 import com.hubertyoung.component.acfunvideo.index.model.ChannelModelImp;
 import com.hubertyoung.component.acfunvideo.index.presenter.ChannelPresenterImp;
-import com.hubertyoung.component.acfunvideo.index.section.ViewChannelSection;
 import com.hubertyoung.component.acfunvideo.index.section.ViewActivitySection;
+import com.hubertyoung.component.acfunvideo.index.section.ViewChannelSection;
 import com.hubertyoung.component_acfunvideo.R;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
@@ -22,7 +20,8 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import androidx.annotation.Nullable;
+import java.util.HashMap;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -173,13 +172,13 @@ public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelM
 
 	@Override
 	public void loadData() {
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 		map.put( "pos", "0" );
 		mPresenter.requestChannel( map,0 );
 	}
 
 	private void loadNewData() {
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 		map.put( "pos", mNext + "" );
 		mPresenter.requestChannel( map, 1 );
 	}

@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.index.adapter.HomePagerAdapter;
@@ -14,6 +13,8 @@ import com.hubertyoung.component.acfunvideo.index.model.HomePageModelImp;
 import com.hubertyoung.component.acfunvideo.index.presenter.HomePagePresenterImp;
 import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+
+import java.util.HashMap;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
@@ -102,7 +103,7 @@ public class HomePageFragment extends BaseFragment< HomePagePresenterImp, HomePa
 
 	@Override
 	public void loadData() {
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 		mPresenter.requestDomainAndroidCfg( map );
 	}
 

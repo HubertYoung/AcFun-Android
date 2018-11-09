@@ -1,11 +1,11 @@
 package com.hubertyoung.component_acfunarticle.article.presenter;
 
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component_acfunarticle.article.control.ArticleRecommendControl;
 import com.hubertyoung.component_acfunarticle.entity.ArticleRecommendEntity;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class ArticleRecommendPresenterImp extends ArticleRecommendControl.Presenter {
 	@Override
-	public void requestArticleRecommend( MyRequestMap map ) {
+	public void requestArticleRecommend( HashMap map ) {
 		mRxManage.add( mModel.requestArticleRecommend( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribeWith( new RxSubscriber< List< ArticleRecommendEntity > >() {

@@ -4,8 +4,9 @@ package com.hubertyoung.component_acfunarticle.article.control;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
+
+import java.util.HashMap;
 
 import io.reactivex.Flowable;
 
@@ -22,7 +23,7 @@ import io.reactivex.Flowable;
 public interface ArticleControl {
 
 	interface Model extends BaseModel {
-		Flowable< Channel > requestAllChannel( MyRequestMap map );
+		Flowable< Channel > requestAllChannel( HashMap map );
 	}
 
 	interface View extends BaseView {
@@ -30,6 +31,6 @@ public interface ArticleControl {
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
-		public abstract void requestAllChannel( MyRequestMap map );
+		public abstract void requestAllChannel( HashMap map );
 	}
 }

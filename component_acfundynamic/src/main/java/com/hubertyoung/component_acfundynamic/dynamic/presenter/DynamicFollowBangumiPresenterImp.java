@@ -1,10 +1,11 @@
 package com.hubertyoung.component_acfundynamic.dynamic.presenter;
 
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicFollowBangumiControl;
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
+
+import java.util.HashMap;
 
 /**
  * <br>
@@ -18,7 +19,7 @@ import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
  */
 public class DynamicFollowBangumiPresenterImp extends DynamicFollowBangumiControl.Presenter {
 	@Override
-	public void requestRecommendBangumi( MyRequestMap map ) {
+	public void requestRecommendBangumi( HashMap map ) {
 		mRxManage.add( mModel.requestRecommendBangumi( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribeWith( new RxSubscriber< RecommendBangumiEntity >() {

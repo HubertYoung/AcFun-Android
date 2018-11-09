@@ -4,10 +4,10 @@ package com.hubertyoung.component.acfunvideo.index.control;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 
+import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -25,9 +25,9 @@ import io.reactivex.Flowable;
 public interface NewRecommendControl {
 
 	interface Model extends BaseModel {
-		Flowable< List< Regions > > requestRecommend( MyRequestMap map );
+		Flowable< List< Regions > > requestRecommend( HashMap map );
 
-		Flowable< List< RegionBodyContent > > requestNewRecommend( String channelId, MyRequestMap map );
+		Flowable< List< RegionBodyContent > > requestNewRecommend( String channelId, HashMap map );
 	}
 
 	interface View extends BaseView {
@@ -55,6 +55,6 @@ public interface NewRecommendControl {
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
-		public abstract void requestRecommend( MyRequestMap map );
+		public abstract void requestRecommend( HashMap map );
 	}
 }

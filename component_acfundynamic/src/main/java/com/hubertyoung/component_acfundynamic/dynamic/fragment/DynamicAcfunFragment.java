@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
@@ -21,6 +20,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -160,7 +160,7 @@ public class DynamicAcfunFragment extends BaseFragment< DynamicAcfunPresenterImp
 	@Override
 	public void loadData() {
 //		http://apipc.app.acfun.cn/v3/regions/recommendUp?pageNo=1&pageSize=20
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 		map.put( "pageNo", mAdapter.getPageBean().getLoadPage() + "" );
 		map.put( "pageSize", mAdapter.getPageBean().rows + "" );
 		mPresenter.requestRecommendUp( map );

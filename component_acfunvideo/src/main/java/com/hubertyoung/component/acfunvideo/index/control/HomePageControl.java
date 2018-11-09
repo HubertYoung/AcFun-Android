@@ -4,7 +4,6 @@ package com.hubertyoung.component.acfunvideo.index.control;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
-import com.hubertyoung.common.basebean.MyRequestMap;
 
 import java.util.HashMap;
 
@@ -23,13 +22,13 @@ import io.reactivex.Flowable;
 public interface HomePageControl {
 
 	interface Model extends BaseModel {
-		Flowable< HashMap< String, String > > requestDomainAndroidCfg( MyRequestMap map );
+		Flowable< java.util.HashMap > requestDomainAndroidCfg( HashMap map );
 	}
 
 	interface View extends BaseView {
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
-		public abstract void requestDomainAndroidCfg( MyRequestMap map );
+		public abstract void requestDomainAndroidCfg( HashMap map );
 	}
 }

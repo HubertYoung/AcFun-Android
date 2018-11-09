@@ -4,10 +4,10 @@ package com.hubertyoung.component_acfunmine.ui.mine.control;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Flowable;
@@ -25,9 +25,9 @@ import io.reactivex.Flowable;
 public interface MineControl {
 
 	interface Model extends BaseModel {
-		Flowable< Boolean > requestCheckOfflineInfo( MyRequestMap map );
+		Flowable< Boolean > requestCheckOfflineInfo( HashMap map );
 
-		Flowable< User > requestUserInfo( MyRequestMap map );
+		Flowable< User > requestUserInfo( HashMap map );
 
 		Flowable< Sign > requestPlatformLogin( Map< String, String > map );
 	}
@@ -47,9 +47,9 @@ public interface MineControl {
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
-		public abstract void requestUserInfo( MyRequestMap map );
+		public abstract void requestUserInfo( HashMap map );
 
-		public abstract void requestCheckOfflineInfo( MyRequestMap map );
+		public abstract void requestCheckOfflineInfo( HashMap map );
 
 		public abstract void requestPlatformLogin( Map< String, String > hashMap );
 	}

@@ -1,10 +1,11 @@
 package com.hubertyoung.component.acfunvideo.index.presenter;
 
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
+
+import java.util.HashMap;
 
 /**
  * <br>
@@ -18,7 +19,7 @@ import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
  */
 public class ChannelPresenterImp extends ChannelControl.Presenter {
 	@Override
-	public void requestChannel( MyRequestMap map, int isAddInfo ) {
+	public void requestChannel( HashMap map, int isAddInfo ) {
 		mRxManage.add( mModel.requestChannel( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribeWith( new RxSubscriber< ChannelOperate >() {

@@ -2,13 +2,13 @@ package com.hubertyoung.component.acfunvideo.index.model;
 
 import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -26,19 +26,19 @@ import io.reactivex.Flowable;
  */
 public class NewRecommendModelImp implements NewRecommendControl.Model {
 	@Override
-	public Flowable< List<Regions > > requestRecommend( MyRequestMap map ) {
+	public Flowable< List<Regions > > requestRecommend( HashMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )
-				.requestRecommend( map.map )
+				.requestRecommend( map )
 				.compose( new DefaultTransformer() );
 	}
 	@Override
-	public Flowable< List< RegionBodyContent > > requestNewRecommend( String channelId, MyRequestMap map ) {
+	public Flowable< List< RegionBodyContent > > requestNewRecommend( String channelId, HashMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )
-				.requestNewRecommend(channelId, map.map )
+				.requestNewRecommend(channelId, map )
 				.compose( new DefaultTransformer() );
 	}
 }

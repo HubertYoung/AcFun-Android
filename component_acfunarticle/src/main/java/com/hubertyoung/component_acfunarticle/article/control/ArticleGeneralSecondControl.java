@@ -4,8 +4,9 @@ package com.hubertyoung.component_acfunarticle.article.control;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.component_acfunarticle.entity.RankAc;
+
+import java.util.HashMap;
 
 import io.reactivex.Flowable;
 
@@ -22,7 +23,7 @@ import io.reactivex.Flowable;
 public interface ArticleGeneralSecondControl {
 
 	interface Model extends BaseModel {
-		Flowable< RankAc > requestArticleGeneralSecond( MyRequestMap map );
+		Flowable< RankAc > requestArticleGeneralSecond( HashMap map );
 	}
 
 	interface View extends BaseView {

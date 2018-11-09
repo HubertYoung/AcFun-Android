@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.baseplatform.tools.PlatformUtils;
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
@@ -162,7 +161,7 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		mSignInUtil.setOnPlatformNameListener( new SignInUtil.OnPlatformNameListener() {
 			@Override
 			public void onSuccess( String platformName, Map< String, String > map ) {
-				Map< String, String > hashMap = new HashMap();
+				Map< String, String > hashMap = new java.util.HashMap();
 				hashMap.put("clientId", Constants.cidKey );
 				hashMap.put("accessToken", map.get("token"));
 				hashMap.put("openId", map.get("openid"));
@@ -222,11 +221,11 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		feedbackLayout = findViewById( R.id.feedback_layout );
 		mSignInUtil = new SignInUtil( activity );
 		initAction();
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 //		http://apipc.app.acfun.cn/v2/offlines/checkOffline
 		mPresenter.requestCheckOfflineInfo( map );
 
-		MyRequestMap map2 = new MyRequestMap();
+		HashMap map2 = new HashMap<String,String>();
 		map.put( "userId", SigninHelper.getInstance().getUserUid() + "" );
 		mPresenter.requestUserInfo( map2 );
 //		Log.e( "TAG", "123123" );

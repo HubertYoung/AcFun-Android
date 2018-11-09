@@ -1,10 +1,11 @@
 package com.hubertyoung.component_acfunarticle.article.presenter;
 
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component_acfunarticle.article.control.ArticleControl;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
+
+import java.util.HashMap;
 
 /**
  * <br>
@@ -18,7 +19,7 @@ import com.hubertyoung.component_acfunarticle.entity.Channel;
  */
 public class ArticlePresenterImp extends ArticleControl.Presenter {
 	@Override
-	public void requestAllChannel( MyRequestMap map ) {
+	public void requestAllChannel( HashMap map ) {
 		mRxManage.add( mModel.requestAllChannel( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribeWith( new RxSubscriber< Channel >() {

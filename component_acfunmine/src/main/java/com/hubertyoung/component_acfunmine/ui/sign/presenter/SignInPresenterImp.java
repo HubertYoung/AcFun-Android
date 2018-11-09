@@ -3,7 +3,6 @@ package com.hubertyoung.component_acfunmine.ui.sign.presenter;
 
 import android.text.TextUtils;
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
@@ -16,8 +15,9 @@ import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
 import com.hubertyoung.component_acfunmine.ui.sign.control.SignInControl;
 
+import java.util.HashMap;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 
 /**
  * <br>
@@ -56,7 +56,7 @@ public class SignInPresenterImp extends SignInControl.Presenter {
 //		cid	ELSH6ruK0qva88DD
 //		password	fffff
 //		key	8a7490e5534761c07da8963e904bad9a
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 		if ( !TextUtils.isEmpty( validationStr ) ) {
 			map.put( "captcha", validationStr );
 			map.put( "key", captchaKey );

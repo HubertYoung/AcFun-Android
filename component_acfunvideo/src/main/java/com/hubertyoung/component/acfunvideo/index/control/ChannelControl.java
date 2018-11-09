@@ -4,8 +4,9 @@ package com.hubertyoung.component.acfunvideo.index.control;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
+
+import java.util.HashMap;
 
 import io.reactivex.Flowable;
 
@@ -22,7 +23,7 @@ import io.reactivex.Flowable;
 public interface ChannelControl {
 
 	interface Model extends BaseModel {
-		Flowable< ChannelOperate > requestChannel( MyRequestMap map );
+		Flowable< ChannelOperate > requestChannel( HashMap map );
 	}
 
 	interface View extends BaseView {
@@ -32,6 +33,6 @@ public interface ChannelControl {
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
-		public abstract void requestChannel( MyRequestMap map, int i );
+		public abstract void requestChannel( HashMap map, int i );
 	}
 }

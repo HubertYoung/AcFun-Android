@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.DropDownOptionList;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
@@ -31,6 +30,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -258,7 +258,7 @@ public class ArticleGeneralSecondFragment extends BaseFragment< ArticleGeneralSe
 //		realmIds	25,6,7
 //		pageNo	1
 //		pageSize	10
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 		map.put( "channelId", mChannelId );
 		map.put( "day", selectorTimeType + "" );
 		map.put( "sort", selectorType + "" );

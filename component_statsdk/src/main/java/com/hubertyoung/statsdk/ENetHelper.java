@@ -79,7 +79,7 @@ import static com.hubertyoung.common.net.http.HttpUtils.TAG;
         isLoading = true;
 
         EGson EGson = new GsonBuilder().disableHtmlEscaping().create();
-        Map map = new HashMap();
+        Map map = new HashMap<String,String>();
         map.put("list", EGson.toJson(list));
         ELogger.logWrite(TAG, "push map-->" + map.toString());
 

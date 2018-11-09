@@ -5,12 +5,11 @@ import android.text.TextUtils;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
-import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.Utils;
+import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
-import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
 import com.hubertyoung.component.acfunvideo.index.model.NewRecommendModelImp;
@@ -31,6 +30,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -115,13 +115,13 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 
 	@Override
 	public void loadData() {
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 		map.put( "channelId", channelId );
 		mPresenter.requestRecommend( map );
 	}
 
 	private void loadNewData() {
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 		map.put( "pageNo", mAdapter.getPageBean().getLoadPage() + "" );
 		mPresenter.requestNewRecommend(channelId, map );
 	}

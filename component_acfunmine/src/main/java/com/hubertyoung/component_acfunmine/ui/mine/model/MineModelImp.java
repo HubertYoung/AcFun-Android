@@ -3,7 +3,6 @@ package com.hubertyoung.component_acfunmine.ui.mine.model;
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
@@ -12,6 +11,7 @@ import com.hubertyoung.component_acfunmine.api.ApiHomeService;
 import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Flowable;
@@ -28,23 +28,23 @@ import io.reactivex.Flowable;
  */
 public class MineModelImp implements MineControl.Model {
 	@Override
-	public Flowable< Boolean > requestCheckOfflineInfo( MyRequestMap map ) {
+	public Flowable< Boolean > requestCheckOfflineInfo( HashMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )
 				.builder( ApiHomeService.class )
-				.requestCheckOfflineInfo( map.map )
+				.requestCheckOfflineInfo( map )
 				.compose( new DefaultTransformer() );
 //		new TextView(mContext);
 	}
 
 	@Override
-	public Flowable< User > requestUserInfo( MyRequestMap map ) {
+	public Flowable< User > requestUserInfo( HashMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )
 				.builder( ApiHomeService.class )
-				.requestUserInfo( map.map )
+				.requestUserInfo( map )
 				.compose( new DefaultTransformer() );
 	}
 

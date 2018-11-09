@@ -2,7 +2,6 @@ package com.hubertyoung.component.acfunvideo.index.model;
 
 import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSchedulers;
 import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
 import com.hubertyoung.component.acfunvideo.index.control.HomePageControl;
@@ -24,11 +23,11 @@ import io.reactivex.Flowable;
  */
 public class HomePageModelImp implements HomePageControl.Model {
 	@Override
-	public Flowable< HashMap< String, String > > requestDomainAndroidCfg( MyRequestMap map ) {
+	public Flowable< java.util.HashMap > requestDomainAndroidCfg( HashMap map ) {
 		return Api.getDefault( HostType.APP_HOST_SLL )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )
-				.requestDomainAndroidCfg( map.map )
+				.requestDomainAndroidCfg( map )
 				.compose( RxSchedulers.io_main() );
 	}
 }

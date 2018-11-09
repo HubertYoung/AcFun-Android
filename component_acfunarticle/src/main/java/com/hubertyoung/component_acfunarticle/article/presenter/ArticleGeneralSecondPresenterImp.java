@@ -1,10 +1,11 @@
 package com.hubertyoung.component_acfunarticle.article.presenter;
 
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.component_acfunarticle.article.control.ArticleGeneralSecondControl;
 import com.hubertyoung.component_acfunarticle.entity.RankAc;
+
+import java.util.HashMap;
 
 /**
  * <br>
@@ -17,7 +18,7 @@ import com.hubertyoung.component_acfunarticle.entity.RankAc;
  * @desc:com.hubertyoung.component_acfunarticle.mine.presenter
  */
 public class ArticleGeneralSecondPresenterImp extends ArticleGeneralSecondControl.Presenter {
-	public void requestArticleGeneralSecond( MyRequestMap map ) {
+	public void requestArticleGeneralSecond( HashMap map ) {
 		mRxManage.add( mModel.requestArticleGeneralSecond( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribeWith( new RxSubscriber< RankAc >() {

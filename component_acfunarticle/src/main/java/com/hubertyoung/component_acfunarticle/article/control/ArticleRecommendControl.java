@@ -4,9 +4,9 @@ package com.hubertyoung.component_acfunarticle.article.control;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.component_acfunarticle.entity.ArticleRecommendEntity;
 
+import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -24,7 +24,7 @@ import io.reactivex.Flowable;
 public interface ArticleRecommendControl {
 
 	interface Model extends BaseModel {
-		Flowable< List< ArticleRecommendEntity > > requestArticleRecommend( MyRequestMap map );
+		Flowable< List< ArticleRecommendEntity > > requestArticleRecommend( HashMap map );
 	}
 
 	interface View extends BaseView {
@@ -33,6 +33,6 @@ public interface ArticleRecommendControl {
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
-		public abstract void requestArticleRecommend( MyRequestMap map );
+		public abstract void requestArticleRecommend( HashMap map );
 	}
 }

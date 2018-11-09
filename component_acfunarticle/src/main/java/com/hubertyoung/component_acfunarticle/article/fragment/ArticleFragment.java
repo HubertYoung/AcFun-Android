@@ -9,20 +9,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseFragment;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfunarticle.R;
-import com.hubertyoung.component_acfunarticle.entity.Channel;
-import com.hubertyoung.component_acfunarticle.entity.ServerChannel;
 import com.hubertyoung.component_acfunarticle.article.adapter.ArticlePagerAdapter;
 import com.hubertyoung.component_acfunarticle.article.control.ArticleControl;
 import com.hubertyoung.component_acfunarticle.article.model.ArticleModelImp;
 import com.hubertyoung.component_acfunarticle.article.presenter.ArticlePresenterImp;
+import com.hubertyoung.component_acfunarticle.entity.Channel;
+import com.hubertyoung.component_acfunarticle.entity.ServerChannel;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
 import com.hubertyoung.component_skeleton.skeleton.ViewSkeletonScreen;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.appcompat.widget.Toolbar;
@@ -107,7 +107,7 @@ public class ArticleFragment extends BaseFragment< ArticlePresenterImp, ArticleM
 
 	@Override
 	public void loadData() {
-		MyRequestMap map = new MyRequestMap();
+		HashMap map = new HashMap<String,String>();
 		mPresenter.requestAllChannel( map );
 	}
 

@@ -1,7 +1,6 @@
 package com.hubertyoung.component.acfunvideo.index.presenter;
 
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.component.acfunvideo.index.control.HomePageControl;
@@ -20,10 +19,10 @@ import java.util.HashMap;
  */
 public class HomePagePresenterImp extends HomePageControl.Presenter {
 	@Override
-	public void requestDomainAndroidCfg( MyRequestMap map ) {
+	public void requestDomainAndroidCfg( HashMap map ) {
 		mRxManage.add( mModel.requestDomainAndroidCfg( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribeWith( new RxSubscriber< HashMap< String, String > >() {
+				.subscribeWith( new RxSubscriber< java.util.HashMap >() {
 					@Override
 					protected void showLoading() {
 						mView.showLoading( "Loading...", 0 );
@@ -35,7 +34,7 @@ public class HomePagePresenterImp extends HomePageControl.Presenter {
 					}
 
 					@Override
-					public void onSuccess( HashMap< String, String > stringStringHashMap ) {
+					public void onSuccess( java.util.HashMap stringStringHashMap ) {
 						CommonLog.logd( stringStringHashMap.toString() );
 
 					}

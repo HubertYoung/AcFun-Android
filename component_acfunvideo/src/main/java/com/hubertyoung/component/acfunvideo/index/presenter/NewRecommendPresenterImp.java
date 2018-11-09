@@ -1,13 +1,13 @@
 package com.hubertyoung.component.acfunvideo.index.presenter;
 
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 	@Override
-	public void requestRecommend( MyRequestMap map ) {
+	public void requestRecommend( HashMap map ) {
 		mRxManage.add( mModel.requestRecommend( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribeWith( new RxSubscriber< List< Regions > >() {
@@ -79,7 +79,7 @@ public class NewRecommendPresenterImp extends NewRecommendControl.Presenter {
 				} ) );
 	}
 
-	public void requestNewRecommend( String channelId, MyRequestMap map ) {
+	public void requestNewRecommend( String channelId, HashMap map ) {
 		mRxManage.add( mModel.requestNewRecommend( channelId, map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribeWith( new RxSubscriber< List< RegionBodyContent > >() {

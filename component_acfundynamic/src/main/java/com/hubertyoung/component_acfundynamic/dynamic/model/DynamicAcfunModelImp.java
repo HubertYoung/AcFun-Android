@@ -3,13 +3,14 @@ package com.hubertyoung.component_acfundynamic.dynamic.model;
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component_acfundynamic.BuildConfig;
 import com.hubertyoung.component_acfundynamic.api.ApiDynamicService;
 import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicAcfunControl;
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
+
+import java.util.HashMap;
 
 import io.reactivex.Flowable;
 
@@ -25,12 +26,12 @@ import io.reactivex.Flowable;
  */
 public class DynamicAcfunModelImp implements DynamicAcfunControl.Model {
 	@Override
-	public Flowable< RecommendBangumiEntity > requestRecommendUp( MyRequestMap map ) {
+	public Flowable< RecommendBangumiEntity > requestRecommendUp( HashMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )
 				.builder( ApiDynamicService.class )
-				.requestRecommendUp( map.map )
+				.requestRecommendUp( map )
 				.compose( new DefaultTransformer() );
 	}
 }

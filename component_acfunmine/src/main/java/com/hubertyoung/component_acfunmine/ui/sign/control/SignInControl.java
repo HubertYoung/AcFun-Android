@@ -6,10 +6,11 @@ import android.graphics.Bitmap;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.net.response.BaseResponse;
 import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
+
+import java.util.HashMap;
 
 import io.reactivex.Flowable;
 
@@ -26,7 +27,7 @@ import io.reactivex.Flowable;
 public interface SignInControl {
 
 	interface Model extends BaseModel {
-		Flowable< BaseResponse< Sign > > requestLoginInfo( MyRequestMap map );
+		Flowable< BaseResponse< Sign > > requestLoginInfo( HashMap map );
 
 		Flowable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo();
 	}

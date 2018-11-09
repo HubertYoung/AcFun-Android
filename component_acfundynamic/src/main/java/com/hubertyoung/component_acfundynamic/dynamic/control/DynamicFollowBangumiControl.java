@@ -4,10 +4,10 @@ package com.hubertyoung.component_acfundynamic.dynamic.control;
 import com.hubertyoung.common.base.BaseModel;
 import com.hubertyoung.common.base.BasePresenter;
 import com.hubertyoung.common.base.BaseView;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 
+import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -25,7 +25,7 @@ import io.reactivex.Flowable;
 public interface DynamicFollowBangumiControl {
 
 	interface Model extends BaseModel {
-		Flowable< RecommendBangumiEntity > requestRecommendBangumi( MyRequestMap map );
+		Flowable< RecommendBangumiEntity > requestRecommendBangumi( HashMap map );
 	}
 
 	interface View extends BaseView {
@@ -33,6 +33,6 @@ public interface DynamicFollowBangumiControl {
 	}
 
 	abstract class Presenter extends BasePresenter< View, Model > {
-		public abstract void requestRecommendBangumi( MyRequestMap map );
+		public abstract void requestRecommendBangumi( HashMap map );
 	}
 }

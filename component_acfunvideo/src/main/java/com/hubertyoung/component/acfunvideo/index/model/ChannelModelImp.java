@@ -2,11 +2,12 @@ package com.hubertyoung.component.acfunvideo.index.model;
 
 import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
+
+import java.util.HashMap;
 
 import io.reactivex.Flowable;
 
@@ -23,11 +24,11 @@ import io.reactivex.Flowable;
  */
 public class ChannelModelImp implements ChannelControl.Model {
 	@Override
-	public Flowable< ChannelOperate > requestChannel( MyRequestMap map ) {
+	public Flowable< ChannelOperate > requestChannel( HashMap map ) {
 		return Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )
-				.requestChannelOperate( map.map )
+				.requestChannelOperate( map )
 				.compose( new DefaultTransformer() );
 	}
 }

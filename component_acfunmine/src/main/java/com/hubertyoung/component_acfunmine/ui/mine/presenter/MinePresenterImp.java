@@ -1,7 +1,6 @@
 package com.hubertyoung.component_acfunmine.ui.mine.presenter;
 
 
-import com.hubertyoung.common.basebean.MyRequestMap;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.constant.AppSpConfig;
 import com.hubertyoung.common.constant.Constants;
@@ -11,6 +10,7 @@ import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.common.utils.data.SPUtils;
 import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -38,7 +38,7 @@ public class MinePresenterImp extends MineControl.Presenter {
 //	<int name="oauth" value="0" />
 //    <string name="username">hubert520</string>
 	@Override
-	public void requestUserInfo( MyRequestMap map ) {
+	public void requestUserInfo( HashMap map ) {
 		if ( !SigninHelper.getInstance().isUnLogin() || SigninHelper.getInstance().getUserUid() <= 0 ) {
 			mView.setLoginState( false );
 			return;
@@ -76,7 +76,7 @@ public class MinePresenterImp extends MineControl.Presenter {
 	}
 
 	@Override
-	public void requestCheckOfflineInfo( MyRequestMap map ) {
+	public void requestCheckOfflineInfo( HashMap map ) {
 		mRxManage.add( mModel.requestCheckOfflineInfo( map )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribeWith( new RxSubscriber< Boolean >() {
