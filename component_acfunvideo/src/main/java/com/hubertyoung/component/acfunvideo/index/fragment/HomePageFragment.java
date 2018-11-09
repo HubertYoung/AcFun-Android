@@ -80,7 +80,7 @@ public class HomePageFragment extends BaseFragment< HomePagePresenterImp, HomePa
 
 	@Override
 	public void initPresenter() {
-		mPresenter.setVM( this,mModel );
+		mPresenter.setVM( this, mModel );
 	}
 
 	@Override
@@ -90,13 +90,14 @@ public class HomePageFragment extends BaseFragment< HomePagePresenterImp, HomePa
 		mIvSearch = ( ImageView ) findViewById( R.id.iv_search );
 		mIvGame = ( ImageView ) findViewById( R.id.iv_game );
 		mHomeViewPager = ( ViewPager ) findViewById( R.id.home_view_pager );
-		if ( isPrepared == false ) {
-			initViewPager();
-			initAction();
-			initData();
-			loadData();
-			isPrepared = true;
-		}
+		initViewPager();
+		initAction();
+		initData();
+	}
+
+	@Override
+	protected void lazyLoad() {
+		loadData();
 	}
 
 	@Override

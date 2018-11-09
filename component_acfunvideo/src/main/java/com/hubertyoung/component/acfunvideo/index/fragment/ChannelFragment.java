@@ -82,19 +82,14 @@ public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelM
 	}
 
 	@Override
-	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
-		mSrlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
-		mRecyclerView = ( RecyclerView ) findViewById( R.id.fragment_channel_recycler_view );
-		super.onViewCreated( view, savedInstanceState );
-	}
-
-	@Override
 	public void initPresenter() {
 		mPresenter.setVM( this, mModel );
 	}
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
+		mSrlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
+		mRecyclerView = ( RecyclerView ) findViewById( R.id.fragment_channel_recycler_view );
 		initRecyclerView();
 		initAction();
 		loadData();

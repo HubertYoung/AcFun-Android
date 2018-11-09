@@ -140,12 +140,8 @@ public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicM
 	}
 
 	@Override
-	public void onResume() {
-		super.onResume();
-		if ( isPrepared == false ) {
-			loadData();
-			isPrepared = true;
-		}
+	protected void lazyLoad() {
+		loadData();
 	}
 
 	private void initViewpager() {

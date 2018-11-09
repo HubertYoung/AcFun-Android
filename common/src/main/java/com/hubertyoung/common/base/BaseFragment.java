@@ -1,6 +1,5 @@
 package com.hubertyoung.common.base;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,15 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.baserx.RxManager;
-import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.utils.TUtil;
+import com.hubertyoung.common.utils.log.CommonLog;
 
-import androidx.annotation.ColorRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -62,17 +58,14 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	public E mModel;
 	public RxManager mRxManager;
 	// 标志位 标志已经初始化完成。
-	protected boolean isPrepared;
-
-	//标志位 fragment是否可见
-	protected boolean isVisible = true;
+	protected boolean isPrepared = true;;
 
 	public FragmentActivity activity;
-//	protected View mStatusBarView;
 
 	@Override
-	public void onAttach( Activity activity ) {
-		super.onAttach( activity );
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		this.activity = (FragmentActivity) context;
 		mRxManager = new RxManager();
 		if ( isRegisterEvent() ) {
 			mRxManager.mRxBus.register( this );
@@ -90,32 +83,27 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 		mPresenter = TUtil.getT( this, 0 );
 		mModel = TUtil.getT( this, 1 );
 		if ( mPresenter != null ) {
-			mPresenter.mContext = this.getActivity();
+			mPresenter.mContext = activity;
 		}
-		activity = this.getActivity();
+		if ( isPrepared ) {
+			initPresenter();
+			initView( savedInstanceState );
+			initToolBar();
+		}
+
 		return rootView;
 	}
 
 	@Override
 	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated( view, savedInstanceState );
-
-		initPresenter();
-		initView( savedInstanceState );
-		initToolBar();
+		boolean isVis = isHidden() || getUserVisibleHint();
+		if (isVis && isPrepared) {
+			lazyLoad();
+			isPrepared = false;
+		}
 	}
 
-//	protected void addStatusBar() {
-//		if ( mStatusBarView == null ) {
-//			mStatusBarView = new View( getContext() );
-//			int screenWidth = getResources().getDisplayMetrics().widthPixels;
-//			int statusBarHeight = BarUtils.getStatusBarHeight();
-//			ViewGroup.LayoutParams params = new ViewGroup.LayoutParams( screenWidth, statusBarHeight );
-//			mStatusBarView.setLayoutParams( params );
-//			mStatusBarView.requestLayout();
-//			if ( rootView != null ) rootView.addView( mStatusBarView, 0 );
-//		}
-//	}
 	/**
 	 * 是否开启事件订阅
 	 *
@@ -161,7 +149,7 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	 **/
 	public void startActivityForResult( Class< ? > cls, Bundle bundle, int requestCode ) {
 		Intent intent = new Intent();
-		intent.setClass( getActivity(), cls );
+		intent.setClass( activity, cls );
 		if ( bundle != null ) {
 			intent.putExtras( bundle );
 		}
@@ -173,7 +161,7 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	 **/
 	public void startActivity( Class< ? > cls, Bundle bundle ) {
 		Intent intent = new Intent();
-		intent.setClass( getActivity(), cls );
+		intent.setClass( activity, cls );
 		if ( bundle != null ) {
 			intent.putExtras( bundle );
 		}
@@ -199,16 +187,6 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 	 */
 	public FragmentTransaction getFragmentTransaction() {
 		return activity.getSupportFragmentManager().beginTransaction();
-	}
-
-	/**
-	 * 获取上下文
-	 *
-	 * @return
-	 */
-	public Context getApplicationContext() {
-
-		return this.activity == null ? ( getActivity() == null ? CommonApplication.getAppContext() : getActivity().getApplicationContext() ) : this.activity.getApplicationContext();
 	}
 
 	public FragmentManager getSupportFragmentManager( FragmentActivity activity ) {
@@ -252,6 +230,7 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 		if ( mRxManager != null && isRegisterEvent() ) {
 			mRxManager.mRxBus.unregister( this );
 		}
+		this.activity = null;
 	}
 
 	@Override
@@ -259,27 +238,33 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 		super.onDestroyView();
 		if ( mPresenter != null ) mPresenter.onDestroy();
 		mRxManager.clear();
+		this.activity = null;
 	}
-
-	/**
-	 * Fragment数据的懒加载
-	 */
 	@Override
-	public void setUserVisibleHint( boolean isVisibleToUser ) {
-
-		super.setUserVisibleHint( isVisibleToUser );
-		if ( getUserVisibleHint() ) {
-			isVisible = true;
+	public void onHiddenChanged(boolean hidden) {
+		super.onHiddenChanged(hidden);
+		if (!hidden) {
 			onVisible();
 		} else {
-			isVisible = false;
+			onInvisible();
+		}
+	}
+	@Override
+	public void setUserVisibleHint( boolean isVisibleToUser ) {
+		super.setUserVisibleHint( isVisibleToUser );
+		if ( isVisibleToUser) {
+			onVisible();
+		} else {
 			onInvisible();
 		}
 	}
 
 
 	protected void onVisible() {
-		lazyLoad();
+		if (isPrepared && isResumed()) {
+			lazyLoad();
+			isPrepared = false;
+		}
 	}
 
 
@@ -297,9 +282,5 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 
 	public void refreshData() {
 
-	}
-
-	protected int getColor( @ColorRes int colorResId ) {
-		return ContextCompat.getColor( getApplicationContext(), colorResId );
 	}
 }

@@ -1,7 +1,6 @@
 package com.hubertyoung.acfun.ui.fragment;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,9 @@ import android.widget.TextView;
 
 import com.hubertyoung.acfun.R;
 import com.hubertyoung.common.base.BaseFragment;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 
 /**
@@ -55,7 +57,7 @@ public class PlaceHolderFragment extends BaseFragment {
         textView.setLayoutParams(new LinearLayout.LayoutParams( ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         textView.setGravity( Gravity.CENTER);
         textView.setText("componentName ==> " + componentName +"\n\n" + "actionName ==> " + actionName);
-        textView.setTextColor(getColor( R.color.color_bgf83c3a));
+        textView.setTextColor(ContextCompat.getColor( activity, R.color.color_bgf83c3a ));
         textView.setTextSize( 15 );
         return textView;
     }

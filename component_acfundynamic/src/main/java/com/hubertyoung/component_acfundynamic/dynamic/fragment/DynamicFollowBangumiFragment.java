@@ -90,12 +90,8 @@ public class DynamicFollowBangumiFragment extends BaseFragment< DynamicFollowBan
 		srlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
 		rvDynamicFollowBangumi = ( RecyclerView ) findViewById( R.id.rv_dynamic_follow_bangumi );
 		initAction();
-		if ( isPrepared == false ) {
-			initRecyclerView();
-			initData();
-			loadData();
-			isPrepared = true;
-		}
+		initRecyclerView();
+		initData();
 	}
 
 	private void initRecyclerView() {
@@ -158,6 +154,11 @@ public class DynamicFollowBangumiFragment extends BaseFragment< DynamicFollowBan
 	}
 
 	@Override
+	protected void lazyLoad() {
+		loadData();
+	}
+
+	@Override
 	public void loadData() {
 //		http://apipc.app.acfun.cn/v3/regions/recommendBangumi?pageNo=1&pageSize=20
 		MyRequestMap map = new MyRequestMap();
@@ -189,10 +190,10 @@ public class DynamicFollowBangumiFragment extends BaseFragment< DynamicFollowBan
 	public void setRecommendBangumiInfo( List< RegionBodyContent > regionBodyContentList ) {
 		if ( mAdapter.getPageBean().refresh ) {
 			mBangumiSection.setRecommendBangumiInfo( regionBodyContentList );
-		}else{
+		} else {
 			if ( regionBodyContentList != null && regionBodyContentList.size() > 0 ) {
 				mBangumiSection.addRecommendBangumiInfo( regionBodyContentList );
-			}else{
+			} else {
 				srlContainer.setNoMoreData( true );
 			}
 		}

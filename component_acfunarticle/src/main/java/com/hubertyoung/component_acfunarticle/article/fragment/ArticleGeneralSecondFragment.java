@@ -117,10 +117,7 @@ public class ArticleGeneralSecondFragment extends BaseFragment< ArticleGeneralSe
 		mSrlArticleSecondaryView = ( SmartRefreshLayout ) findViewById( R.id.srl_article_secondary_view );
 		mRecyclerView = ( RecyclerView ) findViewById( R.id.article_secondary_view_list );
 		mShader = findViewById( R.id.article_secondary_view_shader );
-		if ( isPrepared == false ) {
-			initData();
-		}
-		isPrepared = true;
+		initData();
 	}
 
 	private void initData() {
@@ -132,7 +129,6 @@ public class ArticleGeneralSecondFragment extends BaseFragment< ArticleGeneralSe
 		mChannelIdArticle = getResources().getInteger( R.integer.channel_id_article );
 		initRecyclerView();
 		initAction();
-		loadData();
 
 		titleList = new ArrayList();
 		titleList.add( getResources().getString( R.string.activity_channel_order_by_last_feed_back ) );
@@ -248,6 +244,11 @@ public class ArticleGeneralSecondFragment extends BaseFragment< ArticleGeneralSe
 				.angle( 20 )//
 				.load( R.layout.common_item_skeleton )//
 				.show();
+	}
+
+	@Override
+	protected void lazyLoad() {
+		loadData();
 	}
 
 	@Override

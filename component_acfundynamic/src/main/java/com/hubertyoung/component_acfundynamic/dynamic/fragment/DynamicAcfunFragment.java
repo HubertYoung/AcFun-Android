@@ -81,7 +81,7 @@ public class DynamicAcfunFragment extends BaseFragment< DynamicAcfunPresenterImp
 
 	@Override
 	public void initPresenter() {
-		mPresenter.setVM( this,mModel );
+		mPresenter.setVM( this, mModel );
 	}
 
 	@Override
@@ -89,12 +89,8 @@ public class DynamicAcfunFragment extends BaseFragment< DynamicAcfunPresenterImp
 		srlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
 		rvDynamicAcfun = ( RecyclerView ) findViewById( R.id.rv_dynamic_acfun );
 		initAction();
-		if ( isPrepared == false ) {
-			initRecyclerView();
-			initData();
-			loadData();
-			isPrepared = true;
-		}
+		initRecyclerView();
+		initData();
 	}
 
 	private void initRecyclerView() {
@@ -157,6 +153,11 @@ public class DynamicAcfunFragment extends BaseFragment< DynamicAcfunPresenterImp
 	}
 
 	@Override
+	protected void lazyLoad() {
+		loadData();
+	}
+
+	@Override
 	public void loadData() {
 //		http://apipc.app.acfun.cn/v3/regions/recommendUp?pageNo=1&pageSize=20
 		MyRequestMap map = new MyRequestMap();
@@ -188,10 +189,10 @@ public class DynamicAcfunFragment extends BaseFragment< DynamicAcfunPresenterImp
 	public void setRecommendUpInfo( List< RegionBodyContent > regionBodyContentList ) {
 		if ( mAdapter.getPageBean().refresh ) {
 			mDynamicAcfunSection.setRecommendUpInfo( regionBodyContentList );
-		}else{
+		} else {
 			if ( regionBodyContentList != null && regionBodyContentList.size() > 0 ) {
 				mDynamicAcfunSection.addRecommendUpInfo( regionBodyContentList );
-			}else{
+			} else {
 				srlContainer.setNoMoreData( true );
 			}
 		}
