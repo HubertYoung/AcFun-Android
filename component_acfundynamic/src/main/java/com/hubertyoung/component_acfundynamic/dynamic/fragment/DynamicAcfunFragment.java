@@ -3,7 +3,7 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 
 import android.os.Bundle;
 
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.display.ToastUtil;
@@ -114,7 +114,7 @@ public class DynamicAcfunFragment extends BaseFragment< DynamicAcfunPresenterImp
 			}
 		} );
 
-		mDynamicAcfunSection = new DynamicAcfunSection( ( BaseActivity ) activity );
+		mDynamicAcfunSection = new DynamicAcfunSection( ( BaseActivityNew ) activity );
 		mAdapter.addSection( mDynamicAcfunSection );
 
 		rvDynamicAcfun.setHasFixedSize( true );

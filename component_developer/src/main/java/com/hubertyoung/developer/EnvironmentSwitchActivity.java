@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.hubertyoung.base.Constants;
 import com.hubertyoung.base.bean.EnvironmentBean;
 import com.hubertyoung.base.bean.ModuleBean;
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.component_developer.R;
 
 import java.lang.reflect.InvocationTargetException;
@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnvironmentSwitchActivity extends BaseActivity {
+public class EnvironmentSwitchActivity extends BaseActivityNew {
 
 	private static final int TYPE_MODULE = 0;
 
@@ -33,8 +33,8 @@ public class EnvironmentSwitchActivity extends BaseActivity {
 	private Toolbar mToolbar;
 
 	public static void launch( Context context ) {
-		if ( context instanceof BaseActivity ) {
-			( ( BaseActivity ) context ).startActivity( EnvironmentSwitchActivity.class );
+		if ( context instanceof BaseActivityNew ) {
+			( ( BaseActivityNew ) context ).startActivity( EnvironmentSwitchActivity.class );
 		} else {
 			Intent intent = new Intent( context, EnvironmentSwitchActivity.class );
 			if ( !( context instanceof Activity ) ) {

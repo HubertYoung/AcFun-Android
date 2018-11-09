@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
-import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.intent.IntentUtils;
 
@@ -21,10 +21,10 @@ import com.hubertyoung.common.utils.intent.IntentUtils;
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
 public class BindHeaderTitleViewHolder {
-	private BaseActivity mActivity;
+	private BaseActivityNew mActivity;
 	private HeadTitleViewHolder viewHolderTitle;
 
-	public BindHeaderTitleViewHolder( BaseActivity activity, HeadTitleViewHolder viewHolderTitle ) {
+	public BindHeaderTitleViewHolder( BaseActivityNew activity, HeadTitleViewHolder viewHolderTitle ) {
 		this.mActivity = activity;
 		this.viewHolderTitle = viewHolderTitle;
 	}

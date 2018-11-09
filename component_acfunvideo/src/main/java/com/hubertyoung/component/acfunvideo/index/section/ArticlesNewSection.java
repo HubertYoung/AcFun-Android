@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.utils.data.StringUtil;
@@ -36,10 +36,10 @@ import androidx.recyclerview.widget.RecyclerView;
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
 public class ArticlesNewSection extends Section {
-	private BaseActivity mActivity;
+	private BaseActivityNew mActivity;
 	private Regions mRegions;
 
-	public ArticlesNewSection( BaseActivity activity ) {
+	public ArticlesNewSection( BaseActivityNew activity ) {
 		super( new SectionParameters.Builder( R.layout.item_article_with_pic_view )//
 				.headerResourceId( R.layout.widget_region_header_text )//
 				.footerResourceId( R.layout.widget_region_bottom_menu )//

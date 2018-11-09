@@ -3,7 +3,7 @@ package com.hubertyoung.component_acfunmine.ui.setting.activity;
 import android.os.Bundle;
 
 import com.hubertyoung.component_acfunmine.R;
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 
 /**
  * <br>
@@ -15,7 +15,7 @@ import com.hubertyoung.common.base.BaseActivity;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunmine.setting.activity
  */
-public class SettingsActivity extends BaseActivity {
+public class SettingsActivity extends BaseActivityNew {
 
 	@Override
 	public int getLayoutId() {
@@ -42,7 +42,7 @@ public class SettingsActivity extends BaseActivity {
 
 	}
 
-	public static void launch( BaseActivity activity ) {
+	public static void launch( BaseActivityNew activity ) {
 		activity.startActivity( SettingsActivity.class );
 	}
 }

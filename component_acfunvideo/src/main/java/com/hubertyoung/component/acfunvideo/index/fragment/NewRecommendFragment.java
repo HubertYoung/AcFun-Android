@@ -3,7 +3,7 @@ package com.hubertyoung.component.acfunvideo.index.fragment;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.Utils;
@@ -229,7 +229,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	@Override
 	public void showNewRecommendCarouselsSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
+			mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivityNew ) activity );
 			mAdapter.addSection( mCarouselsSection );
 		}
 		mCarouselsSection.setRegions( regions );
@@ -238,7 +238,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	@Override
 	public void showNewRecommendBannersSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) activity );
+			mBannersSection = new NewRecommendBannersSection( ( BaseActivityNew ) activity );
 			mAdapter.addSection( mBannersSection );
 			mBannersSection.setRegions( regions );
 		}
@@ -248,7 +248,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	public void showNewRecommendVideosSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
 			boolean isVideoNew = TextUtils.equals( Utils.videos_new, regions.schema );
-			mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity, isVideoNew );
+			mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivityNew ) activity, isVideoNew );
 			if ( isVideoNew ) {
 				mAdapter.addSection( Utils.videos_new, mNewBangumiSection );
 			} else {
@@ -261,7 +261,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	@Override
 	public void showNewRecommendVideosRankSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivity ) activity );
+			mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivityNew ) activity );
 			mAdapter.addSection( mVideosRankSection );
 			mVideosRankSection.setRegions( regions );
 		}
@@ -270,7 +270,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	@Override
 	public void showNewRecommendBangumisSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mBangumisSection = new NewRecommendBangumisSection( ( BaseActivity ) activity );
+			mBangumisSection = new NewRecommendBangumisSection( ( BaseActivityNew ) activity );
 			mAdapter.addSection( mBangumisSection );
 			mBangumisSection.setRegions( regions );
 		}
@@ -289,7 +289,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	public void showArticlesRecommendSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
 			articlesChannelId = channelId;
-			ArticlesRecommendSection mArticlesRecommendSection = new ArticlesRecommendSection( ( BaseActivity ) activity );
+			ArticlesRecommendSection mArticlesRecommendSection = new ArticlesRecommendSection( ( BaseActivityNew ) activity );
 			mAdapter.addSection( mArticlesRecommendSection );
 			mArticlesRecommendSection.setRegions( regions );
 		}
@@ -298,7 +298,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	@Override
 	public void showArticlesRankRecommendSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mArticlesRankRecommendSection = new ArticlesRankRecommendSection( ( BaseActivity ) activity );
+			mArticlesRankRecommendSection = new ArticlesRankRecommendSection( ( BaseActivityNew ) activity );
 			mAdapter.addSection( mArticlesRankRecommendSection );
 			mArticlesRankRecommendSection.setRegions( regions );
 		}
@@ -308,7 +308,7 @@ public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp
 	public void showArticlesNewRecommendSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
 			boolean isArticlesNew = TextUtils.equals( Utils.articles_new, regions.schema );
-			mArticlesNewSection = new ArticlesNewSection( ( BaseActivity ) activity );
+			mArticlesNewSection = new ArticlesNewSection( ( BaseActivityNew ) activity );
 			if ( isArticlesNew ) {
 				mAdapter.addSection( Utils.articles_new, mArticlesNewSection );
 			} else {

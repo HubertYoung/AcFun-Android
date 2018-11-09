@@ -7,12 +7,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.component_acfunmine.R;
 
 import androidx.appcompat.widget.Toolbar;
 
-public class FindPasswordActivity extends BaseActivity {
+public class FindPasswordActivity extends BaseActivityNew {
 
 	private Toolbar mToolbar;
 	private TextView mToolbarTitle;
@@ -28,7 +28,7 @@ public class FindPasswordActivity extends BaseActivity {
 	private EditText mSetPasswordAgainPassword;
 	private Button mSetPasswordComplete;
 
-	public static void launch( BaseActivity activity, int requestCode ) {
+	public static void launch( BaseActivityNew activity, int requestCode ) {
 		activity.startActivityForResult( FindPasswordActivity.class, requestCode );
 	}
 

@@ -8,7 +8,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.acfun.R;
 import com.hubertyoung.acfun.ui.fragment.PlaceHolderFragment;
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.log.CommonLog;
@@ -28,7 +28,7 @@ import androidx.fragment.app.FragmentTransaction;
  * @since:V1.0.0
  * @desc:com.hubertyoung.acfun.ui.activity
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivityNew {
 
 	private FrameLayout mFlContainer;
 	private BottomNavigationBar mBnbMainView;

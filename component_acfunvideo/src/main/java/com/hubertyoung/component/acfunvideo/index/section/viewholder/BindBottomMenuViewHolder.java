@@ -2,8 +2,8 @@ package com.hubertyoung.component.acfunvideo.index.section.viewholder;
 
 import android.view.View;
 
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
-import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.utils.display.DisplayUtil;
 
 /**
@@ -18,9 +18,9 @@ import com.hubertyoung.common.utils.display.DisplayUtil;
  */
 public class BindBottomMenuViewHolder{
 	private BottomMenuViewHolder viewHolder;
-	private BaseActivity mActivity;
+	private BaseActivityNew mActivity;
 
-	public BindBottomMenuViewHolder( BaseActivity activity, BottomMenuViewHolder viewHolder ) {
+	public BindBottomMenuViewHolder( BaseActivityNew activity, BottomMenuViewHolder viewHolder ) {
 		this.mActivity = activity;
 		this.viewHolder = viewHolder;
 	}

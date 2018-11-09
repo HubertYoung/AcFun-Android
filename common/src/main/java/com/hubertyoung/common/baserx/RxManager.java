@@ -23,25 +23,6 @@ public class RxManager {
 	/*管理Observables 和 Subscribers订阅*/
 	private CompositeDisposable composite = new CompositeDisposable();
 
-//	/**
-//	 * RxBus注入监听
-//	 *
-//	 * @param eventName
-//	 * @param action1
-//	 */
-//	public < T > void on( String eventName, Consumer< T > action1 ) {
-//		Flowable< T > mObservable = mRxBus.register( eventName );
-//		mObservables.put( eventName, mObservable );
-//		/*订阅管理*/
-//		composite.add( mObservable.observeOn( AndroidSchedulers.mainThread() )
-//								  .subscribe( action1, new Consumer< Throwable >() {
-//									  @Override
-//									  public void accept( @NonNull Throwable throwable ) throws Exception {
-//										  throwable.printStackTrace();
-//									  }
-//								  } ) );
-//	}
-
 	/**
 	 * 单纯的Observables 和 Subscribers管理
 	 *

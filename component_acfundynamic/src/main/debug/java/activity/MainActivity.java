@@ -2,12 +2,12 @@ package activity;
 
 import android.os.Bundle;
 
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.component_acfundynamic.R;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivityNew {
 
     @Override
     public int getLayoutId() {

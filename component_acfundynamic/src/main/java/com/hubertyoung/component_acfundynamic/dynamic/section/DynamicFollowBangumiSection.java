@@ -7,7 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
@@ -29,10 +29,10 @@ import androidx.recyclerview.widget.RecyclerView;
  * @desc:com.hubertyoung.component_acfundynamic.dynamic.section
  */
 public class DynamicFollowBangumiSection extends Section {
-	private final BaseActivity mActivity;
+	private final BaseActivityNew mActivity;
 	private List< RegionBodyContent > data;
 
-	public DynamicFollowBangumiSection( BaseActivity activity ) {
+	public DynamicFollowBangumiSection( BaseActivityNew activity ) {
 		super( new SectionParameters.Builder( R.layout.item_region_recommend_bangumi )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//

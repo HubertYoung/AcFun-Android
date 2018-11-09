@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
@@ -27,10 +27,10 @@ import androidx.recyclerview.widget.RecyclerView;
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
 public class ViewActivitySection extends Section {
-	private BaseActivity mActivity;
+	private BaseActivityNew mActivity;
 	private List< ChannelOperate.ChannelActivity > data;
 
-	public ViewActivitySection( BaseActivity activity ) {
+	public ViewActivitySection( BaseActivityNew activity ) {
 		super( new SectionParameters.Builder( R.layout.item_channel_activity_banner )//
 				.headerResourceId( R.layout.item_channel_title )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//

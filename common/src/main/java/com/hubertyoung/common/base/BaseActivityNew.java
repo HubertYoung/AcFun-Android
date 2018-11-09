@@ -18,6 +18,7 @@ import com.hubertyoung.baseplatform.AuthorizeSDK;
 import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.common.BuildConfig;
 import com.hubertyoung.common.baserx.RxManager;
+import com.hubertyoung.common.utils.TUtil;
 import com.hubertyoung.common.utils.activitymanager.AppActivityManager;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.log.CommonLog;
@@ -26,10 +27,50 @@ import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
-public abstract class BaseActivity extends AppCompatActivity implements OnEnvironmentChangeListener {
+/**
+ * 基类
+ */
+
+/***************使用例子*********************/
+//1.mvp模式
+//public class SampleActivity extends BaseActivity<NewsChanelPresenter, NewsChannelModel>implements NewsChannelContract.View {
+//    @Override
+//    public int getLayoutId() {
+//        return R.layout.activity_news_channel;
+//    }
+//
+//    @Override
+//    public void initPresenter() {
+//        mPresenter.setVM(this, mModel);
+//    }
+//
+//    @Override
+//    public void initView() {
+//    }
+//}
+//2.普通模式
+//public class SampleActivity extends BaseActivity {
+//    @Override
+//    public int getLayoutId() {
+//        return R.layout.activity_news_channel;
+//    }
+//
+//    @Override
+//    public void initPresenter() {
+//    }
+//
+//    @Override
+//    public void initView() {
+//    }
+//}
+public abstract class BaseActivityNew< T extends BasePresenter, E extends BaseModel > extends AppCompatActivity implements OnEnvironmentChangeListener {
 	public String TAG = this.getClass().getSimpleName();
 	private static final String SAVED_STATE_STATUS_BAR_TRANSLUCENT = "saved_state_status_bar_translucent";
+
+	public T mPresenter;
+	public E mModel;
 	public Context mContext;
 	public RxManager mRxManager;
 	private boolean isConfigChange = false;
@@ -59,10 +100,17 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 		if ( getLayoutId() != 0 ) {
 			setContentView( getLayoutId() );
 			mContext = this;
-			initView( savedInstanceState );
+			mPresenter = TUtil.getNewInstance( this, 0 );
+			mModel = TUtil.getNewInstance( this, 1 );
+			if ( mPresenter != null ) {
+				mPresenter.mContext = this;
+			}
+			this.initPresenter();
+			this.initView( savedInstanceState );
 			//初始化ToolBar
 			initToolBar();
 
+			loadData();
 			EnvironmentSwitcher.addOnEnvironmentChangeListener( this );
 		} else {
 			LogUtil.e( "--->bindLayout() return 0" );
@@ -73,25 +121,24 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 	 * 设置layout前配置
 	 */
 	public void doBeforeSetContentView() {
+		// 默认着色状态栏
+//		setStatusBarColor();
 
 	}
 
 	/*********************子类实现*****************************/
-	/**
-	 *获取布局文件
-	 */
+	//获取布局文件
 	public abstract int getLayoutId();
 
-	/**
-	 *	初始化view
-	 */
+	//简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
+	public abstract void initPresenter();
+
+	//初始化view
 	public abstract void initView( Bundle savedInstanceState );
 
 	protected abstract void loadData();
 
-	/**
-	 *	初始化toolBar
-	 */
+	//初始化toolBar
 	public abstract void initToolBar();
 
 	/**
@@ -102,6 +149,18 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 	protected boolean isRegisterEvent() {
 		return false;
 	}
+
+	public boolean isStatusBarTranslucent() {
+		return statusBarTranslucent;
+	}
+
+//	/**
+//	 * 沉浸状态栏（4.4以上系统有效）
+//	 */
+//	protected void setTranslanteBar( @FloatRange( from = 0.0, to = 1.0 ) float alpha ) {
+////		StatusBarCompat.translucentStatusBar(this);
+//		BarUtils.setStatusBar4Bg( this, alpha );
+//	}
 
 	/**
 	 * 通过Class跳转界面
@@ -141,6 +200,28 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 		startActivity( intent );
 	}
 
+	/**
+	 * 显示fragment 可返回
+	 *
+	 * @param fragment
+	 * @param framlayoutID
+	 */
+	public void addViewFrame( BaseFragment fragment, int framlayoutID ) {
+		FragmentTransaction fragmentTransaction = getFragmentTransaction();
+		fragmentTransaction.replace( framlayoutID, fragment );
+		fragmentTransaction.addToBackStack( fragment.TAG );
+		fragmentTransaction.commitAllowingStateLoss();
+	}
+
+	/**
+	 * 获取fragment beginTransaction
+	 *
+	 * @return
+	 */
+	public FragmentTransaction getFragmentTransaction() {
+		return this.getSupportFragmentManager().beginTransaction();
+	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -172,6 +253,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 		EnvironmentSwitcher.removeOnEnvironmentChangeListener( this );
 		super.onDestroy();
 		CommonLog.loge( "activity: " + getClass().getSimpleName() + " onDestroy()" );
+		if ( mPresenter != null ) mPresenter.onDestroy();
 		if ( mRxManager != null ) {
 			if ( isRegisterEvent() ) mRxManager.mRxBus.unregister( this );
 			mRxManager.clear();

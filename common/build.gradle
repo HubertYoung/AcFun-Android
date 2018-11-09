@@ -40,6 +40,8 @@ dependencies {
     implementation deps.android_gif_drawable
     implementation deps.fresco_processors
 
+    annotationProcessor deps.lifecycle.compiler
+    implementation deps.lifecycle.extensions
     implementation deps.logger
     implementation deps.facebook.stetho
     implementation deps.facebook.stetho_okhttp3

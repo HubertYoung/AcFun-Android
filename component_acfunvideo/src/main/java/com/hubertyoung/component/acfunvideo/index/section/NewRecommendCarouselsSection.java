@@ -13,7 +13,7 @@ import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component_acfunvideo.R;
 import com.hubertyoung.component_banner.banner.BannerEntity;
 import com.hubertyoung.component_banner.banner.BannerView;
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
@@ -31,10 +31,10 @@ import java.util.ArrayList;
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
 public class NewRecommendCarouselsSection extends Section {
-	private BaseActivity mActivity;
+	private BaseActivityNew mActivity;
 	private Regions regions;
 
-	public NewRecommendCarouselsSection( BaseActivity activity ) {
+	public NewRecommendCarouselsSection( BaseActivityNew activity ) {
 		super( new SectionParameters.Builder( R.layout.item_region_slide_banner )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//

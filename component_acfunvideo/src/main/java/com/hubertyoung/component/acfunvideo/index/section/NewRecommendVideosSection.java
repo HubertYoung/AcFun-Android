@@ -6,7 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.data.StringUtil;
 
@@ -35,10 +35,10 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class NewRecommendVideosSection extends Section {
 	private boolean isVideoNew;
-	private BaseActivity mActivity;
+	private BaseActivityNew mActivity;
 	private Regions mRegions;
 
-	public NewRecommendVideosSection( BaseActivity activity, boolean isVideoNew ) {
+	public NewRecommendVideosSection( BaseActivityNew activity, boolean isVideoNew ) {
 		super( new SectionParameters.Builder( R.layout.item_home_video ).headerResourceId( R.layout.widget_region_header_text ).build() );
 		this.mActivity = activity;
 		this.isVideoNew = isVideoNew;

@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.utils.display.ToastUtil;
@@ -45,7 +45,7 @@ import io.reactivex.functions.Consumer;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component_acfunmine.sign.activity
  */
-public class SignInActivity extends BaseActivity< SignInPresenterImp, SignInModelImp > implements SignInControl.View {
+public class SignInActivity extends BaseActivityNew< SignInPresenterImp, SignInModelImp > implements SignInControl.View {
 	private Toolbar mToolbar;
 	private TextView mToolbarTitle;
 	private LinearLayout userNameLayout;

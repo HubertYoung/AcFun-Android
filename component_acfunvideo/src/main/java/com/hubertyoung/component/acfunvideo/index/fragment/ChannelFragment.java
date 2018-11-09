@@ -2,7 +2,7 @@ package com.hubertyoung.component.acfunvideo.index.fragment;
 
 import android.os.Bundle;
 
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
@@ -135,9 +135,9 @@ public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelM
 			}
 		} );
 
-		mChannelSection = new ViewChannelSection( ( BaseActivity ) activity );
+		mChannelSection = new ViewChannelSection( ( BaseActivityNew ) activity );
 		mAdapter.addSection( mChannelSection );
-		mViewActivitySection = new ViewActivitySection( ( BaseActivity ) activity );
+		mViewActivitySection = new ViewActivitySection( ( BaseActivityNew ) activity );
 		mAdapter.addSection( mViewActivitySection );
 
 		mRecyclerView.setHasFixedSize( true );

@@ -3,7 +3,7 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 
 import android.os.Bundle;
 
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.display.ToastUtil;
@@ -115,7 +115,7 @@ public class DynamicFollowBangumiFragment extends BaseFragment< DynamicFollowBan
 			}
 		} );
 
-		mBangumiSection = new DynamicFollowBangumiSection( ( BaseActivity ) activity );
+		mBangumiSection = new DynamicFollowBangumiSection( ( BaseActivityNew ) activity );
 		mAdapter.addSection( mBangumiSection );
 
 		rvDynamicFollowBangumi.setHasFixedSize( true );
