@@ -80,8 +80,8 @@ public abstract class BaseFragment< T extends BasePresenter, E extends BaseModel
 		if ( parent != null ) {
 			parent.removeView( rootView );
 		}
-		mPresenter = TUtil.getT( this, 0 );
-		mModel = TUtil.getT( this, 1 );
+		mPresenter = TUtil.getNewInstance( this, 0 );
+		mModel = TUtil.getNewInstance( this, 1 );
 		if ( mPresenter != null ) {
 			mPresenter.mContext = activity;
 		}
