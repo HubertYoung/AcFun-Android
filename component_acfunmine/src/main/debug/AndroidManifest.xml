@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.sign.activity.SignInActivityNew"
+            android:name=".ui.sign.activity.SignInActivity"
             android:label="@string/title_activity_signin"
             android:windowSoftInputMode="stateHidden">
 

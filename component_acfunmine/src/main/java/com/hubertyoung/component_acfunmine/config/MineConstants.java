@@ -11,7 +11,7 @@ package com.hubertyoung.component_acfunmine.config;
  * @desc:com.hubertyoung.component_acfunmine.config
  */
 public class MineConstants {
-	public static final String EVENT_KEY_SIGN_STATE = "EVENT_KEY_SIGN_STATE";
+//	public static final String EVENT_KEY_SIGN_STATE = "EVENT_KEY_SIGN_STATE";
 	public static final String EVENT_KEY_SIGN = "EVENT_KEY_SIGN";
 	public static final String EVENT_KEY_SIGN_VERIFICATION_CODE = "EVENT_KEY_SIGN_VERIFICATION_CODE";
 	public static final String EVENT_KEY_MINE = "EVENT_KEY_MINE";

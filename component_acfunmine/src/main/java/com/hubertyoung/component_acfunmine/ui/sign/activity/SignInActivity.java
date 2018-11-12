@@ -1,7 +1,10 @@
 package com.hubertyoung.component_acfunmine.ui.sign.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -67,6 +70,15 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 	private TextView mWeChatText;
 	private boolean mIsStartForVipLevel;
 	private LoadingDialog mLoadingDialog;
+
+	public static void launch( Context context ) {
+		Intent intent = new Intent( context, SignInActivity.class );
+		if ( !( context instanceof Activity ) ) {
+			//调用方没有设置context或app间组件跳转，context为application
+			intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+		}
+		context.startActivity( intent );
+	}
 
 	@Override
 	public int getLayoutId() {
@@ -195,7 +207,7 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 	@Override
 	protected void dataObserver() {
 //		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_SIGN_STATE ).observe( this, observer );
-		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_SIGN ,SignEntity.class).observe( this, new Observer< SignEntity >() {
+		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_SIGN, SignEntity.class ).observe( this, new Observer< SignEntity >() {
 			@Override
 			public void onChanged( SignEntity signEntity ) {
 				BaseResponse< Sign > response = signEntity.mSignBaseResponse;
@@ -243,14 +255,16 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 			}
 		} );
 	}
+
 	@Override
-	public void showLoading(String title) {
+	public void showLoading( String title ) {
 		if ( mLoadingDialog == null ) {
 			mLoadingDialog = new LoadingDialog( this );
 			mLoadingDialog.setText( R.string.login_view_loading_text );
 		}
 		mLoadingDialog.show();
 	}
+
 	@Override
 	public void stopLoading() {
 		if ( mLoadingDialog != null ) {
@@ -281,7 +295,8 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 			mValidationEdit.setText( text );
 		}
 	}
-//
+
+	//
 //	@Override
 //	public void setValidationImage( Bitmap bitmap ) {
 //		mValidationImage.setImageBitmap( bitmap );
