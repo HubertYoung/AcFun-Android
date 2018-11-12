@@ -31,6 +31,8 @@ dependencies {
     implementation project(':wechatplatformlibrary')
     implementation project(':weiboplatformlibrary')
 
+    implementation project(':component_stateview')
+
     implementation deps.tencent.mmkv
 
     api deps.smarttablayout
