@@ -2,7 +2,6 @@ package com.hubertyoung.component_acfunmine.ui.sign.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -14,22 +13,25 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.AbsLifecycleActivity;
+import com.hubertyoung.common.baserx.LiveBus;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
+import com.hubertyoung.common.net.response.BaseResponse;
+import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.LoadingDialog;
 import com.hubertyoung.component_acfunmine.R;
-import com.hubertyoung.component_acfunmine.ui.findpassword.activity.FindPasswordActivity;
-import com.hubertyoung.component_acfunmine.ui.sign.control.SignInControl;
-import com.hubertyoung.component_acfunmine.ui.sign.model.SignInModelImp;
-import com.hubertyoung.component_acfunmine.ui.sign.presenter.SignInPresenterImp;
+import com.hubertyoung.component_acfunmine.config.MineConstants;
+import com.hubertyoung.component_acfunmine.entity.SignEntity;
+import com.hubertyoung.component_acfunmine.ui.sign.vm.SignInViewModel;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.jakewharton.rxbinding3.widget.RxTextView;
 
 import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.BiFunction;
@@ -45,7 +47,7 @@ import io.reactivex.functions.Consumer;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component_acfunmine.sign.activity
  */
-public class SignInActivity extends BaseActivityNew< SignInPresenterImp, SignInModelImp > implements SignInControl.View {
+public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 	private Toolbar mToolbar;
 	private TextView mToolbarTitle;
 	private LinearLayout userNameLayout;
@@ -72,12 +74,8 @@ public class SignInActivity extends BaseActivityNew< SignInPresenterImp, SignInM
 	}
 
 	@Override
-	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
-	}
-
-	@Override
 	public void initView( Bundle savedInstanceState ) {
+		super.initView( savedInstanceState );
 		mIsStartForVipLevel = getIntent().getBooleanExtra( "isStartForVipLevel", false );
 		mToolbar = findViewById( R.id.view_toolbar );
 		mToolbarTitle = findViewById( R.id.toolbar_title );
@@ -101,7 +99,6 @@ public class SignInActivity extends BaseActivityNew< SignInPresenterImp, SignInM
 			mWeChatImg.setVisibility( View.GONE );
 			mWeChatText.setVisibility( View.GONE );
 		}
-
 	}
 
 	private void initAction() {
@@ -153,19 +150,19 @@ public class SignInActivity extends BaseActivityNew< SignInPresenterImp, SignInM
 					String userNameStr = userNameEdit.getText().toString().trim();
 					String passwordStr = passWordEdit.getText().toString().trim();
 					String validationStr = mValidationEdit.getText().toString().trim();
-					mPresenter.requestLoginInfo( userNameStr, passwordStr, validationStr );
+					mViewModel.requestLoginInfo( userNameStr, passwordStr, validationStr );
 				} );
 		RxView.clicks( mValidationImage )//
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
 				.subscribeOn( AndroidSchedulers.mainThread() )//
 				.subscribe( o -> {
-					mPresenter.requestVerificationCodeInfo();
+					mViewModel.requestVerificationCodeInfo();
 				} );
 		RxView.clicks( mLoginViewForgetPassword )//
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
 				.subscribeOn( AndroidSchedulers.mainThread() )//
 				.subscribe( o -> {
-					FindPasswordActivity.launch( this, 2 );
+//					FindPasswordActivity.launch( this, 2 );
 				} );
 		RxView.clicks( mLoginViewCanNotLogin )//
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
@@ -196,14 +193,64 @@ public class SignInActivity extends BaseActivityNew< SignInPresenterImp, SignInM
 	}
 
 	@Override
-	public void showLoading( String title, int type ) {
+	protected void dataObserver() {
+//		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_SIGN_STATE ).observe( this, observer );
+		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_SIGN ,SignEntity.class).observe( this, new Observer< SignEntity >() {
+			@Override
+			public void onChanged( SignEntity signEntity ) {
+				BaseResponse< Sign > response = signEntity.mSignBaseResponse;
+				if ( response.errno == 0 ) {
+					//success
+//						{
+//							"token": "935b4692999e2fc654146ab35c21595e",
+//								"expiration": 1543015656,
+//								"check_password": 0,
+//								"check_real": 0,
+//								"oauth": 0,
+//								"acPasstoken": "ChVpbmZyYS5hY2Z1bi5wYXNzdG9rZW4SYDo57DP6CfhrceiovnpfJl5BwiW9eZT26NWQbClyfMTe4
+// -wGVcqUdLc_UM4ev2dRxVjUHpHJsObDvWLFMP85t9WEuVoUAJ1c_lwm6V31iq7mnx09dj8sbS1-aNZrLuhunRoSY5RL5hdSyg5ILxKRSiTMY7LUIiD6Te0ntRdYMdM4ZURXXiAOHrapG573gd9Oe-F8t-OOqygFMAE",
+//								"acSecurity": "gPTOOAPz9QJJ5tQ6DxbXFQ==",
+//								"acPostHint": "3332540703dc3d5982c019ddf863c42dea5c",
+//								"passCheck": true,
+//								"info": {
+//							"avatar": "http:\/\/cdn.aixifan.com\/dotnet\/20120923\/style\/image\/avatar.jpg",
+//									"username": "hubert520",
+//									"userid": 13608720,
+//									"mobile": "17600696672",
+//									"group-level": 0,
+//									"mobile-check": 1
+//						},
+//							"s2s-code": "22015c03c407892f84112603e131217d"
+//						}
+					Sign sign = response.getData();
+					SigninHelper.getInstance().setUserSign( sign );
+					showLoginSuccess( sign );
+				} else {
+					mViewModel.mRepository.tryConnectCount++;
+					if ( response.errno == 20285 ) {
+						mViewModel.mRepository.tryConnectCount = 3;
+						response.errordesc = mContext.getResources().getString( R.string.login_view_need_input_image_code_text );
+					}
+					if ( mViewModel.mRepository.tryConnectCount > 2 && !getValidationLayoutShown() ) {
+						setValidationLayoutShown();
+					}
+					if ( mViewModel.mRepository.tryConnectCount > 2 ) {
+						mViewModel.requestVerificationCodeInfo();
+						setValidationLayoutText( "" );
+					}
+					showErrorTip( response.errordesc );
+				}
+			}
+		} );
+	}
+	@Override
+	public void showLoading(String title) {
 		if ( mLoadingDialog == null ) {
 			mLoadingDialog = new LoadingDialog( this );
 			mLoadingDialog.setText( R.string.login_view_loading_text );
 		}
 		mLoadingDialog.show();
 	}
-
 	@Override
 	public void stopLoading() {
 		if ( mLoadingDialog != null ) {
@@ -211,7 +258,6 @@ public class SignInActivity extends BaseActivityNew< SignInPresenterImp, SignInM
 		}
 	}
 
-	@Override
 	public void showErrorTip( String msg ) {
 		if ( TextUtils.isEmpty( msg ) ) {
 			ToastUtil.showError( R.string.activity_signin_error );
@@ -220,31 +266,27 @@ public class SignInActivity extends BaseActivityNew< SignInPresenterImp, SignInM
 		}
 	}
 
-	@Override
 	public boolean getValidationLayoutShown() {
 		return mValidationLayout == null ? false : mValidationLayout.isShown();
 	}
 
-	@Override
 	public void setValidationLayoutShown() {
 		if ( mValidationLayout != null ) {
 			mValidationLayout.setVisibility( View.VISIBLE );
 		}
 	}
 
-	@Override
 	public void setValidationLayoutText( String text ) {
 		if ( mValidationEdit != null ) {
 			mValidationEdit.setText( text );
 		}
 	}
-
-	@Override
-	public void setValidationImage( Bitmap bitmap ) {
-		mValidationImage.setImageBitmap( bitmap );
-	}
-
-	@Override
+//
+//	@Override
+//	public void setValidationImage( Bitmap bitmap ) {
+//		mValidationImage.setImageBitmap( bitmap );
+//	}
+//
 	public void showLoginSuccess( Sign sign ) {
 		Bundle bundle = new Bundle();
 		bundle.putInt( "uid", sign.info.userid );

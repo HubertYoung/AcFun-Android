@@ -7,7 +7,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
@@ -24,8 +23,6 @@ import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
-import com.hubertyoung.stateview.core.LoadManager;
-import com.hubertyoung.stateview.stateview.BaseStateControl;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +34,6 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 	public RxManager mRxManager;
 	private boolean isConfigChange = false;
 	private boolean statusBarTranslucent;
-	protected LoadManager loadManager;
 
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
@@ -63,15 +59,6 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 		if ( getLayoutId() != 0 ) {
 			setContentView( getLayoutId() );
 			mContext = this;
-			loadManager = new LoadManager.Builder()
-					.setViewParams(this)
-					.setListener(new BaseStateControl.OnRefreshListener() {
-						@Override
-						public void onRefresh(View v) {
-							onStateRefresh();
-						}
-					})
-					.build();
 			initView( savedInstanceState );
 			//初始化ToolBar
 			initToolBar();
@@ -116,9 +103,9 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 		return false;
 	}
 
-	protected  void onStateRefresh(){
-
-	}
+//	protected  void onStateRefresh(){
+//
+//	}
 
 	/**
 	 * 通过Class跳转界面

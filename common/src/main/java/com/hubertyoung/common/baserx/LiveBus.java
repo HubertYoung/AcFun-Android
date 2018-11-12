@@ -3,6 +3,7 @@ package com.hubertyoung.common.baserx;
 
 import android.text.TextUtils;
 
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import androidx.annotation.NonNull;
@@ -34,7 +35,9 @@ public class LiveBus {
 
     private final ConcurrentHashMap<Object, LiveBusData<Object>> mLiveBus;
 
-    private LiveBus() {
+	private UIChangeLiveData uc = null;
+
+	private LiveBus() {
         mLiveBus = new ConcurrentHashMap<>();
     }
 
@@ -49,6 +52,16 @@ public class LiveBus {
         return instance;
     }
 
+	public UIChangeLiveData getUC() {
+		if (uc == null) {
+			synchronized (UIChangeLiveData.class) {
+				if (uc == null) {
+					uc = new UIChangeLiveData();
+				}
+			}
+		}
+		return uc;
+	}
 
     public <T> MutableLiveData<T> subscribe( Object eventKey) {
         checkNotNull(eventKey);
@@ -156,7 +169,51 @@ public class LiveBus {
             }
             mLiveBus.remove(clearkey);
         }
+    }
 
+    public class UIChangeLiveData extends SingleLiveEvent {
+        private SingleLiveEvent<String> showDialogEvent;
+        private SingleLiveEvent dismissDialogEvent;
+        private SingleLiveEvent<Map<String, Object> > startActivityEvent;
+        private SingleLiveEvent<Map<String, Object>> startContainerActivityEvent;
+        private SingleLiveEvent finishEvent;
+        private SingleLiveEvent onBackPressedEvent;
+
+        public SingleLiveEvent<String> getShowDialogEvent() {
+            return showDialogEvent = createLiveData(showDialogEvent);
+        }
+
+        public SingleLiveEvent getDismissDialogEvent() {
+            return dismissDialogEvent = createLiveData(dismissDialogEvent);
+        }
+
+        public SingleLiveEvent<Map<String, Object>> getStartActivityEvent() {
+            return startActivityEvent = createLiveData(startActivityEvent);
+        }
+
+        public SingleLiveEvent<Map<String, Object>> getStartContainerActivityEvent() {
+            return startContainerActivityEvent = createLiveData(startContainerActivityEvent);
+        }
+
+        public SingleLiveEvent getFinishEvent() {
+            return finishEvent = createLiveData(finishEvent);
+        }
+
+        public SingleLiveEvent getOnBackPressedEvent() {
+            return onBackPressedEvent = createLiveData(onBackPressedEvent);
+        }
+
+        private SingleLiveEvent createLiveData(SingleLiveEvent liveData) {
+            if (liveData == null) {
+                liveData = new SingleLiveEvent();
+            }
+            return liveData;
+        }
+
+        @Override
+        public void observe(LifecycleOwner owner, Observer observer) {
+            super.observe(owner, observer);
+        }
     }
 
 }

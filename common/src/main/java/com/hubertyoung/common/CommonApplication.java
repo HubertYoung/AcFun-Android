@@ -11,15 +11,12 @@ import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.image.fresco.ImagePipelineConfigFactory;
 import com.hubertyoung.common.net.config.NetWorkConfiguration;
 import com.hubertyoung.common.net.http.HttpUtils;
-import com.hubertyoung.common.stateview.ErrorState;
-import com.hubertyoung.common.stateview.LoadingState;
 import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.utils.display.ScreenHelper;
 import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.common.utils.os.TimeUtil;
 import com.hubertyoung.qqplatforms.platforms.qq.QQPlatFormConfig;
-import com.hubertyoung.stateview.core.LoadState;
 import com.hubertyoung.wechatplatforms.platforms.weixin.WechatPlatFormConfig;
 import com.hubertyoung.weiboplatforms.platforms.weibo.WeiboPlatFormConfig;
 import com.scwang.smartrefresh.header.MaterialHeader;
@@ -103,12 +100,6 @@ public class CommonApplication extends Application {
 		//网络框架
 		initOkHttpUtils();
 		initStetho();
-
-		new LoadState.Builder()
-				.register(new ErrorState())
-				.register(new LoadingState())
-				.setDefaultStateView(LoadingState.class)
-				.build();
 
 		QQPlatFormConfig.registerShare( "1106891112","QiIFegOZGaRmeC4S" );
 		WechatPlatFormConfig.registerShare( "wxf143a66eb7528d12","e408746be2a052ae1f294aa91595227c" );

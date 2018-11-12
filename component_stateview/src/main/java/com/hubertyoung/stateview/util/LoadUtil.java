@@ -8,8 +8,13 @@ import android.view.ViewGroup;
 
 import com.hubertyoung.stateview.core.LoadManager;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 
 public class LoadUtil {
+    @NotNull
+    @Contract( "null -> fail" )
     public static LoadManager.StateViewParams getViewParams( Object targetView) {
         ViewGroup contentParent = null;
         Context context = null;

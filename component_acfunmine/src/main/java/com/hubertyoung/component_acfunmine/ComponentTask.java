@@ -8,7 +8,7 @@ import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
 import com.hubertyoung.component_acfunmine.ui.mine.fragment.MineFragment;
-import com.hubertyoung.component_acfunmine.ui.sign.activity.SignInActivity;
+import com.hubertyoung.component_acfunmine.ui.sign.activity.SignInActivityNew;
 
 /**
  * <br>
@@ -35,7 +35,7 @@ public class ComponentTask implements IComponent {
 				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", MineFragment.newInstance( "", "" ) ) );
 				break;
             case "startLoginActivity":
-                intent = new Intent(context, SignInActivity.class);
+                intent = new Intent(context, SignInActivityNew.class);
 //                intent.putExtra("callId", cc.getCallId());
                 if (!(context instanceof Activity )) {
                     //调用方没有设置context或app间组件跳转，context为application

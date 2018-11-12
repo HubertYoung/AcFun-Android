@@ -1,7 +1,6 @@
 package com.hubertyoung.common.base;
 
 
-
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 

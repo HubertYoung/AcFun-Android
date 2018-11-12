@@ -3,9 +3,9 @@
               xmlns:aapt="http://schemas.android.com/aapt"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical">
 
     <include layout="@layout/toolbar_title_center_view"/>

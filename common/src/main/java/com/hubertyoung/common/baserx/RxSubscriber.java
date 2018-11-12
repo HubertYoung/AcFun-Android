@@ -40,7 +40,10 @@ public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
 
     @Override
     public void onComplete() {
+        finishLoading();
+    }
 
+    protected void finishLoading() {
     }
 
     protected void showLoading() {
@@ -70,6 +73,7 @@ public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
         }else if ( e instanceof ResponeThrowable ){
             message = ((ResponeThrowable) e).result;
         }
+        finishLoading();
         onFailure(message);
     }
 

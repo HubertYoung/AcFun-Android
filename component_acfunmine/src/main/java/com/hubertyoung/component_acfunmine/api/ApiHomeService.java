@@ -42,9 +42,10 @@ public interface ApiHomeService {
 	@GET( "v2/user/content/profile" )
 	Flowable< BaseResponse< User > > requestUserInfo( @QueryMap Map< String, String > map );
 
-	@FormUrlEncoded
+
 	@POST( "api/account/signin/normal" )
 	@Headers( { "Accept:application/vdata+json+version:1.1", "Content-Type:application/x-www-form-urlencoded; charset=UTF-8" } )
+	@FormUrlEncoded
 	Flowable< BaseResponse< Sign > > requestLoginInfo( @FieldMap Map< String, String > map );
 
 	@GET( "api/account/verification/captcha" )
