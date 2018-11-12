@@ -31,12 +31,11 @@ public interface ApiHomeService {
 	/**
 	 * 首页分区页面数据
 	 *
-	 * @param map
 	 * @return
 	 */
 //	http://apipc.app.acfun.cn/v2/offlines/checkOffline
 	@GET( "v2/offlines/checkOffline" )
-	Flowable< BaseResponse< Boolean > > requestCheckOfflineInfo( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< Boolean > > requestCheckOfflineInfo();
 //	http://apipc.app.acfun.cn/v2/user/content/profile?userId=13608720
 
 	@GET( "v2/user/content/profile" )

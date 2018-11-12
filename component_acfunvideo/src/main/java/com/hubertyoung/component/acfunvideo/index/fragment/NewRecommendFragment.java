@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.BaseFragmentNew;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.common.utils.display.ToastUtil;
@@ -48,7 +48,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component.acfunvideo.index.fragment
  */
-public class NewRecommendFragment extends BaseFragment< NewRecommendPresenterImp, NewRecommendModelImp > implements NewRecommendControl.View {
+public class NewRecommendFragment extends BaseFragmentNew< NewRecommendPresenterImp, NewRecommendModelImp > implements NewRecommendControl.View {
 	private static final String ARG_PARAM1 = "id";
 	private static final String ARG_PARAM2 = "param2";
 

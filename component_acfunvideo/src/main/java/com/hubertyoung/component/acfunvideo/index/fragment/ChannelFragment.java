@@ -3,7 +3,7 @@ package com.hubertyoung.component.acfunvideo.index.fragment;
 import android.os.Bundle;
 
 import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.BaseFragmentNew;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
@@ -35,7 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component.acfunvideo.index.fragment
  */
-public class ChannelFragment extends BaseFragment< ChannelPresenterImp, ChannelModelImp > implements ChannelControl.View {
+public class ChannelFragment extends BaseFragmentNew< ChannelPresenterImp, ChannelModelImp > implements ChannelControl.View {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 	private SmartRefreshLayout mSrlContainer;

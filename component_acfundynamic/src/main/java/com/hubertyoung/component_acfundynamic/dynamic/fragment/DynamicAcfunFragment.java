@@ -4,7 +4,7 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 import android.os.Bundle;
 
 import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.BaseFragmentNew;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
@@ -36,7 +36,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfundynamic.dynamic.fragment
  */
-public class DynamicAcfunFragment extends BaseFragment< DynamicAcfunPresenterImp, DynamicAcfunModelImp > implements DynamicAcfunControl.View {
+public class DynamicAcfunFragment extends BaseFragmentNew< DynamicAcfunPresenterImp, DynamicAcfunModelImp > implements DynamicAcfunControl.View {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 	private String mParam1;

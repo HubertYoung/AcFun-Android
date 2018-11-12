@@ -12,23 +12,26 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.baseplatform.tools.PlatformUtils;
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
+import com.hubertyoung.common.baserx.LiveBus;
+import com.hubertyoung.common.constant.AppSpConfig;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.SigninHelper;
+import com.hubertyoung.common.utils.data.SPUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.utils.sign.SignInUtil;
 import com.hubertyoung.component_acfunmine.R;
-import com.hubertyoung.component_acfunmine.ui.mine.control.MineControl;
-import com.hubertyoung.component_acfunmine.ui.mine.model.MineModelImp;
-import com.hubertyoung.component_acfunmine.ui.mine.presenter.MinePresenterImp;
+import com.hubertyoung.component_acfunmine.config.MineConstants;
+import com.hubertyoung.component_acfunmine.ui.mine.vm.MineViewModel;
 import com.hubertyoung.component_acfunmine.ui.setting.activity.SettingsActivity;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
+
+import androidx.lifecycle.Observer;
 
 
 /**
@@ -41,7 +44,7 @@ import java.util.Map;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunmine.mine
  */
-public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp > implements MineControl.View, View.OnClickListener {
+public class MineFragment extends AbsLifecycleFragment< MineViewModel > implements View.OnClickListener {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 
@@ -127,12 +130,6 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		return R.layout.fragment_mine_layout;
 	}
 
-	@Override
-	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
-	}
-
-
 	private void initAction() {
 		avatar.setOnClickListener( this );
 		followLayout.setOnClickListener( this );
@@ -161,19 +158,15 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		mSignInUtil.setOnPlatformNameListener( new SignInUtil.OnPlatformNameListener() {
 			@Override
 			public void onSuccess( String platformName, Map< String, String > map ) {
-				Map< String, String > hashMap = new java.util.HashMap();
-				hashMap.put("clientId", Constants.cidKey );
-				hashMap.put("accessToken", map.get("token"));
-				hashMap.put("openId", map.get("openid"));
-				hashMap.put("type", platformName);
-				mPresenter.requestPlatformLogin(hashMap);
+				mViewModel.requestPlatformLogin(map.get("token"),map.get("openid"),platformName);
 			}
 		} );
 
 	}
 
 	@Override
-	protected void initView( Bundle savedInstanceState ) {
+	public void initView( Bundle savedInstanceState ) {
+		super.initView( savedInstanceState );
 		userInfolayout = findViewById( R.id.rl_user_info_layout );
 		avatarLayout = findViewById( R.id.avatar_layout );
 		avatar = findViewById( R.id.user_avatar );
@@ -221,31 +214,55 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		feedbackLayout = findViewById( R.id.feedback_layout );
 		mSignInUtil = new SignInUtil( activity );
 		initAction();
-		HashMap map = new HashMap<String,String>();
 //		http://apipc.app.acfun.cn/v2/offlines/checkOffline
-		mPresenter.requestCheckOfflineInfo( map );
+		mViewModel.requestCheckOfflineInfo( );
 
-		HashMap map2 = new HashMap<String,String>();
-		map.put( "userId", SigninHelper.getInstance().getUserUid() + "" );
-		mPresenter.requestUserInfo( map2 );
+		if ( !SigninHelper.getInstance().isUnLogin() || SigninHelper.getInstance().getUserUid() <= 0 ) {
+			setLoginState( false );
+		}else {
+			mViewModel.requestUserInfo( SigninHelper.getInstance().getUserUid() + "" );
+		}
 //		Log.e( "TAG", "123123" );
 
 	}
 
 	@Override
-	public void showLoading( String title, int type ) {
-		if ( type == 2 ){
-			mSignInUtil.showLoading();
-		}
+	protected void dataObserver() {
+		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_MINE ,User.class).observe( this, new Observer< User >() {
+			@Override
+			public void onChanged( User user ) {
+				if ( user != null ) {
+					SigninHelper.getInstance().setUserInfo( user );
+					SPUtils.setSharedStringData( AppSpConfig.USERGROUPLEVEL, user.getUserGroupLevel() + "" );
+					SPUtils.setSharedStringData( AppSpConfig.MOBILECHECK, user.getMobileCheck() + "" );
+				}
+				setUserInfo( user );
+				setUserGroupInfo( user.getUserGroupLevel() == Constants.USER_GROUP_LEVEL_FORMAL );
+			}
+		});
+		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_MINE_CHECK_OFFLINE ,Boolean.class).observe( this, new Observer< Boolean >() {
+			@Override
+			public void onChanged( Boolean aBoolean ) {
+				setCheckOfflineInfo( aBoolean );
+			}
+		});
+			LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_MINE_PLATFORM_LOGIN ,Sign.class).observe( this, new Observer< Sign >() {
+			@Override
+			public void onChanged( Sign sign ) {
+				setPlatformLoginInfo( sign );
+			}
+		});
+
 	}
 
 	@Override
 	public void stopLoading() {
+		mSignInUtil.dismissLoading();
 	}
 
 	@Override
-	public void showErrorTip( String msg ) {
-		ToastUtil.showSuccess( msg );
+	protected void showLoading( String title ) {
+		mSignInUtil.showLoading();
 	}
 
 	@Override
@@ -435,7 +452,6 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		}
 	}
 
-	@Override
 	public void setCheckOfflineInfo( Boolean b ) {
 
 	}
@@ -445,7 +461,6 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		nickName.setText( name );
 	}
 
-	@Override
 	public void setUserInfo( User user ) {
 		setUserNickName( user.getName() );
 		if ( user.getSex() == 0 ) {
@@ -470,7 +485,6 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 
 	}
 
-	@Override
 	public void setUserGroupInfo( boolean isVip ) {
 		if ( isVip ) {
 			testLayout.setVisibility( View.GONE );
@@ -483,7 +497,6 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		userLevel.setVisibility( View.GONE );
 	}
 
-	@Override
 	public void setLoginState( boolean isLogin ) {
 		if ( isLogin ) {
 			userInfolayout.setVisibility( View.VISIBLE );
@@ -516,14 +529,12 @@ public class MineFragment extends BaseFragment< MinePresenterImp, MineModelImp >
 		setRedDot( false );
 	}
 
-	@Override
 	public void stopDialogLoading() {
 		if ( mSignInUtil.isShowing() ){
 			mSignInUtil.dismissLoading();
 		}
 	}
 
-	@Override
 	public void setPlatformLoginInfo( Sign sign ) {
 		SigninHelper.getInstance().setUserSign(sign);
 		Bundle bundle = new Bundle();

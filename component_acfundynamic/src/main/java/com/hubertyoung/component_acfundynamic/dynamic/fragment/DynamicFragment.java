@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.billy.cc.core.component.CC;
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.BaseFragmentNew;
 import com.hubertyoung.common.baserx.event.Subscribe;
 import com.hubertyoung.common.baserx.event.inner.EventBean;
 import com.hubertyoung.common.baserx.event.inner.ThreadMode;
@@ -42,7 +42,7 @@ import io.reactivex.functions.Consumer;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunarticle.mine.fragment
  */
-public class DynamicFragment extends BaseFragment< DynamicPresenterImp, DynamicModelImp > implements DynamicControl.View {
+public class DynamicFragment extends BaseFragmentNew< DynamicPresenterImp, DynamicModelImp > implements DynamicControl.View {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 

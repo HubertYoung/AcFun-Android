@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.BaseFragmentNew;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.DropDownOptionList;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
@@ -47,7 +47,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunarticle.mine.fragment
  */
-public class ArticleGeneralSecondFragment extends BaseFragment< ArticleGeneralSecondPresenterImp, ArticleGeneralSecondModelImp > implements ArticleGeneralSecondControl.View {
+public class ArticleGeneralSecondFragment extends BaseFragmentNew< ArticleGeneralSecondPresenterImp, ArticleGeneralSecondModelImp > implements ArticleGeneralSecondControl.View {
 	private static final String ARG_PARAM1 = "channelId";
 	private static final String ARG_PARAM2 = "serverChannel";
 	private String mChannelId;

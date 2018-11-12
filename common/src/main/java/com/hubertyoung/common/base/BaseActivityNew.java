@@ -206,7 +206,7 @@ public abstract class BaseActivityNew< T extends BasePresenter, E extends BaseMo
 	 * @param fragment
 	 * @param framlayoutID
 	 */
-	public void addViewFrame( BaseFragment fragment, int framlayoutID ) {
+	public void addViewFrame( BaseFragmentNew fragment, int framlayoutID ) {
 		FragmentTransaction fragmentTransaction = getFragmentTransaction();
 		fragmentTransaction.replace( framlayoutID, fragment );
 		fragmentTransaction.addToBackStack( fragment.TAG );

@@ -18,10 +18,10 @@ import androidx.lifecycle.AndroidViewModel;
  * @since:V1.0.0
  * @desc:com.hubertyoung.common.base
  */
-public class AbsViewModel<T extends AbsRepository> extends AndroidViewModel {
+public class AbsViewModel<R extends AbsRepository> extends AndroidViewModel {
 
 
-    public T mRepository;
+    public R mRepository;
 
     public AbsViewModel( @NonNull Application application) {
         super(application);

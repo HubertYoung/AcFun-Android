@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.BaseFragmentNew;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfunarticle.R;
@@ -39,7 +39,7 @@ import androidx.viewpager.widget.ViewPager;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunarticle.mine.fragment
  */
-public class ArticleFragment extends BaseFragment< ArticlePresenterImp, ArticleModelImp > implements ArticleControl.View {
+public class ArticleFragment extends BaseFragmentNew< ArticlePresenterImp, ArticleModelImp > implements ArticleControl.View {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 

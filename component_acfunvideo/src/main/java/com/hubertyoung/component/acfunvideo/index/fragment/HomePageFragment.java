@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.BaseFragmentNew;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.index.adapter.HomePagerAdapter;
@@ -29,7 +29,7 @@ import androidx.viewpager.widget.ViewPager;
  * @since:V1.0
  * @desc:com.hubertyoung.component.home.index.fragment
  */
-public class HomePageFragment extends BaseFragment< HomePagePresenterImp, HomePageModelImp > implements HomePageControl.View {
+public class HomePageFragment extends BaseFragmentNew< HomePagePresenterImp, HomePageModelImp > implements HomePageControl.View {
 
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";

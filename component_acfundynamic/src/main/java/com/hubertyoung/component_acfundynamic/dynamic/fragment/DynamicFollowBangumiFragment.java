@@ -4,7 +4,7 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 import android.os.Bundle;
 
 import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.BaseFragmentNew;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
@@ -37,7 +37,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfundynamic.dynamic.fragment
  */
-public class DynamicFollowBangumiFragment extends BaseFragment< DynamicFollowBangumiPresenterImp, DynamicFollowBangumiModelImp > implements DynamicFollowBangumiControl.View {
+public class DynamicFollowBangumiFragment extends BaseFragmentNew< DynamicFollowBangumiPresenterImp, DynamicFollowBangumiModelImp > implements DynamicFollowBangumiControl.View {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 	private String mParam1;
