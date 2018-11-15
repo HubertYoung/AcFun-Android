@@ -30,7 +30,7 @@ import io.reactivex.disposables.Disposable;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component_acfunmine.ui.mine.source
  */
-public class MineRepository extends BaseRepository {
+public class MineRepository extends AbsRepository {
 	public void requestUserInfo( HashMap map ) {
 		addDisposable( ( Disposable ) Api.getDefault( HostType.MY_RESULT )
 				.getRetrofitClient()

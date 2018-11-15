@@ -3,7 +3,7 @@ package com.hubertyoung.component_acfunmine.ui.setting.activity;
 import android.os.Bundle;
 
 import com.hubertyoung.common.base.AbsLifecycleActivity;
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.component_acfunmine.R;
 
 /**
@@ -38,7 +38,7 @@ public class SettingsActivity extends AbsLifecycleActivity {
 
 	}
 
-	public static void launch( BaseActivityNew activity ) {
+	public static void launch( BaseActivity activity ) {
 		activity.startActivity( SettingsActivity.class );
 	}
 }

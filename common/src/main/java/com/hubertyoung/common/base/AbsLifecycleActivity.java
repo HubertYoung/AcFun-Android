@@ -1,8 +1,9 @@
 package com.hubertyoung.common.base;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 
-import com.hubertyoung.common.baserx.LiveBus;
+import com.hubertyoung.common.stateview.StateConstants;
 import com.hubertyoung.common.utils.TUtil;
 
 import androidx.annotation.NonNull;
@@ -26,10 +27,6 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 	@Override
 	public void initView( Bundle savedInstanceState ) {
 		mViewModel = VMProviders( this, TUtil.getInstance( this, 0 ) );
-		/**
-		 * 私有的ViewModel与View的契约事件回调逻辑
-		 */
-		registorUIChangeLiveDataCallBack();
 		dataObserver();
 	}
 
@@ -43,23 +40,6 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 
 	protected void dataObserver() {
 
-	}
-
-	private void registorUIChangeLiveDataCallBack() {
-		//加载对话框显示
-		LiveBus.getDefault().getUC().getShowDialogEvent().observe( this, new Observer< String >() {
-			@Override
-			public void onChanged( @Nullable String title ) {
-				showLoading( title );
-			}
-		} );
-		//加载对话框消失
-		LiveBus.getDefault().getUC().getDismissDialogEvent().observe( this, new Observer< Boolean >() {
-			@Override
-			public void onChanged( @Nullable Boolean aBoolean ) {
-				stopLoading();
-			}
-		} );
 	}
 
 	protected void stopLoading() {
@@ -93,23 +73,19 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 //    }
 
 
-//    protected Observer observer = new Observer<String >() {
-//        @Override
-//        public void onChanged(@Nullable String state) {
-//            if (!TextUtils.isEmpty(state)) {
-//				switch ( state ) {
-//					case StateConstants.ERROR_STATE:
-//					case StateConstants.NET_WORK_STATE:
-//						showError(ErrorState.class, state);
-//					    break;
-//					case StateConstants.LOADING_STATE:
-//						showLoading();
-//						break;
-//					case StateConstants.SUCCESS_STATE:
-//						showSuccess();
-//						break;
-//				}
-//            }
-//        }
-//    };
+	protected Observer observer = new Observer< String >() {
+		@Override
+		public void onChanged( @Nullable String state ) {
+			if ( !TextUtils.isEmpty( state ) ) {
+				if ( StateConstants.ERROR_STATE.equals( state ) ) {
+
+				} else if ( StateConstants.NET_WORK_STATE.equals( state ) ) {
+				} else if ( StateConstants.LOADING_STATE.equals( state ) ) {
+					showLoading( "" );
+				} else if ( StateConstants.SUCCESS_STATE.equals( state ) ) {
+					stopLoading();
+				}
+			}
+		}
+	};
 }

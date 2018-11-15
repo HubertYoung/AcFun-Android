@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.hubertyoung.common.baserx.LiveBus;
+import com.hubertyoung.common.stateview.StateConstants;
 import com.hubertyoung.common.utils.TUtil;
 
 import java.util.ArrayList;
@@ -25,10 +26,10 @@ import androidx.lifecycle.ViewModelProviders;
 public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends BaseFragment {
 
 	protected VM mViewModel;
-//
-//	protected Object mStateEventKey;
-//
-//	protected String mStateEventTag;
+	//
+	protected Object mStateEventKey;
+
+	protected String mStateEventTag;
 
 	private List< Object > events = new ArrayList<>();
 
@@ -37,35 +38,17 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 		mViewModel = VMProviders( this, TUtil.getInstance( this, 0 ) );
 		if ( null != mViewModel ) {
 			dataObserver();
-//			mStateEventKey = getStateEventKey();
-//			mStateEventTag = getStateEventTag();
-//			events.add( new StringBuilder( ( String ) mStateEventKey ).append( mStateEventTag ).toString() );
-//			registerObserver( mStateEventKey, mStateEventTag ).observe( this, observer );
+			events.add( StateConstants.EVENT_KEY_LOADING_STATE );
+			LiveBus.getDefault().subscribe( StateConstants.EVENT_KEY_LOADING_STATE ).observe( this, observer );
 		}
 	}
-
-//	/**
-//	 * ViewPager +fragment tag
-//	 *
-//	 * @return
-//	 */
-//	protected String getStateEventTag() {
-//		return "";
-//	}
-//
-//	/**
-//	 * get state page event key
-//	 *
-//	 * @return
-//	 */
-//	protected abstract Object getStateEventKey();
 
 	/**
 	 * create ViewModelProviders
 	 *
 	 * @return ViewModel
 	 */
-	protected < VM extends ViewModel > VM VMProviders( Fragment fragment, @NonNull Class< VM > modelClass ) {
+	protected < T extends ViewModel > T VMProviders( Fragment fragment, @NonNull Class< T > modelClass ) {
 		return ViewModelProviders.of( fragment ).get( modelClass );
 	}
 
@@ -76,16 +59,14 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 	@Override
 	public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated( view, savedInstanceState );
-		//私有的ViewModel与View的契约事件回调逻辑
-		registorUIChangeLiveDataCallBack();
 	}
 
-	protected < VM > MutableLiveData< VM > registerObserver( Object eventKey, Class< VM > tClass ) {
+	protected < T > MutableLiveData< T > registerObserver( Object eventKey, Class< T > tClass ) {
 
 		return registerObserver( eventKey, null, tClass );
 	}
 
-	protected < VM > MutableLiveData< VM > registerObserver( Object eventKey, String tag, Class< VM > tClass ) {
+	protected < T > MutableLiveData< T > registerObserver( Object eventKey, String tag, Class< T > tClass ) {
 		String event;
 		if ( TextUtils.isEmpty( tag ) ) {
 			event = ( String ) eventKey;
@@ -97,7 +78,7 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 	}
 
 
-//	@Override
+	//	@Override
 //	protected void onStateRefresh() {
 //		showLoading();
 //	}
@@ -127,87 +108,27 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 //	}
 //
 //
-//	protected Observer observer = new Observer< String >() {
-//		@Override
-//		public void onChanged( @Nullable String state ) {
-//			if ( !TextUtils.isEmpty( state ) ) {
-////				if ( StateConstants.ERROR_STATE.equals( state ) ) {
-////					showError( ErrorState.class, "2" );
-////				} else if ( StateConstants.NET_WORK_STATE.equals( state ) ) {
-////					showError( ErrorState.class, "1" );
-////				} else if ( StateConstants.LOADING_STATE.equals( state ) ) {
-////					showLoading();
-////				} else if ( StateConstants.SUCCESS_STATE.equals( state ) ) {
-////					showSuccess();
-////				}
-//			}
-//		}
-//	};
-	/**
-	 * =====================================================================
-	 **/
-	/**
-	 * 注册ViewModel与View的契约UI回调事件
-	 */
-	private void registorUIChangeLiveDataCallBack() {
-		/**
-		 *		加载对话框显示
-		 */
-		LiveBus.getDefault().getUC().getShowDialogEvent().observe( this, new Observer< String >() {
-			@Override
-			public void onChanged( @Nullable String title ) {
-				showLoading( title );
-			}
-		} );
-		/**
-		 * 		加载对话框消失
-		 */
-		LiveBus.getDefault().getUC().getDismissDialogEvent().observe( this, new Observer< Boolean >() {
-			@Override
-			public void onChanged( @Nullable Boolean aBoolean ) {
-				stopLoading();
-			}
-		} );
+	protected Observer observer = new Observer< String >() {
+		@Override
+		public void onChanged( @Nullable String state ) {
+			if ( !TextUtils.isEmpty( state ) ) {
+				if ( StateConstants.ERROR_STATE.equals( state ) ) {
 
-//		//跳入新页面
-//		viewModel.getUC().getStartActivityEvent().observe(this, new Observer<Map<String, Object> >() {
-//			@Override
-//			public void onChanged(@Nullable Map<String, Object> params) {
-//				Class<?> clz = (Class<?>) params.get(ParameterField.CLASS);
-//				Bundle bundle = (Bundle) params.get(ParameterField.BUNDLE);
-//				startActivity(clz, bundle);
-//			}
-//		});
-//		//跳入ContainerActivity
-//		viewModel.getUC().getStartContainerActivityEvent().observe(this, new Observer<Map<String, Object>>() {
-//			@Override
-//			public void onChanged(@Nullable Map<String, Object> params) {
-//				String canonicalName = (String) params.get(ParameterField.CANONICAL_NAME);
-//				Bundle bundle = (Bundle) params.get(ParameterField.BUNDLE);
-//				startContainerActivity(canonicalName, bundle);
-//			}
-//		});
-//		//关闭界面
-//		viewModel.getUC().getFinishEvent().observe(this, new Observer<Boolean>() {
-//			@Override
-//			public void onChanged(@Nullable Boolean aBoolean) {
-//				getActivity().finish();
-//			}
-//		});
-//		//关闭上一层
-//		viewModel.getUC().getOnBackPressedEvent().observe(this, new Observer<Boolean>() {
-//			@Override
-//			public void onChanged(@Nullable Boolean aBoolean) {
-//				getActivity().onBackPressed();
-//			}
-//		});
-	}
+				} else if ( StateConstants.NET_WORK_STATE.equals( state ) ) {
+				} else if ( StateConstants.LOADING_STATE.equals( state ) ) {
+					showLoading( "" );
+				} else if ( StateConstants.SUCCESS_STATE.equals( state ) ) {
+					stopLoading();
+				}
+			}
+		}
+	};
 
-	protected void stopLoading(){
+	protected void stopLoading() {
 
 	}
 
-	protected void showLoading( String title ){
+	protected void showLoading( String title ) {
 
 	}
 

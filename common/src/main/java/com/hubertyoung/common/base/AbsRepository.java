@@ -1,7 +1,8 @@
 package com.hubertyoung.common.base;
 
 
-import io.reactivex.disposables.CompositeDisposable;
+import com.hubertyoung.common.baserx.RxManager;
+
 import io.reactivex.disposables.Disposable;
 
 /**
@@ -16,23 +17,18 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class AbsRepository {
 
-    private CompositeDisposable mCompositeDisposable;
+    public RxManager mRxManager;
 
 
     public AbsRepository() {
-
+        mRxManager = new RxManager();
     }
 
     protected void addDisposable(Disposable disposable) {
-        if (mCompositeDisposable == null) {
-            mCompositeDisposable = new CompositeDisposable();
-        }
-        mCompositeDisposable.add(disposable);
+        mRxManager.add( disposable );
     }
 
     public void unDisposable() {
-        if (mCompositeDisposable != null && mCompositeDisposable.isDisposed()) {
-            mCompositeDisposable.clear();
-        }
+        mRxManager.clear();
     }
 }

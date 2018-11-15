@@ -3,13 +3,12 @@ package com.hubertyoung.component_acfunarticle.article.source;
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
+import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.baserx.RxSubscriber;
-import com.hubertyoung.common.data.BaseRepository;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfunarticle.BuildConfig;
 import com.hubertyoung.component_acfunarticle.api.ApiArticleService;
-import com.hubertyoung.component_acfunarticle.config.ArticleConstants;
 import com.hubertyoung.component_acfunarticle.entity.RankAc;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
@@ -27,7 +26,7 @@ import io.reactivex.disposables.Disposable;
  * @since:V5.2.7
  * @desc:com.hubertyoung.component_acfunarticle.article.source
  */
-public class ArticleGeneralSecondRepository extends BaseRepository {
+public class ArticleGeneralSecondRepository extends AbsRepository {
 
 	public void requestArticleGeneralSecond( String mChannelId, String selectorTimeType, String selectorType, String realmIds, String pageNo, String pageSize ) {
 		HashMap map = new HashMap< String, String >();
@@ -47,17 +46,17 @@ public class ArticleGeneralSecondRepository extends BaseRepository {
 				.subscribeWith( new RxSubscriber< RankAc >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading( "" );
+//						showDialogLoading( "" );
 					}
 
 					@Override
 					protected void finishLoading() {
-						stopLoading();
+//						stopLoading();
 					}
 
 					@Override
 					public void onSuccess( RankAc rankAc ) {
-						sendData( ArticleConstants.EVENT_KEY_ARTICLE_ARTICLE_GENERAL_SECOND, rankAc );
+//						sendData( ArticleConstants.EVENT_KEY_ARTICLE_ARTICLE_GENERAL_SECOND, rankAc );
 					}
 
 					@Override

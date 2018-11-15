@@ -27,6 +27,10 @@ import retrofit2.HttpException;
  */
 public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
 
+    public RxSubscriber() {
+        super();
+    }
+
     @Override
     protected void onStart() {
         super.onStart();

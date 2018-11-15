@@ -6,7 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.data.StringUtil;
@@ -30,10 +30,10 @@ import androidx.recyclerview.widget.RecyclerView;
  * @desc:com.hubertyoung.component_acfundynamic.dynamic.section
  */
 public class DynamicAcfunSection extends Section {
-	private final BaseActivityNew mActivity;
+	private final BaseActivity mActivity;
 	private List< RegionBodyContent > data;
 
-	public DynamicAcfunSection( BaseActivityNew activity ) {
+	public DynamicAcfunSection( BaseActivity activity ) {
 		super( new SectionParameters.Builder( R.layout.item_recommend_uploader_rss )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//
