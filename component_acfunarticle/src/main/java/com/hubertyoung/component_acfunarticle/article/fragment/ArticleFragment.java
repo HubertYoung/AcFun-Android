@@ -8,24 +8,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.common.base.BaseFragmentNew;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfunarticle.R;
 import com.hubertyoung.component_acfunarticle.article.adapter.ArticlePagerAdapter;
-import com.hubertyoung.component_acfunarticle.article.control.ArticleControl;
-import com.hubertyoung.component_acfunarticle.article.model.ArticleModelImp;
-import com.hubertyoung.component_acfunarticle.article.presenter.ArticlePresenterImp;
+import com.hubertyoung.component_acfunarticle.article.vm.ArticleViewModel;
+import com.hubertyoung.component_acfunarticle.config.ArticleConstants;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
 import com.hubertyoung.component_acfunarticle.entity.ServerChannel;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
 import com.hubertyoung.component_skeleton.skeleton.ViewSkeletonScreen;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
-import java.util.HashMap;
 import java.util.List;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
 
 
@@ -39,7 +38,7 @@ import androidx.viewpager.widget.ViewPager;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunarticle.mine.fragment
  */
-public class ArticleFragment extends BaseFragmentNew< ArticlePresenterImp, ArticleModelImp > implements ArticleControl.View {
+public class ArticleFragment extends AbsLifecycleFragment< ArticleViewModel > {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 
@@ -86,16 +85,13 @@ public class ArticleFragment extends BaseFragmentNew< ArticlePresenterImp, Artic
 		return R.layout.fragment_article_layout;
 	}
 
-	@Override
-	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
-	}
 
 	private void initAction() {
 	}
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
+		super.initView( savedInstanceState );
 		mContent = findViewById( R.id.content );
 		mTlHead = findViewById( R.id.tl_head );
 		mArticleViewTab = findViewById( R.id.article_view_tab );
@@ -105,14 +101,20 @@ public class ArticleFragment extends BaseFragmentNew< ArticlePresenterImp, Artic
 		loadData();
 	}
 
-	@Override
 	public void loadData() {
-		HashMap map = new HashMap<String,String>();
-		mPresenter.requestAllChannel( map );
+		mViewModel.requestAllChannel();
 	}
-
 	@Override
-	public void showLoading( String title, int type ) {
+	protected void dataObserver() {
+		registerObserver( ArticleConstants.EVENT_KEY_ARTICLE_PLATFORM_LOGIN ,Channel.class).observe( this, new Observer< Channel >() {
+			@Override
+			public void onChanged( Channel channel ) {
+				initViewPager( channel.article );
+			}
+		});
+	}
+	@Override
+	protected void showLoading( String title ) {
 		mViewSkeletonScreen = Skeleton.bind( mArticleViewPager )//
 //				.shimmer( true )//
 //				.duration( 1200 )//
@@ -128,20 +130,14 @@ public class ArticleFragment extends BaseFragmentNew< ArticlePresenterImp, Artic
 		}
 	}
 
-	@Override
 	public void showErrorTip( String msg ) {
 		ToastUtil.showError( msg );
-	}
-
-	@Override
-	public void setAllChannelInfo( Channel channel ) {
-		initViewPager( channel.article );
 	}
 
 	private void initViewPager( List< ServerChannel > article ) {
 		this.mArticleViewTab.setCustomTabView( R.layout.widget_secondary_tab_view, R.id.secondary_tab_text );
 		if ( mArticlePagerAdapter == null ) {
-			mArticlePagerAdapter = new ArticlePagerAdapter( activity, getSupportFragmentManager( activity ) );
+			mArticlePagerAdapter = new ArticlePagerAdapter( activity, activity.getSupportFragmentManager() );
 		}
 		mArticlePagerAdapter.setInfo( article );
 		this.mArticleViewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {

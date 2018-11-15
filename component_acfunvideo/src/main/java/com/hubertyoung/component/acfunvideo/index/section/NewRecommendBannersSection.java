@@ -1,17 +1,18 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.entity.RegionBodyContent;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
-import com.hubertyoung.component_acfunvideo.R;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.component.acfunvideo.entity.Regions;
+import com.hubertyoung.component_acfunvideo.R;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>
@@ -24,10 +25,10 @@ import com.hubertyoung.common.widget.sectioned.SectionParameters;
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
 public class NewRecommendBannersSection extends Section {
-	private BaseActivityNew mActivity;
+	private BaseActivity mActivity;
 	private Regions regions;
 
-	public NewRecommendBannersSection( BaseActivityNew activity ) {
+	public NewRecommendBannersSection( BaseActivity activity ) {
 		super( new SectionParameters.Builder( R.layout.item_region_single_banner )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//

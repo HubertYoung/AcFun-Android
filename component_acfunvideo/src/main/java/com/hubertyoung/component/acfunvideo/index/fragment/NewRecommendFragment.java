@@ -3,17 +3,16 @@ package com.hubertyoung.component.acfunvideo.index.fragment;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.base.BaseFragmentNew;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
+import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
-import com.hubertyoung.component.acfunvideo.index.control.NewRecommendControl;
-import com.hubertyoung.component.acfunvideo.index.model.NewRecommendModelImp;
-import com.hubertyoung.component.acfunvideo.index.presenter.NewRecommendPresenterImp;
+import com.hubertyoung.component.acfunvideo.entity.RegionsEntity;
 import com.hubertyoung.component.acfunvideo.index.section.ArticlesNewSection;
 import com.hubertyoung.component.acfunvideo.index.section.ArticlesRankRecommendSection;
 import com.hubertyoung.component.acfunvideo.index.section.ArticlesRecommendSection;
@@ -22,6 +21,7 @@ import com.hubertyoung.component.acfunvideo.index.section.NewRecommendBannersSec
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendCarouselsSection;
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendVideosRankSection;
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendVideosSection;
+import com.hubertyoung.component.acfunvideo.index.vm.NewRecommendViewModel;
 import com.hubertyoung.component_acfunvideo.R;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
@@ -30,10 +30,10 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.HashMap;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,7 +48,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component.acfunvideo.index.fragment
  */
-public class NewRecommendFragment extends BaseFragmentNew< NewRecommendPresenterImp, NewRecommendModelImp > implements NewRecommendControl.View {
+public class NewRecommendFragment extends AbsLifecycleFragment< NewRecommendViewModel > {
 	private static final String ARG_PARAM1 = "id";
 	private static final String ARG_PARAM2 = "param2";
 
@@ -100,12 +100,8 @@ public class NewRecommendFragment extends BaseFragmentNew< NewRecommendPresenter
 	}
 
 	@Override
-	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
-	}
-
-	@Override
 	protected void initView( Bundle savedInstanceState ) {
+		super.initView( savedInstanceState );
 		mSrlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
 		mHomeRecommendLis = ( RecyclerView ) findViewById( R.id.home_recommend_lis );
 		initRecyclerView();
@@ -113,17 +109,63 @@ public class NewRecommendFragment extends BaseFragmentNew< NewRecommendPresenter
 		loadData();
 	}
 
-	@Override
 	public void loadData() {
-		HashMap map = new HashMap<String,String>();
-		map.put( "channelId", channelId );
-		mPresenter.requestRecommend( map );
+		mViewModel.requestRecommend( channelId );
 	}
 
 	private void loadNewData() {
-		HashMap map = new HashMap<String,String>();
-		map.put( "pageNo", mAdapter.getPageBean().getLoadPage() + "" );
-		mPresenter.requestNewRecommend(channelId, map );
+		mViewModel.requestNewRecommend( channelId, mAdapter.getPageBean().getLoadPage() + "" );
+	}
+
+	@Override
+	protected void dataObserver() {
+		registerObserver( VideoConstants.EVENT_KEY_NEW_RECOMMEND_INFO, RegionsEntity.class ).observe( this, new Observer< RegionsEntity >() {
+			@Override
+			public void onChanged( RegionsEntity regionsEntity ) {
+				List< Regions > regionsList = regionsEntity.regionsList;
+				for (Regions regions : regionsList) {
+					switch ( regions.schema ) {
+						case Utils.carousels:
+							showNewRecommendCarouselsSection( regions );
+							break;
+						case Utils.banners:
+							showNewRecommendBannersSection( regions );
+							break;
+						case Utils.videos:
+						case Utils.videos_new:
+							showNewRecommendVideosSection( regions );
+							break;
+						case Utils.videos_rank:
+							showNewRecommendVideosRankSection( regions );
+							break;
+						case Utils.bangumis:
+							showNewRecommendBangumisSection( regions );
+							break;
+						case Utils.articles:
+							showArticlesRecommendSection( regions );
+							break;
+						case Utils.articles_rank:
+							showArticlesRankRecommendSection( regions );
+							break;
+						case Utils.articles_new:
+							showArticlesNewRecommendSection( regions );
+							break;
+					}
+				}
+			}
+		} );
+		registerObserver( VideoConstants.EVENT_KEY_NEW_RECOMMEND_ADD_INFO, Regions.class ).observe( this, new Observer< Regions >() {
+			@Override
+			public void onChanged( Regions regions ) {
+				addNewRecommendInfo( regions.changeContents );
+			}
+		} );
+		registerObserver( VideoConstants.EVENT_KEY_NEW_RECOMMEND_STATUS, Integer.class ).observe( this, new Observer< Integer >() {
+			@Override
+			public void onChanged( Integer integer ) {
+				refreshViewInfo( integer );
+			}
+		} );
 	}
 
 	private void initAction() {
@@ -188,8 +230,7 @@ public class NewRecommendFragment extends BaseFragmentNew< NewRecommendPresenter
 				.show();
 	}
 
-	@Override
-	public void showLoading( String title, int type ) {
+	public void showLoading( String title ) {
 
 	}
 
@@ -202,21 +243,19 @@ public class NewRecommendFragment extends BaseFragmentNew< NewRecommendPresenter
 		}
 	}
 
-	@Override
 	public void showErrorTip( String msg ) {
 		ToastUtil.showError( msg );
 	}
 
-	@Override
 	public void addNewRecommendInfo( List< RegionBodyContent > regionsList ) {
-		if ( TextUtils.equals( channelId,articlesChannelId ) ){
+		if ( TextUtils.equals( channelId, articlesChannelId ) ) {
 			Section section = mAdapter.getSection( Utils.articles_new );
 			if ( section != null && section instanceof ArticlesNewSection ) {
 				ArticlesNewSection articlesNewSection = ( ArticlesNewSection ) section;
 				articlesNewSection.addRegions( regionsList );
 				mAdapter.notifyDataSetChanged();
 			}
-		}else {
+		} else {
 			Section section = mAdapter.getSection( Utils.videos_new );
 			if ( section != null && section instanceof NewRecommendVideosSection ) {
 				NewRecommendVideosSection videosSection = ( NewRecommendVideosSection ) section;
@@ -226,29 +265,26 @@ public class NewRecommendFragment extends BaseFragmentNew< NewRecommendPresenter
 		}
 	}
 
-	@Override
 	public void showNewRecommendCarouselsSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivityNew ) activity );
+			mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
 			mAdapter.addSection( mCarouselsSection );
 		}
 		mCarouselsSection.setRegions( regions );
 	}
 
-	@Override
 	public void showNewRecommendBannersSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mBannersSection = new NewRecommendBannersSection( ( BaseActivityNew ) activity );
+			mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) activity );
 			mAdapter.addSection( mBannersSection );
 			mBannersSection.setRegions( regions );
 		}
 	}
 
-	@Override
 	public void showNewRecommendVideosSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
 			boolean isVideoNew = TextUtils.equals( Utils.videos_new, regions.schema );
-			mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivityNew ) activity, isVideoNew );
+			mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity, isVideoNew );
 			if ( isVideoNew ) {
 				mAdapter.addSection( Utils.videos_new, mNewBangumiSection );
 			} else {
@@ -258,57 +294,51 @@ public class NewRecommendFragment extends BaseFragmentNew< NewRecommendPresenter
 		}
 	}
 
-	@Override
 	public void showNewRecommendVideosRankSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivityNew ) activity );
+			mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivity ) activity );
 			mAdapter.addSection( mVideosRankSection );
 			mVideosRankSection.setRegions( regions );
 		}
 	}
 
-	@Override
 	public void showNewRecommendBangumisSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mBangumisSection = new NewRecommendBangumisSection( ( BaseActivityNew ) activity );
+			mBangumisSection = new NewRecommendBangumisSection( ( BaseActivity ) activity );
 			mAdapter.addSection( mBangumisSection );
 			mBangumisSection.setRegions( regions );
 		}
 	}
 
-	@Override
 	public void refreshViewInfo( int i ) {
-		if ( i == 0 ){
+		if ( i == 0 ) {
 			mAdapter.removeAllSections();
-		}else {
+		} else {
 			mAdapter.notifyDataSetChanged();
 		}
 	}
 
-	@Override
 	public void showArticlesRecommendSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
 			articlesChannelId = channelId;
-			ArticlesRecommendSection mArticlesRecommendSection = new ArticlesRecommendSection( ( BaseActivityNew ) activity );
+			ArticlesRecommendSection mArticlesRecommendSection = new ArticlesRecommendSection( ( BaseActivity ) activity );
 			mAdapter.addSection( mArticlesRecommendSection );
 			mArticlesRecommendSection.setRegions( regions );
 		}
 	}
 
-	@Override
 	public void showArticlesRankRecommendSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
-			mArticlesRankRecommendSection = new ArticlesRankRecommendSection( ( BaseActivityNew ) activity );
+			mArticlesRankRecommendSection = new ArticlesRankRecommendSection( ( BaseActivity ) activity );
 			mAdapter.addSection( mArticlesRankRecommendSection );
 			mArticlesRankRecommendSection.setRegions( regions );
 		}
 	}
 
-	@Override
 	public void showArticlesNewRecommendSection( Regions regions ) {
 		if ( mAdapter.getPageBean().refresh ) {
 			boolean isArticlesNew = TextUtils.equals( Utils.articles_new, regions.schema );
-			mArticlesNewSection = new ArticlesNewSection( ( BaseActivityNew ) activity );
+			mArticlesNewSection = new ArticlesNewSection( ( BaseActivity ) activity );
 			if ( isArticlesNew ) {
 				mAdapter.addSection( Utils.articles_new, mArticlesNewSection );
 			} else {

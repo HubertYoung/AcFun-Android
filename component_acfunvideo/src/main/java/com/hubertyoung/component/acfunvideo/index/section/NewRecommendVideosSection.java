@@ -6,14 +6,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.data.StringUtil;
-
 import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
-import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
@@ -35,10 +34,10 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class NewRecommendVideosSection extends Section {
 	private boolean isVideoNew;
-	private BaseActivityNew mActivity;
+	private BaseActivity mActivity;
 	private Regions mRegions;
 
-	public NewRecommendVideosSection( BaseActivityNew activity, boolean isVideoNew ) {
+	public NewRecommendVideosSection( BaseActivity activity, boolean isVideoNew ) {
 		super( new SectionParameters.Builder( R.layout.item_home_video ).headerResourceId( R.layout.widget_region_header_text ).build() );
 		this.mActivity = activity;
 		this.isVideoNew = isVideoNew;

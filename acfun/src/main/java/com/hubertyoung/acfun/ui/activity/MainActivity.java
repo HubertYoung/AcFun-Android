@@ -8,8 +8,8 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.acfun.R;
 import com.hubertyoung.acfun.ui.fragment.PlaceHolderFragment;
-import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.base.BaseFragmentNew;
+import com.hubertyoung.common.base.AbsLifecycleActivity;
+import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.log.CommonLog;
 
@@ -28,21 +28,17 @@ import androidx.fragment.app.FragmentTransaction;
  * @since:V1.0.0
  * @desc:com.hubertyoung.acfun.ui.activity
  */
-public class MainActivity extends BaseActivityNew {
+public class MainActivity extends AbsLifecycleActivity {
 
 	private FrameLayout mFlContainer;
 	private BottomNavigationBar mBnbMainView;
-	private ArrayList< BaseFragmentNew > mFragments = new ArrayList<>();
-	private BaseFragmentNew mFragment;
+	private ArrayList< BaseFragment > mFragments = new ArrayList<>();
+	private BaseFragment mFragment;
 	private long keyDownFirstTime;
 
 	@Override
 	public int getLayoutId() {
 		return R.layout.activity_main;
-	}
-
-	@Override
-	public void initPresenter() {
 	}
 
 	@Override
@@ -53,6 +49,7 @@ public class MainActivity extends BaseActivityNew {
 
 	@Override
 	public void initView( Bundle savedInstanceState ) {
+		super.initView( savedInstanceState );
 		mFlContainer = findViewById( R.id.fl_container );
 		mBnbMainView = findViewById( R.id.bnb_main_view );
 
@@ -74,6 +71,16 @@ public class MainActivity extends BaseActivityNew {
 
 	}
 
+	@Override
+	protected void stopLoading() {
+
+	}
+
+	@Override
+	protected void showLoading( String title ) {
+
+	}
+
 	private void initFragment( Bundle savedInstanceState ) {
 		mFragments.clear();
 		mFragments.add( getFragment( "ComponentAcFunIndex", "getHomePageFragment" ) );
@@ -89,12 +96,12 @@ public class MainActivity extends BaseActivityNew {
 	 * @param actionName    动作名
 	 * @return 对应的fragment
 	 */
-	private BaseFragmentNew getFragment( String componentName, String actionName ) {
+	private BaseFragment getFragment( String componentName, String actionName ) {
 		Fragment fragment = CC.obtainBuilder( componentName ).setActionName( actionName ).build().call().getDataItem( "fragment" );
 		if ( fragment == null ) {
 			fragment = PlaceHolderFragment.newInstance( componentName, actionName );
 		}
-		return ( BaseFragmentNew ) fragment;
+		return ( BaseFragment ) fragment;
 	}
 
 	private void initAction() {
@@ -127,7 +134,7 @@ public class MainActivity extends BaseActivityNew {
 	}
 
 	private void changeFragment( int index ) {
-		BaseFragmentNew toFragment = getFragment( index );
+		BaseFragment toFragment = getFragment( index );
 		switchFragment( mFragment, toFragment );
 	}
 
@@ -138,7 +145,7 @@ public class MainActivity extends BaseActivityNew {
 	 * @param fromFragment 原页面
 	 * @param toFragment   现在点击的页面
 	 */
-	public void switchFragment( BaseFragmentNew fromFragment, BaseFragmentNew toFragment ) {
+	public void switchFragment( BaseFragment fromFragment, BaseFragment toFragment ) {
 
 		CommonLog.loge( "TAG", fromFragment + "---" + toFragment );
 		if ( mFragment != toFragment ) {//防止多次点击进入
@@ -160,12 +167,13 @@ public class MainActivity extends BaseActivityNew {
 			long keyDownSecondTime = System.currentTimeMillis();
 			if ( keyDownSecondTime - keyDownFirstTime > 0.5 * 1000 ) {
 				keyDownFirstTime = System.currentTimeMillis();
-				( ( BaseFragmentNew ) fromFragment ).refreshData();
+				// TODO: 2018/11/15 刷新页面
+//				fromFragment.refreshData();
 			}
 		}
 	}
 
-	private BaseFragmentNew getFragment( int position ) {
+	private BaseFragment getFragment( int position ) {
 		if ( mFragments != null && mFragments.size() > 0 ) {
 			return mFragments.get( position );
 		}

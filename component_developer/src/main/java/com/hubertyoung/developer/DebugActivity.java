@@ -4,23 +4,25 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.ActionBar;
-import androidx.preference.Preference;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.billy.cc.core.component.CC;
+import com.hubertyoung.common.base.AbsLifecycleActivity;
 import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.widget.preference.BasePreferenceFragment;
 import com.hubertyoung.component_developer.R;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.Preference;
 
-public class DebugActivity extends BaseActivityNew implements FragmentManager.OnBackStackChangedListener {
+
+public class DebugActivity extends AbsLifecycleActivity implements FragmentManager.OnBackStackChangedListener {
 
 	private LinearLayout mActivityRoot;
 	private FrameLayout mContentLayout;
@@ -33,12 +35,17 @@ public class DebugActivity extends BaseActivityNew implements FragmentManager.On
 	}
 
 	@Override
-	public void initPresenter() {
+	public void initView( Bundle savedInstanceState ) {
 
 	}
 
 	@Override
-	public void initView( Bundle savedInstanceState ) {
+	protected void stopLoading() {
+
+	}
+
+	@Override
+	protected void showLoading( String title ) {
 
 	}
 
@@ -78,7 +85,7 @@ public class DebugActivity extends BaseActivityNew implements FragmentManager.On
 //		if (a(str)) {
 		setTitle( charSequence );
 		Fragment instantiate = Fragment.instantiate( this, str, bundle );
-		FragmentTransaction beginTransaction = getFragmentTransaction();
+		FragmentTransaction beginTransaction = this.getSupportFragmentManager().beginTransaction();
 //			if (!TextUtils.equals(str, BiliPreferencesFragment.class.getName())) {
 //				beginTransaction.setCustomAnimations(this.j, 0, 0, 0);
 //			}

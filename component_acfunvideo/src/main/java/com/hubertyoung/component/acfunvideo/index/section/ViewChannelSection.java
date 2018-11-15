@@ -1,12 +1,12 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
@@ -29,10 +29,10 @@ import androidx.recyclerview.widget.RecyclerView;
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
 public class ViewChannelSection extends Section {
-	private BaseActivityNew mActivity;
+	private Context mActivity;
 	private List< ChannelOperate.ChannelData > data;
 
-	public ViewChannelSection( BaseActivityNew activity ) {
+	public ViewChannelSection( Context activity ) {
 		super( new SectionParameters.Builder( R.layout.item_channel )//
 				.headerResourceId( R.layout.item_channel_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//

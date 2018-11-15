@@ -7,12 +7,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hubertyoung.common.base.AbsLifecycleActivity;
 import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.component_acfunmine.R;
 
 import androidx.appcompat.widget.Toolbar;
 
-public class FindPasswordActivity extends BaseActivityNew {
+public class FindPasswordActivity extends AbsLifecycleActivity {
 
 	private Toolbar mToolbar;
 	private TextView mToolbarTitle;
@@ -38,13 +39,8 @@ public class FindPasswordActivity extends BaseActivityNew {
 	}
 
 	@Override
-	public void initPresenter() {
-
-	}
-
-	@Override
 	public void initView( Bundle savedInstanceState ) {
-
+		super.initView( savedInstanceState );
 		mToolbar = findViewById( R.id.view_toolbar );
 		mToolbarTitle = findViewById( R.id.toolbar_title );
 		mValidationPhoneLayout = findViewById( R.id.find_password_view_validation_phone_layout );

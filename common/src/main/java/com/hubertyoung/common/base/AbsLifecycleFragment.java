@@ -12,6 +12,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
@@ -32,14 +33,14 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 	private List< Object > events = new ArrayList<>();
 
 	@Override
-	public void initView( Bundle state ) {
+	protected void initView( Bundle state ) {
 		mViewModel = VMProviders( this, TUtil.getInstance( this, 0 ) );
 		if ( null != mViewModel ) {
 			dataObserver();
 //			mStateEventKey = getStateEventKey();
 //			mStateEventTag = getStateEventTag();
 //			events.add( new StringBuilder( ( String ) mStateEventKey ).append( mStateEventTag ).toString() );
-//			LiveBus.getDefault().subscribe( mStateEventKey, mStateEventTag ).observe( this, observer );
+//			registerObserver( mStateEventKey, mStateEventTag ).observe( this, observer );
 		}
 	}
 
@@ -64,9 +65,8 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 	 *
 	 * @return ViewModel
 	 */
-	protected < T extends ViewModel > T VMProviders( BaseFragment fragment, @NonNull Class< T > modelClass ) {
+	protected < VM extends ViewModel > VM VMProviders( Fragment fragment, @NonNull Class< VM > modelClass ) {
 		return ViewModelProviders.of( fragment ).get( modelClass );
-
 	}
 
 	protected void dataObserver() {
@@ -80,12 +80,12 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 		registorUIChangeLiveDataCallBack();
 	}
 
-	protected < T > MutableLiveData< T > registerObserver( Object eventKey, Class< T > tClass ) {
+	protected < VM > MutableLiveData< VM > registerObserver( Object eventKey, Class< VM > tClass ) {
 
 		return registerObserver( eventKey, null, tClass );
 	}
 
-	protected < T > MutableLiveData< T > registerObserver( Object eventKey, String tag, Class< T > tClass ) {
+	protected < VM > MutableLiveData< VM > registerObserver( Object eventKey, String tag, Class< VM > tClass ) {
 		String event;
 		if ( TextUtils.isEmpty( tag ) ) {
 			event = ( String ) eventKey;
@@ -203,9 +203,13 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 //		});
 	}
 
-	protected abstract void stopLoading();
+	protected void stopLoading(){
 
-	protected abstract void showLoading( String title );
+	}
+
+	protected void showLoading( String title ){
+
+	}
 
 	@Override
 	public void onDestroyView() {

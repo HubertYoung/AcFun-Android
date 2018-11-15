@@ -2,21 +2,16 @@ package activity;
 
 import android.os.Bundle;
 
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.AbsLifecycleActivity;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.component_acfunmine.R;
 
 
-public class MainActivity extends BaseActivityNew {
+public class MainActivity extends AbsLifecycleActivity {
 
     @Override
     public int getLayoutId() {
         return R.layout.home_index_activity_main;
-    }
-
-    @Override
-    public void initPresenter() {
-
     }
 
     @Override
@@ -26,6 +21,16 @@ public class MainActivity extends BaseActivityNew {
 
     @Override
     public void initView( Bundle savedInstanceState ) {
+
+    }
+
+    @Override
+    protected void stopLoading() {
+
+    }
+
+    @Override
+    protected void showLoading( String title ) {
 
     }
 

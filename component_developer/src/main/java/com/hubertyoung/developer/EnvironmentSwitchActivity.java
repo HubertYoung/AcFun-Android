@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +16,7 @@ import android.widget.TextView;
 import com.hubertyoung.base.Constants;
 import com.hubertyoung.base.bean.EnvironmentBean;
 import com.hubertyoung.base.bean.ModuleBean;
+import com.hubertyoung.common.base.AbsLifecycleActivity;
 import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.component_developer.R;
 
@@ -25,7 +25,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnvironmentSwitchActivity extends BaseActivityNew {
+import androidx.appcompat.widget.Toolbar;
+
+public class EnvironmentSwitchActivity extends AbsLifecycleActivity {
 
 	private static final int TYPE_MODULE = 0;
 
@@ -54,12 +56,8 @@ public class EnvironmentSwitchActivity extends BaseActivityNew {
 	}
 
 	@Override
-	public void initPresenter() {
-
-	}
-
-	@Override
 	public void initView( Bundle savedInstanceState ) {
+		super.initView( savedInstanceState );
 		mToolbar = findViewById( R.id.view_toolbar );
 		try {
 			Class< ? > environmentSwitcherClass = Class.forName( Constants.PACKAGE_NAME + "." + Constants.ENVIRONMENT_SWITCHER_FILE_NAME );

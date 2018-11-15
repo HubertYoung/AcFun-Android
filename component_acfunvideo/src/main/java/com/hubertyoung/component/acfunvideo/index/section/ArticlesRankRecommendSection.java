@@ -5,14 +5,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
-import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.utils.data.StringUtil;
+import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
-import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BottomMenuViewHolder;
@@ -32,10 +32,10 @@ import androidx.recyclerview.widget.RecyclerView;
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
 public class ArticlesRankRecommendSection extends Section {
-	private BaseActivityNew mActivity;
+	private BaseActivity mActivity;
 	private Regions mRegions;
 
-	public ArticlesRankRecommendSection( BaseActivityNew activity ) {
+	public ArticlesRankRecommendSection( BaseActivity activity ) {
 		super( new SectionParameters.Builder( R.layout.item_article_rank_view )//
 				.headerResourceId( R.layout.widget_region_header_text )//
 				.footerResourceId( R.layout.widget_region_bottom_menu )//

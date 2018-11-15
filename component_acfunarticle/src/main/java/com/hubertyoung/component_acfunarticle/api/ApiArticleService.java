@@ -26,7 +26,7 @@ import retrofit2.http.QueryMap;
 public interface ApiArticleService {
 
 	@GET( "v3/channels/allChannels" )
-	Flowable< BaseResponse< Channel > > requestAllChannel( @QueryMap Map< String, String > map );
+	Flowable< BaseResponse< Channel > > requestAllChannel();
 
 	@GET( "v3/regions" )
 	Flowable< BaseResponse< List< ArticleRecommendEntity > > > requestArticleRecommend( @QueryMap Map< String, String > map );

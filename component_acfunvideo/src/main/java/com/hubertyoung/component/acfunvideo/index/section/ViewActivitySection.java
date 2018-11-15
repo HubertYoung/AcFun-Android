@@ -1,10 +1,10 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
@@ -27,14 +27,15 @@ import androidx.recyclerview.widget.RecyclerView;
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
 public class ViewActivitySection extends Section {
-	private BaseActivityNew mActivity;
+	private Context mActivity;
 	private List< ChannelOperate.ChannelActivity > data;
 
-	public ViewActivitySection( BaseActivityNew activity ) {
+	public ViewActivitySection( Context activity ) {
 		super( new SectionParameters.Builder( R.layout.item_channel_activity_banner )//
 				.headerResourceId( R.layout.item_channel_title )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//
-				.build() ); this.mActivity = activity;
+				.build() );
+		this.mActivity = activity;
 	}
 
 	@Override
@@ -54,29 +55,29 @@ public class ViewActivitySection extends Section {
 
 	@Override
 	public RecyclerView.ViewHolder getItemViewHolder( View view, int itemType ) {
-		return new ViewActivityViewHolder(view);
+		return new ViewActivityViewHolder( view );
 	}
 
 	@Override
 	public void onBindItemViewHolder( RecyclerView.ViewHolder holder, int position ) {
-		ViewActivityViewHolder viewActivityHolder = (ViewActivityViewHolder) holder;
+		ViewActivityViewHolder viewActivityHolder = ( ViewActivityViewHolder ) holder;
 		ChannelOperate.ChannelActivity channelActivity = data.get( position );
-		ImageLoaderUtil.loadNetImage(  channelActivity.img, viewActivityHolder.imageView);
-			viewActivityHolder.name.setText(channelActivity.title);
-			viewActivityHolder.time.setText(channelActivity.activityTime);
+		ImageLoaderUtil.loadNetImage( channelActivity.img, viewActivityHolder.imageView );
+		viewActivityHolder.name.setText( channelActivity.title );
+		viewActivityHolder.time.setText( channelActivity.activityTime );
 
-			int backgroundResource = R.drawable.shape_channel_operate_start_bg;
-			int text = R.string.channel_operate_start_text;
-			if (channelActivity.activityStatus == 0) {
-				backgroundResource = R.drawable.shape_channel_operate_begin_bg;
-				text = R.string.channel_operate_begin_text;
-			} else if (channelActivity.activityStatus == 2) {
-				backgroundResource = R.drawable.shape_channel_operate_end_bg;
-				text = R.string.channel_operate_end_text;
-			}
+		int backgroundResource = R.drawable.shape_channel_operate_start_bg;
+		int text = R.string.channel_operate_start_text;
+		if ( channelActivity.activityStatus == 0 ) {
+			backgroundResource = R.drawable.shape_channel_operate_begin_bg;
+			text = R.string.channel_operate_begin_text;
+		} else if ( channelActivity.activityStatus == 2 ) {
+			backgroundResource = R.drawable.shape_channel_operate_end_bg;
+			text = R.string.channel_operate_end_text;
+		}
 
-			viewActivityHolder.status.setBackgroundResource(backgroundResource);
-			viewActivityHolder.status.setText(text);
+		viewActivityHolder.status.setBackgroundResource( backgroundResource );
+		viewActivityHolder.status.setText( text );
 	}
 
 	public void setOperateList( List< ChannelOperate.ChannelActivity > operateList ) {
@@ -84,7 +85,7 @@ public class ViewActivitySection extends Section {
 	}
 
 	public void addOperateList( List< ChannelOperate.ChannelActivity > operateList ) {
-		if ( this.data == null ) data = new ArrayList<>(  );
+		if ( this.data == null ) data = new ArrayList<>();
 		data.addAll( operateList );
 	}
 
@@ -94,8 +95,8 @@ public class ViewActivitySection extends Section {
 		TextView time;
 		TextView name;
 
-		ViewActivityViewHolder( View view) {
-			super(view);
+		ViewActivityViewHolder( View view ) {
+			super( view );
 			imageView = ( SimpleDraweeView ) view.findViewById( R.id.item_channel_activity_banner_view );
 			status = ( TextView ) view.findViewById( R.id.item_channel_activity_banner_status );
 			time = ( TextView ) view.findViewById( R.id.item_channel_activity_banner_time );

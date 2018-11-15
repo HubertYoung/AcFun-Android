@@ -1,6 +1,5 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -8,17 +7,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.utils.display.DisplayUtil;
+import com.hubertyoung.common.widget.sectioned.Section;
+import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component_acfunvideo.R;
 import com.hubertyoung.component_banner.banner.BannerEntity;
 import com.hubertyoung.component_banner.banner.BannerView;
-import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.utils.display.DisplayUtil;
-import com.hubertyoung.common.widget.sectioned.Section;
-import com.hubertyoung.common.widget.sectioned.SectionParameters;
 
 import java.util.ArrayList;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>
@@ -31,10 +32,10 @@ import java.util.ArrayList;
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
 public class NewRecommendCarouselsSection extends Section {
-	private BaseActivityNew mActivity;
+	private BaseActivity mActivity;
 	private Regions regions;
 
-	public NewRecommendCarouselsSection( BaseActivityNew activity ) {
+	public NewRecommendCarouselsSection( BaseActivity activity ) {
 		super( new SectionParameters.Builder( R.layout.item_region_slide_banner )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//

@@ -1,5 +1,7 @@
 package com.hubertyoung.common.utils;
 
+import com.facebook.stetho.common.LogUtil;
+
 import java.lang.reflect.ParameterizedType;
 
 import androidx.annotation.NonNull;
@@ -18,19 +20,19 @@ public class TUtil {
 	public static synchronized < T > T getNewInstance( Object o, int i ) {
 		try {
 			return ( ( Class< T > ) ( ( ParameterizedType ) ( o.getClass().getGenericSuperclass() ) ).getActualTypeArguments()[ i ] ).newInstance();
-		} catch ( InstantiationException e ) {
-			e.printStackTrace();
-		} catch ( IllegalAccessException e ) {
-			e.printStackTrace();
-		} catch ( ClassCastException e ) {
-			e.printStackTrace();
+		} catch ( Exception e ) {
+			LogUtil.e(e.getMessage());
 		}
 		return null;
 	}
 
 	public static < T > T getInstance( Object object, int i ) {
 		if ( object != null ) {
-			return ( T ) ( ( ParameterizedType ) object.getClass().getGenericSuperclass() ).getActualTypeArguments()[ i ];
+			try {
+				return ( T ) ( ( ParameterizedType ) object.getClass().getGenericSuperclass() ).getActualTypeArguments()[ i ];
+			} catch ( Exception e ) {
+				LogUtil.e(e.getMessage());
+			}
 		}
 		return null;
 	}

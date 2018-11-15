@@ -2,7 +2,7 @@ package com.hubertyoung.component_acfunmine.ui.setting.activity;
 
 import android.os.Bundle;
 
-import com.hubertyoung.common.base.BaseActivity;
+import com.hubertyoung.common.base.AbsLifecycleActivity;
 import com.hubertyoung.common.base.BaseActivityNew;
 import com.hubertyoung.component_acfunmine.R;
 
@@ -16,7 +16,7 @@ import com.hubertyoung.component_acfunmine.R;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunmine.setting.activity
  */
-public class SettingsActivity extends BaseActivity {
+public class SettingsActivity extends AbsLifecycleActivity {
 
 	@Override
 	public int getLayoutId() {

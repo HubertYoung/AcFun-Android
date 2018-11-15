@@ -10,16 +10,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hubertyoung.common.base.BaseFragmentNew;
-import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
 import com.hubertyoung.common.widget.DropDownOptionList;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component_acfunarticle.R;
-import com.hubertyoung.component_acfunarticle.article.control.ArticleGeneralSecondControl;
-import com.hubertyoung.component_acfunarticle.article.model.ArticleGeneralSecondModelImp;
-import com.hubertyoung.component_acfunarticle.article.presenter.ArticleGeneralSecondPresenterImp;
 import com.hubertyoung.component_acfunarticle.article.section.ArticleRealmSection;
 import com.hubertyoung.component_acfunarticle.article.section.ListArticleSection;
+import com.hubertyoung.component_acfunarticle.article.vm.ArticleGeneralSecondViewModel;
+import com.hubertyoung.component_acfunarticle.config.ArticleConstants;
 import com.hubertyoung.component_acfunarticle.entity.RankAc;
 import com.hubertyoung.component_acfunarticle.entity.ServerChannel;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
@@ -30,9 +28,9 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,7 +45,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunarticle.mine.fragment
  */
-public class ArticleGeneralSecondFragment extends BaseFragmentNew< ArticleGeneralSecondPresenterImp, ArticleGeneralSecondModelImp > implements ArticleGeneralSecondControl.View {
+public class ArticleGeneralSecondFragment extends AbsLifecycleFragment< ArticleGeneralSecondViewModel > {
 	private static final String ARG_PARAM1 = "channelId";
 	private static final String ARG_PARAM2 = "serverChannel";
 	private String mChannelId;
@@ -100,11 +98,6 @@ public class ArticleGeneralSecondFragment extends BaseFragmentNew< ArticleGenera
 	@Override
 	protected int getLayoutResource() {
 		return R.layout.fragment_article_general_second;
-	}
-
-	@Override
-	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
 	}
 
 	@Override
@@ -251,23 +244,29 @@ public class ArticleGeneralSecondFragment extends BaseFragmentNew< ArticleGenera
 		loadData();
 	}
 
-	@Override
 	public void loadData() {
 //		day	-1
 //		sort	5
 //		realmIds	25,6,7
 //		pageNo	1
 //		pageSize	10
-		HashMap map = new HashMap<String,String>();
-		map.put( "channelId", mChannelId );
-		map.put( "day", selectorTimeType + "" );
-		map.put( "sort", selectorType + "" );
-		map.put( "realmIds", formatRealmIds( serverChannel.realm ) );
-		map.put( "pageNo", mAdapter.getPageBean().getLoadPage() + "" );
-		map.put( "pageSize", mAdapter.getPageBean().rows + "" );
-		mPresenter.requestArticleGeneralSecond( map );
+		mViewModel.requestArticleGeneralSecond( mChannelId, //
+				selectorTimeType + "", //
+				selectorType + "", //
+				formatRealmIds( serverChannel.realm ), //
+				mAdapter.getPageBean().getLoadPage() + "", //
+				mAdapter.getPageBean().rows + "" );
 	}
-
+	@Override
+	protected void dataObserver() {
+		registerObserver( ArticleConstants.EVENT_KEY_ARTICLE_ARTICLE_GENERAL_SECOND ,RankAc.class).observe( this, new Observer< RankAc >() {
+			@Override
+			public void onChanged( RankAc rankAc ) {
+				mListArticleSection.setArticleGeneralSecondInfo( rankAc.list );
+				mAdapter.notifyDataSetChanged();
+			}
+		});
+	}
 	private String formatRealmIds( List< ServerChannel > list ) {
 		if ( list == null || list.isEmpty() ) {
 			return "";
@@ -281,28 +280,12 @@ public class ArticleGeneralSecondFragment extends BaseFragmentNew< ArticleGenera
 	}
 
 	@Override
-	public void showLoading( String title, int type ) {
-
-	}
-
-	@Override
 	public void stopLoading() {
 		mSrlArticleSecondaryView.finishRefresh();
 		mSrlArticleSecondaryView.finishLoadMore();
 		if ( mViewSkeletonScreen != null && mViewSkeletonScreen.isShowing() ) {
 			mViewSkeletonScreen.hide();
 		}
-	}
-
-	@Override
-	public void showErrorTip( String msg ) {
-		ToastUtil.showError( msg );
-	}
-
-	@Override
-	public void setArticleGeneralSecondInfo( RankAc rankAc ) {
-		mListArticleSection.setArticleGeneralSecondInfo( rankAc.list );
-		mAdapter.notifyDataSetChanged();
 	}
 
 	private class ExtOnToggleListener implements DropDownOptionList.OnToggleListener {

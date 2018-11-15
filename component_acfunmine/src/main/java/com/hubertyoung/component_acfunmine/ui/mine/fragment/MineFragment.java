@@ -228,7 +228,7 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 
 	@Override
 	protected void dataObserver() {
-		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_MINE ,User.class).observe( this, new Observer< User >() {
+		registerObserver( MineConstants.EVENT_KEY_MINE ,User.class).observe( this, new Observer< User >() {
 			@Override
 			public void onChanged( User user ) {
 				if ( user != null ) {
@@ -240,13 +240,13 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 				setUserGroupInfo( user.getUserGroupLevel() == Constants.USER_GROUP_LEVEL_FORMAL );
 			}
 		});
-		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_MINE_CHECK_OFFLINE ,Boolean.class).observe( this, new Observer< Boolean >() {
+		registerObserver( MineConstants.EVENT_KEY_MINE_CHECK_OFFLINE ,Boolean.class).observe( this, new Observer< Boolean >() {
 			@Override
 			public void onChanged( Boolean aBoolean ) {
 				setCheckOfflineInfo( aBoolean );
 			}
 		});
-			LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_MINE_PLATFORM_LOGIN ,Sign.class).observe( this, new Observer< Sign >() {
+			registerObserver( MineConstants.EVENT_KEY_MINE_PLATFORM_LOGIN ,Sign.class).observe( this, new Observer< Sign >() {
 			@Override
 			public void onChanged( Sign sign ) {
 				setPlatformLoginInfo( sign );

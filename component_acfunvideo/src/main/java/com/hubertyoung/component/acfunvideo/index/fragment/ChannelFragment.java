@@ -1,17 +1,16 @@
 package com.hubertyoung.component.acfunvideo.index.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 
-import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.base.BaseFragmentNew;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
+import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
-import com.hubertyoung.component.acfunvideo.index.control.ChannelControl;
-import com.hubertyoung.component.acfunvideo.index.model.ChannelModelImp;
-import com.hubertyoung.component.acfunvideo.index.presenter.ChannelPresenterImp;
 import com.hubertyoung.component.acfunvideo.index.section.ViewActivitySection;
 import com.hubertyoung.component.acfunvideo.index.section.ViewChannelSection;
+import com.hubertyoung.component.acfunvideo.index.vm.ChannelViewModel;
 import com.hubertyoung.component_acfunvideo.R;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
@@ -20,8 +19,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.HashMap;
-
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,7 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component.acfunvideo.index.fragment
  */
-public class ChannelFragment extends BaseFragmentNew< ChannelPresenterImp, ChannelModelImp > implements ChannelControl.View {
+public class ChannelFragment extends AbsLifecycleFragment< ChannelViewModel > {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 	private SmartRefreshLayout mSrlContainer;
@@ -81,12 +79,8 @@ public class ChannelFragment extends BaseFragmentNew< ChannelPresenterImp, Chann
 	}
 
 	@Override
-	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
-	}
-
-	@Override
 	protected void initView( Bundle savedInstanceState ) {
+		super.initView( savedInstanceState );
 		mSrlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
 		mRecyclerView = ( RecyclerView ) findViewById( R.id.fragment_channel_recycler_view );
 		initRecyclerView();
@@ -135,9 +129,9 @@ public class ChannelFragment extends BaseFragmentNew< ChannelPresenterImp, Chann
 			}
 		} );
 
-		mChannelSection = new ViewChannelSection( ( BaseActivityNew ) activity );
+		mChannelSection = new ViewChannelSection( activity );
 		mAdapter.addSection( mChannelSection );
-		mViewActivitySection = new ViewActivitySection( ( BaseActivityNew ) activity );
+		mViewActivitySection = new ViewActivitySection( activity );
 		mAdapter.addSection( mViewActivitySection );
 
 		mRecyclerView.setHasFixedSize( true );
@@ -152,8 +146,8 @@ public class ChannelFragment extends BaseFragmentNew< ChannelPresenterImp, Chann
 	}
 
 	@Override
-	public void showLoading( String title, int type ) {
-
+	public void showLoading( String title ) {
+		Log.e( "TAG", "" );
 	}
 
 	@Override
@@ -165,25 +159,32 @@ public class ChannelFragment extends BaseFragmentNew< ChannelPresenterImp, Chann
 		}
 	}
 
-	@Override
 	public void showErrorTip( String msg ) {
 		ToastUtil.showError( msg );
 	}
 
-	@Override
 	public void loadData() {
-		HashMap map = new HashMap<String,String>();
-		map.put( "pos", "0" );
-		mPresenter.requestChannel( map,0 );
+		mViewModel.requestChannel( "0",0 );
 	}
 
 	private void loadNewData() {
-		HashMap map = new HashMap<String,String>();
-		map.put( "pos", mNext + "" );
-		mPresenter.requestChannel( map, 1 );
+		mViewModel.requestChannel( mNext + "", 1 );
 	}
-
 	@Override
+	protected void dataObserver() {
+		registerObserver( VideoConstants.EVENT_KEY_CHANNEL_OPERATE ,ChannelOperate.class).observe( this, new Observer< ChannelOperate >() {
+			@Override
+			public void onChanged( ChannelOperate channelOperate ) {
+				setChannelOperateInfo( channelOperate );
+			}
+		});
+		registerObserver( VideoConstants.EVENT_KEY_CHANNEL_OPERATE_ADD ,ChannelOperate.class).observe( this, new Observer< ChannelOperate >() {
+			@Override
+			public void onChanged( ChannelOperate channelOperate ) {
+				addChannelOperateInfo( channelOperate );
+			}
+		});
+	}
 	public void setChannelOperateInfo( ChannelOperate channelOperate ) {
 		mNext = channelOperate.next;
 		mChannelSection.setChannelList( channelOperate.channelList );
@@ -191,7 +192,6 @@ public class ChannelFragment extends BaseFragmentNew< ChannelPresenterImp, Chann
 		mAdapter.notifyDataSetChanged();
 	}
 
-	@Override
 	public void addChannelOperateInfo( ChannelOperate channelOperate ) {
 		mNext = channelOperate.next;
 		if( channelOperate != null && channelOperate.operateList != null && !channelOperate.operateList.isEmpty()) {

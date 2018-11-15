@@ -206,8 +206,8 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 
 	@Override
 	protected void dataObserver() {
-//		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_SIGN_STATE ).observe( this, observer );
-		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_SIGN, SignEntity.class ).observe( this, new Observer< SignEntity >() {
+//		registerObserver( MineConstants.EVENT_KEY_SIGN_STATE ).observe( this, observer );
+		registerObserver( MineConstants.EVENT_KEY_SIGN, SignEntity.class ).observe( this, new Observer< SignEntity >() {
 			@Override
 			public void onChanged( SignEntity signEntity ) {
 				BaseResponse< Sign > response = signEntity.mSignBaseResponse;

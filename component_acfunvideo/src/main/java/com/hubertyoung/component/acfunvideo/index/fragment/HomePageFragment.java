@@ -4,19 +4,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.hubertyoung.common.base.BaseFragmentNew;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.common.utils.log.CommonLog;
+import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.index.adapter.HomePagerAdapter;
-import com.hubertyoung.component.acfunvideo.index.control.HomePageControl;
-import com.hubertyoung.component.acfunvideo.index.model.HomePageModelImp;
-import com.hubertyoung.component.acfunvideo.index.presenter.HomePagePresenterImp;
+import com.hubertyoung.component.acfunvideo.index.vm.HomePageViewModel;
 import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.HashMap;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
 
 /**
@@ -29,7 +30,7 @@ import androidx.viewpager.widget.ViewPager;
  * @since:V1.0
  * @desc:com.hubertyoung.component.home.index.fragment
  */
-public class HomePageFragment extends BaseFragmentNew< HomePagePresenterImp, HomePageModelImp > implements HomePageControl.View {
+public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel >{
 
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
@@ -80,12 +81,8 @@ public class HomePageFragment extends BaseFragmentNew< HomePagePresenterImp, Hom
 	}
 
 	@Override
-	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
-	}
-
-	@Override
 	protected void initView( Bundle savedInstanceState ) {
+		super.initView( savedInstanceState );
 		mToolbar = ( Toolbar ) findViewById( R.id.toolbar );
 		mHomeViewTab = ( SmartTabLayout ) findViewById( R.id.home_view_tab );
 		mIvSearch = ( ImageView ) findViewById( R.id.iv_search );
@@ -101,11 +98,19 @@ public class HomePageFragment extends BaseFragmentNew< HomePagePresenterImp, Hom
 		loadData();
 	}
 
-	@Override
 	public void loadData() {
-		HashMap map = new HashMap<String,String>();
-		mPresenter.requestDomainAndroidCfg( map );
+		mViewModel.requestDomainAndroidCfg( );
 	}
+	@Override
+	protected void dataObserver() {
+		registerObserver(VideoConstants.EVENT_KEY_CHANNEL_DOMAIN_ANDROIDCFG ,HashMap.class).observe( this, new Observer< HashMap >() {
+			@Override
+			public void onChanged( HashMap hashMap ) {
+				CommonLog.loge( hashMap.toString() );
+			}
+		});
+	}
+
 
 	private void initData() {
 		if ( isShowGameIcon ) {
@@ -162,16 +167,19 @@ public class HomePageFragment extends BaseFragmentNew< HomePagePresenterImp, Hom
 	}
 
 	@Override
-	public void showLoading( String title, int type ) {
+	public void showLoading( String title) {
 
 	}
+//
+//	@Override
+//	public void stopLoading() {
+//		super.stopLoading();
+//	}
 
 	@Override
-	public void stopLoading() {
+	protected void stopLoading() {
 
 	}
-
-	@Override
 	public void showErrorTip( String msg ) {
 
 	}
