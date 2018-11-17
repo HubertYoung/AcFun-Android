@@ -7,8 +7,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
-import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.common.widget.sectioned.StatelessSection;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component_acfunvideo.R;
 
@@ -24,12 +24,13 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
-public class NewRecommendBannersSection extends Section {
+public class NewRecommendBannersSection extends StatelessSection {
 	private BaseActivity mActivity;
 	private Regions regions;
 
 	public NewRecommendBannersSection( BaseActivity activity ) {
-		super( new SectionParameters.Builder( R.layout.item_region_single_banner )//
+		super( SectionParameters.builder()
+				.itemResourceId( R.layout.item_region_single_banner )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//
 				.build() );

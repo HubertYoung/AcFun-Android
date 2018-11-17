@@ -11,8 +11,8 @@ import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.data.StringUtil;
 import com.hubertyoung.common.utils.display.DisplayUtil;
-import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.common.widget.sectioned.StatelessSection;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BottomMenuViewHolder;
@@ -33,12 +33,13 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
-public class ArticlesRecommendSection extends Section {
+public class ArticlesRecommendSection extends StatelessSection {
 	private BaseActivity mActivity;
 	private Regions mRegions;
 
 	public ArticlesRecommendSection( BaseActivity activity ) {
-		super( new SectionParameters.Builder( R.layout.item_article_with_pic_view )//
+		super( SectionParameters.builder()
+				.itemResourceId( R.layout.item_article_with_pic_view )//
 				.headerResourceId( R.layout.widget_region_header_text )//
 				.footerResourceId( R.layout.widget_region_bottom_menu )//
 				.build() );

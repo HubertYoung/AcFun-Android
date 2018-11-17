@@ -7,11 +7,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
-import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.common.widget.sectioned.StatelessSection;
 import com.hubertyoung.component_acfundynamic.R;
 
 import java.util.List;
@@ -28,12 +28,13 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component_acfundynamic.dynamic.section
  */
-public class DynamicFollowBangumiSection extends Section {
-	private final BaseActivityNew mActivity;
+public class DynamicFollowBangumiSection extends StatelessSection {
+	private final BaseActivity mActivity;
 	private List< RegionBodyContent > data;
 
-	public DynamicFollowBangumiSection( BaseActivityNew activity ) {
-		super( new SectionParameters.Builder( R.layout.item_region_recommend_bangumi )//
+	public DynamicFollowBangumiSection( BaseActivity activity ) {
+		super( SectionParameters.builder()
+				.itemResourceId( R.layout.item_region_recommend_bangumi )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//
 //				.emptyResourceId( R.layout.item_region_empty_bangumi )

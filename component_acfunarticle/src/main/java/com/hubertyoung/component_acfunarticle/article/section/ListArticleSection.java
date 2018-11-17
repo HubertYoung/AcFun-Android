@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
-import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.utils.data.StringUtil;
-import com.hubertyoung.common.widget.sectioned.Section;
+import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.common.widget.sectioned.StatelessSection;
 import com.hubertyoung.component_acfunarticle.R;
 import com.hubertyoung.component_acfunarticle.entity.RankContent;
 
@@ -32,12 +32,13 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component_acfunarticle.article.section
  */
-public class ListArticleSection extends Section {
+public class ListArticleSection extends StatelessSection {
 	private Activity mActivity;
 	private List< RankContent > data;
 
 	public ListArticleSection( Activity activity ) {
-		super( new SectionParameters.Builder( R.layout.item_article_with_pic_view )//
+		super( SectionParameters.builder()
+				.itemResourceId( R.layout.item_article_with_pic_view )//
 				.build() );
 		this.mActivity = activity;
 	}

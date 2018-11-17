@@ -11,8 +11,8 @@ import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.data.StringUtil;
 import com.hubertyoung.common.utils.display.ToastUtil;
-import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.common.widget.sectioned.StatelessSection;
 import com.hubertyoung.component_acfundynamic.R;
 
 import java.util.List;
@@ -29,12 +29,13 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component_acfundynamic.dynamic.section
  */
-public class DynamicAcfunSection extends Section {
+public class DynamicAcfunSection extends StatelessSection {
 	private final BaseActivity mActivity;
 	private List< RegionBodyContent > data;
 
 	public DynamicAcfunSection( BaseActivity activity ) {
-		super( new SectionParameters.Builder( R.layout.item_recommend_uploader_rss )//
+		super( SectionParameters.builder()
+				.itemResourceId( R.layout.item_recommend_uploader_rss )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//
 //				.emptyResourceId( R.layout.item_region_empty_bangumi )

@@ -6,8 +6,8 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
-import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
+import com.hubertyoung.common.widget.sectioned.StatelessSection;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component_acfunvideo.R;
 
@@ -26,12 +26,13 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component.acfunvideo.index.section
  */
-public class ViewActivitySection extends Section {
+public class ViewActivitySection extends StatelessSection {
 	private Context mActivity;
 	private List< ChannelOperate.ChannelActivity > data;
 
 	public ViewActivitySection( Context activity ) {
-		super( new SectionParameters.Builder( R.layout.item_channel_activity_banner )//
+		super( SectionParameters.builder()
+				.itemResourceId( R.layout.item_channel_activity_banner )//
 				.headerResourceId( R.layout.item_channel_title )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//
 				.build() );

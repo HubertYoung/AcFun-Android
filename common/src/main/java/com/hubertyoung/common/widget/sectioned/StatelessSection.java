@@ -1,8 +1,8 @@
 package com.hubertyoung.common.widget.sectioned;
 
-import androidx.annotation.LayoutRes;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author:Yang
@@ -14,70 +14,39 @@ import android.view.View;
 public abstract class StatelessSection extends Section {
 
 	/**
-	 * Create drawable stateless Section object without header and footer
+	 * Create a stateless Section object based on {@link SectionParameters}.
 	 *
-	 * @deprecated Replaced by {@link #StatelessSection(SectionParameters)}
-	 *
-	 * @param itemResourceId layout resource for its items
-	 */
-	@Deprecated
-	public StatelessSection(@LayoutRes int itemResourceId) {
-		this(new SectionParameters.Builder(itemResourceId)
-				.build());
-	}
-
-	/**
-	 * Create drawable stateless Section object, with drawable custom header but without footer
-	 *
-	 * @deprecated Replaced by {@link #StatelessSection(SectionParameters)}
-	 *
-	 * @param headerResourceId layout resource for its header
-	 * @param itemResourceId layout resource for its items
-	 */
-	@Deprecated
-	public StatelessSection( @LayoutRes int headerResourceId, @LayoutRes int itemResourceId) {
-		this(new SectionParameters.Builder(itemResourceId)
-				.headerResourceId(headerResourceId)
-				.build());
-	}
-
-	/**
-	 * Create drawable stateless Section object, with drawable custom header and drawable custom footer
-	 *
-	 * @deprecated Replaced by {@link #StatelessSection(SectionParameters)}
-	 *
-	 * @param headerResourceId layout resource for its header
-	 * @param footerResourceId layout resource for its footer
-	 * @param itemResourceId layout resource for its items
-	 */
-	@Deprecated
-	public StatelessSection( @LayoutRes int headerResourceId, @LayoutRes int footerResourceId,
-							 @LayoutRes int itemResourceId) {
-		this(new SectionParameters.Builder(itemResourceId)
-				.headerResourceId(headerResourceId)
-				.footerResourceId(footerResourceId)
-				.build());
-	}
-
-	/**
-	 * Create drawable stateless Section object based on {@link SectionParameters}
 	 * @param sectionParameters section parameters
 	 */
 	public StatelessSection(SectionParameters sectionParameters) {
 		super(sectionParameters);
 
 		if (sectionParameters.loadingResourceId != null) {
-			throw new IllegalArgumentException("Stateless section shouldn't have drawable loading state resource");
+			throw new IllegalArgumentException("Stateless section shouldn't have a loading state resource");
+		}
+
+		if (sectionParameters.loadingViewWillBeProvided) {
+			throw new IllegalArgumentException("Stateless section shouldn't have loadingViewWillBeProvided set");
 		}
 
 		if (sectionParameters.failedResourceId != null) {
-			throw new IllegalArgumentException("Stateless section shouldn't have drawable failed state resource");
+			throw new IllegalArgumentException("Stateless section shouldn't have a failed state resource");
+		}
+
+		if (sectionParameters.failedViewWillBeProvided) {
+			throw new IllegalArgumentException("Stateless section shouldn't have failedViewWillBeProvided set");
 		}
 
 		if (sectionParameters.emptyResourceId != null) {
 			throw new IllegalArgumentException("Stateless section shouldn't have an empty state resource");
 		}
+
+		if (sectionParameters.emptyViewWillBeProvided) {
+			throw new IllegalArgumentException("Stateless section shouldn't have emptyViewWillBeProvided set");
+		}
 	}
+
+	// Override these methods to make them final.
 
 	@Override
 	public final void onBindLoadingViewHolder(RecyclerView.ViewHolder holder) {
@@ -85,7 +54,7 @@ public abstract class StatelessSection extends Section {
 	}
 
 	@Override
-	public final RecyclerView.ViewHolder getLoadingViewHolder( View view) {
+	public final RecyclerView.ViewHolder getLoadingViewHolder(View view) {
 		return super.getLoadingViewHolder(view);
 	}
 
@@ -95,7 +64,7 @@ public abstract class StatelessSection extends Section {
 	}
 
 	@Override
-	public final RecyclerView.ViewHolder getFailedViewHolder( View view) {
+	public final RecyclerView.ViewHolder getFailedViewHolder(View view) {
 		return super.getFailedViewHolder(view);
 	}
 
@@ -105,7 +74,8 @@ public abstract class StatelessSection extends Section {
 	}
 
 	@Override
-	public final RecyclerView.ViewHolder getEmptyViewHolder( View view) {
+	public final RecyclerView.ViewHolder getEmptyViewHolder(View view) {
 		return super.getEmptyViewHolder(view);
 	}
 }
+
