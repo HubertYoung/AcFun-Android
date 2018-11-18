@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.billy.cc.core.component.CC;
-import com.hubertyoung.common.base.BaseFragmentNew;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
 import com.hubertyoung.common.baserx.event.Subscribe;
 import com.hubertyoung.common.baserx.event.inner.EventBean;
 import com.hubertyoung.common.baserx.event.inner.ThreadMode;
@@ -20,9 +20,7 @@ import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfundynamic.R;
 import com.hubertyoung.component_acfundynamic.dynamic.adapter.DynamicPagerAdapter;
-import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicControl;
-import com.hubertyoung.component_acfundynamic.dynamic.model.DynamicModelImp;
-import com.hubertyoung.component_acfundynamic.dynamic.presenter.DynamicPresenterImp;
+import com.hubertyoung.component_acfundynamic.dynamic.vm.DynamicViewModel;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
@@ -42,7 +40,7 @@ import io.reactivex.functions.Consumer;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfunarticle.mine.fragment
  */
-public class DynamicFragment extends BaseFragmentNew< DynamicPresenterImp, DynamicModelImp > implements DynamicControl.View {
+public class DynamicFragment extends AbsLifecycleFragment< DynamicViewModel >{
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 
@@ -99,11 +97,6 @@ public class DynamicFragment extends BaseFragmentNew< DynamicPresenterImp, Dynam
 	@Override
 	protected int getLayoutResource() {
 		return R.layout.fragment_dynamic_layout;
-	}
-
-	@Override
-	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
 	}
 
 	private void initAction() {
@@ -227,7 +220,6 @@ public class DynamicFragment extends BaseFragmentNew< DynamicPresenterImp, Dynam
 		}
 	}
 
-	@Override
 	public void loadData() {
 		boolean isUnLogin = SigninHelper.getInstance().isUnLogin();
 //		if ( isUnLogin ) {
@@ -236,11 +228,10 @@ public class DynamicFragment extends BaseFragmentNew< DynamicPresenterImp, Dynam
 //			a( -1 );
 //		}
 //		MyRequestMap map = new MyRequestMap();
-//		mPresenter.requestAllChannel( map );
+//		mViewModel.requestAllChannel( );
 	}
 
-	@Override
-	public void showLoading( String title, int type ) {
+	public void showLoading( String title ) {
 //		mViewSkeletonScreen = Skeleton.bind( mArticleViewPager )//
 ////				.shimmer( true )//
 ////				.duration( 1200 )//
@@ -256,7 +247,6 @@ public class DynamicFragment extends BaseFragmentNew< DynamicPresenterImp, Dynam
 //		}
 	}
 
-	@Override
 	public void showErrorTip( String msg ) {
 		ToastUtil.showError( msg );
 	}

@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hubertyoung.acfun.R;
-import com.hubertyoung.common.base.BaseFragmentNew;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -26,7 +26,7 @@ import androidx.core.content.ContextCompat;
  * @desc:com.hubertyoung.welcome.commonlibrary.ui.fragment
  */
 
-public class PlaceHolderFragment extends BaseFragmentNew {
+public class PlaceHolderFragment extends AbsLifecycleFragment {
 
 	private static final String ARG_PARAM1 = "componentName";
 	private static final String ARG_PARAM2 = "actionName";
@@ -65,11 +65,6 @@ public class PlaceHolderFragment extends BaseFragmentNew {
     @Override
     protected int getLayoutResource() {
         return 0;
-    }
-
-    @Override
-    public void initPresenter() {
-
     }
 
     @Override

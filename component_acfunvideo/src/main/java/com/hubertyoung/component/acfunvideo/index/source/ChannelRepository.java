@@ -5,6 +5,7 @@ import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
+import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 
 import java.util.HashMap;
 
@@ -21,13 +22,13 @@ import io.reactivex.Flowable;
  * @desc:com.hubertyoung.component.acfunvideo.index.source
  */
 public class ChannelRepository extends AbsRepository {
-	public Flowable requestChannel( String pos ) {
-		HashMap map = new HashMap< String, String >();
-		map.put( "pos", pos );
-		return Api.getDefault( HostType.MY_RESULT )//
-				.getRetrofitClient()//
-				.builder( ApiHomeService.class )//
-				.requestChannelOperate( map )//
-				.compose( new DefaultTransformer() );
-	}
+    public Flowable< ChannelOperate > requestChannel( String pos ) {
+        HashMap map = new HashMap< String, String >();
+        map.put( "pos", pos );
+        return Api.getDefault( HostType.MY_RESULT )//
+                .getRetrofitClient()//
+                .builder( ApiHomeService.class )//
+                .requestChannelOperate( map )//
+                .compose( new DefaultTransformer() );
+    }
 }

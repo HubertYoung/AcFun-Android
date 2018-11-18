@@ -207,7 +207,7 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 	@Override
 	protected void dataObserver() {
 //		registerObserver( MineConstants.EVENT_KEY_SIGN_STATE ).observe( this, observer );
-		registerObserver( MineConstants.EVENT_KEY_SIGN, SignEntity.class ).observe( this, new Observer< SignEntity >() {
+		LiveBus.getDefault().subscribe( MineConstants.EVENT_KEY_SIGN, SignEntity.class ).observe( this, new Observer< SignEntity >() {
 			@Override
 			public void onChanged( SignEntity signEntity ) {
 				BaseResponse< Sign > response = signEntity.mSignBaseResponse;
@@ -238,15 +238,15 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 					SigninHelper.getInstance().setUserSign( sign );
 					showLoginSuccess( sign );
 				} else {
-					mViewModel.mRepository.tryConnectCount++;
+					mViewModel.tryConnectCount++;
 					if ( response.errno == 20285 ) {
-						mViewModel.mRepository.tryConnectCount = 3;
+						mViewModel.tryConnectCount = 3;
 						response.errordesc = mContext.getResources().getString( R.string.login_view_need_input_image_code_text );
 					}
-					if ( mViewModel.mRepository.tryConnectCount > 2 && !getValidationLayoutShown() ) {
+					if ( mViewModel.tryConnectCount > 2 && !getValidationLayoutShown() ) {
 						setValidationLayoutShown();
 					}
-					if ( mViewModel.mRepository.tryConnectCount > 2 ) {
+					if ( mViewModel.tryConnectCount > 2 ) {
 						mViewModel.requestVerificationCodeInfo();
 						setValidationLayoutText( "" );
 					}

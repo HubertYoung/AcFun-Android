@@ -3,16 +3,16 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 
 import android.os.Bundle;
 
-import com.hubertyoung.common.base.BaseActivityNew;
-import com.hubertyoung.common.base.BaseFragmentNew;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component_acfundynamic.R;
-import com.hubertyoung.component_acfundynamic.dynamic.control.DynamicFollowBangumiControl;
-import com.hubertyoung.component_acfundynamic.dynamic.model.DynamicFollowBangumiModelImp;
-import com.hubertyoung.component_acfundynamic.dynamic.presenter.DynamicFollowBangumiPresenterImp;
+import com.hubertyoung.component_acfundynamic.config.DynamicConstants;
 import com.hubertyoung.component_acfundynamic.dynamic.section.DynamicFollowBangumiSection;
+import com.hubertyoung.component_acfundynamic.dynamic.vm.DynamicFollowBangumiViewModel;
+import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -20,9 +20,9 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.HashMap;
 import java.util.List;
 
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,7 +37,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @since:V1.0.0
  * @desc:com.hubertyoung.component_acfundynamic.dynamic.fragment
  */
-public class DynamicFollowBangumiFragment extends BaseFragmentNew< DynamicFollowBangumiPresenterImp, DynamicFollowBangumiModelImp > implements DynamicFollowBangumiControl.View {
+public class DynamicFollowBangumiFragment extends AbsLifecycleFragment< DynamicFollowBangumiViewModel > {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 	private String mParam1;
@@ -81,11 +81,6 @@ public class DynamicFollowBangumiFragment extends BaseFragmentNew< DynamicFollow
 	}
 
 	@Override
-	public void initPresenter() {
-		mPresenter.setVM( this, mModel );
-	}
-
-	@Override
 	protected void initView( Bundle savedInstanceState ) {
 		srlContainer = ( SmartRefreshLayout ) findViewById( R.id.srl_container );
 		rvDynamicFollowBangumi = ( RecyclerView ) findViewById( R.id.rv_dynamic_follow_bangumi );
@@ -115,7 +110,7 @@ public class DynamicFollowBangumiFragment extends BaseFragmentNew< DynamicFollow
 			}
 		} );
 
-		mBangumiSection = new DynamicFollowBangumiSection( ( BaseActivityNew ) activity );
+		mBangumiSection = new DynamicFollowBangumiSection( ( BaseActivity ) activity );
 		mAdapter.addSection( mBangumiSection );
 
 		rvDynamicFollowBangumi.setHasFixedSize( true );
@@ -158,17 +153,23 @@ public class DynamicFollowBangumiFragment extends BaseFragmentNew< DynamicFollow
 		loadData();
 	}
 
-	@Override
 	public void loadData() {
 //		http://apipc.app.acfun.cn/v3/regions/recommendBangumi?pageNo=1&pageSize=20
-		HashMap map = new HashMap<String,String>();
-		map.put( "pageNo", mAdapter.getPageBean().getLoadPage() + "" );
-		map.put( "pageSize", mAdapter.getPageBean().rows + "" );
-		mPresenter.requestRecommendBangumi( map );
+		mViewModel.requestRecommendBangumi( mAdapter.getPageBean().getLoadPage() + "",mAdapter.getPageBean().rows + "" );
 	}
-
 	@Override
-	public void showLoading( String title, int type ) {
+	protected void dataObserver() {
+		registerObserver( DynamicConstants.EVENT_KEY_DYNAMIC_FOLLOW_BANGUMI, RecommendBangumiEntity.class ).observe( this, new Observer< RecommendBangumiEntity >() {
+			@Override
+			public void onChanged( RecommendBangumiEntity recommendBangumiEntity ) {
+				if ( recommendBangumiEntity != null ) {
+					setRecommendBangumiInfo( recommendBangumiEntity.list );
+				}
+			}
+		} );
+	}
+	@Override
+	public void showLoading( String title ) {
 
 	}
 
@@ -181,12 +182,10 @@ public class DynamicFollowBangumiFragment extends BaseFragmentNew< DynamicFollow
 		}
 	}
 
-	@Override
 	public void showErrorTip( String msg ) {
 		ToastUtil.showError( msg );
 	}
 
-	@Override
 	public void setRecommendBangumiInfo( List< RegionBodyContent > regionBodyContentList ) {
 		if ( mAdapter.getPageBean().refresh ) {
 			mBangumiSection.setRecommendBangumiInfo( regionBodyContentList );

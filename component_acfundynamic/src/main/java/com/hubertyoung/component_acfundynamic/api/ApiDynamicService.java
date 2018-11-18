@@ -1,13 +1,13 @@
 package com.hubertyoung.component_acfundynamic.api;
 
 
+import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.net.response.BaseResponse;
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 
 import java.util.Map;
 
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 
@@ -22,6 +22,9 @@ import retrofit2.http.QueryMap;
  * @desc:api
  */
 public interface ApiDynamicService {
+	@GET( "v2/user/content/profile" )
+	Flowable< BaseResponse< User > > requestUserInfo();
+
 	@GET( "v3/regions/recommendBangumi" )
 	Flowable< BaseResponse< RecommendBangumiEntity > > requestRecommendBangumi( @QueryMap Map< String, String > map );
 	@GET( "v3/regions/recommendUp" )

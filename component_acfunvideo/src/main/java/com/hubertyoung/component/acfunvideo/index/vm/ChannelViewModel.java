@@ -10,7 +10,6 @@ import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.source.ChannelRepository;
 
 import androidx.annotation.NonNull;
-import io.reactivex.disposables.Disposable;
 
 /**
  * <br>
@@ -29,7 +28,7 @@ public class ChannelViewModel extends AbsViewModel< ChannelRepository > {
 	}
 
 	public void requestChannel( String pos, int isAddInfo ) {
-		addDisposable( ( Disposable ) mRepository.requestChannel( pos )
+		addDisposable( mRepository.requestChannel( pos )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
 				.subscribeWith( new RxSubscriber< ChannelOperate >() {
 					@Override

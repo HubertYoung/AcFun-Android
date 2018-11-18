@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hubertyoung.common.base.AbsLifecycleActivity;
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.component_acfunmine.R;
 
 import androidx.appcompat.widget.Toolbar;
@@ -29,7 +29,7 @@ public class FindPasswordActivity extends AbsLifecycleActivity {
 	private EditText mSetPasswordAgainPassword;
 	private Button mSetPasswordComplete;
 
-	public static void launch( BaseActivityNew activity, int requestCode ) {
+	public static void launch( BaseActivity activity, int requestCode ) {
 		activity.startActivityForResult( FindPasswordActivity.class, requestCode );
 	}
 

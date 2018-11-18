@@ -53,5 +53,5 @@ public interface ApiHomeService {
 
 	@FormUrlEncoded
 	@POST("api/account/oauth/login")
-	Flowable< BaseResponse<Sign> > requestPlatformLogin(@FieldMap Map< String, String > map );
+	Flowable< BaseResponse< Sign> > requestPlatformLogin(@FieldMap Map< String, String > map );
 }
