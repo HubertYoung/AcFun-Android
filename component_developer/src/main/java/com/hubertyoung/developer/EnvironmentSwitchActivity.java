@@ -17,7 +17,7 @@ import com.hubertyoung.base.Constants;
 import com.hubertyoung.base.bean.EnvironmentBean;
 import com.hubertyoung.base.bean.ModuleBean;
 import com.hubertyoung.common.base.AbsLifecycleActivity;
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.component_developer.R;
 
 import java.lang.reflect.InvocationTargetException;
@@ -35,8 +35,8 @@ public class EnvironmentSwitchActivity extends AbsLifecycleActivity {
 	private Toolbar mToolbar;
 
 	public static void launch( Context context ) {
-		if ( context instanceof BaseActivityNew ) {
-			( ( BaseActivityNew ) context ).startActivity( EnvironmentSwitchActivity.class );
+		if ( context instanceof BaseActivity ) {
+			( ( BaseActivity ) context ).startActivity( EnvironmentSwitchActivity.class );
 		} else {
 			Intent intent = new Intent( context, EnvironmentSwitchActivity.class );
 			if ( !( context instanceof Activity ) ) {

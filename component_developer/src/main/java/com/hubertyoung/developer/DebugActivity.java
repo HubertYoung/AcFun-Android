@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.base.AbsLifecycleActivity;
-import com.hubertyoung.common.base.BaseActivityNew;
+import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.widget.preference.BasePreferenceFragment;
 import com.hubertyoung.component_developer.R;
 
@@ -158,8 +158,8 @@ public class DebugActivity extends AbsLifecycleActivity implements FragmentManag
 	}
 
 	public static void launch( Context context ) {
-		if ( context instanceof BaseActivityNew ) {
-			( ( BaseActivityNew ) context ).startActivity( DebugActivity.class );
+		if ( context instanceof BaseActivity ) {
+			( ( BaseActivity ) context ).startActivity( DebugActivity.class );
 		} else {
 			Intent intent = new Intent( context, DebugActivity.class );
 			if ( !( context instanceof Activity ) ) {
