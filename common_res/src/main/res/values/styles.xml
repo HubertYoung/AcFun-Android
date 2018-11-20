@@ -212,4 +212,8 @@
         <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay.Ios</item>
     </style>
 
+    <style name="page_loading_style_spring_festival">
+        <item name="android:layout_width">130dp</item>
+        <item name="viewAspectRatio">0.84</item>
+    </style>
 </resources>

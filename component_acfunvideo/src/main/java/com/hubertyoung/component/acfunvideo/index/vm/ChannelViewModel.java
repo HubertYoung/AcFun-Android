@@ -7,6 +7,7 @@ import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
+import com.hubertyoung.component.acfunvideo.index.fragment.ChannelFragment;
 import com.hubertyoung.component.acfunvideo.index.source.ChannelRepository;
 
 import androidx.annotation.NonNull;
@@ -33,12 +34,12 @@ public class ChannelViewModel extends AbsViewModel< ChannelRepository > {
 				.subscribeWith( new RxSubscriber< ChannelOperate >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading("");
+						showDialogLoading( ChannelFragment.class.getSimpleName(), "");
 					}
 
 					@Override
 					protected void finishLoading() {
-						stopLoading();
+						stopLoading( ChannelFragment.class.getSimpleName() );
 					}
 
 					@Override

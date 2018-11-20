@@ -9,6 +9,7 @@ import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component.acfunvideo.entity.RegionsEntity;
+import com.hubertyoung.component.acfunvideo.index.fragment.NewRecommendFragment;
 import com.hubertyoung.component.acfunvideo.index.source.NewRecommendRepository;
 
 import java.util.List;
@@ -36,12 +37,12 @@ public class NewRecommendViewModel extends AbsViewModel< NewRecommendRepository 
 				.subscribeWith( new RxSubscriber< List< Regions > >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading( "" );
+						showDialogLoading( NewRecommendFragment.class.getSimpleName(), "" );
 					}
 
 					@Override
 					protected void finishLoading() {
-						stopLoading();
+						stopLoading( NewRecommendFragment.class.getSimpleName() );
 					}
 
 					@Override
@@ -63,12 +64,12 @@ public class NewRecommendViewModel extends AbsViewModel< NewRecommendRepository 
 				.subscribeWith( new RxSubscriber< List< RegionBodyContent > >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading( "" );
+						showDialogLoading( NewRecommendFragment.class.getSimpleName(), "" );
 					}
 
 					@Override
 					protected void finishLoading() {
-						stopLoading();
+						stopLoading( NewRecommendFragment.class.getSimpleName() );
 					}
 
 					@Override

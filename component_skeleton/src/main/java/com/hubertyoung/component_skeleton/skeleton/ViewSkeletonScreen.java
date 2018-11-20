@@ -1,9 +1,5 @@
 package com.hubertyoung.component_skeleton.skeleton;
 
-import androidx.annotation.ColorRes;
-import androidx.annotation.IntRange;
-import androidx.annotation.LayoutRes;
-import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +8,11 @@ import android.view.ViewParent;
 
 import com.hubertyoung.component_skeleton.R;
 
+import androidx.annotation.ColorRes;
+import androidx.annotation.IntRange;
+import androidx.annotation.LayoutRes;
+import androidx.core.content.ContextCompat;
+
 
 /**
  * Created by ethanhua on 2017/7/29.
@@ -19,6 +20,7 @@ import com.hubertyoung.component_skeleton.R;
 
 public class ViewSkeletonScreen implements SkeletonScreen {
 	private static final String TAG = ViewSkeletonScreen.class.getName();
+
 	private final ViewReplacer mViewReplacer;
 	private final View mActualView;
 	private final int mSkeletonResID;
@@ -64,6 +66,10 @@ public class ViewSkeletonScreen implements SkeletonScreen {
 							 .inflate( mSkeletonResID, parentView, false );
 	}
 
+	public View getTargetView() {
+		return mViewReplacer.getTargetView();
+	}
+
 	@Override
 	public void show() {
 		isShow = true;
@@ -82,6 +88,7 @@ public class ViewSkeletonScreen implements SkeletonScreen {
 	public boolean isShowing() {
 		return isShow;
 	}
+
 	public static class Builder {
 		private final View mView;
 		private int mSkeletonLayoutResID;

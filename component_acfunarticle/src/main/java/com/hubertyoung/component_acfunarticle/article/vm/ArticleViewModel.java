@@ -5,6 +5,7 @@ import android.app.Application;
 import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.component_acfunarticle.article.fragment.ArticleFragment;
 import com.hubertyoung.component_acfunarticle.article.source.ArticleRepository;
 import com.hubertyoung.component_acfunarticle.config.ArticleConstants;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
@@ -32,12 +33,12 @@ public class ArticleViewModel extends AbsViewModel< ArticleRepository > {
 				.subscribeWith( new RxSubscriber< Channel >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading( "" );
+						showDialogLoading( ArticleFragment.class.getSimpleName(), "" );
 					}
 
 					@Override
 					protected void finishLoading() {
-						stopLoading();
+						stopLoading( ArticleFragment.class.getSimpleName() );
 					}
 
 					@Override

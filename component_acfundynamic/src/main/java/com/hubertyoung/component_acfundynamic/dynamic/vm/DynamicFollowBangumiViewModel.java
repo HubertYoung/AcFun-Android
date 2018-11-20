@@ -6,6 +6,7 @@ import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfundynamic.config.DynamicConstants;
+import com.hubertyoung.component_acfundynamic.dynamic.fragment.DynamicFollowBangumiFragment;
 import com.hubertyoung.component_acfundynamic.dynamic.source.DynamicFollwBangumiRepository;
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 
@@ -32,12 +33,12 @@ public class DynamicFollowBangumiViewModel extends AbsViewModel< DynamicFollwBan
                 .subscribeWith( new RxSubscriber< RecommendBangumiEntity >() {
                     @Override
                     protected void showLoading() {
-                        showDialogLoading( "" );
+                        showDialogLoading( DynamicFollowBangumiFragment.class.getSimpleName(), "" );
                     }
 
                     @Override
                     protected void finishLoading() {
-                        stopLoading();
+                        stopLoading( DynamicFollowBangumiFragment.class.getSimpleName() );
                     }
 
                     @Override

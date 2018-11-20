@@ -14,6 +14,7 @@ import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.config.MineConstants;
 import com.hubertyoung.component_acfunmine.entity.SignEntity;
 import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
+import com.hubertyoung.component_acfunmine.ui.sign.activity.SignInActivity;
 import com.hubertyoung.component_acfunmine.ui.sign.source.SignInRepository;
 
 import androidx.annotation.NonNull;
@@ -49,12 +50,12 @@ public class SignInViewModel extends AbsViewModel< SignInRepository > {
 						.subscribeWith( new RxSubscriber< BaseResponse< Sign > >() {
 							@Override
 							protected void showLoading() {
-								showDialogLoading( "" );
+								showDialogLoading( SignInActivity.class.getSimpleName(), "" );
 							}
 
 							@Override
 							public void finishLoading() {
-								stopLoading();
+								stopLoading( SignInActivity.class.getSimpleName() );
 							}
 
 							@Override

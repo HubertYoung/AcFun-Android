@@ -15,4 +15,6 @@ public class AppSpConfig {
 	public static final String MOBILECHECK = "mobileCheck";
 
 	public static final String SIGNINSP = "signinsp";
+
+	public static final String LOADING_THEME = "loading_theme";
 }

@@ -6,6 +6,7 @@ import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
+import com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment;
 import com.hubertyoung.component.acfunvideo.index.source.HomePageRepository;
 
 import java.util.HashMap;
@@ -33,12 +34,12 @@ public class HomePageViewModel extends AbsViewModel< HomePageRepository > {
 				.subscribeWith( new RxSubscriber< HashMap >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading( "" );
+						showDialogLoading( HomePageFragment.class.getSimpleName(), "" );
 					}
 
 					@Override
 					protected void finishLoading() {
-						stopLoading();
+						stopLoading( HomePageFragment.class.getSimpleName() );
 					}
 
 					@Override

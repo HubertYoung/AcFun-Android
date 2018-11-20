@@ -31,7 +31,7 @@ dependencies {
     implementation project(':wechatplatformlibrary')
     implementation project(':weiboplatformlibrary')
 
-//    implementation project(':component_stateview')
+    api project(':component_skeleton')
 
     implementation deps.tencent.mmkv
 

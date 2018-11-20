@@ -6,6 +6,7 @@ import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfundynamic.config.DynamicConstants;
+import com.hubertyoung.component_acfundynamic.dynamic.fragment.DynamicAcfunFragment;
 import com.hubertyoung.component_acfundynamic.dynamic.source.DynamicAcfunRepository;
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 
@@ -32,12 +33,12 @@ public class DynamicAcfunViewModel extends AbsViewModel< DynamicAcfunRepository 
                 .subscribeWith( new RxSubscriber< RecommendBangumiEntity >() {
                     @Override
                     protected void showLoading() {
-                        showDialogLoading( "" );
+                        showDialogLoading( DynamicAcfunFragment.class.getSimpleName(), "" );
                     }
 
                     @Override
                     protected void finishLoading() {
-                        stopLoading();
+                        stopLoading( DynamicAcfunFragment.class.getSimpleName() );
                     }
 
                     @Override

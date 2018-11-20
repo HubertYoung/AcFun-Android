@@ -1,9 +1,13 @@
 package com.hubertyoung.common.utils;
 
+import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.constant.AdMapKey;
 import com.hubertyoung.common.utils.os.AppUtils;
 
+import java.io.File;
 import java.util.HashMap;
+
+import androidx.annotation.DrawableRes;
 
 /**
  * <br>
@@ -337,19 +341,20 @@ public class Utils {
 //
 
 
-	//	public static String drawable(int i) {
-//		StringBuilder stringBuilder = new StringBuilder();
-//		stringBuilder.append("res://tv.acfundanmaku.video/");
-//		stringBuilder.append(i);
-//		return stringBuilder.toString();
-//	}
+		public static String getDrawableStr( @DrawableRes int drawableRes) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("res://");
+		stringBuilder.append(CommonApplication.getAppContext().getPackageName() +"/");
+		stringBuilder.append(drawableRes);
+		return stringBuilder.toString();
+	}
 //
-//	public static String drawable(File file) {
-//		StringBuilder stringBuilder = new StringBuilder();
-//		stringBuilder.append("file://");
-//		stringBuilder.append(file.getPath());
-//		return stringBuilder.toString();
-//	}
+	public static String getDrawableStr(File file) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("file://");
+		stringBuilder.append(file.getPath());
+		return stringBuilder.toString();
+	}
 //
 //	public static Spanned drawable( Context context, String str) {
 //		if (context == null) {

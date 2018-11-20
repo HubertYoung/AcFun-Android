@@ -1,9 +1,16 @@
 package com.hubertyoung.component_skeleton.skeleton;
 
-/**
- * Created by ethanhua on 2017/7/29.
- */
 
+/**
+ * <br>
+ * function:
+ * <p>
+ *
+ * @author:HubertYoung
+ * @date:2018/11/20 17:00
+ * @since:V5.2.7
+ * @desc:com.hubertyoung.component_skeleton.skeleton
+ */
 public interface SkeletonScreen {
 
     void show();

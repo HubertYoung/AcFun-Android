@@ -8,6 +8,7 @@ import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfunmine.config.MineConstants;
+import com.hubertyoung.component_acfunmine.ui.mine.fragment.MineFragment;
 import com.hubertyoung.component_acfunmine.ui.mine.source.MineRepository;
 
 import androidx.annotation.NonNull;
@@ -32,12 +33,12 @@ public class MineViewModel extends AbsViewModel< MineRepository > {
                 .subscribeWith( new RxSubscriber< Sign >() {
                     @Override
                     protected void showLoading() {
-                        showDialogLoading( "" );
+                        showDialogLoading( MineFragment.class.getSimpleName(), "" );
                     }
 
                     @Override
                     protected void finishLoading() {
-                        stopLoading();
+                        stopLoading( MineFragment.class.getSimpleName() );
                     }
 
                     @Override

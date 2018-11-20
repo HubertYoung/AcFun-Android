@@ -7,12 +7,11 @@
               android:layout_gravity="center"
               android:gravity="center"
               android:orientation="vertical"
-              android:background="@android:color/holo_red_dark"
               android:visibility="visible">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/widget_loading_holder_gif"
-        style="@style/page_loading_style"/>
+        style="@style/page_loading_style_spring_festival"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,5 +19,5 @@
         android:layout_marginTop="13dp"
         android:text="@string/common_loading"
         android:textColor="@color/text_deep_gray_color"
-        android:textSize="@dimen/text_size15"/>
+        android:textSize="15sp"/>
 </LinearLayout>

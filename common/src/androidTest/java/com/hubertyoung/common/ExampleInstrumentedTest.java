@@ -1,16 +1,14 @@
 package com.hubertyoung.common;
 
 import android.content.Context;
-import androidx.test.InstrumentationRegistry;
-import androidx.test.runner.AndroidJUnit4;
-
-import com.hubertyoung.common.utils.IPInfomation;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import androidx.test.InstrumentationRegistry;
+import androidx.test.runner.AndroidJUnit4;
+
 import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -28,11 +26,7 @@ public class ExampleInstrumentedTest {
 	}
 	@Test
 	public void getWIFIInformation() {
-		IPInfomation ipInfomation = new IPInfomation( InstrumentationRegistry.getContext() );
-		String macAddress = ipInfomation.getMacAddress();
-		String wifiLocalIpAdress = ipInfomation.getWIFILocalIpAdress();
-		System.out.println( macAddress );
-		System.out.println( wifiLocalIpAdress );
+		System.out.println(  );
 	}
 
 }

@@ -38,11 +38,20 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 		mViewModel = VMProviders( this, TUtil.getInstance( this, 0 ) );
 		if ( null != mViewModel ) {
 			dataObserver();
-			events.add( StateConstants.EVENT_KEY_LOADING_STATE );
-			LiveBus.getDefault().subscribe( StateConstants.EVENT_KEY_LOADING_STATE ).observe( this, observer );
+			mStateEventKey = TAG;
+			mStateEventTag = getStateEventTag();
+			events.add( new StringBuilder( ( String ) mStateEventKey ).append( mStateEventTag ).toString() );
+			LiveBus.getDefault().subscribe( mStateEventKey, mStateEventTag ).observe( this, observer );
 		}
 	}
-
+	/**
+	 * ViewPager + fragment tag
+	 *
+	 * @return
+	 */
+	protected String getStateEventTag() {
+		return "";
+	}
 	/**
 	 * create ViewModelProviders
 	 *

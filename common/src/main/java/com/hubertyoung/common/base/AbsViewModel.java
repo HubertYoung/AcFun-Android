@@ -46,12 +46,12 @@ public class AbsViewModel< R extends AbsRepository > extends AndroidViewModel {
 		sendData( eventKey, tag, state );
 	}
 
-	public void showDialogLoading( String title ) {
-		sendData( StateConstants.EVENT_KEY_LOADING_STATE, StateConstants.LOADING_STATE );
+	public void showDialogLoading( String simpleName, String title ) {
+		sendData( simpleName, StateConstants.LOADING_STATE );
 	}
 
-	public void stopLoading() {
-		sendData( StateConstants.EVENT_KEY_LOADING_STATE, StateConstants.SUCCESS_STATE );
+	public void stopLoading( String simpleName ) {
+		sendData( simpleName, StateConstants.SUCCESS_STATE );
 	}
 
 	@Override

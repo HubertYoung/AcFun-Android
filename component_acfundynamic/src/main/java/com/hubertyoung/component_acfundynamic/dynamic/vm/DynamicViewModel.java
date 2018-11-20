@@ -7,6 +7,7 @@ import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfundynamic.config.DynamicConstants;
+import com.hubertyoung.component_acfundynamic.dynamic.fragment.DynamicFragment;
 import com.hubertyoung.component_acfundynamic.dynamic.source.DynamicRepository;
 
 import androidx.annotation.NonNull;
@@ -32,12 +33,12 @@ public class DynamicViewModel extends AbsViewModel< DynamicRepository > {
                 .subscribeWith( new RxSubscriber< User >() {
                     @Override
                     protected void showLoading() {
-                        showDialogLoading( "" );
+                        showDialogLoading( DynamicFragment.class.getSimpleName(), "" );
                     }
 
                     @Override
                     protected void finishLoading() {
-                        stopLoading();
+                        stopLoading( DynamicFragment.class.getSimpleName() );
                     }
 
                     @Override
