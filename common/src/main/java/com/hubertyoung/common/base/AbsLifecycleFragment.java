@@ -122,7 +122,7 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 		public void onChanged( @Nullable String state ) {
 			if ( !TextUtils.isEmpty( state ) ) {
 				if ( StateConstants.ERROR_STATE.equals( state ) ) {
-
+					showErrorLayout();
 				} else if ( StateConstants.NET_WORK_STATE.equals( state ) ) {
 				} else if ( StateConstants.LOADING_STATE.equals( state ) ) {
 					showLoading( "" );
@@ -132,6 +132,9 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 			}
 		}
 	};
+
+	protected void showErrorLayout() {
+	}
 
 	protected void stopLoading() {
 

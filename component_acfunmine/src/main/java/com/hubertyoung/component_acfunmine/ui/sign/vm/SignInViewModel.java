@@ -50,7 +50,7 @@ public class SignInViewModel extends AbsViewModel< SignInRepository > {
 						.subscribeWith( new RxSubscriber< BaseResponse< Sign > >() {
 							@Override
 							protected void showLoading() {
-								showDialogLoading( SignInActivity.class.getSimpleName(), "" );
+								showLoadingLayout( SignInActivity.class.getSimpleName(), "" );
 							}
 
 							@Override

@@ -37,7 +37,7 @@ public class NewRecommendViewModel extends AbsViewModel< NewRecommendRepository 
 				.subscribeWith( new RxSubscriber< List< Regions > >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading( NewRecommendFragment.class.getSimpleName(), "" );
+						showLoadingLayout( NewRecommendFragment.class.getSimpleName(), "" );
 					}
 
 					@Override
@@ -55,6 +55,7 @@ public class NewRecommendViewModel extends AbsViewModel< NewRecommendRepository 
 					@Override
 					public void onFailure( String msg ) {
 						ToastUtil.showError( msg );
+						showErrorLayout( NewRecommendFragment.class.getSimpleName() );
 					}
 				} ) );
 	}
@@ -64,7 +65,7 @@ public class NewRecommendViewModel extends AbsViewModel< NewRecommendRepository 
 				.subscribeWith( new RxSubscriber< List< RegionBodyContent > >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading( NewRecommendFragment.class.getSimpleName(), "" );
+						showLoadingLayout( NewRecommendFragment.class.getSimpleName(), "" );
 					}
 
 					@Override
@@ -82,6 +83,7 @@ public class NewRecommendViewModel extends AbsViewModel< NewRecommendRepository 
 					@Override
 					public void onFailure( String msg ) {
 						ToastUtil.showError( msg );
+						showErrorLayout( NewRecommendFragment.class.getSimpleName() );
 					}
 				} ) );
 	}

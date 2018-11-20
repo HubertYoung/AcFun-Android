@@ -1,19 +1,11 @@
 package com.hubertyoung.common.baserx;
 
 
-import com.google.gson.JsonParseException;
+import com.hubertyoung.common.net.exception.ExceptionHandle;
 import com.hubertyoung.common.net.exception.ResponeThrowable;
-import com.hubertyoung.common.net.exception.ServerException;
 import com.hubertyoung.common.utils.os.NetworkUtil;
 
-import org.json.JSONException;
-
-import java.net.ConnectException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-
 import io.reactivex.subscribers.DisposableSubscriber;
-import retrofit2.HttpException;
 
 /**
  * <br>
@@ -25,7 +17,7 @@ import retrofit2.HttpException;
  * @since:V1.0.0
  * @desc:com.hubertyoung.common.baserx
  */
-public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
+public abstract class RxSubscriber< T > extends DisposableSubscriber< T > {
 
     public RxSubscriber() {
         super();
@@ -35,7 +27,7 @@ public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
     protected void onStart() {
         super.onStart();
         showLoading();
-        if (!NetworkUtil.isNetAvailable()) {
+        if ( !NetworkUtil.isNetAvailable() ) {
             onNoNetWork();
             cancel();
             return;
@@ -59,31 +51,15 @@ public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
     }
 
     @Override
-    public void onError(Throwable e) {
-        String message = null;
-        if (e instanceof UnknownHostException ) {
-            message = "没有网络";
-        } else if (e instanceof HttpException) {
-            message = "网络错误";
-        } else if (e instanceof SocketTimeoutException ) {
-            message = "网络连接超时";
-        } else if (e instanceof JsonParseException
-                || e instanceof JSONException ) {
-            message = "解析错误";
-        } else if (e instanceof ConnectException ) {
-            message = "连接失败";
-        } else if (e instanceof ServerException ) {
-            message = ((ServerException) e).result;
-        }else if ( e instanceof ResponeThrowable ){
-            message = ((ResponeThrowable) e).result;
-        }
+    public void onError( Throwable e ) {
+        ResponeThrowable responeThrowable = ExceptionHandle.handleException( e );
         finishLoading();
-        onFailure(message);
+        onFailure( responeThrowable.result );
     }
 
     @Override
-    public void onNext(T t) {
-        onSuccess(t);
+    public void onNext( T t ) {
+        onSuccess( t );
     }
 
     /**
@@ -91,12 +67,12 @@ public abstract class RxSubscriber<T> extends DisposableSubscriber<T> {
      *
      * @param t
      */
-    public abstract void onSuccess(T t);
+    public abstract void onSuccess( T t );
 
     /**
      * failure
      *
      * @param msg
      */
-    public abstract void onFailure(String msg);
+    public abstract void onFailure( String msg );
 }

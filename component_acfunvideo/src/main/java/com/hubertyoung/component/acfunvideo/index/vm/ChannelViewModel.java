@@ -24,37 +24,38 @@ import androidx.annotation.NonNull;
  */
 public class ChannelViewModel extends AbsViewModel< ChannelRepository > {
 
-	public ChannelViewModel( @NonNull Application application ) {
-		super( application );
-	}
+    public ChannelViewModel( @NonNull Application application ) {
+        super( application );
+    }
 
-	public void requestChannel( String pos, int isAddInfo ) {
-		addDisposable( mRepository.requestChannel( pos )
+    public void requestChannel( String pos, int isAddInfo ) {
+        addDisposable( mRepository.requestChannel( pos )
 //				.compose( ( ( BaseActivity ) mContext ).bindToLifecycle() )
-				.subscribeWith( new RxSubscriber< ChannelOperate >() {
-					@Override
-					protected void showLoading() {
-						showDialogLoading( ChannelFragment.class.getSimpleName(), "");
-					}
+                .subscribeWith( new RxSubscriber< ChannelOperate >() {
+                    @Override
+                    protected void showLoading() {
+                        showLoadingLayout( ChannelFragment.class.getSimpleName(), "" );
+                    }
 
-					@Override
-					protected void finishLoading() {
-						stopLoading( ChannelFragment.class.getSimpleName() );
-					}
+                    @Override
+                    protected void finishLoading() {
+                        stopLoading( ChannelFragment.class.getSimpleName() );
+                    }
 
-					@Override
-					public void onSuccess( ChannelOperate channelOperate ) {
-						if ( isAddInfo == 0 ) {
-							sendData( VideoConstants.EVENT_KEY_CHANNEL_OPERATE, channelOperate );
-						} else {
-							sendData( VideoConstants.EVENT_KEY_CHANNEL_OPERATE_ADD, channelOperate );
-						}
-					}
+                    @Override
+                    public void onSuccess( ChannelOperate channelOperate ) {
+                        if ( isAddInfo == 0 ) {
+                            sendData( VideoConstants.EVENT_KEY_CHANNEL_OPERATE, channelOperate );
+                        } else {
+                            sendData( VideoConstants.EVENT_KEY_CHANNEL_OPERATE_ADD, channelOperate );
+                        }
+                    }
 
-					@Override
-					public void onFailure( String msg ) {
-						ToastUtil.showError( msg );
-					}
-				} ) );
-	}
+                    @Override
+                    public void onFailure( String msg ) {
+                        ToastUtil.showError( msg );
+                        showErrorLayout( ChannelFragment.class.getSimpleName() );
+                    }
+                } ) );
+    }
 }

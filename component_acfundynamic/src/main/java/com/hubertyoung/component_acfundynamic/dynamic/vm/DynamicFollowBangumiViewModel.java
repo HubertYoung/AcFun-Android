@@ -33,7 +33,7 @@ public class DynamicFollowBangumiViewModel extends AbsViewModel< DynamicFollwBan
                 .subscribeWith( new RxSubscriber< RecommendBangumiEntity >() {
                     @Override
                     protected void showLoading() {
-                        showDialogLoading( DynamicFollowBangumiFragment.class.getSimpleName(), "" );
+                        showLoadingLayout( DynamicFollowBangumiFragment.class.getSimpleName(), "" );
                     }
 
                     @Override

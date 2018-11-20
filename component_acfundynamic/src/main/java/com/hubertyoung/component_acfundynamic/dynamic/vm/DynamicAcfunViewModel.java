@@ -33,7 +33,7 @@ public class DynamicAcfunViewModel extends AbsViewModel< DynamicAcfunRepository 
                 .subscribeWith( new RxSubscriber< RecommendBangumiEntity >() {
                     @Override
                     protected void showLoading() {
-                        showDialogLoading( DynamicAcfunFragment.class.getSimpleName(), "" );
+                        showLoadingLayout( DynamicAcfunFragment.class.getSimpleName(), "" );
                     }
 
                     @Override

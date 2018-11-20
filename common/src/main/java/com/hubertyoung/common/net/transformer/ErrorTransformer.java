@@ -1,7 +1,6 @@
 package com.hubertyoung.common.net.transformer;
 
 
-import com.hubertyoung.common.net.exception.ExceptionHandle;
 import com.hubertyoung.common.net.exception.ServerException;
 import com.hubertyoung.common.net.response.BaseResponse;
 
@@ -61,15 +60,15 @@ public class ErrorTransformer< T > implements FlowableTransformer< BaseResponse<
 				}
 				return tBaseRespose.getData();
 			}
-		} )
-				.onErrorResumeNext( new Function< Throwable, Publisher< ? extends T > >() {
-					@Override
-					public Publisher< ? extends T > apply( Throwable throwable ) throws Exception {
-						throwable.printStackTrace();
-						//如果是测试环境 访问错误证明服务没开 强制改成正式环境
-//							   if ( AppUtils.isDebuggable() ) SPUtils.setSharedIntData( "switchUrlIndex", 0 );
-						return Flowable.error( ExceptionHandle.handleException( throwable ) );
-					}
-				} );
+		} );
+//				.onErrorResumeNext( new Function< Throwable, Publisher< ? extends T > >() {
+//					@Override
+//					public Publisher< ? extends T > apply( Throwable throwable ) throws Exception {
+//						throwable.printStackTrace();
+//						//如果是测试环境 访问错误证明服务没开 强制改成正式环境
+////							   if ( AppUtils.isDebuggable() ) SPUtils.setSharedIntData( "switchUrlIndex", 0 );
+//						return Flowable.error( ExceptionHandle.handleException( throwable ) );
+//					}
+//				} );
 	}
 }

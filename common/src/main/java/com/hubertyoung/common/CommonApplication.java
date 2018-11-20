@@ -135,7 +135,7 @@ public class CommonApplication extends Application {
 //		Host	apipc.app.acfun.cn
 //		Connection	Keep-Alive
 //		Accept-Encoding	gzip
-		NetWorkConfiguration configuration = new NetWorkConfiguration( this ).isCache( true ).isDiskCache( true ).isMemoryCache( true );
+		NetWorkConfiguration configuration = new NetWorkConfiguration( this ).connectTimeOut(10 * 1000).isCache( true ).isDiskCache( true ).isMemoryCache( true );
 		StringBuffer stringBuffer = new StringBuffer();
 		stringBuffer.append( "acvideo core/" )//
 				.append( AppUtils.getAppVersionName() )//

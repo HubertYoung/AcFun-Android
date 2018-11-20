@@ -488,8 +488,7 @@
     <string name="copy_success">复制成功</string>
     <string name="create_upload_activity_title">视频投稿</string>
     <string name="create_upload_btn">投稿</string>
-    <string name="create_upload_cover_text">"点击更换封面
-支持3M及以下的JPG、JPEG、PNG文件"</string>
+    <string name="create_upload_cover_text">"点击更换封面\n支持3M及以下的JPG、JPEG、PNG文件"</string>
     <string name="create_upload_des_text">简介</string>
     <string name="create_upload_desc_hint_original">辛苦UP主的制作，请UP主为观众们介绍一下内容吧～</string>
     <string name="create_upload_desc_hint_trans">谢谢UP主的搬运，精彩的内容请通过简介先告知给观众们吧～</string>

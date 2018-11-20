@@ -46,7 +46,7 @@ public class ArticleGeneralSecondRepository extends AbsRepository {
 				.subscribeWith( new RxSubscriber< RankAc >() {
 					@Override
 					protected void showLoading() {
-//						showDialogLoading( "" );
+//						showLoadingLayout( "" );
 					}
 
 					@Override

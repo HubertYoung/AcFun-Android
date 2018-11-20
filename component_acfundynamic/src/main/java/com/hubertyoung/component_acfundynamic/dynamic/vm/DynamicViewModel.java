@@ -33,7 +33,7 @@ public class DynamicViewModel extends AbsViewModel< DynamicRepository > {
                 .subscribeWith( new RxSubscriber< User >() {
                     @Override
                     protected void showLoading() {
-                        showDialogLoading( DynamicFragment.class.getSimpleName(), "" );
+                        showLoadingLayout( DynamicFragment.class.getSimpleName(), "" );
                     }
 
                     @Override

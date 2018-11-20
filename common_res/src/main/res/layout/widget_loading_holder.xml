@@ -6,9 +6,7 @@
               android:layout_height="match_parent"
               android:layout_gravity="center"
               android:gravity="center"
-              android:orientation="vertical"
-              android:background="@android:color/holo_red_dark"
-              android:visibility="visible">
+              android:orientation="vertical">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/widget_loading_holder_gif"

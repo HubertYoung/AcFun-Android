@@ -34,7 +34,7 @@ public class HomePageViewModel extends AbsViewModel< HomePageRepository > {
 				.subscribeWith( new RxSubscriber< HashMap >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading( HomePageFragment.class.getSimpleName(), "" );
+						showLoadingLayout( HomePageFragment.class.getSimpleName(), "" );
 					}
 
 					@Override

@@ -33,7 +33,7 @@ public class ArticleViewModel extends AbsViewModel< ArticleRepository > {
 				.subscribeWith( new RxSubscriber< Channel >() {
 					@Override
 					protected void showLoading() {
-						showDialogLoading( ArticleFragment.class.getSimpleName(), "" );
+						showLoadingLayout( ArticleFragment.class.getSimpleName(), "" );
 					}
 
 					@Override

@@ -33,7 +33,7 @@ public class MineViewModel extends AbsViewModel< MineRepository > {
                 .subscribeWith( new RxSubscriber< Sign >() {
                     @Override
                     protected void showLoading() {
-                        showDialogLoading( MineFragment.class.getSimpleName(), "" );
+                        showLoadingLayout( MineFragment.class.getSimpleName(), "" );
                     }
 
                     @Override

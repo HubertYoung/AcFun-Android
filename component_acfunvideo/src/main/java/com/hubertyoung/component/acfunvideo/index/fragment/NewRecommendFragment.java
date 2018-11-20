@@ -22,7 +22,6 @@ import com.hubertyoung.component.acfunvideo.index.section.NewRecommendCarouselsS
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendVideosRankSection;
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendVideosSection;
 import com.hubertyoung.component.acfunvideo.index.vm.NewRecommendViewModel;
-import com.hubertyoung.component_acfunvideo.R;
 
 import java.util.List;
 
@@ -80,11 +79,6 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 	@Override
 	protected void initToolBar() {
 
-	}
-
-	@Override
-	protected int getLayoutResource() {
-		return R.layout.fragment_home_recommend;
 	}
 
 	@Override
