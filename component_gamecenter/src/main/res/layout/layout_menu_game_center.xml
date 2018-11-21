@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:aapt="http://schemas.android.com/aapt"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/menu_game_center_manage"
+                android:layout_width="80dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:onClick="goToManageGameCenter">
+
+    <ImageView
+        android:id="@+id/game_center_manage_update_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/icon_game_manage_update"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/iv_manage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/icon_game_manage"/>
+</RelativeLayout>
