@@ -1,0 +1,5 @@
+apply from: rootProject.file('basic_component.gradle')
+
+dependencies {
+    implementation project(':common')
+}

@@ -1,10 +1,11 @@
 include ':studydemo',
         ':acfun',
         ':component_acfunmine',
-        'component_acfunarticle',
+        ':component_acfunarticle',
         ':bottom-navigation-bar',
         ':component_acfundynamic',
         ':component_acfunvideo',
+        ':component_gamecenter',
 
 //        ':android-support:skin-support',
 //        ':android-support:skin-support-appcompat',
@@ -32,6 +33,7 @@ include ':studydemo',
         ':wechatplatformlibrary',
         ':qqplatformlibrary',
         ':weiboplatformlibrary',
+        ':weiboplatformlibrary',
         ':component_dialog',
 //        ':library_update',
         ':common_res',
@@ -40,6 +42,29 @@ include ':studydemo',
         ':annotation',
         ':compiler',
         ':compiler-release'
+
+project(':common').projectDir = new File(rootDir, 'baselibrary/common')
+project(':common_res').projectDir = new File(rootDir, 'baselibrary/common_res')
+//project(':component_statsdk').projectDir = new File(rootDir, 'library/component_statsdk')
+//project(':component_update').projectDir = new File(rootDir, 'library/component_update')
+//project(':component_jsbridge').projectDir = new File(rootDir, 'library/component_jsbridge')
+//project(':component_pickerview').projectDir = new File(rootDir, 'library/component_pickerview')
+//project(':component_multiimageview').projectDir = new File(rootDir, 'library/component_multiimageview')
+//project(':component_gridpasswordview').projectDir = new File(rootDir, 'library/component_gridpasswordview')
+//project(':component_filter').projectDir = new File(rootDir, 'library/component_filter')
+project(':component_bankcard').projectDir = new File(rootDir, 'library/component_bankcard')
+project(':component_banner').projectDir = new File(rootDir, 'library/component_banner')
+project(':component_bar').projectDir = new File(rootDir, 'library/component_bar')
+project(':component_dialog').projectDir = new File(rootDir, 'library/component_dialog')
+project(':component_dynamicsoreview').projectDir = new File(rootDir, 'library/component_dynamicsoreview')
+project(':component_ping').projectDir = new File(rootDir, 'library/component_ping')
+project(':component_skeleton').projectDir = new File(rootDir, 'library/component_skeleton')
+project(':component_stateview').projectDir = new File(rootDir, 'library/component_stateview')
+project(':component_aggregation').projectDir = new File(rootDir, 'library/component_aggregation')
+project(':component_titlebar').projectDir = new File(rootDir, 'library/component_titlebar')
+project(':bottom-navigation-bar').projectDir = new File(rootDir, 'library/bottom-navigation-bar')
+project(':studydemo').projectDir = new File(rootDir, 'library/studydemo')
+
 project(':baseplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/baseplatformlibrary')
 project(':alipayplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/alipayplatformlibrary')
 project(':wechatplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/wechatplatformlibrary')
