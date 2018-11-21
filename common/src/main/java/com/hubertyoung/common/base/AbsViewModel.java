@@ -50,12 +50,24 @@ public class AbsViewModel< R extends AbsRepository > extends AndroidViewModel {
 		sendData( simpleName, StateConstants.LOADING_STATE );
 	}
 
+	public void showLoadingLayout( String simpleName, String tag, String title ) {
+		sendData( simpleName, tag, StateConstants.LOADING_STATE );
+	}
+
+	public void stopLoading( String simpleName, String tag ) {
+		sendData( simpleName, tag, StateConstants.SUCCESS_STATE );
+	}
+
 	public void stopLoading( String simpleName ) {
 		sendData( simpleName, StateConstants.SUCCESS_STATE );
 	}
 
 	public void showErrorLayout( String simpleName ) {
 		sendData( simpleName, StateConstants.ERROR_STATE );
+	}
+
+	public void showErrorLayout( String simpleName, String tag ) {
+		sendData( simpleName, tag, StateConstants.ERROR_STATE );
 	}
 
 	@Override

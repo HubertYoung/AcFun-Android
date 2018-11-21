@@ -77,6 +77,11 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 	}
 
 	@Override
+	protected String getStateEventTag() {
+		return channelId;
+	}
+
+	@Override
 	protected void initToolBar() {
 
 	}

@@ -115,15 +115,15 @@ public class NewRecommendBangumisSection extends StatelessSection {
 			if ( realPosition % 3 == 0 ) {
 				viewHolderBangumi.root.setPadding( DisplayUtil.dip2px( 10 ),//
 						0,//
-						DisplayUtil.dip2px( 10 / 3 ),//
+						DisplayUtil.dip2px( 10f / 3 ),//
 						DisplayUtil.dip2px( 10 ) );
 			} else if ( realPosition % 3 == 1 ) {
-				viewHolderBangumi.root.setPadding( DisplayUtil.dip2px( 6.3f ),//
+				viewHolderBangumi.root.setPadding( DisplayUtil.dip2px( 20f / 3 ),//
 						0,//
-						DisplayUtil.dip2px( 6.3f ),//
+						DisplayUtil.dip2px( 20f / 3 ),//
 						DisplayUtil.dip2px( 10 ) );
 			} else if ( realPosition % 3 == 2 ) {
-				viewHolderBangumi.root.setPadding( DisplayUtil.dip2px( 10 / 3 ),//
+				viewHolderBangumi.root.setPadding( DisplayUtil.dip2px( 10f / 3 ),//
 						0,//
 						DisplayUtil.dip2px( 10 ),//
 						DisplayUtil.dip2px( 10 ) );
