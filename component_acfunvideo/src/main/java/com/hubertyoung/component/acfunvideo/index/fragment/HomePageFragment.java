@@ -37,7 +37,7 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel >{
 	private String mParam1;
 	private String mParam2;
 	private Toolbar mToolbar;
-	private SmartTabLayout mHomeViewTab;
+	private SmartTabLayout videoTabLayout;
 	private ImageView mIvSearch;
 	private ImageView mIvGame;
 	private ViewPager mHomeViewPager;
@@ -84,7 +84,7 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel >{
 	protected void initView( Bundle savedInstanceState ) {
 		super.initView( savedInstanceState );
 		mToolbar = ( Toolbar ) findViewById( R.id.toolbar );
-		mHomeViewTab = ( SmartTabLayout ) findViewById( R.id.home_view_tab );
+		videoTabLayout = ( SmartTabLayout ) findViewById( R.id.tab_layout_video );
 		mIvSearch = ( ImageView ) findViewById( R.id.iv_search );
 		mIvGame = ( ImageView ) findViewById( R.id.iv_game );
 		mHomeViewPager = ( ViewPager ) findViewById( R.id.home_view_pager );
@@ -153,7 +153,7 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel >{
 	}
 
 	private void initViewPager() {
-		mHomeViewTab.setCustomTabView( R.layout.widget_home_page_tab_view, R.id.tab_text );
+//		videoTabLayout.setCustomTabView( R.layout.widget_home_page_tab_view, R.id.tab_text );
 		mHomePagerAdapter = new HomePagerAdapter( getChildFragmentManager() );
 		mNewRecommendFragment = NewRecommendFragment.newInstance( "0", "" );
 		mChannelFragment = ChannelFragment.newInstance( "", "" );
@@ -163,7 +163,7 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel >{
 		mHomeViewPager.setAdapter( mHomePagerAdapter );
 		mHomeViewPager.setOffscreenPageLimit( 1 );
 		mHomeViewPager.setCurrentItem( 0 );
-		mHomeViewTab.setViewPager( mHomeViewPager );
+		videoTabLayout.setViewPager( mHomeViewPager );
 	}
 
 	@Override

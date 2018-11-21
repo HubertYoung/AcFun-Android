@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tab_video_item_indicator">#ffffffff</color>
+    <color name="tab_video_item_selected">#ffffffff</color>
+    <color name="tab_video_item_unselected">#ccffffff</color>
+</resources>

@@ -11,43 +11,23 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_tab_or_bottom"
+        android:layout_height="44dp"
         android:background="@color/them_color">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:id="@+id/iv_game"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_large"
-            android:src="@mipmap/ic_logo"/>
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/ic_game_center"/>
 
         <com.ogaclejapan.smarttablayout.SmartTabLayout
-            android:id="@+id/home_view_tab"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:id="@+id/tab_layout_video"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:background="@drawable/shape_bg_white_round100"
-            android:padding="1dp"
-            app:stl_defaultTabBackground="?attr/selectableItemBackground"
-            app:stl_defaultTabTextAllCaps="true"
-            app:stl_defaultTabTextColor="@color/selector_text_red_white"
-            app:stl_defaultTabTextHorizontalPadding="10dp"
-            app:stl_defaultTabTextSize="14sp"
-            app:stl_distributeEvenly="true"
-            app:stl_dividerColor="@color/white"
-            app:stl_dividerThickness="0dp"
-            app:stl_indicatorColor="@color/them_color"
-            app:stl_indicatorCornerRadius="100dp"
-            app:stl_indicatorGravity="center"
-            app:stl_indicatorThickness="0dp"
-            app:stl_indicatorWidth="0dp"
-            app:stl_overlineColor="@color/white"
-            app:stl_overlineThickness="0dp"
-            app:stl_underlineColor="@color/white"
-            app:stl_underlineThickness="0dp"/>
+            style="@style/home_tab"/>
 
         <ImageView
             android:id="@+id/iv_search"
@@ -57,14 +37,6 @@
             android:layout_marginRight="16dp"
             android:src="@mipmap/ic_ab_search"/>
 
-        <ImageView
-            android:id="@+id/iv_game"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical|center_horizontal|center"
-            android:layout_marginRight="15dp"
-            android:src="@mipmap/ic_game_center"
-            android:visibility="visible"/>
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.viewpager.widget.ViewPager
