@@ -39,18 +39,19 @@ include ':studydemo',
         ':common_res',
         ':common',
 
-        ':annotation',
-        ':compiler',
-        ':compiler-release'
-
 //        ':argus-apm-aop',
 //        ':argus-apm-cloud',
 //        ':argus-apm-cloud-dummy-impl',
 //        ':argus-apm-main',
-//        ':argus-apm-okhttp'
+//        ':argus-apm-okhttp',
 
-project(':common').projectDir = new File(rootDir, 'baselibrary/common')
-project(':common_res').projectDir = new File(rootDir, 'baselibrary/common_res')
+        ':annotation',
+        ':compiler',
+        ':compiler-release'
+
+
+project(':common').projectDir = new File(rootDir, 'library_base/common')
+project(':common_res').projectDir = new File(rootDir, 'library_base/common_res')
 //project(':component_statsdk').projectDir = new File(rootDir, 'library/component_statsdk')
 //project(':component_update').projectDir = new File(rootDir, 'library/component_update')
 //project(':component_jsbridge').projectDir = new File(rootDir, 'library/component_jsbridge')

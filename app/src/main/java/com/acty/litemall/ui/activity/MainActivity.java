@@ -17,8 +17,8 @@ import com.jakewharton.rxbinding3.view.RxView;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;

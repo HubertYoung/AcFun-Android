@@ -28,9 +28,9 @@ import com.hubertyoung.dialog.listener.OnViewClickListener;
 import java.util.List;
 import java.util.Locale;
 
-import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 
 /**

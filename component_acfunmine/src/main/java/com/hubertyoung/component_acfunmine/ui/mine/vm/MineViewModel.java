@@ -11,7 +11,7 @@ import com.hubertyoung.component_acfunmine.config.MineConstants;
 import com.hubertyoung.component_acfunmine.ui.mine.fragment.MineFragment;
 import com.hubertyoung.component_acfunmine.ui.mine.source.MineRepository;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * <br>

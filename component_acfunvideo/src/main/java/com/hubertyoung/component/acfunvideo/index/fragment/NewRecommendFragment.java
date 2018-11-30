@@ -1,6 +1,9 @@
 package com.hubertyoung.component.acfunvideo.index.fragment;
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 
 import com.hubertyoung.common.base.BaseActivity;
@@ -24,10 +27,6 @@ import com.hubertyoung.component.acfunvideo.index.section.NewRecommendVideosSect
 import com.hubertyoung.component.acfunvideo.index.vm.NewRecommendViewModel;
 
 import java.util.List;
-
-import androidx.lifecycle.Observer;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>

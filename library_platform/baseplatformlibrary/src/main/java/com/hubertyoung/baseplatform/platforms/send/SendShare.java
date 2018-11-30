@@ -17,7 +17,7 @@ import com.hubertyoung.baseplatform.share.shareparam.ShareParamVideo;
 import com.hubertyoung.baseplatform.share.shareparam.ShareParamWebPage;
 import com.hubertyoung.baseplatformlibrary.R;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 public class SendShare extends AbsShareHandler {
 	public static final String TAG = SendShare.class.getSimpleName();

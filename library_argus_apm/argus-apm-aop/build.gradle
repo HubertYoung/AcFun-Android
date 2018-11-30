@@ -27,16 +27,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     if (ArgusAPM_Release) {
-        provided project(':argus-apm-main')
+        compileOnly project(':argus-apm-main')
     } else {
-        releaseProvided project(path: ':argus-apm-main', configuration: 'release')
-        debugProvided project(path: ':argus-apm-main', configuration: 'debug')
+        releaseCompileOnly project(path: ':argus-apm-main', configuration: 'release')
+        debugCompileOnly project(path: ':argus-apm-main', configuration: 'debug')
     }
-
-    provided 'org.aspectj:aspectjrt:1.8.9'
-    provided 'org.aspectj:aspectjtools:1.8.9'
+//    compileOnly 'org.aspectj:aspectjrt:1.9.2'
+//    compileOnly 'org.aspectj:aspectjtools:1.9.2'
+    compileOnly files('libs/aspectjrt-1.9.2.jar')
+    compileOnly files('libs/aspectjtools-1.9.2.jar')
 }
 
 afterEvaluate {
@@ -54,7 +55,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.aspectj:aspectjtools:1.8.9'
+        classpath 'org.aspectj:aspectjtools:1.9.2'
     }
 
 }
@@ -71,7 +72,7 @@ variants.all { variant ->
     JavaCompile javaCompile = variant.javaCompile
     javaCompile.doLast {
         String[] args = ["-showWeaveInfo",
-                         "-1.7",
+                         "-1.8",
                          "-inpath", javaCompile.destinationDir.toString(),
                          "-aspectpath", javaCompile.classpath.asPath,
                          "-d", javaCompile.destinationDir.toString(),
@@ -103,7 +104,7 @@ variants.all { variant ->
 }
 
 ext {
-    maven_repo_release_url = "http://localhost:8081/nexus/content/repositories/android-lib/"
+    maven_repo_release_url = "http://45.63.19.1:8081/repository/maven-releases/"
     pom_project_name ='argus-apm-aop'
     pom_project_version ='2.0.1.1006'
     pom_project_artifactId ='argus-apm-aop'
@@ -112,26 +113,4 @@ ext {
     pom_project_description ='argus-apm.sdk'
 }
 
-apply from: file("${rootDir}/buildscript/nexus_maven.gradle")
-
-
-//uploadArchives {
-//    configuration = configurations.archives
-//    repositories {
-//        mavenDeployer {
-////            snapshotRepository(url: MAVEN_REPO_SNAPSHOT_URL) {
-////                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
-////            }
-//            repository(url: MAVEN_REPO_RELEASE_URL) {
-//                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
-//            }
-//            pom.project {
-//                version '2.0.1.1006'
-//                artifactId 'argus-apm-aop'
-//                groupId GROUP_ID
-//                packaging TYPE
-//                description DESCRIPTION
-//            }
-//        }
-//    }
-//}
+//apply from: file("${rootDir}/buildscript/nexus_maven.gradle")

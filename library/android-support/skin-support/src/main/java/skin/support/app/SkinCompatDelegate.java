@@ -1,7 +1,7 @@
 package skin.support.app;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import androidx.core.view.LayoutInflaterFactory;
 import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;

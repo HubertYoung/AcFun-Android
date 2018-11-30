@@ -1,6 +1,7 @@
 package com.hubertyoung.component_gamecenter.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -11,7 +12,6 @@ import com.jakewharton.rxbinding3.view.RxView;
 
 import java.util.concurrent.TimeUnit;
 
-import androidx.appcompat.widget.Toolbar;
 import io.reactivex.functions.Consumer;
 
 /**

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:fillViewport="true">
 
-    <androidx.appcompat.widget.ButtonBarLayout
+    <android.support.v7.widget.ButtonBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
@@ -44,6 +44,6 @@
             android:layout_height="wrap_content"
             android:textColor="?attr/skinAlertDialogPositiveButtonTextColor" />
 
-    </androidx.appcompat.widget.ButtonBarLayout>
+    </android.support.v7.widget.ButtonBarLayout>
 
 </ScrollView>

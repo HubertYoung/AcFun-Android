@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.hubertyoung.acfun.R;
 import com.hubertyoung.common.base.AbsLifecycleFragment;
 
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 
 
 /**

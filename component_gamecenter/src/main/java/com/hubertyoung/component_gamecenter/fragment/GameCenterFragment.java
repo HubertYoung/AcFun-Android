@@ -6,8 +6,8 @@ import android.os.Bundle;
 import com.hubertyoung.common.base.BaseListFragment;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>

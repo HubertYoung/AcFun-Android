@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/article_realm_view_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                         android:layout_height="match_parent"
                         android:layout_below="@id/article_secondary_view_ptr_divider">
 
-                        <androidx.recyclerview.widget.RecyclerView
+                        <android.support.v7.widget.RecyclerView
                             android:id="@+id/article_secondary_view_list"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"/>

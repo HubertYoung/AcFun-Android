@@ -42,13 +42,11 @@ import com.scwang.smartrefresh.layout.listener.SimpleMultiPurposeListener;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import androidx.annotation.FloatRange;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.Toolbar;
+import android.support.v4.content.ContextCompat;
 import base.BaseWebViewActivity;
 import butterknife.BindView;
 import okhttp3.Cookie;

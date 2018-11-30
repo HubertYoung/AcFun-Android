@@ -10,7 +10,7 @@ import com.hubertyoung.component_acfundynamic.dynamic.fragment.DynamicFollowBang
 import com.hubertyoung.component_acfundynamic.dynamic.source.DynamicFollwBangumiRepository;
 import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * <br>

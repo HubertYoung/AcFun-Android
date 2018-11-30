@@ -1,12 +1,13 @@
 package com.hubertyoung.component_skeleton.skeleton;
 
-import androidx.annotation.ColorRes;
-import androidx.annotation.IntRange;
-import androidx.annotation.LayoutRes;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.annotation.ColorRes;
+import android.support.annotation.IntRange;
+import android.support.annotation.LayoutRes;
+import android.support.v7.widget.RecyclerView;
 
 import com.hubertyoung.component_skeleton.R;
+
+import android.support.v4.content.ContextCompat;
 
 
 /**

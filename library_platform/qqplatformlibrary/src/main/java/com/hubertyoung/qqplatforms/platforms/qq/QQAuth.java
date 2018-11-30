@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 
 /**

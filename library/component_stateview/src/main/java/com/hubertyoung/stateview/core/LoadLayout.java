@@ -11,7 +11,7 @@ import com.hubertyoung.stateview.util.LoadUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 
 public class LoadLayout extends FrameLayout {

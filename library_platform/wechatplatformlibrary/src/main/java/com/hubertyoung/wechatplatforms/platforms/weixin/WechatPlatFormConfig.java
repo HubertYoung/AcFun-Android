@@ -1,6 +1,6 @@
 package com.hubertyoung.wechatplatforms.platforms.weixin;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.hubertyoung.baseplatform.AuthorizeSDK;
 import com.hubertyoung.baseplatform.PaymentSDK;

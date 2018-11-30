@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.hubertyoung.component_acfunvideo.R;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.utils.bar.BarUtils;
 
-import androidx.appcompat.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
 
 public class MainActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener {
 

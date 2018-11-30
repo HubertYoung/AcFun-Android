@@ -17,7 +17,7 @@ import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
 import com.hubertyoung.component_acfunmine.ui.sign.activity.SignInActivity;
 import com.hubertyoung.component_acfunmine.ui.sign.source.SignInRepository;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * <br>

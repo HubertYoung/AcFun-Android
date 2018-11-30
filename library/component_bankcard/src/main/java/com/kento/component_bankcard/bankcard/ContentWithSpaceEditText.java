@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.hubertyoung.component_bankcard.R;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatEditText;
 
 
 /**

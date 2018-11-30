@@ -7,7 +7,7 @@ import android.widget.Checkable;
 /**
  */
 
-public class FilterCheckedTextView extends androidx.appcompat.widget.AppCompatTextView implements Checkable {
+public class FilterCheckedTextView extends android.support.v7.widget.AppCompatTextView implements Checkable {
     private boolean mChecked;
 
     public FilterCheckedTextView(Context context) {

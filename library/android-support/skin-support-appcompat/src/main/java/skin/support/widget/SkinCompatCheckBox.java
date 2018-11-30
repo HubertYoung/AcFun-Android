@@ -1,8 +1,7 @@
 package skin.support.widget;
 
 import android.content.Context;
-import androidx.annotation.DrawableRes;
-import androidx.appcompat.widget.AppCompatCheckBox;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
 
 import skin.support.appcompat.R;

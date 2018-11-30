@@ -2,16 +2,18 @@ apply plugin: 'com.android.library'
 apply from: "sdk_utils.gradle"
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
 
     if (!ArgusAPM_Release) {
         publishNonDefault true
     }
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 27
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
 
         // 改参数一般用来调试数据库，数据库生成在sdcard方便调试
         buildConfigField "boolean", "DB_IN_SDCARD", "false"
@@ -56,14 +58,30 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    provided 'org.aspectj:aspectjrt:1.8.9'
-    provided 'org.aspectj:aspectjtools:1.8.9'
-    //下面的两行是方便在Debug调试时使用，发布Release包时需要将下面的两行注释掉，并执行copyNewDependentLibs任务
-    if (!ArgusAPM_Release) {
-        releaseCompile project(path: ':argus-apm-cloud-dummy-impl', configuration: 'release')
-        debugCompile project(path: ':argus-apm-cloud-dummy-impl', configuration: 'debug')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    compileOnly 'org.aspectj:aspectjrt:1.9.2'
+//    compileOnly 'org.aspectj:aspectjtools:1.9.2'
+//    下面的两行是方便在Debug调试时使用，发布Release包时需要将下面的两行注释掉，并执行copyNewDependentLibs任务
+//    if (!ArgusAPM_Release) {
+//        releaseApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'release')
+//        debugApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'debug')
+//    }
+    if (ArgusAPM_Release) {
+        api project(':argus-apm-cloud-dummy-impl')
+    } else {
+        releaseApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'release')
+        debugApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'debug')
     }
 }
 
-apply from: "bintray.gradle"
+ext {
+    maven_repo_release_url = "http://45.63.19.1:8081/repository/maven-releases/"
+    pom_project_name ='argus-apm-main'
+    pom_project_version ='2.0.1.1006'
+    pom_project_artifactId ='argus-apm-main'
+    pom_project_groupId ='com.android'
+    pom_project_packaging ='aar'
+    pom_project_description ='argus-apm.sdk'
+}
+
+//apply from: file("${rootDir}/buildscript/nexus_maven.gradle")

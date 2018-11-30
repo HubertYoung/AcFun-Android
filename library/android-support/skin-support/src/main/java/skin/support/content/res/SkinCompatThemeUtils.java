@@ -5,7 +5,7 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.RequiresApi;
 import androidx.core.graphics.ColorUtils;
 import android.util.TypedValue;
 

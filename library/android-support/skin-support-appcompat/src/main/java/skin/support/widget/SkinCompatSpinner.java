@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
-import androidx.annotation.DrawableRes;
-import androidx.appcompat.widget.AppCompatSpinner;
+import android.support.v7.widget.AppCompatSpinner;
 import android.util.AttributeSet;
 import android.util.Log;
 

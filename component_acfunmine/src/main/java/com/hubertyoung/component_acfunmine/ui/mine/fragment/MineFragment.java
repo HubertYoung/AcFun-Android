@@ -31,7 +31,7 @@ import com.hubertyoung.component_acfunmine.ui.setting.activity.SettingsActivity;
 import java.io.Serializable;
 import java.util.Map;
 
-import androidx.lifecycle.Observer;
+import android.arch.lifecycle.Observer;
 
 
 /**

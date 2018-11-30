@@ -11,8 +11,8 @@ import com.hubertyoung.component_dynamicsoreview.R;
 
 import java.util.List;
 
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>

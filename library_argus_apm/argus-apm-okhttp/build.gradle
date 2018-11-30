@@ -7,14 +7,14 @@ ext {
 }
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
         consumerProguardFiles 'argus-apm-okhttp.pro'
     }
 
@@ -33,19 +33,19 @@ afterEvaluate {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    provided "org.aspectj:aspectjrt:1.8.9"
-    provided "org.aspectj:aspectjtools:1.8.9"
+//    compileOnly "org.aspectj:aspectjrt:1.9.2"
+//    compileOnly "org.aspectj:aspectjtools:1.9.2"
 
-    provided 'com.squareup.okhttp3:okhttp:3.7.0'
-    provided 'com.squareup.okio:okio:1.12.0'
+    compileOnly 'com.squareup.okhttp3:okhttp:3.7.0'
+    compileOnly 'com.squareup.okio:okio:1.12.0'
 
     if (ArgusAPM_Release) {
-        provided project(':argus-apm-main')
+        compileOnly project(':argus-apm-main')
     } else {
-        releaseProvided project(path: ':argus-apm-main', configuration: 'release')
-        debugProvided project(path: ':argus-apm-main', configuration: 'debug')
+        releaseCompileOnly project(path: ':argus-apm-main', configuration: 'release')
+        debugCompileOnly project(path: ':argus-apm-main', configuration: 'debug')
     }
 }
 
@@ -59,7 +59,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.aspectj:aspectjtools:1.8.9'
+        classpath 'org.aspectj:aspectjtools:1.9.2'
     }
 }
 
@@ -105,6 +105,17 @@ variants.all { variant ->
     }
 }
 
+ext {
+    maven_repo_release_url = "http://45.63.19.1:8081/repository/maven-releases/"
+    pom_project_name ='argus-apm-okhttp'
+    pom_project_version ='2.0.1.1006'
+    pom_project_artifactId ='argus-apm-okhttp'
+    pom_project_groupId ='com.android'
+    pom_project_packaging ='aar'
+    pom_project_description ='argus-apm.sdk'
+}
+
+apply from: file("${rootDir}/buildscript/nexus_maven.gradle")
 
 //apply plugin: 'maven'
 

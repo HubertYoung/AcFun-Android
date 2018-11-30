@@ -10,7 +10,7 @@ import com.hubertyoung.component_acfunarticle.article.source.ArticleRepository;
 import com.hubertyoung.component_acfunarticle.config.ArticleConstants;
 import com.hubertyoung.component_acfunarticle.entity.Channel;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * <br>

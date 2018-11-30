@@ -20,9 +20,6 @@ buildscript {
 
         classpath 'com.qihoo360.argusapm:argus-apm-gradle:2.0.1.1006' //aspectj的gradle插件，编译使用
     }
-    repositories {
-        mavenCentral()
-    }
 }
 
 allprojects {
@@ -31,4 +28,8 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+repositories {
+    google()
 }

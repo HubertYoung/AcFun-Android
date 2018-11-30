@@ -14,7 +14,7 @@ import com.hubertyoung.component.acfunvideo.index.source.NewRecommendRepository;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * <br>

@@ -1,5 +1,9 @@
 package com.hubertyoung.component_skeleton.skeleton;
 
+import android.support.annotation.ColorRes;
+import android.support.annotation.IntRange;
+import android.support.annotation.LayoutRes;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,11 +11,6 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import com.hubertyoung.component_skeleton.R;
-
-import androidx.annotation.ColorRes;
-import androidx.annotation.IntRange;
-import androidx.annotation.LayoutRes;
-import androidx.core.content.ContextCompat;
 
 
 /**

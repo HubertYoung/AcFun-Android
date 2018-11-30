@@ -1,7 +1,7 @@
 package com.hubertyoung.component_banner.banner.transformer;
 
 import android.annotation.SuppressLint;
-import androidx.viewpager.widget.ViewPager;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
 /**

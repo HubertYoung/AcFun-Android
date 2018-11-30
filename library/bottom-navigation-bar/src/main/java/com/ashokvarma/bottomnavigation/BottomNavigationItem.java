@@ -3,12 +3,12 @@ package com.ashokvarma.bottomnavigation;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.ColorRes;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.core.content.ContextCompat;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
 import com.ashokvarma.bottomnavigation.utils.Utils;
@@ -46,7 +46,7 @@ public class BottomNavigationItem {
      * @param mIconResource resource for the Tab icon.
      * @param mTitle        title for the Tab.
      */
-    public BottomNavigationItem(@DrawableRes int mIconResource, @NonNull String mTitle) {
+    public BottomNavigationItem( @DrawableRes int mIconResource, @NonNull String mTitle) {
         this.mIconResource = mIconResource;
         this.mTitle = mTitle;
     }

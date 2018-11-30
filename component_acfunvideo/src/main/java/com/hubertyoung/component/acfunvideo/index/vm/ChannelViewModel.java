@@ -10,7 +10,7 @@ import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.fragment.ChannelFragment;
 import com.hubertyoung.component.acfunvideo.index.source.ChannelRepository;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * <br>

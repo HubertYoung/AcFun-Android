@@ -20,7 +20,7 @@ import com.hubertyoung.component_acfunarticle.entity.RankContent;
 
 import java.util.List;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>

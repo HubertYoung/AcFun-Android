@@ -33,8 +33,8 @@ import com.jakewharton.rxbinding3.widget.RxTextView;
 
 import java.util.concurrent.TimeUnit;
 
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
+import android.support.v7.widget.Toolbar;
+import android.arch.lifecycle.Observer;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.BiFunction;

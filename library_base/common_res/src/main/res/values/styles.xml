@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="textAllCaps">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowBackground">@color/background</item>
+        <!--<item name="preferenceTheme">@style/PreferenceThemeOverlay</item>-->
+        <item name="toolbarStyle">@style/ToolBarStyle</item>
+        <item name="toolbarStyle" tools:ignore="NewApi">@style/ToolBarStyle</item>
+        <item name="popupMenuStyle">@style/OverflowMenuStyle</item>
+        <item name="navigationIcon">@mipmap/ic_return</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:textColorPrimary">@color/theme_color_text_primary</item>
+        <item name="android:textColorHighlight">@color/theme_color_text_highlight</item>
+        <item name="android:textColorHint">@color/theme_color_text_hint</item>
+        <item name="android:listSelector">?attr/selectableItemBackground</item>
+        <item name="android:textColorTertiary">@color/theme_color_text_tertiary</item>
+    </style>
+
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <style name="notitle_dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="page_loading_style">
+        <item name="background">@color/transparent</item>
+        <item name="android:layout_width">163dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="actualImageScaleType">centerCrop</item>
+        <item name="fadeDuration">400</item>
+        <item name="failureImage">@color/background_gray_color</item>
+        <item name="failureImageScaleType">centerInside</item>
+        <item name="placeholderImageScaleType">centerCrop</item>
+        <item name="viewAspectRatio">1.513</item>
+    </style>
+    <!-- ToolBar -->
+    <style name="ToolBarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:textSize">@dimen/text_actionbar_title_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="subtitleTextColor" tools:ignore="NewApi">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="background">?attr/colorPrimary</item>
+        <item name="collapseIcon">@mipmap/ic_return</item>
+        <item name="navigationIcon">@mipmap/ic_return</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="titleMargins">4dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="selectableItemBackground">@drawable/toolbar_button_bg</item>
+        <item name="titleTextAppearance">@style/Toolbar.TitleText</item>
+    </style>
+    <!-- 设置Toolbar标题字体的大小 -->
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <!--溢出[弹出]菜单样式 parent相当于继承【可以不要parent】-->
+    <style name="OverflowMenuStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+        <!-- 是否覆盖锚点，默认为true，即盖住Toolbar -->
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownWidth">wrap_content</item>
+        <item name="android:paddingRight">5dp</item>
+        <!-- 弹出层背景颜色 -->
+        <item name="android:popupBackground">@color/white</item>
+        <!-- 弹出层垂直方向上的偏移，即在竖直方向上距离Toolbar的距离，值为负则会盖住Toolbar -->
+        <item name="android:dropDownVerticalOffset">5dp</item>
+        <!-- 弹出层水平方向上的偏移，即距离屏幕左边的距离，负值会导致右边出现空隙 -->
+        <item name="android:dropDownHorizontalOffset">0dp</item>
+        <!-- 设置弹出菜单文字颜色 -->
+        <item name="android:textColor">@color/text_color_normal</item>
+    </style>
+
+    <!--ToolBar TextSize style-->
+    <style name="ToolBar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/text_size13_0dp</item>
+    </style>
+
+    <style name="text_style_title">
+        <item name="android:textSize">@dimen/text_size10_5dp</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="slide_menu_item">
+        <item name="android:textSize">@dimen/text_size14_0dp</item>
+        <item name="android:textColor">@color/selector_slide_menu_item_text</item>
+        <item name="android:gravity">clip_horizontal|center_vertical</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:drawablePadding">15dp</item>
+    </style>
+
+    <style name="divider">
+        <item name="background">@color/divider_color</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+
+
+    <style name="Theme.AppCompat.Dialog.Alert.Preference">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.Preference">
+        <item name="android:textColorPrimary">@color/theme_color_text_primary</item>
+        <item name="android:textColorSecondary">@color/gray_dark</item>
+        <item name="android:listSeparatorTextViewStyle">?android:listSeparatorTextViewStyle</item>
+        <item name="alertDialogTheme">@style/Theme.AppCompat.Dialog.Alert.Preference</item>
+        <item name="colorAccent">@color/theme_color_secondary</item>
+        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay</item>
+    </style>
+
+    <style name="Preference.CheckBoxPreference.Ios">
+        <item name="layout">@layout/common_app_layout_preference</item>
+        <!--<item name="regulable">true</item>-->
+    </style>
+
+    <style name="Preference.DialogPreference.Ios">
+        <item name="layout">@layout/common_app_layout_preference</item>
+        <!--<item name="regulable">true</item>-->
+    </style>
+
+    <style name="Preference.Category.Ios">
+        <item name="layout">@layout/common_app_layout_preference_category_space</item>
+        <item name="android:selectable">false</item>
+        <item name="android:shouldDisableView">false</item>
+        <!--<item name="regulable">true</item>-->
+    </style>
+
+    <style name="PreferenceFragment.Ios">
+        <item name="android:paddingBottom">16dp</item>
+        <item name="divider">@drawable/divider</item>
+        <item name="android:dividerHeight">0.5dp</item>
+        <item name="allowDividerAfterLastItem">false</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+    </style>
+
+    <style name="PreferenceFragmentList.Ios">
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="Preference.PreferenceScreen.Ios">
+        <item name="layout">@layout/common_app_layout_preference</item>
+        <item name="android:widgetLayout">@layout/common_app_layout_preference_widget_intent_indicator</item>
+    </style>
+
+    <style name="Preference.Ios">
+        <item name="layout">@layout/common_app_layout_preference</item>
+        <item name="android:widgetLayout">@layout/common_app_layout_preference_widget_intent_indicator</item>
+        <!--<item name="regulable">true</item>-->
+    </style>
+
+    <style name="Preference.SwitchPreferenceCompat.Ios">
+        <item name="layout">@layout/common_app_layout_preference</item>
+    </style>
+
+    <style name="AppTheme.PreferenceThemeOverlay">
+        <item name="preferenceCategoryStyle">@style/Preference.Category.Material</item>
+        <item name="preferenceFragmentListStyle">@style/PreferenceFragmentList.Material</item>
+    </style>
+
+    <style name="AppTheme.PreferenceThemeOverlay.Ios">
+        <item name="checkBoxPreferenceStyle">@style/Preference.CheckBoxPreference.Ios</item>
+        <item name="dialogPreferenceStyle">@style/Preference.DialogPreference.Ios</item>
+        <item name="preferenceCategoryStyle">@style/Preference.Category.Ios</item>
+        <item name="preferenceFragmentCompatStyle">@style/PreferenceFragment.Ios</item>
+        <item name="preferenceFragmentListStyle">@style/PreferenceFragmentList.Ios</item>
+        <item name="preferenceScreenStyle">@style/Preference.PreferenceScreen.Ios</item>
+        <item name="preferenceStyle">@style/Preference.Ios</item>
+        <item name="switchPreferenceCompatStyle">@style/Preference.SwitchPreferenceCompat.Ios</item>
+    </style>
+
+    <style name="AppTheme.Preference.Ios">
+        <item name="android:textColorPrimary">@color/theme_color_text_primary</item>
+        <item name="android:textColorSecondary">@color/gray_dark</item>
+        <item name="listPreferredItemHeight">@dimen/preference_regulable_wrap_height_default</item>
+        <item name="android:listSeparatorTextViewStyle">?android:listSeparatorTextViewStyle</item>
+        <item name="alertDialogTheme">@style/Theme.AppCompat.Dialog.Alert.Preference</item>
+        <item name="colorAccent">@color/theme_color_secondary</item>
+        <item name="preferenceTheme">@style/AppTheme.PreferenceThemeOverlay.Ios</item>
+    </style>
+
+    <style name="page_loading_style_spring_festival">
+        <item name="android:layout_width">130dp</item>
+        <item name="viewAspectRatio">0.84</item>
+    </style>
+</resources>

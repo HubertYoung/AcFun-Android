@@ -1,7 +1,7 @@
 package titlebar;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.hubertyoung.component_titlebar.R;

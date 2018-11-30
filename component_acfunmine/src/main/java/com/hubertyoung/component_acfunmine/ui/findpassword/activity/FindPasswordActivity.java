@@ -11,7 +11,7 @@ import com.hubertyoung.common.base.AbsLifecycleActivity;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.component_acfunmine.R;
 
-import androidx.appcompat.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
 
 public class FindPasswordActivity extends AbsLifecycleActivity {
 

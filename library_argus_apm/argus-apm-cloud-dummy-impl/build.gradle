@@ -1,18 +1,17 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
-
     if (!ArgusAPM_Release) {
         publishNonDefault true
     }
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
         consumerProguardFiles 'argus-apm-cloud-dummy-impl.pro'
     }
 
@@ -29,11 +28,24 @@ afterEvaluate {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     if (ArgusAPM_Release) {
-        compile project(':argus-apm-cloud')
+        api project(':argus-apm-cloud')
     } else {
-        releaseCompile project(path: ':argus-apm-cloud', configuration: 'release')
-        debugCompile project(path: ':argus-apm-cloud', configuration: 'debug')
+        releaseApi project(path: ':argus-apm-cloud', configuration: 'release')
+        debugApi project(path: ':argus-apm-cloud', configuration: 'debug')
     }
 }
+
+ext {
+    maven_repo_release_url = "http://45.63.19.1:8081/repository/maven-releases/"
+    pom_project_name ='argus-apm-cloud-dummy-impl'
+    pom_project_version ='2.0.1.1006'
+    pom_project_artifactId ='argus-apm-cloud-dummy-impl'
+    pom_project_groupId ='com.android'
+    pom_project_packaging ='aar'
+    pom_project_description ='argus-apm.sdk'
+}
+
+//apply from: file("${rootDir}/buildscript/nexus_maven.gradle")
+

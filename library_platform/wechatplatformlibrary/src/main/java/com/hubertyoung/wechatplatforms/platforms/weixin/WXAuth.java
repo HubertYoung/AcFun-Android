@@ -26,7 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 
 /**

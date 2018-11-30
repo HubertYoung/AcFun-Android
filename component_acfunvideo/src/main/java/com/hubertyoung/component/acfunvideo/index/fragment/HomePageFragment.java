@@ -16,9 +16,9 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.HashMap;
 
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.viewpager.widget.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.arch.lifecycle.Observer;
+import android.support.v4.view.ViewPager;
 
 /**
  * <br>

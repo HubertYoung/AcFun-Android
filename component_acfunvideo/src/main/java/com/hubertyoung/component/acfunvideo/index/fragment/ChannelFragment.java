@@ -1,6 +1,9 @@
 package com.hubertyoung.component.acfunvideo.index.fragment;
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.hubertyoung.common.base.BaseListFragment;
@@ -10,10 +13,6 @@ import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component.acfunvideo.index.section.ViewActivitySection;
 import com.hubertyoung.component.acfunvideo.index.section.ViewChannelSection;
 import com.hubertyoung.component.acfunvideo.index.vm.ChannelViewModel;
-
-import androidx.lifecycle.Observer;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * <br>

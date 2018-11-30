@@ -1,12 +1,13 @@
 package com.hubertyoung.component.acfunvideo.index.adapter;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * <br>
@@ -19,7 +20,7 @@ import java.util.List;
  * @desc:com.hubertyoung.component.acfunvideo.index.adapter
  */
 public class HomePagerAdapter extends FragmentPagerAdapter {
-	private List<Fragment> mFragments = new ArrayList<>(  );
+	private List<Fragment > mFragments = new ArrayList<>(  );
 	private List<String> mTitles = new ArrayList<>(  );
 	public HomePagerAdapter( FragmentManager fm ) {
 		super( fm );

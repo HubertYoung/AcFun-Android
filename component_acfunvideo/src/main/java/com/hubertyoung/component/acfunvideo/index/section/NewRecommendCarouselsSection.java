@@ -19,7 +19,7 @@ import com.hubertyoung.component_banner.banner.BannerView;
 
 import java.util.ArrayList;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>

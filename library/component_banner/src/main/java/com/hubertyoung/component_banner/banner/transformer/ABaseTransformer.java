@@ -1,6 +1,6 @@
 package com.hubertyoung.component_banner.banner.transformer;
 
-import androidx.viewpager.widget.ViewPager.PageTransformer;
+import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
 
 public abstract class ABaseTransformer implements PageTransformer {

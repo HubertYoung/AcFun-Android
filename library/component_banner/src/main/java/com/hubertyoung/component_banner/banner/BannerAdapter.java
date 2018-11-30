@@ -1,6 +1,6 @@
 package com.hubertyoung.component_banner.banner;
 
-import androidx.viewpager.widget.PagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;

@@ -1,6 +1,6 @@
 package com.hubertyoung.component_dynamicsoreview.dynamicsoreview.adapter;
 
-import androidx.viewpager.widget.PagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 

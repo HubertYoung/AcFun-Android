@@ -1,0 +1,57 @@
+ext.alwaysLib = true
+apply from: rootProject.file('basic_component.gradle')
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api project(':common_res')
+    implementation project(':baseplatformlibrary')
+    implementation project(':alipayplatformlibrary')
+    implementation project(':qqplatformlibrary')
+    implementation project(':wechatplatformlibrary')
+    implementation project(':weiboplatformlibrary')
+    api project(':component_skeleton')
+    implementation deps.tencent.mmkv
+    api deps.smarttablayout
+    implementation deps.facebook.imagepipeline_okhttp3
+    implementation deps.facebook.animated_gif
+    implementation deps.android_gif_drawable
+    implementation deps.fresco_processors
+    annotationProcessor deps.lifecycle.compiler
+    implementation deps.lifecycle.extensions
+    implementation deps.logger
+    implementation deps.facebook.stetho
+    implementation deps.facebook.stetho_okhttp3
+    implementation deps.acra
+    api project(':annotation')
+    //    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+    //    implementation 'com.squareup:javapoet:1.11.1'
+    //    api 'com.hubertyoung.javapoet_environment:javapoet_environment_base:1.0.0'
+    debugAnnotationProcessor project(':compiler')
+    //    debugAnnotationProcessor 'com.hubertyoung.javapoet_environment:javapoet_environment_compiler:1.0.0'
+    releaseAnnotationProcessor project(':compiler-release')
+    //    releaseAnnotationProcessor 'com.hubertyoung.javapoet_environment:javapoet_environment_compiler-release:1.0.0'
+//    implementation project(':argus-apm-main')
+}
+repositories {
+    mavenCentral()
+}

@@ -1,7 +1,7 @@
 package com.hubertyoung.baseplatform.sdk;
 
 import android.app.Activity;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import java.lang.reflect.Constructor;
 
@@ -11,7 +11,7 @@ public class DefaultFactory< T extends IResult > implements IFactory< T > {
 
 	final Class< T > clazz;
 
-	public DefaultFactory( @NonNull String name, String appId,String appSecret, Class< T > clazz ) {
+	public DefaultFactory( @NonNull String name, String appId, String appSecret, Class< T > clazz ) {
 		this.platform = new OtherPlatform( name, appId,appSecret );
 		this.clazz = clazz;
 	}

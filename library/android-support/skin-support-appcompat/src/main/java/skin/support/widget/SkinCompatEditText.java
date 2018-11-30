@@ -1,9 +1,7 @@
 package skin.support.widget;
 
 import android.content.Context;
-import androidx.annotation.DrawableRes;
-import androidx.appcompat.R;
-import androidx.appcompat.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 
 import static skin.support.widget.SkinCompatHelper.INVALID_ID;

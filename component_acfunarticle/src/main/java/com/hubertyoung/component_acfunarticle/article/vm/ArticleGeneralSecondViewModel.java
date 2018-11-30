@@ -5,7 +5,7 @@ import android.app.Application;
 import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.component_acfunarticle.article.source.ArticleGeneralSecondRepository;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * <br>

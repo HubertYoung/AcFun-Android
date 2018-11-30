@@ -3,8 +3,8 @@ package com.hubertyoung.dialog.base;
 import android.content.DialogInterface;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.Gravity;
 import android.view.View;
 

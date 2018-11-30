@@ -3,7 +3,7 @@ package com.hubertyoung.weiboplatforms.platforms.weibo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.hubertyoung.baseplatform.PlatformSDKConfig;

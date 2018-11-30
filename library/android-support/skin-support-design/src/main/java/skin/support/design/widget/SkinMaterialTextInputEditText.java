@@ -1,9 +1,9 @@
 package skin.support.design.widget;
 
 import android.content.Context;
-import androidx.annotation.DrawableRes;
+import android.support.annotation.DrawableRes;
 import com.google.android.material.textfield.TextInputEditText;
-import androidx.appcompat.R;
+import com.android.support.R;
 import android.util.AttributeSet;
 
 import skin.support.widget.SkinCompatBackgroundHelper;

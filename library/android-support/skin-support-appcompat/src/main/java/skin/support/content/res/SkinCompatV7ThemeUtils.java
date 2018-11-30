@@ -11,13 +11,13 @@ import static skin.support.content.res.SkinCompatThemeUtils.getResId;
 public class SkinCompatV7ThemeUtils {
 
     private static final int[] APPCOMPAT_COLOR_PRIMARY_ATTRS = {
-            androidx.appcompat.R.attr.colorPrimary
+            R.attr.colorPrimary
     };
     private static final int[] APPCOMPAT_COLOR_PRIMARY_DARK_ATTRS = {
-            androidx.appcompat.R.attr.colorPrimaryDark
+            R.attr.colorPrimaryDark
     };
     private static final int[] APPCOMPAT_COLOR_ACCENT_ATTRS = {
-            androidx.appcompat.R.attr.colorAccent
+            R.attr.colorAccent
     };
 
     public static int getColorPrimaryResId(Context context) {

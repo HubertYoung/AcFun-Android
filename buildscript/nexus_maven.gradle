@@ -9,32 +9,33 @@ try {
     println("local.properties not found")
 }
 
-task androidJavadocs(type: Javadoc) {
-    options.encoding = "utf-8"
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-    classifier = 'javadoc'
-    from androidJavadocs.destinationDir
-}
+//task androidJavadocs(type: Javadoc) {
+//    options.encoding = "utf-8"
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+//
+//task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+//    classifier = 'javadoc'
+//    from androidJavadocs.destinationDir
+//}
 
 task androidSourcesJar(type: Jar) {
     classifier = 'sources'
     from android.sourceSets.main.java.srcDirs
 }
 
-artifacts {
-    archives androidSourcesJar
-    archives androidJavadocsJar
-}
+//artifacts {
+//    archives androidSourcesJar
+//    archives androidJavadocsJar
+//}
 
 uploadArchives {
     repositories {
         mavenDeployer {
             repository(url: maven_repo_release_url) {
-                authentication(userName: localProperties['nexus_username'], password: localProperties['nexus_password'])
+                authentication(userName: 'admin', password: 'yangjian123')
+//                authentication(userName: localProperties['nexus_username'], password: localProperties['nexus_password'])
             }
             pom.project {
                 name pom_project_name

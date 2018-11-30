@@ -1,8 +1,8 @@
 package bankcard;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;

@@ -1,5 +1,11 @@
 package com.hubertyoung.component_acfunarticle.article.adapter;
 
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+
 import com.billy.cc.core.component.CC;
 import com.hubertyoung.component_acfunarticle.R;
 import com.hubertyoung.component_acfunarticle.article.fragment.ArticleGeneralSecondFragment;
@@ -7,12 +13,6 @@ import com.hubertyoung.component_acfunarticle.entity.ServerChannel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 
 /**
  * <br>

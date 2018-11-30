@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.StyleRes;
-import com.google.android.material.navigation.NavigationView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 

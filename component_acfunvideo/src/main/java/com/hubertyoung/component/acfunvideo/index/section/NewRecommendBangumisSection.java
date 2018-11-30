@@ -19,7 +19,7 @@ import com.hubertyoung.component.acfunvideo.index.section.viewholder.BottomMenuV
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
 import com.hubertyoung.component_acfunvideo.R;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>

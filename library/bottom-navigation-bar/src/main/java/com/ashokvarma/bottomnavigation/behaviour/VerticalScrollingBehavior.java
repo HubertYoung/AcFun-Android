@@ -2,8 +2,8 @@ package com.ashokvarma.bottomnavigation.behaviour;
 
 
 import android.content.Context;
-import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
+import android.support.annotation.IntDef;
+import android.support.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;

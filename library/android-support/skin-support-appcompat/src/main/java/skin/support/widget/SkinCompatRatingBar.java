@@ -1,7 +1,7 @@
 package skin.support.widget;
 
 import android.content.Context;
-import androidx.appcompat.widget.AppCompatRatingBar;
+import android.support.v7.widget.AppCompatRatingBar;
 import android.util.AttributeSet;
 
 import skin.support.appcompat.R;

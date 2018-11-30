@@ -10,7 +10,7 @@ import com.hubertyoung.component_acfundynamic.config.DynamicConstants;
 import com.hubertyoung.component_acfundynamic.dynamic.fragment.DynamicFragment;
 import com.hubertyoung.component_acfundynamic.dynamic.source.DynamicRepository;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * <br>

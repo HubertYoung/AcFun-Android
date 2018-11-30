@@ -26,7 +26,7 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.concurrent.TimeUnit;
 
-import androidx.viewpager.widget.ViewPager;
+import android.support.v4.view.ViewPager;
 import io.reactivex.functions.Consumer;
 
 
