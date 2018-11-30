@@ -19,4 +19,4 @@ targetCompatibility = "1.7"
 //    gitUrl = "git@github.com:HubertYoung/AcFun-Android.git"
 //}
 //
-//apply from: rootProject.file('bintray.gradle')
+//apply from: file("${rootDir}/buildscript/publish_bintray.gradle")

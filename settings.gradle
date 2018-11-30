@@ -43,6 +43,12 @@ include ':studydemo',
         ':compiler',
         ':compiler-release'
 
+//        ':argus-apm-aop',
+//        ':argus-apm-cloud',
+//        ':argus-apm-cloud-dummy-impl',
+//        ':argus-apm-main',
+//        ':argus-apm-okhttp'
+
 project(':common').projectDir = new File(rootDir, 'baselibrary/common')
 project(':common_res').projectDir = new File(rootDir, 'baselibrary/common_res')
 //project(':component_statsdk').projectDir = new File(rootDir, 'library/component_statsdk')
@@ -65,11 +71,17 @@ project(':component_titlebar').projectDir = new File(rootDir, 'library/component
 project(':bottom-navigation-bar').projectDir = new File(rootDir, 'library/bottom-navigation-bar')
 project(':studydemo').projectDir = new File(rootDir, 'library/studydemo')
 
-project(':baseplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/baseplatformlibrary')
-project(':alipayplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/alipayplatformlibrary')
-project(':wechatplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/wechatplatformlibrary')
-project(':qqplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/qqplatformlibrary')
-project(':weiboplatformlibrary').projectDir = new File(rootDir, 'platformlibrary/weiboplatformlibrary')
+//project(':argus-apm-aop').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-aop')
+//project(':argus-apm-cloud').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud')
+//project(':argus-apm-cloud-dummy-impl').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud-dummy-impl')
+//project(':argus-apm-main').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-main')
+//project(':argus-apm-okhttp').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-okhttp')
+
+project(':baseplatformlibrary').projectDir = new File(rootDir, 'library_platform/baseplatformlibrary')
+project(':alipayplatformlibrary').projectDir = new File(rootDir, 'library_platform/alipayplatformlibrary')
+project(':wechatplatformlibrary').projectDir = new File(rootDir, 'library_platform/wechatplatformlibrary')
+project(':qqplatformlibrary').projectDir = new File(rootDir, 'library_platform/qqplatformlibrary')
+project(':weiboplatformlibrary').projectDir = new File(rootDir, 'library_platform/weiboplatformlibrary')
 
 project(':annotation').projectDir = new File(rootDir, 'javapoet/annotation')
 project(':compiler').projectDir = new File(rootDir, 'javapoet/compiler')

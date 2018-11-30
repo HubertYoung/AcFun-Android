@@ -1,0 +1,49 @@
+apply plugin: 'maven'
+Properties localProperties = new Properties()
+try {
+    def localFile = project.rootProject.file('local.properties')
+    if (localFile != null && localFile.exists()) {
+        localProperties.load(localFile.newDataInputStream())
+    }
+} catch (Exception ignored) {
+    println("local.properties not found")
+}
+
+task androidJavadocs(type: Javadoc) {
+    options.encoding = "utf-8"
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: maven_repo_release_url) {
+                authentication(userName: localProperties['nexus_username'], password: localProperties['nexus_password'])
+            }
+            pom.project {
+                name pom_project_name
+                version pom_project_version
+                artifactId pom_project_artifactId
+                groupId pom_project_groupId
+                packaging pom_project_packaging
+                description pom_project_description
+            }
+        }
+    }
+}
