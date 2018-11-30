@@ -4,7 +4,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import androidx.core.view.LayoutInflaterCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import skin.support.SkinCompatManager;

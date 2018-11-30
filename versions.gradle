@@ -28,7 +28,7 @@ versions.dagger = "2.16"
 versions.junit = "4.12"
 versions.espresso = "3.0.2"
 versions.retrofit = "2.4.0"
-versions.rxbinding = "3.0.0-alpha1"
+versions.rxbinding = "2.2.0"
 versions.fastjson = "1.1.70"
 versions.okhttp_logging_interceptor = "3.10.0"
 versions.mockwebserver = "3.8.1"
@@ -148,15 +148,15 @@ deps.junit = "junit:junit:$versions.junit"
 deps.mock_web_server = "com.squareup.okhttp3:mockwebserver:$versions.mockwebserver"
 deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
 deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
-//deps.rxbinding = "com.jakewharton.rxbinding3:rxbinding:$versions.rxbinding"
-deps.rxbinding_core = "com.jakewharton.rxbinding3:rxbinding-core:$versions.rxbinding"
-deps.rxbinding_appcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$versions.rxbinding"
-deps.rxbinding_drawerlayout = "com.jakewharton.rxbinding3:rxbinding-drawerlayout:$versions.rxbinding"
-deps.rxbinding_leanback = "com.jakewharton.rxbinding3:rxbinding-leanback:$versions.rxbinding"
-deps.rxbinding_recyclerview = "com.jakewharton.rxbinding3:rxbinding-recyclerview:$versions.rxbinding"
-deps.rxbinding_slidingpanelayout = "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:$versions.rxbinding"
-deps.rxbinding_swiperefreshlayout = "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:$versions.rxbinding"
-deps.rxbinding_viewpager = "com.jakewharton.rxbinding3:rxbinding-viewpager:$versions.rxbinding"
+deps.rxbinding = "com.jakewharton.rxbinding2:rxbinding:$versions.rxbinding"
+//deps.rxbinding_core = "com.jakewharton.rxbinding3:rxbinding-core:$versions.rxbinding"
+//deps.rxbinding_appcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$versions.rxbinding"
+//deps.rxbinding_drawerlayout = "com.jakewharton.rxbinding3:rxbinding-drawerlayout:$versions.rxbinding"
+//deps.rxbinding_leanback = "com.jakewharton.rxbinding3:rxbinding-leanback:$versions.rxbinding"
+//deps.rxbinding_recyclerview = "com.jakewharton.rxbinding3:rxbinding-recyclerview:$versions.rxbinding"
+//deps.rxbinding_slidingpanelayout = "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:$versions.rxbinding"
+//deps.rxbinding_swiperefreshlayout = "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:$versions.rxbinding"
+//deps.rxbinding_viewpager = "com.jakewharton.rxbinding3:rxbinding-viewpager:$versions.rxbinding"
 //deps.rxbinding_material = "com.jakewharton.rxbinding3:rxbinding-material:$versions.rxbinding"
 deps.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
@@ -222,10 +222,9 @@ deps.swipebackhelper = 'com.jude:swipebackhelper:2.1.5'
 ext.deps = deps
 
 def addRepos(RepositoryHandler handler) {
-
-    handler.mavenCentral()
-    handler.google()
+//    handler.mavenCentral()
     handler.jcenter()
+    handler.google()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     //微博
     handler.maven { url "https://dl.bintray.com/thelasterstar/maven/" }

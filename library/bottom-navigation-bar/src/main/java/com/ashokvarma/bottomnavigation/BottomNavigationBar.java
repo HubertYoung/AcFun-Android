@@ -7,12 +7,12 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.IntDef;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.ViewPropertyAnimatorCompat;
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +29,7 @@ import com.ashokvarma.bottomnavigation.utils.Utils;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+
 
 /**
  * Class description : This class is used to draw the layout and this acts like a bridge between

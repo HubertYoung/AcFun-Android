@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-import androidx.core.view.ViewCompat;
 import android.support.v7.widget.TintContextWrapper;
 import android.support.v7.widget.VectorEnabledTintResources;
 import android.util.AttributeSet;

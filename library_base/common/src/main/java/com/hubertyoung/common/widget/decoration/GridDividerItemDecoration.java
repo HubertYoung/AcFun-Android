@@ -10,7 +10,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.support.annotation.ColorRes;
 import android.support.annotation.IntDef;
 import android.support.v4.content.ContextCompat;
-import androidx.core.view.ViewCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;

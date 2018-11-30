@@ -1,10 +1,10 @@
 package com.ashokvarma.bottomnavigation.behaviour;
 
 
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.view.ViewCompat;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.view.View;
 import android.view.animation.Interpolator;
 
@@ -70,7 +70,7 @@ public class BottomVerticalScrollBehavior<V extends View> extends VerticalScroll
         return super.onDependentViewChanged(parent, child, dependency);
     }
 
-    private void updateSnackBarPosition(CoordinatorLayout parent, V child, View dependency) {
+    private void updateSnackBarPosition( CoordinatorLayout parent, V child, View dependency) {
         updateSnackBarPosition(parent, child, dependency, child.getTranslationY() - child.getHeight());
     }
 

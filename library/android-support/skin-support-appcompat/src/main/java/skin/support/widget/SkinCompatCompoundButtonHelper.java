@@ -1,7 +1,6 @@
 package skin.support.widget;
 
 import android.content.res.TypedArray;
-import androidx.core.widget.CompoundButtonCompat;
 import android.util.AttributeSet;
 import android.widget.CompoundButton;
 

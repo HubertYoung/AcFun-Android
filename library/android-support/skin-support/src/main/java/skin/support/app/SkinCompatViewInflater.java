@@ -6,8 +6,6 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import androidx.collection.ArrayMap;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.View;

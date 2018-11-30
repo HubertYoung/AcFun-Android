@@ -8,7 +8,7 @@ buildToolsVersion build_versions.build_tools
         targetSdkVersion build_versions.target_sdk
         versionCode build_versions.versionCode
         versionName build_versions.versionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.test.runner.AndroidJUnitRunner"
 
     }
 

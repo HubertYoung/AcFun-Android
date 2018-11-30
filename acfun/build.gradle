@@ -12,7 +12,7 @@ android {
         versionName build_versions.versionName
         flavorDimensions build_versions.versionName
         multiDexEnabled true
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.test.runner.AndroidJUnitRunner"
     }
 //    sourceSets {
 //        main {

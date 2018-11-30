@@ -2,5 +2,4 @@ apply from: rootProject.file('basic_component.gradle')
 
 dependencies {
     implementation project(':common')
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
 }

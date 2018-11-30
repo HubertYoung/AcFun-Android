@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
+import android.support.v7.preference.Preference;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -15,10 +19,6 @@ import com.hubertyoung.common.base.AbsLifecycleActivity;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.widget.preference.BasePreferenceFragment;
 import com.hubertyoung.component_developer.R;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 
 
 public class DebugActivity extends AbsLifecycleActivity implements FragmentManager.OnBackStackChangedListener {

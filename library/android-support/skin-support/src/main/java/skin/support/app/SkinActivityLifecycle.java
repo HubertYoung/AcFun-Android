@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import androidx.core.view.LayoutInflaterCompat;
 import android.view.LayoutInflater;
 
 import java.lang.ref.WeakReference;

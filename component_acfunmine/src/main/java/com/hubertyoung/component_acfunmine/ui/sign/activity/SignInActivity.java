@@ -2,10 +2,12 @@ package com.hubertyoung.component_acfunmine.ui.sign.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,13 +30,11 @@ import com.hubertyoung.component_acfunmine.R;
 import com.hubertyoung.component_acfunmine.config.MineConstants;
 import com.hubertyoung.component_acfunmine.entity.SignEntity;
 import com.hubertyoung.component_acfunmine.ui.sign.vm.SignInViewModel;
-import com.jakewharton.rxbinding3.view.RxView;
-import com.jakewharton.rxbinding3.widget.RxTextView;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import java.util.concurrent.TimeUnit;
 
-import android.support.v7.widget.Toolbar;
-import android.arch.lifecycle.Observer;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.BiFunction;

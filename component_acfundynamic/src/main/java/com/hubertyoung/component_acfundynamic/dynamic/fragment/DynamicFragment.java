@@ -2,6 +2,7 @@ package com.hubertyoung.component_acfundynamic.dynamic.fragment;
 
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -21,12 +22,11 @@ import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfundynamic.R;
 import com.hubertyoung.component_acfundynamic.dynamic.adapter.DynamicPagerAdapter;
 import com.hubertyoung.component_acfundynamic.dynamic.vm.DynamicViewModel;
-import com.jakewharton.rxbinding3.view.RxView;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.concurrent.TimeUnit;
 
-import android.support.v4.view.ViewPager;
 import io.reactivex.functions.Consumer;
 
 

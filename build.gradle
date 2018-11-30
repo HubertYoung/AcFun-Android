@@ -16,7 +16,6 @@ buildscript {
 //        classpath 'com.billy.android:autoregister:1.3.0'
         classpath 'com.billy.android:cc-register:1.0.6'
         classpath 'com.novoda:bintray-release:0.8.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         classpath 'com.qihoo360.argusapm:argus-apm-gradle:2.0.1.1006' //aspectj的gradle插件，编译使用
     }
@@ -28,8 +27,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-repositories {
-    google()
 }

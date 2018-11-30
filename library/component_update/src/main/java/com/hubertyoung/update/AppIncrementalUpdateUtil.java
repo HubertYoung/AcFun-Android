@@ -1,7 +1,6 @@
 package com.hubertyoung.update;
 
 import android.net.Uri;
-import androidx.core.content.FileProvider;
 import android.util.Log;
 
 import com.hubertyoung.common.utils.os.AppUtils;

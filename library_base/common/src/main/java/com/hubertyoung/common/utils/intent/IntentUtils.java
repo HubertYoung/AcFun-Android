@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.hubertyoung.common.CommonApplication;
@@ -13,9 +15,6 @@ import com.hubertyoung.common.utils.file.FileUtils;
 import com.hubertyoung.common.utils.log.CommonLog;
 
 import java.io.File;
-
-import android.support.v7.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
 
 /**

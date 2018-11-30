@@ -2,12 +2,5 @@
           package="com.hubertyoung.common_res">
     <application>
         <meta-data android:name="android.max_aspect" android:value="2.1" />
-        <!--<meta-data-->
-            <!--android:name="design_width"-->
-            <!--android:value="750"/>-->
-        <!--<meta-data-->
-            <!--android:name="design_height"-->
-            <!--android:value="1335"/>-->
-
     </application>
 </manifest>

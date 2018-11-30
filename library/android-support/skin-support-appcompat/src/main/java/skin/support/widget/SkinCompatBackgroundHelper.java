@@ -2,7 +2,6 @@ package skin.support.widget;
 
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
