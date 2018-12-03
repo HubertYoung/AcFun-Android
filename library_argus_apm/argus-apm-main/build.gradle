@@ -59,19 +59,21 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-//    compileOnly 'org.aspectj:aspectjrt:1.9.2'
-//    compileOnly 'org.aspectj:aspectjtools:1.9.2'
+    compileOnly 'org.aspectj:aspectjrt:1.9.2'
+    compileOnly 'org.aspectj:aspectjtools:1.9.2'
+    implementation project(':argus-apm-cloud')
+    api project(':argus-apm-cloud-dummy-impl')
 //    下面的两行是方便在Debug调试时使用，发布Release包时需要将下面的两行注释掉，并执行copyNewDependentLibs任务
-//    if (!ArgusAPM_Release) {
-//        releaseApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'release')
-//        debugApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'debug')
-//    }
-    if (ArgusAPM_Release) {
-        api project(':argus-apm-cloud-dummy-impl')
-    } else {
+    if (!ArgusAPM_Release) {
         releaseApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'release')
         debugApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'debug')
     }
+//    if (ArgusAPM_Release) {
+//        api project(':argus-apm-cloud-dummy-impl')
+//    } else {
+//        releaseApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'release')
+//        debugApi project(path: ':argus-apm-cloud-dummy-impl', configuration: 'debug')
+//    }
 }
 
 ext {

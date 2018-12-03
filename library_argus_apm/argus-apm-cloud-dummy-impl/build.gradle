@@ -30,10 +30,10 @@ afterEvaluate {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     if (ArgusAPM_Release) {
-        api project(':argus-apm-cloud')
+        implementation project(':argus-apm-cloud')
     } else {
-        releaseApi project(path: ':argus-apm-cloud', configuration: 'release')
-        debugApi project(path: ':argus-apm-cloud', configuration: 'debug')
+        releaseCompile project(path: ':argus-apm-cloud', configuration: 'release')
+        debugCompile project(path: ':argus-apm-cloud', configuration: 'debug')
     }
 }
 

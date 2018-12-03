@@ -60,6 +60,8 @@ dependencies {
     androidTestImplementation deps.espresso.core
     //    implementation 'com.jakewharton:butterknife:8.4.0'
     //    kapt 'com.jakewharton:butterknife-compiler:8.4.0'
+    implementation project(':argus-apm-main')
+
     implementation project(':bottom-navigation-bar')
     implementation project(':common')
     addComponent 'component_acfundynamic'

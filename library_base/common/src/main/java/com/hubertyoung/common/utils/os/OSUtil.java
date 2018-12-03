@@ -19,8 +19,11 @@ package com.hubertyoung.common.utils.os;
 import android.os.Build;
 import android.text.TextUtils;
 
+import com.hubertyoung.common.BuildConfig;
+
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
@@ -166,4 +169,47 @@ public class OSUtil {
 		return line;
 	}
 
+	private static String sProcessName = null;
+
+	/**
+	 * 返回当前的进程名
+	 *
+	 * @return
+	 */
+	public static String getCurrentProcessName() {
+		if ( TextUtils.isEmpty( sProcessName ) ) {
+			sProcessName = getCurrentProcessNameInternal();
+		}
+		return sProcessName;
+	}
+
+	private static String getCurrentProcessNameInternal() {
+		FileInputStream in = null;
+		try {
+			String fn = "/proc/self/cmdline";
+			in = new FileInputStream( fn );
+			byte[] buffer = new byte[ 256 ];
+			int len = 0;
+			int b;
+			while ( ( b = in.read() ) > 0 && len < buffer.length ) {
+				buffer[ len++ ] = ( byte ) b;
+			}
+			if ( len > 0 ) {
+				String s = new String( buffer, 0, len, "UTF-8" );
+				return s;
+			}
+		} catch ( Throwable e ) {
+
+		} finally {
+			if ( in != null ) {
+				try {
+					in.close();
+				} catch ( Throwable e ) {
+					if ( BuildConfig.DEBUG ) {
+					}
+				}
+			}
+		}
+		return null;
+	}
 }

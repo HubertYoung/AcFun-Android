@@ -20,19 +20,20 @@ public class MyApplication extends CommonApplication {
 	public void onCreate() {
 		super.onCreate();
 		// 初始化CC
-		CC.enableVerboseLog( BuildConfig.DEBUG);
-		CC.enableDebug(BuildConfig.DEBUG);
-		CC.enableRemoteCC(BuildConfig.DEBUG);
+		CC.enableVerboseLog( BuildConfig.DEBUG );
+		CC.enableDebug( BuildConfig.DEBUG );
+		CC.enableRemoteCC( BuildConfig.DEBUG );
 
 	}
+
 	@Override
 	protected void attachBaseContext( Context base ) {
 		super.attachBaseContext( base );
 
-//		boolean isUi = TextUtils.equals( getPackageName(), ProcessUtils.getCurrentProcessName() );
+//		boolean isUi = TextUtils.equals( getPackageName(), OSUtil.getCurrentProcessName() );
 //		Config.ConfigBuilder apmBuilder = new Config.ConfigBuilder().setAppContext( this )
-//				.setRuleRequest( new RuleSyncRequest() )
-//				.setUpload( new CollectDataSyncUpload() )
+////				.setRuleRequest( new RuleSyncRequest() )
+////				.setUpload( new CollectDataSyncUpload() )
 //				.setAppName( AppUtils.getAppName() )
 //				.setAppVersion( AppUtils.getAppVersionName() )
 //				.setApmid( "apm_demo" );//该ID是在APM的后台进行申请的
@@ -48,7 +49,7 @@ public class MyApplication extends CommonApplication {
 //		//builder.setEnabled(ApmTask.FLAG_COLLECT_ACTIVITY_AOP); //activity采用aop方案时打开，默认关闭即可。
 //		apmBuilder.setEnabled( ApmTask.FLAG_LOCAL_DEBUG ); //是否读取本地配置，默认关闭即可。
 //		Client.attach( apmBuilder.build() );
-//		Client.isDebugOpen( AppUtils.isDebuggable() );//设置成true的时候将会打开悬浮窗
+//		Client.isDebugOpen( false );//设置成true的时候将会打开悬浮窗
 //		Client.startWork();
 
 	}

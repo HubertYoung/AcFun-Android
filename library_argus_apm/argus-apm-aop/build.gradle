@@ -34,10 +34,10 @@ dependencies {
         releaseCompileOnly project(path: ':argus-apm-main', configuration: 'release')
         debugCompileOnly project(path: ':argus-apm-main', configuration: 'debug')
     }
-//    compileOnly 'org.aspectj:aspectjrt:1.9.2'
-//    compileOnly 'org.aspectj:aspectjtools:1.9.2'
-    compileOnly files('libs/aspectjrt-1.9.2.jar')
-    compileOnly files('libs/aspectjtools-1.9.2.jar')
+    compileOnly 'org.aspectj:aspectjrt:1.9.2'
+    compileOnly 'org.aspectj:aspectjtools:1.9.2'
+//    compileOnly files('libs/aspectjrt-1.9.2.jar')
+//    compileOnly files('libs/aspectjtools-1.9.2.jar')
 }
 
 afterEvaluate {
