@@ -228,7 +228,7 @@ def addRepos(RepositoryHandler handler) {
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     //微博
     handler.maven { url "https://dl.bintray.com/thelasterstar/maven/" }
-//    handler.maven { url 'http://45.63.19.1:8081/repository/maven-releases/' }
+    handler.maven { url 'http://45.63.19.1:8081/repository/maven-releases/' }
 }
 ext.addRepos = this.&addRepos
 
