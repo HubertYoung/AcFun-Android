@@ -37,7 +37,7 @@ dependencies {
 
     api deps.smartrefresh.SmartRefreshLayout
     api deps.smartrefresh.SmartRefreshHeader
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api deps.kotlin.stdlib
 }
 repositories {
     mavenCentral()

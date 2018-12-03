@@ -1,5 +1,6 @@
 ext.mainApp = true  //设置为true，表示此module为主app module，一直以application方式编译
 apply from: rootProject.file('cc-settings-2.gradle')
+//apply from: 'argusapm.gradle'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -39,6 +40,17 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+//    dexOptions {
+//        javaMaxHeapSize "1g"
+//        preDexLibraries = false
+//        additionalParameters = [//配置multidex参数
+//                                '--multi-dex',//多dex分包
+//                                '--set-max-idx-number=24000',//每个包内方法数上限
+//                                '--main-dex-list=' + projectDir + '/main-dex-rule', //打包到主classes.dex的文件列表
+//                                '--minimal-main-dex'
+//        ]
+//    }
+
 }
 
 dependencies {

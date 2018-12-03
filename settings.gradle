@@ -39,11 +39,11 @@ include ':studydemo',
         ':common_res',
         ':common',
 
-        ':argus-apm-aop',
-        ':argus-apm-cloud',
-        ':argus-apm-cloud-dummy-impl',
-        ':argus-apm-main',
-        ':argus-apm-okhttp',
+//        ':argus-apm-aop',
+//        ':argus-apm-cloud',
+//        ':argus-apm-cloud-dummy-impl',
+//        ':argus-apm-main',
+//        ':argus-apm-okhttp',
 
         ':annotation',
         ':compiler',
@@ -72,11 +72,11 @@ project(':component_titlebar').projectDir = new File(rootDir, 'library/component
 project(':bottom-navigation-bar').projectDir = new File(rootDir, 'library/bottom-navigation-bar')
 project(':studydemo').projectDir = new File(rootDir, 'library/studydemo')
 
-project(':argus-apm-aop').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-aop')
-project(':argus-apm-cloud').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud')
-project(':argus-apm-cloud-dummy-impl').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud-dummy-impl')
-project(':argus-apm-main').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-main')
-project(':argus-apm-okhttp').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-okhttp')
+//project(':argus-apm-aop').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-aop')
+//project(':argus-apm-cloud').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud')
+//project(':argus-apm-cloud-dummy-impl').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud-dummy-impl')
+//project(':argus-apm-main').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-main')
+//project(':argus-apm-okhttp').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-okhttp')
 
 project(':baseplatformlibrary').projectDir = new File(rootDir, 'library_platform/baseplatformlibrary')
 project(':alipayplatformlibrary').projectDir = new File(rootDir, 'library_platform/alipayplatformlibrary')

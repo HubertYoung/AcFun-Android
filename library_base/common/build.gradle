@@ -52,6 +52,3 @@ dependencies {
     //    releaseAnnotationProcessor 'com.hubertyoung.javapoet_environment:javapoet_environment_compiler-release:1.0.0'
 //    implementation project(':argus-apm-main')
 }
-repositories {
-    mavenCentral()
-}
