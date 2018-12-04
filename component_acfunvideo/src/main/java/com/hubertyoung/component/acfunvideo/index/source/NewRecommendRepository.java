@@ -6,7 +6,7 @@ import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
+import com.hubertyoung.common.entity.Regions;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,5 +1,6 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -9,17 +10,15 @@ import android.widget.TextView;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.StatelessSection;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
 import com.hubertyoung.component_acfunvideo.R;
 import com.hubertyoung.component_banner.banner.BannerEntity;
 import com.hubertyoung.component_banner.banner.BannerView;
 
 import java.util.ArrayList;
-
-import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>

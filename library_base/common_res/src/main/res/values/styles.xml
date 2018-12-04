@@ -5,7 +5,6 @@
         <!-- Customize your theme here. -->
         <item name="textAllCaps">false</item>
         <item name="windowActionBar">false</item>
-        <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -15,7 +14,7 @@
         <item name="android:windowBackground">@color/background</item>
         <!--<item name="preferenceTheme">@style/PreferenceThemeOverlay</item>-->
         <item name="toolbarStyle">@style/ToolBarStyle</item>
-        <item name="toolbarStyle" tools:ignore="NewApi">@style/ToolBarStyle</item>
+        <item name="toolbarStyle" tools:ignore="DuplicateDefinition,NewApi">@style/ToolBarStyle</item>
         <item name="popupMenuStyle">@style/OverflowMenuStyle</item>
         <item name="navigationIcon">@mipmap/ic_return</item>
         <item name="windowActionModeOverlay">true</item>

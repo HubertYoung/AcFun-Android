@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.intent.IntentUtils;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
+import com.hubertyoung.common.entity.Regions;
 
 /**
  * <br>

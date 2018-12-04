@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/home_item_root"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/home_region_hor_margin"
+              android:layout_marginRight="@dimen/home_region_hor_margin"
+              android:layout_marginBottom="18dp"
+              android:orientation="vertical">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_game_center_ssr_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:actualImageScaleType="centerCrop"
+        app:failureImage="@color/background_gray_color"
+        app:failureImageScaleType="centerInside"
+        app:placeholderImage="@color/background_gray_color"
+        app:placeholderImageScaleType="fitCenter"
+        app:roundWithOverlayColor="@color/white"
+        app:roundedCornerRadius="3dp"
+        app:roundingBorderColor="@color/image_border_color"
+        app:roundingBorderWidth="1px"
+        app:viewAspectRatio="3.61"/>
+</LinearLayout>

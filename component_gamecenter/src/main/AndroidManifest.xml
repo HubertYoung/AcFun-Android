@@ -3,7 +3,10 @@
           package="com.hubertyoung.component_gamecenter">
 
     <application>
-
+        <activity
+            android:name=".gamecenter.activity.GameCenterNativeActivity"
+            android:label="@string/game_center_title"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -14,8 +14,8 @@ import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
-import com.hubertyoung.component.acfunvideo.entity.RegionsEntity;
+import com.hubertyoung.common.entity.Regions;
+import com.hubertyoung.common.entity.RegionsEntity;
 import com.hubertyoung.component.acfunvideo.index.section.ArticlesNewSection;
 import com.hubertyoung.component.acfunvideo.index.section.ArticlesRankRecommendSection;
 import com.hubertyoung.component.acfunvideo.index.section.ArticlesRecommendSection;
@@ -134,6 +134,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 							break;
 					}
 				}
+				getAdapter().notifyDataSetChanged();
 			}
 		} );
 		registerObserver( VideoConstants.EVENT_KEY_NEW_RECOMMEND_ADD_INFO, Regions.class ).observe( this, new Observer< Regions >() {

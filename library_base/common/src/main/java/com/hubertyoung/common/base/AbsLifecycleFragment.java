@@ -14,6 +14,7 @@ import android.view.View;
 import com.hubertyoung.common.baserx.LiveBus;
 import com.hubertyoung.common.stateview.StateConstants;
 import com.hubertyoung.common.utils.TUtil;
+import com.hubertyoung.common.utils.log.CommonLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,11 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 	 * @return ViewModel
 	 */
 	protected < T extends ViewModel > T VMProviders( Fragment fragment, @NonNull Class< T > modelClass ) {
-		return ViewModelProviders.of( fragment ).get( modelClass );
+		if(modelClass != null) {
+			return ViewModelProviders.of( fragment ).get( modelClass );
+		}
+		CommonLog.logw( "viewModel is null" );
+		return null;
 	}
 
 	protected void dataObserver() {

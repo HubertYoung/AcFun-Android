@@ -1,20 +1,19 @@
 package com.hubertyoung.component.acfunvideo.index.vm;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
 
 import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.Regions;
+import com.hubertyoung.common.entity.RegionsEntity;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
-import com.hubertyoung.component.acfunvideo.entity.RegionsEntity;
 import com.hubertyoung.component.acfunvideo.index.fragment.NewRecommendFragment;
 import com.hubertyoung.component.acfunvideo.index.source.NewRecommendRepository;
 
 import java.util.List;
-
-import android.support.annotation.NonNull;
 
 /**
  * <br>

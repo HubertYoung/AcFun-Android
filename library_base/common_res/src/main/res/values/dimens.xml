@@ -63,4 +63,6 @@
     <dimen name="tab_indicator_default_width">33dp</dimen>
 
     <dimen name="text_actionbar_title_size">16sp</dimen>
+    <dimen name="home_region_hor_margin">10dp</dimen>
+
 </resources>

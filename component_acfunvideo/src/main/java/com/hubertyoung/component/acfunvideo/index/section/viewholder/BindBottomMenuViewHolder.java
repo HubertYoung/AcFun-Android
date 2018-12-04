@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.utils.display.DisplayUtil;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
+import com.hubertyoung.common.entity.Regions;
 
 /**
  * <br>

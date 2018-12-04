@@ -71,9 +71,17 @@ public class VerticalDividerItemDecoration extends FlexibleDividerDecoration {
 		}
 		if ( isLinearLayoutManager( parent ) ) {
 			if ( isReverseLayout( parent ) ) {
-				outRect.set( getDividerSize( position, parent ), 0, 0, 0 );
+				if ( mShowFirstDivider == true && position == 0 ) {
+					outRect.set( getDividerSize( position, parent ), 0, getDividerSize( position, parent ), 0 );
+				}else{
+					outRect.set( getDividerSize( position, parent ), 0, 0, 0 );
+				}
 			} else {
-				outRect.set( 0, 0, getDividerSize( position, parent ), 0 );
+				if ( mShowFirstDivider == true && position == 0 ) {
+					outRect.set( getDividerSize( position, parent ), 0, getDividerSize( position, parent ), 0 );
+				}else{
+					outRect.set( 0, 0, getDividerSize( position, parent ), 0 );
+				}
 			}
 		}else{
 			int itemCount = parent.getAdapter().getItemCount();

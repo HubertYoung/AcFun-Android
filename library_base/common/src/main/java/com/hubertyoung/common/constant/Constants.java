@@ -19,4 +19,9 @@ public class Constants {
 	public static final String LoginSuccess = "LoginSuccess";
 	public static final String LogoutStatus = "LogoutStatus";
 	public static final String LogoutSuccess = "LogoutSuccess";
+
+	public static final String ANALYTICS_RESOURCE_GC_PROMO = "Mobile_GC_Promo: ";
+	public static final String ANALYTICS_RESOURCE_GC_GAME_LIST = "Mobile_GC_GameList: ";
+	public static final String ANALYTICS_RESOURCE_GC_BOTTOM_BANNER = "Mobile_GC_BottomBanner: ";
+
 }

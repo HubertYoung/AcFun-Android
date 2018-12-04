@@ -80,9 +80,17 @@ public class HorizontalDividerItemDecoration extends FlexibleDividerDecoration {
 		}
 
 		if ( isReverseLayout( parent ) ) {
-			outRect.set( 0, getDividerSize( position, parent ), 0, 0 );
+			if ( mShowFirstDivider == true && position == 0 ) {
+				outRect.set( 0, getDividerSize( position, parent ), 0, getDividerSize( position, parent ) );
+			}else{
+				outRect.set( 0, getDividerSize( position, parent ), 0, 0 );
+			}
 		} else {
-			outRect.set( 0, 0, 0, getDividerSize( position, parent ) );
+			if ( mShowFirstDivider == true && position == 0 ) {
+				outRect.set( 0, getDividerSize( position, parent ), 0, getDividerSize( position, parent ) );
+			}else{
+				outRect.set( 0, 0, 0, getDividerSize( position, parent ) );
+			}
 		}
 	}
 

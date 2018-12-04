@@ -9,7 +9,7 @@ import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.StatelessSection;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
+import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.component_acfunvideo.R;
 
 import android.support.v7.widget.RecyclerView;

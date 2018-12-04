@@ -13,7 +13,7 @@ import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.StatelessSection;
-import com.hubertyoung.component.acfunvideo.entity.Regions;
+import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BottomMenuViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;

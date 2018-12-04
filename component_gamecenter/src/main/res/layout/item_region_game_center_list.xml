@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:aapt="http://schemas.android.com/aapt"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/home_item_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/home_region_hor_margin"
+                android:layout_marginRight="@dimen/home_region_hor_margin">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_game_center_list_img"
+        android:layout_width="61.5dp"
+        android:layout_height="61.5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        app:actualImageScaleType="centerCrop"
+        app:failureImage="@color/background_gray_color"
+        app:failureImageScaleType="centerInside"
+        app:placeholderImage="@color/background_gray_color"
+        app:placeholderImageScaleType="fitCenter"
+        app:roundWithOverlayColor="@color/white"
+        app:roundedCornerRadius="15dp"
+        app:roundingBorderColor="@color/image_border_color"/>
+
+    <ImageView
+        android:id="@+id/item_game_center_list_img_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/item_game_center_list_img"
+        android:layout_alignTop="@+id/item_game_center_list_img"
+        android:layout_marginTop="-4dp"
+        android:src="@drawable/ic_game_center_list_new"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@+id/item_game_center_list_button_layout"
+        layout="@layout/widget_game_center_download_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/item_game_center_list_img"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/item_game_center_list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/item_game_center_list_img"
+        android:layout_marginLeft="@dimen/home_region_hor_margin"
+        android:layout_marginRight="@dimen/home_region_hor_margin"
+        android:layout_toLeftOf="@+id/item_game_center_list_button_layout"
+        android:layout_toRightOf="@+id/item_game_center_list_img"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/text_black_color"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/item_game_center_list_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_game_center_list_title"
+        android:layout_marginLeft="@dimen/home_region_hor_margin"
+        android:layout_marginTop="7dp"
+        android:layout_toRightOf="@+id/item_game_center_list_img"
+        android:background="@drawable/shape_bg_gray_border"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingLeft="4dp"
+        android:paddingTop="2dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="2dp"
+        android:textColor="@color/text_gray2_color"
+        android:textSize="9sp"/>
+
+    <TextView
+        android:id="@+id/item_game_center_list_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/item_game_center_list_img"
+        android:layout_marginLeft="@dimen/home_region_hor_margin"
+        android:layout_marginRight="@dimen/home_region_hor_margin"
+        android:layout_toLeftOf="@+id/item_game_center_list_button_layout"
+        android:layout_toRightOf="@+id/item_game_center_list_img"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/text_gray2_color"
+        android:textSize="12sp"/>
+</RelativeLayout>
