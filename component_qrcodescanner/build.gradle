@@ -1,0 +1,19 @@
+apply from: rootProject.file('basic_component.gradle')
+android {
+    defaultConfig {
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11 -frtti -fexceptions"
+//                abiFilters "armeabi"
+            }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+dependencies {
+    implementation project(':common')
+}

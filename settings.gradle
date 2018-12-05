@@ -6,6 +6,7 @@ include ':studydemo',
         ':component_acfundynamic',
         ':component_acfunvideo',
         ':component_gamecenter',
+        ':component_qrcodescanner',
 
 //        ':android-support:skin-support',
 //        ':android-support:skin-support-appcompat',
