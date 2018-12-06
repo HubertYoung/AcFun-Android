@@ -54,23 +54,6 @@ public class RetrofitClient {
 	 * @param <T>
 	 * @return
 	 */
-//    public  <T> T  builder(Class<T> service)
-//    {
-//        if(baseUrl==null)
-//        {
-//            throw new RuntimeException("baseUrl is null!");
-//        }
-//        if (service == null) {
-//            throw new RuntimeException("api Service is null!");
-//        }
-//        retrofit=new Retrofit.Builder()
-//                .client(mOkHttpClient)
-//                .baseUrl(baseUrl)
-//                .addConverterFactory( ExGsonConverterFactory.create())
-//                .addCallAdapterFactory( RxJava2CallAdapterFactory.create())
-//                .build();
-//        return retrofit.create(service);
-//    }
 	public < T > T builder( Class< T > service ) {
 		if ( TextUtils.isEmpty( baseUrl ) ) {
 			throw new RuntimeException( "baseUrl is null!" );

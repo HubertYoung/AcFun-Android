@@ -19,6 +19,9 @@ import com.hubertyoung.component_acfunarticle.article.fragment.ArticleFragment;
  * @desc:com.hubertyoung.component_acfunarticle
  */
 public class ComponentTask implements IComponent {
+
+	private ArticleFragment mArticleFragment;
+
 	@Override
 	public String getName() {
 		return "ComponentArticle";
@@ -30,7 +33,10 @@ public class ComponentTask implements IComponent {
 		Intent intent;
 		switch ( cc.getActionName() ) {
 			case "getArticleFragment":
-				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", ArticleFragment.newInstance( "", "" ) ) );
+				if ( mArticleFragment == null ) {
+					mArticleFragment = ArticleFragment.newInstance( "", "" );
+				}
+				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", mArticleFragment ) );
 				break;
 //            case "toPatrolPlanActivity":
 //                intent = new Intent(context, PatrolPlanActivity.class);

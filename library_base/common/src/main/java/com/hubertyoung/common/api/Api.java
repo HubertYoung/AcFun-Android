@@ -1,7 +1,7 @@
 package com.hubertyoung.common.api;
 
 
-import android.util.SparseArray;
+import android.support.v4.util.ArrayMap;
 
 import com.hubertyoung.common.net.http.HttpUtils;
 import com.hubertyoung.common.net.request.RetrofitClient;
@@ -9,16 +9,17 @@ import com.hubertyoung.common.net.request.RetrofitClient;
 import okhttp3.OkHttpClient;
 
 public class Api {
-	private static SparseArray< Api > sRetrofitManager = new SparseArray<>( HostType.TYPE_COUNT );
+	private static ArrayMap< Integer, Api > sRetrofitManager = new ArrayMap<>( HostType.TYPE_COUNT );
 
-	private final RetrofitClient retrofitClient;
+	private RetrofitClient mRetrofitClient;
+	private String baseUrl;
 
 	/**
 	 * 构造方法私有
 	 */
 	private Api() {
-		RetrofitClient retofitClinet = HttpUtils.getInstance().getRetofitClinet();
-		retrofitClient = retofitClinet.setBaseUrl( "" );
+		RetrofitClient retrofitClient = HttpUtils.getInstance().getRetofitClinet();
+		mRetrofitClient = retrofitClient.setBaseUrl( "" );
 	}
 
 	/**
@@ -27,8 +28,9 @@ public class Api {
 	 * @param hostType 网络配置
 	 */
 	private Api( int hostType ) {
-		RetrofitClient retofitClinet = HttpUtils.getInstance().getRetofitClinet();
-		retrofitClient = retofitClinet.setBaseUrl( ApiConstants.getHost( hostType ) );
+		RetrofitClient retrofitClient = HttpUtils.getInstance().getRetofitClinet();
+		this.mRetrofitClient = retrofitClient;
+		this.baseUrl = ApiConstants.getHost( hostType );
 	}
 
 	/**
@@ -45,7 +47,7 @@ public class Api {
 	}
 
 	public RetrofitClient getRetrofitClient() {
-		return retrofitClient;
+		return mRetrofitClient;
 	}
 
 	/**
@@ -57,6 +59,7 @@ public class Api {
 			retrofitManager = new Api( hostType );
 			sRetrofitManager.put( hostType, retrofitManager );
 		}
+		retrofitManager.getRetrofitClient().setBaseUrl( ApiConstants.getHost( hostType ) );
 		return retrofitManager;
 	}
 

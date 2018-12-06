@@ -27,7 +27,7 @@ import retrofit2.http.QueryMap;
  */
 public interface ApiHomeService {
 
-	@GET( "/mobile/domain_android.cfg" )
+	@GET( "mobile/domain_android.cfg" )
 	Flowable< HashMap< String, String > > requestDomainAndroidCfg();
 
 	/**

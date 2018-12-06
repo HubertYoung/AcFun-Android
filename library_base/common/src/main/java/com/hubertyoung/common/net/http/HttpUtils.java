@@ -47,7 +47,7 @@ public class HttpUtils {
 
 	private PersistentCookieJar persistentCookieJar;
 
-	protected UCallback uploadCallback;//上传进度回调
+//	protected UCallback uploadCallback;//上传进度回调
 	private final OkHttpClient.Builder mBuilder;
 
 	/**

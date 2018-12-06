@@ -19,6 +19,9 @@ import com.hubertyoung.component_acfundynamic.dynamic.fragment.DynamicFragment;
  * @desc:com.hubertyoung.component_acfunarticle
  */
 public class ComponentTask implements IComponent {
+
+	private DynamicFragment mDynamicFragment;
+
 	@Override
 	public String getName() {
 		return "ComponentDynamic";
@@ -30,7 +33,10 @@ public class ComponentTask implements IComponent {
 		Intent intent;
 		switch ( cc.getActionName() ) {
 			case "getDynamicFragment":
-				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", DynamicFragment.newInstance( "", "" ) ) );
+				if ( mDynamicFragment == null ) {
+					mDynamicFragment = DynamicFragment.newInstance( "", "" );
+				}
+				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", mDynamicFragment ) );
 				break;
 //            case "toPatrolPlanActivity":
 //                intent = new Intent(context, PatrolPlanActivity.class);

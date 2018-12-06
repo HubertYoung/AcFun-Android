@@ -1,7 +1,10 @@
 package com.hubertyoung.component_acfunarticle.article.fragment;
 
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,10 +32,6 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import android.arch.lifecycle.Observer;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 
 /**
@@ -102,7 +101,7 @@ public class ArticleGeneralSecondFragment extends AbsLifecycleFragment< ArticleG
 
 	@Override
 	protected void initView( Bundle savedInstanceState ) {
-
+		super.initView( savedInstanceState );
 		realmRecyclerView = ( RecyclerView ) findViewById( R.id.article_realm_view_list );
 		mDropDownOptionList = ( DropDownOptionList ) findViewById( R.id.article_secondary_view_drop_down_list );
 		mContent = ( RelativeLayout ) findViewById( R.id.content );

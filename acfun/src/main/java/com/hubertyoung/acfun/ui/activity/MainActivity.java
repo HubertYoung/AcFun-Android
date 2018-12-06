@@ -2,7 +2,6 @@ package com.hubertyoung.acfun.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
@@ -13,7 +12,6 @@ import com.hubertyoung.acfun.ui.fragment.PlaceHolderFragment;
 import com.hubertyoung.common.base.AbsLifecycleActivity;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.utils.bar.BarUtils;
-import com.hubertyoung.common.utils.log.CommonLog;
 
 import java.util.ArrayList;
 
@@ -34,6 +32,10 @@ public class MainActivity extends AbsLifecycleActivity {
 	private ArrayList< BaseFragment > mFragments = new ArrayList<>();
 	private BaseFragment mFragment;
 	private long keyDownFirstTime;
+	/**
+	 * 上一个tab索引
+	 */
+	private int prePosition;
 
 	@Override
 	public int getLayoutId() {
@@ -66,7 +68,7 @@ public class MainActivity extends AbsLifecycleActivity {
 				.setInActiveColor( R.color.gray )
 				.initialise();
 		initAction();
-		mBnbMainView.selectTab( 0 );
+//		mBnbMainView.selectTab( 0 );
 
 	}
 
@@ -81,11 +83,38 @@ public class MainActivity extends AbsLifecycleActivity {
 	}
 
 	private void initFragment( Bundle savedInstanceState ) {
-		mFragments.clear();
-		mFragments.add( getFragment( "ComponentAcFunIndex", "getHomePageFragment" ) );
-		mFragments.add( getFragment( "ComponentArticle", "getArticleFragment" ) );
-		mFragments.add( getFragment( "ComponentDynamic", "getDynamicFragment" ) );
-		mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );
+//		mFragments.clear();
+//		mFragments.add( getFragment( "ComponentAcFunIndex", "getHomePageFragment" ) );
+//		mFragments.add( getFragment( "ComponentArticle", "getArticleFragment" ) );
+//		mFragments.add( getFragment( "ComponentDynamic", "getDynamicFragment" ) );
+//		mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );
+
+		BaseFragment firstFragment = findFragment( getFragment( "ComponentAcFunIndex", "getHomePageFragment" ).getClass() );
+		if ( firstFragment == null ) {
+			mFragments.add( getFragment( "ComponentAcFunIndex", "getHomePageFragment" ) );
+			mFragments.add( getFragment( "ComponentArticle", "getArticleFragment" ) );
+			mFragments.add( getFragment( "ComponentDynamic", "getDynamicFragment" ) );
+			mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );
+
+			loadMultipleRootFragment( R.id.fl_container, 0,//
+					mFragments.get( 0 ),//
+					mFragments.get( 1 ),//
+					mFragments.get( 2 ),//
+					mFragments.get( 3 ) );
+		} else {
+			// 这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
+			if ( mFragments != null ) {
+				mFragments.clear();
+			} else {
+				mFragments = new ArrayList<>();
+			}
+			// 这里我们需要拿到mFragments的引用
+			mFragments.add( firstFragment );
+			mFragments.add( findFragment( getFragment( "ComponentArticle", "getArticleFragment" ).getClass() ) );
+			mFragments.add( findFragment( getFragment( "ComponentDynamic", "getDynamicFragment" ).getClass() ) );
+			mFragments.add( findFragment( getFragment( "ComponentMine", "getMineRootFragment" ).getClass() ) );
+
+		}
 	}
 
 	/**
@@ -107,12 +136,12 @@ public class MainActivity extends AbsLifecycleActivity {
 		mBnbMainView.setTabSelectedListener( new BottomNavigationBar.OnTabSelectedListener() {
 			@Override
 			public void onTabSelected( int position ) {
-				changeFragment( position );
+				showHideFragment( mFragments.get( position ), mFragments.get( prePosition ) );
+				prePosition = position;
 			}
 
 			@Override
 			public void onTabUnselected( int position ) {
-
 			}
 
 			@Override
@@ -130,52 +159,5 @@ public class MainActivity extends AbsLifecycleActivity {
 	@Override
 	public void initToolBar() {
 
-	}
-
-	private void changeFragment( int index ) {
-		BaseFragment toFragment = getFragment( index );
-		switchFragment( mFragment, toFragment );
-	}
-
-
-	/**
-	 * 把对应的fragment绑定到acticity中
-	 *
-	 * @param fromFragment 原页面
-	 * @param toFragment   现在点击的页面
-	 */
-	public void switchFragment( BaseFragment fromFragment, BaseFragment toFragment ) {
-
-		CommonLog.loge( "TAG", fromFragment + "---" + toFragment );
-		if ( mFragment != toFragment ) {//防止多次点击进入
-			mFragment = toFragment;
-			if ( toFragment != null ) {//不是一个页面了
-				FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-				if ( !toFragment.isAdded() ) {
-					//没有添加
-					if ( fromFragment != null ) ft.hide( fromFragment );//隐藏页面
-					//添加显示
-					ft.add( R.id.fl_container, toFragment, toFragment.TAG ).commitAllowingStateLoss();
-				} else {
-					//如果添加了页面
-					if ( fromFragment != null ) ft.hide( fromFragment ); //隐藏页面
-					ft.show( toFragment ).commitAllowingStateLoss();//直接显示页面
-				}
-			}
-		} else {
-			long keyDownSecondTime = System.currentTimeMillis();
-			if ( keyDownSecondTime - keyDownFirstTime > 0.5 * 1000 ) {
-				keyDownFirstTime = System.currentTimeMillis();
-				// TODO: 2018/11/15 刷新页面
-//				fromFragment.refreshData();
-			}
-		}
-	}
-
-	private BaseFragment getFragment( int position ) {
-		if ( mFragments != null && mFragments.size() > 0 ) {
-			return mFragments.get( position );
-		}
-		return null;
 	}
 }

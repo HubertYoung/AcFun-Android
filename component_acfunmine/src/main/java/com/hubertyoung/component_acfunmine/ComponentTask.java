@@ -20,6 +20,9 @@ import com.hubertyoung.component_acfunmine.ui.sign.activity.SignInActivity;
  * @desc:com.hubertyoung.component.home
  */
 public class ComponentTask implements IComponent {
+
+	private MineFragment mMineFragment;
+
 	@Override
 	public String getName() {
 		return "ComponentMine";
@@ -31,12 +34,15 @@ public class ComponentTask implements IComponent {
 		Intent intent;
 		switch ( cc.getActionName() ) {
 			case "getMineRootFragment":
-				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", MineFragment.newInstance( "", "" ) ) );
+				if ( mMineFragment == null ) {
+					mMineFragment = MineFragment.newInstance( "", "" );
+				}
+				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", mMineFragment ) );
 				break;
-            case "startLoginActivity":
+			case "startLoginActivity":
 				SignInActivity.launch( context );
-                CC.sendCCResult(cc.getCallId(), CCResult.success());
-                break;
+				CC.sendCCResult( cc.getCallId(), CCResult.success() );
+				break;
 //            case "toIssueActivity":
 //                intent = new Intent(context, IssueActivity.class);
 //                intent.putExtra("callId", cc.getCallId());

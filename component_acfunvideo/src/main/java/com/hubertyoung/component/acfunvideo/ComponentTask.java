@@ -2,10 +2,12 @@ package com.hubertyoung.component.acfunvideo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.util.ArrayMap;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
+import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment;
 import com.hubertyoung.component.acfunvideo.index.fragment.NewRecommendFragment;
 
@@ -20,6 +22,10 @@ import com.hubertyoung.component.acfunvideo.index.fragment.NewRecommendFragment;
  * @desc:com.hubertyoung.component.home
  */
 public class ComponentTask implements IComponent {
+
+	private HomePageFragment mHomePageFragment;
+	private ArrayMap< String, BaseFragment > newRecommendFragments = new ArrayMap<>( 1 );
+
 	@Override
 	public String getName() {
 		return "ComponentAcFunIndex";
@@ -31,12 +37,18 @@ public class ComponentTask implements IComponent {
 		Intent intent;
 		switch ( cc.getActionName() ) {
 			case "getHomePageFragment":
-				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", HomePageFragment.newInstance( "", "" ) ) );
+				if ( mHomePageFragment == null ) {
+					mHomePageFragment = HomePageFragment.newInstance( "", "" );
+				}
+				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", mHomePageFragment ) );
 				break;
-            case "getNewRecommendFragment":
-            	String channelId = cc.getParamItem( "channelId" );
-				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", NewRecommendFragment.newInstance( channelId, "" ) ) );
-                break;
+			case "getNewRecommendFragment":
+				String channelId = cc.getParamItem( "channelId" );
+				if ( newRecommendFragments.get( channelId ) == null ) {
+					newRecommendFragments.put( channelId, NewRecommendFragment.newInstance( channelId, "" ) );
+				}
+				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", newRecommendFragments.get( channelId ) ) );
+				break;
 //            case "toIssueActivity":
 //                intent = new Intent(context, IssueActivity.class);
 //                intent.putExtra("callId", cc.getCallId());

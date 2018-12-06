@@ -6,7 +6,7 @@ include ':studydemo',
         ':component_acfundynamic',
         ':component_acfunvideo',
         ':component_gamecenter',
-        ':component_qrcodescanner',
+//        ':component_qrcodescanner',
 
 //        ':android-support:skin-support',
 //        ':android-support:skin-support-appcompat',
@@ -46,6 +46,10 @@ include ':studydemo',
 //        ':argus-apm-main',
 //        ':argus-apm-okhttp',
 
+        ':fragmentation',
+        ':fragmentation_core',
+        ':fragmentation_swipeback',
+
         ':annotation',
         ':compiler',
         ':compiler-release'
@@ -72,6 +76,10 @@ project(':component_aggregation').projectDir = new File(rootDir, 'library/compon
 project(':component_titlebar').projectDir = new File(rootDir, 'library/component_titlebar')
 project(':bottom-navigation-bar').projectDir = new File(rootDir, 'library/bottom-navigation-bar')
 project(':studydemo').projectDir = new File(rootDir, 'library/studydemo')
+
+project(':fragmentation').projectDir = new File(rootDir, 'library_fragmentation/fragmentation')
+project(':fragmentation_core').projectDir = new File(rootDir, 'library_fragmentation/fragmentation_core')
+project(':fragmentation_swipeback').projectDir = new File(rootDir, 'library_fragmentation/fragmentation_swipeback')
 
 //project(':argus-apm-aop').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-aop')
 //project(':argus-apm-cloud').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud')

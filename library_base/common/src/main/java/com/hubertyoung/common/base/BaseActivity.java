@@ -7,7 +7,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
@@ -26,8 +25,10 @@ import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
+import me.yokeyword.fragmentation.SupportActivity;
 
-public abstract class BaseActivity extends AppCompatActivity implements OnEnvironmentChangeListener {
+
+public abstract class BaseActivity extends SupportActivity implements OnEnvironmentChangeListener {
 	public String TAG = this.getClass().getSimpleName();
 	private static final String SAVED_STATE_STATUS_BAR_TRANSLUCENT = "saved_state_status_bar_translucent";
 	public Context mContext;
