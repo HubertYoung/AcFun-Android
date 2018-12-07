@@ -24,7 +24,6 @@ android {
 
 dependencies {
     api project(':common_res')
-    api project(':fragmentation')
     implementation project(':baseplatformlibrary')
     implementation project(':alipayplatformlibrary')
     implementation project(':qqplatformlibrary')

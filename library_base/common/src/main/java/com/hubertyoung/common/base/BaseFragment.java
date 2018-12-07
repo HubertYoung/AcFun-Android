@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +13,8 @@ import android.view.ViewGroup;
 
 import com.hubertyoung.common.baserx.RxManager;
 
-import me.yokeyword.fragmentation.SupportFragment;
 
-
-public abstract class BaseFragment extends SupportFragment {
+public abstract class BaseFragment extends Fragment {
 	public String TAG = this.getClass().getSimpleName();
 	protected ViewGroup rootView;
 	public RxManager mRxManager;
