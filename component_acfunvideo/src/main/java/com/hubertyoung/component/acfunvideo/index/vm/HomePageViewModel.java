@@ -1,6 +1,7 @@
 package com.hubertyoung.component.acfunvideo.index.vm;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
 
 import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.common.baserx.RxSubscriber;
@@ -10,8 +11,6 @@ import com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment;
 import com.hubertyoung.component.acfunvideo.index.source.HomePageRepository;
 
 import java.util.HashMap;
-
-import android.support.annotation.NonNull;
 
 /**
  * <br>
@@ -31,7 +30,7 @@ public class HomePageViewModel extends AbsViewModel< HomePageRepository > {
 
 	public void requestDomainAndroidCfg() {
 		addDisposable( mRepository.requestDomainAndroidCfg()//
-				.subscribeWith( new RxSubscriber< HashMap >() {
+				.subscribeWith( new RxSubscriber< HashMap<String,String> >() {
 					@Override
 					protected void showLoading() {
 						showLoadingLayout( HomePageFragment.class.getSimpleName(), "" );
@@ -43,7 +42,7 @@ public class HomePageViewModel extends AbsViewModel< HomePageRepository > {
 					}
 
 					@Override
-					public void onSuccess( java.util.HashMap stringStringHashMap ) {
+					public void onSuccess( java.util.HashMap<String,String> stringStringHashMap ) {
 						sendData( VideoConstants.EVENT_KEY_CHANNEL_DOMAIN_ANDROIDCFG, stringStringHashMap );
 					}
 

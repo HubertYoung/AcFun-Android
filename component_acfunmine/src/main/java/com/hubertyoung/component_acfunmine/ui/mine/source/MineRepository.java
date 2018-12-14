@@ -1,7 +1,7 @@
 package com.hubertyoung.component_acfunmine.ui.mine.source;
 
 import com.hubertyoung.common.CommonApplication;
-import com.hubertyoung.common.api.Api;
+import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.constant.Constants;
@@ -31,7 +31,7 @@ public class MineRepository extends AbsRepository {
     public Flowable< User > requestUserInfo( String userId ) {
         HashMap map = new HashMap< String, String >();
         map.put( "userId", userId );
-        return Api.getDefault( HostType.MY_RESULT )
+        return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
                 .getRetrofitClient()
                 .setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
                 .builder( ApiHomeService.class )
@@ -40,7 +40,7 @@ public class MineRepository extends AbsRepository {
     }
 
     public Flowable< Boolean > requestCheckOfflineInfo() {
-        return Api.getDefault( HostType.MY_RESULT )
+        return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
                 .getRetrofitClient()
                 .setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
                 .builder( ApiHomeService.class )
@@ -55,7 +55,7 @@ public class MineRepository extends AbsRepository {
         hashMap.put( "accessToken", token );
         hashMap.put( "openId", openid );
         hashMap.put( "type", platformName );
-        return Api.getDefault( HostType.APP_HOST_ACCOUNT )
+        return ApiImpl.getInstance( HostType.APP_ACCOUNT_HOST )
                 .getRetrofitClient()
                 .setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
                 .builder( ApiHomeService.class )

@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.index.source;
 
-import com.hubertyoung.common.api.Api;
+import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
@@ -25,7 +25,7 @@ public class ChannelRepository extends AbsRepository {
     public Flowable< ChannelOperate > requestChannel( String pos ) {
         HashMap map = new HashMap< String, String >();
         map.put( "pos", pos );
-        return Api.getDefault( HostType.MY_RESULT )//
+        return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )//
                 .getRetrofitClient()//
                 .builder( ApiHomeService.class )//
                 .requestChannelOperate( map )//

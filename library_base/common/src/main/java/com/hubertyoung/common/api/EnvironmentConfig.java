@@ -19,7 +19,7 @@ public class EnvironmentConfig {
 	 */
 	@Module
 	private class App {
-		@Environment(url = ApiConstants.NETEAST_HOST, isRelease = true, alias = "正式")
+		@Environment(url = ApiConstants.APP_NEWAPI_HOST, isRelease = true, alias = "正式")
 		private String online;
 
 		@Environment(url =  ApiConstants.NETEAST_TEST_HOST, alias = "测试")
@@ -31,7 +31,7 @@ public class EnvironmentConfig {
 	 */
 	@Module(alias = "我的")
 	private class Mine {
-		@Environment(url = ApiConstants.NETEAST_HOST, isRelease = true, alias = "正式")
+		@Environment(url = ApiConstants.APP_NEWAPI_HOST, isRelease = true, alias = "正式")
 		private String online;
 
 		@Environment(url = ApiConstants.NETEAST_TEST_HOST, alias = "测试")
@@ -42,7 +42,7 @@ public class EnvironmentConfig {
 	 */
 	@Module(alias = "账号")
 	private class Account {
-		@Environment(url = ApiConstants.APP_HOST_ACCOUNT, isRelease = true, alias = "正式")
+		@Environment(url = ApiConstants.APP_ACCOUNT_HOST, isRelease = true, alias = "正式")
 		private String online;
 
 		@Environment(url = ApiConstants.NETEAST_TEST_HOST, alias = "测试")

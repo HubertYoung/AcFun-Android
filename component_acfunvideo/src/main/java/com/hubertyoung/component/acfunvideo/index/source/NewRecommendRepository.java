@@ -1,12 +1,12 @@
 package com.hubertyoung.component.acfunvideo.index.source;
 
-import com.hubertyoung.common.api.Api;
+import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
-import com.hubertyoung.common.entity.Regions;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +27,7 @@ public class NewRecommendRepository extends AbsRepository {
 	public Flowable<List< Regions >> requestRecommend( String channelId ) {
 		HashMap map = new HashMap< String, String >();
 		map.put( "channelId", channelId );
-		return Api.getDefault( HostType.MY_RESULT )
+		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )
 				.requestRecommend( map )
@@ -37,7 +37,7 @@ public class NewRecommendRepository extends AbsRepository {
 	public Flowable<List< RegionBodyContent >> requestNewRecommend( String channelId, String pageNo ) {
 		HashMap map = new HashMap< String, String >();
 		map.put( "pageNo", pageNo );
-		return Api.getDefault( HostType.MY_RESULT )
+		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )
 				.requestNewRecommend( channelId, map )

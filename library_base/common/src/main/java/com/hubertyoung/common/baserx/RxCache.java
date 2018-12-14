@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 //################################使用例子#############################
 /*
-Flowable<LoginData> fromNetwork = Api.getDefault()
+Flowable<LoginData> fromNetwork = ApiImpl.getInstance()
         .login(phone, password)
         .compose(RxHelper.handleResult());
 

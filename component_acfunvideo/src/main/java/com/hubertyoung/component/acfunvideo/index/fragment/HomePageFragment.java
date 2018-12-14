@@ -1,13 +1,16 @@
 package com.hubertyoung.component.acfunvideo.index.fragment;
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.hubertyoung.common.api.ApiConstants;
 import com.hubertyoung.common.base.AbsLifecycleFragment;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.display.ToastUtil;
-import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.index.adapter.HomePagerAdapter;
 import com.hubertyoung.component.acfunvideo.index.vm.HomePageViewModel;
@@ -15,10 +18,6 @@ import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.HashMap;
-
-import android.support.v7.widget.Toolbar;
-import android.arch.lifecycle.Observer;
-import android.support.v4.view.ViewPager;
 
 /**
  * <br>
@@ -30,7 +29,7 @@ import android.support.v4.view.ViewPager;
  * @since:V1.0
  * @desc:com.hubertyoung.component.home.index.fragment
  */
-public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel >{
+public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel > {
 
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
@@ -99,16 +98,18 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel >{
 	}
 
 	public void loadData() {
-		mViewModel.requestDomainAndroidCfg( );
+		mViewModel.requestDomainAndroidCfg();
 	}
+
 	@Override
 	protected void dataObserver() {
-		registerObserver(VideoConstants.EVENT_KEY_CHANNEL_DOMAIN_ANDROIDCFG ,HashMap.class).observe( this, new Observer< HashMap >() {
+		registerObserver( VideoConstants.EVENT_KEY_CHANNEL_DOMAIN_ANDROIDCFG, HashMap.class ).observe( this, new Observer< HashMap >() {
 			@Override
 			public void onChanged( HashMap hashMap ) {
-				CommonLog.loge( hashMap.toString() );
+//				CommonLog.loge( hashMap.toString() );
+				ApiConstants.replaceAllUrl( hashMap );
 			}
-		});
+		} );
 	}
 
 
@@ -167,7 +168,7 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel >{
 	}
 
 	@Override
-	public void showLoading( String title) {
+	public void showLoading( String title ) {
 
 	}
 //
@@ -180,6 +181,7 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel >{
 	protected void stopLoading() {
 
 	}
+
 	public void showErrorTip( String msg ) {
 
 	}

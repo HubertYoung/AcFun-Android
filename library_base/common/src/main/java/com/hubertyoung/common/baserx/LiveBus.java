@@ -17,10 +17,10 @@ import static com.hubertyoung.common.utils.TUtil.checkNotNull;
  * 事件总线
  * <p>
  * <p>
- * LiveBus.getDefault().postEvent("LiveData","hi LiveData");
+ * LiveBus.getInstance().postEvent("LiveData","hi LiveData");
  * <p>
  * <p>
- * LiveBus.getDefault().subscribe("LiveData").observe(this, new Observer<Object>() {
+ * LiveBus.getInstance().subscribe("LiveData").observe(this, new Observer<Object>() {
  *
  * @Override public void onChanged(@Nullable Object o) {
  * Log.e("onChanged",((String)o));

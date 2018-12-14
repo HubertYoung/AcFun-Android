@@ -1,6 +1,5 @@
 package com.hubertyoung.component_gamecenter.gamecenter.source;
 
-import com.hubertyoung.common.api.Api;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.baserx.RxSchedulers;
@@ -21,7 +20,7 @@ import io.reactivex.Flowable;
  */
 public class GameCenterRepository extends AbsRepository {
 	public Flowable< BaseCodeResponse< List< Regions > > > requestGameCenter() {
-		return Api.getDefault( HostType.MY_RESULT )//
+		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )//
 				.getRetrofitClient()//
 				.builder( ApiGameCenterService.class )//
 				.requestGameCenter()//

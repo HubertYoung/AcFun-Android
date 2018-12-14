@@ -3,7 +3,7 @@ package com.hubertyoung.component_acfunmine.ui.sign.source;
 import android.text.TextUtils;
 
 import com.hubertyoung.common.CommonApplication;
-import com.hubertyoung.common.api.Api;
+import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.baserx.RxSchedulers;
@@ -45,7 +45,7 @@ public class SignInRepository extends AbsRepository {
 		map.put( "username", userNameStr );
 		map.put( "cid", cidKey );
 		map.put( "password", passwordStr );
-		return Api.getDefault( HostType.APP_HOST_ACCOUNT )
+		return ApiImpl.getInstance( HostType.APP_ACCOUNT_HOST )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
 				.builder( ApiHomeService.class )
@@ -56,7 +56,7 @@ public class SignInRepository extends AbsRepository {
 	}
 
 	public Flowable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo() {
-		return Api.getDefault( HostType.APP_HOST_ACCOUNT )
+		return ApiImpl.getInstance( HostType.APP_ACCOUNT_HOST )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
 				.builder( ApiHomeService.class )

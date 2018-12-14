@@ -16,34 +16,43 @@
  */
 package com.hubertyoung.common.api;
 
+/**
+ * @desc:Host类型
+ * @author:HubertYoung
+ * @date 2018/12/14 10:05
+ * @since:
+ * @see HostType
+ */
 public class HostType {
-
-    /**
-     * 多少种Host类型
-     */
-    public static final int TYPE_COUNT = 6;
-
-    /**
-     * 我的host
-     */
-    public static final int MY_RESULT = 1;
-
-    /**
-     * 测试下载
-     */
-    public static final int MY_TEST_DOWN = 2;
-    /**
-     * 新闻详情html图片的host
-     */
-    public static final int NEWS_DETAIL_HTML_PHOTO = 3;
-
-    public static final int TEST = 4;
-    /**
-     * ssl——app
-     */
-    public static final int APP_HOST_SLL = 5;
+	//newapi=http://apipc.app.acfun.cn,
+	// update=http://h5.app.acfun.cn,
+	// webapi=http://webapi.app.acfun.cn,
+	// cdn=http://cdn.aixifan.com,
+	// search=http://search.app.acfun.cn,
+	// root=http://mobile.app.acfun.cn,
+	// report=http://appreport.app.acfun.cn,
+	// danmaku=ws://danmu.app.acfun.cn:443,
+	// icao=http://fanju.app.acfun.cn,
+	// comment=http://danmu.aixifan.com,
+	// share=http://www.acfun.cn,
+	// api=http://api.app.acfun.cn,
+	// live=http://live.acfun.cn
 	/**
-	 * 账号相关app
+	 * new api
 	 */
-	public static final int APP_HOST_ACCOUNT = 6;
+	public static final String APP_NEWAPI_HOST = "newapi";
+	public static final String APP_UPDATE_HOST = "update";
+	public static final String APP_WEBAPI_HOST = "webapi";
+	public static final String APP_CDN_HOST = "cdn";
+	public static final String APP_SEARCH_HOST = "search";
+	public static final String APP_ROOT_HOST = "root";
+	public static final String APP_REPORT_HOST = "report";
+	public static final String APP_DANMAKU_HOST = "danmaku";
+	public static final String APP_ICAO_HOST = "icao";
+	public static final String APP_COMMENT_HOST = "comment";
+	public static final String APP_SHARE_HOST = "share";
+	public static final String APP_API_HOST = "api";
+	public static final String APP_LIVE_HOST = "live";
+	public static final String APP_ACCOUNT_HOST = "account";
+	public static final String APP_SLL_HOST = "sll";
 }

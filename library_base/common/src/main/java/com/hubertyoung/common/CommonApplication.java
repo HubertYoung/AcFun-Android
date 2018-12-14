@@ -12,7 +12,7 @@ import com.hubertyoung.common.api.ApiConstants;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.image.fresco.ImagePipelineConfigFactory;
 import com.hubertyoung.common.net.config.NetWorkConfiguration;
-import com.hubertyoung.common.net.http.HttpUtils;
+import com.hubertyoung.common.net.http.HttpConnection;
 import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.utils.display.ScreenHelper;
 import com.hubertyoung.common.utils.log.CommonLog;
@@ -159,7 +159,7 @@ public class CommonApplication extends Application {
 				.add( "acPlatform", "ANDROID_PHONE" ).add( "udid", AppUtils.getUUID() );
 		configuration.setHeaders( builder.build() );
 		configuration.connectionPool( 5, 5, TimeUnit.MINUTES );
-		HttpUtils.setConFiguration( configuration );
+		HttpConnection.setConFiguration( configuration );
 	}
 
 	@Override
@@ -169,7 +169,7 @@ public class CommonApplication extends Application {
 //		If you are using legacy multidex, ensure that ACRA.init(...) is called after Multidex.install().
 		ConfigurationBuilder builder = new ConfigurationBuilder( this );
 		builder.setBuildConfigClass( BuildConfig.class )//
-				.setFormUri( ApiConstants.getHost( HostType.MY_RESULT ) )//
+				.setFormUri( ApiConstants.getHost( HostType.APP_NEWAPI_HOST ) )//
 				.setReportType( HttpSender.Type.FORM )//
 				.setReportingInteractionMode( ReportingInteractionMode.TOAST )//
 				.setResToastText( R.string.common_res_app_crash_str );

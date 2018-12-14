@@ -1,7 +1,7 @@
 package com.hubertyoung.component_acfunarticle.article.source;
 
 import com.hubertyoung.common.CommonApplication;
-import com.hubertyoung.common.api.Api;
+import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
@@ -34,7 +34,7 @@ public class ArticleGeneralSecondRepository extends AbsRepository {
 		map.put( "realmIds", realmIds );
 		map.put( "pageNo", pageNo );
 		map.put( "pageSize", pageSize );
-		return Api.getDefault( HostType.MY_RESULT )
+		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
 				.getRetrofitClient()
 				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
 				.builder( ApiArticleService.class )

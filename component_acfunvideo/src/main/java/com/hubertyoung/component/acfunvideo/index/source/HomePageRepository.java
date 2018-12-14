@@ -1,6 +1,6 @@
 package com.hubertyoung.component.acfunvideo.index.source;
 
-import com.hubertyoung.common.api.Api;
+import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.baserx.RxSchedulers;
@@ -22,7 +22,7 @@ import io.reactivex.Flowable;
  */
 public class HomePageRepository extends AbsRepository {
 	public Flowable< HashMap< String, String > > requestDomainAndroidCfg() {
-		return Api.getDefault( HostType.APP_HOST_SLL )
+		return ApiImpl.getInstance( HostType.APP_SLL_HOST )
 				.getRetrofitClient()
 				.builder( ApiHomeService.class )
 				.requestDomainAndroidCfg()

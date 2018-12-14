@@ -30,12 +30,12 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * QQ号：1344393464
  * 作用：对OkHttpClient进行配置
  */
-public class HttpUtils {
+public class HttpConnection {
 
-	public static final String TAG = "HttpUtils";
+	public static final String TAG = "HttpConnection";
 //	private String userAgentHeaderValue = "Android";
 	//    获得HttpUtils实例
-	private static HttpUtils mInstance;
+	private static HttpConnection mInstance;
 	//    OkHttpClient对象
 	private OkHttpClient mOkHttpClient;
 	private static NetWorkConfiguration configuration;
@@ -57,7 +57,7 @@ public class HttpUtils {
 	 * @param isCache true为加载 false不进行加载
 	 * @return
 	 */
-	public HttpUtils setLoadDiskCache( boolean isCache ) {
+	public HttpConnection setLoadDiskCache( boolean isCache ) {
 		this.isLoadDiskCache = isCache;
 		return this;
 	}
@@ -75,12 +75,12 @@ public class HttpUtils {
 	 * @param isCache true为加载 false不进行加载
 	 * @return
 	 */
-	public HttpUtils setLoadMemoryCache( boolean isCache ) {
+	public HttpConnection setLoadMemoryCache( boolean isCache ) {
 		this.isLoadMemoryCache = isCache;
 		return this;
 	}
 
-	public HttpUtils() {
+	public HttpConnection() {
 		/**进行默认配置
 		 *    未配置configuration ,
 		 *
@@ -145,9 +145,9 @@ public class HttpUtils {
 		if ( configuration == null ) {
 			throw new IllegalArgumentException( "ImageLoader configuration can not be initialized with null" );
 		} else {
-			if ( HttpUtils.configuration == null ) {
+			if ( HttpConnection.configuration == null ) {
 				CommonLog.logd( "Initialize NetWorkConfiguration with configuration" );
-				HttpUtils.configuration = configuration;
+				HttpConnection.configuration = configuration;
 			} else {
 				CommonLog.logd( "Try to initialize NetWorkConfiguration which had already been initialized before. To re-init NetWorkConfiguration " + "with " + "" + "" + "new configuration " );
 			}
@@ -167,12 +167,12 @@ public class HttpUtils {
 	 *
 	 * @param certificates 本地证书
 	 */
-	public HttpUtils setCertificates( InputStream... certificates ) {
+	public HttpConnection setCertificates( InputStream... certificates ) {
 		mOkHttpClient = getOkHttpClient().newBuilder().sslSocketFactory( HttpsSsl.getSslSocketFactory( null, null, certificates ) ).build();
 		return this;
 	}
 
-	public HttpUtils setCallback( UCallback uploadCallback ) {
+	public HttpConnection setCallback( UCallback uploadCallback ) {
 		if ( uploadCallback != null ) {
 			mOkHttpClient = getOkHttpClient().newBuilder().addNetworkInterceptor( new UploadProgressInterceptor( uploadCallback ) ).build();
 		}
@@ -184,7 +184,7 @@ public class HttpUtils {
 	 *
 	 * @param falg
 	 */
-	public HttpUtils setDBugLog( boolean falg ) {
+	public HttpConnection setDBugLog( boolean falg ) {
 		if ( falg ) {
 			mOkHttpClient = getOkHttpClient().newBuilder().addNetworkInterceptor( new HttpLoggingInterceptor().setLevel( HttpLoggingInterceptor.Level.BODY ) ).build();
 		}
@@ -196,7 +196,7 @@ public class HttpUtils {
 	 *
 	 * @return
 	 */
-	public HttpUtils addCookie() {
+	public HttpConnection addCookie() {
 		persistentCookieJar = new PersistentCookieJar( new SetCookieCache(), new SharedPrefsCookiePersistor( CommonApplication.getAppContext() ) );
 		mOkHttpClient = getOkHttpClient().newBuilder().cookieJar( persistentCookieJar ).build();
 		return this;
@@ -303,11 +303,11 @@ public class HttpUtils {
 	 *
 	 * @return
 	 */
-	public static HttpUtils getInstance() {
+	public static HttpConnection getInstance() {
 		if ( mInstance == null ) {
-			synchronized ( HttpUtils.class ) {
+			synchronized ( HttpConnection.class ) {
 				if ( mInstance == null ) {
-					mInstance = new HttpUtils();
+					mInstance = new HttpConnection();
 				}
 			}
 		}

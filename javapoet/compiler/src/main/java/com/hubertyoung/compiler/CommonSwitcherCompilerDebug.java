@@ -345,7 +345,7 @@ public class CommonSwitcherCompilerDebug extends AbstractProcessor {
 		try {
 			switchEnvironmentJavaFile.writeTo( processingEnv.getFiler() );
 		} catch ( IOException e ) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 //			}
 //		}

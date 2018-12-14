@@ -215,7 +215,7 @@ public class FrescoImageGetter implements Drawable.Callback, ImageGetter, Fresco
 		String[] split = url.split( "/" );
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append( split[ 0 ] );
-//		stringBuilder.append( HttpUtils.PATHS_SEPARATOR);
+//		stringBuilder.append( HttpConnection.PATHS_SEPARATOR);
 		stringBuilder.append( split[ 1 ] );
 		url = stringBuilder.toString();
 		StringBuilder stringBuilder2 = new StringBuilder();
