@@ -32,8 +32,8 @@ public class MyApplication extends CommonApplication {
 
 //		boolean isUi = TextUtils.equals( getPackageName(), OSUtil.getCurrentProcessName() );
 //		Config.ConfigBuilder apmBuilder = new Config.ConfigBuilder().setAppContext( this )
-////				.setRuleRequest( new RuleSyncRequest() )
-////				.setUpload( new CollectDataSyncUpload() )
+//				.setRuleRequest( new RuleSyncRequest() )
+//				.setUpload( new CollectDataSyncUpload() )
 //				.setAppName( AppUtils.getAppName() )
 //				.setAppVersion( AppUtils.getAppVersionName() )
 //				.setApmid( "apm_demo" );//该ID是在APM的后台进行申请的
