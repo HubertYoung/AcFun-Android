@@ -86,7 +86,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 
 	public interface BannerViewOnItemClickListener {
 
-		void onItemClick( String url, String title, String dataJson );
+		void onItemClick( View view, String url, String title, Object data );
 	}
 
 	public BannerView( Context context ) {
@@ -272,6 +272,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 						points.getChildAt( ( position - 1 + count ) % count ).setBackgroundResource( selectRes );
 						lastPosition = position;
 					}
+					currrentPos = position;
 //                if ( position == 0 ) position = count;
 //                if ( position > count ) position = 1;
 				}
@@ -477,7 +478,11 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 	@Override
 	public void onItemClick() {
 		if ( mBannerViewOnItemClickListener != null ) {
-			mBannerViewOnItemClickListener.onItemClick( bannerList.get( currrentPos ).url, bannerList.get( currrentPos ).title, bannerList.get( currrentPos ).dataJson );
+			mBannerViewOnItemClickListener.onItemClick(//
+					imageViewList.get( currrentPos ),//
+					bannerList.get( currrentPos ).url,//
+					bannerList.get( currrentPos ).title,//
+					bannerList.get( currrentPos ).data );
 		}
 
 	}

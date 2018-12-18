@@ -26,11 +26,11 @@ public class ComponentTask implements IComponent {
 	public boolean onCall( CC cc ) {
 		Context context = cc.getContext();
 		switch ( cc.getActionName() ) {
-			case "toDebugActivity":
+			case "DebugActivity":
 				DebugActivity.launch( context );
 				CC.sendCCResult( cc.getCallId(), CCResult.success( ) );
 				break;
-            case "toEnvironmentSwitchActivity":
+            case "EnvironmentSwitchActivity":
 				EnvironmentSwitchActivity.launch( context );
                 CC.sendCCResult(cc.getCallId(), CCResult.success());
                 break;

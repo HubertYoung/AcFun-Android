@@ -32,7 +32,7 @@ public class ComponentTask implements IComponent {
 		Context context = cc.getContext();
 		Intent intent;
 		switch ( cc.getActionName() ) {
-			case "getDynamicFragment":
+			case "DynamicFragment":
 				if ( mDynamicFragment == null ) {
 					mDynamicFragment = DynamicFragment.newInstance( "", "" );
 				}

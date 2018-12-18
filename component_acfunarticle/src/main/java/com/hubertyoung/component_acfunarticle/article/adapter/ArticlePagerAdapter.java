@@ -77,7 +77,7 @@ public class ArticlePagerAdapter extends FragmentStatePagerAdapter {
 		mFragments = new ArrayList();
 //		mFragments.add( ArticleRecommendFragment.newInstance( "63", "" ) );
 		mFragments.add( CC.obtainBuilder( "ComponentAcFunIndex" )//
-				.setActionName( "getNewRecommendFragment" )//
+				.setActionName( "NewRecommendFragment" )//
 				.addParam( "channelId", mActivity.getResources().getInteger( R.integer.channel_id_article ) + "" )//
 				.build()//
 				.call()//

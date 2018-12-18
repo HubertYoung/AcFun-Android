@@ -105,7 +105,7 @@ public class DynamicFragment extends AbsLifecycleFragment< DynamicViewModel >{
 				.subscribe( new Consumer< Object >() {
 					@Override
 					public void accept( Object o ) throws Exception {
-						CC.obtainBuilder( "ComponentMine" ).setActionName( "startLoginActivity" ).build().call();
+						CC.obtainBuilder( "ComponentMine" ).setActionName( "SignInActivity" ).build().call();
 					}
 				} );
 	}

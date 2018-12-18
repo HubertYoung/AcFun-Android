@@ -1,18 +1,17 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.StatelessSection;
-import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.component_acfunvideo.R;
-
-import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>
@@ -29,8 +28,7 @@ public class NewRecommendBannersSection extends StatelessSection {
 	private Regions regions;
 
 	public NewRecommendBannersSection( BaseActivity activity ) {
-		super( SectionParameters.builder()
-				.itemResourceId( R.layout.item_region_single_banner )//
+		super( SectionParameters.builder().itemResourceId( R.layout.item_region_single_banner )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//
 				.build() );
@@ -71,21 +69,21 @@ public class NewRecommendBannersSection extends StatelessSection {
 			} else {
 				ImageLoaderUtil.loadNetImage( bodyContent.images.get( 0 ), viewHolder.ivBanner1 );
 			}
-			viewHolder.ivBanner1.setOnClickListener( new View.OnClickListener() {
-				public void onClick( View view ) {
-//						StringBuilder stringBuilder = new StringBuilder();
-//						stringBuilder.append(i3 + 1);
-//						stringBuilder.append(" clicked");
-//						if (bodyContent != null) {
-//							if (bodyContent.ad == 1) {
-//								SensorsAnalyticsUtil.a(HomeListAdapter.this.aq, bodyContent.title, HomeListAdapter.this.ar);
-//							}
-//							SensorsAnalyticsUtil.a(bodyContent.title, bodyContent.actionId);
-//						}
-//						HomeListAdapter.this.a(KanasConstants.aQ, i2, bodyContent.ad == 1, bodyContent.title, bodyContent.actionId, bodyContent.contentId);
-//						HomeListAdapter.this.f(bodyContent);
-				}
-			} );
+			if ( mOnItemClickListener != null ) {
+				viewHolder.ivBanner1.setOnClickListener( new View.OnClickListener() {
+					public void onClick( View view ) {
+						if ( bodyContent != null ) {
+							if ( bodyContent.ad == 1 ) {
+//							SensorsAnalyticsUtil.a(HomeListAdapter.this.aq, regionBodyContent.title, HomeListAdapter.this.ar);
+							}
+//						SensorsAnalyticsUtil.a(regionBodyContent.title, regionBodyContent.actionId);
+						}
+//					HomeListAdapter.this.a(KanasConstants.bP, i2, regionBodyContent.ad == 1, regionBodyContent.title, regionBodyContent.actionId, regionBodyContent.contentId);
+//					HomeListAdapter.this.f(regionBodyContent);
+						mOnItemClickListener.onSingleBannerClick( view,bodyContent );
+					}
+				} );
+			}
 		} else {
 			if ( regions.advertLists == null || regions.advertLists.size() <= 0 ) {
 				// TODO: 2018/9/5 广告处理
@@ -96,6 +94,16 @@ public class NewRecommendBannersSection extends StatelessSection {
 				viewHolder.itemView.setVisibility( View.GONE );
 			}
 		}
+	}
+
+	public interface OnItemClickListener {
+		void onSingleBannerClick( View v, RegionBodyContent bodyContent );
+	}
+
+	private OnItemClickListener mOnItemClickListener;
+
+	public void setOnItemClickListener( OnItemClickListener onItemClickListener ) {
+		mOnItemClickListener = onItemClickListener;
 	}
 
 	public void setRegions( Regions regions ) {

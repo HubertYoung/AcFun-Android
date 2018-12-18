@@ -132,7 +132,7 @@ public class MainActivity extends BaseActivity {
 		mFragments.add( getFragment( "ComponentIndex", "getIndexRootFragment" ) );
 		mFragments.add( getFragment( "ComponentClassification", "getClassificationFragment" ) );
 		mFragments.add( getFragment( "ComponentCart", "getCartRootFragment" ) );
-		mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );
+		mFragments.add( getFragment( "ComponentMine", "MineFragment" ) );
 		changeFragment( position );
 	}
 

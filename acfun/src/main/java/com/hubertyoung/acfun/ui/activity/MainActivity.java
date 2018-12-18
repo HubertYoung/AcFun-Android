@@ -82,10 +82,10 @@ public class MainActivity extends AbsLifecycleActivity {
 
 	private void initFragment( Bundle savedInstanceState ) {
 		mFragments.clear();
-		mFragments.add( getFragment( "ComponentAcFunIndex", "getHomePageFragment" ) );
-		mFragments.add( getFragment( "ComponentArticle", "getArticleFragment" ) );
-		mFragments.add( getFragment( "ComponentDynamic", "getDynamicFragment" ) );
-		mFragments.add( getFragment( "ComponentMine", "getMineRootFragment" ) );
+		mFragments.add( getFragment( "ComponentAcFunIndex", "HomePageFragment" ) );
+		mFragments.add( getFragment( "ComponentArticle", "ArticleFragment" ) );
+		mFragments.add( getFragment( "ComponentDynamic", "DynamicFragment" ) );
+		mFragments.add( getFragment( "ComponentMine", "MineFragment" ) );
 	}
 
 	/**

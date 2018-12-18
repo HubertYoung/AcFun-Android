@@ -5,17 +5,19 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.View;
 
+import com.billy.cc.core.component.CC;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.base.BaseListFragment;
 import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.Regions;
+import com.hubertyoung.common.entity.RegionsEntity;
 import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.Section;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
-import com.hubertyoung.common.entity.Regions;
-import com.hubertyoung.common.entity.RegionsEntity;
 import com.hubertyoung.component.acfunvideo.index.section.ArticlesNewSection;
 import com.hubertyoung.component.acfunvideo.index.section.ArticlesRankRecommendSection;
 import com.hubertyoung.component.acfunvideo.index.section.ArticlesRecommendSection;
@@ -26,6 +28,7 @@ import com.hubertyoung.component.acfunvideo.index.section.NewRecommendVideosRank
 import com.hubertyoung.component.acfunvideo.index.section.NewRecommendVideosSection;
 import com.hubertyoung.component.acfunvideo.index.vm.NewRecommendViewModel;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -90,10 +93,12 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 		super.initView( savedInstanceState );
 		setTitleLayoutVisible( false );
 	}
+
 	@Override
 	public void loadData() {
 		mViewModel.requestRecommend( channelId );
 	}
+
 	@Override
 	public void loadNewData() {
 		mViewModel.requestNewRecommend( channelId, getAdapter().getPageBean().getLoadPage() + "" );
@@ -204,6 +209,19 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 		if ( getAdapter().getPageBean().refresh ) {
 			mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
 			getAdapter().addSection( mCarouselsSection );
+			mCarouselsSection.setOnItemClickListener( new NewRecommendCarouselsSection.OnBannerItemClickListener() {
+				@Override
+				public void onBannerItemClick( View v, RegionBodyContent bodyContent ) {
+					HashMap< String, Object > map = new HashMap<>();
+					map.put( "actionId", bodyContent.actionId );
+					map.put( "contentId", bodyContent.contentId );
+					CC.obtainBuilder( "ComponentAcFunIndex" )//
+							.setContext( activity ).setParams( map )//
+							.setActionName( "Activity" )//
+							.build()//
+							.call();
+				}
+			} );
 		}
 		mCarouselsSection.setRegions( regions );
 	}
@@ -213,6 +231,13 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 			mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) activity );
 			getAdapter().addSection( mBannersSection );
 			mBannersSection.setRegions( regions );
+			mBannersSection.setOnItemClickListener( new NewRecommendBannersSection.OnItemClickListener() {
+				@Override
+				public void onSingleBannerClick( View v, RegionBodyContent regionBodyContent ) {
+
+
+				}
+			} );
 		}
 	}
 

@@ -54,7 +54,7 @@ public class SignInUtil {
 		return false;
 	}
 	public void loginAccount() {
-		CC.obtainBuilder( "ComponentMine" ).setActionName( "startLoginActivity" ).build().call();
+		CC.obtainBuilder( "ComponentMine" ).setActionName( "SignInActivity" ).build().call();
 	}
 	public void loginQQ() {
 		login( AuthorizeVia.QQ );

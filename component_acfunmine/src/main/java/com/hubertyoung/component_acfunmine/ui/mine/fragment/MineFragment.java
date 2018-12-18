@@ -268,7 +268,7 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 	@Override
 	@SuppressWarnings( "all" )
 	public void onClick( View v ) {
-//		CC.obtainBuilder( "ComponentDebug" ).setContext( activity ).setActionName( "toDebugActivity" ).build().call();
+//		CC.obtainBuilder( "ComponentDebug" ).setContext( activity ).setActionName( "DebugActivity" ).build().call();
 		Bundle bundle;
 		Serializable user;
 		int viewId = v.getId();

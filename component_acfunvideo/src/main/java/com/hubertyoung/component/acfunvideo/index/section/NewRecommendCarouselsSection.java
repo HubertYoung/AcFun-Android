@@ -35,8 +35,7 @@ public class NewRecommendCarouselsSection extends StatelessSection {
 	private Regions regions;
 
 	public NewRecommendCarouselsSection( BaseActivity activity ) {
-		super( SectionParameters.builder()
-				.itemResourceId( R.layout.item_region_slide_banner )//
+		super( SectionParameters.builder().itemResourceId( R.layout.item_region_slide_banner )//
 //				.headerResourceId( R.layout.widget_region_header_text )//
 //				.footerResourceId( R.layout.widget_region_bottom_menu )//
 				.build() );
@@ -69,12 +68,22 @@ public class NewRecommendCarouselsSection extends StatelessSection {
 
 			ArrayList< BannerEntity > list = new ArrayList<>();
 			for (RegionBodyContent bodyContent : regions.bodyContents) {
-				list.add( new BannerEntity( "", bodyContent.title, bodyContent.images.get( 0 ), "", 0 ) );
+				list.add( new BannerEntity( "", bodyContent.title, bodyContent.images.get( 0 ), bodyContent, 0 ) );
 			}
 			viewHolderSlider.sliderLayout.instance( mActivity );
 			viewHolderSlider.sliderLayout.setCenter( false );
 			viewHolderSlider.sliderLayout.delayTime( 3 );
 			viewHolderSlider.sliderLayout.build( list );
+			if ( mOnBannerItemClickListener != null ) {
+				viewHolderSlider.sliderLayout.setmViewPagerOnItemClickListener( new BannerView.BannerViewOnItemClickListener() {
+					@Override
+					public void onItemClick( View view, String url, String title, Object data ) {
+						if ( data instanceof RegionBodyContent ) {
+							mOnBannerItemClickListener.onBannerItemClick( view, ( RegionBodyContent ) data );
+						}
+					}
+				} );
+			}
 			//TODO 广告配置
 //			AdvertLists advertLists = regions.advertLists.get( 0 );
 //			HashMap< String, String > advert = Utils.initAdvert( 1, advertLists.advertId, advertLists.playerId );
@@ -85,6 +94,15 @@ public class NewRecommendCarouselsSection extends StatelessSection {
 		this.regions = regions;
 	}
 
+	public interface OnBannerItemClickListener {
+		void onBannerItemClick( View v, RegionBodyContent bodyContent );
+	}
+
+	private OnBannerItemClickListener mOnBannerItemClickListener;
+
+	public void setOnItemClickListener( OnBannerItemClickListener onBannerItemClickListener ) {
+		mOnBannerItemClickListener = onBannerItemClickListener;
+	}
 
 	static class CarouselsViewHolder extends RecyclerView.ViewHolder {
 		public ImageView ad;

@@ -121,7 +121,7 @@ public class DebugActivity extends AbsLifecycleActivity implements FragmentManag
 			findPreference( getString( R.string.pref_key_switch_environment ) ).setOnPreferenceClickListener( new Preference.OnPreferenceClickListener() {
 				@Override
 				public boolean onPreferenceClick( Preference preference ) {
-					CC.obtainBuilder( "ComponentDebug" ).setContext( mActivity ).setActionName( "toEnvironmentSwitchActivity" ).build().call();
+					CC.obtainBuilder( "ComponentDebug" ).setContext( mActivity ).setActionName( "EnvironmentSwitchActivity" ).build().call();
 					return false;
 				}
 			} );

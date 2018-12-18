@@ -81,7 +81,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 	/**
 	 *获取布局文件
 	 */
-	public abstract int getLayoutId();
+	protected abstract int getLayoutId();
 
 	/**
 	 *	初始化view

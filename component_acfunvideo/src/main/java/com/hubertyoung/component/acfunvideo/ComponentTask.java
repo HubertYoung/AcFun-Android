@@ -8,6 +8,8 @@ import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
 import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.component.acfunvideo.bangumidetail.activity.BangumiDetailActivity;
 import com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment;
 import com.hubertyoung.component.acfunvideo.index.fragment.NewRecommendFragment;
 
@@ -36,33 +38,45 @@ public class ComponentTask implements IComponent {
 		Context context = cc.getContext();
 		Intent intent;
 		switch ( cc.getActionName() ) {
-			case "getHomePageFragment":
+			case "HomePageFragment":
 				if ( mHomePageFragment == null ) {
 					mHomePageFragment = HomePageFragment.newInstance( "", "" );
 				}
 				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", mHomePageFragment ) );
 				break;
-			case "getNewRecommendFragment":
+			case "NewRecommendFragment":
 				String channelId = cc.getParamItem( "channelId" );
 				if ( newRecommendFragments.get( channelId ) == null ) {
 					newRecommendFragments.put( channelId, NewRecommendFragment.newInstance( channelId, "" ) );
 				}
 				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", newRecommendFragments.get( channelId ) ) );
 				break;
-//            case "toIssueActivity":
-//                intent = new Intent(context, IssueActivity.class);
-//                intent.putExtra("callId", cc.getCallId());
-//                if (!(context instanceof Activity )) {
-//                    //调用方没有设置context或app间组件跳转，context为application
-//                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
-//                }
-//                intent.putExtra(ISSUE_TYPE, (int) cc.getParamItem("ISSUE_TYPE"));
-//                intent.putExtra("toTeamsName", (String ) cc.getParamItem("toTeamsName"));
-//                intent.putExtra("toTeamsId", (String ) cc.getParamItem("toTeamsId"));
-//
-//                context.startActivity(intent);
-//                CC.sendCCResult(cc.getCallId(), CCResult.success());
-//                break;
+//			case "VideoDetailActivity":
+//				int contentId = cc.getParamItem( VideoDetailActivity.contentId );
+//				String reqId = cc.getParamItem( VideoDetailActivity.reqId );
+//				String groupId = cc.getParamItem( VideoDetailActivity.groupId );
+//				String from = cc.getParamItem( VideoDetailActivity.from );
+//				VideoDetailActivity.launch( context, contentId, reqId, groupId, from );
+//				CC.sendCCResult( cc.getCallId(), CCResult.success() );
+//				break;
+			case "Activity":
+				int actionId = cc.getParamItem( "actionId" );
+				String contentId = cc.getParamItem( "contentId" );
+				if ( actionId == 11 ) {
+					contentId = "-1";
+				}
+
+				if ( actionId == 2 ) {
+					BangumiDetailActivity.launch( context, contentId );
+				} else {
+					ToastUtil.showWarning( "未处理" );
+//					VideoDetailActivity.launch( context, contentId, reqId, groupId, from );
+				}
+				CC.sendCCResult( cc.getCallId(), CCResult.success() );
+				break;
+			default:
+				CC.sendCCResult( cc.getCallId(), CCResult.error( "unsupported action:" + cc.getActionName() ) );
+				break;
 		}
 		return false;
 	}

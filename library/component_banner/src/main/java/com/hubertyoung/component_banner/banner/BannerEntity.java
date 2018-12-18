@@ -10,7 +10,7 @@ package com.hubertyoung.component_banner.banner;
 public class BannerEntity {
 	public String Pic;
 	public String title;
-	public String dataJson;
+	public Object data;
 	public String url;
 	public String videoUrl;
 	public int type;//0=图片or1=视频
@@ -22,18 +22,17 @@ public class BannerEntity {
 		this.url = url;
 	}
 
-	public BannerEntity( String url, String title, String Pic, String dataJson, int type ) {
+	public BannerEntity( String url, String title, String Pic, Object data, int type ) {
 
 		this.url = url;
 		this.title = title;
 		this.Pic = Pic;
-		this.dataJson = dataJson;
+		this.data = data;
 		this.type = type;
 	}
 
 	@Override
 	public String toString() {
-		return "BannerEntity{" + "Pic='" + Pic + '\'' + ", title='" + title + '\'' + ", dataJson='" + dataJson + '\'' + ", url='" + url + '\'' + ", " +
-				"videoUrl='" + videoUrl + '\'' + ", type=" + type + '}';
+		return "BannerEntity{" + "Pic='" + Pic + '\'' + ", title='" + title + '\'' + ", data=" + data + ", url='" + url + '\'' + ", videoUrl='" + videoUrl + '\'' + ", type=" + type + '}';
 	}
 }

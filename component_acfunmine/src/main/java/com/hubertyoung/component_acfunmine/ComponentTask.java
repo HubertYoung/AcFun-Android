@@ -33,13 +33,13 @@ public class ComponentTask implements IComponent {
 		Context context = cc.getContext();
 		Intent intent;
 		switch ( cc.getActionName() ) {
-			case "getMineRootFragment":
+			case "MineFragment":
 				if ( mMineFragment == null ) {
 					mMineFragment = MineFragment.newInstance( "", "" );
 				}
 				CC.sendCCResult( cc.getCallId(), CCResult.success( "fragment", mMineFragment ) );
 				break;
-			case "startLoginActivity":
+			case "SignInActivity":
 				SignInActivity.launch( context );
 				CC.sendCCResult( cc.getCallId(), CCResult.success() );
 				break;
