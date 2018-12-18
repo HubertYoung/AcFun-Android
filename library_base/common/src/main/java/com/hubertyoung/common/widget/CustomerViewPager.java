@@ -1,6 +1,7 @@
 package com.hubertyoung.common.widget;
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.MotionEvent;
@@ -8,8 +9,6 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
-import android.support.v4.view.ViewPager;
 
 /**
  * @author:Yang

@@ -2,9 +2,10 @@ package com.hubertyoung.component.acfunvideo.api;
 
 
 import com.hubertyoung.common.entity.RegionBodyContent;
-import com.hubertyoung.common.net.response.BaseResponse;
-import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.common.entity.Regions;
+import com.hubertyoung.common.net.response.BaseResponse;
+import com.hubertyoung.component.acfunvideo.entity.BangumiDetailBeanRaw;
+import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 
 import java.util.HashMap;
 import java.util.List;
@@ -58,14 +59,15 @@ public interface ApiHomeService {
 	@GET( "v3/channels/channelOperate" )
 	Flowable< BaseResponse< ChannelOperate > > requestChannelOperate( @QueryMap Map< String, String > map );
 
-//	/**
-//	 * 商品详情
-//	 *
-//	 * @param map
-//	 * @return
-//	 */
-//	@GET( "goods/category" )
-//	Flowable< BaseResponse< BrandDetailEntity > > requestBrandDetail( @QueryMap Map< String, String > map );
+	/**
+	 * 首页加载更多
+	 *
+	 * @param contentId
+	 * @return
+	 */
+	@GET( "v3/bangumis/{contentId}" )
+	Flowable< BaseResponse< BangumiDetailBeanRaw > > requestBangumisDetail( @Path( "contentId" ) String contentId );
+
 //
 //	/**
 //	 * 商品列表

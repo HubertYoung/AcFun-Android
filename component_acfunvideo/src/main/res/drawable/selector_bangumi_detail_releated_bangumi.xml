@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:drawable="@drawable/shape_bg_red_background_50dp_corners" android:state_pressed="true"/>
+    <item android:drawable="@drawable/shape_bg_red_background_50dp_corners" android:state_focused="true"/>
+    <item android:drawable="@drawable/shape_bg_red_background_50dp_corners" android:state_selected="true"/>
+    <item android:drawable="@drawable/shape_bg_white_background_gray_border_50dp_corners"/>
+</selector>

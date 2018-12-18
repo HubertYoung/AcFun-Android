@@ -12,7 +12,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.hubertyoung.component.acfunvideo.bangumidetail.activity.BangumiDetailActivity">
+            android:name="com.hubertyoung.component.acfunvideo.bangumidetail.activity.BangumiDetailActivityNew">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 

@@ -1,6 +1,14 @@
 package com.hubertyoung.component.acfunvideo.bangumidetail.source;
 
+import com.hubertyoung.common.CommonApplication;
+import com.hubertyoung.common.api.ApiImpl;
+import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
+import com.hubertyoung.common.net.transformer.DefaultTransformer;
+import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
+import com.hubertyoung.component.acfunvideo.entity.BangumiDetailBeanRaw;
+import com.hubertyoung.component_acfunvideo.BuildConfig;
+import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import io.reactivex.Flowable;
 
@@ -15,14 +23,13 @@ import io.reactivex.Flowable;
 
 public class BangumiDetailRepository extends AbsRepository {
 
-	public Flowable< Object > requestHttp() {
-//		return Api.getDefault( HostType.MY_RESULT )//
-//				.getRetrofitClient()//
-//				.setBaseUrl( EnvironmentSwitcher.getObjectEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )//
-//				.builder( ApiObject.class )//
-//				.requestHttp()//
-//				.compose( new DefaultTransformer() );
-		return null;
+	public Flowable< BangumiDetailBeanRaw > requestBangumisDetail( String contentId ) {
+		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )//
+				.getRetrofitClient()//
+				.setBaseUrl( EnvironmentSwitcher.getAppEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )//
+				.builder( ApiHomeService.class )//
+				.requestBangumisDetail( contentId )//
+				.compose( new DefaultTransformer() );
 	}
 
 }

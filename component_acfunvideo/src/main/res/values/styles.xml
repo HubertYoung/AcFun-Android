@@ -6,15 +6,18 @@
         <attr name="shimmer_auto_start" format="boolean|reference"/>
         <attr name="shimmer_angle" format="integer|reference"/>
     </declare-styleable>
+
     <style name="home_item_title_video_bangumi">
         <item name="android:textSize">@dimen/text_size_home_item_title</item>
         <item name="android:textColor">@color/text_black_color</item>
         <item name="android:maxLines">2</item>
     </style>
+
     <style name="text_style_detail">
         <item name="android:textSize">@dimen/text_detail_size</item>
         <item name="android:textColor">@color/text_deep_gray_color</item>
     </style>
+
     <style name="home_tab">
         <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
         <item name="android:background">@color/them_color</item>
@@ -33,5 +36,51 @@
         <item name="stl_indicatorThickness">3dp</item>
         <item name="stl_indicatorWidth">@dimen/tab_indicator_default_width</item>
         <item name="stl_underlineThickness">0dp</item>
+    </style>
+
+    <style name="text_style_bangumi_detail_top_line2">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="text_style_bangumi_detail_top_line2_with_margin">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="text_style_bangumi_detail_top_line3">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">5dp</item>
+    </style>
+
+    <style name="text_style_bangumi_detail_top_line3_empty">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="text_style_related_bangumi">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/text_black_color</item>
+        <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
+        <item name="android:background">@drawable/selector_bangumi_detail_releated_bangumi</item>
+        <item name="android:paddingTop">9dp</item>
+        <item name="android:paddingBottom">9dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:maxLines">1</item>
     </style>
 </resources>

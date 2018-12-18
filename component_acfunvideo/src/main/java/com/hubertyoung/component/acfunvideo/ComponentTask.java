@@ -9,7 +9,7 @@ import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
 import com.hubertyoung.common.base.BaseFragment;
 import com.hubertyoung.common.utils.display.ToastUtil;
-import com.hubertyoung.component.acfunvideo.bangumidetail.activity.BangumiDetailActivity;
+import com.hubertyoung.component.acfunvideo.bangumidetail.activity.BangumiDetailActivityNew;
 import com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment;
 import com.hubertyoung.component.acfunvideo.index.fragment.NewRecommendFragment;
 
@@ -67,7 +67,7 @@ public class ComponentTask implements IComponent {
 				}
 
 				if ( actionId == 2 ) {
-					BangumiDetailActivity.launch( context, contentId );
+					BangumiDetailActivityNew.launch( context, contentId );
 				} else {
 					ToastUtil.showWarning( "未处理" );
 //					VideoDetailActivity.launch( context, contentId, reqId, groupId, from );
