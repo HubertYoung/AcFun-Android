@@ -42,6 +42,7 @@ public class BangumiDetailFragment extends AbsLifecycleFragment {
 	private NetVideo mNetVideo;
 	private String mBangumiId;
 	private BangumiDetailBean mBangumiDetailBean;
+	private BangumiDetailVideoRecyclerAdapter mBangumiDetailVideoRecyclerAdapter;
 
 	public static BangumiDetailFragment newInstance( ArrayList< BangumiDetailBean.VideoGroupTitleBean > videoGroupTitleBeanList, ArrayList< NetVideo > netVideoList, String mContentId,
 													 BangumiDetailBean bangumiDetailBean ) {
@@ -71,6 +72,16 @@ public class BangumiDetailFragment extends AbsLifecycleFragment {
 		initData();
 		showUi();
 		initRecyclerView();
+		initAction();
+	}
+
+	private void initAction() {
+		mBangumiDetailVideoRecyclerAdapter.setOnItemClickListener( new BangumiDetailVideoRecyclerAdapter.OnItemClickListener() {
+			@Override
+			public void onItemClick( View v, NetVideo netVideo ) {
+
+			}
+		} );
 	}
 
 	public void onResume() {
@@ -148,12 +159,12 @@ public class BangumiDetailFragment extends AbsLifecycleFragment {
 	}
 
 	private void initRecyclerView() {
-		BangumiDetailVideoRecyclerAdapter bangumiDetailVideoRecyclerAdapter = new BangumiDetailVideoRecyclerAdapter( activity );
-		bangumiDetailVideoRecyclerAdapter.setData( this.mNetVideoList, this.mBangumiDetailBean );
+		mBangumiDetailVideoRecyclerAdapter = new BangumiDetailVideoRecyclerAdapter( activity );
+		mBangumiDetailVideoRecyclerAdapter.setData( this.mNetVideoList, this.mBangumiDetailBean );
 		GridLayoutManager gridLayoutManager = new GridLayoutManager( getActivity(), 2 );
 		gridLayoutManager.setOrientation( GridLayoutManager.VERTICAL );
 		this.mRecyclerView.setLayoutManager( gridLayoutManager );
-		this.mRecyclerView.setAdapter( bangumiDetailVideoRecyclerAdapter );
+		this.mRecyclerView.setAdapter( mBangumiDetailVideoRecyclerAdapter );
 	}
 
 	@Override

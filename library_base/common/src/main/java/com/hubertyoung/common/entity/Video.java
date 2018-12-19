@@ -2,6 +2,7 @@ package com.hubertyoung.common.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
-public class Video {
+public class Video implements Serializable {
 	public static final String IQIYI = "iqiyi";
 	public static final String LETV = "letv";
 	public static final String LETV2 = "letv2";

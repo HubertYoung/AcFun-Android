@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hubertyoung.common.entity.NetVideo;
-import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.entity.BangumiDetailBean;
 import com.hubertyoung.component_acfunvideo.R;
 
@@ -72,10 +71,9 @@ public class BangumiDetailVideoRecyclerAdapter extends RecyclerView.Adapter< Ban
 			viewHolder.mContentText.setText( netVideo.mTitle );
 			viewHolder.mContentText.setOnClickListener( new OnClickListener() {
 				public void onClick( View view ) {
-					ToastUtil.showWarning( netVideo.toString() );
-//                    if (BangumiDetailVideoRecyclerAdapter.this.b instanceof BangumiDetailActivityNew ) {
-//                        BangumiDetailHelper.a(BangumiDetailVideoRecyclerAdapter.this.b, BangumiDetailVideoRecyclerAdapter.this.d.id, netVideo, BangumiDetailVideoRecyclerAdapter.this.d);
-//                    }
+					if(mOnItemClickListener != null) {
+						mOnItemClickListener.onItemClick( view,netVideo );
+					}
 				}
 			} );
 		}
@@ -84,5 +82,12 @@ public class BangumiDetailVideoRecyclerAdapter extends RecyclerView.Adapter< Ban
 	public int getItemCount() {
 		return mNetVideoList == null ? 0 : mNetVideoList.size();
 	}
+	public interface OnItemClickListener {
+		void onItemClick( View v, NetVideo netVideo );
+	}
+	private OnItemClickListener mOnItemClickListener;
 
+	public void setOnItemClickListener( OnItemClickListener onItemClickListener ) {
+		mOnItemClickListener = onItemClickListener;
+	}
 }
