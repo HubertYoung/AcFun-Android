@@ -9,9 +9,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.stetho.common.LogUtil;
 import com.hubertyoung.base.bean.EnvironmentBean;
 import com.hubertyoung.base.bean.ModuleBean;
@@ -19,22 +23,30 @@ import com.hubertyoung.base.listener.OnEnvironmentChangeListener;
 import com.hubertyoung.baseplatform.AuthorizeSDK;
 import com.hubertyoung.baseplatform.ShareSDK;
 import com.hubertyoung.common.BuildConfig;
+import com.hubertyoung.common.R;
 import com.hubertyoung.common.baserx.RxManager;
+import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
+import com.hubertyoung.common.utils.LoadingThemeUtil;
 import com.hubertyoung.common.utils.activitymanager.AppActivityManager;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.utils.os.AppUtils;
+import com.hubertyoung.component_skeleton.skeleton.ViewReplacer;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 
 
 public abstract class BaseActivity extends AppCompatActivity implements OnEnvironmentChangeListener {
-	public String TAG = this.getClass().getSimpleName();
+	protected String TAG = this.getClass().getSimpleName();
 	private static final String SAVED_STATE_STATUS_BAR_TRANSLUCENT = "saved_state_status_bar_translucent";
-	public Context mContext;
-	public RxManager mRxManager;
+	protected Context mContext;
+	protected RxManager mRxManager;
 	private boolean isConfigChange = false;
 	private boolean statusBarTranslucent;
+
+	protected ViewReplacer mViewReplacer;
+	protected View mLoadingLayout;
+	protected View mErrorLayout;
 
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
@@ -63,13 +75,65 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 			initView( savedInstanceState );
 			//初始化ToolBar
 			initToolBar();
-
+			if ( isNeedRefresh() ){
+				if ( refreshContentView() == null ){
+					throw new RuntimeException( "If isNeedRefresh is true,Then refreshContentView is not null" );
+				}
+				mViewReplacer = new ViewReplacer( refreshContentView() );
+				showLoadingLayout();
+			}
 			EnvironmentSwitcher.addOnEnvironmentChangeListener( this );
 		} else {
 			LogUtil.e( "--->bindLayout() return 0" );
 		}
 	}
 
+	private View refreshContentView() {
+		return null;
+	}
+
+	private boolean isNeedRefresh() {
+		return false;
+	}
+
+	private void showLoadingLayout() {
+		if ( mViewReplacer != null ) {
+			if ( mLoadingLayout == null ) {
+				mLoadingLayout = LayoutInflater.from( mContext ).inflate( R.layout.widget_loading_holder, null );
+			}
+			mViewReplacer.replace( mLoadingLayout );
+
+			if ( mViewReplacer.getCurrentView() != null ) {
+				mViewReplacer.getCurrentView().setVisibility( View.VISIBLE );
+				SimpleDraweeView simpleDraweeView = mViewReplacer.getCurrentView().findViewById( R.id.widget_loading_holder_gif );
+				simpleDraweeView.getHierarchy().setPlaceholderImage( LoadingThemeUtil.getPageLoadingImages() );
+				ImageLoaderUtil.loadNetImage( LoadingThemeUtil.getPageLoadingFileImages(), simpleDraweeView );
+			}
+		}
+	}
+
+	protected void showErrorLayout() {
+		if ( mViewReplacer != null ) {
+			if ( mErrorLayout == null ) {
+				mErrorLayout = LayoutInflater.from( this ).inflate( R.layout.widget_error_holder, null );
+			}
+			mViewReplacer.replace( mErrorLayout );
+			if ( mViewReplacer.getCurrentView() != null ) {
+				mViewReplacer.getCurrentView().setVisibility( View.VISIBLE );
+				TextView refreshClick = mViewReplacer.getCurrentView().findViewById( R.id.refresh_click );
+				refreshClick.setOnClickListener( v -> {
+					loadData();
+				} );
+			}
+		}else {
+			stopLoading();
+		}
+	}
+	protected void stopLoading() {
+		if ( mViewReplacer != null ) {
+			mViewReplacer.restore();
+		}
+	}
 	/**
 	 * 设置layout前配置
 	 */

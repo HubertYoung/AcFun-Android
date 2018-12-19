@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:aapt="http://schemas.android.com/aapt"
+          xmlns:app="http://schemas.android.com/apk/res-auto"
+          android:id="@+id/tv_content"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_margin="5dp"
+          android:background="@drawable/shape_bg_gray_background_5dp_corners"
+          android:ellipsize="end"
+          android:gravity="left|center_vertical|center_horizontal|center|start"
+          android:maxLines="1"
+          android:padding="10dp"
+          android:textColor="@color/text_black_color"
+          android:textSize="13sp"/>

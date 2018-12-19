@@ -91,37 +91,6 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 		return LiveBus.getDefault().subscribe( eventKey, tag, tClass );
 	}
 
-
-	//	@Override
-//	protected void onStateRefresh() {
-//		showLoading();
-//	}
-//
-//
-//	/**
-//	 * 获取网络数据
-//	 */
-//	protected void getRemoteData() {
-//
-//	}
-//
-//	protected void showError( Class< ? extends BaseStateControl > stateView, Object tag ) {
-//		loadManager.showStateView( stateView, tag );
-//	}
-//
-//	protected void showError( Class< ? extends BaseStateControl > stateView ) {
-//		showError( stateView, null );
-//	}
-//
-//	protected void showSuccess() {
-//		loadManager.showSuccess();
-//	}
-//
-//	protected void showLoading() {
-//		loadManager.showStateView( LoadingState.class );
-//	}
-//
-//
 	protected Observer observer = new Observer< String >() {
 		@Override
 		public void onChanged( @Nullable String state ) {

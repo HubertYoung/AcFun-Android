@@ -41,10 +41,6 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 
 	}
 
-	protected void stopLoading() {
-
-	}
-
 	protected void showLoading( String title ) {
 
 	}
@@ -70,6 +66,9 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 //    protected void showLoading() {
 //        loadManager.showStateView(LoadingState.class);
 //    }
+	/**
+	 * show error layout
+	 */
 
 
 	protected Observer observer = new Observer< String >() {
@@ -77,7 +76,7 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 		public void onChanged( @Nullable String state ) {
 			if ( !TextUtils.isEmpty( state ) ) {
 				if ( StateConstants.ERROR_STATE.equals( state ) ) {
-
+					showErrorLayout();
 				} else if ( StateConstants.NET_WORK_STATE.equals( state ) ) {
 				} else if ( StateConstants.LOADING_STATE.equals( state ) ) {
 					showLoading( "" );

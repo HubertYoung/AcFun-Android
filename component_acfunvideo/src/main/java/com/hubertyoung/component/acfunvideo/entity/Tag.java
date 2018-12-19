@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tag implements Serializable {
+    private static final long serialVersionUID = 1189713892367375982L;
     public String cover;
     public int id;
     public String name;

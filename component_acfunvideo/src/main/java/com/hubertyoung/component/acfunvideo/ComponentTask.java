@@ -7,7 +7,7 @@ import android.support.v4.util.ArrayMap;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.bangumidetail.activity.BangumiDetailActivityNew;
 import com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment;
@@ -26,7 +26,7 @@ import com.hubertyoung.component.acfunvideo.index.fragment.NewRecommendFragment;
 public class ComponentTask implements IComponent {
 
 	private HomePageFragment mHomePageFragment;
-	private ArrayMap< String, BaseFragment > newRecommendFragments = new ArrayMap<>( 1 );
+	private ArrayMap< String, AbsLifecycleFragment > newRecommendFragments = new ArrayMap<>( 1 );
 
 	@Override
 	public String getName() {

@@ -74,11 +74,11 @@ public class NewRecommendBannersSection extends StatelessSection {
 					public void onClick( View view ) {
 						if ( bodyContent != null ) {
 							if ( bodyContent.ad == 1 ) {
-//							SensorsAnalyticsUtil.a(HomeListAdapter.this.aq, regionBodyContent.title, HomeListAdapter.this.ar);
+//							SensorsAnalyticsUtil.bindView(HomeListAdapter.this.aq, regionBodyContent.title, HomeListAdapter.this.ar);
 							}
-//						SensorsAnalyticsUtil.a(regionBodyContent.title, regionBodyContent.actionId);
+//						SensorsAnalyticsUtil.bindView(regionBodyContent.title, regionBodyContent.actionId);
 						}
-//					HomeListAdapter.this.a(KanasConstants.bP, i2, regionBodyContent.ad == 1, regionBodyContent.title, regionBodyContent.actionId, regionBodyContent.contentId);
+//					HomeListAdapter.this.bindView(KanasConstants.bP, i2, regionBodyContent.ad == 1, regionBodyContent.title, regionBodyContent.actionId, regionBodyContent.contentId);
 //					HomeListAdapter.this.f(regionBodyContent);
 						mOnItemClickListener.onSingleBannerClick( view,bodyContent );
 					}

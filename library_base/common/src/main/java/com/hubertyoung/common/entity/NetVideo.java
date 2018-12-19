@@ -2,6 +2,8 @@ package com.hubertyoung.common.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * <br>
  * function:
@@ -12,13 +14,14 @@ import com.google.gson.annotations.SerializedName;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
-public class NetVideo {
+public class NetVideo implements Serializable {
 	public static final int ALLLEVEL = -1;
 	public static final int CARD_LEVEL = 2;
 	public static final int MEDIA_TYPE_NATIVE_PLAYER = 1;
 	public static final int MEDIA_TYPE_WEB_PLAYER = 3;
 	public static final int REGIESTLEVEL = 0;
 	public static final int VIPLEVEL = 1;
+	private static final long serialVersionUID = -633143580882833806L;
 	@SerializedName("allowDanmaku")
 //	@Column(name = "allowDanmaku")
 	public int allowDanmaku;

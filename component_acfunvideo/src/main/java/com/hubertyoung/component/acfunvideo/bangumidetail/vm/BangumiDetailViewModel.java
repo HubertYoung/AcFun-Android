@@ -2,13 +2,13 @@ package com.hubertyoung.component.acfunvideo.bangumidetail.vm;
 
 import android.app.Application;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.common.baserx.RxSubscriber;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.bangumidetail.activity.BangumiDetailActivityNew;
 import com.hubertyoung.component.acfunvideo.bangumidetail.source.BangumiDetailRepository;
+import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.entity.BangumiDetailBeanRaw;
 
 
@@ -30,18 +30,17 @@ public class BangumiDetailViewModel extends AbsViewModel< BangumiDetailRepositor
 		addDisposable( mRepository.requestBangumisDetail(contentId).subscribeWith( new RxSubscriber< BangumiDetailBeanRaw >() {
 			@Override
 			protected void showLoading() {
-//				showDialogLoading( "" );
+				showLoadingLayout( BangumiDetailActivityNew.class.getSimpleName(), "" );
 			}
 
 			@Override
 			protected void finishLoading() {
-				stopLoading("");
+				stopLoading( BangumiDetailActivityNew.class.getSimpleName() );
 			}
 
 			@Override
 			public void onSuccess( BangumiDetailBeanRaw bangumiDetailBean ) {
-				Log.e( "TAG", "bangumiDetailBean" );
-				//sendData( DynamicConstants.EVENT_KEY_DYNAMIC_ALL_CHANNEL, o );
+				sendData( VideoConstants.EVENT_KEY_BANGUMI_DETAIL_INFO, bangumiDetailBean );
 			}
 
 			@Override

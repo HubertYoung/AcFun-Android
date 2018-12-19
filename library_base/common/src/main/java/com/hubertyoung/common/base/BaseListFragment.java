@@ -1,6 +1,9 @@
 package com.hubertyoung.common.base;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -19,13 +22,9 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.RecyclerView;
-
 /**
  */
-public abstract class BaseListFragment< T extends AbsViewModel > extends AbsLifecycleFragment< T > {
+public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLifecycleFragment< VM > {
 
     private RecyclerView mRecyclerView;
 

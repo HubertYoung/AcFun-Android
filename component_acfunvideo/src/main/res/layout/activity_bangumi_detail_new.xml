@@ -284,11 +284,11 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="10dp"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    <include layout="@layout/toolbar_common_translation"/>
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>-->
 </FrameLayout>

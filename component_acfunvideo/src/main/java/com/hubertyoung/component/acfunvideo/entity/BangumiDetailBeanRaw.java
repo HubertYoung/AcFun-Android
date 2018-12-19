@@ -26,7 +26,7 @@ public class BangumiDetailBeanRaw implements Serializable {
 	public int platformControl;
 	public String shareUrl;
 	public String stowCount;
-	public List< Tag > tags;
+	public ArrayList< Tag > tags;
 	public String targetUrl;
 	public String title;
 	public String updateContent;
@@ -67,7 +67,7 @@ public class BangumiDetailBeanRaw implements Serializable {
 
 	public static class VideoGroupContentListBean implements Serializable {
 		public String id;
-		public List< NetVideo > list;
+		public ArrayList< NetVideo > list;
 	}
 
 	public BangumiDetailBean convertRawToBangumiDetailBean() {
@@ -100,19 +100,21 @@ public class BangumiDetailBeanRaw implements Serializable {
 		return bangumiDetailBean;
 	}
 
-	private List< List< NetVideo > > convertToVideoGroupContent( List< VideoGroupContentListBean > list ) {
-		List< List< NetVideo > > arrayList = new ArrayList();
+	private ArrayList< BangumiDetailBean.VideoGroupContentBean > convertToVideoGroupContent( List< VideoGroupContentListBean > list ) {
+		ArrayList< BangumiDetailBean.VideoGroupContentBean > arrayList = new ArrayList();
 		if ( list != null && !list.isEmpty() ) {
 			int size = list.size();
 			for (int i = 0; i < size; i++) {
 				VideoGroupContentListBean videoGroupContentListBean = list.get( i );
 				if ( videoGroupContentListBean != null ) {
-					List< NetVideo > videoList = videoGroupContentListBean.list;
+					ArrayList< NetVideo > videoList = videoGroupContentListBean.list;
 					ArrayList arrayList2 = new ArrayList();
 					if ( videoList == null || videoList.isEmpty() ) {
 						videoList = arrayList2;
 					}
-					arrayList.add( videoList );
+					BangumiDetailBean.VideoGroupContentBean videoGroupContentBean = new BangumiDetailBean.VideoGroupContentBean();
+					videoGroupContentBean.list = videoList;
+					arrayList.add( videoGroupContentBean );
 				}
 			}
 		}
@@ -125,13 +127,13 @@ public class BangumiDetailBeanRaw implements Serializable {
 		return shareBean;
 	}
 
-	private List< BangumiDetailBean.VideoGroupTitleBean > convertToVideoGroupTitles( List< GroupsBean > list ) {
-		List arrayList = new ArrayList();
+	private ArrayList< BangumiDetailBean.VideoGroupTitleBean > convertToVideoGroupTitles( List< GroupsBean > list ) {
+		ArrayList< BangumiDetailBean.VideoGroupTitleBean > arrayList = new ArrayList();
 		if ( list != null && !list.isEmpty() ) {
 			int size = list.size();
 			for (int i = 0; i < size; i++) {
 				BangumiDetailBean.VideoGroupTitleBean videoGroupTitleBean = new BangumiDetailBean.VideoGroupTitleBean();
-				GroupsBean groupsBean = ( GroupsBean ) list.get( i );
+				GroupsBean groupsBean = list.get( i );
 				if ( groupsBean != null ) {
 					videoGroupTitleBean.id = String.valueOf( groupsBean.id );
 					videoGroupTitleBean.name = String.valueOf( groupsBean.name );

@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.hubertyoung.common.baserx.RxManager;
 
 
-public abstract class BaseFragment extends Fragment {
+abstract class BaseFragment extends Fragment {
 	public String TAG = this.getClass().getSimpleName();
 	protected ViewGroup rootView;
 	public RxManager mRxManager;
