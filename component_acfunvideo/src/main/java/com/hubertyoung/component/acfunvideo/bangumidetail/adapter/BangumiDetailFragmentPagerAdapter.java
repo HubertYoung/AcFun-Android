@@ -29,6 +29,7 @@ public class BangumiDetailFragmentPagerAdapter extends FragmentStatePagerAdapter
 		this.mGroupTitleBeanList = mGroupTitleBeanList;
 		this.mNetVideoList = mNetVideoList;
 		this.mBangumiDetailBean = mBangumiDetailBean;
+		notifyDataSetChanged();
 	}
 
 	public BangumiDetailFragmentPagerAdapter( FragmentManager fragmentManager ) {

@@ -326,7 +326,7 @@ public class BangumiDetailActivityNew extends AbsLifecycleActivity< BangumiDetai
 //				tv.acfun.core.utils.Utils.bindView( BangumiDetailActivityNew.ad_(), share, null );
 			}
 		} );
-		if ( list == null || list.isEmpty() ) {
+		if ( list == null || list.size() <= 1 ) {
 			mRelatedBangumisGroup.setVisibility( View.GONE );
 			return;
 		}
