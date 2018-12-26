@@ -12,6 +12,7 @@ import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component.acfunvideo.bangumidetail.activity.BangumiDetailActivityNew;
 import com.hubertyoung.component.acfunvideo.index.fragment.HomePageFragment;
 import com.hubertyoung.component.acfunvideo.index.fragment.NewRecommendFragment;
+import com.hubertyoung.component.acfunvideo.videodetail.activity.VideoDetailActivity;
 
 /**
  * <br>
@@ -60,13 +61,24 @@ public class ComponentTask implements IComponent {
 //				CC.sendCCResult( cc.getCallId(), CCResult.success() );
 //				break;
 			case "Activity":
+//					if (regionBodyContent.actionId == 1) {
+//						IntentHelper.a(this.al, Integer.valueOf(regionBodyContent.contentId).intValue(), "recommend", regionBodyContent.reqId, regionBodyContent.groupId);
+//					} else if (regionBodyContent.actionId == 10) {
+//						IntentHelper.b(this.al, Integer.valueOf(regionBodyContent.contentId).intValue(), "recommend", regionBodyContent.reqId, regionBodyContent.groupId);
+//					} else {
+//						tv.acfun.core.utils.Utils.a(this.al, regionBodyContent.actionId, regionBodyContent.contentId, null);
+//					}
 				int actionId = cc.getParamItem( "actionId" );
 				String contentId = cc.getParamItem( "contentId" );
 				if ( actionId == 11 ) {
 					contentId = "-1";
 				}
-
-				if ( actionId == 2 ) {
+				if ( actionId == 1 ) {
+					String reqId = cc.getParamItem( "reqId" );
+					String groupId = cc.getParamItem( "groupId" );
+//					IntentHelper.a(this.al, Integer.valueOf(regionBodyContent.contentId).intValue(), "recommend", regionBodyContent.reqId, regionBodyContent.groupId);
+					VideoDetailActivity.launch( context, Integer.valueOf( contentId ).intValue(), "recommend", reqId, groupId );
+				} else if ( actionId == 2 ) {
 					BangumiDetailActivityNew.launch( context, contentId );
 				} else {
 					ToastUtil.showWarning( "未处理" );

@@ -408,8 +408,18 @@
     <string name="commen_channel_music">音乐</string>
     <string name="commen_channel_sports">体育</string>
     <string name="commen_channel_tech">科技</string>
+    <string name="comment_count_text">共%s条</string>
+    <string name="comment_delete_dialog_msg_text">评论删除就回不来了哟，是否删除？</string>
+    <string name="comment_detail_text">评论详情</string>
     <string name="comment_dialog">只有经过历练的人，才能最终成为正式的马猴烧酒，少年，准备好创造奇迹了么？</string>
-    <string name="comment_is_unknow">该评论已删除</string>
+    <string name="comment_edit_view_hint_text">写评论吐槽</string>
+    <string name="comment_hot_text">热门评论</string>
+    <string name="comment_send_error_face_text">不可以发纯表情呢~</string>
+    <string name="comment_send_error_null_text">不要发空字符哟~</string>
+    <string name="comment_sub_detail_reply_count_text">共%s条回复</string>
+    <string name="comment_sub_reply_count_text">共%s条回复&gt;&gt;</string>
+    <string name="comment_sub_reply_text">%s 回复 %s：</string>
+
     <string name="commit">提交</string>
     <string name="common_all_content">全部</string>
     <string name="common_article">文章</string>

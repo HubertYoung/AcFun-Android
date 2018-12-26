@@ -251,6 +251,31 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 				getAdapter().addSection( mNewBangumiSection );
 			}
 			mNewBangumiSection.setRegions( regions );
+			mNewBangumiSection.setOnItemClickListener( new NewRecommendVideosSection.OnItemClickListener() {
+				@Override
+				public void onClickRecommendBangumiItem( View v, RegionBodyContent bodyContentsBean ) {
+//					if (bodyContentsBean.actionId == 11) {
+//						bodyContentsBean.contentId = "-1";
+//					}
+//					if (regionBodyContent.actionId == 1) {
+//						IntentHelper.a(this.al, Integer.valueOf(regionBodyContent.contentId).intValue(), "recommend", regionBodyContent.reqId, regionBodyContent.groupId);
+//					} else if (regionBodyContent.actionId == 10) {
+//						IntentHelper.b(this.al, Integer.valueOf(regionBodyContent.contentId).intValue(), "recommend", regionBodyContent.reqId, regionBodyContent.groupId);
+//					} else {
+//						tv.acfun.core.utils.Utils.a(this.al, regionBodyContent.actionId, regionBodyContent.contentId, null);
+//					}
+					HashMap< String, Object > map = new HashMap<>();
+					map.put( "actionId", bodyContentsBean.actionId );
+					map.put( "contentId", bodyContentsBean.contentId );
+					map.put( "reqId", bodyContentsBean.reqId );
+					map.put( "groupId", bodyContentsBean.groupId );
+					CC.obtainBuilder( "ComponentAcFunIndex" )//
+							.setContext( activity ).setParams( map )//
+							.setActionName( "Activity" )//
+							.build()//
+							.call();
+				}
+			} );
 		}
 	}
 

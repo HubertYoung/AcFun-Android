@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/ll_video_detail_tab"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/video_detail_tab"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        app:stl_defaultTabTextColor="@color/selector_nav_bar"
+        app:stl_defaultTabTextSize="15sp"
+        app:stl_distributeEvenly="true"
+        app:stl_dividerColor="@android:color/transparent"
+        app:stl_dividerThickness="0dp"
+        app:stl_indicatorColor="@color/them_color"
+        app:stl_indicatorCornerRadius="2dp"
+        app:stl_indicatorInterpolation="linear"
+        app:stl_indicatorThickness="3dp"
+        app:stl_indicatorWidth="@dimen/tab_indicator_default_width"
+        app:stl_indicatorWithoutPadding="true"
+        app:stl_underlineColor="@color/transparent"
+        app:stl_underlineThickness="0dp"/>
+
+    <View
+        android:id="@+id/v_divider"
+        style="@style/divider"/>
+</LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#fafafa"
+              android:orientation="horizontal">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/comment_video_item_view_uploader_avatar"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="8dp"
+        app:failureImage="@mipmap/ic_slide_menu_avatar_no_login"
+        app:placeholderImage="@color/background_gray_color"
+        app:roundAsCircle="true"
+        app:roundingBorderColor="@color/divider"/>
+
+    <TextView
+        android:id="@+id/video_detail_comment_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/shape_back_bg"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="10dp"
+        android:text="@string/comment_edit_view_hint_text"
+        android:textColor="@color/text_gray2_color"
+        android:textSize="14sp"/>
+
+    <RelativeLayout
+        android:id="@+id/video_detail_comment_bottom_comment"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right|center_vertical|center_horizontal|center"
+        android:layout_marginRight="5dp">
+
+        <ImageView
+            android:id="@+id/video_detail_comment_bottom_number_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_comment_number"/>
+
+        <TextView
+            android:id="@+id/video_detail_comment_bottom_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_toRightOf="@+id/video_detail_comment_bottom_number_img"
+            android:background="@drawable/shape_bg_red_round"
+            android:gravity="center"
+            android:minWidth="20dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="1dp"
+            android:paddingRight="2dp"
+            android:paddingBottom="1dp"
+            android:textColor="@color/white"
+            android:textSize="7sp"/>
+    </RelativeLayout>
+</LinearLayout>

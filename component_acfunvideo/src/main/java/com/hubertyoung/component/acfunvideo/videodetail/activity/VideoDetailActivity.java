@@ -41,7 +41,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.activity_video_detail;
+		return R.layout.activity_detail_video;
 	}
 
 	@Override
