@@ -11,7 +11,7 @@ import com.billy.cc.core.component.CC;
 import com.hubertyoung.acfun.R;
 import com.hubertyoung.acfun.ui.fragment.PlaceHolderFragment;
 import com.hubertyoung.common.base.AbsLifecycleActivity;
-import com.hubertyoung.common.base.BaseFragment;
+import com.hubertyoung.common.base.AbsLifecycleFragment;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.log.CommonLog;
 
@@ -31,8 +31,8 @@ public class MainActivity extends AbsLifecycleActivity {
 
 	private FrameLayout mFlContainer;
 	private BottomNavigationBar mBnbMainView;
-	private ArrayList< BaseFragment > mFragments = new ArrayList<>();
-	private BaseFragment mFragment;
+	private ArrayList< AbsLifecycleFragment > mFragments = new ArrayList<>();
+	private AbsLifecycleFragment mFragment;
 	private long keyDownFirstTime;
 
 	@Override
@@ -95,12 +95,12 @@ public class MainActivity extends AbsLifecycleActivity {
 	 * @param actionName    动作名
 	 * @return 对应的fragment
 	 */
-	private BaseFragment getFragment( String componentName, String actionName ) {
+	private AbsLifecycleFragment getFragment( String componentName, String actionName ) {
 		Fragment fragment = CC.obtainBuilder( componentName ).setActionName( actionName ).build().call().getDataItem( "fragment" );
 		if ( fragment == null ) {
 			fragment = PlaceHolderFragment.newInstance( componentName, actionName );
 		}
-		return ( BaseFragment ) fragment;
+		return ( AbsLifecycleFragment ) fragment;
 	}
 
 	private void initAction() {
@@ -133,7 +133,7 @@ public class MainActivity extends AbsLifecycleActivity {
 	}
 
 	private void changeFragment( int index ) {
-		BaseFragment toFragment = getFragment( index );
+		AbsLifecycleFragment toFragment = getFragment( index );
 		switchFragment( mFragment, toFragment );
 	}
 
@@ -144,18 +144,18 @@ public class MainActivity extends AbsLifecycleActivity {
 	 * @param fromFragment 原页面
 	 * @param toFragment   现在点击的页面
 	 */
-	public void switchFragment( BaseFragment fromFragment, BaseFragment toFragment ) {
+	public void switchFragment( AbsLifecycleFragment fromFragment, AbsLifecycleFragment toFragment ) {
 
 		CommonLog.loge( "TAG", fromFragment + "---" + toFragment );
 		if ( mFragment != toFragment ) {//防止多次点击进入
 			mFragment = toFragment;
-			if ( toFragment != null ) {//不是一个页面了
+			if ( toFragment != null ) {//不是一 个页面了
 				FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 				if ( !toFragment.isAdded() ) {
 					//没有添加
 					if ( fromFragment != null ) ft.hide( fromFragment );//隐藏页面
 					//添加显示
-					ft.add( R.id.fl_container, toFragment, toFragment.TAG ).commitAllowingStateLoss();
+					ft.add( mFlContainer.getId(), toFragment, toFragment.TAG ).commitAllowingStateLoss();
 				} else {
 					//如果添加了页面
 					if ( fromFragment != null ) ft.hide( fromFragment ); //隐藏页面
@@ -172,7 +172,7 @@ public class MainActivity extends AbsLifecycleActivity {
 		}
 	}
 
-	private BaseFragment getFragment( int position ) {
+	private AbsLifecycleFragment getFragment( int position ) {
 		if ( mFragments != null && mFragments.size() > 0 ) {
 			return mFragments.get( position );
 		}
