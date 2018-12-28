@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.hubertyoung.common.baserx.LiveBus;
 import com.hubertyoung.common.stateview.StateConstants;
+import com.hubertyoung.common.stateview.StateEntity;
 import com.hubertyoung.common.utils.TUtil;
 import com.hubertyoung.common.utils.log.CommonLog;
 
@@ -42,7 +43,7 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 			mStateEventKey = TAG;
 			mStateEventTag = getStateEventTag();
 			events.add( new StringBuilder( ( String ) mStateEventKey ).append( mStateEventTag ).toString() );
-			LiveBus.getDefault().subscribe( mStateEventKey, mStateEventTag ).observe( this, observer );
+			LiveBus.getDefault().subscribe( mStateEventKey, mStateEventTag, StateEntity.class ).observe( this, observer );
 		}
 	}
 	/**
@@ -91,12 +92,13 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 		return LiveBus.getDefault().subscribe( eventKey, tag, tClass );
 	}
 
-	protected Observer observer = new Observer< String >() {
+	protected Observer observer = new Observer< StateEntity >() {
 		@Override
-		public void onChanged( @Nullable String state ) {
+		public void onChanged( @Nullable StateEntity stateEntity ) {
+			String state = stateEntity.getCode();
 			if ( !TextUtils.isEmpty( state ) ) {
 				if ( StateConstants.ERROR_STATE.equals( state ) ) {
-					showErrorLayout();
+					showErrorLayout( stateEntity.getResult() );
 				} else if ( StateConstants.NET_WORK_STATE.equals( state ) ) {
 				} else if ( StateConstants.LOADING_STATE.equals( state ) ) {
 					showLoading( "" );
@@ -107,7 +109,7 @@ public abstract class AbsLifecycleFragment< VM extends AbsViewModel > extends Ba
 		}
 	};
 
-	protected void showErrorLayout() {
+	protected void showErrorLayout(String result) {
 	}
 
 	protected void stopLoading() {

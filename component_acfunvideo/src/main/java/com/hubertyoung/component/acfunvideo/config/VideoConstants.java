@@ -23,4 +23,8 @@ public class VideoConstants {
 	public static final Object EVENT_KEY_NEW_RECOMMEND_ADD_INFO = "EVENT_KEY_NEW_RECOMMEND_ADD_INFO";
 
 	public static final Object EVENT_KEY_BANGUMI_DETAIL_INFO= "EVENT_KEY_BANGUMI_DETAIL_INFO";
+	/**
+	 * 视频详情
+	 */
+	public static final Object EVENT_KEY_VIDEODETAIL= "EVENT_KEY_VIDEODETAIL";
 }

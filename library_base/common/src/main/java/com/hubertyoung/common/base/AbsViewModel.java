@@ -23,7 +23,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class AbsViewModel< R extends AbsRepository > extends AndroidViewModel {
 
-	public R mRepository;
+	protected R mRepository;
 
 	public AbsViewModel( @NonNull Application application ) {
 		super( application );

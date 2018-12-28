@@ -2,15 +2,19 @@ package com.hubertyoung.component.acfunvideo.videodetail.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -24,7 +28,10 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.AbsLifecycleActivity;
+import com.hubertyoung.common.entity.VideoDetail;
+import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.widget.circularreveal.RevealFrameLayout;
+import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailViewModel;
 import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -43,7 +50,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	public static final String reqId = "reqId";
 	public static final String groupId = "groupId";
 	public static final String from = "from";
-
+	private CoordinatorLayout mClContent;
 	private Toolbar mToolbar;
 	private View bottomBar;
 	private AppBarLayout mAppBarLayout;
@@ -109,7 +116,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 
 	@Override
 	protected void loadData() {
-
+		mViewModel.requestVideoDetailInfo( u, q );
 	}
 
 	@SuppressLint( "WrongConstant" )
@@ -119,8 +126,8 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		if ( Build.VERSION.SDK_INT >= 21 ) {
 			getWindow().setStatusBarColor( ViewCompat.MEASURED_STATE_MASK );
 		}
-		this.mInputMethodManager = ( InputMethodManager ) getSystemService( "input_method" );
 
+		mClContent = findViewById( R.id.cl_content );
 		mToolbar = findViewById( R.id.view_toolbar );
 		bottomBar = findViewById( R.id.comment_bottom_bar );
 		mCoverContainer = findViewById( R.id.video_detail_cover_container );
@@ -181,22 +188,58 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 //		if ( !AcFunApplication.b().f() ) {
 //			AcFunApplication.b().e();
 //		}
+		this.mInputMethodManager = ( InputMethodManager ) getSystemService( "input_method" );
 		this.mTitleTab.setCustomTabView( R.layout.widget_tab_video_ditail_page, R.id.detail_tab_text );
 		getIntentInfo();
+		y();
+		loadData();
 	}
+	@Override
+	public void doBeforeSetContentView() {
+		BarUtils.setStatusBarTranslucent( getWindow(), true );
+	}
+
+	@Override
+	public boolean isNeedRefresh() {
+		return true;
+	}
+
+	@Override
+	protected View refreshContentView() {
+		return mClContent;
+	}
+
+	private void y() {
+		ActionBar supportActionBar = getSupportActionBar();
+		if ( supportActionBar != null ) {
+			supportActionBar.setHomeButtonEnabled( true );
+			supportActionBar.setDisplayHomeAsUpEnabled( true );
+			supportActionBar.setDisplayShowHomeEnabled( false );
+			StringBuilder stringBuilder = new StringBuilder();
+			stringBuilder.append( "AC " );
+			stringBuilder.append( this.u );
+			supportActionBar.setTitle( stringBuilder.toString() );
+			supportActionBar.show();
+		}
+	}
+
 	private void getIntentInfo() {
-		this.u = mIntent.getIntExtra(contentId, 0);
-		this.v = mIntent.getStringExtra(groupId);
-		this.r = mIntent.getStringExtra(reqId);
-		this.q = mIntent.getStringExtra(from);
+		this.u = mIntent.getIntExtra( contentId, 0 );
+		this.v = mIntent.getStringExtra( groupId );
+		this.r = mIntent.getStringExtra( reqId );
+		this.q = mIntent.getStringExtra( from );
 //		PushProcessHelper.a(getIntent(), this);
+		u = 4818594;
+		q = "recommend";
+
 		TextView textView = this.mtextTitle;
 		StringBuilder stringBuilder = new StringBuilder();
 //		stringBuilder.append(AssistPushConsts.MSG_KEY_ACTION);
-		stringBuilder.append("AC");
-		stringBuilder.append(this.u);
-		textView.setText(stringBuilder.toString());
+		stringBuilder.append( "AC" );
+		stringBuilder.append( this.u );
+		textView.setText( stringBuilder.toString() );
 	}
+
 	@Override
 	public void initToolBar() {
 		if ( mToolbar != null ) {
@@ -222,6 +265,17 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		if ( this.mInputMethodManager != null ) {
 			this.mInputMethodManager.hideSoftInputFromWindow( mDanmakuInput.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS );
 		}
+	}
+
+	@Override
+	protected void dataObserver() {
+		super.dataObserver();
+		registerObserver( VideoConstants.EVENT_KEY_VIDEODETAIL, VideoDetail.class ).observe( this, new Observer< VideoDetail >() {
+			@Override
+			public void onChanged( VideoDetail videoDetail ) {
+				Log.e( "TAG", "" );
+			}
+		} );
 	}
 }
 

@@ -1,5 +1,6 @@
 package com.hubertyoung.common.base;
 
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
@@ -9,8 +10,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
+import com.hubertyoung.common.baserx.LiveBus;
 import com.hubertyoung.common.stateview.StateConstants;
+import com.hubertyoung.common.stateview.StateEntity;
 import com.hubertyoung.common.utils.TUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * AbsLifecycleActivity
@@ -18,6 +24,12 @@ import com.hubertyoung.common.utils.TUtil;
 public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends BaseActivity {
 
 	protected VM mViewModel;
+	//
+	protected Object mStateEventKey;
+
+	protected String mStateEventTag;
+
+	private List< Object > events = new ArrayList<>();
 
 	public AbsLifecycleActivity() {
 
@@ -26,7 +38,22 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 	@Override
 	public void initView( Bundle savedInstanceState ) {
 		mViewModel = VMProviders( this, TUtil.getInstance( this, 0 ) );
-		dataObserver();
+		if ( null != mViewModel ) {
+			dataObserver();
+			mStateEventKey = TAG;
+			mStateEventTag = getStateEventTag();
+			events.add( new StringBuilder( ( String ) mStateEventKey ).append( mStateEventTag ).toString() );
+			LiveBus.getDefault().subscribe( mStateEventKey, mStateEventTag, StateEntity.class ).observe( this, observer );
+		}
+	}
+
+	/**
+	 * ViewPager + fragment tag
+	 *
+	 * @return
+	 */
+	protected String getStateEventTag() {
+		return "";
 	}
 
 	protected < T extends ViewModel > VM VMProviders( AppCompatActivity activity, @NonNull Class modelClass ) {
@@ -45,38 +72,30 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 
 	}
 
+	protected < T > MutableLiveData< T > registerObserver( Object eventKey, Class< T > tClass ) {
 
-//	@Override
-//    protected void onStateRefresh() {
-//        showLoading();
-//    }
+		return registerObserver( eventKey, null, tClass );
+	}
 
-//    protected void showError( Class<? extends BaseStateControl > stateView, Object tag) {
-//        loadManager.showStateView(stateView, tag);
-//    }
-//
-//    protected void showError(Class<? extends BaseStateControl> stateView) {
-//        showError(stateView, null);
-//    }
-//
-//    protected void showSuccess() {
-//        loadManager.showSuccess();
-//    }
-//
-//    protected void showLoading() {
-//        loadManager.showStateView(LoadingState.class);
-//    }
-	/**
-	 * show error layout
-	 */
+	protected < T > MutableLiveData< T > registerObserver( Object eventKey, String tag, Class< T > tClass ) {
+		String event;
+		if ( TextUtils.isEmpty( tag ) ) {
+			event = ( String ) eventKey;
+		} else {
+			event = eventKey + tag;
+		}
+		events.add( event );
+		return LiveBus.getDefault().subscribe( eventKey, tag, tClass );
+	}
 
 
-	protected Observer observer = new Observer< String >() {
+	protected Observer observer = new Observer< StateEntity >() {
 		@Override
-		public void onChanged( @Nullable String state ) {
+		public void onChanged( @Nullable StateEntity stateEntity ) {
+			String state = stateEntity.getCode();
 			if ( !TextUtils.isEmpty( state ) ) {
 				if ( StateConstants.ERROR_STATE.equals( state ) ) {
-					showErrorLayout();
+					showErrorLayout( stateEntity.getResult() );
 				} else if ( StateConstants.NET_WORK_STATE.equals( state ) ) {
 				} else if ( StateConstants.LOADING_STATE.equals( state ) ) {
 					showLoading( "" );

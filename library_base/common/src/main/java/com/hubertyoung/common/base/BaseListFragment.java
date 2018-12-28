@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -120,7 +121,7 @@ public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLif
             loadData();
         } else {
             ToastUtil.showError( activity.getString( R.string.net_status_not_work ) );
-            showErrorLayout();
+            showErrorLayout(null);
         }
     }
 
@@ -155,11 +156,17 @@ public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLif
      * show error layout
      */
     @Override
-    protected void showErrorLayout() {
+    protected void showErrorLayout(String result) {
         if ( mViewReplacer != null && mAdapter != null && mAdapter.mPageBean.refresh ) {
             if ( mErrorLayout == null ) {
                 mErrorLayout = LayoutInflater.from( activity ).inflate( R.layout.widget_error_holder, null );
             }
+			TextView tvErrorContent = mErrorLayout.findViewById( R.id.tv_error_content );
+			if ( !TextUtils.isEmpty( result ) ) {
+                tvErrorContent.setText( result );
+            }else{
+				tvErrorContent.setText( R.string.error_page_title );
+			}
             mViewReplacer.replace( mErrorLayout );
             if ( mViewReplacer.getCurrentView() != null ) {
                 mViewReplacer.getCurrentView().setVisibility( View.VISIBLE );

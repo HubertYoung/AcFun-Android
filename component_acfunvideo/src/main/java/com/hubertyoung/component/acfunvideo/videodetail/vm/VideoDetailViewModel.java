@@ -5,9 +5,12 @@ import android.support.annotation.NonNull;
 
 import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.common.baserx.RxSubscriber;
+import com.hubertyoung.common.entity.VideoDetail;
 import com.hubertyoung.common.utils.display.ToastUtil;
+import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.videodetail.activity.VideoDetailActivity;
 import com.hubertyoung.component.acfunvideo.videodetail.source.VideoDetailRepository;
+import com.hubertyoung.component_acfunvideo.R;
 
 
 /**
@@ -24,8 +27,12 @@ public class VideoDetailViewModel extends AbsViewModel< VideoDetailRepository > 
 		super( application );
 	}
 
-	public void requestHttp() {
-		addDisposable( mRepository.requestHttp().subscribeWith( new RxSubscriber< Object >() {
+	public void requestVideoDetailInfo( int contentId, String from ) {
+		if ( contentId == 0 ) {
+			showErrorLayout( VideoDetailActivity.class.getSimpleName(), getApplication().getString( R.string.detail_content_not_exist ) );
+			return;
+		}
+		addDisposable( mRepository.requestVideoDetailInfo( contentId, from ).subscribeWith( new RxSubscriber< VideoDetail >() {
 			@Override
 			protected void showLoading() {
 //				showDialogLoading( "" );
@@ -33,12 +40,12 @@ public class VideoDetailViewModel extends AbsViewModel< VideoDetailRepository > 
 
 			@Override
 			protected void finishLoading() {
-				stopLoading("");
+				stopLoading( VideoDetailActivity.class.getSimpleName() );
 			}
 
 			@Override
-			public void onSuccess( Object o ) {
-				//sendData( DynamicConstants.EVENT_KEY_DYNAMIC_ALL_CHANNEL, o );
+			public void onSuccess( VideoDetail videoDetail ) {
+				sendData( VideoConstants.EVENT_KEY_VIDEODETAIL, videoDetail );
 			}
 
 			@Override

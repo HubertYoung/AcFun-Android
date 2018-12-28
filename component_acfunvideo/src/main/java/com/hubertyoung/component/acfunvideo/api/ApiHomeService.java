@@ -3,6 +3,7 @@ package com.hubertyoung.component.acfunvideo.api;
 
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.entity.Regions;
+import com.hubertyoung.common.entity.VideoDetail;
 import com.hubertyoung.common.net.response.BaseResponse;
 import com.hubertyoung.component.acfunvideo.entity.BangumiDetailBeanRaw;
 import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
@@ -14,6 +15,7 @@ import java.util.Map;
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 /**
@@ -68,13 +70,12 @@ public interface ApiHomeService {
 	@GET( "v3/bangumis/{contentId}" )
 	Flowable< BaseResponse< BangumiDetailBeanRaw > > requestBangumisDetail( @Path( "contentId" ) String contentId );
 
-//
-//	/**
-//	 * 商品列表
-//	 *
-//	 * @param map
-//	 * @return
-//	 */
-//	@GET( "goods/list" )
-//	Flowable< BaseResponse< BrandDetailBodyEntity > > requestBrandDetailList( @QueryMap Map< String, String > map );
+
+	/**
+	 * 视频信息
+	 *
+	 * @return
+	 */
+	@GET( "v2/videos/{contentId}" )
+	Flowable< BaseResponse< VideoDetail > > requestVideoDetailInfo( @Path( "contentId" ) int contentId, @Query( "from" ) String from );
 }

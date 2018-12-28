@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +34,6 @@ import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.component_skeleton.skeleton.ViewReplacer;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
-
 
 
 public abstract class BaseActivity extends AppCompatActivity implements OnEnvironmentChangeListener {
@@ -75,8 +75,8 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 			initView( savedInstanceState );
 			//初始化ToolBar
 			initToolBar();
-			if ( isNeedRefresh() ){
-				if ( refreshContentView() == null ){
+			if ( isNeedRefresh() ) {
+				if ( refreshContentView() == null ) {
 					throw new RuntimeException( "If isNeedRefresh is true,Then refreshContentView is not null" );
 				}
 				mViewReplacer = new ViewReplacer( refreshContentView() );
@@ -88,11 +88,11 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 		}
 	}
 
-	private View refreshContentView() {
+	protected View refreshContentView() {
 		return null;
 	}
 
-	private boolean isNeedRefresh() {
+	protected boolean isNeedRefresh() {
 		return false;
 	}
 
@@ -112,10 +112,16 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 		}
 	}
 
-	protected void showErrorLayout() {
+	protected void showErrorLayout( String result ) {
 		if ( mViewReplacer != null ) {
 			if ( mErrorLayout == null ) {
 				mErrorLayout = LayoutInflater.from( this ).inflate( R.layout.widget_error_holder, null );
+			}
+			TextView tvErrorContent = mErrorLayout.findViewById( R.id.tv_error_content );
+			if ( !TextUtils.isEmpty( result ) ) {
+				tvErrorContent.setText( result );
+			}else{
+				tvErrorContent.setText( R.string.error_page_title );
 			}
 			mViewReplacer.replace( mErrorLayout );
 			if ( mViewReplacer.getCurrentView() != null ) {
@@ -125,15 +131,17 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 					loadData();
 				} );
 			}
-		}else {
+		} else {
 			stopLoading();
 		}
 	}
+
 	protected void stopLoading() {
 		if ( mViewReplacer != null ) {
 			mViewReplacer.restore();
 		}
 	}
+
 	/**
 	 * 设置layout前配置
 	 */
@@ -143,19 +151,19 @@ public abstract class BaseActivity extends AppCompatActivity implements OnEnviro
 
 	/*********************子类实现*****************************/
 	/**
-	 *获取布局文件
+	 * 获取布局文件
 	 */
 	protected abstract int getLayoutId();
 
 	/**
-	 *	初始化view
+	 * 初始化view
 	 */
 	public abstract void initView( Bundle savedInstanceState );
 
 	protected abstract void loadData();
 
 	/**
-	 *	初始化toolBar
+	 * 初始化toolBar
 	 */
 	public abstract void initToolBar();
 
