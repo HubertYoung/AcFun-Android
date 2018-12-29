@@ -1,5 +1,6 @@
 package com.hubertyoung.component_gamecenter.gamecenter.source;
 
+import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.baserx.RxSchedulers;

@@ -2,18 +2,14 @@ apply plugin: 'com.android.library'
 
 android {
 
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-    compileSdkVersion globalConfiguration.androidCompileSdkVersion
-    buildToolsVersion globalConfiguration.androidBuildToolsVersion
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-
-        minSdkVersion globalConfiguration.androidMinSdkVersion
-        targetSdkVersion globalConfiguration.androidTargetSdkVersion
-
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
     }
     buildTypes {
         release {
@@ -30,9 +26,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    def viewDependencies = rootProject.ext.viewDependencies
-    api viewDependencies.exo_player2
-    api viewDependencies.exo_player2_rtmp
+    api deps.exoplayer.exo_player2
+    api deps.exoplayer.exo_player2_rtmp
     api project(':gsyVideoPlayer-base')
     //api "com.shuyu:gsyVideoPlayer-base:$gsyVideoVersion"
 
@@ -44,4 +39,4 @@ dependencies {
 
 }
 
-apply from: './bintray.gradle'
+

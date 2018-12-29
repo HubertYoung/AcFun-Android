@@ -94,12 +94,12 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 		public void onChanged( @Nullable StateEntity stateEntity ) {
 			String state = stateEntity.getCode();
 			if ( !TextUtils.isEmpty( state ) ) {
-				if ( StateConstants.ERROR_STATE.equals( state ) ) {
+				if ( StateConstants.ERROR_STATE.getCode().equals( state ) ) {
 					showErrorLayout( stateEntity.getResult() );
-				} else if ( StateConstants.NET_WORK_STATE.equals( state ) ) {
-				} else if ( StateConstants.LOADING_STATE.equals( state ) ) {
+				} else if ( StateConstants.NET_WORK_STATE.getCode().equals( state ) ) {
+				} else if ( StateConstants.LOADING_STATE.getCode().equals( state ) ) {
 					showLoading( "" );
-				} else if ( StateConstants.SUCCESS_STATE.equals( state ) ) {
+				} else if ( StateConstants.SUCCESS_STATE.getCode().equals( state ) ) {
 					stopLoading();
 				}
 			}

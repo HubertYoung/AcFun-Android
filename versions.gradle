@@ -54,6 +54,9 @@ versions.mmkv = "1.0.11"
 versions.fresco = "1.11.0"
 versions.facebookStetho = "1.4.2"
 versions.acraVersion = "4.9.0"
+versions.ijkplayer = "0.8.8"
+versions.exoplayer = "2.9.1"
+versions.transitionseverywhere = "1.7.0"
 def deps = [:]
 
 def support = [:]
@@ -213,17 +216,39 @@ smartrefresh.SmartRefreshHeader = 'com.scwang.smartrefresh:SmartRefreshHeader:1.
 smartrefresh.smartrefresh = smartrefresh
 deps.smartrefresh = smartrefresh
 
+def ijkplayer = [:]
+//# required, enough for most devices.
+ijkplayer.java = "tv.danmaku.ijk.media:ijkplayer-java:$versions.ijkplayer"
+ijkplayer.armv7a = "tv.danmaku.ijk.media:ijkplayer-armv7a:$versions.ijkplayer"
+//# Other ABIs: optional
+ijkplayer.armv5 = "tv.danmaku.ijk.media:ijkplayer-armv5:$versions.ijkplayer"
+ijkplayer.arm64 = "tv.danmaku.ijk.media:ijkplayer-arm64:$versions.ijkplayer"
+ijkplayer.x86_64 = "tv.danmaku.ijk.media:ijkplayer-x86_64:$versions.ijkplayer"
+ijkplayer.x86 = "tv.danmaku.ijk.media:ijkplayer-x86:$versions.ijkplayer"
+//# ExoPlayer as IMediaPlayer: optional, experimental
+ijkplayer.exo = "tv.danmaku.ijk.media:ijkplayer-exo:$versions.ijkplayer"
+ijkplayer.ijkplayer = ijkplayer
+deps.ijkplayer = ijkplayer
+
+def exoplayer = [:]
+//# required, enough for most devices.
+exoplayer.exo_player2 = "com.google.android.exoplayer:exoplayer:${versions.exoplayer}"
+exoplayer.exo_player2_rtmp = "com.google.android.exoplayer:extension-rtmp:$versions.exoplayer"
+exoplayer.exoplayer = exoplayer
+deps.exoplayer = exoplayer
+
 deps.smarttablayout = 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
 deps.android_gif_drawable = 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
 deps.fresco_processors = 'jp.wasabeef:fresco-processors:2.1.0'
 deps.logger = 'com.orhanobut:logger:1.13'
 deps.acra = "ch.acra:acra:$versions.acraVersion"
 deps.swipebackhelper = 'com.jude:swipebackhelper:2.1.5'
+deps.transitionseverywhere = "com.andkulikov:transitionseverywhere:${versions.transitionseverywhere}"
 ext.deps = deps
 
 def addRepos(RepositoryHandler handler) {
     //优先使用阿里云仓库
-    handler.maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    handler.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     handler.jcenter()
     handler.google()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
@@ -231,5 +256,6 @@ def addRepos(RepositoryHandler handler) {
     handler.maven { url "https://dl.bintray.com/thelasterstar/maven/" }
     handler.maven { url 'http://45.63.19.1:8081/repository/maven-releases/' }
 }
+
 ext.addRepos = this.&addRepos
 

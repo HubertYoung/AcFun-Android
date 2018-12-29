@@ -2,18 +2,14 @@ apply plugin: 'com.android.library'
 
 android {
 
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-    compileSdkVersion globalConfiguration.androidCompileSdkVersion
-    buildToolsVersion globalConfiguration.androidBuildToolsVersion
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-
-        minSdkVersion globalConfiguration.androidMinSdkVersion
-        targetSdkVersion globalConfiguration.androidTargetSdkVersion
-
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
     }
     buildTypes {
         release {
@@ -30,16 +26,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation androidDependencies.appcompat_v7
+    implementation deps.support.app_compat
 
-    def viewDependencies = rootProject.ext.viewDependencies
-    api viewDependencies.ijkplayer_java
-    api viewDependencies.ijkplayer_exo
-    api viewDependencies.transitionseverywhere
-    //api project(':gsyVideoPlayer-proxy_cache')
-    //api project(':gsyVideoPlayer-base')
-    api "com.shuyu:gsyVideoPlayer-base:$gsyVideoVersion"
-    api "com.shuyu:gsyvideoplayer-androidvideocache:$gsyVideoVersion"
+    api deps.ijkplayer.java
+    api deps.ijkplayer.exo
+    api deps.transitionseverywhere
+    api project(':gsyVideoPlayer-proxy_cache')
+    api project(':gsyVideoPlayer-base')
+//    api "com.shuyu:gsyVideoPlayer-base:$gsyVideoVersion"
+//    api "com.shuyu:gsyvideoplayer-androidvideocache:$gsyVideoVersion"
 
 
 //    compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -52,4 +47,4 @@ dependencies {
 
 }
 
-apply from: './bintray.gradle'
+

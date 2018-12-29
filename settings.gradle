@@ -46,6 +46,18 @@ include ':studydemo',
 //        ':argus-apm-main',
 //        ':argus-apm-okhttp',
 
+        ':gsyVideoPlayer',
+        ':gsyVideoPlayer-armv5',
+        ':gsyVideoPlayer-armv7a',
+        ':gsyVideoPlayer-armv64',
+        ':gsyVideoPlayer-base',
+        ':gsyVideoPlayer-ex_so',
+        ':gsyVideoPlayer-exo_player2',
+        ':gsyVideoPlayer-java',
+        ':gsyVideoPlayer-proxy_cache',
+        ':gsyVideoPlayer-x86',
+        ':gsyVideoPlayer-x86_64',
+
         ':annotation',
         ':compiler',
         ':compiler-release'
@@ -78,6 +90,18 @@ project(':studydemo').projectDir = new File(rootDir, 'library/studydemo')
 //project(':argus-apm-cloud-dummy-impl').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud-dummy-impl')
 //project(':argus-apm-main').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-main')
 //project(':argus-apm-okhttp').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-okhttp')
+
+project(':gsyVideoPlayer').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer')
+project(':gsyVideoPlayer-armv5').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-armv5')
+project(':gsyVideoPlayer-armv7a').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-armv7a')
+project(':gsyVideoPlayer-armv64').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-armv64')
+project(':gsyVideoPlayer-base').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-base')
+project(':gsyVideoPlayer-ex_so').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-ex_so')
+project(':gsyVideoPlayer-exo_player2').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-exo_player2')
+project(':gsyVideoPlayer-java').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-java')
+project(':gsyVideoPlayer-proxy_cache').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-proxy_cache')
+project(':gsyVideoPlayer-x86').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-x86')
+project(':gsyVideoPlayer-x86_64').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-x86_64')
 
 project(':baseplatformlibrary').projectDir = new File(rootDir, 'library_platform/baseplatformlibrary')
 project(':alipayplatformlibrary').projectDir = new File(rootDir, 'library_platform/alipayplatformlibrary')
