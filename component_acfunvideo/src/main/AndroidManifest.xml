@@ -4,7 +4,11 @@
 
     <application>
         <activity
-            android:name="com.hubertyoung.component.acfunvideo.videodetail.activity.VideoDetailActivity">
+            android:name="com.hubertyoung.component.acfunvideo.videodetail.activity.VideoDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 

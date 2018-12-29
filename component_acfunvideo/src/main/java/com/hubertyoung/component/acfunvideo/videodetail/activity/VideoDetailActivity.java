@@ -17,6 +17,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -40,6 +41,7 @@ import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailViewModel;
 import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 /**
  * desc: VideoDetailActivity
@@ -100,6 +102,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	private String v;
 	private User x;
 	private Video y;
+	private StandardGSYVideoPlayer mStandardGSYVideoPlayer;
 
 	/**
 	 * 是否显示详情
@@ -289,6 +292,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	protected void dataObserver() {
 		super.dataObserver();
 		registerObserver( VideoConstants.EVENT_KEY_VIDEODETAIL, VideoDetail.class ).observe( this, new Observer< VideoDetail >() {
+
 			@Override
 			public void onChanged( VideoDetail videoDetail ) {
 				FullContent fullContent = videoDetail.convertToFullContent();
@@ -315,12 +319,13 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 				}
 				x = fullContent.getUser();
 				y = fullContent.getVideos().get( 0 );
-//				this.m = new AcFunPlayerView(this);
-//				this.m.setVisibility(8);
-//				if (mPlayerViewContainer.getChildAt(0) instanceof AcFunPlayerView) {
-//					mPlayerViewContainer.removeViewAt(0);
-//				}
-//				mPlayerViewContainer.addView(this.m, 0, new FrameLayout.LayoutParams(-2, -2));
+				mStandardGSYVideoPlayer = new StandardGSYVideoPlayer( mContext );
+				mStandardGSYVideoPlayer.setVisibility( View.VISIBLE );
+				if ( mPlayerViewContainer.getChildAt( 0 ) instanceof StandardGSYVideoPlayer ) {
+					mPlayerViewContainer.removeViewAt( 0 );
+				}
+				mPlayerViewContainer.addView( mStandardGSYVideoPlayer, 0, new FrameLayout.LayoutParams( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT ) );
+				mStandardGSYVideoPlayer.setUp(fullContent.getVideos().get( 0 ).getUrl(), true, "测试视频");
 //				k();
 //				z();
 //				this.m.a();
