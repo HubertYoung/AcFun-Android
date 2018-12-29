@@ -4,4 +4,6 @@ dependencies {
     implementation project(':common')
     implementation project(':component_banner')
     implementation project(':component_dynamicsoreview')
+    implementation project(':component_dynamicsoreview')
+    implementation project(':gsyVideoPlayer')
 }
