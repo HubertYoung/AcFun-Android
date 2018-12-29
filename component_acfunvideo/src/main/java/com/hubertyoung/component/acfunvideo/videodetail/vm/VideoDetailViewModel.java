@@ -45,12 +45,17 @@ public class VideoDetailViewModel extends AbsViewModel< VideoDetailRepository > 
 
 			@Override
 			public void onSuccess( VideoDetail videoDetail ) {
+				if ( videoDetail == null || videoDetail.mVideos.isEmpty() ){
+					showErrorLayout( VideoDetailActivity.class.getSimpleName(), getApplication().getString( R.string.detail_content_not_exist ) );
+					return;
+				}
 				sendData( VideoConstants.EVENT_KEY_VIDEODETAIL, videoDetail );
 			}
 
 			@Override
 			public void onFailure( String msg ) {
 				ToastUtil.showError( msg );
+				showErrorLayout( VideoDetailActivity.class.getSimpleName(), getApplication().getString( R.string.detail_content_not_exist ) );
 			}
 		} ) );
 	}

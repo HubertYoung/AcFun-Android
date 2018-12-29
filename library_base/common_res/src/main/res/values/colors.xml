@@ -384,6 +384,8 @@
     <color name="upsdk_category_button_select_stroke">#4c007dff</color>
     <color name="upsdk_white">#ffffffff</color>
     <color name="upuser_follow_enable">#44ffffff</color>
+
+    <color name="video_all_part_text_color">#a6c946</color>
     <color name="video_detail_follow_disable">#ff8787</color>
     <color name="video_detial_info_text">#b2aea8</color>
     <color name="video_detial_introduction_text">#6fa2ff</color>

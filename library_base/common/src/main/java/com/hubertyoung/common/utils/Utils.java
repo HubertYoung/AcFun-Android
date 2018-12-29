@@ -1,6 +1,11 @@
 package com.hubertyoung.common.utils;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.DrawableRes;
+import android.text.TextUtils;
 
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.constant.AdMapKey;
@@ -94,41 +99,41 @@ public class Utils {
 //		return arrayList;
 //	}
 
-//	public static void startActivity(Activity activity, int i, String str, Bundle bundle) {
-//		if (str != null) {
-//			try {
-//				Intent intent = new Intent();
-//				Intent intent2 = null;
-//				Bundle bundle2;
-//				switch (i) {
-//					case 1:
+	public static void startActivity( Activity activity, int i, String str, Bundle bundle) {
+		if (str != null) {
+			try {
+				Intent intent = new Intent();
+				Intent intent2 = null;
+				Bundle bundle2;
+				switch (i) {
+					case 1:
 //						IntentHelper.drawable(activity, Integer.valueOf(str).intValue(), "recommend");
-//						break;
-//					case 2:
+						break;
+					case 2:
 //						IntentHelper.c(activity, Integer.valueOf(str).intValue(), "recommend");
-//						break;
-//					case 3:
+						break;
+					case 3:
 //						User user = new User();
 //						user.setUid(Integer.valueOf(str).intValue());
 //						IntentHelper.drawable(activity, user);
-//						break;
-//					case 4:
-//						if (bundle == null) {
-//							bundle = new Bundle();
-//						}
-//						bundle.putString("url", str);
+						break;
+					case 4:
+						if (bundle == null) {
+							bundle = new Bundle();
+						}
+						bundle.putString("url", str);
 //						IntentHelper.drawable(activity, WebViewActivity.class, bundle);
-//						break;
-//					case 5:
-//					case 18:
-//						Uri parse = Uri.parse(str);
-//						intent.setAction(ACTION.HWID_SCHEME_URL);
-//						intent.setData(parse);
-//						break;
-//					case 6:
+						break;
+					case 5:
+					case 18:
+						Uri parse = Uri.parse(str);
+						intent.setAction("android.intent.action.VIEW");
+						intent.setData(parse);
+						break;
+					case 6:
 //						IntentHelper.b(activity, Integer.valueOf(str).intValue());
-//						break;
-//					case 7:
+						break;
+					case 7:
 //						intent.setClass(activity, RankActivity.class);
 //						if (!TextUtils.isEmpty(str)) {
 //							intent.putExtra(RankActivity.f, -1);
@@ -136,78 +141,78 @@ public class Utils {
 //							break;
 //						}
 //						intent.putExtra(RankActivity.f, 2);
-//						break;
-//					case 8:
+						break;
+					case 8:
 //						intent.setClass(activity, SerialBangumiActivity.class);
 //						intent.putExtra("category", BangumiType.ANIMATION);
-//						break;
-//					case 9:
-//						break;
-//					case 10:
+						break;
+					case 9:
+						break;
+					case 10:
 //						IntentHelper.b(activity, Integer.valueOf(str).intValue(), "recommend");
-//						break;
-//					case 11:
+						break;
+					case 11:
 //						intent.setClass(activity, RankActivity.class);
 //						intent.putExtra(RankActivity.f, 1);
-//						break;
-//					case 12:
+						break;
+					case 12:
 //						IntentHelper.drawable(activity, BangumiSecondaryActivity.class);
-//						break;
-//					case 13:
-//						bundle2 = new Bundle();
+						break;
+					case 13:
+						bundle2 = new Bundle();
 //						bundle2.putInt(NewHistoryActivity.g, 1);
 //						IntentHelper.drawable(activity, NewHistoryActivity.class, bundle2);
-//						break;
-//					case 14:
-//						try {
-//							i = Integer.valueOf(str).intValue();
-//						} catch (Exception unused) {
-//							i = 0;
-//						}
+						break;
+					case 14:
+						try {
+							i = Integer.valueOf(str).intValue();
+						} catch (Exception unused) {
+							i = 0;
+						}
 //						IntentHelper.d(activity, i, "recommend");
-//						break;
-//					case 15:
+						break;
+					case 15:
 //						bundle2 = new Bundle();
 //						StringBuilder stringBuilder = new StringBuilder();
 //						stringBuilder.append(b());
 //						stringBuilder.append(str);
 //						bundle2.putString("url", stringBuilder.toString());
 //						IntentHelper.drawable(activity, WebViewActivity.class, bundle2);
-//						break;
-//					case 16:
+						break;
+					case 16:
 //						IntentHelper.c(activity);
-//						break;
-//					case 17:
-//						if (!TextUtils.isEmpty(str)) {
-//							if (bundle == null) {
-//								bundle = new Bundle();
-//							}
+						break;
+					case 17:
+						if (!TextUtils.isEmpty(str)) {
+							if (bundle == null) {
+								bundle = new Bundle();
+							}
 //							bundle.putString(GameDetailActivity.f, str);
 //							IntentHelper.drawable(activity, GameDetailActivity.class, bundle);
-//							break;
-//						}
-//						break;
-//					case 19:
+							break;
+						}
+						break;
+					case 19:
 //						intent = new Intent(activity, ChannelHotActivity.class);
-//						intent.putExtra("channel", str);
-//						break;
-//					default:
+						intent.putExtra("channel", str);
+						break;
+					default:
 //						intent.setClass(activity, WebViewActivity.class);
 //						StringBuilder stringBuilder2 = new StringBuilder();
 //						stringBuilder2.append(DomainHelper.drawable().m());
 //						stringBuilder2.append("/pleaseupdate/");
 //						intent.putExtra("url", stringBuilder2.toString());
-//						break;
-//				}
-//				intent2 = intent;
-//				if (intent2 != null) {
-//					activity.startActivity(intent2);
-//				}
-//			} catch (Throwable e) {
+						break;
+				}
+				intent2 = intent;
+				if (intent2 != null) {
+					activity.startActivity(intent2);
+				}
+			} catch (Throwable e) {
 //				LogUtil.drawable(e);
-//			}
-//		}
-//	}
+			}
+		}
+	}
 
 //	public static void drawable(Activity activity, RegionsContent regionsContent, Bundle bundle) {
 //		if (regionsContent.actionId == 4) {

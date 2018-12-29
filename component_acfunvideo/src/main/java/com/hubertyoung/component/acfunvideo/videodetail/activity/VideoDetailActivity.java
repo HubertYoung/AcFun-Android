@@ -10,11 +10,11 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -28,8 +28,13 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.AbsLifecycleActivity;
+import com.hubertyoung.common.entity.FullContent;
+import com.hubertyoung.common.entity.User;
+import com.hubertyoung.common.entity.Video;
 import com.hubertyoung.common.entity.VideoDetail;
+import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.common.utils.bar.BarUtils;
+import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.widget.circularreveal.RevealFrameLayout;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailViewModel;
@@ -93,6 +98,18 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	private String r;
 	private int u;
 	private String v;
+	private User x;
+	private Video y;
+
+	/**
+	 * 是否显示详情
+	 */
+	private boolean H;
+
+	/**
+	 * 视频相关信息
+	 */
+	private FullContent w;
 
 	public static void launch( Context context, int contentId, String reqId, String groupId, String from ) {
 		Intent intent = new Intent( context, VideoDetailActivity.class );
@@ -194,6 +211,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		y();
 		loadData();
 	}
+
 	@Override
 	public void doBeforeSetContentView() {
 		BarUtils.setStatusBarTranslucent( getWindow(), true );
@@ -273,7 +291,55 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		registerObserver( VideoConstants.EVENT_KEY_VIDEODETAIL, VideoDetail.class ).observe( this, new Observer< VideoDetail >() {
 			@Override
 			public void onChanged( VideoDetail videoDetail ) {
-				Log.e( "TAG", "" );
+				FullContent fullContent = videoDetail.convertToFullContent();
+				if ( getSupportActionBar() != null ) {
+					getSupportActionBar().hide();
+				}
+				w = fullContent;
+				CommonLog.logi( fullContent.getDetailsShow() + "~~~~" + fullContent.getRedirect() + "~~~~~" );
+				if ( fullContent.getDetailsShow() == 0 ) {
+					Utils.startActivity( mContext, 5, fullContent.getRedirect(), null );
+					ActivityCompat.finishAfterTransition( mContext );
+					return;
+				}
+				H = fullContent.getDetailsShow() == 2;
+				if ( H ) {
+					bottomCommentNumberText.setBackgroundResource( R.drawable.shape_bg_green_round );
+				}
+				int comments = fullContent.getComments();
+				if ( comments > 0 ) {
+					bottomCommentNumberText.setVisibility( View.VISIBLE );
+					bottomCommentNumberText.setText( comments > 999 ? "999+" : String.valueOf( comments ) );
+				} else {
+					bottomCommentNumberText.setVisibility( View.GONE );
+				}
+				x = fullContent.getUser();
+				y = fullContent.getVideos().get( 0 );
+//				this.m = new AcFunPlayerView(this);
+//				this.m.setVisibility(8);
+//				if (mPlayerViewContainer.getChildAt(0) instanceof AcFunPlayerView) {
+//					mPlayerViewContainer.removeViewAt(0);
+//				}
+//				mPlayerViewContainer.addView(this.m, 0, new FrameLayout.LayoutParams(-2, -2));
+//				k();
+//				z();
+//				this.m.a();
+//				this.m.a(new ShowBottomBarListener() {
+//					public void a() {
+//						if (VideoDetailActivity.this.H) {
+//							VideoDetailActivity.this.bottomBar.setVisibility(0);
+//						} else if (VideoDetailActivity.this.mTitlePager.getCurrentItem() == 1) {
+//							VideoDetailActivity.this.bottomBar.setVisibility(0);
+//						} else {
+//							VideoDetailActivity.this.bottomBar.setVisibility(0);
+//						}
+//					}
+//
+//					public void b() {
+//						VideoDetailActivity.this.bottomBar.setVisibility(8);
+//					}
+//				});
+//				ag_();
 			}
 		} );
 	}

@@ -1,7 +1,6 @@
 package com.hubertyoung.common.base;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -39,7 +38,7 @@ import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 public abstract class BaseActivity extends AppCompatActivity implements OnEnvironmentChangeListener {
 	protected String TAG = this.getClass().getSimpleName();
 	private static final String SAVED_STATE_STATUS_BAR_TRANSLUCENT = "saved_state_status_bar_translucent";
-	protected Context mContext;
+	protected BaseActivity mContext;
 	protected RxManager mRxManager;
 	private boolean isConfigChange = false;
 	private boolean statusBarTranslucent;
