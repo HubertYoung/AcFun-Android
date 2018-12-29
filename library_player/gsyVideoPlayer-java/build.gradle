@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration.androidCompileSdkVersion
+    buildToolsVersion globalConfiguration.androidBuildToolsVersion
+
+    defaultConfig {
+
+        minSdkVersion globalConfiguration.androidMinSdkVersion
+        targetSdkVersion globalConfiguration.androidTargetSdkVersion
+
+        versionCode 1
+        versionName "1.0"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation androidDependencies.appcompat_v7
+
+    def viewDependencies = rootProject.ext.viewDependencies
+    api viewDependencies.ijkplayer_java
+    api viewDependencies.ijkplayer_exo
+    api viewDependencies.transitionseverywhere
+    //api project(':gsyVideoPlayer-proxy_cache')
+    //api project(':gsyVideoPlayer-base')
+    api "com.shuyu:gsyVideoPlayer-base:$gsyVideoVersion"
+    api "com.shuyu:gsyvideoplayer-androidvideocache:$gsyVideoVersion"
+
+
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+//    compile androidDependencies.appcompat_v7
+//    def viewDependencies = rootProject.ext.viewDependencies
+//    compile viewDependencies.ijkplayer_java
+//    compile viewDependencies.transitionseverywhere
+//    compile "com.shuyu:gsyvideoplayer-androidvideocache:$gsyVideoVersion"
+//    compile "com.shuyu:gsyVideoPlayer-base:$gsyVideoVersion"
+
+}
+
+apply from: './bintray.gradle'
