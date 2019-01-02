@@ -2,6 +2,7 @@ package com.hubertyoung.common.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,9 @@ import java.util.List;
  * @since:V$VERSION
  * @desc:com.hubertyoung.component.acfunvideo.entity
  */
-public class FullContent {
+public class FullContent implements Serializable {
+	private static final long serialVersionUID = 1761165828577857741L;
+
 	public static final int AVAILABLE_TO_GUEST = 0;
 	private String albumCoverImg;
 	private int albumID;

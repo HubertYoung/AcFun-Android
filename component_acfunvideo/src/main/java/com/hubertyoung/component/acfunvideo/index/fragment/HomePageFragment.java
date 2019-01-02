@@ -72,6 +72,7 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel > 
 	@Override
 	protected void initToolBar() {
 		BarUtils.setPaddingSmart( mToolbar );
+		mToolbar.setNavigationIcon( null );
 	}
 
 	@Override

@@ -1,5 +1,8 @@
 package com.hubertyoung.component.acfunvideo.videodetail.activity;
 
+import android.animation.Animator;
+import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.arch.lifecycle.Observer;
@@ -7,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -15,9 +19,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -30,18 +34,27 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.AbsLifecycleActivity;
 import com.hubertyoung.common.entity.FullContent;
-import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.entity.Video;
 import com.hubertyoung.common.entity.VideoDetail;
+import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
+import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.log.CommonLog;
 import com.hubertyoung.common.widget.circularreveal.RevealFrameLayout;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
+import com.hubertyoung.component.acfunvideo.entity.PlayerVideoInfo;
+import com.hubertyoung.component.acfunvideo.videodetail.adapter.VideoDetailPagerAdapter;
+import com.hubertyoung.component.acfunvideo.videodetail.fragment.VideoDetailCommentFragment;
+import com.hubertyoung.component.acfunvideo.videodetail.fragment.VideoDetailRelevantFragment;
+import com.hubertyoung.component.acfunvideo.videodetail.listener.HeaderOffsetUpdateListener;
 import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailViewModel;
 import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * desc: VideoDetailActivity
@@ -89,30 +102,27 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	private ImageView videoDetailCommentBottomNumberImg;
 	private TextView bottomCommentNumberText;
 	private View mCoverContainer;
-	// TODO: 2018/12/26 AcFunPlayerView
-	Object m;
 	private InputMethodManager mInputMethodManager;
 	private Intent mIntent;
 
 	boolean n;
 	boolean o;
-	private String q;
-	private String r;
-	private int u;
-	private String v;
-	private User x;
-	private Video y;
+	private String mFrom;
+	private String mReqId;
+	private int mContentId;
+	private String mGroupId;
+	//	private User x;
+	private Video mVideo;
 	private StandardGSYVideoPlayer mStandardGSYVideoPlayer;
 
 	/**
 	 * 是否显示详情
 	 */
-	private boolean H;
+	private boolean isDetailsShow;
 
-	/**
-	 * 视频相关信息
-	 */
-	private FullContent w;
+	private VideoDetailPagerAdapter mVideoDetailPagerAdapter;
+	private VideoDetailRelevantFragment mVideoDetailRelevantFragment;
+	private VideoDetailCommentFragment mVideoDetailCommentFragment;
 
 	public static void launch( Context context, int contentId, String reqId, String groupId, String from ) {
 		Intent intent = new Intent( context, VideoDetailActivity.class );
@@ -136,7 +146,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 
 	@Override
 	protected void loadData() {
-		mViewModel.requestVideoDetailInfo( u, q );
+		mViewModel.requestVideoDetailInfo( mContentId, mFrom );
 	}
 
 	@SuppressLint( "WrongConstant" )
@@ -203,13 +213,13 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 				return true;
 			}
 		} );
-		this.mIntent = getIntent();
+		mIntent = getIntent();
 		// TODO: 2018/12/26 乐视投屏
 //		if ( !AcFunApplication.b().f() ) {
 //			AcFunApplication.b().e();
 //		}
-		this.mInputMethodManager = ( InputMethodManager ) getSystemService( "input_method" );
-		this.mTitleTab.setCustomTabView( R.layout.widget_tab_video_ditail_page, R.id.detail_tab_text );
+		mInputMethodManager = ( InputMethodManager ) getSystemService( "input_method" );
+		mTitleTab.setCustomTabView( R.layout.widget_tab_video_ditail_page, R.id.detail_tab_text );
 		getIntentInfo();
 		y();
 		loadData();
@@ -238,53 +248,55 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 			supportActionBar.setDisplayShowHomeEnabled( false );
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.append( "AC " );
-			stringBuilder.append( this.u );
+			stringBuilder.append( mContentId );
 			supportActionBar.setTitle( stringBuilder.toString() );
 			supportActionBar.show();
 		}
 	}
 
 	private void getIntentInfo() {
-		this.u = mIntent.getIntExtra( contentId, 0 );
-		this.v = mIntent.getStringExtra( groupId );
-		this.r = mIntent.getStringExtra( reqId );
-		this.q = mIntent.getStringExtra( from );
+		mContentId = mIntent.getIntExtra( contentId, 0 );
+		mGroupId = mIntent.getStringExtra( groupId );
+		mReqId = mIntent.getStringExtra( reqId );
+		mFrom = mIntent.getStringExtra( from );
 //		PushProcessHelper.a(getIntent(), this);
-		u = 4818594;
-		q = "recommend";
+		mContentId = 4818594;
+		mFrom = "recommend";
 
-		TextView textView = this.mtextTitle;
+		TextView textView = mtextTitle;
 		StringBuilder stringBuilder = new StringBuilder();
 //		stringBuilder.append(AssistPushConsts.MSG_KEY_ACTION);
 		stringBuilder.append( "AC" );
-		stringBuilder.append( this.u );
+		stringBuilder.append( mContentId );
 		textView.setText( stringBuilder.toString() );
 	}
 
 	@Override
 	public void initToolBar() {
 		if ( mToolbar != null ) {
+			BarUtils.setPaddingSmart( mToolbar );
+			BarUtils.setPaddingSmart( mClContent );
 			mToolbar.setTitle( getTitle().toString() );
-			setSupportActionBar( mToolbar );
-			getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+//			setSupportActionBar( mToolbar );
+//			getSupportActionBar().setDisplayHomeAsUpEnabled( true );
 		}
-		if ( getSupportActionBar() != null ) {
-			getSupportActionBar().hide();
-		}
+//		if ( getSupportActionBar() != null ) {
+//			getSupportActionBar().hide();
+//		}
 	}
 
 	public void a( String str ) {
-		if ( m != null ) {
+		if ( mPlayerViewContainer != null ) {
 			// TODO: 2018/12/26 设置内容 猜测为弹幕
-//			this.m.a(str);
+//			m.a(str);
 			mDanmakuInput.setText( "" );
 			hideSoftInput();
 		}
 	}
 
-	private void hideSoftInput() {
-		if ( this.mInputMethodManager != null ) {
-			this.mInputMethodManager.hideSoftInputFromWindow( mDanmakuInput.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS );
+	public void hideSoftInput() {
+		if ( mInputMethodManager != null ) {
+			mInputMethodManager.hideSoftInputFromWindow( mDanmakuInput.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS );
 		}
 	}
 
@@ -299,15 +311,14 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 				if ( getSupportActionBar() != null ) {
 					getSupportActionBar().hide();
 				}
-				w = fullContent;
 				CommonLog.logi( fullContent.getDetailsShow() + "~~~~" + fullContent.getRedirect() + "~~~~~" );
 				if ( fullContent.getDetailsShow() == 0 ) {
 					Utils.startActivity( mContext, 5, fullContent.getRedirect(), null );
 					ActivityCompat.finishAfterTransition( mContext );
 					return;
 				}
-				H = fullContent.getDetailsShow() == 2;
-				if ( H ) {
+				isDetailsShow = fullContent.getDetailsShow() == 2;
+				if ( isDetailsShow ) {
 					bottomCommentNumberText.setBackgroundResource( R.drawable.shape_bg_green_round );
 				}
 				int comments = fullContent.getComments();
@@ -317,36 +328,228 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 				} else {
 					bottomCommentNumberText.setVisibility( View.GONE );
 				}
-				x = fullContent.getUser();
-				y = fullContent.getVideos().get( 0 );
+				mVideo = fullContent.getVideos().get( 0 );
 				mStandardGSYVideoPlayer = new StandardGSYVideoPlayer( mContext );
 				mStandardGSYVideoPlayer.setVisibility( View.VISIBLE );
 				if ( mPlayerViewContainer.getChildAt( 0 ) instanceof StandardGSYVideoPlayer ) {
 					mPlayerViewContainer.removeViewAt( 0 );
 				}
-				mPlayerViewContainer.addView( mStandardGSYVideoPlayer, 0, new FrameLayout.LayoutParams( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT ) );
-				mStandardGSYVideoPlayer.setUp(fullContent.getVideos().get( 0 ).getUrl(), true, "测试视频");
+
+//				mPlayerViewContainer.addView( mStandardGSYVideoPlayer, 0, new FrameLayout.LayoutParams( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT ) );
+//				mStandardGSYVideoPlayer.setUp("http://aplay-vod.cn-beijing.aliyuncs
+// .com/common/partner/play?_t_=1546406605&e=md5&_s_=a1aa010fdc3ef0ea3507a81ed5faaa6a&point=1&id=437cac2ee0c94ef1bc475d86798dd2d5&local_time=&local_vid=&format=1,5,6,7,
+// 8&language=guoyu&did=9bc19cdbd720748c07424bef094e853c&ctype=87&ev=2&dt=0&local_point=&audiolang=1&pid=528a34396e9040f3&guid=3a66405d00839be94778bf0b00091b38&mac=02:00:00:00:00:00&imei=&ver=null
+// &operator=WIFI&network=WIFI", true, "测试视频");
+				// TODO: 2019/1/2 默认播放第一条
+				setVideoInfo( fullContent.getVideos().get( 0 ), fullContent, false );
+				// TODO: 2019/1/2 未知
 //				k();
-//				z();
-//				this.m.a();
-//				this.m.a(new ShowBottomBarListener() {
+				initViewPager( fullContent );
+//				m.a();
+//				m.a(new ShowBottomBarListener() {
 //					public void a() {
-//						if (VideoDetailActivity.this.H) {
-//							VideoDetailActivity.this.bottomBar.setVisibility(0);
-//						} else if (VideoDetailActivity.this.mTitlePager.getCurrentItem() == 1) {
-//							VideoDetailActivity.this.bottomBar.setVisibility(0);
+//						if (VideoDetailActivity.H) {
+//							VideoDetailActivity.bottomBar.setVisibility(0);
+//						} else if (VideoDetailActivity.mTitlePager.getCurrentItem() == 1) {
+//							VideoDetailActivity.bottomBar.setVisibility(0);
 //						} else {
-//							VideoDetailActivity.this.bottomBar.setVisibility(0);
+//							VideoDetailActivity.bottomBar.setVisibility(0);
 //						}
 //					}
 //
 //					public void b() {
-//						VideoDetailActivity.this.bottomBar.setVisibility(8);
+//						VideoDetailActivity.bottomBar.setVisibility(8);
 //					}
 //				});
 //				ag_();
 			}
 		} );
+	}
+
+	private void initViewPager( FullContent fullContent ) {
+		ImageLoaderUtil.loadNetImage( fullContent.getCover(), this.mCoverView );
+		ImageLoaderUtil.loadNetImage( SigninHelper.getInstance().getAvatar(), this.danmakuAvatar );
+		initBehavior();
+		initAdapter( fullContent );
+//		this.m.a(new OnBackImageClickListener() {
+//			public void a(int i) {
+//				KanasCommonUtil.c(KanasConstants.ci, null);
+//				if (VideoDetailActivity.this.m.f()) {
+//					VideoDetailActivity.this.af_();
+//				}
+//			}
+//		});
+//		this.m.a(new OnPlayerStateChangeListener() {
+//			public void a(int i) {
+//				if (i == 16386) {
+//					VideoDetailActivity.this.mAppBarLayout.setExpanded(true, false);
+//					VideoDetailActivity.this.D();
+//					VideoDetailActivity.this.mVideoBar.setVisibility(4);
+//				} else if (i == PlayerState.o) {
+//					VideoDetailActivity.this.mVideoBar.setVisibility(0);
+//					VideoDetailActivity.this.mTitlePager.setVisibility(0);
+//				}
+//				VideoDetailActivity.this.a(VideoDetailActivity.this.A());
+//			}
+//
+//			public void b(int i) {
+//				boolean b = VideoDetailActivity.this.A();
+//				if (b) {
+//					VideoDetailActivity.this.mAppBarLayout.setExpanded(true);
+//				}
+//				VideoDetailActivity.this.a(b);
+//			}
+//
+//			public void a(Video video) {
+//				EventHelper.a().a(new OnNotifyPlayingVideoEvent(video));
+//			}
+//
+//			public void a() {
+//				VideoDetailActivity.this.b(true);
+//			}
+//
+//			public void c(int i) {
+//				if (i == 16386) {
+//					VideoDetailActivity.this.mTitlePager.setVisibility(8);
+//				} else if (i == PlayerState.o) {
+//					VideoDetailActivity.this.mTitlePager.setVisibility(0);
+//				}
+//			}
+//		});
+//		if (NetworkUtils.e(ac_()) && PreferenceUtil.c()) {
+//			this.E.postDelayed(new Runnable() {
+//				public void run() {
+//					VideoDetailActivity.this.mCoverView.performClick();
+//				}
+//			}, 500);
+//		}
+	}
+
+	private void initAdapter( FullContent fullContent ) {
+		int mVid;
+		this.mVideoDetailPagerAdapter = new VideoDetailPagerAdapter( getSupportFragmentManager() );
+		mVideoDetailRelevantFragment = VideoDetailRelevantFragment.newInstance( fullContent );
+		String analyticsID = "commentatvideodetailspage";// UmengCustomAnalyticsIDs.V
+		if ( this.mVideo == null ) {
+			mVid = 0;
+		} else {
+			mVid = this.mVideo.getVid();
+		}
+		mVideoDetailCommentFragment = VideoDetailCommentFragment.newInstance( fullContent, 0, analyticsID, isDetailsShow, mReqId, mGroupId, mVid );
+		// TODO: 2019/1/2 设置 IVideoDetailView
+//		mVideoDetailCommentFragment.a( ( IVideoDetailView ) this );
+		if ( isDetailsShow ) {
+			mVideoDetailPagerAdapter.setData( mVideoDetailCommentFragment, "评论" );
+			mTitleTab.setVisibility( View.GONE );
+			report.setVisibility( View.GONE );
+			mPlayerViewBar.setBackgroundColor( getResources().getColor( R.color.progress_bar_hapame_played ) );
+			mIconVideoPlay.setBackground( getResources().getDrawable( R.drawable.hapame_play ) );
+			mDanmakuSender.setBackground( getResources().getDrawable( R.drawable.hapame_danmu_send ) );
+			bottomBar.setVisibility( View.VISIBLE );
+		} else {
+			mVideoDetailPagerAdapter.setData( mVideoDetailRelevantFragment, "简介" );
+			mVideoDetailPagerAdapter.setData( mVideoDetailCommentFragment, "评论" );
+			mTitleTab.setVisibility( View.VISIBLE );
+			report.setVisibility( View.VISIBLE );
+			mPlayerViewBar.setBackgroundColor( getResources().getColor( R.color.them_color ) );
+			mIconVideoPlay.setBackground( getResources().getDrawable( R.mipmap.ic_video_play ) );
+			mDanmakuSender.setBackground( getResources().getDrawable( R.drawable.icon_send_danmu ) );
+		}
+		mTitlePager.setAdapter( mVideoDetailPagerAdapter );
+		mTitleTab.setViewPager( mTitlePager );
+		if ( mVideoDetailPagerAdapter.getCount() == 2 ) {
+			TextView textView = ( TextView ) this.mTitleTab.getTabAt( 1 ).findViewById( R.id.count );
+			if ( textView != null && fullContent.getComments() > 0 ) {
+				textView.setVisibility( View.VISIBLE );
+				textView.setText( String.valueOf( fullContent.getComments() ) );
+			}
+		}
+		ImageLoaderUtil.loadNetImage( SigninHelper.getInstance().getAvatar(), userAvatar );
+		initTitlePagerListener();
+	}
+	private void initTitlePagerListener() {
+		this.mTitlePager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			public void onPageSelected(int i) {
+				//统计计数
+//				String str = "info";
+//				if (!(mVideoDetailPagerAdapter == null || mTitleTab == null)) {
+//					if (i == 1) {
+//						bottomCommentNumber.setVisibility(8);
+//						I = I + 1;
+//						J = System.currentTimeMillis();
+//						str = "comment";
+//					} else {
+//						bottomCommentNumber.setVisibility(0);
+//						str = "info";
+//						K = K + (System.currentTimeMillis() - J);
+//					}
+//				}
+				hideSoftInput();
+//				Bundle bundle = new Bundle();
+//				bundle.putInt("ac_id", u);
+//				bundle.putString(KanasConstants.af, str);
+//				KanasCommonUtil.a(KanasConstants.D, bundle);
+//				bundle = new Bundle();
+//				bundle.putString(KanasConstants.af, str);
+//				KanasCommonUtil.c(KanasConstants.bN, bundle);
+			}
+		});
+	}
+	private void initBehavior() {
+		TypedValue typedValue = new TypedValue();
+		getTheme().resolveAttribute( android.R.attr.actionBarSize, typedValue, true );
+		if ( this.isDetailsShow ) {
+			this.mPlayerContainer.setMinimumHeight( getResources().getDimensionPixelSize( typedValue.resourceId ) );
+		} else {
+			this.mPlayerContainer.setMinimumHeight( getResources().getDimensionPixelSize( typedValue.resourceId ) );
+		}
+		mAppBarLayout.addOnOffsetChangedListener( new HeaderOffsetUpdateListener( this, mAppBarLayout, mCoverView, mPlayerViewBar, mDivider ) );
+		CoordinatorLayout.LayoutParams layoutParams = ( CoordinatorLayout.LayoutParams ) this.mAppBarLayout.getLayoutParams();
+		AppBarLayout.Behavior behavior = new AppBarLayout.Behavior();
+		behavior.setDragCallback( new AppBarLayout.Behavior.DragCallback() {
+			public boolean canDrag( @NonNull AppBarLayout appBarLayout ) {
+				// TODO: 2019/1/2 是否可以拖动 当视频播放时不能拖动
+				return false;
+//				return A() ^ 1;
+			}
+		} );
+		layoutParams.setBehavior( behavior );
+		mDanmakuContainer.setPivotY( 0.0f );
+		LayoutTransition layoutTransition = this.mPlayerContainer.getLayoutTransition();
+		if ( layoutTransition != null ) {
+			Animator ofFloat = ObjectAnimator.ofFloat( null, "scaleY", new float[]{ 0.0f, 1.0f } );
+			ofFloat.setDuration( layoutTransition.getDuration( 2 ) );
+			layoutTransition.setAnimator( LayoutTransition.APPEARING, ofFloat );
+			layoutTransition.setStartDelay( LayoutTransition.APPEARING, 0 );
+			layoutTransition.setInterpolator( LayoutTransition.APPEARING, layoutTransition.getInterpolator( 0 ) );
+		}
+	}
+
+	public void setVideoInfo( Video video, FullContent fullContent, boolean isOnce ) {
+		if ( mPlayerViewContainer != null ) {
+//			mPlayerViewContainer.a(mCoverContainer.getHeight() + 40);
+			PlayerVideoInfo playerVideoInfo = new PlayerVideoInfo( video, fullContent.getParentChannelId(), fullContent.getChannelId(), fullContent.getCid(), 2, fullContent.getTitle() );
+			playerVideoInfo.setUploaderData( fullContent.getUser() );
+			playerVideoInfo.setVideoList( fullContent.getVideos() );
+			playerVideoInfo.setAllowPlayWithMobileOnce( isOnce );
+			playerVideoInfo.setVideoCover( fullContent.getCover() );
+			playerVideoInfo.setFrom( mFrom );
+			playerVideoInfo.setDes( fullContent.getDescription() );
+			playerVideoInfo.setHapame( isDetailsShow );
+			playerVideoInfo.setShareUrl( fullContent.getShareUrl() );
+			playerVideoInfo.setReleaseTime( new SimpleDateFormat( "yyyy-MM-dd HH:mm" ).format( new Date( fullContent.getReleaseDate() ) ) );
+			playerVideoInfo.setVideoDetailFrom( true );
+			playerVideoInfo.setReqId( mReqId );
+			playerVideoInfo.setGroupId( mGroupId );
+			playerVideoInfo.setTitle( fullContent.getTitle() );
+//			mPlayerViewContainer.a( playerVideoInfo );
+			mtextTitle.setVisibility( View.GONE );
+			mCoverContainer.setVisibility( View.GONE );
+			mPlayerViewContainer.setVisibility( View.VISIBLE );
+//			mPlayerViewContainer.b();
+//			EventHelper.a().a(new OnNotifyPlayingVideoEvent(video));
+			mPlayerOpenView.setText( R.string.activity_video_detail_resume_play_tip );
+		}
 	}
 }
 
