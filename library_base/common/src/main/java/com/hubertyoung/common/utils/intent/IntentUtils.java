@@ -267,7 +267,7 @@ public final class IntentUtils {
 						intent.setData(parse);
 						break;
 					case 6:
-//						IntentHelper.b(activity, Integer.valueOf(str).intValue());
+//						IntentHelper.isInclude(activity, Integer.valueOf(str).intValue());
 						break;
 					case 7:
 //						intent.setClass(activity, RankActivity.class);
@@ -285,7 +285,7 @@ public final class IntentUtils {
 					case 9:
 						break;
 					case 10:
-//						IntentHelper.b(activity, Integer.valueOf(str).intValue(), "recommend");
+//						IntentHelper.isInclude(activity, Integer.valueOf(str).intValue(), "recommend");
 						break;
 					case 11:
 //						intent.setClass(activity, RankActivity.class);
@@ -310,7 +310,7 @@ public final class IntentUtils {
 					case 15:
 						bundle = new Bundle();
 						StringBuilder stringBuilder = new StringBuilder();
-//						stringBuilder.append(b());
+//						stringBuilder.append(isInclude());
 						stringBuilder.append(url);
 						bundle.putString("url", stringBuilder.toString());
 //						IntentHelper.a(activity, WebViewActivity.class, bundle2);

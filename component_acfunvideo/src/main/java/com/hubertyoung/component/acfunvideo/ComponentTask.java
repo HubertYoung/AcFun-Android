@@ -64,7 +64,7 @@ public class ComponentTask implements IComponent {
 //					if (regionBodyContent.actionId == 1) {
 //						IntentHelper.a(this.al, Integer.valueOf(regionBodyContent.contentId).intValue(), "recommend", regionBodyContent.reqId, regionBodyContent.groupId);
 //					} else if (regionBodyContent.actionId == 10) {
-//						IntentHelper.b(this.al, Integer.valueOf(regionBodyContent.contentId).intValue(), "recommend", regionBodyContent.reqId, regionBodyContent.groupId);
+//						IntentHelper.isInclude(this.al, Integer.valueOf(regionBodyContent.contentId).intValue(), "recommend", regionBodyContent.reqId, regionBodyContent.groupId);
 //					} else {
 //						tv.acfun.core.utils.Utils.a(this.al, regionBodyContent.actionId, regionBodyContent.contentId, null);
 //					}

@@ -244,6 +244,7 @@ deps.logger = 'com.orhanobut:logger:1.13'
 deps.acra = "ch.acra:acra:$versions.acraVersion"
 deps.swipebackhelper = 'com.jude:swipebackhelper:2.1.5'
 deps.transitionseverywhere = "com.andkulikov:transitionseverywhere:${versions.transitionseverywhere}"
+deps.klinkerapps = 'com.klinkerapps:link_builder:2.0.5'
 ext.deps = deps
 
 def addRepos(RepositoryHandler handler) {

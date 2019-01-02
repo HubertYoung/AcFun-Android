@@ -27,4 +27,8 @@ public class VideoConstants {
 	 * 视频详情
 	 */
 	public static final Object EVENT_KEY_VIDEODETAIL= "EVENT_KEY_VIDEODETAIL";
+	/**
+	 * 获取用户信息
+	 */
+	public static final Object EVENT_KEY_VIDEO_RELEVANT_USERINFO= "EVENT_KEY_VIDEO_RELEVANT_USERINFO";
 }

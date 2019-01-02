@@ -86,6 +86,7 @@ dependencies {
     implementation deps.rx_android
     implementation deps.rxjava2
     implementation deps.rxbinding
+    implementation deps.klinkerapps
 //    implementation deps.rxbinding_core
 //    implementation deps.rxbinding_appcompat
 //    implementation deps.rxbinding_drawerlayout

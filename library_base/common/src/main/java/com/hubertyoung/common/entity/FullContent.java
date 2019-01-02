@@ -27,6 +27,8 @@ public class FullContent implements Serializable {
 	private int channelId;
 	@SerializedName("contentId")
 	private int cid;
+	@SerializedName("channelName")
+	public String channelName;
 	@SerializedName("comments")
 	private int comments;
 	@SerializedName("cover")
@@ -286,5 +288,13 @@ public class FullContent implements Serializable {
 
 	public String getShareUrl() {
 		return this.shareUrl;
+	}
+
+	public String getChannelName() {
+		return this.channelName;
+	}
+
+	public void setChannelName(String str) {
+		this.channelName = str;
 	}
 }

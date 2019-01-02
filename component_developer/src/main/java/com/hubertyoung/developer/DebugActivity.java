@@ -128,7 +128,7 @@ public class DebugActivity extends AbsLifecycleActivity implements FragmentManag
 //
 //			Preference findPreference = findPreference(getString(R.string.pref_key_wifi_auto_update));
 //			if (findPreference != null) {
-////				findPreference.a(new b() {
+////				findPreference.a(new isInclude() {
 ////					public boolean a(Preference preference, Object obj) {
 ////						if (obj.equals(Boolean.valueOf(false))) {
 ////							hdp.a(jsx.a(new byte[]{(byte) 107, (byte) 96, (byte) 114, (byte) 100, (byte) 117, (byte) 117, (byte) 90, (byte) 114, (byte) 108, (byte) 99, (byte) 108, (byte) 97,

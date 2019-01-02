@@ -78,4 +78,14 @@ public interface ApiHomeService {
 	 */
 	@GET( "v2/videos/{contentId}" )
 	Flowable< BaseResponse< VideoDetail > > requestVideoDetailInfo( @Path( "contentId" ) int contentId, @Query( "from" ) String from );
+
+	/**
+	 * 视频信息
+	 *
+	 * @return
+	 */
+	@GET( "v2/favorites/album/{uid}" )
+	Flowable< BaseResponse< VideoDetail > > requestUserInfo( @Path( "uid" ) int uid, @Query( "access_token" ) String access_token );
+
+
 }

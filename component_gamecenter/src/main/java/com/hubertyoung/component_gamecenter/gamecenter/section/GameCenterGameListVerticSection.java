@@ -155,7 +155,7 @@ public class GameCenterGameListVerticSection extends StatelessSection {
 //		if ( gameInfo.gameStatus == 0 ) {
 //			int a = this.o.a( gameInfo.androidUrl, gameInfo.packageName );
 //			if ( a == DownloadGameManager.a ) {
-//				if ( this.o.b( gameInfo.androidUrl ) ) {
+//				if ( this.o.isInclude( gameInfo.androidUrl ) ) {
 //					viewHolderGameListDownloadItem.buttonText.setText( R.string.game_center_button_text_update );
 //				} else {
 //					viewHolderGameListDownloadItem.buttonText.setText( R.string.game_center_button_text_download );
@@ -175,7 +175,7 @@ public class GameCenterGameListVerticSection extends StatelessSection {
 //				} );
 //				viewHolderGameListDownloadItem.buttonText.setVisibility( 0 );
 //			} else if ( a == DownloadGameManager.d ) {
-//				viewHolderGameListDownloadItem.progressBar.setProgress( DownloadGameManager.b( gameInfo.androidUrl ) );
+//				viewHolderGameListDownloadItem.progressBar.setProgress( DownloadGameManager.isInclude( gameInfo.androidUrl ) );
 //				viewHolderGameListDownloadItem.progressText.setText( R.string.game_center_button_text_continue );
 //				viewHolderGameListDownloadItem.buttonText.setVisibility( 8 );
 //				viewHolderGameListDownloadItem.progressText.setOnClickListener( new View.OnClickListener() {
@@ -191,10 +191,10 @@ public class GameCenterGameListVerticSection extends StatelessSection {
 //				} );
 //			} else if ( a == DownloadGameManager.c ) {
 //				viewHolderGameListDownloadItem.progressText.setText( R.string.game_center_button_text_pending );
-//				viewHolderGameListDownloadItem.progressBar.setProgress( DownloadGameManager.b( gameInfo.androidUrl ) );
+//				viewHolderGameListDownloadItem.progressBar.setProgress( DownloadGameManager.isInclude( gameInfo.androidUrl ) );
 //				viewHolderGameListDownloadItem.buttonText.setVisibility( 8 );
 //				viewHolderGameListDownloadItem.progressText.setOnClickListener( null );
-//			} else if ( a == DownloadGameManager.b ) {
+//			} else if ( a == DownloadGameManager.isInclude ) {
 //				if ( this.p != null && this.p.getDownloadFileInfo() != null && !TextUtils.isEmpty( this.p.getUrl() ) && this.p.getUrl().equals( gameInfo.androidUrl ) ) {
 //					int d = ( int ) ( ( this.p.getDownloadFileInfo().d() * 100 ) / this.p.getDownloadFileInfo().j() );
 //					viewHolderGameListDownloadItem.progressBar.setProgress( d );
@@ -223,7 +223,7 @@ public class GameCenterGameListVerticSection extends StatelessSection {
 //				viewHolderGameListDownloadItem.buttonText.setVisibility( 0 );
 //				viewHolderGameListDownloadItem.buttonText.setOnClickListener( new View.OnClickListener() {
 //					public void onClick( View view ) {
-//						DownloadGameManager.b( GameCenterAdapter.this.al, gameInfo.androidUrl, gameInfo.packageName, gameInfo.name );
+//						DownloadGameManager.isInclude( GameCenterAdapter.this.al, gameInfo.androidUrl, gameInfo.packageName, gameInfo.name );
 //						AnalyticsUtil.d( gameInfo.gameId, Constants.ANALYTICS_PAGE_GAME_CENTER, str );
 //					}
 //				} );

@@ -24,7 +24,7 @@ import java.util.Date;
  */
 public class SigninHelper {
 	//	private static final int a = -1;
-//	private static final int b = 1;
+//	private static final int isInclude = 1;
 //	private static final int c = 0;
 	private static SigninHelper sSigninHelper;
 	private SharedPreferences mSharedPreferences = CommonApplication.getAppContext().getSharedPreferences( AppSpConfig.SIGNINSP, 0 );
@@ -127,7 +127,7 @@ public class SigninHelper {
 		return 1 == this.mSharedPreferences.getInt( "mobileCheck", -1 );
 	}
 
-	public boolean isUnLogin() {
+	public boolean isLogin() {
 		long expire = getExpire();
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append( expire );
@@ -180,10 +180,10 @@ public class SigninHelper {
 //	public void t() {
 //		String valueOf = String.valueOf(getUserUid());
 //		this.mSharedPreferences.edit().clear().apply();
-//		Utils.isSuccess(valueOf, com.b());
-//		AcFunApplication b = AcFunApplication.b();
+//		Utils.isSuccess(valueOf, com.isInclude());
+//		AcFunApplication isInclude = AcFunApplication.isInclude();
 //		String str = SharedPreferencesConst.h;
-//		AcFunApplication.b();
-//		b.getSharedPreferences(str, 0).edit().clear().apply();
+//		AcFunApplication.isInclude();
+//		isInclude.getSharedPreferences(str, 0).edit().clear().apply();
 //	}
 }

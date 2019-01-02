@@ -459,6 +459,7 @@
     <string name="common_no_more_data">没啦</string>
     <string name="common_ok">确定</string>
     <string name="common_progress">正在处理中 …</string>
+    <string name="common_push_banana">投蕉</string>
     <string name="common_select">选择</string>
     <string name="common_special">合辑</string>
     <string name="common_title">标题</string>
@@ -1128,6 +1129,7 @@ AC娘敬你是条汉子，去答题试试"</string>
     <string name="video_detail_content_danmu_count_text">%s条弹幕</string>
     <string name="video_detail_content_id_text">AC%d</string>
     <string name="video_detail_content_part_title">视频选段</string>
+    <string name="video_detail_content_play_channel">投稿于%s</string>
     <string name="video_detail_content_play_count_text">%s次播放</string>
     <string name="video_detail_content_recommend">相关内容</string>
     <string name="video_detail_content_toggle_close">收起简介</string>

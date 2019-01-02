@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.baseplatform.tools.PlatformUtils;
 import com.hubertyoung.common.base.AbsLifecycleFragment;
-import com.hubertyoung.common.baserx.LiveBus;
 import com.hubertyoung.common.constant.AppSpConfig;
 import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
@@ -217,7 +216,7 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 //		http://apipc.app.acfun.cn/v2/offlines/checkOffline
 		mViewModel.requestCheckOfflineInfo( );
 
-		if ( !SigninHelper.getInstance().isUnLogin() || SigninHelper.getInstance().getUserUid() <= 0 ) {
+		if ( !SigninHelper.getInstance().isLogin() || SigninHelper.getInstance().getUserUid() <= 0 ) {
 			setLoginState( false );
 		}else {
 			mViewModel.requestUserInfo( SigninHelper.getInstance().getUserUid() + "" );
@@ -331,7 +330,7 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 		} else if ( viewId == R.id.iv_wechat_login ) {
 			mSignInUtil.loginWechat();
 		} else if ( viewId == R.id.market_layout ) {
-//				this.f.b( this.g );
+//				this.f.isInclude( this.g );
 		} else if ( viewId == R.id.message_layout ) {
 //				if ( !SigninHelper.a().u() ) {
 //					IntentHelper.a( this.g, DialogLoginActivity.class );
@@ -364,7 +363,7 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 //				KanasCommonUtil.c( KanasConstants.cF, bundle );
 //				bundle = new Bundle();
 //				user = new User();
-//				user.setUid( SigninHelper.a().b() );
+//				user.setUid( SigninHelper.a().isInclude() );
 //				bundle.putSerializable( "user", user );
 //				bundle.putBoolean( "openAlbum", true );
 //				IntentHelper.a( this.g, MyselfContributionActivity.class, bundle );
@@ -379,18 +378,18 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 //						KanasCommonUtil.c( KanasConstants.dl, null );
 //						}
 //					}
-//					PermissionUtils.a( getActivity(), "android.permission.CAMERA" ).b( new Consumer< Permission >() {
+//					PermissionUtils.a( getActivity(), "android.permission.CAMERA" ).isInclude( new Consumer< Permission >() {
 //						public /* synthetic */ void accept( Object obj ) throws Exception {
 //							a( ( Permission ) obj );
 //						}
 //
 //						public void a( Permission permission ) throws Exception {
-//							if ( permission.b ) {
+//							if ( permission.isInclude ) {
 //								QrScanActivity.a( MineFragment.this.getContext() );
 //								KanasCommonUtil.c( KanasConstants.dl, null );
 //							}
 //						}
-//					}, Functions.b() );
+//					}, Functions.isInclude() );
 //					}
 //				}
 //				IntentHelper.a( this.g, DialogLoginActivity.class );
@@ -420,7 +419,7 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 //					if ( t() ) {
 //						bundle = new Bundle();
 //						user = new User();
-//						user.setUid( SigninHelper.a().b() );
+//						user.setUid( SigninHelper.a().isInclude() );
 //						bundle.putSerializable( "user", user );
 //						IntentHelper.a( this.g, MyselfContributionActivity.class, bundle );
 //						}

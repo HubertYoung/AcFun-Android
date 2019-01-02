@@ -1,6 +1,14 @@
 package com.hubertyoung.component.acfunvideo.videodetail.source;
 
+import com.hubertyoung.common.api.ApiImpl;
+import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
+import com.hubertyoung.common.entity.User;
+import com.hubertyoung.common.net.transformer.DefaultTransformer;
+import com.hubertyoung.common.utils.SigninHelper;
+import com.hubertyoung.component.acfunvideo.api.ApiHomeService;
+
+import io.reactivex.Flowable;
 
 /**
  * desc:
@@ -13,13 +21,12 @@ import com.hubertyoung.common.base.AbsRepository;
 
 public class VideoDetailRelevantRepository extends AbsRepository {
 
-//	public Flowable< Object > requestHttp() {
-//		return Api.getDefault( HostType.MY_RESULT )//
-//				.getRetrofitClient()//
-//				.setBaseUrl( EnvironmentSwitcher.getObjectEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )//
-//				.builder( ApiObject.class )//
-//				.requestHttp()//
-//				.compose( new DefaultTransformer() );
-//	}
+	public Flowable< User > requestUserInfo( int uid ) {
+		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )//
+				.getRetrofitClient()//
+				.builder( ApiHomeService.class )//
+				.requestUserInfo( uid, SigninHelper.getInstance().getUserToken() )//
+				.compose( new DefaultTransformer() );
+	}
 
 }

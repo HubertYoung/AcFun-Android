@@ -4,6 +4,10 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 
 import com.hubertyoung.common.base.AbsViewModel;
+import com.hubertyoung.common.baserx.RxSubscriber;
+import com.hubertyoung.common.entity.User;
+import com.hubertyoung.common.utils.SigninHelper;
+import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.videodetail.source.VideoDetailRelevantRepository;
 
 
@@ -43,5 +47,23 @@ public class VideoDetailRelevantViewModel extends AbsViewModel< VideoDetailRelev
 //				ToastUtil.showError( msg );
 //			}
 //		} ) );
+	}
+
+	public void requestUserInfo( int uid ) {
+		if ( !SigninHelper.getInstance().isLogin() ){
+			return;
+		}
+		addDisposable( mRepository.requestUserInfo( uid ).subscribeWith( new RxSubscriber< User >() {
+
+			@Override
+			public void onSuccess( User user ) {
+				sendData( VideoConstants.EVENT_KEY_VIDEO_RELEVANT_USERINFO, user );
+			}
+
+			@Override
+			public void onFailure( String msg ) {
+//				ToastUtil.showError( msg );
+			}
+		} ) );
 	}
 }

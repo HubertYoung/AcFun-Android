@@ -104,12 +104,12 @@ public class DynamicFollowBangumiSection extends StatelessSection {
 //					if ( SigninHelper.a().u() ) {
 //						if ( FavBangumiAdapter.this.a_( Integer.parseInt( regionBodyContent2.contentId ) ) ) {
 //							ApiHelper.a()
-//									.b( FavBangumiAdapter.this.av, Integer.parseInt( regionBodyContent2.contentId ), -1, new FollowBangumiCallback( viewHolderDynamicRecommend.follow,
+//									.isInclude( FavBangumiAdapter.this.av, Integer.parseInt( regionBodyContent2.contentId ), -1, new FollowBangumiCallback( viewHolderDynamicRecommend.follow,
 //											viewHolderDynamicRecommend.followImg, Integer
 //											.parseInt( regionBodyContent2.contentId ), false ) );
 //						} else {
 //							ApiHelper.a()
-//									.b( FavBangumiAdapter.this.av, Integer.parseInt( regionBodyContent2.contentId ), 1, new FollowBangumiCallback( viewHolderDynamicRecommend.follow,
+//									.isInclude( FavBangumiAdapter.this.av, Integer.parseInt( regionBodyContent2.contentId ), 1, new FollowBangumiCallback( viewHolderDynamicRecommend.follow,
 //											viewHolderDynamicRecommend.followImg, Integer
 //											.parseInt( regionBodyContent2.contentId ), true ) );
 //						}

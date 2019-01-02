@@ -122,7 +122,7 @@ public class DynamicAcfunSection extends StatelessSection {
 //					MobclickAgent.onEvent( DynamicAcfunAdapter.this.al, UmengCustomAnalyticsIDs.bl );
 //					if ( DynamicAcfunAdapter.this.a_( Integer.parseInt( regionBodyContent2.contentId ) ) ) {
 //						ApiHelper.a()
-//								.b( DynamicAcfunAdapter.this.av, Integer.parseInt( regionBodyContent2.contentId ), new FollowBangumiCallback( viewHolderRecommendUploader.follow,
+//								.isInclude( DynamicAcfunAdapter.this.av, Integer.parseInt( regionBodyContent2.contentId ), new FollowBangumiCallback( viewHolderRecommendUploader.follow,
 // viewHolderRecommendUploader.followImg, Integer
 //
 //										.parseInt( regionBodyContent2.contentId ), false ) );

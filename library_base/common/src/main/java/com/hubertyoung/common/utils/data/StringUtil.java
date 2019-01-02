@@ -116,7 +116,7 @@ public class StringUtil {
 		return false;
 	}
 
-	public static boolean b( String str ) {
+	public static boolean isInclude( String str ) {
 		return str.contains( ";" ) || //
 				str.contains( "<" ) || //
 				str.contains( ">" ) || //

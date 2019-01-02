@@ -27,39 +27,39 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
  */
 public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLifecycleFragment< VM > {
 
-    private RecyclerView mRecyclerView;
+	private RecyclerView mRecyclerView;
 
-    private SmartRefreshLayout mSrlContainer;
+	private SmartRefreshLayout mSrlContainer;
 
-    private Toolbar mToolbar;
+	protected Toolbar mToolbar;
 
-    private TextView mTitle;
+	private TextView mTitle;
 
-    private SectionedRecyclerViewAdapter mAdapter;
+	private SectionedRecyclerViewAdapter mAdapter;
 
-    private ViewReplacer mViewReplacer;
-    private View mLoadingLayout;
-    private View mErrorLayout;
+	private ViewReplacer mViewReplacer;
+	private View mLoadingLayout;
+	private View mErrorLayout;
 
-    @Override
-    protected int getLayoutResource() {
-        return R.layout.fragment_list;
-    }
+	@Override
+	protected int getLayoutResource() {
+		return R.layout.fragment_list;
+	}
 
-    @Override
-    protected void initView( Bundle state ) {
-        super.initView( state );
-        mRecyclerView = findViewById( R.id.recycler_view );
-        mSrlContainer = findViewById( R.id.srl_container );
-        mToolbar = findViewById( R.id.view_toolbar );
-        mTitle = findViewById( R.id.toolbar_title );
+	@Override
+	protected void initView( Bundle state ) {
+		super.initView( state );
+		mRecyclerView = findViewById( R.id.recycler_view );
+		mSrlContainer = findViewById( R.id.srl_container );
+		mToolbar = findViewById( R.id.view_toolbar );
+		mTitle = findViewById( R.id.toolbar_title );
 
-        mAdapter = new SectionedRecyclerViewAdapter( null );
-        mRecyclerView.setLayoutManager( createLayoutManager() );
-        mRecyclerView.setHasFixedSize( true );
-        mRecyclerView.addOnScrollListener( new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged( @NonNull RecyclerView recyclerView, int newState ) {
+		mAdapter = new SectionedRecyclerViewAdapter( null );
+		mRecyclerView.setLayoutManager( createLayoutManager() );
+		mRecyclerView.setHasFixedSize( true );
+		mRecyclerView.addOnScrollListener( new RecyclerView.OnScrollListener() {
+			@Override
+			public void onScrollStateChanged( @NonNull RecyclerView recyclerView, int newState ) {
 //				if (newState == RecyclerView.SCROLL_STATE_IDLE) {
 //					if (activity != null) {
 //						Glide.with(activity).resumeRequests();
@@ -69,156 +69,156 @@ public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLif
 //						Glide.with(activity).pauseRequests();
 //					}
 //				}
-            }
-        } );
-        mRecyclerView.setAdapter( mAdapter );
-        mViewReplacer = new ViewReplacer( mSrlContainer );
+			}
+		} );
+		mRecyclerView.setAdapter( mAdapter );
+		mViewReplacer = new ViewReplacer( mSrlContainer );
 
-        showLoadingLayout();
+		showLoadingLayout();
 
-        mSrlContainer.setOnRefreshListener( new OnRefreshListener() {
-            @Override
-            public void onRefresh( RefreshLayout refreshLayout ) {
-                mAdapter.getPageBean().refresh = true;
-                mSrlContainer.finishLoadMore();
-                mSrlContainer.setNoMoreData( false );
-                loadData();
-            }
-        } );
-        mSrlContainer.setOnLoadMoreListener( new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore( RefreshLayout refreshLayout ) {
-                mAdapter.getPageBean().refresh = false;
-                loadNewData();
-            }
-        } );
-    }
+		mSrlContainer.setOnRefreshListener( new OnRefreshListener() {
+			@Override
+			public void onRefresh( RefreshLayout refreshLayout ) {
+				mAdapter.getPageBean().refresh = true;
+				mSrlContainer.finishLoadMore();
+				mSrlContainer.setNoMoreData( false );
+				loadData();
+			}
+		} );
+		mSrlContainer.setOnLoadMoreListener( new OnLoadMoreListener() {
+			@Override
+			public void onLoadMore( RefreshLayout refreshLayout ) {
+				mAdapter.getPageBean().refresh = false;
+				loadNewData();
+			}
+		} );
+	}
 
-    private void showLoadingLayout() {
-        if ( mViewReplacer != null ) {
-            if ( mLoadingLayout == null ) {
-                mLoadingLayout = LayoutInflater.from( activity ).inflate( R.layout.widget_loading_holder, null );
-            }
-            mViewReplacer.replace( mLoadingLayout );
+	private void showLoadingLayout() {
+		if ( mViewReplacer != null ) {
+			if ( mLoadingLayout == null ) {
+				mLoadingLayout = LayoutInflater.from( activity ).inflate( R.layout.widget_loading_holder, null );
+			}
+			mViewReplacer.replace( mLoadingLayout );
 
-            if ( mViewReplacer.getCurrentView() != null ) {
-                mViewReplacer.getCurrentView().setVisibility( View.VISIBLE );
-                SimpleDraweeView simpleDraweeView = mViewReplacer.getCurrentView().findViewById( R.id.widget_loading_holder_gif );
-                simpleDraweeView.getHierarchy().setPlaceholderImage( LoadingThemeUtil.getPageLoadingImages() );
-                ImageLoaderUtil.loadNetImage( LoadingThemeUtil.getPageLoadingFileImages(), simpleDraweeView );
-            }
-        }
-    }
+			if ( mViewReplacer.getCurrentView() != null ) {
+				mViewReplacer.getCurrentView().setVisibility( View.VISIBLE );
+				SimpleDraweeView simpleDraweeView = mViewReplacer.getCurrentView().findViewById( R.id.widget_loading_holder_gif );
+				simpleDraweeView.getHierarchy().setPlaceholderImage( LoadingThemeUtil.getPageLoadingImages() );
+				ImageLoaderUtil.loadNetImage( LoadingThemeUtil.getPageLoadingFileImages(), simpleDraweeView );
+			}
+		}
+	}
 
-    protected abstract void loadNewData();
+	protected abstract void loadNewData();
 
-    protected abstract void loadData();
+	protected abstract void loadData();
 
-    @Override
-    protected void lazyLoad() {
-        if ( NetworkUtil.isNetAvailable() ) {
-            showLoadingLayout();
-            loadData();
-        } else {
-            ToastUtil.showError( activity.getString( R.string.net_status_not_work ) );
-            showErrorLayout(null);
-        }
-    }
+	@Override
+	protected void lazyLoad() {
+		if ( NetworkUtil.isNetAvailable() ) {
+			showLoadingLayout();
+			loadData();
+		} else {
+			ToastUtil.showError( activity.getString( R.string.net_status_not_work ) );
+			showErrorLayout( null );
+		}
+	}
 
-    @Override
-    public void stopLoading() {
-        mSrlContainer.finishRefresh();
-        mSrlContainer.finishLoadMore();
-        if ( mViewReplacer != null ) {
-            mViewReplacer.restore();
-        }
-    }
+	@Override
+	public void stopLoading() {
+		mSrlContainer.finishRefresh();
+		mSrlContainer.finishLoadMore();
+		if ( mViewReplacer != null ) {
+			mViewReplacer.restore();
+		}
+	}
 
-    /**
-     * LayoutManager
-     *
-     * @return LayoutManager
-     */
-    protected abstract RecyclerView.LayoutManager createLayoutManager();
+	/**
+	 * LayoutManager
+	 *
+	 * @return LayoutManager
+	 */
+	protected abstract RecyclerView.LayoutManager createLayoutManager();
 
-    /**
-     * addSection
-     *
-     * @param section
-     */
-    protected void addSection( Section section ) {
-        if ( mAdapter != null ) {
-            mAdapter.addSection( section );
-        }
-    }
+	/**
+	 * addSection
+	 *
+	 * @param section
+	 */
+	protected void addSection( Section section ) {
+		if ( mAdapter != null ) {
+			mAdapter.addSection( section );
+		}
+	}
 
-    /**
-     * show error layout
-     */
-    @Override
-    protected void showErrorLayout(String result) {
-        if ( mViewReplacer != null && mAdapter != null && mAdapter.mPageBean.refresh ) {
-            if ( mErrorLayout == null ) {
-                mErrorLayout = LayoutInflater.from( activity ).inflate( R.layout.widget_error_holder, null );
-            }
+	/**
+	 * show error layout
+	 */
+	@Override
+	protected void showErrorLayout( String result ) {
+		if ( mViewReplacer != null && mAdapter != null && mAdapter.mPageBean.refresh ) {
+			if ( mErrorLayout == null ) {
+				mErrorLayout = LayoutInflater.from( activity ).inflate( R.layout.widget_error_holder, null );
+			}
 			TextView tvErrorContent = mErrorLayout.findViewById( R.id.tv_error_content );
 			if ( !TextUtils.isEmpty( result ) ) {
-                tvErrorContent.setText( result );
-            }else{
+				tvErrorContent.setText( result );
+			} else {
 				tvErrorContent.setText( R.string.error_page_title );
 			}
-            mViewReplacer.replace( mErrorLayout );
-            if ( mViewReplacer.getCurrentView() != null ) {
-                mViewReplacer.getCurrentView().setVisibility( View.VISIBLE );
-                TextView refreshClick = mViewReplacer.getCurrentView().findViewById( R.id.refresh_click );
-                refreshClick.setOnClickListener( v -> {
-                    lazyLoad();
-                } );
-            }
-        }else {
-            stopLoading();
-        }
-    }
+			mViewReplacer.replace( mErrorLayout );
+			if ( mViewReplacer.getCurrentView() != null ) {
+				mViewReplacer.getCurrentView().setVisibility( View.VISIBLE );
+				TextView refreshClick = mViewReplacer.getCurrentView().findViewById( R.id.refresh_click );
+				refreshClick.setOnClickListener( v -> {
+					lazyLoad();
+				} );
+			}
+		} else {
+			stopLoading();
+		}
+	}
 
-    /**
-     * setTitleName
-     *
-     * @param titleName
-     * @param isCenter
-     */
-    protected void setTitle( String titleName, boolean isCenter ) {
-        if ( isCenter ) {
-            mTitle.setText( titleName );
-            mTitle.setVisibility( View.VISIBLE );
-            mToolbar.setVisibility( View.GONE );
-            mToolbar.setTitle( "" );
-        } else {
-            mTitle.setVisibility( View.GONE );
-            mToolbar.setVisibility( View.VISIBLE );
-            mToolbar.setTitle( titleName );
-        }
-    }
+	/**
+	 * setTitleName
+	 *
+	 * @param titleName
+	 * @param isCenter
+	 */
+	protected void setTitle( String titleName, boolean isCenter ) {
+		if ( isCenter ) {
+			mTitle.setText( titleName );
+			mTitle.setVisibility( View.VISIBLE );
+			mToolbar.setVisibility( View.GONE );
+			mToolbar.setTitle( "" );
+		} else {
+			mTitle.setVisibility( View.GONE );
+			mToolbar.setVisibility( View.VISIBLE );
+			mToolbar.setTitle( titleName );
+		}
+	}
 
-    /**
-     * setToolbarVisible
-     *
-     * @param isShow
-     */
-    protected void setTitleLayoutVisible( boolean isShow ) {
-        mToolbar.setVisibility( isShow ? View.VISIBLE : View.GONE );
-    }
+	/**
+	 * setToolbarVisible
+	 *
+	 * @param isShow
+	 */
+	protected void setTitleLayoutVisible( boolean isShow ) {
+		mToolbar.setVisibility( isShow ? View.VISIBLE : View.GONE );
+	}
 
 
-    @Override
-    protected void initToolBar() {
+	@Override
+	protected void initToolBar() {
 
-    }
+	}
 
-    public SectionedRecyclerViewAdapter getAdapter() {
-        return mAdapter;
-    }
+	public SectionedRecyclerViewAdapter getAdapter() {
+		return mAdapter;
+	}
 
-    public SmartRefreshLayout getSrlContainer() {
-        return mSrlContainer;
-    }
+	public SmartRefreshLayout getSrlContainer() {
+		return mSrlContainer;
+	}
 }

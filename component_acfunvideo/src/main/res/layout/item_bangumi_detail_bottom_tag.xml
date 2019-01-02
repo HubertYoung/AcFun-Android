@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingRight="10dp"
+              android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/tag_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_white_background_gray_border_50dp_corners"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:padding="9dp"
+        android:textColor="@color/text_black_color"
+        android:textSize="12sp"
+        tools:text="约定"/>
+</LinearLayout>

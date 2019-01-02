@@ -215,8 +215,8 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		} );
 		mIntent = getIntent();
 		// TODO: 2018/12/26 乐视投屏
-//		if ( !AcFunApplication.b().f() ) {
-//			AcFunApplication.b().e();
+//		if ( !AcFunApplication.isInclude().f() ) {
+//			AcFunApplication.isInclude().e();
 //		}
 		mInputMethodManager = ( InputMethodManager ) getSystemService( "input_method" );
 		mTitleTab.setCustomTabView( R.layout.widget_tab_video_ditail_page, R.id.detail_tab_text );
@@ -357,7 +357,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 //						}
 //					}
 //
-//					public void b() {
+//					public void isInclude() {
 //						VideoDetailActivity.bottomBar.setVisibility(8);
 //					}
 //				});
@@ -392,12 +392,12 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 //				VideoDetailActivity.this.a(VideoDetailActivity.this.A());
 //			}
 //
-//			public void b(int i) {
-//				boolean b = VideoDetailActivity.this.A();
-//				if (b) {
+//			public void isInclude(int i) {
+//				boolean isInclude = VideoDetailActivity.this.A();
+//				if (isInclude) {
 //					VideoDetailActivity.this.mAppBarLayout.setExpanded(true);
 //				}
-//				VideoDetailActivity.this.a(b);
+//				VideoDetailActivity.this.a(isInclude);
 //			}
 //
 //			public void a(Video video) {
@@ -405,7 +405,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 //			}
 //
 //			public void a() {
-//				VideoDetailActivity.this.b(true);
+//				VideoDetailActivity.this.isInclude(true);
 //			}
 //
 //			public void c(int i) {
@@ -546,7 +546,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 			mtextTitle.setVisibility( View.GONE );
 			mCoverContainer.setVisibility( View.GONE );
 			mPlayerViewContainer.setVisibility( View.VISIBLE );
-//			mPlayerViewContainer.b();
+//			mPlayerViewContainer.isInclude();
 //			EventHelper.a().a(new OnNotifyPlayingVideoEvent(video));
 			mPlayerOpenView.setText( R.string.activity_video_detail_resume_play_tip );
 		}

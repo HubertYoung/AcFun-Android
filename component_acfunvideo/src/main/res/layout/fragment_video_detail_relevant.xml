@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:aapt="http://schemas.android.com/aapt"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:id="@+id/content"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/white">
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/recommend_refresh_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recommend_video_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/video_detail_part_video_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="44dp"
+        android:background="@color/white"
+        android:divider="@color/transparent"
+        android:dividerHeight="0dp"
+        android:drawSelectorOnTop="true"
+        android:horizontalSpacing="12dp"
+        android:listSelector="@drawable/selector_transparent_light"
+        android:numColumns="2"
+        android:scrollbars="none"
+        android:verticalSpacing="12dp"
+        android:visibility="gone"/>
+</FrameLayout>

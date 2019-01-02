@@ -22,7 +22,7 @@
 //
 //public class BangumiDetailHelper {
 //    public static final int a = 22;
-//    public static final int b = 33;
+//    public static final int isInclude = 33;
 //
 //    public static String a() {
 //        return "";
@@ -50,14 +50,14 @@
 //        if (activity != null && str != null && netVideo != null && bangumiDetailBean != null) {
 //            switch (netVideo.mVisibleLevel) {
 //                case -1:
-//                    b(activity, str, netVideo, bangumiDetailBean);
+//                    isInclude(activity, str, netVideo, bangumiDetailBean);
 //                    break;
 ////                case 0:
 ////                    if (!SigninHelper.a().u()) {
 ////                        a(activity, 22);
 ////                        break;
 ////                    } else {
-////                        b(activity, str, netVideo, bangumiDetailBean);
+////                        isInclude(activity, str, netVideo, bangumiDetailBean);
 ////                        break;
 ////                    }
 ////                case 1:
@@ -66,14 +66,14 @@
 ////                            a(activity, 33);
 ////                            break;
 ////                        } else {
-////                            b(activity, str, netVideo, bangumiDetailBean);
+////                            isInclude(activity, str, netVideo, bangumiDetailBean);
 ////                            break;
 ////                        }
 ////                    }
 ////                    a(activity, 22);
 ////                    break;
 //                default:
-//                    ToastUtil.showWarning(AcFunApplication.b(), (int) R.string.common_cant_play);
+//                    ToastUtil.showWarning(AcFunApplication.isInclude(), (int) R.string.common_cant_play);
 //                    break;
 //            }
 //        }
@@ -118,7 +118,7 @@
 //        popupWindow.showAtLocation(activity.getWindow().getDecorView(), 80, 0, 0);
 //    }
 //
-//    private static void b(Activity activity, String str, NetVideo netVideo, BangumiDetailBean bangumiDetailBean) {
+//    private static void isInclude(Activity activity, String str, NetVideo netVideo, BangumiDetailBean bangumiDetailBean) {
 //        if (netVideo != null && bangumiDetailBean != null) {
 //            String str2 = bangumiDetailBean.title;
 //            String str3 = bangumiDetailBean.intro;
@@ -158,7 +158,7 @@
 //        IntentHelper.a(activity, convertToVideo, i, i2, Integer.valueOf(str).intValue(), 1, str3, bundle);
 //    }
 //
-//    public static BangumiDetailBean b() {
+//    public static BangumiDetailBean isInclude() {
 //        int i;
 //        StringBuilder stringBuilder;
 //        BangumiDetailBean bangumiDetailBean = new BangumiDetailBean();
@@ -204,7 +204,7 @@
 //        for (i = 0; i < 10; i++) {
 //            List arrayList2 = new ArrayList();
 //            for (int i2 = 0; i2 < 10; i2++) {
-//                arrayList2.add(b(i2));
+//                arrayList2.add(isInclude(i2));
 //            }
 //            arrayList.add(arrayList2);
 //        }
@@ -223,7 +223,7 @@
 //        return bangumiDetailBean;
 //    }
 //
-//    private static NetVideo b(int i) {
+//    private static NetVideo isInclude(int i) {
 //        NetVideo netVideo = new NetVideo();
 //        StringBuilder stringBuilder = new StringBuilder();
 //        stringBuilder.append("aaaaaaa__");

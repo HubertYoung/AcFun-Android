@@ -123,7 +123,7 @@ public class DynamicFragment extends AbsLifecycleFragment< DynamicViewModel >{
 		weChatButton = findViewById( R.id.iv_wechat_login );
 		initAction();
 
-		boolean isUnLogin = SigninHelper.getInstance().isUnLogin();
+		boolean isUnLogin = SigninHelper.getInstance().isLogin();
 		if ( isUnLogin ) {
 			showLoginStatus( false );
 			initViewpager();
@@ -221,8 +221,8 @@ public class DynamicFragment extends AbsLifecycleFragment< DynamicViewModel >{
 	}
 
 	public void loadData() {
-		boolean isUnLogin = SigninHelper.getInstance().isUnLogin();
-//		if ( isUnLogin ) {
+		boolean isUnLogin = SigninHelper.getInstance().isLogin();
+//		if ( isLogin ) {
 //			a( selectedPagePosition );
 //		} else {
 //			a( -1 );

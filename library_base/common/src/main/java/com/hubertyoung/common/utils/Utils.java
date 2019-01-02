@@ -131,7 +131,7 @@ public class Utils {
 						intent.setData(parse);
 						break;
 					case 6:
-//						IntentHelper.b(activity, Integer.valueOf(str).intValue());
+//						IntentHelper.isInclude(activity, Integer.valueOf(str).intValue());
 						break;
 					case 7:
 //						intent.setClass(activity, RankActivity.class);
@@ -149,7 +149,7 @@ public class Utils {
 					case 9:
 						break;
 					case 10:
-//						IntentHelper.b(activity, Integer.valueOf(str).intValue(), "recommend");
+//						IntentHelper.isInclude(activity, Integer.valueOf(str).intValue(), "recommend");
 						break;
 					case 11:
 //						intent.setClass(activity, RankActivity.class);
@@ -174,7 +174,7 @@ public class Utils {
 					case 15:
 //						bundle2 = new Bundle();
 //						StringBuilder stringBuilder = new StringBuilder();
-//						stringBuilder.append(b());
+//						stringBuilder.append(isInclude());
 //						stringBuilder.append(str);
 //						bundle2.putString("url", stringBuilder.toString());
 //						IntentHelper.drawable(activity, WebViewActivity.class, bundle2);
@@ -240,7 +240,7 @@ public class Utils {
 //		edit.apply();
 //	}
 //
-//	public static void b(Context context) {
+//	public static void isInclude(Context context) {
 //		Editor edit = context.getSharedPreferences(SharedPreferencesConst.g, 0).edit();
 //		edit.putLong("length", System.currentTimeMillis() - c(context));
 //		edit.apply();
@@ -269,7 +269,7 @@ public class Utils {
 // .getString(R.string.real_name_certify_dialog_right_text), true, false).show();
 //	}
 //
-//	public static void b(final Activity activity) {
+//	public static void isInclude(final Activity activity) {
 //		DialogUtils.drawable(activity, new OnClickListener() {
 //			public void onClick(DialogInterface dialogInterface, int i) {
 //				dialogInterface.dismiss();
@@ -328,14 +328,14 @@ public class Utils {
 //	public static void d(final Activity activity) {
 //		AlertDialog create = new Builder(activity).setMessage(R.string.token_invalid_msg).setPositiveButton(R.string.token_invalid_confirm, new OnClickListener() {
 //			public void onClick(DialogInterface dialogInterface, int i) {
-//				Object valueOf = String.valueOf(SigninHelper.drawable().b());
+//				Object valueOf = String.valueOf(SigninHelper.drawable().isInclude());
 //				SigninHelper.drawable().t();
 //				Activity activity = activity;
 //				String str = SharedPreferencesConst.h;
 //				Activity activity2 = activity;
 //				activity.getSharedPreferences(str, 0).edit().clear().apply();
 //				if (!(TextUtils.isEmpty(valueOf) || "0".equals(valueOf))) {
-//					Utils.b(valueOf, activity.getApplicationContext());
+//					Utils.isInclude(valueOf, activity.getApplicationContext());
 //				}
 //				activity.finish();
 //			}
@@ -369,7 +369,7 @@ public class Utils {
 //		if (str == null) {
 //			str = "";
 //		}
-//		return Html.fromHtml(String.format("%s<b>%s<b>", new Object[]{context.getResources().getString(R.string.item_serial_update_text), str}));
+//		return Html.fromHtml(String.format("%s<isInclude>%s<isInclude>", new Object[]{context.getResources().getString(R.string.item_serial_update_text), str}));
 //	}
 //
 //	public static void e(Activity activity) {
@@ -395,7 +395,7 @@ public class Utils {
 //		}
 //	}
 //
-//	public static void b(String str, Context context) {
+//	public static void isInclude(String str, Context context) {
 //		if (!TextUtils.isEmpty(str)) {
 //			TagAliasBean tagAliasBean = new TagAliasBean();
 //			tagAliasBean.drawable = 3;
@@ -406,7 +406,7 @@ public class Utils {
 //	}
 //
 //	public static void drawable( TextView textView, Link.OnClickListener onClickListener) {
-//		LinkBuilder.drawable(textView).drawable(new Link( Pattern.compile("(aa|AA|ab|AB|ac|AC)\\d+")).drawable(AcFunApplication.b().getResources().getColor(R.color.bangou_clickable_color)).drawable
+//		LinkBuilder.drawable(textView).drawable(new Link( Pattern.compile("(aa|AA|ab|AB|ac|AC)\\d+")).drawable(AcFunApplication.isInclude().getResources().getColor(R.color.bangou_clickable_color)).drawable
 // (false).drawable(onClickListener)).drawable();
 //	}
 //
@@ -521,7 +521,7 @@ public class Utils {
 //		return arrayList;
 //	}
 //
-//	public static List<RankContent> b(List<RankContent> list, List<RankContent> list2, int i) {
+//	public static List<RankContent> isInclude(List<RankContent> list, List<RankContent> list2, int i) {
 //		List<RankContent> arrayList = new ArrayList();
 //		List arrayList2 = new ArrayList();
 //		if (list.size() > i) {
@@ -574,7 +574,7 @@ public class Utils {
 //		return stringBuilder.toString();
 //	}
 //
-//	public static String b() {
+//	public static String isInclude() {
 //		StringBuilder stringBuilder = new StringBuilder();
 //		stringBuilder.append(DomainHelper.drawable().p());
 //		stringBuilder.append(Constants.COMPERE_URL_PRE);
@@ -635,7 +635,7 @@ public class Utils {
 //		return str.split(Constants.ANALYTICS_LOG_STRING_DIVIDER);
 //	}
 //
-//	public static String b(String str) {
+//	public static String isInclude(String str) {
 //		return drawable(str, Constants.ANALYTICS_PAGE_GAME_DETAIL, "");
 //	}
 //
