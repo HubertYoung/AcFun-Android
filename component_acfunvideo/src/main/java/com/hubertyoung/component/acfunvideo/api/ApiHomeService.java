@@ -1,6 +1,7 @@
 package com.hubertyoung.component.acfunvideo.api;
 
 
+import com.hubertyoung.common.entity.RecommendBangumiEntity;
 import com.hubertyoung.common.entity.RegionBodyContent;
 import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.common.entity.VideoDetail;
@@ -87,5 +88,8 @@ public interface ApiHomeService {
 	@GET( "v2/favorites/album/{uid}" )
 	Flowable< BaseResponse< VideoDetail > > requestUserInfo( @Path( "uid" ) int uid, @Query( "access_token" ) String access_token );
 
+	@GET( "v3/video/spread/{cid}" )
+	Flowable< BaseResponse< RecommendBangumiEntity > > requestRelativeRecommendInfo( @Path( "cid" ) int uid, @Query( "userId" ) String userId, @Query( "pageNo" ) int pageNo, @Query( "pageSize" )
+			String pageSize );
 
 }

@@ -7,7 +7,7 @@ import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component_acfundynamic.BuildConfig;
 import com.hubertyoung.component_acfundynamic.api.ApiDynamicService;
-import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
+import com.hubertyoung.common.entity.RecommendBangumiEntity;
 import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import java.util.HashMap;

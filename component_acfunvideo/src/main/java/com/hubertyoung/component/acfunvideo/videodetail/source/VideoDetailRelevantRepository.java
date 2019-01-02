@@ -3,6 +3,7 @@ package com.hubertyoung.component.acfunvideo.videodetail.source;
 import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
+import com.hubertyoung.common.entity.RecommendBangumiEntity;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.common.utils.SigninHelper;
@@ -29,4 +30,11 @@ public class VideoDetailRelevantRepository extends AbsRepository {
 				.compose( new DefaultTransformer() );
 	}
 
+	public Flowable< RecommendBangumiEntity > requestRelativeRecommendInfo( int cid, String userId, int loadPage ) {
+		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )//
+				.getRetrofitClient()//
+				.builder( ApiHomeService.class )//
+				.requestRelativeRecommendInfo( cid, userId, loadPage, "20" )//
+				.compose( new DefaultTransformer() );
+	}
 }

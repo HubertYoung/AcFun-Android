@@ -9,10 +9,15 @@ import android.view.View;
 
 import com.hubertyoung.common.base.BaseListFragment;
 import com.hubertyoung.common.entity.FullContent;
+import com.hubertyoung.common.entity.RecommendBangumiEntity;
 import com.hubertyoung.common.entity.User;
+import com.hubertyoung.common.utils.SigninHelper;
+import com.hubertyoung.common.utils.os.AppUtils;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
+import com.hubertyoung.component.acfunvideo.videodetail.section.RecommondVideoList;
 import com.hubertyoung.component.acfunvideo.videodetail.section.RelevantHeadSection;
+import com.hubertyoung.component.acfunvideo.videodetail.section.VideoPartListSection;
 import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailRelevantViewModel;
 
 /**
@@ -25,13 +30,15 @@ import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailRelevantVi
  */
 public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRelevantViewModel > {
 
-//	private SmartRefreshLayout recommendRefreshList;
+	//	private SmartRefreshLayout recommendRefreshList;
 //	private RecyclerView recyclerView;
 //	private RecyclerView partsVideoList;
 	private FullContent mFullContent;
 	private int mCid;
 	private User mUser;
 	private RelevantHeadSection mRelevantHeadSection;
+	private VideoPartListSection mVideoPartListSection;
+	private RecommondVideoList mRecommondVideoList;
 
 	public static VideoDetailRelevantFragment newInstance( FullContent fullContent ) {
 		Bundle bundle = new Bundle();
@@ -46,10 +53,6 @@ public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRe
 	protected void initView( Bundle state ) {
 		super.initView( state );
 		mToolbar.setVisibility( View.GONE );
-//		content = findViewById( R.id.content );
-//		recommendRefreshList = findViewById( R.id.recommend_refresh_list );
-//		recyclerView = findViewById( R.id.recommend_video_list );
-//		partsVideoList = findViewById( R.id.video_detail_part_video_grid );
 		initInfo();
 		initViewInfo();
 	}
@@ -61,6 +64,15 @@ public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRe
 
 	@Override
 	protected void loadData() {
+		String s;
+		if ( SigninHelper.getInstance().isLogin() ) {
+			StringBuilder stringBuilder2 = new StringBuilder();
+			stringBuilder2.append( SigninHelper.getInstance().getUserUid() );
+			s = stringBuilder2.toString();
+		} else {
+			s = AppUtils.getUUID();
+		}
+		mViewModel.requestRelativeRecommendInfo( mCid, s, getAdapter().mPageBean.getLoadPage() );
 		stopLoading();
 	}
 
@@ -102,8 +114,13 @@ public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRe
 			mRelevantHeadSection = new RelevantHeadSection( activity );
 			addSection( mRelevantHeadSection );
 			mRelevantHeadSection.setData( mFullContent );
-			getAdapter().notifyDataSetChanged();
 		}
+		if ( mVideoPartListSection == null && mFullContent != null && !mFullContent.getVideos().isEmpty() ) {
+			mVideoPartListSection = new VideoPartListSection( activity );
+			addSection( mVideoPartListSection );
+			mVideoPartListSection.setData( mFullContent );
+		}
+		getAdapter().notifyDataSetChanged();
 	}
 
 	@Override
@@ -117,6 +134,17 @@ public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRe
 //				if ( VideoDetailRelevantFragment.this.o != null ) {
 //					VideoDetailRelevantFragment.this.o.a( VideoDetailRelevantFragment.this.q );
 //				}
+			}
+		} );
+		registerObserver( VideoConstants.EVENT_KEY_VIDEO_RELATIVERECOMMEND_INFO, RecommendBangumiEntity.class ).observe( this, new Observer< RecommendBangumiEntity >() {
+			@Override
+			public void onChanged( @Nullable RecommendBangumiEntity recommendBangumiEntity ) {
+				if ( mRecommondVideoList == null && !recommendBangumiEntity.list.isEmpty() ) {
+					mRecommondVideoList = new RecommondVideoList( activity );
+					addSection( mRecommondVideoList );
+					mRecommondVideoList.setData( recommendBangumiEntity.list );
+				}
+				getAdapter().notifyDataSetChanged();
 			}
 		} );
 	}

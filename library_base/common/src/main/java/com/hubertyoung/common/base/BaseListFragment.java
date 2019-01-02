@@ -214,6 +214,9 @@ public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLif
 
 	}
 
+	public RecyclerView getRecyclerView() {
+		return mRecyclerView;
+	}
 	public SectionedRecyclerViewAdapter getAdapter() {
 		return mAdapter;
 	}

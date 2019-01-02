@@ -3,4 +3,7 @@
     <color name="tab_video_item_indicator">#ffffffff</color>
     <color name="tab_video_item_selected">#ffffffff</color>
     <color name="tab_video_item_unselected">#ccffffff</color>
+
+    <color name="video_part_bg_hapame_color">#b9da60</color>
+
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:aapt="http://schemas.android.com/aapt"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="44dp">
+
+    <TextView
+        android:id="@+id/video_detail_part_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_bg_videopart_n"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="2dp"
+        android:maxLines="2"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="01. hello i am part one."
+        android:textColor="@color/text_deep_gray_color"
+        android:textSize="12sp"/>
+</FrameLayout>

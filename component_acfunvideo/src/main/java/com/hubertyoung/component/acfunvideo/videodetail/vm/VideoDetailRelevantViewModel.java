@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.hubertyoung.common.base.AbsViewModel;
 import com.hubertyoung.common.baserx.RxSubscriber;
+import com.hubertyoung.common.entity.RecommendBangumiEntity;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
@@ -58,6 +59,21 @@ public class VideoDetailRelevantViewModel extends AbsViewModel< VideoDetailRelev
 			@Override
 			public void onSuccess( User user ) {
 				sendData( VideoConstants.EVENT_KEY_VIDEO_RELEVANT_USERINFO, user );
+			}
+
+			@Override
+			public void onFailure( String msg ) {
+//				ToastUtil.showError( msg );
+			}
+		} ) );
+	}
+
+	public void requestRelativeRecommendInfo( int cid, String s, int loadPage ) {
+		addDisposable( mRepository.requestRelativeRecommendInfo( cid,s,loadPage ).subscribeWith( new RxSubscriber< RecommendBangumiEntity >() {
+
+			@Override
+			public void onSuccess( RecommendBangumiEntity recommendBangumiEntity ) {
+				sendData( VideoConstants.EVENT_KEY_VIDEO_RELATIVERECOMMEND_INFO, recommendBangumiEntity );
 			}
 
 			@Override

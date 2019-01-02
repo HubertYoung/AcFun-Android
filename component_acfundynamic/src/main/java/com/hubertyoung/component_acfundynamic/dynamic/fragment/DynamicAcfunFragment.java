@@ -12,7 +12,7 @@ import com.hubertyoung.component_acfundynamic.R;
 import com.hubertyoung.component_acfundynamic.config.DynamicConstants;
 import com.hubertyoung.component_acfundynamic.dynamic.section.DynamicAcfunSection;
 import com.hubertyoung.component_acfundynamic.dynamic.vm.DynamicAcfunViewModel;
-import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
+import com.hubertyoung.common.entity.RecommendBangumiEntity;
 import com.hubertyoung.component_skeleton.skeleton.RecyclerViewSkeletonScreen;
 import com.hubertyoung.component_skeleton.skeleton.Skeleton;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;

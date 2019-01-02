@@ -3,7 +3,7 @@ package com.hubertyoung.component_acfundynamic.api;
 
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.net.response.BaseResponse;
-import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
+import com.hubertyoung.common.entity.RecommendBangumiEntity;
 
 import java.util.Map;
 

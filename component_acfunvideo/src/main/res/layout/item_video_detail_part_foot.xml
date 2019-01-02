@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/video_detail_parts_total_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/video_detail_parts_total_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:drawableRight="@mipmap/ic_region_bottom_enter"
+            android:drawablePadding="5dp"
+            android:text="全部视频"
+            android:textColor="@color/them_color"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/divider"
+        android:layout_margin="10dp"/>
+</LinearLayout>

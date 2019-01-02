@@ -31,4 +31,6 @@ public class VideoConstants {
 	 * 获取用户信息
 	 */
 	public static final Object EVENT_KEY_VIDEO_RELEVANT_USERINFO= "EVENT_KEY_VIDEO_RELEVANT_USERINFO";
+
+	public static final Object EVENT_KEY_VIDEO_RELATIVERECOMMEND_INFO= "EVENT_KEY_VIDEO_RELATIVERECOMMEND_INFO";
 }

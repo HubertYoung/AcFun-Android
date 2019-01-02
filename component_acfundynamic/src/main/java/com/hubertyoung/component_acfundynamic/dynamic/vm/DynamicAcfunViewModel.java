@@ -8,7 +8,7 @@ import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.component_acfundynamic.config.DynamicConstants;
 import com.hubertyoung.component_acfundynamic.dynamic.fragment.DynamicAcfunFragment;
 import com.hubertyoung.component_acfundynamic.dynamic.source.DynamicAcfunRepository;
-import com.hubertyoung.component_acfundynamic.entity.RecommendBangumiEntity;
+import com.hubertyoung.common.entity.RecommendBangumiEntity;
 
 import android.support.annotation.NonNull;
 

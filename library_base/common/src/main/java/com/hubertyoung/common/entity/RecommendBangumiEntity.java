@@ -1,4 +1,4 @@
-package com.hubertyoung.component_acfundynamic.entity;
+package com.hubertyoung.common.entity;
 
 import com.hubertyoung.common.entity.RegionBodyContent;
 
