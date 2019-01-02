@@ -91,5 +91,8 @@ public interface ApiHomeService {
 	@GET( "v3/video/spread/{cid}" )
 	Flowable< BaseResponse< RecommendBangumiEntity > > requestRelativeRecommendInfo( @Path( "cid" ) int uid, @Query( "userId" ) String userId, @Query( "pageNo" ) int pageNo, @Query( "pageSize" )
 			String pageSize );
+//	@GET( "v3/video/spread/{cid}" )
+//	Flowable< BaseResponse< RecommendBangumiEntity > > requestCommentInfo( @Path( "cid" ) int uid, @Query( "userId" ) String userId, @Query( "pageNo" ) int pageNo, @Query( "pageSize" )
+//			String pageSize );
 
 }

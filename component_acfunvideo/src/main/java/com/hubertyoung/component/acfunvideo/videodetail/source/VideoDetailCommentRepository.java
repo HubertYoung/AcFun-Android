@@ -12,14 +12,13 @@ import com.hubertyoung.common.base.AbsRepository;
  */
 
 public class VideoDetailCommentRepository extends AbsRepository {
-
-//	public Flowable< Object > requestHttp() {
-//		return Api.getDefault( HostType.MY_RESULT )//
+//	public Flowable<CommentParent > requestCommentInfo( int sourceId, int sourceType, String pcursor, int count, int showHotComments, String access_token ) {
+//		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )//
 //				.getRetrofitClient()//
-//				.setBaseUrl( EnvironmentSwitcher.getObjectEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )//
-//				.builder( ApiObject.class )//
-//				.requestHttp()//
+//				.builder( ApiHomeService.class )//
+//				.requestCommentInfo()//
 //				.compose( new DefaultTransformer() );
 //	}
+
 
 }

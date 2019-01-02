@@ -21,17 +21,17 @@ public class VideoDetailCommentViewModel extends AbsViewModel< VideoDetailCommen
 		super( application );
 	}
 
-	public void requestHttp() {
-//		addDisposable( mRepository.requestHttp().subscribeWith( new RxSubscriber< Object >() {
-//			@Override
-//			protected void showLoading() {
-//				showDialogLoading( "" );
-//			}
-//
-//			@Override
-//			protected void finishLoading() {
-//				stopLoading();
-//			}
+	public void requestCommentInfo( int sourceId, int sourceType, String pcursor, int count, int showHotComments, String access_token ) {
+//		addDisposable( mRepository.requestCommentInfo(sourceId, sourceType, pcursor, count, showHotComments, access_token ).subscribeWith( new RxSubscriber< Object >() {
+////			@Override
+////			protected void showLoading() {
+////				showDialogLoading( "" );
+////			}
+////
+////			@Override
+////			protected void finishLoading() {
+////				stopLoading();
+////			}
 //
 //			@Override
 //			public void onSuccess( Object o ) {
@@ -40,7 +40,7 @@ public class VideoDetailCommentViewModel extends AbsViewModel< VideoDetailCommen
 //
 //			@Override
 //			public void onFailure( String msg ) {
-//				ToastUtil.showError( msg );
+////				ToastUtil.showError( msg );
 //			}
 //		} ) );
 	}
