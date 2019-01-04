@@ -44,7 +44,7 @@ abstract class BaseActivity : AppCompatActivity(), OnEnvironmentChangeListener {
 	}
 
 	protected lateinit var mContext: BaseActivity
-	protected var mRxManager: RxManager ?= null
+	protected open var mRxManager: RxManager ?= null
 	private var isConfigChange = false
 	private var statusBarTranslucent: Boolean = false
 
@@ -137,7 +137,7 @@ abstract class BaseActivity : AppCompatActivity(), OnEnvironmentChangeListener {
 		}
 	}
 
-	open fun stopLoading() {
+	protected open fun stopLoading() {
 		if (mViewReplacer != null) {
 			mViewReplacer!!.restore()
 		}

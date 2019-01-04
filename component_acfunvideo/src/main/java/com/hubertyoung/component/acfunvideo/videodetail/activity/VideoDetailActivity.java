@@ -146,7 +146,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 
 	@Override
 	protected void loadData() {
-		mViewModel.requestVideoDetailInfo( mContentId, mFrom );
+		getMViewModel().requestVideoDetailInfo( mContentId, mFrom );
 	}
 
 	@SuppressLint( "WrongConstant" )

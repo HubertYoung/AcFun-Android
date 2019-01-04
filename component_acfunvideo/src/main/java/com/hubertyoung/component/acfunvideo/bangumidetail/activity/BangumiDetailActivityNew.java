@@ -134,7 +134,7 @@ public class BangumiDetailActivityNew extends AbsLifecycleActivity< BangumiDetai
 
 	@Override
 	protected void loadData() {
-		mViewModel.requestBangumisDetail( mContentId );
+		getMViewModel().requestBangumisDetail( mContentId );
 	}
 
 	@Override

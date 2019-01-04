@@ -162,13 +162,13 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 					String userNameStr = userNameEdit.getText().toString().trim();
 					String passwordStr = passWordEdit.getText().toString().trim();
 					String validationStr = mValidationEdit.getText().toString().trim();
-					mViewModel.requestLoginInfo( userNameStr, passwordStr, validationStr );
+					getMViewModel().requestLoginInfo( userNameStr, passwordStr, validationStr );
 				} );
 		RxView.clicks( mValidationImage )//
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
 				.subscribeOn( AndroidSchedulers.mainThread() )//
 				.subscribe( o -> {
-					mViewModel.requestVerificationCodeInfo();
+					getMViewModel().requestVerificationCodeInfo();
 				} );
 		RxView.clicks( mLoginViewForgetPassword )//
 				.throttleFirst( 500, TimeUnit.MILLISECONDS )//
@@ -238,16 +238,16 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 					SigninHelper.getInstance().setUserSign( sign );
 					showLoginSuccess( sign );
 				} else {
-					mViewModel.tryConnectCount++;
+					getMViewModel().tryConnectCount++;
 					if ( response.errno == 20285 ) {
-						mViewModel.tryConnectCount = 3;
+						getMViewModel().tryConnectCount = 3;
 						response.errordesc = mContext.getResources().getString( R.string.login_view_need_input_image_code_text );
 					}
-					if ( mViewModel.tryConnectCount > 2 && !getValidationLayoutShown() ) {
+					if ( getMViewModel().tryConnectCount > 2 && !getValidationLayoutShown() ) {
 						setValidationLayoutShown();
 					}
-					if ( mViewModel.tryConnectCount > 2 ) {
-						mViewModel.requestVerificationCodeInfo();
+					if ( getMViewModel().tryConnectCount > 2 ) {
+						getMViewModel().requestVerificationCodeInfo();
 						setValidationLayoutText( "" );
 					}
 					showErrorTip( response.errordesc );
@@ -306,7 +306,7 @@ public class SignInActivity extends AbsLifecycleActivity< SignInViewModel > {
 		Bundle bundle = new Bundle();
 		bundle.putInt( "uid", sign.info.userid );
 		bundle.putString( "status", "success" );
-		mRxManager.post( Constants.LoginStatus, Constants.LoginSuccess );
+		getMRxManager().post( Constants.LoginStatus, Constants.LoginSuccess );
 		ToastUtil.showSuccess( R.string.activity_signin_success );
 		finish();
 	}
