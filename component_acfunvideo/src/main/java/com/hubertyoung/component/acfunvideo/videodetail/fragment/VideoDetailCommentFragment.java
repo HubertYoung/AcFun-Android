@@ -12,7 +12,6 @@ import com.hubertyoung.common.entity.FullContent;
 import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.component.acfunvideo.videodetail.activity.VideoDetailActivity;
 import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailCommentViewModel;
-import com.hubertyoung.component_acfunvideo.R;
 
 /**
  * desc: VideoDetailCommentFragment
@@ -120,11 +119,6 @@ public class VideoDetailCommentFragment extends BaseListFragment< VideoDetailCom
 	@Override
 	protected RecyclerView.LayoutManager createLayoutManager() {
 		return new LinearLayoutManager( activity );
-	}
-
-	@Override
-	public int getLayoutResource() {
-		return R.layout.video_detail_comment_fragment;
 	}
 
 	@Override

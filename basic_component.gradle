@@ -1,6 +1,9 @@
 apply from: rootProject.file('cc-settings-2.gradle')
 //apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
 //先加载local.properties文件
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
 Properties localProperties = new Properties()
 try {
     def localFile = project.rootProject.file('local.properties')
