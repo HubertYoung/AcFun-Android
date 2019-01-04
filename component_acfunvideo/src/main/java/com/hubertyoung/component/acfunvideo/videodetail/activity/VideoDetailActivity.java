@@ -236,7 +236,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	}
 
 	@Override
-	protected View refreshContentView() {
+	public View refreshContentView() {
 		return mClContent;
 	}
 

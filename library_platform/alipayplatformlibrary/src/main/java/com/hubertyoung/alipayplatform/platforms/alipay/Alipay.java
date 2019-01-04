@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 
 import com.alipay.sdk.app.PayTask;
+import com.hubertyoung.alipayplatformlibrary.R;
 import com.hubertyoung.baseplatform.payment.IPayable;
 import com.hubertyoung.baseplatform.sdk.OnCallback;
 import com.hubertyoung.baseplatform.sdk.OtherPlatform;
 import com.hubertyoung.baseplatform.sdk.ResultCode;
 import com.hubertyoung.baseplatform.tools.PlatformLogUtil;
-import com.hubertyoung.baseplatformlibrary.R;
 
 
 public class Alipay implements IPayable {

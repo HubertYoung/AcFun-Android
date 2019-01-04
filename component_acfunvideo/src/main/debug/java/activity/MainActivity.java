@@ -25,7 +25,7 @@ public class MainActivity extends AbsLifecycleActivity {
     }
 
     @Override
-    protected void stopLoading() {
+    public void stopLoading() {
 
     }
 

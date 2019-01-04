@@ -40,7 +40,7 @@ public abstract class AbsLifecycleActivity< VM extends AbsViewModel > extends Ba
 		mViewModel = VMProviders( this, TUtil.getInstance( this, 0 ) );
 		if ( null != mViewModel ) {
 			dataObserver();
-			mStateEventKey = TAG;
+			mStateEventKey = getTAG();
 			mStateEventTag = getStateEventTag();
 			events.add( new StringBuilder( ( String ) mStateEventKey ).append( mStateEventTag ).toString() );
 			LiveBus.getDefault().subscribe( mStateEventKey, mStateEventTag, StateEntity.class ).observe( this, observer );

@@ -9,4 +9,5 @@
     <string name="sdk_platform_share_success">分享成功</string>
     <string name="sdk_platform_qq_uninstall">QQ未安装,请安装后重试</string>
     <string name="sdk_platform_wechat_uninstall">微信未安装,请安装后重试</string>
+    <string name="sdk_platform_qq_error">QQ登录失败</string>
 </resources>

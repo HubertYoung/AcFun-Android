@@ -9,4 +9,6 @@
     <item name="sdk_platform_share_success" type="id"/>
     <item name="sdk_platform_wechat_uninstall" type="id"/>
     <item name="sdk_platform_unsupported_sharing_types" type="id"/>
+
+    <item name="sdk_platform_qq_error" type="id"/>
 </resources>
