@@ -34,6 +34,21 @@ public class AcFunVideoPlayer extends StandardGSYVideoPlayer {
 	}
 
 	@Override
+	protected int getProgressDialogLayoutId() {
+		return R.layout.dialog_acfun_video_progress;
+	}
+
+	@Override
+	protected int getProgressDialogImageId() {
+		return 0;
+	}
+
+	@Override
+	protected int getProgressDialogProgressId() {
+		return 0;
+	}
+
+	@Override
 	protected void updateStartImage() {
 		if ( mStartButton instanceof ImageView ) {
 			ImageView imageView = ( ImageView ) mStartButton;
