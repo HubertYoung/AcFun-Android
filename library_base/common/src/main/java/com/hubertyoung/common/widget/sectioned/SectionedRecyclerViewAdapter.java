@@ -64,7 +64,12 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter< Recycler
     private int viewTypeCount = 0;
     private final static int VIEW_TYPE_QTY = 6;
 
-
+    public SectionedRecyclerViewAdapter() {
+//        super( diffCallback );
+        sections = new LinkedHashMap<>();
+        sectionViewTypeNumbers = new LinkedHashMap<>();
+        mPageBean = new PageBean();
+    }
     public SectionedRecyclerViewAdapter( @NonNull DiffUtil.ItemCallback diffCallback ) {
 //        super( diffCallback );
         sections = new LinkedHashMap<>();
