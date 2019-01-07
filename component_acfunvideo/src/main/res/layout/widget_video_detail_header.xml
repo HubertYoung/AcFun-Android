@@ -16,19 +16,19 @@
         app:placeholderImageScaleType="centerCrop"
         app:viewAspectRatio="1.78"/>
 
-    <com.hubertyoung.common.widget.circularreveal.RevealFrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true">
+    <!--<com.hubertyoung.common.widget.circularreveal.RevealFrameLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:layout_centerHorizontal="true">-->
 
-        <ImageView
-            android:id="@+id/iv_video_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="@mipmap/ic_video_play"/>
-    </com.hubertyoung.common.widget.circularreveal.RevealFrameLayout>
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_video_play"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:background="@mipmap/ic_video_play"/>-->
+    <!--</com.hubertyoung.common.widget.circularreveal.RevealFrameLayout>-->
 </RelativeLayout>

@@ -21,6 +21,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -49,6 +50,7 @@ import com.hubertyoung.component.acfunvideo.videodetail.fragment.VideoDetailComm
 import com.hubertyoung.component.acfunvideo.videodetail.fragment.VideoDetailRelevantFragment;
 import com.hubertyoung.component.acfunvideo.videodetail.listener.HeaderOffsetUpdateListener;
 import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailViewModel;
+import com.hubertyoung.component.acfunvideo.videoplayer.video.AcFunVideoPlayer;
 import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
@@ -77,7 +79,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	private CollapsingToolbarLayout mPlayerContainer;
 	private FrameLayout mPlayerViewContainer;
 	private SimpleDraweeView mCoverView;
-	private ImageView mIconVideoPlay;
+	//	private ImageView mIconVideoPlay;
 	private TextView mtextTitle;
 	private LinearLayout mDanmakuContainer;
 	private SimpleDraweeView danmakuAvatar;
@@ -113,7 +115,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	private String mGroupId;
 	//	private User x;
 	private Video mVideo;
-	private StandardGSYVideoPlayer mStandardGSYVideoPlayer;
+	private AcFunVideoPlayer mStandardGSYVideoPlayer;
 
 	/**
 	 * 是否显示详情
@@ -165,7 +167,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		mPlayerContainer = findViewById( R.id.video_detail_player_container );
 		mPlayerViewContainer = findViewById( R.id.player_container );
 		mCoverView = findViewById( R.id.detail_video_cover );
-		mIconVideoPlay = findViewById( R.id.iv_video_play );
+//		mIconVideoPlay = findViewById( R.id.iv_video_play );
 		mtextTitle = findViewById( R.id.text_title );
 		mDanmakuContainer = findViewById( R.id.video_detail_danmaku_container );
 		danmakuAvatar = findViewById( R.id.video_detail_danmaku_avatar );
@@ -273,16 +275,15 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 
 	@Override
 	public void initToolBar() {
-		if ( mToolbar != null ) {
-			BarUtils.setPaddingSmart( mToolbar );
-			BarUtils.setPaddingSmart( mClContent );
-			mToolbar.setTitle( getTitle().toString() );
-//			setSupportActionBar( mToolbar );
-//			getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+//		if ( mToolbar != null ) {
+		BarUtils.setPaddingSmart( mToolbar );
+		BarUtils.setPaddingSmart( mClContent );
+		mToolbar.setTitle( getTitle().toString() );
+		setSupportActionBar( mToolbar );
+		getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+		if ( getSupportActionBar() != null ) {
+			getSupportActionBar().hide();
 		}
-//		if ( getSupportActionBar() != null ) {
-//			getSupportActionBar().hide();
-//		}
 	}
 
 	public void a( String str ) {
@@ -329,17 +330,13 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 					bottomCommentNumberText.setVisibility( View.GONE );
 				}
 				mVideo = fullContent.getVideos().get( 0 );
-				mStandardGSYVideoPlayer = new StandardGSYVideoPlayer( mContext );
+				mStandardGSYVideoPlayer = new AcFunVideoPlayer( mContext );
 				mStandardGSYVideoPlayer.setVisibility( View.VISIBLE );
 				if ( mPlayerViewContainer.getChildAt( 0 ) instanceof StandardGSYVideoPlayer ) {
 					mPlayerViewContainer.removeViewAt( 0 );
 				}
 
-//				mPlayerViewContainer.addView( mStandardGSYVideoPlayer, 0, new FrameLayout.LayoutParams( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT ) );
-//				mStandardGSYVideoPlayer.setUp("http://aplay-vod.cn-beijing.aliyuncs
-// .com/common/partner/play?_t_=1546406605&e=md5&_s_=a1aa010fdc3ef0ea3507a81ed5faaa6a&point=1&id=437cac2ee0c94ef1bc475d86798dd2d5&local_time=&local_vid=&format=1,5,6,7,
-// 8&language=guoyu&did=9bc19cdbd720748c07424bef094e853c&ctype=87&ev=2&dt=0&local_point=&audiolang=1&pid=528a34396e9040f3&guid=3a66405d00839be94778bf0b00091b38&mac=02:00:00:00:00:00&imei=&ver=null
-// &operator=WIFI&network=WIFI", true, "测试视频");
+				mPlayerViewContainer.addView( mStandardGSYVideoPlayer );
 				// TODO: 2019/1/2 默认播放第一条
 				setVideoInfo( fullContent.getVideos().get( 0 ), fullContent, false );
 				// TODO: 2019/1/2 未知
@@ -443,7 +440,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 			mTitleTab.setVisibility( View.GONE );
 			report.setVisibility( View.GONE );
 			mPlayerViewBar.setBackgroundColor( getResources().getColor( R.color.progress_bar_hapame_played ) );
-			mIconVideoPlay.setBackground( getResources().getDrawable( R.drawable.hapame_play ) );
+//			mIconVideoPlay.setBackground( getResources().getDrawable( R.drawable.hapame_play ) );
 			mDanmakuSender.setBackground( getResources().getDrawable( R.drawable.hapame_danmu_send ) );
 			bottomBar.setVisibility( View.VISIBLE );
 		} else {
@@ -452,13 +449,13 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 			mTitleTab.setVisibility( View.VISIBLE );
 			report.setVisibility( View.VISIBLE );
 			mPlayerViewBar.setBackgroundColor( getResources().getColor( R.color.them_color ) );
-			mIconVideoPlay.setBackground( getResources().getDrawable( R.mipmap.ic_video_play ) );
+//			mIconVideoPlay.setBackground( getResources().getDrawable( R.mipmap.ic_video_play ) );
 			mDanmakuSender.setBackground( getResources().getDrawable( R.drawable.icon_send_danmu ) );
 		}
 		mTitlePager.setAdapter( mVideoDetailPagerAdapter );
 		mTitleTab.setViewPager( mTitlePager );
 		if ( mVideoDetailPagerAdapter.getCount() == 2 ) {
-			TextView textView = ( TextView ) this.mTitleTab.getTabAt( 1 ).findViewById( R.id.count );
+			TextView textView = mTitleTab.getTabAt( 1 ).findViewById( R.id.count );
 			if ( textView != null && fullContent.getComments() > 0 ) {
 				textView.setVisibility( View.VISIBLE );
 				textView.setText( String.valueOf( fullContent.getComments() ) );
@@ -467,9 +464,10 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		ImageLoaderUtil.loadNetImage( SigninHelper.getInstance().getAvatar(), userAvatar );
 		initTitlePagerListener();
 	}
+
 	private void initTitlePagerListener() {
-		this.mTitlePager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			public void onPageSelected(int i) {
+		this.mTitlePager.addOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
+			public void onPageSelected( int i ) {
 				//统计计数
 //				String str = "info";
 //				if (!(mVideoDetailPagerAdapter == null || mTitleTab == null)) {
@@ -493,8 +491,9 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 //				bundle.putString(KanasConstants.af, str);
 //				KanasCommonUtil.c(KanasConstants.bN, bundle);
 			}
-		});
+		} );
 	}
+
 	private void initBehavior() {
 		TypedValue typedValue = new TypedValue();
 		getTheme().resolveAttribute( android.R.attr.actionBarSize, typedValue, true );
@@ -508,13 +507,13 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		AppBarLayout.Behavior behavior = new AppBarLayout.Behavior();
 		behavior.setDragCallback( new AppBarLayout.Behavior.DragCallback() {
 			public boolean canDrag( @NonNull AppBarLayout appBarLayout ) {
-				// TODO: 2019/1/2 是否可以拖动 当视频播放时不能拖动
-				return false;
-//				return A() ^ 1;
+				return mStandardGSYVideoPlayer.isInPlayingState();
 			}
 		} );
 		layoutParams.setBehavior( behavior );
 		mDanmakuContainer.setPivotY( 0.0f );
+		// TODO: 2019/1/7 暂时显示布局
+		mDanmakuContainer.setVisibility( View.VISIBLE );
 		LayoutTransition layoutTransition = this.mPlayerContainer.getLayoutTransition();
 		if ( layoutTransition != null ) {
 			Animator ofFloat = ObjectAnimator.ofFloat( null, "scaleY", new float[]{ 0.0f, 1.0f } );
@@ -549,6 +548,21 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 //			mPlayerViewContainer.isInclude();
 //			EventHelper.a().a(new OnNotifyPlayingVideoEvent(video));
 			mPlayerOpenView.setText( R.string.activity_video_detail_resume_play_tip );
+
+			mStandardGSYVideoPlayer.setUp( "https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo/7_ffe10cbf6500021d8f2b04a0cd1d0203.mp4", true, playerVideoInfo.getVideoTitle() );
+//			<com.facebook.drawee.view.SimpleDraweeView
+//			android:id="@+id/detail_video_cover"
+//			android:layout_width="match_parent"
+//			android:layout_height="200dp"
+//			app:actualImageScaleType="centerCrop"
+//			app:failureImage="@color/background_gray_color"
+//			app:failureImageScaleType="centerCrop"
+//			app:placeholderImage="@color/background_gray_color"
+//			app:placeholderImageScaleType="centerCrop"
+//			app:viewAspectRatio="1.78"/>
+			View view = LayoutInflater.from( this ).inflate( R.layout.widget_video_detail_header, null );
+			mStandardGSYVideoPlayer.setThumbImageView( view );
+			ImageLoaderUtil.loadNetImage( playerVideoInfo.getVideoCover(), mStandardGSYVideoPlayer.getThumbImageView().findViewById( R.id.detail_video_cover ) );
 		}
 	}
 }

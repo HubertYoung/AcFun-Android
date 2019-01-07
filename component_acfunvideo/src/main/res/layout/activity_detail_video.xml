@@ -230,6 +230,14 @@
 
     <include layout="@layout/toolbar_view"/>
 
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/view_toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:background="#0000"-->
+        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+        <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+        <!--app:titleTextAppearance="@style/ToolBar.TitleText"/>-->
     <include
         android:id="@+id/comment_bottom_bar"
         layout="@layout/video_detail_comment_bottom_bar"
