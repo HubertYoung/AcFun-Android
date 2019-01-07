@@ -249,7 +249,7 @@ public class ArticleGeneralSecondFragment extends AbsLifecycleFragment< ArticleG
 //		realmIds	25,6,7
 //		pageNo	1
 //		pageSize	10
-		mViewModel.requestArticleGeneralSecond( mChannelId, //
+		getMViewModel().requestArticleGeneralSecond( mChannelId, //
 				selectorTimeType + "", //
 				selectorType + "", //
 				formatRealmIds( serverChannel.realm ), //

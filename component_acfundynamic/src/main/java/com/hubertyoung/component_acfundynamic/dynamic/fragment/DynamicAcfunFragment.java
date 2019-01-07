@@ -155,7 +155,7 @@ public class DynamicAcfunFragment extends AbsLifecycleFragment< DynamicAcfunView
     public void loadData() {
 //		http://apipc.app.acfun.cn/v3/regions/recommendUp?pageNo=1&pageSize=20
 
-        mViewModel.requestRecommendUp( mAdapter.getPageBean().getLoadPage() + "", mAdapter.getPageBean().rows + "" );
+        getMViewModel().requestRecommendUp( mAdapter.getPageBean().getLoadPage() + "", mAdapter.getPageBean().rows + "" );
     }
 
     @Override

@@ -155,7 +155,7 @@ public class DynamicFollowBangumiFragment extends AbsLifecycleFragment< DynamicF
 
 	public void loadData() {
 //		http://apipc.app.acfun.cn/v3/regions/recommendBangumi?pageNo=1&pageSize=20
-		mViewModel.requestRecommendBangumi( mAdapter.getPageBean().getLoadPage() + "",mAdapter.getPageBean().rows + "" );
+		getMViewModel().requestRecommendBangumi( mAdapter.getPageBean().getLoadPage() + "",mAdapter.getPageBean().rows + "" );
 	}
 	@Override
 	protected void dataObserver() {

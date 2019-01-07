@@ -56,7 +56,7 @@ public class VideoDetailCommentFragment extends BaseListFragment< VideoDetailCom
 
 	private void initData() {
 		if ( this.mFullContent.isComment() ) {
-			mViewModel.requestCommentInfo( mCid, 3, "0", 20, 1, SigninHelper.getInstance().getUserToken() );
+			getMViewModel().requestCommentInfo( mCid, 3, "0", 20, 1, SigninHelper.getInstance().getUserToken() );
 		}
 //		if (this.mIsHapame ) {
 //			this.y = new VideoDetailCommentHeader(this.r, this.mFullContent, this.mIsHapame );

@@ -72,7 +72,7 @@ public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRe
 		} else {
 			s = AppUtils.getUUID();
 		}
-		mViewModel.requestRelativeRecommendInfo( mCid, s, getAdapter().mPageBean.getLoadPage() );
+		getMViewModel().requestRelativeRecommendInfo( mCid, s, getAdapter().mPageBean.getLoadPage() );
 		stopLoading();
 	}
 
@@ -154,7 +154,7 @@ public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRe
 		if ( arguments != null ) {
 			mFullContent = ( FullContent ) arguments.getSerializable( "fullContent" );
 			mCid = mFullContent.getCid();
-			mViewModel.requestUserInfo( mFullContent.getUser().getUid() );
+			getMViewModel().requestUserInfo( mFullContent.getUser().getUid() );
 //			ApiHelper.a().a(this.a, this.n.getUser().getUid(), new UserCallback() {
 //				public void a(User user) {
 //					super.a(user);

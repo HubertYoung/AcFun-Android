@@ -96,12 +96,12 @@ public class ChannelFragment extends BaseListFragment< ChannelViewModel > {
 //	}
 	@Override
 	protected void loadData() {
-		mViewModel.requestChannel( "0", 0 );
+		getMViewModel().requestChannel( "0", 0 );
 	}
 
 	@Override
 	protected void loadNewData() {
-		mViewModel.requestChannel( mNext + "", 1 );
+		getMViewModel().requestChannel( mNext + "", 1 );
 	}
 
 	@Override

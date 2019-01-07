@@ -155,7 +155,7 @@ public class MainActivity extends AbsLifecycleActivity {
 					//没有添加
 					if ( fromFragment != null ) ft.hide( fromFragment );//隐藏页面
 					//添加显示
-					ft.add( mFlContainer.getId(), toFragment, toFragment.TAG ).commitAllowingStateLoss();
+					ft.add( mFlContainer.getId(), toFragment, toFragment.getTAG() ).commitAllowingStateLoss();
 				} else {
 					//如果添加了页面
 					if ( fromFragment != null ) ft.hide( fromFragment ); //隐藏页面

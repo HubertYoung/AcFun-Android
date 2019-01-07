@@ -101,7 +101,7 @@ public class ArticleFragment extends AbsLifecycleFragment< ArticleViewModel > {
 	}
 
 	public void loadData() {
-		mViewModel.requestAllChannel();
+		getMViewModel().requestAllChannel();
 	}
 	@Override
 	protected void dataObserver() {

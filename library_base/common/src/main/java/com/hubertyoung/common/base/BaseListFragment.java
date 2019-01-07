@@ -25,7 +25,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 /**
  */
-public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLifecycleFragment< VM > {
+public abstract class BaseListFragment< VM extends AbsViewModel<?> > extends AbsLifecycleFragment< VM > {
 
 	private RecyclerView mRecyclerView;
 

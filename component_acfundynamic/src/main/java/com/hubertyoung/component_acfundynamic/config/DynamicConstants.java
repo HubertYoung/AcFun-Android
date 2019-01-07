@@ -11,8 +11,8 @@ package com.hubertyoung.component_acfundynamic.config;
  * @desc:com.hubertyoung.component.acfunvideo.config
  */
 public class DynamicConstants {
-	public static final Object EVENT_KEY_DYNAMIC = "EVENT_KEY_DYNAMIC";
-	public static final Object EVENT_KEY_DYNAMIC_RECOMMENDUP = "EVENT_KEY_DYNAMIC_RECOMMENDUP";
-	public static final Object EVENT_KEY_DYNAMIC_FOLLOW_BANGUMI = "EVENT_KEY_DYNAMIC_FOLLOW_BANGUMI";
-	public static final Object EVENT_KEY_DYNAMIC_ALL_CHANNEL = "EVENT_KEY_DYNAMIC_ALL_CHANNEL";
+	public static final String EVENT_KEY_DYNAMIC = "EVENT_KEY_DYNAMIC";
+	public static final String EVENT_KEY_DYNAMIC_RECOMMENDUP = "EVENT_KEY_DYNAMIC_RECOMMENDUP";
+	public static final String EVENT_KEY_DYNAMIC_FOLLOW_BANGUMI = "EVENT_KEY_DYNAMIC_FOLLOW_BANGUMI";
+	public static final String EVENT_KEY_DYNAMIC_ALL_CHANNEL = "EVENT_KEY_DYNAMIC_ALL_CHANNEL";
 }

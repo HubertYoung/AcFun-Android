@@ -157,7 +157,7 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 		mSignInUtil.setOnPlatformNameListener( new SignInUtil.OnPlatformNameListener() {
 			@Override
 			public void onSuccess( String platformName, Map< String, String > map ) {
-				mViewModel.requestPlatformLogin(map.get("token"),map.get("openid"),platformName);
+				getMViewModel().requestPlatformLogin(map.get("token"),map.get("openid"),platformName);
 			}
 		} );
 
@@ -214,12 +214,12 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 		mSignInUtil = new SignInUtil( mActivity );
 		initAction();
 //		http://apipc.app.acfun.cn/v2/offlines/checkOffline
-		mViewModel.requestCheckOfflineInfo( );
+		getMViewModel().requestCheckOfflineInfo( );
 
 		if ( !SigninHelper.getInstance().isLogin() || SigninHelper.getInstance().getUserUid() <= 0 ) {
 			setLoginState( false );
 		}else {
-			mViewModel.requestUserInfo( SigninHelper.getInstance().getUserUid() + "" );
+			getMViewModel().requestUserInfo( SigninHelper.getInstance().getUserUid() + "" );
 		}
 //		Log.e( "TAG", "123123" );
 
@@ -546,7 +546,7 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 			ToastUtil.showSuccess( R.string.login_success_toast);
 		}
 
-		mRxManager.post( Constants.LoginStatus, Constants.LoginSuccess );
+		getMRxManager().post( Constants.LoginStatus, Constants.LoginSuccess );
 
 	}
 

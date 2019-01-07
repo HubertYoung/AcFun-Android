@@ -67,7 +67,7 @@ public class GameCenterFragment extends BaseListFragment< GameCenterViewModel > 
 
 	@Override
 	protected void loadData() {
-		mViewModel.requestGameCenter();
+		getMViewModel().requestGameCenter();
 	}
 
 	@Override

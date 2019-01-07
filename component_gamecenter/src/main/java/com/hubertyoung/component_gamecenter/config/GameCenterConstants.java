@@ -8,5 +8,5 @@ package com.hubertyoung.component_gamecenter.config;
  * @see GameCenterConstants
  */
 public class GameCenterConstants {
-	public static final Object EVENT_KEY_GAMECENTER = "EVENT_KEY_GAMECENTER";
+	public static final String EVENT_KEY_GAMECENTER = "EVENT_KEY_GAMECENTER";
 }

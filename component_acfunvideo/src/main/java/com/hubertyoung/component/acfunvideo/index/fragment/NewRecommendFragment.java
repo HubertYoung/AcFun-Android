@@ -96,12 +96,12 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 
 	@Override
 	public void loadData() {
-		mViewModel.requestRecommend( channelId );
+		getMViewModel().requestRecommend( channelId );
 	}
 
 	@Override
 	public void loadNewData() {
-		mViewModel.requestNewRecommend( channelId, getAdapter().getPageBean().getLoadPage() + "" );
+		getMViewModel().requestNewRecommend( channelId, getAdapter().getPageBean().getLoadPage() + "" );
 	}
 
 	@Override

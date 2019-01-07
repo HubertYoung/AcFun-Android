@@ -99,7 +99,7 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel > 
 	}
 
 	public void loadData() {
-		mViewModel.requestDomainAndroidCfg();
+		getMViewModel().requestDomainAndroidCfg();
 	}
 
 	@Override
