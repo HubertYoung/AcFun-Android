@@ -1,6 +1,8 @@
 package com.hubertyoung.acfun.ui.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +12,6 @@ import android.widget.TextView;
 
 import com.hubertyoung.acfun.R;
 import com.hubertyoung.common.base.AbsLifecycleFragment;
-
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 
 
 /**
@@ -57,7 +56,7 @@ public class PlaceHolderFragment extends AbsLifecycleFragment {
         textView.setLayoutParams(new LinearLayout.LayoutParams( ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         textView.setGravity( Gravity.CENTER);
         textView.setText("componentName ==> " + componentName +"\n\n" + "actionName ==> " + actionName);
-        textView.setTextColor(ContextCompat.getColor( activity, R.color.color_bgf83c3a ));
+        textView.setTextColor(ContextCompat.getColor( mActivity, R.color.color_bgf83c3a ));
         textView.setTextSize( 15 );
         return textView;
     }

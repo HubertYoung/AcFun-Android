@@ -56,9 +56,9 @@ public class ChannelFragment extends BaseListFragment< ChannelViewModel > {
 	public void initView( Bundle state ) {
 		super.initView( state );
 		setTitleLayoutVisible( false );
-		mChannelSection = new ViewChannelSection( activity );
+		mChannelSection = new ViewChannelSection( mActivity );
 		addSection( mChannelSection );
-		mViewActivitySection = new ViewActivitySection( activity );
+		mViewActivitySection = new ViewActivitySection( mActivity );
 		addSection( mViewActivitySection );
 	}
 
@@ -70,7 +70,7 @@ public class ChannelFragment extends BaseListFragment< ChannelViewModel > {
 
 	@Override
 	protected RecyclerView.LayoutManager createLayoutManager() {
-		GridLayoutManager layoutManager = new GridLayoutManager( activity, 4 );
+		GridLayoutManager layoutManager = new GridLayoutManager( mActivity, 4 );
 		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
 			@Override
 			public int getSpanSize( int position ) {

@@ -1,8 +1,11 @@
 package com.hubertyoung.component_acfunarticle.article.fragment;
 
 
+import android.arch.lifecycle.Observer;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,10 +25,6 @@ import com.hubertyoung.component_skeleton.skeleton.ViewSkeletonScreen;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.List;
-
-import android.support.v7.widget.Toolbar;
-import android.arch.lifecycle.Observer;
-import android.support.v4.view.ViewPager;
 
 
 /**
@@ -137,7 +136,7 @@ public class ArticleFragment extends AbsLifecycleFragment< ArticleViewModel > {
 	private void initViewPager( List< ServerChannel > article ) {
 		this.mArticleViewTab.setCustomTabView( R.layout.widget_secondary_tab_view, R.id.secondary_tab_text );
 		if ( mArticlePagerAdapter == null ) {
-			mArticlePagerAdapter = new ArticlePagerAdapter( activity, activity.getSupportFragmentManager() );
+			mArticlePagerAdapter = new ArticlePagerAdapter( mActivity, mActivity.getSupportFragmentManager() );
 		}
 		mArticlePagerAdapter.setInfo( article );
 		this.mArticleViewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {

@@ -160,8 +160,8 @@ public class HomePageFragment extends AbsLifecycleFragment< HomePageViewModel > 
 		mNewRecommendFragment = NewRecommendFragment.newInstance( "0", "" );
 		mChannelFragment = ChannelFragment.newInstance( "", "" );
 
-		mHomePagerAdapter.add( mNewRecommendFragment, activity.getString( R.string.recommend_text ) );
-		mHomePagerAdapter.add( mChannelFragment, activity.getString( R.string.common_channel ) );
+		mHomePagerAdapter.add( mNewRecommendFragment, mActivity.getString( R.string.recommend_text ) );
+		mHomePagerAdapter.add( mChannelFragment, mActivity.getString( R.string.common_channel ) );
 		mHomeViewPager.setAdapter( mHomePagerAdapter );
 		mHomeViewPager.setOffscreenPageLimit( 1 );
 		mHomeViewPager.setCurrentItem( 0 );

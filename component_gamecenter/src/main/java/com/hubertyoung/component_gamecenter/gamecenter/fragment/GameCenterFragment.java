@@ -104,7 +104,7 @@ public class GameCenterFragment extends BaseListFragment< GameCenterViewModel > 
 
 	private void showGameCenterGameBannersSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mGameBannersSection = new GameCenterGameBannersSection( ( BaseActivity ) activity );
+			mGameBannersSection = new GameCenterGameBannersSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mGameBannersSection );
 		}
 		mGameBannersSection.setRegions( regions );
@@ -112,7 +112,7 @@ public class GameCenterFragment extends BaseListFragment< GameCenterViewModel > 
 
 	private void showGameCenterGameListHorizSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mVHorizSection = new GameCenterGameListVHorizSection( ( BaseActivity ) activity );
+			mVHorizSection = new GameCenterGameListVHorizSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mVHorizSection );
 		}
 		mVHorizSection.setRegions( regions );
@@ -120,7 +120,7 @@ public class GameCenterFragment extends BaseListFragment< GameCenterViewModel > 
 
 	private void showGameCenterGameListVerticSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mGameListVerticSection = new GameCenterGameListVerticSection( ( BaseActivity ) activity );
+			mGameListVerticSection = new GameCenterGameListVerticSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mGameListVerticSection );
 		}
 		mGameListVerticSection.setRegions( regions );
@@ -128,7 +128,7 @@ public class GameCenterFragment extends BaseListFragment< GameCenterViewModel > 
 
 	private void showGameCenterNewsDownUpSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mNewsDownUpSection = new GameCenterNewsDownUpSection( ( BaseActivity ) activity );
+			mNewsDownUpSection = new GameCenterNewsDownUpSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mNewsDownUpSection );
 		}
 		mNewsDownUpSection.setRegions( regions );
@@ -136,7 +136,7 @@ public class GameCenterFragment extends BaseListFragment< GameCenterViewModel > 
 
 	private void showGameCenterShiouqiSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mGameCenterSSRSection = new GameCenterSSRSection( ( BaseActivity ) activity );
+			mGameCenterSSRSection = new GameCenterSSRSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mGameCenterSSRSection );
 		}
 		mGameCenterSSRSection.setRegions( regions );
@@ -144,7 +144,7 @@ public class GameCenterFragment extends BaseListFragment< GameCenterViewModel > 
 
 	private void showGameCenterCarouselsSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mCarouselsSection = new GameCenterCarouselsSection( ( BaseActivity ) activity );
+			mCarouselsSection = new GameCenterCarouselsSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mCarouselsSection );
 		}
 		mCarouselsSection.setRegions( regions );
@@ -152,7 +152,7 @@ public class GameCenterFragment extends BaseListFragment< GameCenterViewModel > 
 
 	@Override
 	protected RecyclerView.LayoutManager createLayoutManager() {
-		GridLayoutManager layoutManager = new GridLayoutManager( activity, 6 );
+		GridLayoutManager layoutManager = new GridLayoutManager( mActivity, 6 );
 		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
 			@Override
 			public int getSpanSize( int position ) {

@@ -211,7 +211,7 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 		marketLayout = findViewById( R.id.market_layout );
 		settingtLayout = findViewById( R.id.setting_layout );
 		feedbackLayout = findViewById( R.id.feedback_layout );
-		mSignInUtil = new SignInUtil( activity );
+		mSignInUtil = new SignInUtil( mActivity );
 		initAction();
 //		http://apipc.app.acfun.cn/v2/offlines/checkOffline
 		mViewModel.requestCheckOfflineInfo( );
@@ -514,8 +514,8 @@ public class MineFragment extends AbsLifecycleFragment< MineViewModel > implemen
 		ImageLoaderUtil.loadResourceImage( R.mipmap.ic_slide_menu_avatar_no_login, avatar );
 		userInfolayout.setVisibility( View.GONE );
 		loginLayout.setVisibility( View.VISIBLE );
-		weChatButton.setVisibility( PlatformUtils.isWxInstalled( activity ) ? View.VISIBLE : View.GONE );
-		qqButton.setVisibility( PlatformUtils.isQQInstalled( activity ) ? View.VISIBLE : View.GONE );
+		weChatButton.setVisibility( PlatformUtils.isWxInstalled( mActivity ) ? View.VISIBLE : View.GONE );
+		qqButton.setVisibility( PlatformUtils.isQQInstalled( mActivity ) ? View.VISIBLE : View.GONE );
 		gender.setVisibility( View.GONE );
 		nickName.setVisibility( View.GONE );
 		userInfo.setVisibility( View.GONE );

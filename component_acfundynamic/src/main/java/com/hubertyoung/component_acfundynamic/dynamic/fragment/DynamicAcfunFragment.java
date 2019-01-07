@@ -90,7 +90,7 @@ public class DynamicAcfunFragment extends AbsLifecycleFragment< DynamicAcfunView
 
     private void initRecyclerView() {
         mAdapter = new SectionedRecyclerViewAdapter( null );
-        GridLayoutManager layoutManager = new GridLayoutManager( activity, 6 );
+        GridLayoutManager layoutManager = new GridLayoutManager( mActivity, 6 );
         layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize( int position ) {
@@ -109,7 +109,7 @@ public class DynamicAcfunFragment extends AbsLifecycleFragment< DynamicAcfunView
             }
         } );
 
-        mDynamicAcfunSection = new DynamicAcfunSection( ( BaseActivity ) activity );
+        mDynamicAcfunSection = new DynamicAcfunSection( ( BaseActivity ) mActivity );
         mAdapter.addSection( mDynamicAcfunSection );
 
         rvDynamicAcfun.setHasFixedSize( true );

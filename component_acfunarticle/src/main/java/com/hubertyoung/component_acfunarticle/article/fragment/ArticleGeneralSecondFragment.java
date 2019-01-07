@@ -132,7 +132,7 @@ public class ArticleGeneralSecondFragment extends AbsLifecycleFragment< ArticleG
 		titleTimeList.add( getResources().getString( R.string.activity_channel_filter_one_month ) );
 		titleTimeList.add( getResources().getString( R.string.activity_channel_filter_three_month ) );
 		titleTimeList.add( getResources().getString( R.string.activity_channel_filter_all ) );
-		View inflate = LayoutInflater.from( activity ).inflate( R.layout.article_drop_down_header, null );
+		View inflate = LayoutInflater.from( mActivity ).inflate( R.layout.article_drop_down_header, null );
 		mDropDownOptionList.setHeaderView( inflate );
 		mDropDownOptionList.setFocusable( true );
 		mDropDownOptionList.setFocusableInTouchMode( true );
@@ -210,7 +210,7 @@ public class ArticleGeneralSecondFragment extends AbsLifecycleFragment< ArticleG
 
 	private void initRecyclerView() {
 		mRealAdapter = new SectionedRecyclerViewAdapter( null );
-		LinearLayoutManager layoutManagerReal = new LinearLayoutManager( activity, RecyclerView.HORIZONTAL, false );
+		LinearLayoutManager layoutManagerReal = new LinearLayoutManager( mActivity, RecyclerView.HORIZONTAL, false );
 		realmRecyclerView.setHasFixedSize( true );
 		realmRecyclerView.setLayoutManager( layoutManagerReal );
 		realmRecyclerView.setAdapter( mRealAdapter );
@@ -219,15 +219,15 @@ public class ArticleGeneralSecondFragment extends AbsLifecycleFragment< ArticleG
 		} else {
 			realmRecyclerView.setVisibility( View.VISIBLE );
 		}
-		mRealAdapter.addSection( new ArticleRealmSection( activity, serverChannel.realm ) );
+		mRealAdapter.addSection( new ArticleRealmSection( mActivity, serverChannel.realm ) );
 		mRealAdapter.notifyDataSetChanged();
 
 		mAdapter = new SectionedRecyclerViewAdapter( null );
-		LinearLayoutManager layoutManager = new LinearLayoutManager( activity );
+		LinearLayoutManager layoutManager = new LinearLayoutManager( mActivity );
 		mRecyclerView.setHasFixedSize( true );
 		mRecyclerView.setLayoutManager( layoutManager );
 		//		realmRecyclerView.addItemDecoration(new ArticleGeneralSecondDivider());
-		mListArticleSection = new ListArticleSection( activity );
+		mListArticleSection = new ListArticleSection( mActivity );
 		mAdapter.addSection( mListArticleSection );
 		mViewSkeletonScreen = Skeleton.bind( mRecyclerView )//
 				.adapter( mAdapter )//

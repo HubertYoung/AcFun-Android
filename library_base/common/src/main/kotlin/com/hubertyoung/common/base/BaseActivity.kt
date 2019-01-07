@@ -154,7 +154,7 @@ abstract class BaseActivity : AppCompatActivity(), OnEnvironmentChangeListener {
 	/**
 	 * 获取布局文件
 	 */
-	protected abstract fun getLayoutId(): Int
+	protected open abstract fun getLayoutId(): Int
 
 	/**
 	 * 初始化view

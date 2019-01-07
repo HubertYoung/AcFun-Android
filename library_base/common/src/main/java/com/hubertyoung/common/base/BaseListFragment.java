@@ -97,7 +97,7 @@ public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLif
 	private void showLoadingLayout() {
 		if ( mViewReplacer != null ) {
 			if ( mLoadingLayout == null ) {
-				mLoadingLayout = LayoutInflater.from( activity ).inflate( R.layout.widget_loading_holder, null );
+				mLoadingLayout = LayoutInflater.from( mActivity ).inflate( R.layout.widget_loading_holder, null );
 			}
 			mViewReplacer.replace( mLoadingLayout );
 
@@ -120,7 +120,7 @@ public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLif
 			showLoadingLayout();
 			loadData();
 		} else {
-			ToastUtil.showError( activity.getString( R.string.net_status_not_work ) );
+			ToastUtil.showError( mActivity.getString( R.string.net_status_not_work ) );
 			showErrorLayout( null );
 		}
 	}
@@ -159,7 +159,7 @@ public abstract class BaseListFragment< VM extends AbsViewModel > extends AbsLif
 	protected void showErrorLayout( String result ) {
 		if ( mViewReplacer != null && mAdapter != null && mAdapter.mPageBean.refresh ) {
 			if ( mErrorLayout == null ) {
-				mErrorLayout = LayoutInflater.from( activity ).inflate( R.layout.widget_error_holder, null );
+				mErrorLayout = LayoutInflater.from( mActivity ).inflate( R.layout.widget_error_holder, null );
 			}
 			TextView tvErrorContent = mErrorLayout.findViewById( R.id.tv_error_content );
 			if ( !TextUtils.isEmpty( result ) ) {

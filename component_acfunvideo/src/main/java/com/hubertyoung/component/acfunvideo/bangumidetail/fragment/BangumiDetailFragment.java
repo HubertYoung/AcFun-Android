@@ -159,7 +159,7 @@ public class BangumiDetailFragment extends AbsLifecycleFragment {
 	}
 
 	private void initRecyclerView() {
-		mBangumiDetailVideoRecyclerAdapter = new BangumiDetailVideoRecyclerAdapter( activity );
+		mBangumiDetailVideoRecyclerAdapter = new BangumiDetailVideoRecyclerAdapter( mActivity );
 		mBangumiDetailVideoRecyclerAdapter.setData( this.mNetVideoList, this.mBangumiDetailBean );
 		GridLayoutManager gridLayoutManager = new GridLayoutManager( getActivity(), 2 );
 		gridLayoutManager.setOrientation( GridLayoutManager.VERTICAL );

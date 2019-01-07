@@ -103,7 +103,7 @@ public class VideoDetailCommentFragment extends BaseListFragment< VideoDetailCom
 			this.mGroupId = arguments.getString( VideoDetailActivity.groupId );
 			this.mVideoId = arguments.getInt( "videoId" );
 		}
-		this.mClipboardManager = ( ClipboardManager ) activity.getSystemService( Context.CLIPBOARD_SERVICE );
+		this.mClipboardManager = ( ClipboardManager ) mActivity.getSystemService( Context.CLIPBOARD_SERVICE );
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class VideoDetailCommentFragment extends BaseListFragment< VideoDetailCom
 
 	@Override
 	protected RecyclerView.LayoutManager createLayoutManager() {
-		return new LinearLayoutManager( activity );
+		return new LinearLayoutManager( mActivity );
 	}
 
 	@Override

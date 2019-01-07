@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.support.multidex.MultiDex
+import android.support.v7.app.AppCompatDelegate
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.stetho.Stetho
 import com.hubertyoung.common.api.ApiConstants
@@ -45,6 +46,9 @@ open class CommonApplication : Application() {
 		@JvmStatic
 		fun getAppContext(): CommonApplication {
 			return mBaseApplication
+		}
+		init {
+			AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
 		}
 	}
 

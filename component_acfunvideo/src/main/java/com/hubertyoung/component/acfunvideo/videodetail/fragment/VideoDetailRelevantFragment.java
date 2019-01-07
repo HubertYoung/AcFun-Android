@@ -78,7 +78,7 @@ public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRe
 
 	@Override
 	protected RecyclerView.LayoutManager createLayoutManager() {
-		GridLayoutManager layoutManager = new GridLayoutManager( activity, 2 );
+		GridLayoutManager layoutManager = new GridLayoutManager( mActivity, 2 );
 		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
 			@Override
 			public int getSpanSize( int position ) {
@@ -111,12 +111,12 @@ public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRe
 
 	private void initViewInfo() {
 		if ( mRelevantHeadSection == null ) {
-			mRelevantHeadSection = new RelevantHeadSection( activity );
+			mRelevantHeadSection = new RelevantHeadSection( mActivity );
 			addSection( mRelevantHeadSection );
 			mRelevantHeadSection.setData( mFullContent );
 		}
 		if ( mVideoPartListSection == null && mFullContent != null && !mFullContent.getVideos().isEmpty() ) {
-			mVideoPartListSection = new VideoPartListSection( activity );
+			mVideoPartListSection = new VideoPartListSection( mActivity );
 			addSection( mVideoPartListSection );
 			mVideoPartListSection.setData( mFullContent );
 		}
@@ -140,7 +140,7 @@ public class VideoDetailRelevantFragment extends BaseListFragment< VideoDetailRe
 			@Override
 			public void onChanged( @Nullable RecommendBangumiEntity recommendBangumiEntity ) {
 				if ( mRecommondVideoList == null && !recommendBangumiEntity.list.isEmpty() ) {
-					mRecommondVideoList = new RecommondVideoList( activity );
+					mRecommondVideoList = new RecommondVideoList( mActivity );
 					addSection( mRecommondVideoList );
 					mRecommondVideoList.setData( recommendBangumiEntity.list );
 				}

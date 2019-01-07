@@ -91,7 +91,7 @@ public class DynamicFollowBangumiFragment extends AbsLifecycleFragment< DynamicF
 
 	private void initRecyclerView() {
 		mAdapter = new SectionedRecyclerViewAdapter( null );
-		GridLayoutManager layoutManager = new GridLayoutManager( activity, 6 );
+		GridLayoutManager layoutManager = new GridLayoutManager( mActivity, 6 );
 		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
 			@Override
 			public int getSpanSize( int position ) {
@@ -110,7 +110,7 @@ public class DynamicFollowBangumiFragment extends AbsLifecycleFragment< DynamicF
 			}
 		} );
 
-		mBangumiSection = new DynamicFollowBangumiSection( ( BaseActivity ) activity );
+		mBangumiSection = new DynamicFollowBangumiSection( ( BaseActivity ) mActivity );
 		mAdapter.addSection( mBangumiSection );
 
 		rvDynamicFollowBangumi.setHasFixedSize( true );

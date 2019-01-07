@@ -162,7 +162,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 
 	@Override
 	protected RecyclerView.LayoutManager createLayoutManager() {
-		GridLayoutManager layoutManager = new GridLayoutManager( activity, 6 );
+		GridLayoutManager layoutManager = new GridLayoutManager( mActivity, 6 );
 		layoutManager.setSpanSizeLookup( new GridLayoutManager.SpanSizeLookup() {
 			@Override
 			public int getSpanSize( int position ) {
@@ -207,7 +207,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 
 	public void showNewRecommendCarouselsSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) activity );
+			mCarouselsSection = new NewRecommendCarouselsSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mCarouselsSection );
 			mCarouselsSection.setOnItemClickListener( new NewRecommendCarouselsSection.OnBannerItemClickListener() {
 				@Override
@@ -216,7 +216,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 					map.put( "actionId", bodyContent.actionId );
 					map.put( "contentId", bodyContent.contentId );
 					CC.obtainBuilder( "ComponentAcFunIndex" )//
-							.setContext( activity ).setParams( map )//
+							.setContext( mActivity ).setParams( map )//
 							.setActionName( "Activity" )//
 							.build()//
 							.call();
@@ -228,7 +228,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 
 	public void showNewRecommendBannersSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) activity );
+			mBannersSection = new NewRecommendBannersSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mBannersSection );
 			mBannersSection.setRegions( regions );
 			mBannersSection.setOnItemClickListener( new NewRecommendBannersSection.OnItemClickListener() {
@@ -244,7 +244,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 	public void showNewRecommendVideosSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
 			boolean isVideoNew = TextUtils.equals( Utils.videos_new, regions.schema );
-			mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) activity, isVideoNew );
+			mNewBangumiSection = new NewRecommendVideosSection( ( BaseActivity ) mActivity, isVideoNew );
 			if ( isVideoNew ) {
 				getAdapter().addSection( Utils.videos_new, mNewBangumiSection );
 			} else {
@@ -270,7 +270,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 					map.put( "reqId", bodyContentsBean.reqId );
 					map.put( "groupId", bodyContentsBean.groupId );
 					CC.obtainBuilder( "ComponentAcFunIndex" )//
-							.setContext( activity ).setParams( map )//
+							.setContext( mActivity ).setParams( map )//
 							.setActionName( "Activity" )//
 							.build()//
 							.call();
@@ -281,7 +281,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 
 	public void showNewRecommendVideosRankSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivity ) activity );
+			mVideosRankSection = new NewRecommendVideosRankSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mVideosRankSection );
 			mVideosRankSection.setRegions( regions );
 		}
@@ -289,7 +289,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 
 	public void showNewRecommendBangumisSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mBangumisSection = new NewRecommendBangumisSection( ( BaseActivity ) activity );
+			mBangumisSection = new NewRecommendBangumisSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mBangumisSection );
 			mBangumisSection.setRegions( regions );
 		}
@@ -306,7 +306,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 	public void showArticlesRecommendSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
 			articlesChannelId = channelId;
-			ArticlesRecommendSection mArticlesRecommendSection = new ArticlesRecommendSection( ( BaseActivity ) activity );
+			ArticlesRecommendSection mArticlesRecommendSection = new ArticlesRecommendSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mArticlesRecommendSection );
 			mArticlesRecommendSection.setRegions( regions );
 		}
@@ -314,7 +314,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 
 	public void showArticlesRankRecommendSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
-			mArticlesRankRecommendSection = new ArticlesRankRecommendSection( ( BaseActivity ) activity );
+			mArticlesRankRecommendSection = new ArticlesRankRecommendSection( ( BaseActivity ) mActivity );
 			getAdapter().addSection( mArticlesRankRecommendSection );
 			mArticlesRankRecommendSection.setRegions( regions );
 		}
@@ -323,7 +323,7 @@ public class NewRecommendFragment extends BaseListFragment< NewRecommendViewMode
 	public void showArticlesNewRecommendSection( Regions regions ) {
 		if ( getAdapter().getPageBean().refresh ) {
 			boolean isArticlesNew = TextUtils.equals( Utils.articles_new, regions.schema );
-			mArticlesNewSection = new ArticlesNewSection( ( BaseActivity ) activity );
+			mArticlesNewSection = new ArticlesNewSection( ( BaseActivity ) mActivity );
 			if ( isArticlesNew ) {
 				getAdapter().addSection( Utils.articles_new, mArticlesNewSection );
 			} else {
