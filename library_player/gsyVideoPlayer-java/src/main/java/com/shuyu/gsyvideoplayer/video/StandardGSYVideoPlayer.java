@@ -46,6 +46,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
 
 	//触摸进度条的progress
 	protected ProgressBar mDialogProgressBar;
+
 	//触摸进度的文字显示
 	private TextView mDialogSeekTimeText;
 
@@ -228,7 +229,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
 				mDialogProgressBar.setProgress( seekTimePosition * 100 / totalTimeDuration );
 			}
 			if ( mDialogSeekTimeText != null ) {
-				mDialogSeekTimeText.setText( seekTimePosition / 1000 + "秒" );
+				mDialogSeekTimeText.setText( ( getCurrentPositionWhenPlaying() - seekTimePosition ) / 1000 + "秒" );
 			}
 		}
 		if ( deltaX > 0 ) {

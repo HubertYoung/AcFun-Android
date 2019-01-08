@@ -53,6 +53,8 @@ import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailViewModel;
 import com.hubertyoung.component.acfunvideo.videoplayer.video.AcFunVideoPlayer;
 import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.shuyu.gsyvideoplayer.listener.VideoAllCallBack;
+import com.shuyu.gsyvideoplayer.utils.Debuger;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 import java.text.SimpleDateFormat;
@@ -129,7 +131,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	public static void launch( Context context, int contentId, String reqId, String groupId, String from ) {
 		Intent intent = new Intent( context, VideoDetailActivity.class );
 		if ( !( context instanceof Activity ) ) {
-			//调用方没有设置context或app间组件跳转，context为application
+			//调用方没有设置context或apmStandardGSYVideoPlayerp间组件跳转，context为application
 			intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
 		}
 		Bundle bundle = new Bundle();
@@ -264,6 +266,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 //		PushProcessHelper.a(getIntent(), this);
 		mContentId = 4818594;
 		mFrom = "recommend";
+		Debuger.enable();
 
 		TextView textView = mtextTitle;
 		StringBuilder stringBuilder = new StringBuilder();
@@ -341,6 +344,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 				setVideoInfo( fullContent.getVideos().get( 0 ), fullContent, false );
 				// TODO: 2019/1/2 未知
 //				k();
+				initPlayerListener(mStandardGSYVideoPlayer);
 				initViewPager( fullContent );
 //				m.a();
 //				m.a(new ShowBottomBarListener() {
@@ -359,6 +363,120 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 //					}
 //				});
 //				ag_();
+			}
+		} );
+	}
+
+	private void initPlayerListener( AcFunVideoPlayer standardGSYVideoPlayer ) {
+		standardGSYVideoPlayer.setVideoAllCallBack( new VideoAllCallBack() {
+			@Override
+			public void onStartPrepared( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onPrepared( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickStartIcon( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickStartError( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickStop( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickStopFullscreen( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickResume( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickResumeFullscreen( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickSeekbar( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickSeekbarFullscreen( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onAutoComplete( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onEnterFullscreen( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onQuitFullscreen( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onQuitSmallWidget( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onEnterSmallWidget( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onTouchScreenSeekVolume( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onTouchScreenSeekPosition( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onTouchScreenSeekLight( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onPlayError( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickStartThumb( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickBlank( String url, Object... objects ) {
+
+			}
+
+			@Override
+			public void onClickBlankFullscreen( String url, Object... objects ) {
+
 			}
 		} );
 	}
@@ -497,17 +615,18 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	private void initBehavior() {
 		TypedValue typedValue = new TypedValue();
 		getTheme().resolveAttribute( android.R.attr.actionBarSize, typedValue, true );
-		if ( this.isDetailsShow ) {
-			this.mPlayerContainer.setMinimumHeight( getResources().getDimensionPixelSize( typedValue.resourceId ) );
+		if ( isDetailsShow ) {
+			mPlayerContainer.setMinimumHeight( getResources().getDimensionPixelSize( typedValue.resourceId ) );
 		} else {
-			this.mPlayerContainer.setMinimumHeight( getResources().getDimensionPixelSize( typedValue.resourceId ) );
+			mPlayerContainer.setMinimumHeight( getResources().getDimensionPixelSize( typedValue.resourceId ) );
 		}
 		mAppBarLayout.addOnOffsetChangedListener( new HeaderOffsetUpdateListener( this, mAppBarLayout, mCoverView, mPlayerViewBar, mDivider ) );
 		CoordinatorLayout.LayoutParams layoutParams = ( CoordinatorLayout.LayoutParams ) this.mAppBarLayout.getLayoutParams();
 		AppBarLayout.Behavior behavior = new AppBarLayout.Behavior();
 		behavior.setDragCallback( new AppBarLayout.Behavior.DragCallback() {
 			public boolean canDrag( @NonNull AppBarLayout appBarLayout ) {
-				return mStandardGSYVideoPlayer.isInPlayingState();
+				return mStandardGSYVideoPlayer.getCurrentState() == AcFunVideoPlayer.CURRENT_STATE_PLAYING;
+//				return true;
 			}
 		} );
 		layoutParams.setBehavior( behavior );

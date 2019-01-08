@@ -351,13 +351,13 @@ public abstract class GSYVideoControlView extends GSYVideoView implements View.O
                 Debuger.printfLog(GSYVideoControlView.this.hashCode() + "------------------------------ dismiss CURRENT_STATE_AUTO_COMPLETE");
                 cancelProgressTimer();
                 if (mProgressBar != null) {
-                    mProgressBar.setProgress(100);
+                    mProgressBar.setProgress(mProgressBar.getMax());
                 }
                 if (mCurrentTimeTextView != null && mTotalTimeTextView != null) {
                     mCurrentTimeTextView.setText(mTotalTimeTextView.getText());
                 }
                 if (mBottomProgressBar != null) {
-                    mBottomProgressBar.setProgress(100);
+                    mBottomProgressBar.setProgress(mProgressBar.getMax());
                 }
                 break;
         }
@@ -910,7 +910,7 @@ public abstract class GSYVideoControlView extends GSYVideoView implements View.O
     }
 
     protected void setProgressAndTime(int progress, int secProgress, int currentTime, int totalTime) {
-
+		Debuger.printfLog( "progress: " + progress + ",secProgress: " + secProgress + ",currentTime: " + currentTime + ",totalTime: " + totalTime );
         if (mGSYVideoProgressListener != null && mCurrentState == CURRENT_STATE_PLAYING) {
             mGSYVideoProgressListener.onProgress(progress, secProgress, currentTime, totalTime);
         }
