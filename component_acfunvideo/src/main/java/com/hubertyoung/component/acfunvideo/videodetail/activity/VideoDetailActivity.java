@@ -46,6 +46,7 @@ import com.hubertyoung.common.widget.circularreveal.RevealFrameLayout;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.entity.PlayerVideoInfo;
 import com.hubertyoung.component.acfunvideo.videodetail.adapter.VideoDetailPagerAdapter;
+import com.hubertyoung.component.acfunvideo.videodetail.callback.AcFunVideoAllCallBack;
 import com.hubertyoung.component.acfunvideo.videodetail.fragment.VideoDetailCommentFragment;
 import com.hubertyoung.component.acfunvideo.videodetail.fragment.VideoDetailRelevantFragment;
 import com.hubertyoung.component.acfunvideo.videodetail.listener.HeaderOffsetUpdateListener;
@@ -53,7 +54,6 @@ import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailViewModel;
 import com.hubertyoung.component.acfunvideo.videoplayer.video.AcFunVideoPlayer;
 import com.hubertyoung.component_acfunvideo.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
-import com.shuyu.gsyvideoplayer.listener.VideoAllCallBack;
 import com.shuyu.gsyvideoplayer.utils.Debuger;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
@@ -368,117 +368,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	}
 
 	private void initPlayerListener( AcFunVideoPlayer standardGSYVideoPlayer ) {
-		standardGSYVideoPlayer.setVideoAllCallBack( new VideoAllCallBack() {
-			@Override
-			public void onStartPrepared( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onPrepared( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickStartIcon( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickStartError( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickStop( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickStopFullscreen( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickResume( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickResumeFullscreen( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickSeekbar( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickSeekbarFullscreen( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onAutoComplete( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onEnterFullscreen( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onQuitFullscreen( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onQuitSmallWidget( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onEnterSmallWidget( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onTouchScreenSeekVolume( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onTouchScreenSeekPosition( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onTouchScreenSeekLight( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onPlayError( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickStartThumb( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickBlank( String url, Object... objects ) {
-
-			}
-
-			@Override
-			public void onClickBlankFullscreen( String url, Object... objects ) {
-
-			}
-		} );
+		standardGSYVideoPlayer.setVideoAllCallBack( new AcFunVideoAllCallBack( mAppBarLayout, mVideoBar, mTitlePager ) );
 	}
 
 	private void initViewPager( FullContent fullContent ) {
