@@ -348,7 +348,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 				setVideoInfo( fullContent.getVideos().get( 0 ), fullContent, false );
 				// TODO: 2019/1/2 未知
 //				k();
-				initPlayerListener(mStandardGSYVideoPlayer);
+				initPlayerListener( mStandardGSYVideoPlayer );
 				initViewPager( fullContent );
 //				m.a();
 //				m.a(new ShowBottomBarListener() {
@@ -372,7 +372,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	}
 
 	private void initPlayerListener( AcFunVideoPlayer standardGSYVideoPlayer ) {
-		standardGSYVideoPlayer.setVideoAllCallBack( new AcFunVideoAllCallBack( mAppBarLayout, mVideoBar, mTitlePager ) );
+		standardGSYVideoPlayer.setVideoAllCallBack( new AcFunVideoAllCallBack(mPlayerContainer, mAppBarLayout, mVideoBar, mTitlePager ) );
 	}
 
 	private void initViewPager( FullContent fullContent ) {
