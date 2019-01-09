@@ -50,6 +50,7 @@ import com.hubertyoung.component.acfunvideo.videodetail.callback.AcFunVideoAllCa
 import com.hubertyoung.component.acfunvideo.videodetail.fragment.VideoDetailCommentFragment;
 import com.hubertyoung.component.acfunvideo.videodetail.fragment.VideoDetailRelevantFragment;
 import com.hubertyoung.component.acfunvideo.videodetail.listener.HeaderOffsetUpdateListener;
+import com.hubertyoung.component.acfunvideo.videodetail.observer.VideoObserver;
 import com.hubertyoung.component.acfunvideo.videodetail.vm.VideoDetailViewModel;
 import com.hubertyoung.component.acfunvideo.videoplayer.video.AcFunVideoPlayer;
 import com.hubertyoung.component_acfunvideo.R;
@@ -335,6 +336,9 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 				mVideo = fullContent.getVideos().get( 0 );
 				mStandardGSYVideoPlayer = new AcFunVideoPlayer( mContext );
 				mStandardGSYVideoPlayer.setVisibility( View.VISIBLE );
+
+				getLifecycle().addObserver(new VideoObserver(mStandardGSYVideoPlayer));
+
 				if ( mPlayerViewContainer.getChildAt( 0 ) instanceof StandardGSYVideoPlayer ) {
 					mPlayerViewContainer.removeViewAt( 0 );
 				}
@@ -558,7 +562,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 //			EventHelper.a().a(new OnNotifyPlayingVideoEvent(video));
 			mPlayerOpenView.setText( R.string.activity_video_detail_resume_play_tip );
 
-			mStandardGSYVideoPlayer.setUp( "https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo/7_ffe10cbf6500021d8f2b04a0cd1d0203.mp4", true, playerVideoInfo.getVideoTitle() );
+			mStandardGSYVideoPlayer.setUp( "https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo/3_ab67dd52e1dcd12c07f10456816a7957.mp4", true, playerVideoInfo.getVideoTitle() );
 //			<com.facebook.drawee.view.SimpleDraweeView
 //			android:id="@+id/detail_video_cover"
 //			android:layout_width="match_parent"
