@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -42,7 +43,6 @@ import com.hubertyoung.common.utils.SigninHelper;
 import com.hubertyoung.common.utils.Utils;
 import com.hubertyoung.common.utils.bar.BarUtils;
 import com.hubertyoung.common.utils.log.CommonLog;
-import com.hubertyoung.common.widget.circularreveal.RevealFrameLayout;
 import com.hubertyoung.component.acfunvideo.config.VideoConstants;
 import com.hubertyoung.component.acfunvideo.entity.PlayerVideoInfo;
 import com.hubertyoung.component.acfunvideo.videodetail.adapter.VideoDetailPagerAdapter;
@@ -88,10 +88,10 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	private SimpleDraweeView danmakuAvatar;
 	private EditText mDanmakuInput;
 	private ImageView mDanmakuSender;
-	private RevealFrameLayout mVideoBar;
-	private LinearLayout mPlayerViewBar;
+//	private RevealFrameLayout mVideoBar;
+//	private LinearLayout mPlayerViewBar;
 	private TextView mPlayerOpenView;
-	private ImageView videoDetailReturn;
+//	private ImageView videoDetailReturn;
 	private ImageView report;
 	private LinearLayout mTabLayout;
 	private SmartTabLayout mTitleTab;
@@ -164,6 +164,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 
 		mClContent = findViewById( R.id.cl_content );
 		mToolbar = findViewById( R.id.view_toolbar );
+		mToolbar.getBackground().setAlpha( 0 );
 		bottomBar = findViewById( R.id.comment_bottom_bar );
 		mCoverContainer = findViewById( R.id.video_detail_cover_container );
 		mAppBarLayout = findViewById( R.id.video_detail_appbar );
@@ -176,11 +177,16 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		danmakuAvatar = findViewById( R.id.video_detail_danmaku_avatar );
 		mDanmakuInput = findViewById( R.id.video_detail_danmaku_input );
 		mDanmakuSender = findViewById( R.id.video_detail_danmaku_sender );
-		mVideoBar = findViewById( R.id.fl_video_detail_bar );
-		mPlayerViewBar = findViewById( R.id.video_detail_player_bar );
-		mPlayerOpenView = findViewById( R.id.video_detail_play );
-		videoDetailReturn = findViewById( R.id.video_detail_return );
+//		mVideoBar = findViewById( R.id.fl_video_detail_bar );
+//		mPlayerViewBar = findViewById( R.id.video_detail_player_bar );
+		mPlayerOpenView = findViewById( R.id.toolbar_title );
+		Drawable drawableLeft = getResources().getDrawable( R.mipmap.ic_player_bar_play );
+		mPlayerOpenView.setCompoundDrawablesWithIntrinsicBounds( drawableLeft, null, null, null );
+		mPlayerOpenView.setAlpha( 0 );
+
+//		videoDetailReturn = findViewById( R.id.video_detail_return );
 		report = findViewById( R.id.detail_report_layout );
+		report.setVisibility( View.VISIBLE );
 		mTabLayout = findViewById( R.id.ll_video_detail_tab );
 		mTitleTab = findViewById( R.id.video_detail_tab );
 		mDivider = findViewById( R.id.v_divider );
@@ -280,14 +286,14 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	@Override
 	public void initToolBar() {
 //		if ( mToolbar != null ) {
-		BarUtils.setPaddingSmart( mToolbar );
+//		BarUtils.setPaddingSmart( mToolbar );
 		BarUtils.setPaddingSmart( mClContent );
-		mToolbar.setTitle( getTitle().toString() );
-		setSupportActionBar( mToolbar );
-		getSupportActionBar().setDisplayHomeAsUpEnabled( true );
-		if ( getSupportActionBar() != null ) {
-			getSupportActionBar().hide();
-		}
+		mToolbar.setTitle( "" );
+//		setSupportActionBar( mToolbar );
+//		getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+//		if ( getSupportActionBar() != null ) {
+//			getSupportActionBar().hide();
+//		}
 	}
 
 	public void a( String str ) {
@@ -372,7 +378,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 	}
 
 	private void initPlayerListener( AcFunVideoPlayer standardGSYVideoPlayer ) {
-		standardGSYVideoPlayer.setVideoAllCallBack( new AcFunVideoAllCallBack(mPlayerContainer, mAppBarLayout, mVideoBar, mTitlePager ) );
+		standardGSYVideoPlayer.setVideoAllCallBack( new AcFunVideoAllCallBack(mPlayerContainer, mAppBarLayout, mToolbar, mTitlePager ) );
 	}
 
 	private void initViewPager( FullContent fullContent ) {
@@ -451,7 +457,8 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 			mVideoDetailPagerAdapter.setData( mVideoDetailCommentFragment, "评论" );
 			mTitleTab.setVisibility( View.GONE );
 			report.setVisibility( View.GONE );
-			mPlayerViewBar.setBackgroundColor( getResources().getColor( R.color.progress_bar_hapame_played ) );
+//			mPlayerViewBar.setBackgroundColor( getResources().getColor( R.color.progress_bar_hapame_played ) );
+			mToolbar.setBackgroundColor( getResources().getColor( R.color.progress_bar_hapame_played ) );
 //			mIconVideoPlay.setBackground( getResources().getDrawable( R.drawable.hapame_play ) );
 			mDanmakuSender.setBackground( getResources().getDrawable( R.drawable.hapame_danmu_send ) );
 			bottomBar.setVisibility( View.VISIBLE );
@@ -460,7 +467,8 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 			mVideoDetailPagerAdapter.setData( mVideoDetailCommentFragment, "评论" );
 			mTitleTab.setVisibility( View.VISIBLE );
 			report.setVisibility( View.VISIBLE );
-			mPlayerViewBar.setBackgroundColor( getResources().getColor( R.color.them_color ) );
+//			mPlayerViewBar.setBackgroundColor( getResources().getColor( R.color.them_color ) );
+			mToolbar.setBackgroundColor( getResources().getColor( R.color.them_color ) );
 //			mIconVideoPlay.setBackground( getResources().getDrawable( R.mipmap.ic_video_play ) );
 			mDanmakuSender.setBackground( getResources().getDrawable( R.drawable.icon_send_danmu ) );
 		}
@@ -514,7 +522,7 @@ public class VideoDetailActivity extends AbsLifecycleActivity< VideoDetailViewMo
 		} else {
 			mPlayerContainer.setMinimumHeight( getResources().getDimensionPixelSize( typedValue.resourceId ) );
 		}
-		mAppBarLayout.addOnOffsetChangedListener( new HeaderOffsetUpdateListener( this, mAppBarLayout, mCoverView, mPlayerViewBar, mDivider ) );
+		mAppBarLayout.addOnOffsetChangedListener( new HeaderOffsetUpdateListener( this, mAppBarLayout, mCoverView, mToolbar,mPlayerOpenView, mDivider ) );
 		CoordinatorLayout.LayoutParams layoutParams = ( CoordinatorLayout.LayoutParams ) this.mAppBarLayout.getLayoutParams();
 		AppBarLayout.Behavior behavior = new AppBarLayout.Behavior();
 		behavior.setDragCallback( new AppBarLayout.Behavior.DragCallback() {

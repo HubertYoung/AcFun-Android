@@ -3,12 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/view_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/pickerview_topbar_height"
+    android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
     android:contentInsetStart="0dp"
-    android:gravity="center"
+    android:gravity="center_vertical"
     android:theme="@style/ToolBarStyle"
     app:contentInsetEnd="0dp"
     app:contentInsetLeft="0dp"
@@ -24,6 +25,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text=""
         android:textColor="@color/white"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:visibility="visible"
+        tools:text="hahaha"/>
+
+    <ImageView
+        android:id="@+id/detail_report_layout"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center_vertical|right"
+        android:background="@drawable/selector_transparent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:src="@mipmap/ic_video_detail_report"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
 </android.support.v7.widget.Toolbar>

@@ -28,8 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:animateLayoutChanges="true"
-                    android:orientation="vertical"
-                    app:layout_collapseMode="pin">
+                    android:orientation="vertical">
 
                     <FrameLayout
                         android:id="@+id/player_container"
@@ -116,54 +115,57 @@
             </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>
 
-        <com.hubertyoung.common.widget.circularreveal.RevealFrameLayout
-            android:id="@+id/fl_video_detail_bar"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/transparent"
-            android:gravity="center_vertical"
-            android:visibility="visible">
+        <!--<com.hubertyoung.common.widget.circularreveal.RevealFrameLayout-->
+            <!--android:id="@+id/fl_video_detail_bar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?android:attr/actionBarSize"-->
+            <!--android:background="@color/transparent"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:visibility="visible">-->
 
-            <LinearLayout
-                android:id="@+id/video_detail_player_bar"
-                android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                android:background="@color/them_color"
-                android:orientation="vertical">
+            <!--<LinearLayout-->
+                <!--android:id="@+id/video_detail_player_bar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="?android:attr/actionBarSize"-->
+                <!--android:background="@color/them_color"-->
+                <!--android:orientation="vertical">-->
 
-                <TextView
-                    android:id="@+id/video_detail_play"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:drawableLeft="@mipmap/ic_player_bar_play"
-                    android:drawablePadding="5dp"
-                    android:gravity="center"
-                    android:text="@string/activity_video_detail_start_play_tip"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"/>
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:id="@+id/video_detail_play"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:drawableLeft="@mipmap/ic_player_bar_play"-->
+                    <!--android:drawablePadding="5dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="@string/activity_video_detail_start_play_tip"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="14sp"/>-->
+            <!--</LinearLayout>-->
 
-            <ImageView
-                android:id="@+id/video_detail_return"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="top|left|center_vertical|center_horizontal|center|start"
-                android:background="@drawable/selector_transparent"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:src="@mipmap/ic_return"/>
+            <!--<ImageView-->
+                <!--android:id="@+id/video_detail_return"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="top|left|center_vertical|center_horizontal|center|start"-->
+                <!--android:background="@drawable/selector_transparent"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:src="@mipmap/ic_return"/>-->
 
-            <ImageView
-                android:id="@+id/detail_report_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="top|right|center_vertical|center_horizontal|center|end"
-                android:background="@drawable/selector_transparent"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:src="@mipmap/ic_video_detail_report"/>
-        </com.hubertyoung.common.widget.circularreveal.RevealFrameLayout>
+            <!--<ImageView-->
+                <!--android:id="@+id/detail_report_layout"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="top|right|center_vertical|center_horizontal|center|end"-->
+                <!--android:background="@drawable/selector_transparent"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:src="@mipmap/ic_video_detail_report"/>-->
+
+        <!--</com.hubertyoung.common.widget.circularreveal.RevealFrameLayout>-->
+
+        <include layout="@layout/toolbar_title_center_view"/>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -226,18 +228,9 @@
                 android:src="#33000000"
                 android:visibility="gone"/>
         </FrameLayout>
+
     </android.support.design.widget.CoordinatorLayout>
 
-    <include layout="@layout/toolbar_view"/>
-
-    <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/view_toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:background="#0000"-->
-        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-        <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-        <!--app:titleTextAppearance="@style/ToolBar.TitleText"/>-->
     <include
         android:id="@+id/comment_bottom_bar"
         layout="@layout/video_detail_comment_bottom_bar"

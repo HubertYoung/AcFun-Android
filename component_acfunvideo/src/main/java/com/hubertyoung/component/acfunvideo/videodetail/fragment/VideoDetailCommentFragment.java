@@ -50,6 +50,8 @@ public class VideoDetailCommentFragment extends BaseListFragment< VideoDetailCom
 	protected void initView( Bundle state ) {
 		super.initView( state );
 		mToolbar.setVisibility( View.GONE );
+		getSrlContainer().setEnableRefresh( false );
+		getSrlContainer().setEnableLoadMore( false );
 		getIntentInfo();
 		initData();
 	}

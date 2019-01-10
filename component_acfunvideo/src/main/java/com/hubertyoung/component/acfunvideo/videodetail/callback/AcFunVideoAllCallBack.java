@@ -3,11 +3,11 @@ package com.hubertyoung.component.acfunvideo.videodetail.callback;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hubertyoung.common.widget.circularreveal.RevealFrameLayout;
 import com.shuyu.gsyvideoplayer.listener.VideoAllCallBack;
 
 import static android.support.design.widget.AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED;
@@ -23,14 +23,14 @@ import static android.support.design.widget.AppBarLayout.LayoutParams.SCROLL_FLA
  */
 public class AcFunVideoAllCallBack implements VideoAllCallBack {
 	private final AppBarLayout mAppBarLayout;
-	private final RevealFrameLayout mVideoBar;
+	private final Toolbar mToolbar;
 	private final ViewPager mTitlePager;
 	private final CollapsingToolbarLayout mPlayerContainer;
 
-	public AcFunVideoAllCallBack( CollapsingToolbarLayout playerContainer, AppBarLayout appBarLayout, RevealFrameLayout videoBar, ViewPager titlePager ) {
+	public AcFunVideoAllCallBack( CollapsingToolbarLayout playerContainer, AppBarLayout appBarLayout, Toolbar videoBar, ViewPager titlePager ) {
 		this.mPlayerContainer = playerContainer;
 		this.mAppBarLayout = appBarLayout;
-		this.mVideoBar = videoBar;
+		this.mToolbar = videoBar;
 		this.mTitlePager = titlePager;
 	}
 
@@ -52,9 +52,10 @@ public class AcFunVideoAllCallBack implements VideoAllCallBack {
 		if ( flag ) {
 			mAppBarLayout.setExpanded( true, false );
 //		D();TODO 隐藏键盘
-			mVideoBar.setVisibility( View.INVISIBLE );
+			mToolbar.setVisibility( View.VISIBLE );
 			setCollapsingToolbarLayoutFlag( true );
 		}else{
+			mToolbar.setVisibility( View.VISIBLE );
 			setCollapsingToolbarLayoutFlag( false );
 		}
 	}

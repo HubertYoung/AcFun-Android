@@ -54,7 +54,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!-- 顶部按钮栏高度 -->
-    <dimen name="pickerview_topbar_height">48dp</dimen>
+    <dimen name="pickerview_topbar_height">52dp</dimen>
 
     <dimen name="preference_regulable_fill_height_default">64dp</dimen>
     <dimen name="preference_regulable_wrap_height_default">44dp</dimen>
