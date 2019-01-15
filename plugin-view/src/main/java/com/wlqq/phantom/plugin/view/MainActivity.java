@@ -108,8 +108,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private int getHostLauncherIconId() {
-        return PhantomUtils.getHostContext(this).getResources().getIdentifier("ic_launcher", "mipmap",
-                "com.wlqq.phantom.sample");
+        try {
+            return PhantomUtils.getHostContext(this).getResources().getIdentifier("ic_launcher", "mipmap",
+                    "com.wlqq.phantom.sample");
+        } catch ( Exception e ) {
+            return 0;
+        }
     }
 
     private String getHostApplicationId() {

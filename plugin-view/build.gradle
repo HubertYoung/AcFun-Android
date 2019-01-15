@@ -15,7 +15,7 @@
  */
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.wlqq.phantom.plugin'
+//apply plugin: 'com.wlqq.phantom.plugin'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -55,6 +55,8 @@ dependencies {
 //    compileOnly "com.wlqq.phantom:phantom-plugin-lib:${phantomVersion.pluginLib}"
     compileOnly deps.phantomVersion.communicationLib
     compileOnly deps.phantomVersion.pluginLib
+    debugImplementation deps.phantomVersion.communicationLib
+    debugImplementation deps.phantomVersion.pluginLib
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -91,64 +93,64 @@ def copyPluginToHost(String dir) {
     }
 }
 
-afterEvaluate { project ->
-    project.tasks.assembleDebug.doLast {
-        deletePluginInHost()
-        copyPluginToHost('debug')
-    }
+//afterEvaluate { project ->
+//    project.tasks.assembleDebug.doLast {
+//        deletePluginInHost()
+//        copyPluginToHost('debug')
+//    }
+//
+//    project.tasks.assembleRelease.doLast {
+//        deletePluginInHost()
+//        copyPluginToHost('release')
+//    }
+//}
 
-    project.tasks.assembleRelease.doLast {
-        deletePluginInHost()
-        copyPluginToHost('release')
-    }
-}
-
-phantomPluginConfig {
-    /*------------------------------ 剔除 support-v4 及其依赖的库 BEGIN ----------------------------*/
-    excludeLib "com.android.support:support-v4:${versions.support}"
-    excludeLib "com.android.support:support-core-ui:${versions.support}"
-    excludeLib "com.android.support:support-compat:${versions.support}"
-    excludeLib "com.android.support:support-media-compat:${versions.support}"
-    excludeLib "com.android.support:support-core-utils:${versions.support}"
-    excludeLib "com.android.support:support-fragment:${versions.support}"
-    excludeLib "com.android.support:support-annotations:${versions.support}"
-    excludeLib "com.android.support:cursoradapter:${versions.support}"
-    excludeLib "com.android.support:interpolator:${versions.support}"
-    excludeLib "com.android.support:versionedparcelable:${versions.support}"
-    excludeLib "com.android.support:documentfile:${versions.support}"
-    excludeLib "com.android.support:customview:${versions.support}"
-    excludeLib "com.android.support:slidingpanelayout:${versions.support}"
-    excludeLib "com.android.support:swiperefreshlayout:${versions.support}"
-    excludeLib "com.android.support:drawerlayout:${versions.support}"
-    excludeLib "com.android.support:coordinatorlayout:${versions.support}"
-    excludeLib "com.android.support:loader:${versions.support}"
-    excludeLib "com.android.support:viewpager:${versions.support}"
-    excludeLib "com.android.support:collections:${versions.support}"
-    excludeLib "com.android.support:asynclayoutinflater:${versions.support}"
-    excludeLib "com.android.support:print:${versions.support}"
-    excludeLib "com.android.support:localbroadcastmanager:${versions.support}"
-
-    excludeLib "android.arch.lifecycle:viewmodel:${versions.lifecycle}"
-    excludeLib "android.arch.lifecycle:runtime:${versions.lifecycle}"
-    excludeLib "android.arch.lifecycle:common:${versions.lifecycle}"
-    excludeLib "android.arch.lifecycle:livedata:${versions.lifecycle}"
-    excludeLib "android.arch.lifecycle:livedata-core:${versions.lifecycle}"
-    excludeLib "android.arch.core:common:${versions.lifecycle}"
-    /*------------------------------ 删除 support-v4 及其依赖的库  END  ----------------------------*/
-
-    /*------------------------------ 混淆配置 BEGIN ------------------------------*/
-    libraryJarsProguardFile file('proguard-phantom.pro')
-    /*------------------------------ 混淆配置  END  ------------------------------*/
-
-    /*------------------------------ 快速安装插件配置 BEGIN ------------------------*/
-    // 宿主包名
-    hostApplicationId = "com.wlqq.phantom.sample"
-    // 宿主 launcher Activity full class name
-    hostAppLauncherActivity = "com.wlqq.phantom.sample.MainActivity"
-
-    // 插件包名
-    pluginApplicationId = android.defaultConfig.applicationId
-    // 插件版本名
-    pluginVersionName = android.defaultConfig.versionName
-    /*------------------------------ 快速安装插件配置  END  -------------------------*/
-}
+//phantomPluginConfig {
+//    /*------------------------------ 剔除 support-v4 及其依赖的库 BEGIN ----------------------------*/
+////    excludeLib "com.android.support:support-v4:${versions.support}"
+////    excludeLib "com.android.support:support-core-ui:${versions.support}"
+////    excludeLib "com.android.support:support-compat:${versions.support}"
+////    excludeLib "com.android.support:support-media-compat:${versions.support}"
+////    excludeLib "com.android.support:support-core-utils:${versions.support}"
+////    excludeLib "com.android.support:support-fragment:${versions.support}"
+////    excludeLib "com.android.support:support-annotations:${versions.support}"
+////    excludeLib "com.android.support:cursoradapter:${versions.support}"
+////    excludeLib "com.android.support:interpolator:${versions.support}"
+////    excludeLib "com.android.support:versionedparcelable:${versions.support}"
+////    excludeLib "com.android.support:documentfile:${versions.support}"
+////    excludeLib "com.android.support:customview:${versions.support}"
+////    excludeLib "com.android.support:slidingpanelayout:${versions.support}"
+////    excludeLib "com.android.support:swiperefreshlayout:${versions.support}"
+////    excludeLib "com.android.support:drawerlayout:${versions.support}"
+////    excludeLib "com.android.support:coordinatorlayout:${versions.support}"
+////    excludeLib "com.android.support:loader:${versions.support}"
+////    excludeLib "com.android.support:viewpager:${versions.support}"
+////    excludeLib "com.android.support:collections:${versions.support}"
+////    excludeLib "com.android.support:asynclayoutinflater:${versions.support}"
+////    excludeLib "com.android.support:print:${versions.support}"
+////    excludeLib "com.android.support:localbroadcastmanager:${versions.support}"
+////
+////    excludeLib "android.arch.lifecycle:viewmodel:${versions.lifecycle}"
+////    excludeLib "android.arch.lifecycle:runtime:${versions.lifecycle}"
+////    excludeLib "android.arch.lifecycle:common:${versions.lifecycle}"
+////    excludeLib "android.arch.lifecycle:livedata:${versions.lifecycle}"D
+////    excludeLib "android.arch.lifecycle:livedata-core:${versions.lifecycle}"
+////    excludeLib "android.arch.core:common:${versions.lifecycle}"
+//    /*------------------------------ 删除 support-v4 及其依赖的库  END  ----------------------------*/
+//
+//    /*------------------------------ 混淆配置 BEGIN ------------------------------*/
+//    libraryJarsProguardFile file('proguard-phantom.pro')
+//    /*------------------------------ 混淆配置  END  ------------------------------*/
+//
+//    /*------------------------------ 快速安装插件配置 BEGIN ------------------------*/
+//    // 宿主包名
+//    hostApplicationId = "com.wlqq.phantom.sample"
+//    // 宿主 launcher Activity full class name
+//    hostAppLauncherActivity = "com.wlqq.phantom.sample.MainActivity"
+//
+//    // 插件包名
+//    pluginApplicationId = android.defaultConfig.applicationId
+//    // 插件版本名
+//    pluginVersionName = android.defaultConfig.versionName
+//    /*------------------------------ 快速安装插件配置  END  -------------------------*/
+//}

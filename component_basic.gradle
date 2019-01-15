@@ -1,4 +1,6 @@
 apply from: rootProject.file('cc-settings-2.gradle')
+/** phantom框架宿主 gradle 插件使用 */
+apply plugin: 'com.wlqq.phantom.host'
 //apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
 //先加载local.properties文件
 apply plugin: 'kotlin-android'
