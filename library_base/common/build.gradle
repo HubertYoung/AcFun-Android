@@ -1,5 +1,5 @@
 ext.alwaysLib = true
-apply from: rootProject.file('basic_component.gradle')
+apply from: rootProject.file('component_basic.gradle')
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -47,13 +47,13 @@ dependencies {
     implementation deps.facebook.stetho
     implementation deps.facebook.stetho_okhttp3
     implementation deps.acra
-    api project(':annotation')
+//    api project(':annotation')
     //    implementation 'com.google.auto.service:auto-service:1.0-rc2'
     //    implementation 'com.squareup:javapoet:1.11.1'
     //    api 'com.hubertyoung.javapoet_environment:javapoet_environment_base:1.0.0'
-    debugAnnotationProcessor project(':compiler')
+//    debugAnnotationProcessor project(':compiler')
     //    debugAnnotationProcessor 'com.hubertyoung.javapoet_environment:javapoet_environment_compiler:1.0.0'
-    releaseAnnotationProcessor project(':compiler-release')
+//    releaseAnnotationProcessor project(':compiler-release')
     //    releaseAnnotationProcessor 'com.hubertyoung.javapoet_environment:javapoet_environment_compiler-release:1.0.0'
 //    implementation project(':argus-apm-main')
 }

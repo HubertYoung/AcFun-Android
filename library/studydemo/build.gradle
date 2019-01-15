@@ -30,7 +30,7 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
-    api project(':annotation')
-    debugAnnotationProcessor project(':compiler')
-    releaseAnnotationProcessor project(':compiler-release')
+//    api project(':annotation')
+//    debugAnnotationProcessor project(':compiler')
+//    releaseAnnotationProcessor project(':compiler-release')
 }

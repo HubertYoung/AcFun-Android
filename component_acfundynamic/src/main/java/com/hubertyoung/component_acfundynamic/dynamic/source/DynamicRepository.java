@@ -1,14 +1,11 @@
 package com.hubertyoung.component_acfundynamic.dynamic.source;
 
-import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
-import com.hubertyoung.component_acfundynamic.BuildConfig;
 import com.hubertyoung.component_acfundynamic.api.ApiDynamicService;
-import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import io.reactivex.Flowable;
 
@@ -27,7 +24,7 @@ public class DynamicRepository extends AbsRepository {
 	public Flowable< User > requestAllChannel() {
 		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
 				.getRetrofitClient()
-				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )
+//				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG) )
 				.builder( ApiDynamicService.class )
 				.requestUserInfo( )
 				.compose( new DefaultTransformer() );

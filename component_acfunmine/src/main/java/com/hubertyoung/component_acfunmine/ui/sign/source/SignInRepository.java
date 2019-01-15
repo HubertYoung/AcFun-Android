@@ -2,17 +2,14 @@ package com.hubertyoung.component_acfunmine.ui.sign.source;
 
 import android.text.TextUtils;
 
-import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.baserx.RxSchedulers;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.net.response.BaseResponse;
-import com.hubertyoung.component_acfunmine.BuildConfig;
 import com.hubertyoung.component_acfunmine.api.ApiHomeService;
 import com.hubertyoung.component_acfunmine.entity.VerificationCodeEntity;
-import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import java.util.HashMap;
 
@@ -47,7 +44,7 @@ public class SignInRepository extends AbsRepository {
 		map.put( "password", passwordStr );
 		return ApiImpl.getInstance( HostType.APP_ACCOUNT_HOST )
 				.getRetrofitClient()
-				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
+//				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
 				.builder( ApiHomeService.class )
 				.requestLoginInfo( map )
 				.compose( RxSchedulers.io_main() )
@@ -58,7 +55,7 @@ public class SignInRepository extends AbsRepository {
 	public Flowable< BaseResponse< VerificationCodeEntity > > requestVerificationCodeInfo() {
 		return ApiImpl.getInstance( HostType.APP_ACCOUNT_HOST )
 				.getRetrofitClient()
-				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
+//				.setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
 				.builder( ApiHomeService.class )
 				.requestVerificationCodeInfo()
 				.compose( RxSchedulers.io_main() )//

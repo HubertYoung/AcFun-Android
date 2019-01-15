@@ -1,10 +1,10 @@
-apply from: rootProject.file('basic_component.gradle')
+apply from: rootProject.file('component_basic.gradle')
 
 dependencies {
     implementation project(':common')
     implementation project(':baseplatformlibrary')
     implementation project(':component_aggregation')
     addComponent 'component_developer'
-    debugAnnotationProcessor project(':compiler')
-    releaseAnnotationProcessor project(':compiler-release')
+//    debugAnnotationProcessor project(':compiler')
+//    releaseAnnotationProcessor project(':compiler-release')
 }

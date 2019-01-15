@@ -6,7 +6,7 @@ include ':studydemo',
         ':component_acfundynamic',
         ':component_acfunvideo',
         ':component_gamecenter',
-//        ':component_qrcodescanner',
+        ':component_qrcodescanner',
 
 //        ':android-support:skin-support',
 //        ':android-support:skin-support-appcompat',
@@ -56,11 +56,11 @@ include ':studydemo',
         ':gsyVideoPlayer-java',
         ':gsyVideoPlayer-proxy_cache',
         ':gsyVideoPlayer-x86',
-        ':gsyVideoPlayer-x86_64',
+        ':gsyVideoPlayer-x86_64'
 
-        ':annotation',
-        ':compiler',
-        ':compiler-release'
+//        ':annotation',
+//        ':compiler',
+//        ':compiler-release'
 
 
 project(':common').projectDir = new File(rootDir, 'library_base/common')
@@ -109,6 +109,6 @@ project(':wechatplatformlibrary').projectDir = new File(rootDir, 'library_platfo
 project(':qqplatformlibrary').projectDir = new File(rootDir, 'library_platform/qqplatformlibrary')
 project(':weiboplatformlibrary').projectDir = new File(rootDir, 'library_platform/weiboplatformlibrary')
 
-project(':annotation').projectDir = new File(rootDir, 'javapoet/annotation')
-project(':compiler').projectDir = new File(rootDir, 'javapoet/compiler')
-project(':compiler-release').projectDir = new File(rootDir, 'javapoet/compiler-release')
+//project(':annotation').projectDir = new File(rootDir, 'javapoet/annotation')
+//project(':compiler').projectDir = new File(rootDir, 'javapoet/compiler')
+//project(':compiler-release').projectDir = new File(rootDir, 'javapoet/compiler-release')

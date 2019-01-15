@@ -31,7 +31,7 @@ public class ComponentTask implements IComponent {
 				CC.sendCCResult( cc.getCallId(), CCResult.success( ) );
 				break;
             case "EnvironmentSwitchActivity":
-				EnvironmentSwitchActivity.launch( context );
+//				EnvironmentSwitchActivity.launch( context );
                 CC.sendCCResult(cc.getCallId(), CCResult.success());
                 break;
 //            case "toIssueActivity":

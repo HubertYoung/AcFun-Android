@@ -6,17 +6,12 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
 import android.widget.TextView
-import android.widget.Toast
 import com.facebook.drawee.view.SimpleDraweeView
 import com.facebook.stetho.common.LogUtil
-import com.hubertyoung.base.bean.EnvironmentBean
-import com.hubertyoung.base.bean.ModuleBean
-import com.hubertyoung.base.listener.OnEnvironmentChangeListener
 import com.hubertyoung.baseplatform.AuthorizeSDK
 import com.hubertyoung.baseplatform.ShareSDK
 import com.hubertyoung.common.BuildConfig
@@ -27,7 +22,6 @@ import com.hubertyoung.common.utils.LoadingThemeUtil
 import com.hubertyoung.common.utils.activitymanager.AppActivityManager
 import com.hubertyoung.common.utils.bar.BarUtils
 import com.hubertyoung.common.utils.log.CommonLog
-import com.hubertyoung.common.utils.os.AppUtils
 import com.hubertyoung.component_skeleton.skeleton.ViewReplacer
 
 /**
@@ -37,7 +31,7 @@ import com.hubertyoung.component_skeleton.skeleton.ViewReplacer
  * @since:
  * @see com.hubertyoung.common.base.BaseActivity
  */
-abstract class BaseActivity : AppCompatActivity(), OnEnvironmentChangeListener {
+abstract class BaseActivity : AppCompatActivity() {
 	open var TAG = this.javaClass.simpleName
 	companion object {
 		private val SAVED_STATE_STATUS_BAR_TRANSLUCENT = "saved_state_status_bar_translucent"
@@ -48,9 +42,9 @@ abstract class BaseActivity : AppCompatActivity(), OnEnvironmentChangeListener {
 	private var isConfigChange = false
 	private var statusBarTranslucent: Boolean = false
 
-	protected var mViewReplacer: ViewReplacer? = null
-	protected var mLoadingLayout: View? = null
-	protected var mErrorLayout: View? = null
+	private var mViewReplacer: ViewReplacer? = null
+	private var mLoadingLayout: View? = null
+	private var mErrorLayout: View? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -259,13 +253,13 @@ abstract class BaseActivity : AppCompatActivity(), OnEnvironmentChangeListener {
 		outState.putBoolean(SAVED_STATE_STATUS_BAR_TRANSLUCENT, statusBarTranslucent)
 	}
 
-	override fun onEnvironmentChanged(module: ModuleBean, oldEnvironment: EnvironmentBean, newEnvironment: EnvironmentBean) {
-		if (AppUtils.isDebuggable()) {
-			val str = "${module.name} 由 ${oldEnvironment.name} 环境，Url= ${oldEnvironment.url},切换为 ${newEnvironment.name} 环境，Url=${newEnvironment.url}"
-			Log.e(TAG, str)
-			Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
-		}
-	}
+//	override fun onEnvironmentChanged(module: ModuleBean, oldEnvironment: EnvironmentBean, newEnvironment: EnvironmentBean) {
+//		if (AppUtils.isDebuggable()) {
+//			val str = "${module.name} 由 ${oldEnvironment.name} 环境，Url= ${oldEnvironment.url},切换为 ${newEnvironment.name} 环境，Url=${newEnvironment.url}"
+//			Log.e(TAG, str)
+//			Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+//		}
+//	}
 
 	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 		AuthorizeSDK.onHandleResult(this, requestCode, resultCode, data)

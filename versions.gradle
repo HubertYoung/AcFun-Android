@@ -20,6 +20,7 @@
  **/
 ext.deps = [:]
 def versions = [:]
+versions.android_gradle_plugin = '3.1.3'
 versions.arch_core = "2.0.0"
 versions.room = "2.0.0"
 versions.lifecycle = "1.1.1"
@@ -40,7 +41,6 @@ versions.dexmaker = "2.2.0"
 versions.constraint_layout = "2.0.0-alpha2"
 versions.glide = "4.8.0"
 versions.timber = "4.5.1"
-versions.android_gradle_plugin = '3.2.1'
 versions.rxjava2 = "2.2.3"
 versions.rx_android = "2.1.0"
 versions.atsl_runner = "1.0.2"
@@ -245,6 +245,16 @@ deps.acra = "ch.acra:acra:$versions.acraVersion"
 deps.swipebackhelper = 'com.jude:swipebackhelper:2.1.5'
 deps.transitionseverywhere = "com.andkulikov:transitionseverywhere:${versions.transitionseverywhere}"
 deps.klinkerapps = 'com.klinkerapps:link_builder:2.0.5'
+ext.deps = deps
+
+def phantomVersion = [:]
+phantomVersion.hostLib = 'com.wlqq.phantom:phantom-host-lib:3.1.2'
+//phantomVersion.hostLibInt = "android.arch.navigation:navigation-runtime-ktx:$versions.navigation"
+//phantomVersion.hostGradle = "android.arch.navigation:navigation-fragment:$versions.navigation"
+phantomVersion.pluginLib = 'com.wlqq.phantom:phantom-plugin-lib:3.1.2'
+//phantomVersion.pluginGradle = "android.arch.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+phantomVersion.communicationLib = 'com.wlqq.phantom:phantom-communication-lib:3.1.2'
+deps.phantomVersion = phantomVersion
 ext.deps = deps
 
 def addRepos(RepositoryHandler handler) {

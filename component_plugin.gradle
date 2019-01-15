@@ -1,0 +1,106 @@
+apply from: rootProject.file('cc-settings-2.gradle')
+//apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
+//先加载local.properties文件
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+Properties localProperties = new Properties()
+try {
+    def localFile = project.rootProject.file('local.properties')
+    if (localFile != null && localFile.exists()) {
+        localProperties.load(localFile.newDataInputStream())
+    }
+} catch (Exception ignored) {
+    println("local.properties not found")
+}
+//runAsApp = ('true' == localProperties.getProperty(project.name))
+
+//模块名称
+def componentName = project.name.replaceAll("component_", "")
+println(project.name + "--" + project.ext.runAsApp)
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
+        if (project.ext.runAsApp) {
+            applicationId deps.buildApplicationId + componentName
+        }
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        resourcePrefix componentName + "_"
+        resValue "string", componentName + "_module_name", project.name
+        signingConfigs {
+            config {
+                keyAlias localProperties['keyAlias']
+                keyPassword localProperties['keyPassword']
+                storeFile file(localProperties['storeFile'])
+                storePassword localProperties['storePassword']
+//            v2SigningEnabled false
+            }
+        }
+        vectorDrawables.useSupportLibrary = true
+    }
+
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.support.v4
+    implementation deps.support.app_compat
+    implementation deps.support.design
+    implementation deps.support.cardview
+    implementation deps.preference.preference
+    implementation deps.constraint_layout
+//    //Paging的依赖
+//    implementation deps.paging
+    implementation deps.kotlin.stdlib
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+//    implementation deps.alibaba.fastjson
+    implementation deps.retrofit.rxjava2
+    implementation deps.okhttp_logging_interceptor
+    implementation deps.rx_android
+    implementation deps.rxjava2
+    implementation deps.rxbinding
+    implementation deps.klinkerapps
+//    implementation deps.rxbinding_core
+//    implementation deps.rxbinding_appcompat
+//    implementation deps.rxbinding_drawerlayout
+//    implementation deps.rxbinding_leanback
+//    implementation deps.rxbinding_recyclerview
+//    implementation deps.rxbinding_slidingpanelayout
+//    implementation deps.rxbinding_swiperefreshlayout
+//    implementation deps.rxbinding_viewpager
+//    implementation deps.rxbinding_material
+
+    testImplementation deps.junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
+}

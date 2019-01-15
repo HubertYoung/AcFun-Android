@@ -1,14 +1,11 @@
 package com.hubertyoung.component_acfunarticle.article.source;
 
-import com.hubertyoung.common.BuildConfig;
-import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
 import com.hubertyoung.component_acfunarticle.api.ApiArticleService;
 import com.hubertyoung.component_acfunarticle.entity.RankAc;
-import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import java.util.HashMap;
 
@@ -36,7 +33,7 @@ public class ArticleGeneralSecondRepository extends AbsRepository {
 		map.put( "pageSize", pageSize );
 		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
 				.getRetrofitClient()
-				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
+//				.setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
 				.builder( ApiArticleService.class )
 				.requestArticleGeneralSecond( map )
 				.compose( new DefaultTransformer() );

@@ -1,4 +1,4 @@
-apply from: rootProject.file('basic_component.gradle')
+apply from: rootProject.file('component_basic.gradle')
 android {
     defaultConfig {
         externalNativeBuild {

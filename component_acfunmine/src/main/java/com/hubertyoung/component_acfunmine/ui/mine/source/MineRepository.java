@@ -1,6 +1,5 @@
 package com.hubertyoung.component_acfunmine.ui.mine.source;
 
-import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.api.ApiImpl;
 import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
@@ -8,9 +7,7 @@ import com.hubertyoung.common.constant.Constants;
 import com.hubertyoung.common.entity.Sign;
 import com.hubertyoung.common.entity.User;
 import com.hubertyoung.common.net.transformer.DefaultTransformer;
-import com.hubertyoung.component_acfunmine.BuildConfig;
 import com.hubertyoung.component_acfunmine.api.ApiHomeService;
-import com.hubertyoung.environmentswitcher.EnvironmentSwitcher;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +30,7 @@ public class MineRepository extends AbsRepository {
         map.put( "userId", userId );
         return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
                 .getRetrofitClient()
-                .setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
+//                .setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
                 .builder( ApiHomeService.class )
                 .requestUserInfo( map )
                 .compose( new DefaultTransformer() );
@@ -42,7 +39,7 @@ public class MineRepository extends AbsRepository {
     public Flowable< Boolean > requestCheckOfflineInfo() {
         return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
                 .getRetrofitClient()
-                .setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
+//                .setBaseUrl( EnvironmentSwitcher.getMineEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
                 .builder( ApiHomeService.class )
                 .requestCheckOfflineInfo()
                 .compose( new DefaultTransformer() );
@@ -57,7 +54,7 @@ public class MineRepository extends AbsRepository {
         hashMap.put( "type", platformName );
         return ApiImpl.getInstance( HostType.APP_ACCOUNT_HOST )
                 .getRetrofitClient()
-                .setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
+//                .setBaseUrl( EnvironmentSwitcher.getAccountEnvironment( CommonApplication.getAppContext(), BuildConfig.DEBUG ) )
                 .builder( ApiHomeService.class )
                 .requestPlatformLogin( hashMap )
                 .compose( new DefaultTransformer<>() );
