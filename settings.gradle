@@ -40,6 +40,8 @@ include ':studydemo',
         ':common_res',
         ':common',
 
+        ':host',
+        ':plugin-view',
 //        ':argus-apm-aop',
 //        ':argus-apm-cloud',
 //        ':argus-apm-cloud-dummy-impl',
