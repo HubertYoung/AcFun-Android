@@ -16,7 +16,7 @@ try {
 //runAsApp = ('true' == localProperties.getProperty(project.name))
 
 //模块名称
-def componentName = project.name.replaceAll("component_", "")
+def componentName = project.name.replaceAll("plugin-", "")
 println(project.name + "--" + project.ext.runAsApp)
 android {
     compileSdkVersion build_versions.target_sdk

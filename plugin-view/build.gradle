@@ -13,35 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+apply from: rootProject.file('component_plugin.gradle')
 
-apply plugin: 'com.android.application'
+//apply plugin: 'com.android.application'
 //apply plugin: 'com.wlqq.phantom.plugin'
 
 android {
-    compileSdkVersion build_versions.target_sdk
-    buildToolsVersion build_versions.build_tools
-
-    defaultConfig {
-        applicationId "com.wlqq.phantom.plugin.view"
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
-        versionCode 10000
-        versionName "1.0.0"
-    }
-
-    buildTypes {
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            proguardFile 'proguard-phantom.pro'
-        }
-
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            proguardFile 'proguard-phantom.pro'
-        }
-    }
+//    compileSdkVersion build_versions.target_sdk
+//    buildToolsVersion build_versions.build_tools
+//
+//    defaultConfig {
+//        applicationId "com.wlqq.phantom.plugin.view"
+//        minSdkVersion build_versions.min_sdk
+//        targetSdkVersion build_versions.target_sdk
+//        versionCode 10000
+//        versionName "1.0.0"
+//    }
+//
+//    buildTypes {
+//        debug {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            proguardFile 'proguard-phantom.pro'
+//        }
+//
+//        release {
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            proguardFile 'proguard-phantom.pro'
+//        }
+//    }
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
