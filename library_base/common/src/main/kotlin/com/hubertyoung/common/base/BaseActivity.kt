@@ -148,7 +148,7 @@ abstract class BaseActivity : AppCompatActivity() {
 	/**
 	 * 获取布局文件
 	 */
-	protected open abstract fun getLayoutId(): Int
+	protected abstract fun getLayoutId(): Int
 
 	/**
 	 * 初始化view

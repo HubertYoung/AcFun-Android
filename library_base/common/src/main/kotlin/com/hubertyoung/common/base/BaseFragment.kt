@@ -71,13 +71,13 @@ abstract class BaseFragment : Fragment() {
 	/**
 	 * 初始化toolbar
 	 */
-	protected open abstract fun initToolBar()
+	protected abstract fun initToolBar()
 
 	//获取布局文件
-	protected open abstract fun getLayoutResource(): Int
+	protected abstract fun getLayoutResource(): Int
 
 	//初始化view
-	protected open abstract fun initView(savedInstanceState: Bundle?)
+	protected abstract fun initView(savedInstanceState: Bundle?)
 
 
 	/**
@@ -95,7 +95,7 @@ abstract class BaseFragment : Fragment() {
 	}
 
 	protected fun <V : View> findViewById(@IdRes id: Int): V {
-		return rootView!!.findViewById(id)
+		return rootView.findViewById(id)
 	}
 
 	/**

@@ -102,7 +102,7 @@ abstract class AbsLifecycleFragment<VM : AbsViewModel<*>> : BaseFragment() {
 
 	override fun onDestroyView() {
 		super.onDestroyView()
-		if (events != null && events.size > 0) {
+		if (events.size > 0) {
 			for (i in events.indices) {
 				LiveBus.getDefault().clear(events[i])
 			}

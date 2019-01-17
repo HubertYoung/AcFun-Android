@@ -36,39 +36,31 @@ android {
         versionCode pluginVersionCode
         versionName pluginVersionName
 
-//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
         signingConfigs {
             config {
                 keyAlias localProperties['keyAlias']
                 keyPassword localProperties['keyPassword']
                 storeFile file(localProperties['storeFile'])
                 storePassword localProperties['storePassword']
-//            v2SigningEnabled false
             }
         }
-        vectorDrawables.useSupportLibrary = true
     }
     println("宿主 defaultConfig--" + defaultConfig)
     println("宿主 targetSdkVersion--" + defaultConfig.targetSdkVersion)
 
     buildTypes {
         release {
-            signingConfig signingConfigs.config
+//            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            signingConfig signingConfigs.config
+//            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
@@ -140,17 +132,17 @@ def copyPluginToHost(String dir) {
 dependencies {
     compileOnly deps.phantomVersion.communicationLib
     compileOnly deps.phantomVersion.pluginLib
-//    debugImplementation phantomVersion.communicationLib
-//    debugImplementation phantomVersion.pluginLib
+    debugImplementation deps.phantomVersion.communicationLib
+    debugImplementation deps.phantomVersion.pluginLib
 
     implementation deps.support.v4
     implementation deps.support.app_compat
-    implementation deps.support.design
-    implementation deps.support.cardview
-    implementation deps.constraint_layout
-    implementation deps.rx_android
-    implementation deps.rxjava2
-    implementation deps.rxbinding
+//    implementation deps.support.design
+//    implementation deps.support.cardview
+//    implementation deps.constraint_layout
+//    implementation deps.rx_android
+//    implementation deps.rxjava2
+//    implementation deps.rxbinding
 }
 if (runAsApp == false) {
     afterEvaluate { project ->
@@ -173,12 +165,14 @@ if (runAsApp == false) {
 //        excludeLib support.cardview
 //        excludeLib constraint_layout
 //        excludeLib rx_android
-//        excludeLib rxjava2
-//        excludeLib rxbinding
+        excludeLib "com.android.support:animated-vector-drawable:${versions.support}"
+        excludeLib "com.android.support:appcompat-v7:${versions.support}"
+        excludeLib "com.android.support:support-vector-drawable:${versions.support}"
+
         excludeLib "com.android.support:support-v4:${versions.support}"
         excludeLib "com.android.support:support-core-ui:${versions.support}"
-        excludeLib "com.android.support:support-compat:${versions.support}"
         excludeLib "com.android.support:support-appcompat-v7:${versions.support}"
+        excludeLib "com.android.support:support-compat:${versions.support}"
         excludeLib "com.android.support:support-media-compat:${versions.support}"
         excludeLib "com.android.support:support-core-utils:${versions.support}"
         excludeLib "com.android.support:support-fragment:${versions.support}"
@@ -205,10 +199,6 @@ if (runAsApp == false) {
         excludeLib "android.arch.lifecycle:livedata:${versions.lifecycle}"
         excludeLib "android.arch.lifecycle:livedata-core:${versions.lifecycle}"
         excludeLib "android.arch.core:common:${versions.lifecycle}"
-
-        excludeLib deps.rx_android
-        excludeLib deps.rxjava2
-        excludeLib deps.rxbinding
 
         /*------------------------------ 删除 support-v4 及其依赖的库  END  ----------------------------*/
 

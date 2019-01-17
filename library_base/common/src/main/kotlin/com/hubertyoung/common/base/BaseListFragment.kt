@@ -53,9 +53,9 @@ abstract class BaseListFragment<VM : AbsViewModel<*>> : AbsLifecycleFragment<VM>
 		mTitle = findViewById(R.id.toolbar_title)
 
 		adapter = SectionedRecyclerViewAdapter()
-		recyclerView?.layoutManager = createLayoutManager()
-		recyclerView?.setHasFixedSize(true)
-		recyclerView?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+		recyclerView.layoutManager = createLayoutManager()
+		recyclerView.setHasFixedSize(true)
+		recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 			override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
 				//				if (newState == RecyclerView.SCROLL_STATE_IDLE) {
 				//					if (activity != null) {
@@ -68,19 +68,19 @@ abstract class BaseListFragment<VM : AbsViewModel<*>> : AbsLifecycleFragment<VM>
 				//				}
 			}
 		})
-		recyclerView?.adapter = adapter
+		recyclerView.adapter = adapter
 		mViewReplacer = ViewReplacer(srlContainer)
 
 		showLoadingLayout()
 
-		srlContainer?.setOnRefreshListener {
-			adapter?.pageBean.refresh = true
+		srlContainer.setOnRefreshListener {
+			adapter.pageBean.refresh = true
 			srlContainer?.finishLoadMore()
 			srlContainer?.setNoMoreData(false)
 			loadData()
 		}
-		srlContainer?.setOnLoadMoreListener {
-			adapter?.pageBean.refresh = false
+		srlContainer.setOnLoadMoreListener {
+			adapter.pageBean.refresh = false
 			loadNewData()
 		}
 	}
@@ -90,11 +90,11 @@ abstract class BaseListFragment<VM : AbsViewModel<*>> : AbsLifecycleFragment<VM>
 			if (mLoadingLayout == null) {
 				mLoadingLayout = LayoutInflater.from(mActivity).inflate(R.layout.widget_loading_holder, null)
 			}
-			mViewReplacer?.replace(mLoadingLayout)
+			mViewReplacer.replace(mLoadingLayout)
 
-			if (mViewReplacer?.currentView != null) {
-				mViewReplacer?.currentView.visibility = View.VISIBLE
-				val simpleDraweeView = mViewReplacer?.currentView.findViewById<SimpleDraweeView>(R.id.widget_loading_holder_gif)
+			if (mViewReplacer.currentView != null) {
+				mViewReplacer.currentView.visibility = View.VISIBLE
+				val simpleDraweeView = mViewReplacer.currentView.findViewById<SimpleDraweeView>(R.id.widget_loading_holder_gif)
 				simpleDraweeView.hierarchy.setPlaceholderImage(LoadingThemeUtil.getPageLoadingImages())
 				ImageLoaderUtil.loadNetImage(LoadingThemeUtil.getPageLoadingFileImages(), simpleDraweeView)
 			}
@@ -116,11 +116,9 @@ abstract class BaseListFragment<VM : AbsViewModel<*>> : AbsLifecycleFragment<VM>
 	}
 
 	public override fun stopLoading() {
-		srlContainer?.finishRefresh()
-		srlContainer?.finishLoadMore()
-		if (mViewReplacer != null) {
-			mViewReplacer?.restore()
-		}
+		srlContainer.finishRefresh()
+		srlContainer.finishLoadMore()
+		mViewReplacer?.restore()
 	}
 
 	/**
@@ -136,9 +134,7 @@ abstract class BaseListFragment<VM : AbsViewModel<*>> : AbsLifecycleFragment<VM>
 	 * @param section
 	 */
 	protected fun addSection(section: Section) {
-		if (adapter != null) {
-			adapter?.addSection(section)
-		}
+		adapter?.addSection(section)
 	}
 
 	/**
@@ -149,16 +145,16 @@ abstract class BaseListFragment<VM : AbsViewModel<*>> : AbsLifecycleFragment<VM>
 			if (mErrorLayout == null) {
 				mErrorLayout = LayoutInflater.from(mActivity).inflate(R.layout.widget_error_holder, null)
 			}
-			val tvErrorContent = mErrorLayout?.findViewById<TextView>(R.id.tv_error_content)
+			val tvErrorContent = mErrorLayout.findViewById<TextView>(R.id.tv_error_content)
 			if (!TextUtils.isEmpty(result)) {
 				tvErrorContent.text = result
 			} else {
 				tvErrorContent.setText(R.string.error_page_title)
 			}
-			mViewReplacer?.replace(mErrorLayout)
-			if (mViewReplacer?.currentView != null) {
-				mViewReplacer?.currentView.visibility = View.VISIBLE
-				val refreshClick = mViewReplacer?.currentView.findViewById<TextView>(R.id.refresh_click)
+			mViewReplacer.replace(mErrorLayout)
+			if (mViewReplacer.currentView != null) {
+				mViewReplacer.currentView.visibility = View.VISIBLE
+				val refreshClick = mViewReplacer.currentView.findViewById<TextView>(R.id.refresh_click)
 				refreshClick.setOnClickListener { lazyLoad() }
 			}
 		} else {
@@ -174,12 +170,12 @@ abstract class BaseListFragment<VM : AbsViewModel<*>> : AbsLifecycleFragment<VM>
 	 */
 	protected fun setTitle(titleName: String, isCenter: Boolean) {
 		if (isCenter) {
-			mTitle?.text = titleName
-			mTitle?.visibility = View.VISIBLE
+			mTitle.text = titleName
+			mTitle.visibility = View.VISIBLE
 			mToolbar.visibility = View.GONE
 			mToolbar.title = ""
 		} else {
-			mTitle?.visibility = View.GONE
+			mTitle.visibility = View.GONE
 			mToolbar.visibility = View.VISIBLE
 			mToolbar.title = titleName
 		}
