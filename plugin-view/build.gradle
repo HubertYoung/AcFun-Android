@@ -13,59 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+ext {
+    pluginApplicationId = "com.wlqq.phantom.plugin.view"
+    pluginVersionCode = 10000
+    pluginVersionName = "1.0.0"
+}
+
 apply from: rootProject.file('component_plugin.gradle')
 
-//apply plugin: 'com.android.application'
-//apply plugin: 'com.wlqq.phantom.plugin'
 
-android {
-//    compileSdkVersion build_versions.target_sdk
-//    buildToolsVersion build_versions.build_tools
-//
-    defaultConfig {
-        applicationId "com.wlqq.phantom.plugin.view"
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
-        versionCode 10000
-        versionName "1.0.0"
-    }
-//
-//    buildTypes {
-//        debug {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            proguardFile 'proguard-phantom.pro'
-//        }
-//
-//        release {
-//            minifyEnabled true
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            proguardFile 'proguard-phantom.pro'
-//        }
-//    }
-
-//    applicationVariants.all { variant ->
-//        variant.outputs.all { output ->
-//            outputFileName = "${variant.applicationId}_${variant.versionName}.apk"
-//        }
-//    }
-}
-
-dependencies {
-//    compileOnly "com.wlqq.phantom:phantom-communication-lib:${phantomVersion.communicationLib}"
-//    compileOnly "com.wlqq.phantom:phantom-plugin-lib:${phantomVersion.pluginLib}"
-    compileOnly deps.phantomVersion.communicationLib
-    compileOnly deps.phantomVersion.pluginLib
-    debugImplementation deps.phantomVersion.communicationLib
-    debugImplementation deps.phantomVersion.pluginLib
-
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation "com.android.support:support-v4:${versions.support}"
-
-    implementation 'io.github.shaobin0604:awesomelog:1.0.1'
-
-    testImplementation 'junit:junit:4.12'
-}
 
 

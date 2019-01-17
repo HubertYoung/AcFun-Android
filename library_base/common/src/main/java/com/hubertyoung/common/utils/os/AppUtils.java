@@ -1,5 +1,6 @@
 package com.hubertyoung.common.utils.os;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
@@ -20,9 +23,6 @@ import com.hubertyoung.common.utils.log.CommonLog;
 import java.io.File;
 import java.security.SecureRandom;
 import java.util.UUID;
-
-import android.support.v7.app.AppCompatActivity;
-import android.support.v4.content.ContextCompat;
 
 /**
  * 作者：JIUU on 2017/6/25 23:09
@@ -101,7 +101,7 @@ public class AppUtils {
 						try {
 							if ( "9774d56d682e549c".equals( string ) ) {
 								UUID nameUUIDFromBytes;
-								if ( ContextCompat.checkSelfPermission( CommonApplication.getAppContext(), "android.permission.READ_PHONE_STATE" ) != PackageManager.PERMISSION_GRANTED ) {
+								if ( ContextCompat.checkSelfPermission( CommonApplication.getAppContext(), Manifest.permission.READ_PHONE_STATE ) != PackageManager.PERMISSION_GRANTED ) {
 									isHavePermission = false;
 								}
 								if ( isHavePermission ) {

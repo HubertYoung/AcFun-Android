@@ -10,33 +10,34 @@ try {
 } catch (Exception ignored) {
     println("local.properties not found")
 }
+
 def runAsApp = ext.has('runAsApp')
 runAsApp = ('true' == localProperties.getProperty(project.name))
 apply plugin: 'com.android.application'
-if (runAsApp == false) {
+
+if (runAsApp) {
+    apply plugin: 'kotlin-android'
+    apply plugin: 'kotlin-android-extensions'
+} else {
     apply plugin: 'com.wlqq.phantom.plugin'
 }
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
+println("<<<---- 插件信息 START ---->>>")
 //模块名称
-def componentName = project.name.replaceAll("plugin-", "")
 println(project.name + "--" + runAsApp)
+
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
     defaultConfig {
-//        minSdkVersion build_versions.min_sdk
-//        targetSdkVersion build_versions.target_sdk
-//        versionCode build_versions.versionCode
-//        versionName build_versions.versionName
-//        if (project.ext.runAsApp) {
-//            applicationId deps.buildApplicationId + componentName
-//        }
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId pluginApplicationId
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode pluginVersionCode
+        versionName pluginVersionName
+
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-        resourcePrefix componentName + "_"
-        resValue "string", componentName + "_module_name", project.name
         signingConfigs {
             config {
                 keyAlias localProperties['keyAlias']
@@ -48,7 +49,8 @@ android {
         }
         vectorDrawables.useSupportLibrary = true
     }
-
+    println("宿主 defaultConfig--" + defaultConfig)
+    println("宿主 targetSdkVersion--" + defaultConfig.targetSdkVersion)
 
     buildTypes {
         release {
@@ -71,7 +73,11 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
-
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "${variant.applicationId}_${variant.versionName}.apk"
+        }
+    }
     sourceSets {
         main {
             //默认的作为application运行时Manifest文件路径
@@ -132,46 +138,21 @@ def copyPluginToHost(String dir) {
 }
 
 dependencies {
-//    compileOnly deps.phantomVersion.communicationLib
-//    compileOnly deps.phantomVersion.pluginLib
-    debugImplementation deps.phantomVersion.communicationLib
-    debugImplementation deps.phantomVersion.pluginLib
+    compileOnly deps.phantomVersion.communicationLib
+    compileOnly deps.phantomVersion.pluginLib
+//    debugImplementation phantomVersion.communicationLib
+//    debugImplementation phantomVersion.pluginLib
 
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.support.v4
     implementation deps.support.app_compat
     implementation deps.support.design
     implementation deps.support.cardview
-    implementation deps.preference.preference
     implementation deps.constraint_layout
-//    //Paging的依赖
-//    implementation deps.paging
-    implementation deps.kotlin.stdlib
-    implementation deps.retrofit.runtime
-    implementation deps.retrofit.gson
-//    implementation deps.alibaba.fastjson
-    implementation deps.retrofit.rxjava2
-    implementation deps.okhttp_logging_interceptor
     implementation deps.rx_android
     implementation deps.rxjava2
     implementation deps.rxbinding
-    implementation deps.klinkerapps
-//    implementation deps.rxbinding_core
-//    implementation deps.rxbinding_appcompat
-//    implementation deps.rxbinding_drawerlayout
-//    implementation deps.rxbinding_leanback
-//    implementation deps.rxbinding_recyclerview
-//    implementation deps.rxbinding_slidingpanelayout
-//    implementation deps.rxbinding_swiperefreshlayout
-//    implementation deps.rxbinding_viewpager
-//    implementation deps.rxbinding_material
-
-    testImplementation deps.junit
-    androidTestImplementation deps.atsl.runner
-    androidTestImplementation deps.espresso.core
 }
 if (runAsApp == false) {
-
     afterEvaluate { project ->
         project.tasks.assembleDebug.doLast {
             deletePluginInHost()
@@ -186,35 +167,49 @@ if (runAsApp == false) {
 
     phantomPluginConfig {
         /*------------------------------ 剔除 support-v4 及其依赖的库 BEGIN ----------------------------*/
-//    excludeLib "com.android.support:support-v4:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:support-core-ui:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:support-compat:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:support-media-compat:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:support-core-utils:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:support-fragment:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:support-annotations:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:cursoradapter:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:interpolator:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:versionedparcelable:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:documentfile:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:customview:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:slidingpanelayout:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:swiperefreshlayout:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:drawerlayout:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:coordinatorlayout:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:loader:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:viewpager:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:collections:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:asynclayoutinflater:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:print:${androidVersion.supportLib}"
-//    excludeLib "com.android.support:localbroadcastmanager:${androidVersion.supportLib}"
-//
-//    excludeLib "android.arch.lifecycle:viewmodel:${androidVersion.archLib}"
-//    excludeLib "android.arch.lifecycle:runtime:${androidVersion.archLib}"
-//    excludeLib "android.arch.lifecycle:common:${androidVersion.archLib}"
-//    excludeLib "android.arch.lifecycle:livedata:${androidVersion.archLib}"
-//    excludeLib "android.arch.lifecycle:livedata-core:${androidVersion.archLib}"
-//    excludeLib "android.arch.core:common:${androidVersion.archLib}"
+//        excludeLib support.v4
+//        excludeLib support.app_compat
+//        excludeLib support.design
+//        excludeLib support.cardview
+//        excludeLib constraint_layout
+//        excludeLib rx_android
+//        excludeLib rxjava2
+//        excludeLib rxbinding
+        excludeLib "com.android.support:support-v4:${versions.support}"
+        excludeLib "com.android.support:support-core-ui:${versions.support}"
+        excludeLib "com.android.support:support-compat:${versions.support}"
+        excludeLib "com.android.support:support-appcompat-v7:${versions.support}"
+        excludeLib "com.android.support:support-media-compat:${versions.support}"
+        excludeLib "com.android.support:support-core-utils:${versions.support}"
+        excludeLib "com.android.support:support-fragment:${versions.support}"
+        excludeLib "com.android.support:support-annotations:${versions.support}"
+        excludeLib "com.android.support:cursoradapter:${versions.support}"
+        excludeLib "com.android.support:interpolator:${versions.support}"
+        excludeLib "com.android.support:versionedparcelable:${versions.support}"
+        excludeLib "com.android.support:documentfile:${versions.support}"
+        excludeLib "com.android.support:customview:${versions.support}"
+        excludeLib "com.android.support:slidingpanelayout:${versions.support}"
+        excludeLib "com.android.support:swiperefreshlayout:${versions.support}"
+        excludeLib "com.android.support:drawerlayout:${versions.support}"
+        excludeLib "com.android.support:coordinatorlayout:${versions.support}"
+        excludeLib "com.android.support:loader:${versions.support}"
+        excludeLib "com.android.support:viewpager:${versions.support}"
+        excludeLib "com.android.support:collections:${versions.support}"
+        excludeLib "com.android.support:asynclayoutinflater:${versions.support}"
+        excludeLib "com.android.support:print:${versions.support}"
+        excludeLib "com.android.support:localbroadcastmanager:${versions.support}"
+
+        excludeLib "android.arch.lifecycle:viewmodel:${versions.lifecycle}"
+        excludeLib "android.arch.lifecycle:runtime:${versions.lifecycle}"
+        excludeLib "android.arch.lifecycle:common:${versions.lifecycle}"
+        excludeLib "android.arch.lifecycle:livedata:${versions.lifecycle}"
+        excludeLib "android.arch.lifecycle:livedata-core:${versions.lifecycle}"
+        excludeLib "android.arch.core:common:${versions.lifecycle}"
+
+        excludeLib deps.rx_android
+        excludeLib deps.rxjava2
+        excludeLib deps.rxbinding
+
         /*------------------------------ 删除 support-v4 及其依赖的库  END  ----------------------------*/
 
         /*------------------------------ 混淆配置 BEGIN ------------------------------*/
@@ -231,6 +226,12 @@ if (runAsApp == false) {
         pluginApplicationId = android.defaultConfig.applicationId
         // 插件版本名
         pluginVersionName = android.defaultConfig.versionName
+
+        println("宿主包名--" + hostApplicationId)
+        println("宿主launcher Activity full class name--" + hostAppLauncherActivity)
+        println("插件包名--" + pluginApplicationId)
+        println("插件版本名--" + pluginVersionName)
         /*------------------------------ 快速安装插件配置  END  -------------------------*/
     }
 }
+println("<<<---- 插件信息 END ---->>>")

@@ -21,7 +21,7 @@ import retrofit2.HttpException;
  * 作者：JIUU on 2017-7-10 16:00:51
  * QQ号：1344393464
  * 作用：异常处理类
- * 展示友好UI界面给用户
+ * 展示友好UI界面给用户Error
  */
 public class ExceptionHandle {
     /**
