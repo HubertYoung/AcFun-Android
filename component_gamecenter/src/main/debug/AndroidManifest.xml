@@ -9,11 +9,12 @@
 
     <application
         android:name="com.hubertyoung.common.CommonApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/component_gamecenter"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
         <activity
             android:name=".gamecenter.activity.GameCenterNativeActivity"
             android:label="@string/game_center_title"

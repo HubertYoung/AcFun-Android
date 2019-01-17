@@ -14,7 +14,7 @@
 
     <application
         android:name="com.hubertyoung.common.CommonApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/component_qrscan"
         android:supportsRtl="true"

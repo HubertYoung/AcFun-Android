@@ -37,7 +37,22 @@ public class PhantomApplication extends Application {
                 .setDebug(BuildConfig.DEBUG)
                 .setLogLevel(BuildConfig.DEBUG ? android.util.Log.VERBOSE : android.util.Log.WARN)
                 .addPhantomService(new HostInfoService())
-                .setLogReporter(new LogReporterImpl()));
+                .setLogReporter( new ILogReporter() {
+                    @Override
+                    public void reportException( Throwable throwable, HashMap< String, Object > message ) {
+
+                    }
+
+                    @Override
+                    public void reportEvent( String eventId, String label, HashMap< String, Object > params ) {
+
+                    }
+
+                    @Override
+                    public void reportLog( String tag, String message ) {
+
+                    }
+                } ));
     }
 
 

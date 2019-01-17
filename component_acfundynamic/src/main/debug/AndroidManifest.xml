@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.hubertyoung.component_acfundynamic">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -9,11 +10,12 @@
 
     <application
         android:name="com.hubertyoung.common.CommonApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/dynamic_app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
 
         <activity android:name="activity.MainActivity">
             <intent-filter>

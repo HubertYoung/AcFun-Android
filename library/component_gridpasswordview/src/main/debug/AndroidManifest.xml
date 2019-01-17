@@ -4,7 +4,7 @@
 
     <application
         android:name="com.hubertyoung.common.CommonApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/gridpasswordview_app_name"
 

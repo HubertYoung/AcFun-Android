@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import android.support.multidex.MultiDex
 import android.support.v7.app.AppCompatDelegate
+import android.util.Log
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.stetho.Stetho
 import com.hubertyoung.common.api.ApiConstants
@@ -24,6 +25,8 @@ import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.tencent.mmkv.MMKV
+import com.wlqq.phantom.library.PhantomCore
+import com.wlqq.phantom.library.log.ILogReporter
 import okhttp3.Headers
 import org.acra.ACRA
 import org.acra.ReportingInteractionMode
@@ -47,6 +50,7 @@ open class CommonApplication : Application() {
 		fun getAppContext(): CommonApplication {
 			return mBaseApplication
 		}
+
 		init {
 			AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
 		}
@@ -92,6 +96,26 @@ open class CommonApplication : Application() {
 		WeiboPlatFormConfig.registerShare("3136498027", "", "http://sns.whalecloud.com/sina2/callback")
 	}
 
+	private fun initPhantom() {
+		PhantomCore.getInstance()//
+				.init(this, PhantomCore.Config()//
+						.setDebug(BuildConfig.DEBUG)//
+						.setLogLevel(if (BuildConfig.DEBUG) Log.VERBOSE else Log.WARN)//
+						.addPhantomService(HostInfoService())//
+						.setLogReporter(object : ILogReporter {
+							override fun reportException(throwable: Throwable?, message: HashMap<String, Any>?) {
+								ACRA.getErrorReporter().handleException(throwable)
+							}
+
+							override fun reportEvent(eventId: String?, label: String?, params: HashMap<String, Any>?) {
+							}
+
+							override fun reportLog(tag: String?, message: String?) {
+
+							}
+						}))//
+	}
+
 	private fun initFresco() {
 		Fresco.initialize(this, ImagePipelineConfigFactory.getOkHttpImagePipelineConfig(this))
 	}
@@ -118,7 +142,7 @@ open class CommonApplication : Application() {
 		//		Host	apipc.app.acfun.cn
 		//		Connection	Keep-Alive
 		//		Accept-Encoding	gzip
-		val configuration = NetWorkConfiguration(this).connectTimeOut(10 * 1000).isCache(true).isDiskCache(true).isMemoryCache(true)
+		val configuration = NetWorkConfiguration(this).connectTimeOut(10*1000).isCache(true).isDiskCache(true).isMemoryCache(true)
 		val stringBuffer = StringBuffer()
 		stringBuffer.append("acvideo core/")//
 				.append(AppUtils.getAppVersionName())//
@@ -156,6 +180,8 @@ open class CommonApplication : Application() {
 				.setReportingInteractionMode(ReportingInteractionMode.TOAST)//
 				.setResToastText(R.string.common_res_app_crash_str)
 		ACRA.init(this, builder)
+
+		initPhantom()
 
 		//		boolean isUi = TextUtils.equals( getPackageName(), ProcessUtils.getCurrentProcessName() );
 		//		Config.ConfigBuilder apmBuilder = new Config.ConfigBuilder().setAppContext( this )
