@@ -45,6 +45,11 @@ android {
             }
         }
         vectorDrawables.useSupportLibrary = true
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi-v7a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64', armeabi'armeabi-v7a'
+        }
     }
 
 
@@ -101,6 +106,8 @@ dependencies {
 //    implementation deps.rxbinding_swiperefreshlayout
 //    implementation deps.rxbinding_viewpager
 //    implementation deps.rxbinding_material
+    implementation deps.phantomVersion.hostLib
+    implementation deps.phantomVersion.communicationLib
 
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner

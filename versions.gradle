@@ -263,7 +263,7 @@ ext.deps = deps
 
 def addRepos(RepositoryHandler handler) {
     //优先使用阿里云仓库
-//    handler.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    handler.maven { url 'https://maven.google.com' }
     handler.jcenter()
     handler.google()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }

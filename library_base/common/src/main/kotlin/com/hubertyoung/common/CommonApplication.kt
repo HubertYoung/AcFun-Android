@@ -96,9 +96,9 @@ open class CommonApplication : Application() {
 		WeiboPlatFormConfig.registerShare("3136498027", "", "http://sns.whalecloud.com/sina2/callback")
 	}
 
-	private fun initPhantom() {
+	private fun initPhantom(base: Context) {
 		PhantomCore.getInstance()//
-				.init(this, PhantomCore.Config()//
+				.init(base, PhantomCore.Config()//
 						.setDebug(BuildConfig.DEBUG)//
 						.setLogLevel(if (BuildConfig.DEBUG) Log.VERBOSE else Log.WARN)//
 						.addPhantomService(HostInfoService())//
@@ -171,7 +171,7 @@ open class CommonApplication : Application() {
 
 	override fun attachBaseContext(base: Context) {
 		super.attachBaseContext(base)
-		MultiDex.install(this)
+		MultiDex.install(base)
 		//		If you are using legacy multidex, ensure that ACRA.init(...) is called after Multidex.install().
 		val builder = ConfigurationBuilder(this)
 		builder.setBuildConfigClass(BuildConfig::class.java)//
@@ -181,7 +181,7 @@ open class CommonApplication : Application() {
 				.setResToastText(R.string.common_res_app_crash_str)
 		ACRA.init(this, builder)
 
-		initPhantom()
+		initPhantom(mBaseApplication)
 
 		//		boolean isUi = TextUtils.equals( getPackageName(), ProcessUtils.getCurrentProcessName() );
 		//		Config.ConfigBuilder apmBuilder = new Config.ConfigBuilder().setAppContext( this )
