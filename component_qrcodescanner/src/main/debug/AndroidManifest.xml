@@ -3,14 +3,12 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.hubertyoung.component_qrscan">
 
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <application
         android:name="com.hubertyoung.common.CommonApplication"
@@ -18,23 +16,29 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/component_qrscan"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
         <activity
-            android:name="com.hubertyoung.component_qrscan.activity.ResultActivity"
-            android:label="@string/component_qrscan">
-        </activity>
+            android:name=".CaptureActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity
-            android:name="com.hubertyoung.component_qrscan.activity.MipcaActivityCapture"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name="MainActivity"
+                  android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EasyCaptureActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".CustomCaptureActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".CodeActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

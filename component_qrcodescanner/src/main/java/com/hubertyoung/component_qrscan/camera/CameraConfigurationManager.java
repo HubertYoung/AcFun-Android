@@ -1,3 +1,5 @@
+package com.hubertyoung.component_qrscan.camera;
+
 /*
  * Copyright (C) 2010 ZXing authors
  *
@@ -14,78 +16,205 @@
  * limitations under the License.
  */
 
-package com.hubertyoung.component_qrscan.camera;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.ImageFormat;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.Size;
-import android.os.Build;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.regex.Pattern;
+import com.hubertyoung.component_qrscan.Preferences;
+import com.hubertyoung.component_qrscan.camera.open.CameraFacing;
+import com.hubertyoung.component_qrscan.camera.open.OpenCamera;
 
-public final class CameraConfigurationManager {
 
-    private static final String TAG = CameraConfigurationManager.class.getSimpleName();
+/**
+ * A class which deals with reading, parsing, and setting the camera parameters which are used to
+ * configure the camera hardware.
+ */
+@SuppressWarnings("deprecation") // camera APIs
+final class CameraConfigurationManager {
 
-    private static final int TEN_DESIRED_ZOOM = 27;
-    private static final int DESIRED_SHARPNESS = 30;
-
-    private static final Pattern COMMA_PATTERN = Pattern.compile(",");
+    private static final String TAG = "CameraConfiguration";
 
     private final Context context;
-    private Point screenResolution;
-    private Point cameraResolution;
-    private int previewFormat;
-    private String previewFormatString;
+    private       int     cwNeededRotation;
+    private       int     cwRotationFromDisplayToCamera;
+    private       Point   screenResolution;
+    private       Point   cameraResolution;
+    private       Point   bestPreviewSize;
+    private       Point   previewSizeOnScreen;
 
-    CameraConfigurationManager(Context context) {
+    CameraConfigurationManager( Context context) {
         this.context = context;
     }
 
-    void initFromCameraParameters(Camera camera) {
-        Parameters parameters = camera.getParameters();
-        previewFormat = parameters.getPreviewFormat();
-        previewFormatString = parameters.get("preview-format");
-        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    /**
+     * Reads, one time, values from the camera that are needed by the app.
+     */
+    void initFromCameraParameters( OpenCamera camera) {
+        Camera.Parameters parameters = camera.getCamera().getParameters();
+        WindowManager manager = ( WindowManager ) context.getSystemService( Context.WINDOW_SERVICE);
         Display display = manager.getDefaultDisplay();
-        screenResolution = new Point(display.getWidth(), display.getHeight());
-        Point screen = new Point();
-        screen.x = screenResolution.y;
-        screen.y = screenResolution.x;
-        List<Size> a = parameters.getSupportedPreviewSizes();
-        cameraResolution = getCameraResolution(parameters, screen);
+
+        int displayRotation = display.getRotation();
+        int cwRotationFromNaturalToDisplay;
+        switch (displayRotation) {
+            case Surface.ROTATION_0:
+                cwRotationFromNaturalToDisplay = 0;
+                break;
+            case Surface.ROTATION_90:
+                cwRotationFromNaturalToDisplay = 90;
+                break;
+            case Surface.ROTATION_180:
+                cwRotationFromNaturalToDisplay = 180;
+                break;
+            case Surface.ROTATION_270:
+                cwRotationFromNaturalToDisplay = 270;
+                break;
+            default:
+                // Have seen this return incorrect values like -90
+                if (displayRotation % 90 == 0) {
+                    cwRotationFromNaturalToDisplay = (360 + displayRotation) % 360;
+                } else {
+                    throw new IllegalArgumentException("Bad rotation: " + displayRotation);
+                }
+        }
+        Log.i(TAG, "Display at: " + cwRotationFromNaturalToDisplay);
+
+        int cwRotationFromNaturalToCamera = camera.getOrientation();
+        Log.i(TAG, "Camera at: " + cwRotationFromNaturalToCamera);
+
+        // Still not 100% sure about this. But acts like we need to flip this:
+        if (camera.getFacing() == CameraFacing.FRONT) {
+            cwRotationFromNaturalToCamera = (360 - cwRotationFromNaturalToCamera) % 360;
+            Log.i(TAG, "Front camera overriden to: " + cwRotationFromNaturalToCamera);
+        }
+
+    /*
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    String overrideRotationString;
+    if (camera.getFacing() == CameraFacing.FRONT) {
+      overrideRotationString = prefs.getString(PreferencesActivity.KEY_FORCE_CAMERA_ORIENTATION_FRONT, null);
+    } else {
+      overrideRotationString = prefs.getString(PreferencesActivity.KEY_FORCE_CAMERA_ORIENTATION, null);
+    }
+    if (overrideRotationString != null && !"-".equals(overrideRotationString)) {
+      Log.i(TAG, "Overriding camera manually to " + overrideRotationString);
+      cwRotationFromNaturalToCamera = Integer.parseInt(overrideRotationString);
+    }
+     */
+
+        cwRotationFromDisplayToCamera = (360 + cwRotationFromNaturalToCamera - cwRotationFromNaturalToDisplay) % 360;
+        Log.i(TAG, "Final display orientation: " + cwRotationFromDisplayToCamera);
+        if (camera.getFacing() == CameraFacing.FRONT) {
+            Log.i(TAG, "Compensating rotation for front camera");
+            cwNeededRotation = (360 - cwRotationFromDisplayToCamera) % 360;
+        } else {
+            cwNeededRotation = cwRotationFromDisplayToCamera;
+        }
+        Log.i(TAG, "Clockwise rotation from display to camera: " + cwNeededRotation);
+
+        Point theScreenResolution = new Point();
+        display.getSize(theScreenResolution);
+        screenResolution = theScreenResolution;
+        Log.i(TAG, "Screen resolution in current orientation: " + screenResolution);
+
+        cameraResolution = CameraConfigurationUtils.findBestPreviewSizeValue(parameters, screenResolution);
+        Log.i(TAG, "Camera resolution: " + cameraResolution);
+        bestPreviewSize = CameraConfigurationUtils.findBestPreviewSizeValue(parameters, screenResolution);
+        Log.i(TAG, "Best available preview size: " + bestPreviewSize);
+
+        boolean isScreenPortrait = screenResolution.x < screenResolution.y;
+        boolean isPreviewSizePortrait = bestPreviewSize.x < bestPreviewSize.y;
+
+        if (isScreenPortrait == isPreviewSizePortrait) {
+            previewSizeOnScreen = bestPreviewSize;
+        } else {
+            previewSizeOnScreen = new Point(bestPreviewSize.y, bestPreviewSize.x);
+        }
+        Log.i(TAG, "Preview size on screen: " + previewSizeOnScreen);
     }
 
-    /**
-     * Sets the camera up to take preview images which are used for both preview
-     * and decoding. We detect the preview format here so that
-     * buildLuminanceSource() can build an appropriate LuminanceSource subclass.
-     * In the future we may want to force YUV420SP as it's the smallest, and the
-     * planar Y can be used for barcode scanning without a copy in some cases.
-     */
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    void setDesiredCameraParameters(Camera camera) {
-        Parameters parameters = camera.getParameters();
-        parameters.setPreviewSize(cameraResolution.x, cameraResolution.y);
-        setFlash(parameters);
-        setZoom(parameters);
-        setDisplayOrientation(camera, getCameraDisplayOrientation());
-        if ((!Parameters.ANTIBANDING_50HZ.equals(parameters.getAntibanding())) && isSupported(Parameters.ANTIBANDING_50HZ, parameters
-                .getSupportedAntibanding())) {
-            parameters.setAntibanding(Parameters.ANTIBANDING_50HZ);
+    void setDesiredCameraParameters(OpenCamera camera, boolean safeMode) {
+
+        Camera theCamera = camera.getCamera();
+        Camera.Parameters parameters = theCamera.getParameters();
+
+        if (parameters == null) {
+            Log.w(TAG, "Device error: no camera parameters are available. Proceeding without configuration.");
+            return;
         }
-        parameters.setPictureFormat(ImageFormat.NV21);
-        camera.setParameters(parameters);
+
+        Log.i(TAG, "Initial camera parameters: " + parameters.flatten());
+
+        if (safeMode) {
+            Log.w(TAG, "In camera config safe mode -- most settings will not be honored");
+        }
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        if(parameters.isZoomSupported()){
+            parameters.setZoom(parameters.getMaxZoom() / 10);
+        }
+
+        theCamera.setParameters(parameters);
+
+        initializeTorch(parameters, prefs, safeMode);
+
+        CameraConfigurationUtils.setFocus(
+                parameters,
+                prefs.getBoolean( Preferences.KEY_AUTO_FOCUS, true),
+                prefs.getBoolean(Preferences.KEY_DISABLE_CONTINUOUS_FOCUS, true),
+                safeMode);
+
+        if (!safeMode) {
+            if (prefs.getBoolean(Preferences.KEY_INVERT_SCAN, false)) {
+                CameraConfigurationUtils.setInvertColor(parameters);
+            }
+
+            if (!prefs.getBoolean(Preferences.KEY_DISABLE_BARCODE_SCENE_MODE, true)) {
+                CameraConfigurationUtils.setBarcodeSceneMode(parameters);
+            }
+
+            if (!prefs.getBoolean(Preferences.KEY_DISABLE_METERING, true)) {
+                CameraConfigurationUtils.setVideoStabilization(parameters);
+                CameraConfigurationUtils.setFocusArea(parameters);
+                CameraConfigurationUtils.setMetering(parameters);
+            }
+
+            //SetRecordingHint to true also a workaround for low framerate on Nexus 4
+            //https://stackoverflow.com/questions/14131900/extreme-camera-lag-on-nexus-4
+            parameters.setRecordingHint(true);
+
+        }
+
+        parameters.setPreviewSize(bestPreviewSize.x, bestPreviewSize.y);
+
+        theCamera.setParameters(parameters);
+
+        theCamera.setDisplayOrientation(cwRotationFromDisplayToCamera);
+
+        Camera.Parameters afterParameters = theCamera.getParameters();
+        Camera.Size afterSize = afterParameters.getPreviewSize();
+        if (afterSize != null && (bestPreviewSize.x != afterSize.width || bestPreviewSize.y != afterSize.height)) {
+            Log.w(TAG, "Camera said it supported preview size " + bestPreviewSize.x + 'x' + bestPreviewSize.y +
+                    ", but after setting it, preview size is " + afterSize.width + 'x' + afterSize.height);
+            bestPreviewSize.x = afterSize.width;
+            bestPreviewSize.y = afterSize.height;
+        }
+    }
+
+    Point getBestPreviewSize() {
+        return bestPreviewSize;
+    }
+
+    Point getPreviewSizeOnScreen() {
+        return previewSizeOnScreen;
     }
 
     Point getCameraResolution() {
@@ -96,215 +225,40 @@ public final class CameraConfigurationManager {
         return screenResolution;
     }
 
-    int getPreviewFormat() {
-        return previewFormat;
+    int getCWNeededRotation() {
+        return cwNeededRotation;
     }
 
-    String getPreviewFormatString() {
-        return previewFormatString;
-    }
-
-    private static Point getCameraResolution(Parameters parameters, Point screenResolution) {
-        String previewSizeValueString = parameters.get("preview-size-values");
-        if (previewSizeValueString == null) {
-            previewSizeValueString = parameters.get("preview-size-value");
-        }
-        Point cameraResolution = null;
-        if (previewSizeValueString != null) {
-            cameraResolution = findBestPreviewSizeValue(previewSizeValueString, screenResolution);
-        }
-        if (cameraResolution == null) {
-            cameraResolution = new Point((screenResolution.x >> 3) << 3, (screenResolution.y >> 3) << 3);
-        }
-        return cameraResolution;
-    }
-
-    private static Point findBestPreviewSizeValue(CharSequence previewSizeValueString, Point screenResolution) {
-        int bestX = 0;
-        int bestY = 0;
-        int diff = Integer.MAX_VALUE;
-        //previewSizeValueString为包含所有预览尺寸的字符串
-        for (String previewSize : COMMA_PATTERN.split(previewSizeValueString)) {
-            previewSize = previewSize.trim();
-            int dimPosition = previewSize.indexOf('x');
-            if (dimPosition < 0) continue;
-            try {
-                int newX = Integer.parseInt(previewSize.substring(0, dimPosition));
-                int newY = Integer.parseInt(previewSize.substring(dimPosition + 1));
-                int newDiff = Math.abs(newX - screenResolution.x) + Math.abs(newY - screenResolution.y);
-                if (newDiff == 0) {
-                    bestX = newX;
-                    bestY = newY;
-                    break;
-                } else if (newDiff < diff) {
-                    bestX = newX;
-                    bestY = newY;
-                    diff = newDiff;
-                }
-            } catch (NumberFormatException nfe) {
-                continue;
-            }
-        }
-        if (bestX > 0 && bestY > 0) {
-            return new Point(bestX, bestY);
-        }
-        return null;
-    }
-
-    private static int findBestMotZoomValue(CharSequence stringValues, int tenDesiredZoom) {
-        int tenBestValue = 0;
-        for (String stringValue : COMMA_PATTERN.split(stringValues)) {
-            stringValue = stringValue.trim();
-            double value;
-            try {
-                value = Double.parseDouble(stringValue);
-            } catch (NumberFormatException nfe) {
-                return tenDesiredZoom;
-            }
-            int tenValue = (int) (10.0 * value);
-            if (Math.abs(tenDesiredZoom - value) < Math.abs(tenDesiredZoom - tenBestValue)) {
-                tenBestValue = tenValue;
-            }
-        }
-        return tenBestValue;
-    }
-
-    private void setFlash(Parameters parameters) {
-        if (Build.MODEL.contains("Behold II") && CameraManager.SDK_INT == 3) { // 3
-            // =
-            // Cupcake
-            parameters.set("flash-value", 1);
-        } else {
-            parameters.set("flash-value", 2);
-        }
-        parameters.set("flash-mode", "off");
-    }
-
-    private void setZoom(Parameters parameters) {
-
-        String zoomSupportedString = parameters.get("zoom-supported");
-        if (zoomSupportedString != null && !Boolean.parseBoolean(zoomSupportedString)) {
-            return;
-        }
-
-        int tenDesiredZoom = TEN_DESIRED_ZOOM;
-
-        String maxZoomString = parameters.get("max-zoom");
-        if (maxZoomString != null) {
-            try {
-                int tenMaxZoom = (int) (10.0 * Double.parseDouble(maxZoomString));
-                if (tenDesiredZoom > tenMaxZoom) {
-                    tenDesiredZoom = tenMaxZoom;
-                }
-            } catch (NumberFormatException nfe) {
-                Log.w(TAG, "Bad max-zoom: " + maxZoomString);
-            }
-        }
-
-        String takingPictureZoomMaxString = parameters.get("taking-picture-zoom-max");
-        if (takingPictureZoomMaxString != null) {
-            try {
-                int tenMaxZoom = Integer.parseInt(takingPictureZoomMaxString);
-                if (tenDesiredZoom > tenMaxZoom) {
-                    tenDesiredZoom = tenMaxZoom;
-                }
-            } catch (NumberFormatException nfe) {
-                Log.w(TAG, "Bad taking-picture-zoom-max: " + takingPictureZoomMaxString);
-            }
-        }
-
-        String motZoomValuesString = parameters.get("mot-zoom-values");
-        if (motZoomValuesString != null) {
-            tenDesiredZoom = findBestMotZoomValue(motZoomValuesString, tenDesiredZoom);
-        }
-
-        String motZoomStepString = parameters.get("mot-zoom-step");
-        if (motZoomStepString != null) {
-            try {
-                double motZoomStep = Double.parseDouble(motZoomStepString.trim());
-                int tenZoomStep = (int) (10.0 * motZoomStep);
-                if (tenZoomStep > 1) {
-                    tenDesiredZoom -= tenDesiredZoom % tenZoomStep;
-                }
-            } catch (NumberFormatException nfe) {
-                // continue
-            }
-        }
-
-        // Set zoom. This helps encourage the user to pull back.
-        // Some devices like the Behold have a zoom parameter
-        if (maxZoomString != null || motZoomValuesString != null) {
-            parameters.set("zoom", String.valueOf(tenDesiredZoom / 10.0));
-        }
-
-        // Most devices, like the Hero, appear to expose this zoom parameter.
-        // It takes on values like "27" which appears to mean 2.7x zoom
-        if (takingPictureZoomMaxString != null) {
-            parameters.set("taking-picture-zoom", tenDesiredZoom);
-        }
-    }
-
-    public static int getDesiredSharpness() {
-        return DESIRED_SHARPNESS;
-    }
-
-    /**
-     * compatible 1.6
-     *
-     * @param camera
-     * @param angle
-     */
-    protected void setDisplayOrientation(Camera camera, int angle) {
-        Method downPolymorphic;
-        try {
-            downPolymorphic = camera.getClass().getMethod("setDisplayOrientation", new Class[]{int.class});
-            if (downPolymorphic != null) downPolymorphic.invoke(camera, new Object[]{angle});
-        } catch (Exception e1) {
-        }
-    }
-
-    private boolean isSupported(String temp, List<String> list) {
-        if (list != null) for (String str : list) {
-            if (temp.equals(str)) {
-                return true;
+    boolean getTorchState( Camera camera) {
+        if (camera != null) {
+            Camera.Parameters parameters = camera.getParameters();
+            if (parameters != null) {
+                String flashMode = parameters.getFlashMode();
+                return
+                        Camera.Parameters.FLASH_MODE_ON.equals(flashMode) ||
+                                Camera.Parameters.FLASH_MODE_TORCH.equals(flashMode);
             }
         }
         return false;
     }
-    @SuppressWarnings("deprecation") private int getCameraDisplayOrientation() {
-        if ( Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            return 90;
-        }
 
-        Camera.CameraInfo info = new Camera.CameraInfo();
-        Camera.getCameraInfo(0, info);
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        int rotation = windowManager.getDefaultDisplay().getRotation();
-        int degrees = 0;
-        switch (rotation) {
-            case Surface.ROTATION_0:
-                degrees = 0;
-                break;
-            case Surface.ROTATION_90:
-                degrees = 90;
-                break;
-            case Surface.ROTATION_180:
-                degrees = 180;
-                break;
-            case Surface.ROTATION_270:
-                degrees = 270;
-                break;
-            default:
-                break;
-        }
-
-        int result;
-        if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-            result = (info.orientation + degrees) % 360;
-            result = (360 - result) % 360;  // compensate the mirror
-        } else {  // back-facing
-            result = (info.orientation - degrees + 360) % 360;
-        }
-        return result;
+    void setTorch( Camera camera, boolean newSetting) {
+        Camera.Parameters parameters = camera.getParameters();
+        doSetTorch(parameters, newSetting, false);
+        camera.setParameters(parameters);
     }
+
+    private void initializeTorch( Camera.Parameters parameters, SharedPreferences prefs, boolean safeMode) {
+        boolean currentSetting = FrontLightMode.readPref(prefs) == FrontLightMode.ON;
+        doSetTorch(parameters, currentSetting, safeMode);
+    }
+
+    private void doSetTorch( Camera.Parameters parameters, boolean newSetting, boolean safeMode) {
+        CameraConfigurationUtils.setTorch(parameters, newSetting);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        if (!safeMode && !prefs.getBoolean(Preferences.KEY_DISABLE_EXPOSURE, true)) {
+            CameraConfigurationUtils.setBestExposure(parameters, newSetting);
+        }
+    }
+
 }

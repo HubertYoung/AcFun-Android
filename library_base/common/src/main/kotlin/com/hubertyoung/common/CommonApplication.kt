@@ -91,6 +91,8 @@ open class CommonApplication : Application() {
 		initOkHttpUtils()
 		initStetho()
 
+		initPhantom(getAppContext())
+
 		QQPlatFormConfig.registerShare("1106891112", "QiIFegOZGaRmeC4S")
 		WechatPlatFormConfig.registerShare("wxf143a66eb7528d12", "e408746be2a052ae1f294aa91595227c")
 		WeiboPlatFormConfig.registerShare("3136498027", "", "http://sns.whalecloud.com/sina2/callback")
@@ -181,7 +183,6 @@ open class CommonApplication : Application() {
 				.setResToastText(R.string.common_res_app_crash_str)
 		ACRA.init(this, builder)
 
-		initPhantom(mBaseApplication)
 
 		//		boolean isUi = TextUtils.equals( getPackageName(), ProcessUtils.getCurrentProcessName() );
 		//		Config.ConfigBuilder apmBuilder = new Config.ConfigBuilder().setAppContext( this )

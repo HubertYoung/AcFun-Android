@@ -13,21 +13,8 @@
 
     <application>
         <activity
-            android:name="com.hubertyoung.component_qrscan.activity.ResultActivity"
-            android:label="@string/component_qrscan">
-
-        </activity>
-        <activity
-            android:name="com.hubertyoung.component_qrscan.activity.MipcaActivityCapture"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
+            android:name=".CaptureActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 

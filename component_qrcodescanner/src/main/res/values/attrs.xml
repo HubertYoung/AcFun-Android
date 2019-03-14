@@ -1,0 +1,21 @@
+<resources>
+    <declare-styleable name="ViewfinderView">
+        <attr name="maskColor" format="color" />
+        <attr name="frameColor" format="color" />
+        <attr name="cornerColor" format="color"/>
+        <attr name="laserColor" format="color"/>
+        <attr name="resultPointColor" format="color"/>
+        <attr name="labelText" format="string"/>
+        <attr name="labelTextColor" format="color"/>
+        <attr name="labelTextSize" format="dimension"/>
+        <attr name="labelTextPadding" format="dimension"/>
+        <attr name="labelTextLocation" format="enum">
+            <enum name="top" value="0"/>
+            <enum name="bottom" value="1"/>
+        </attr>
+        <attr name="showResultPoint" format="boolean"/>
+        <attr name="frameWidth" format="dimension"/>
+        <attr name="frameHeight" format="dimension"/>
+    </declare-styleable>
+
+</resources>

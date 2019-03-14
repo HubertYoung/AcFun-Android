@@ -205,7 +205,7 @@ deps.facebook = facebook
 
 def tencent = [:]
 tencent.mmkv = "com.tencent:mmkv:$versions.mmkv"
-tencent.wechat = 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+tencent.wechat = 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.0.2'
 deps.tencent = tencent
 
 def weibo = [:]
@@ -249,6 +249,8 @@ deps.acra = "ch.acra:acra:$versions.acraVersion"
 deps.swipebackhelper = 'com.jude:swipebackhelper:2.1.5'
 deps.transitionseverywhere = "com.andkulikov:transitionseverywhere:${versions.transitionseverywhere}"
 deps.klinkerapps = 'com.klinkerapps:link_builder:2.0.5'
+//zxing
+deps.zxing = 'com.google.zxing:core:3.3.3'
 ext.deps = deps
 
 def phantomVersion = [:]
