@@ -13,15 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.king.zxing.app;
+package qrscan;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.king.zxing.CaptureActivity;
-import com.king.zxing.app.util.StatusBarUtils;
+import com.hubertyoung.component_qrscan.R;
+import com.hubertyoung.qrscan.CaptureActivity;
+
+import qrscan.util.StatusBarUtils;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>

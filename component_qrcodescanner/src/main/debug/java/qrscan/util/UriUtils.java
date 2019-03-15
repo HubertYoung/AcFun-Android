@@ -1,6 +1,5 @@
-package com.king.zxing.app.util;
+package qrscan.util;
 
-import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;

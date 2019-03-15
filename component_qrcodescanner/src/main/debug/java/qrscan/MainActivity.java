@@ -13,36 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.king.zxing.app;
+package qrscan;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.zxing.DecodeHintType;
-import com.google.zxing.common.StringUtils;
-import com.king.zxing.CaptureActivity;
-import com.king.zxing.Intents;
-import com.king.zxing.app.util.UriUtils;
-import com.king.zxing.util.CodeUtils;
+import com.hubertyoung.component_qrscan.R;
+import com.hubertyoung.qrscan.CaptureActivity;
+import com.hubertyoung.qrscan.Intents;
+import com.hubertyoung.qrscan.util.CodeUtils;
 
-import java.util.List;
+import qrscan.util.UriUtils;
 
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.EasyPermissions;
-
-public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks{
+public class MainActivity extends AppCompatActivity {
 
     public static final String KEY_TITLE = "key_title";
     public static final String KEY_IS_QR_CODE = "key_code";
@@ -62,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView( R.layout.activity_main);
     }
 
     @Override
@@ -71,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         if(resultCode == RESULT_OK && data!=null){
             switch (requestCode){
                 case REQUEST_CODE_SCAN:
-                    String result = data.getStringExtra(Intents.Scan.RESULT);
+                    String result = data.getStringExtra( Intents.Scan.RESULT);
                     Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
                     break;
                 case REQUEST_CODE_PHOTO:
@@ -110,39 +106,26 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         return this;
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        // Forward results to EasyPermissions
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
-
-    @Override
-    public void onPermissionsGranted(int requestCode, List<String> list) {
-        // Some permissions have been granted
-
-    }
-
-    @Override
-    public void onPermissionsDenied(int requestCode, List<String> list) {
-        // Some permissions have been denied
-        // ...
-    }
-
     /**
      * 检测拍摄权限
      */
-    @AfterPermissionGranted(RC_CAMERA)
+//    @AfterPermissionGranted(RC_CAMERA)
     private void checkCameraPermissions(){
-        String[] perms = {Manifest.permission.CAMERA};
-        if (EasyPermissions.hasPermissions(this, perms)) {//有权限
-            startScan(cls,title);
-        } else {
-            // Do not have permissions, request them now
-            EasyPermissions.requestPermissions(this, getString(R.string.permission_camera),
-                    RC_CAMERA, perms);
+        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission( Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[] {Manifest.permission.CAMERA}, 1);
+            }else{
+                startScan(cls,title);
+            }
         }
+//        String[] perms = {Manifest.permission.CAMERA};
+//        if (EasyPermissions.hasPermissions(this, perms)) {//有权限
+
+//        } else {
+//            // Do not have permissions, request them now
+//            EasyPermissions.requestPermissions(this, getString(R.string.permission_camera),
+//                    RC_CAMERA, perms);
+//        }
     }
 
     private void asyncThread(Runnable runnable){
@@ -180,15 +163,15 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         startActivityForResult(pickIntent, REQUEST_CODE_PHOTO);
     }
 
-    @AfterPermissionGranted(RC_READ_PHOTO)
+//    @AfterPermissionGranted(RC_READ_PHOTO)
     private void checkExternalStoragePermissions(){
-        String[] perms = {Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        if (EasyPermissions.hasPermissions(this, perms)) {//有权限
+//        String[] perms = {Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//        if (EasyPermissions.hasPermissions(this, perms)) {//有权限
             startPhotoCode();
-        }else{
-            EasyPermissions.requestPermissions(this, getString(R.string.permission_external_storage),
-                    RC_READ_PHOTO, perms);
-        }
+//        }else{
+//            EasyPermissions.requestPermissions(this, getString(R.string.permission_external_storage),
+//                    RC_READ_PHOTO, perms);
+//        }
     }
 
     public void OnClick(View v){

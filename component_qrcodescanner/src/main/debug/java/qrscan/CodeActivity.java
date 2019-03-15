@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.king.zxing.app;
+package qrscan;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,7 +25,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
-import com.king.zxing.util.CodeUtils;
+import com.hubertyoung.component_qrscan.R;
+import com.hubertyoung.qrscan.util.CodeUtils;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -38,7 +39,7 @@ public class CodeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.code_activity);
+        setContentView( R.layout.code_activity);
         ivCode = findViewById(R.id.ivCode);
         tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText(getIntent().getStringExtra(MainActivity.KEY_TITLE));

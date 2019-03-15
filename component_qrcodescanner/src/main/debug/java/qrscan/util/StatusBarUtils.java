@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.king.zxing.app.util;
+package qrscan.util;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -28,7 +27,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.king.zxing.app.R;
+import com.hubertyoung.component_qrscan.R;
+
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -75,7 +75,7 @@ public enum StatusBarUtils {
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight(activity));
         statusBarView.setLayoutParams(params);
         statusBarView.setBackgroundColor(Color.argb((int) (alpha * 255), 0, 0, 0));
-        statusBarView.setId(R.id.translucent_view);
+        statusBarView.setId( R.id.translucent_view);
         return statusBarView;
     }
 

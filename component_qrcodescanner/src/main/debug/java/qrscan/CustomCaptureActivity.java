@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.king.zxing.app;
+package qrscan;
 
 import android.hardware.Camera;
 import android.os.Bundle;
@@ -23,8 +23,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
-import com.king.zxing.CaptureActivity;
-import com.king.zxing.app.util.StatusBarUtils;
+import com.hubertyoung.component_qrscan.R;
+import com.hubertyoung.qrscan.CaptureActivity;
+
+import qrscan.util.StatusBarUtils;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -65,10 +67,12 @@ public class CustomCaptureActivity extends CaptureActivity {
      * 开启闪光灯（手电筒）
      */
     public void openFlash(){
-        Camera camera = getCameraManager().getOpenCamera().getCamera();
-        Camera.Parameters parameters = camera.getParameters();
-        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-        camera.setParameters(parameters);
+        if ( getCameraManager().isOpen()) {
+            Camera camera = getCameraManager().getOpenCamera().getCamera();
+            Camera.Parameters parameters = camera.getParameters();
+            parameters.setFlashMode( Camera.Parameters.FLASH_MODE_TORCH );
+            camera.setParameters( parameters );
+        }
     }
 
     /**

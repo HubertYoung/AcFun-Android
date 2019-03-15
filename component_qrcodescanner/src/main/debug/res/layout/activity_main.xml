@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
         android:layout_height="wrap_content"
+        app:navigationIcon="@null"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp">
         <TextView

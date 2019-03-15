@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:contentInsetLeft="0dp"
+    app:navigationIcon="@null"
     app:contentInsetStart="0dp">
     <include layout="@layout/top_title_back_bar"/>
 </android.support.v7.widget.Toolbar>

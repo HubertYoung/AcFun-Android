@@ -3,12 +3,16 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.hubertyoung.component_qrscan">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <!-- unavailable in API 23 -->
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <application
         android:name="com.hubertyoung.common.CommonApplication"
@@ -19,10 +23,10 @@
         android:theme="@style/AppTheme"
         tools:replace="android:label">
         <activity
-            android:name=".CaptureActivity"
+            android:name="com.hubertyoung.qrscan.CaptureActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="MainActivity"
+        <activity android:name="qrscan.MainActivity"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,13 +35,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EasyCaptureActivity"
+            android:name="qrscan.EasyCaptureActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".CustomCaptureActivity"
+            android:name="qrscan.CustomCaptureActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".CodeActivity"
+            android:name="qrscan.CodeActivity"
             android:screenOrientation="portrait"/>
     </application>
 
