@@ -26,7 +26,6 @@ import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.view.View;
@@ -42,7 +41,7 @@ import com.wlqq.phantom.communication.MethodNotFoundException;
 import com.wlqq.phantom.communication.PhantomServiceManager;
 import com.wlqq.phantom.communication.PhantomUtils;
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 	private WebView mWebView;
 
@@ -50,9 +49,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 	private ImageView mIvIcon;
 
 	@Override
-	protected void onCreate( Bundle savedInstanceState ) {
-		super.onCreate( savedInstanceState );
-		setContentView( R.layout.activity_main );
+	protected int getLayoutId() {
+		return R.layout.activity_main;
+	}
+
+	@Override
+	protected void initView( Bundle savedInstanceState ) {
 
 		findViewById( R.id.btn_toast ).setOnClickListener( this );
 		findViewById( R.id.btn_notification ).setOnClickListener( this );
@@ -61,7 +63,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 		mIvIcon = ( ImageView ) findViewById( R.id.iv_icon );
 
 		nm = NotificationManagerCompat.from( this );
-		Drawable image = PhantomUtils.getHostContext( this ).getResources().getDrawable( getHostLauncherIconId() );
+		Drawable image = that.getResources().getDrawable( getHostLauncherIconId() );
 		mIvIcon.setImageDrawable( image );
 	}
 
@@ -131,12 +133,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 	}
 
 	private int getHostLauncherIconId() {
-		try {
-			int identifier = PhantomUtils.getHostContext( this ).getResources().getIdentifier( "ic_launcher", "mipmap", "com.hubertyoung.acfunhost" );
-			return identifier;
-		} catch ( Exception e ) {
-			return 0;
-		}
+		return getHostMipmap("ic_launcher");
 	}
 
 	private String getHostApplicationId() {

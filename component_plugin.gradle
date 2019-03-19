@@ -15,6 +15,7 @@ def runAsApp = ext.has('runAsApp')
 runAsApp = ('true' == localProperties.getProperty(project.name))
 apply plugin: 'com.android.application'
 
+def hostPkg = "com.hubertyoung.acfunhost"
 if (runAsApp) {
     apply plugin: 'kotlin-android'
     apply plugin: 'kotlin-android-extensions'
@@ -25,6 +26,7 @@ if (runAsApp) {
 println("<<<---- 插件信息 START ---->>>")
 //模块名称
 println(project.name + "--" + runAsApp)
+
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -49,15 +51,20 @@ android {
     println("宿主 targetSdkVersion--" + defaultConfig.targetSdkVersion)
 
     buildTypes {
+        def STRING = "String"
+        def HOST_PKG = "HOST_PKG"
         release {
             signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField STRING, HOST_PKG, "\"$hostPkg\""
+
         }
         debug {
             signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField STRING, HOST_PKG, "\"$hostPkg\""
         }
     }
 
@@ -225,7 +232,7 @@ if (runAsApp == false) {
 
         /*------------------------------ 快速安装插件配置 BEGIN ------------------------*/
         // 宿主包名
-        hostApplicationId = "com.hubertyoung.acfunhost"
+        hostApplicationId = hostPkg
         // 宿主 launcher Activity full class name
         hostAppLauncherActivity = "com.hubertyoung.component_host.MainActivity"
 
