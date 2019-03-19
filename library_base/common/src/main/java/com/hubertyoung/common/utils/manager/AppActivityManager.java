@@ -1,17 +1,23 @@
-package com.hubertyoung.common.utils.activitymanager;
+package com.hubertyoung.common.utils.manager;
 
+import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Application;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
 import java.util.Stack;
 
 
 /**
- * activity管理
+ * @desc:activity管理
+ * @author:HubertYoung
+ * @date 2019/3/19 14:55
+ * @since:
+ * @see AppActivityManager
  */
 public class AppActivityManager {
-	private static Stack< AppCompatActivity > activityStack;
+	private static          Stack< Activity >  activityStack;
 	private volatile static AppActivityManager instance;
 
 	private AppActivityManager() {
@@ -34,25 +40,65 @@ public class AppActivityManager {
 		return instance;
 	}
 
+	public void init( Application application ) {
+		application.registerActivityLifecycleCallbacks( new Application.ActivityLifecycleCallbacks() {
+			@Override
+			public void onActivityCreated( Activity activity, Bundle savedInstanceState ) {
+				addActivity( activity );
+			}
+
+			@Override
+			public void onActivityStarted( Activity activity ) {
+
+			}
+
+			@Override
+			public void onActivityResumed( Activity activity ) {
+
+			}
+
+			@Override
+			public void onActivityPaused( Activity activity ) {
+
+			}
+
+			@Override
+			public void onActivityStopped( Activity activity ) {
+
+			}
+
+			@Override
+			public void onActivitySaveInstanceState( Activity activity, Bundle outState ) {
+
+			}
+
+			@Override
+			public void onActivityDestroyed( Activity activity ) {
+				AppActivityManager.getAppManager().finishActivity( activity );
+			}
+		} );
+	}
+
 	/**
 	 * 添加Activity到堆栈
 	 */
-	public void addActivity( AppCompatActivity activity ) {
+	private void addActivity( Activity activity ) {
 		if ( null == activityStack ) {
-			activityStack = new Stack< AppCompatActivity >();
+			activityStack = new Stack<>();
 		}
 		activityStack.add( activity );
 	}
 
+
 	/**
 	 * 获取当前Activity（堆栈中最后一个压入的）
 	 */
-	public AppCompatActivity currentActivity() {
+	public Activity currentActivity() {
 		try {
-			AppCompatActivity activity = activityStack.lastElement();
+			Activity activity = activityStack.lastElement();
 			return activity;
 		} catch ( Exception e ) {
-//            e.printStackTrace();
+			//            e.printStackTrace();
 			return null;
 		}
 	}
@@ -60,12 +106,12 @@ public class AppActivityManager {
 	/**
 	 * 获取当前Activity的前一个Activity
 	 */
-	public AppCompatActivity preActivity() {
+	public Activity preActivity() {
 		int index = activityStack.size() - 2;
 		if ( index < 0 ) {
 			return null;
 		}
-		AppCompatActivity activity = activityStack.get( index );
+		Activity activity = activityStack.get( index );
 		return activity;
 	}
 
@@ -73,14 +119,14 @@ public class AppActivityManager {
 	 * 结束当前Activity（堆栈中最后一个压入的）
 	 */
 	public void finishActivity() {
-		AppCompatActivity activity = activityStack.lastElement();
+		Activity activity = activityStack.lastElement();
 		finishActivity( activity );
 	}
 
 	/**
 	 * 结束指定的Activity
 	 */
-	public void finishActivity( AppCompatActivity activity ) {
+	private void finishActivity( Activity activity ) {
 		if ( activity != null ) {
 			activityStack.remove( activity );
 			activity.finish();
@@ -91,7 +137,7 @@ public class AppActivityManager {
 	/**
 	 * 移除指定的Activity
 	 */
-	public void removeActivity( AppCompatActivity activity ) {
+	public void removeActivity( Activity activity ) {
 		if ( activity != null ) {
 			activityStack.remove( activity );
 			activity = null;
@@ -102,9 +148,9 @@ public class AppActivityManager {
 	 * 结束指定类名的Activity
 	 */
 	public void finishActivity( Class< ? > cls ) {
-		for (AppCompatActivity activity : activityStack) {
-			if (activity.getClass().equals(cls)) {
-				finishActivity(activity);
+		for (Activity activity : activityStack) {
+			if ( activity.getClass().equals( cls ) ) {
+				finishActivity( activity );
 				return;
 			}
 		}
@@ -116,8 +162,7 @@ public class AppActivityManager {
 	public void finishAllActivity() {
 		for (int i = 0, size = activityStack.size(); i < size; i++) {
 			if ( null != activityStack.get( i ) ) {
-				activityStack.get( i )
-							 .finish();
+				activityStack.get( i ).finish();
 			}
 		}
 		activityStack.clear();
@@ -129,12 +174,12 @@ public class AppActivityManager {
 	 * @param cls
 	 */
 	public void returnToActivity( Class< ? > cls ) {
-		while ( activityStack.size() != 0 ) if ( activityStack.peek()
-															  .getClass() == cls ) {
-			break;
-		} else {
-			finishActivity( activityStack.peek() );
-		}
+		while ( activityStack.size() != 0 )
+			if ( activityStack.peek().getClass() == cls ) {
+				break;
+			} else {
+				finishActivity( activityStack.peek() );
+			}
 	}
 
 
@@ -147,8 +192,7 @@ public class AppActivityManager {
 	public boolean isOpenActivity( Class< ? > cls ) {
 		if ( activityStack != null ) {
 			for (int i = 0, size = activityStack.size(); i < size; i++) {
-				if ( cls == activityStack.peek()
-										 .getClass() ) {
+				if ( cls == activityStack.peek().getClass() ) {
 					return true;
 				}
 			}

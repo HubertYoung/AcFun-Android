@@ -16,6 +16,7 @@ import com.hubertyoung.common.net.http.HttpConnection
 import com.hubertyoung.common.utils.display.DisplayUtil
 import com.hubertyoung.common.utils.display.ScreenHelper
 import com.hubertyoung.common.utils.log.CommonLog
+import com.hubertyoung.common.utils.manager.AppActivityManager
 import com.hubertyoung.common.utils.os.AppUtils
 import com.hubertyoung.common.utils.os.TimeUtil
 import com.hubertyoung.qqplatforms.platforms.qq.QQPlatFormConfig
@@ -71,6 +72,7 @@ open class CommonApplication : Application() {
 		}
 		SmartRefreshLayout.setDefaultRefreshFooterCreator { context, _ -> ClassicsFooter(context) }
 		ScreenHelper.initCustomDensity(this, 360f)
+		AppActivityManager.getAppManager().init(this)
 		// 框架换肤日志打印
 //		Slog.DEBUG = BuildConfig.DEBUG;
 //		SkinCompatManager.withoutActivity( this )

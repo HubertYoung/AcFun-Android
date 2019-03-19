@@ -2,7 +2,6 @@ package com.hubertyoung.common.base
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
@@ -14,12 +13,10 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.facebook.stetho.common.LogUtil
 import com.hubertyoung.baseplatform.AuthorizeSDK
 import com.hubertyoung.baseplatform.ShareSDK
-import com.hubertyoung.common.BuildConfig
 import com.hubertyoung.common.R
 import com.hubertyoung.common.baserx.RxManager
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil
 import com.hubertyoung.common.utils.LoadingThemeUtil
-import com.hubertyoung.common.utils.activitymanager.AppActivityManager
 import com.hubertyoung.common.utils.bar.BarUtils
 import com.hubertyoung.common.utils.log.CommonLog
 import com.hubertyoung.component_skeleton.skeleton.ViewReplacer
@@ -39,7 +36,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
 	protected lateinit var mContext: BaseActivity
 	protected open var mRxManager: RxManager ?= null
-	private var isConfigChange = false
 	private var statusBarTranslucent: Boolean = false
 
 	private var mViewReplacer: ViewReplacer? = null
@@ -48,13 +44,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		isConfigChange = false
 		mRxManager = RxManager()
 		if (isRegisterEvent()) {
 			mRxManager?.mRxBus?.register(this)
 		}
-		// 把actvity放到application栈中管理
-		AppActivityManager.getAppManager().addActivity(this)
 		// 无标题
 		requestWindowFeature(Window.FEATURE_NO_TITLE)
 		// 设置竖屏
@@ -213,38 +206,12 @@ abstract class BaseActivity : AppCompatActivity() {
 		startActivity(intent)
 	}
 
-	override fun onResume() {
-		super.onResume()
-		//debug版本不统计crash
-		if (!BuildConfig.DEBUG) {
-			//友盟统计
-			//			MobclickAgent.onResume(this);
-		}
-	}
-
-	override fun onPause() {
-		super.onPause()
-		//debug版本不统计crash
-		if (!BuildConfig.DEBUG) {
-			//友盟统计
-			//			MobclickAgent.onPause(this);
-		}
-	}
-
-	override fun onConfigurationChanged(newConfig: Configuration) {
-		super.onConfigurationChanged(newConfig)
-		isConfigChange = true
-	}
-
 	override fun onDestroy() {
 //		EnvironmentSwitcher.removeOnEnvironmentChangeListener(this)
 		super.onDestroy()
 		CommonLog.loge("activity: $TAG onDestroy()")
 		if (isRegisterEvent()) mRxManager?.mRxBus?.unregister(this)
 		mRxManager?.clear()
-		if (!isConfigChange) {
-			AppActivityManager.getAppManager().finishActivity(this)
-		}
 
 	}
 
