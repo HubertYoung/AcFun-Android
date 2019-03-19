@@ -108,13 +108,17 @@ open class CommonApplication : Application() {
 						.addPhantomService(HostInfoService())//
 						.setLogReporter(object : ILogReporter {
 							override fun reportException(throwable: Throwable?, message: HashMap<String, Any>?) {
+								// 使用 Bugly 或其它异常监控平台上报 Phantom 内部捕获的异常
 								ACRA.getErrorReporter().handleException(throwable)
 							}
 
 							override fun reportEvent(eventId: String?, label: String?, params: HashMap<String, Any>?) {
+								// 使用 talkingdata 或其它移动统计平台上报 Phantom 内部自定义事件
+
 							}
 
 							override fun reportLog(tag: String?, message: String?) {
+								// 使用 Bugly 或其它异常监控平台上报 Phantom 内部输出的上下文相关日志
 
 							}
 						}))//

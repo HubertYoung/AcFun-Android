@@ -201,11 +201,12 @@ public class AppActivityManager {
 	}
 
 	/**
-	 * 退出应用程序
+	 * 退出应用程序 不推荐此做法
 	 *
 	 * @param context      上下文
 	 * @param isBackground 是否开开启后台运行
 	 */
+	@Deprecated
 	public void AppExit( Context context, Boolean isBackground ) {
 		try {
 			finishAllActivity();
