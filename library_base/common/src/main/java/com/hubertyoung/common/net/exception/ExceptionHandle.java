@@ -18,10 +18,11 @@ import retrofit2.HttpException;
 
 
 /**
- * 作者：JIUU on 2017-7-10 16:00:51
- * QQ号：1344393464
- * 作用：异常处理类
- * 展示友好UI界面给用户Error
+ * @desc:展示友好UI界面给用户Error
+ * @author:HubertYoung
+ * @date 2019/3/20 14:03
+ * @since:
+ * @see ExceptionHandle
  */
 public class ExceptionHandle {
     /**
@@ -45,12 +46,16 @@ public class ExceptionHandle {
             switch ( httpException.code() ) {
                 case UNAUTHORIZED:
                     ex.result = CommonApplication.getAppContext().getString( R.string.common_error_401 );
+                    break;
                 case FORBIDDEN:
                     ex.result = CommonApplication.getAppContext().getString( R.string.common_error_403 );
+                    break;
                 case NOT_FOUND:
                     ex.result = CommonApplication.getAppContext().getString( R.string.common_error_404 );
+                    break;
                 case CLOSE_OPERATION_ENTRANCE:
                     ex.result = CommonApplication.getAppContext().getString( R.string.common_error_450 );
+                    break;
                 case INTERNAL_SERVER_ERROR:
                     ex.result = CommonApplication.getAppContext().getString( R.string.common_error_500 );
                     break;
@@ -60,10 +65,13 @@ public class ExceptionHandle {
                     break;
                 case 601:
                     ex.result = CommonApplication.getAppContext().getString( R.string.common_error_601 );
+                    break;
                 case 602:
                     ex.result = CommonApplication.getAppContext().getString( R.string.common_error_602 );
+                    break;
                 case 603:
                     ex.result = CommonApplication.getAppContext().getString( R.string.common_error_603 );
+                    break;
                 case 604:
                     ex.result = CommonApplication.getAppContext().getString( R.string.common_error_604 );
                     break;
