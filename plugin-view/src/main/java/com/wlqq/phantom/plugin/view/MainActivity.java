@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 	public void onClick( View v ) {
 		switch ( v.getId() ) {
 			case R.id.btn_toast:
-				Toast.makeText( this, "getHostLauncherIconId2: " + getHostLauncherIconId(), Toast.LENGTH_SHORT ).show();
+				Toast.makeText( this, "getHostLauncherIconId4: " + getHostLauncherIconId(), Toast.LENGTH_SHORT ).show();
 				//				Toast.makeText( this, "host application id: " + getHostApplicationId(), Toast.LENGTH_SHORT ).show();
 				break;
 			case R.id.btn_notification:

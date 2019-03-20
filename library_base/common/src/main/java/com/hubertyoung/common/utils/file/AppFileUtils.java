@@ -9,14 +9,13 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.constant.AppConfig;
 import com.hubertyoung.common.constant.MemoryConstants;
 
 import java.io.File;
-
-import android.support.annotation.NonNull;
 
 
 /**
@@ -88,6 +87,14 @@ public class AppFileUtils {
 	 */
 	public static String getImgDir() {
 		return makeDir( getAppDir(), AppConfig.APP_IMAGE_PATH );
+	}
+	/**
+	 * 获取项目插件管理目录
+	 *
+	 * @return 绝对路径
+	 */
+	public static String getPhantomDir() {
+		return makeDir( getAppDir(), AppConfig.APP_PHANTOM_PATH );
 	}
 
 	/**

@@ -28,6 +28,10 @@ public class AppConfig {
      */
     public static final String APP_SKINS_PATH = "skins";
     /**
+     * 插件文件夹
+     */
+    public static final String APP_PHANTOM_PATH = "phantom";
+    /**
      * log文件夹
      */
     public static final String APP_LOG_PATH = "log";

@@ -1,10 +1,13 @@
-package com.hubertyoung.component_qrcodescanner;
+package com.hubertyoung.component_host;
 
 
+import android.os.Environment;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.io.File;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -19,6 +22,8 @@ public class ExampleInstrumentedTest {
 //		Context appContext = InstrumentationRegistry.getTargetContext();
 //
 //		assertEquals( "com.hubertyoung.component_banner", appContext.getPackageName() );
+		String absolutePath = Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator+"Phantom";
+		System.out.println(absolutePath);
 		try {
 //			DeviceUtils.cpuType();
 		} catch ( Throwable throwable ) {

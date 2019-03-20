@@ -145,12 +145,13 @@ def copyPluginToHost(String dir) {
 //        }
 //        into(project(':component_host').getProjectDir().absolutePath + '/src/main/assets/plugins/')
 //    }
-    copy {
-        from(buildDir.absolutePath + '/outputs/apk/' + dir) {
-            include('*.apk')
-        }
-        into(project(':component_host').getProjectDir().absolutePath + '/src/main/debug/assets/plugins/')
-    }
+    //暂时不进行拷贝到资源目录
+//    copy {
+//        from(buildDir.absolutePath + '/outputs/apk/' + dir) {
+//            include('*.apk')
+//        }
+//        into(project(':component_host').getProjectDir().absolutePath + '/src/main/debug/assets/plugins/')
+//    }
 }
 
 dependencies {
@@ -235,7 +236,8 @@ if (runAsApp == false) {
         hostApplicationId = hostPkg
         // 宿主 launcher Activity full class name
         hostAppLauncherActivity = "com.hubertyoung.component_host.MainActivity"
-
+//        /sdcard/Android/data/com.hubertyoung.acfunhost/cache/hubertyoung/phantom
+        phoneStorageDir = "/sdcard/Android/data/$hostPkg/cache/hubertyoung/phantom"
         // 插件包名
         pluginApplicationId = android.defaultConfig.applicationId
         // 插件版本名

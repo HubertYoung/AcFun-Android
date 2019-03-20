@@ -34,209 +34,204 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hubertyoung.common.utils.file.AppFileUtils;
 import com.wlqq.phantom.library.PhantomCore;
 import com.wlqq.phantom.library.pm.InstallResult;
 import com.wlqq.phantom.library.pm.PluginInfo;
 
-import java.io.IOException;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private Button mBtnEmbedPluginView;
-    private RecyclerView mRvPluginList;
-    private List<Pair<String, PluginInfo>> mPluginList;
+	private Button                             mBtnEmbedPluginView;
+	private RecyclerView                       mRvPluginList;
+	private List< Pair< String, PluginInfo > > mPluginList;
+	private String                             absolutePath = AppFileUtils.getPhantomDir();
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_main);
-        String packageName = getPackageName();
-        mBtnEmbedPluginView = (Button) findViewById(R.id.btn_embed_plugin_view);
-        mBtnEmbedPluginView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, EmbedPluginViewActivity.class));
-            }
-        });
-        mRvPluginList = (RecyclerView) findViewById(R.id.rv_plugin_list);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mRvPluginList.setLayoutManager(layoutManager);
-        mRvPluginList.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
-        initPluginListAsync();
-    }
+	@Override
+	protected void onCreate( @Nullable Bundle savedInstanceState ) {
+		super.onCreate( savedInstanceState );
+		setContentView( R.layout.activity_main );
+		String packageName = getPackageName();
+		mBtnEmbedPluginView = ( Button ) findViewById( R.id.btn_embed_plugin_view );
+		mBtnEmbedPluginView.setOnClickListener( new View.OnClickListener() {
+			@Override
+			public void onClick( View v ) {
+				startActivity( new Intent( MainActivity.this, EmbedPluginViewActivity.class ) );
+			}
+		} );
+		mRvPluginList = ( RecyclerView ) findViewById( R.id.rv_plugin_list );
+		LinearLayoutManager layoutManager = new LinearLayoutManager( this );
+		mRvPluginList.setLayoutManager( layoutManager );
+		mRvPluginList.addItemDecoration( new DividerItemDecoration( this, layoutManager.getOrientation() ) );
+		initPluginListAsync();
+	}
 
-    /**
-     * Plugin apk list in assets/plugins
-     */
-    private void initPluginListAsync() {
-        // Pair<plugin_file_name, PluginInfo>
-        mPluginList = new ArrayList<>();
+	/**
+	 * Plugin apk list in assets/plugins
+	 */
+	private void initPluginListAsync() {
+		// Pair<plugin_file_name, PluginInfo>
+		mPluginList = new ArrayList<>();
 
-        new AsyncTask<Void, Void, Void>() {
-            private ProgressDialog mProgressDialog;
+		new AsyncTask< Void, Void, Void >() {
+			private ProgressDialog mProgressDialog;
 
-            @Override
-            protected void onPreExecute() {
-                mProgressDialog = ProgressDialog.show(MainActivity.this, "please wait",
-                        "init plugin list", true, false);
-            }
+			@Override
+			protected void onPreExecute() {
+				mProgressDialog = ProgressDialog.show( MainActivity.this, "please wait", "init plugin list", true, false );
+			}
 
-            @Override
-            protected Void doInBackground(Void... voids) {
-                try {
-                    final String pluginsDir = "plugins";
-                    String[] list = getAssets().list(pluginsDir);
-                    if (list != null) {
-                        for (String file : list) {
-                            if (file.endsWith(".apk")) {
-                                final String filePath = pluginsDir + "/" + file;
-                                InstallResult installResult = PhantomCore.getInstance().installPluginFromAssets(filePath);
-                                if (installResult.isSuccess() && installResult.plugin != null) {
-                                    installResult.plugin.start();
-                                    mPluginList.add(Pair.<String, PluginInfo>create(filePath, installResult.plugin));
-                                } else {
-                                    // should not happen
-                                    mPluginList.add(Pair.<String, PluginInfo>create(filePath, null));
-                                }
-                            }
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
+			@Override
+			protected Void doInBackground( Void... voids ) {
+				//					final String pluginsDir = "plugins";
+				//					String[] list = getAssets().list( pluginsDir );
+				String[] list = new File( AppFileUtils.getPhantomDir() ).list();
+				if ( list != null ) {
+					for (String file : list) {
+						if ( file.endsWith( ".apk" ) ) {
+							final String filePath = absolutePath + File.separator + file;
+							InstallResult installResult = PhantomCore.getInstance().installPlugin( filePath );
+							if ( installResult.isSuccess() && installResult.plugin != null ) {
+								installResult.plugin.start();
+								mPluginList.add( Pair.< String, PluginInfo >create( filePath, installResult.plugin ) );
+							} else {
+								// should not happen
+								mPluginList.add( Pair.< String, PluginInfo >create( filePath, null ) );
+							}
+						}
+					}
+				}
+				return null;
+			}
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                if (mProgressDialog != null && mProgressDialog.isShowing()) {
-                    mProgressDialog.dismiss();
-                    mProgressDialog = null;
-                }
+			@Override
+			protected void onPostExecute( Void aVoid ) {
+				if ( mProgressDialog != null && mProgressDialog.isShowing() ) {
+					mProgressDialog.dismiss();
+					mProgressDialog = null;
+				}
 
-                mRvPluginList.setAdapter(new PluginAdapter(mPluginList) {
+				mRvPluginList.setAdapter( new PluginAdapter( mPluginList ) {
 
-                    @Override
-                    public void onItemClick(int position) {
-                        launchPlugin(position);
-                    }
-                });
-            }
-        }.execute();
-    }
+					@Override
+					public void onItemClick( int position ) {
+						launchPlugin( position );
+					}
+				} );
+			}
+		}.execute();
+	}
 
-    private void launchPlugin(final int position) {
-        final Pair<String, PluginInfo> item = mPluginList.get(position);
-        final String fileName = item.first;
-        final PluginInfo PluginInfo = item.second;
+	private void launchPlugin( final int position ) {
+		final Pair< String, PluginInfo > item = mPluginList.get( position );
+		final String fileName = item.first;
+		final PluginInfo PluginInfo = item.second;
 
-        if (PluginInfo != null && PluginInfo.isStarted()) {
-            launchPluginActivity(PluginInfo.packageName, PluginInfo.getLauncherActivities());
-        } else {
-            new AsyncTask<Object, Void, PluginInfo>() {
+		if ( PluginInfo != null && PluginInfo.isStarted() ) {
+			launchPluginActivity( PluginInfo.packageName, PluginInfo.getLauncherActivities() );
+		} else {
+			new AsyncTask< Object, Void, PluginInfo >() {
 
-                private ProgressDialog mProgressDialog;
+				private ProgressDialog mProgressDialog;
 
-                @Override
-                protected void onPreExecute() {
-                    mProgressDialog = ProgressDialog.show(MainActivity.this, "please wait",
-                            "install plugin: " + fileName, true, false);
-                }
+				@Override
+				protected void onPreExecute() {
+					mProgressDialog = ProgressDialog.show( MainActivity.this, "please wait", "install plugin: " + fileName, true, false );
+				}
 
-                @Override
-                protected PluginInfo doInBackground(Object... params) {
-                    if (params[1] instanceof PluginInfo) {
-                        final PluginInfo pluginInfo = (PluginInfo) params[1];
-                        pluginInfo.start();
-                        return pluginInfo;
-                    } else {
-                        // install plugin apk in host assets, and then start it
-                        InstallResult installResult = PhantomCore.getInstance().installPluginFromAssets(
-                                (String) params[0]);
-                        if (installResult.isSuccess() && installResult.plugin != null) {
-                            installResult.plugin.start();
-                        }
-                        return installResult.plugin;
-                    }
-                }
+				@Override
+				protected PluginInfo doInBackground( Object... params ) {
+					if ( params[ 1 ] instanceof PluginInfo ) {
+						final PluginInfo pluginInfo = ( PluginInfo ) params[ 1 ];
+						pluginInfo.start();
+						return pluginInfo;
+					} else {
+						// install plugin apk in host assets, and then start it
+						InstallResult installResult = PhantomCore.getInstance().installPlugin( absolutePath + params[0]);
+						if ( installResult.isSuccess() && installResult.plugin != null ) {
+							installResult.plugin.start();
+						}
+						return installResult.plugin;
+					}
+				}
 
-                @Override
-                protected void onPostExecute(PluginInfo pluginInfo) {
-                    if (mProgressDialog != null && mProgressDialog.isShowing()) {
-                        mProgressDialog.dismiss();
-                        mProgressDialog = null;
-                    }
+				@Override
+				protected void onPostExecute( PluginInfo pluginInfo ) {
+					if ( mProgressDialog != null && mProgressDialog.isShowing() ) {
+						mProgressDialog.dismiss();
+						mProgressDialog = null;
+					}
 
-                    if (pluginInfo != null && pluginInfo.isStarted()) {
-                        mPluginList.set(position, Pair.create(fileName, pluginInfo));
-                        launchPluginActivity(pluginInfo.packageName, pluginInfo.getLauncherActivities());
-                    }
-                }
+					if ( pluginInfo != null && pluginInfo.isStarted() ) {
+						mPluginList.set( position, Pair.create( fileName, pluginInfo ) );
+						launchPluginActivity( pluginInfo.packageName, pluginInfo.getLauncherActivities() );
+					}
+				}
 
-            }.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, fileName, PluginInfo);
-        }
+			}.executeOnExecutor( AsyncTask.SERIAL_EXECUTOR, fileName, PluginInfo );
+		}
 
 
-    }
+	}
 
-    private void launchPluginActivity(String packageName, List<String> launcherActivities) {
-        if (launcherActivities.isEmpty()) {
-            Toast.makeText(this, "launcher activity not found", Toast.LENGTH_SHORT).show();
-            return;
-        }
+	private void launchPluginActivity( String packageName, List< String > launcherActivities ) {
+		if ( launcherActivities.isEmpty() ) {
+			Toast.makeText( this, "launcher activity not found", Toast.LENGTH_SHORT ).show();
+			return;
+		}
 
-        Intent intent = new Intent();
-        intent.setComponent(new ComponentName(packageName, launcherActivities.get(0)));
+		Intent intent = new Intent();
+		intent.setComponent( new ComponentName( packageName, launcherActivities.get( 0 ) ) );
 
-        PhantomCore.getInstance().startActivity(this, intent);
+		PhantomCore.getInstance().startActivity( this, intent );
 
-    }
+	}
 
-    public abstract static class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder> {
+	public abstract static class PluginAdapter extends RecyclerView.Adapter< PluginAdapter.ViewHolder > {
 
-        private List<Pair<String, PluginInfo>> mAppInfos;
+		private List< Pair< String, PluginInfo > > mAppInfos;
 
-        public PluginAdapter(List<Pair<String, PluginInfo>> list) {
-            mAppInfos = list;
-        }
+		public PluginAdapter( List< Pair< String, PluginInfo > > list ) {
+			mAppInfos = list;
+		}
 
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-            // Create a new view.
-            View v = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.item_plugin, viewGroup, false);
+		@Override
+		public ViewHolder onCreateViewHolder( ViewGroup viewGroup, int viewType ) {
+			// Create a new view.
+			View v = LayoutInflater.from( viewGroup.getContext() ).inflate( R.layout.item_plugin, viewGroup, false );
 
-            return new ViewHolder(v);
-        }
+			return new ViewHolder( v );
+		}
 
-        @Override
-        public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-            final Pair<String, PluginInfo> item = mAppInfos.get(position);
-            viewHolder.tvLabel.setText(item.first.replace("plugins/", ""));
-            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onItemClick(position);
-                }
-            });
-        }
+		@Override
+		public void onBindViewHolder( ViewHolder viewHolder, final int position ) {
+			final Pair< String, PluginInfo > item = mAppInfos.get( position );
+			viewHolder.tvLabel.setText( item.first.replace( "plugins/", "" ) );
+			viewHolder.itemView.setOnClickListener( new View.OnClickListener() {
+				@Override
+				public void onClick( View v ) {
+					onItemClick( position );
+				}
+			} );
+		}
 
-        // Return the size of your data set (invoked by the layout manager)
-        @Override
-        public int getItemCount() {
-            return mAppInfos.size();
-        }
+		// Return the size of your data set (invoked by the layout manager)
+		@Override
+		public int getItemCount() {
+			return mAppInfos.size();
+		}
 
-        public abstract void onItemClick(int position);
+		public abstract void onItemClick( int position );
 
-        public static class ViewHolder extends RecyclerView.ViewHolder {
-            public TextView tvLabel;
+		public static class ViewHolder extends RecyclerView.ViewHolder {
+			public TextView tvLabel;
 
-            ViewHolder(View v) {
-                super(v);
-                tvLabel = (TextView) v.findViewById(R.id.tv_app_label);
-            }
-        }
-    }
+			ViewHolder( View v ) {
+				super( v );
+				tvLabel = ( TextView ) v.findViewById( R.id.tv_app_label );
+			}
+		}
+	}
 }
