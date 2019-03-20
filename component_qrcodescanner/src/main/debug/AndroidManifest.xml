@@ -23,7 +23,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:label">
         <activity
-            android:name="com.hubertyoung.qrscan.CaptureActivity"
+            android:name="com.hubertyoung.plugin.qrscan.CaptureActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name="qrscan.MainActivity"

@@ -164,10 +164,13 @@ dependencies {
     implementation deps.support.app_compat
 //    implementation deps.support.design
 //    implementation deps.support.cardview
-//    implementation deps.constraint_layout
+    implementation deps.constraint_layout
 //    implementation deps.rx_android
 //    implementation deps.rxjava2
 //    implementation deps.rxbinding
+    testImplementation deps.junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
 }
 if (runAsApp == false) {
     afterEvaluate { project ->
@@ -194,6 +197,7 @@ if (runAsApp == false) {
         excludeLib "com.android.support:appcompat-v7:${versions.support}"
         excludeLib "com.android.support:support-vector-drawable:${versions.support}"
 
+        excludeLib "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
         excludeLib "com.android.support:support-v4:${versions.support}"
         excludeLib "com.android.support:support-core-ui:${versions.support}"
         excludeLib "com.android.support:support-appcompat-v7:${versions.support}"
@@ -224,6 +228,7 @@ if (runAsApp == false) {
         excludeLib "android.arch.lifecycle:livedata:${versions.lifecycle}"
         excludeLib "android.arch.lifecycle:livedata-core:${versions.lifecycle}"
         excludeLib "android.arch.core:common:${versions.lifecycle}"
+        excludeLib 'com.google.zxing:core:3.3.3'
 
         /*------------------------------ 删除 support-v4 及其依赖的库  END  ----------------------------*/
 

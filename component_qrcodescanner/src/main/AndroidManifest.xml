@@ -12,7 +12,7 @@
 
     <application>
         <activity
-            android:name="com.hubertyoung.qrscan.CaptureActivity"
+            android:name="com.hubertyoung.plugin.qrscan.CaptureActivity"
             android:screenOrientation="portrait"/>
     </application>
 

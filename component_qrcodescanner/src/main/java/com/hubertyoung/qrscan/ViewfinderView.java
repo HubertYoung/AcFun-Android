@@ -1,4 +1,4 @@
-package com.hubertyoung.qrscan;
+package com.hubertyoung.plugin.qrscan;
 
 /*
  * Copyright (C) 2008 ZXing authors
@@ -40,7 +40,7 @@ import android.view.View;
 
 import com.google.zxing.ResultPoint;
 import com.hubertyoung.component_qrscan.R;
-import com.hubertyoung.qrscan.camera.CameraManager;
+import com.hubertyoung.plugin.qrscan.camera.CameraManager;
 
 import java.util.ArrayList;
 import java.util.List;

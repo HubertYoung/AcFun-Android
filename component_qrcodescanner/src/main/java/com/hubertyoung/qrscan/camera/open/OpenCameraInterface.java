@@ -1,4 +1,4 @@
-package com.hubertyoung.qrscan.camera.open;
+package com.hubertyoung.plugin.qrscan.camera.open;
 
 /*
  * Copyright (C) 2012 ZXing authors

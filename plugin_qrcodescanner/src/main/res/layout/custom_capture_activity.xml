@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SurfaceView
+        android:id="@+id/preview_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.hubertyoung.plugin.qrscan.ViewfinderView
+        android:id="@+id/viewfinder_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cornerColor="@color/colorPrimary"
+        app:frameColor="@color/colorPrimary"
+        app:labelText="@string/tips_scan_code"
+        app:labelTextLocation="bottom"
+        app:labelTextSize="@dimen/size_14sp"
+        app:laserColor="@color/colorAccent"
+        app:resultPointColor="@color/colorAccent"/>
+
+    <ImageView
+        android:id="@+id/ivFlash"
+        style="@style/OnClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/viewfinder_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/flash_selected_selector"/>
+
+    <include layout="@layout/toolbar_capture"/>
+
+</RelativeLayout>

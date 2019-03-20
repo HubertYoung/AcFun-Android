@@ -1,4 +1,4 @@
-package com.hubertyoung.qrscan.camera;
+package com.hubertyoung.plugin.qrscan.camera;
 
 /*
  * Copyright (C) 2008 ZXing authors
@@ -17,25 +17,17 @@ package com.hubertyoung.qrscan.camera;
  */
 
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
-import android.hardware.camera2.CameraAccessException;
-import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.params.StreamConfigurationMap;
-import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
 import com.google.zxing.PlanarYUVLuminanceSource;
-import com.hubertyoung.common.CommonApplication;
-import com.hubertyoung.qrscan.camera.open.OpenCamera;
-import com.hubertyoung.qrscan.camera.open.OpenCameraInterface;
+import com.hubertyoung.plugin.qrscan.camera.open.OpenCamera;
+import com.hubertyoung.plugin.qrscan.camera.open.OpenCameraInterface;
 
 import java.io.IOException;
 

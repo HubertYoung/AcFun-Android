@@ -26,7 +26,7 @@ import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
 import com.hubertyoung.component_qrscan.R;
-import com.hubertyoung.qrscan.util.CodeUtils;
+import com.hubertyoung.plugin.qrscan.util.CodeUtils;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>

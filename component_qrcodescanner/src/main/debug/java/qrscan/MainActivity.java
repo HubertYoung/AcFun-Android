@@ -32,9 +32,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.hubertyoung.component_qrscan.R;
-import com.hubertyoung.qrscan.CaptureActivity;
-import com.hubertyoung.qrscan.Intents;
-import com.hubertyoung.qrscan.util.CodeUtils;
+import com.hubertyoung.plugin.qrscan.CaptureActivity;
+import com.hubertyoung.plugin.qrscan.Intents;
+import com.hubertyoung.plugin.qrscan.util.CodeUtils;
 
 import qrscan.util.UriUtils;
 

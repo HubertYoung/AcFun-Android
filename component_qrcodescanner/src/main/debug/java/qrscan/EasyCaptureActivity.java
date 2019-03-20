@@ -21,7 +21,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hubertyoung.component_qrscan.R;
-import com.hubertyoung.qrscan.CaptureActivity;
+import com.hubertyoung.plugin.qrscan.CaptureActivity;
 
 import qrscan.util.StatusBarUtils;
 

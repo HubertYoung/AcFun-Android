@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 						return pluginInfo;
 					} else {
 						// install plugin apk in host assets, and then start it
-						InstallResult installResult = PhantomCore.getInstance().installPlugin( absolutePath + params[0]);
+						InstallResult installResult = PhantomCore.getInstance().installPlugin( ( String ) params[0] );
 						if ( installResult.isSuccess() && installResult.plugin != null ) {
 							installResult.plugin.start();
 						}

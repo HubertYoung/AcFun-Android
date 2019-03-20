@@ -1,4 +1,4 @@
-package com.hubertyoung.qrscan;
+package com.hubertyoung.plugin.qrscan;
 /*
  * Copyright (C) 2010 ZXing authors
  *

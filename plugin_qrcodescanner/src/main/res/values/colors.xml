@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <color name="them_color">#fd4c5b</color>
+
+    <color name="actionbar_bg">@color/them_color</color>
+
+    <color name="colorPrimary">@color/actionbar_bg</color>
+    <color name="colorPrimaryDark">@color/actionbar_bg</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="viewfinder_frame">#7F1FB3E2</color>
+    <color name="viewfinder_corner">#FF1FB3E2</color>
+    <color name="viewfinder_laser">#FF1FB3E2</color> <!-- Android standard ICS color -->
+    <color name="viewfinder_result_point_color">#C0FFBD21</color>
+    <color name="viewfinder_text_color">#FFC0C0C0</color>
+</resources>

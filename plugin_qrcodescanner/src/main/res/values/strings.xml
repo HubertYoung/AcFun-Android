@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="plugin_qrscan">扫码工具</string>
+
+    <string name="scan_text">将二维码置于框内扫描</string>
+    <string name="language_text">当前解码语言：</string>
+    <string name="qrcodescanner_open_camera_error">打开摄像头失败！</string>
+
+    <string name="permission_camera">App扫码需要用到拍摄权限</string>
+    <string name="permission_external_storage">App需要用到读写权限</string>
+    <string name="tips_scan_code">将二维码/条形码放入框内，即可自动扫码</string>
+    <string name="qr_code">二维码</string>
+    <string name="bar_code">条形码</string>
+</resources>

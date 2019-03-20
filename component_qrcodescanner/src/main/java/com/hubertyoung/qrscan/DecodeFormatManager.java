@@ -1,4 +1,4 @@
-package com.hubertyoung.qrscan;
+package com.hubertyoung.plugin.qrscan;
 /*
  * Copyright (C) 2010 ZXing authors
  *
@@ -18,6 +18,7 @@ package com.hubertyoung.qrscan;
 
 import android.content.Intent;
 import android.net.Uri;
+
 import com.google.zxing.BarcodeFormat;
 
 import java.util.Arrays;

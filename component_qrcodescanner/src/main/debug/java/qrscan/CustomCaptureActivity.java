@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.google.zxing.Result;
 import com.hubertyoung.component_qrscan.R;
-import com.hubertyoung.qrscan.CaptureActivity;
+import com.hubertyoung.plugin.qrscan.CaptureActivity;
 
 import qrscan.util.StatusBarUtils;
 

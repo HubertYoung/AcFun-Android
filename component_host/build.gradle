@@ -2,4 +2,5 @@ apply from: rootProject.file('component_basic.gradle')
 
 dependencies {
     implementation project(':common')
+    implementation deps.zxing
 }
