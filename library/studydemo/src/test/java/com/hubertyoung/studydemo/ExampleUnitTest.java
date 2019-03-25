@@ -1,5 +1,7 @@
 package com.hubertyoung.studydemo;
 
+import com.hubertyoung.studydemo.sort.BubbleSort;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,4 +16,11 @@ public class ExampleUnitTest {
 	public void addition_isCorrect() {
 		assertEquals( 4, 2 + 2 );
 	}
+	@Test
+	public void bubbleSort() {
+		BubbleSort sort = new BubbleSort();
+		int[] sourceArray = new int[]{3,4,7,89,1,3,42};
+		int[] sort1 = sort.sort( sourceArray );
+	}
+
 }
