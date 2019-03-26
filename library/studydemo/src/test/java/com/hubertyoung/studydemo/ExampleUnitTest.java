@@ -1,10 +1,10 @@
 package com.hubertyoung.studydemo;
 
-import com.hubertyoung.studydemo.sort.BubbleSort;
+import com.hubertyoung.studydemo.sort.ShellSort;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -18,7 +18,7 @@ public class ExampleUnitTest {
 	}
 	@Test
 	public void bubbleSort() {
-		BubbleSort sort = new BubbleSort();
+		ShellSort sort = new ShellSort();
 		int[] sourceArray = new int[]{3,4,7,89,1,3,42};
 		int[] sort1 = sort.sort( sourceArray );
 	}

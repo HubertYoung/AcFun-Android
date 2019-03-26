@@ -3,11 +3,6 @@ package com.hubertyoung.component_gridpasswordview.gridpasswordview;
 import android.content.Context;
 import android.util.DisplayMetrics;
 
-/**
- * @author Jungly
- * jungly.ik@gmail.com
- * 15/3/8 10:07
- */
 public class Util {
 
     public static int px2sp(Context context, float pxValue) {

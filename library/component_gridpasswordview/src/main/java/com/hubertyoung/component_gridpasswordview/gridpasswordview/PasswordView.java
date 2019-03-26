@@ -1,10 +1,5 @@
 package com.hubertyoung.component_gridpasswordview.gridpasswordview;
 
-/**
- * @author Jungly
- * @mail jungly.ik@gmail.com
- * @date 15/3/21 16:20
- */
 interface PasswordView {
 
     //void setError(String error);

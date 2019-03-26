@@ -3,13 +3,6 @@ package com.hubertyoung.component_gridpasswordview.gridpasswordview;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 
-/**
- * 默认'●'
- *
- * @author Jungly
- *         mail: jungly.ik@gmail.com
- */
-
 public class CustomPasswordTransformationMethod extends PasswordTransformationMethod {
     String transformation;
 

@@ -26,13 +26,6 @@ import com.hubertyoung.component_gridpasswordview.R;
 import com.hubertyoung.component_gridpasswordview.gridpasswordview.imebugfixer.ImeDelBugFixedEditText;
 
 
-/**
- * ●
- *
- * @author Jungly
- * jungly.ik@gmail.com
- * 15/3/5 21:30
- */
 public class GridPasswordView extends LinearLayout implements PasswordView {
 	private static final int DEFAULT_PASSWORDLENGTH = 6;
 	private static final int DEFAULT_TEXTSIZE = 16;

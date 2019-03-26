@@ -12,11 +12,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 
-/**
- * @author Jungly
- * @email jungly.ik@gmail.com
- * @since 2015/10/11
- */
 public class FileUtil {
 
     public static void copyFile( File srcFile, File destFile) throws IOException {
