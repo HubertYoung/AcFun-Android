@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hubertyoung.plugin.qrscan">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.hubertyoung.plugin.qrscan">
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -11,11 +12,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".PluginQrScanApplication"
+        android:name="PluginQrScanApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/plugin_qrscan"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
 
         <!-- 3.x 的插件需要运行在 Phantom 3.0.0 及以上版本 -->
         <meta-data
@@ -26,17 +29,19 @@
         <meta-data
             android:name="phantom.service.import.HostInfoService"
             android:value="1"/>
+
         <activity
             android:name=".CaptureActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.MainActivity"
-                  android:screenOrientation="portrait">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.EasyCaptureActivity"

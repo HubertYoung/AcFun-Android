@@ -1,5 +1,6 @@
 ext {
     pluginApplicationId = "com.hubertyoung.plugin.qrscan"
+    hostPkg = "com.hubertyoung.acfunhost"
     pluginVersionCode = 10000
     pluginVersionName = "1.0.0"
 }

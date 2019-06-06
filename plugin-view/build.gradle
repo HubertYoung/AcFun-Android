@@ -16,6 +16,7 @@
 
 ext {
     pluginApplicationId = "com.wlqq.phantom.plugin.view"
+    hostPkg = "com.hubertyoung.acfunhost"
     pluginVersionCode = 10000
     pluginVersionName = "1.0.0"
 }

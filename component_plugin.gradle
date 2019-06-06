@@ -15,7 +15,6 @@ def runAsApp = ext.has('runAsApp')
 runAsApp = ('true' == localProperties.getProperty(project.name))
 apply plugin: 'com.android.application'
 
-def hostPkg = "com.hubertyoung.acfunhost"
 if (runAsApp) {
     apply plugin: 'kotlin-android'
     apply plugin: 'kotlin-android-extensions'
@@ -23,9 +22,9 @@ if (runAsApp) {
     apply plugin: 'com.wlqq.phantom.plugin'
 }
 
-println("<<<---- 插件信息 START ---->>>")
+println("\n<<<---- 插件信息 START ---->>>")
 //模块名称
-println(project.name + "--" + runAsApp)
+println(project.name + " -- runAsApp=" + runAsApp)
 
 
 android {
@@ -55,6 +54,7 @@ android {
         def HOST_PKG = "HOST_PKG"
         release {
             signingConfig signingConfigs.config
+            buildConfigField "Boolean", "RunAsApp", "$runAsApp"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField STRING, HOST_PKG, "\"$hostPkg\""
@@ -62,6 +62,7 @@ android {
         }
         debug {
             signingConfig signingConfigs.config
+            buildConfigField "boolean", "RunAsApp", "$runAsApp"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField STRING, HOST_PKG, "\"$hostPkg\""
@@ -143,22 +144,33 @@ def copyPluginToHost(String dir) {
 //        from(buildDir.absolutePath + '/outputs/apk/' + dir) {
 //            include('*.apk')
 //        }
-//        into(project(':component_host').getProjectDir().absolutePath + '/src/main/assets/plugins/')
+//        def debugDir = ''
+//        if(dir == 'debug') debugDir = '/debug' else debugDir = ''
+//        into(project(':component_host').getProjectDir().absolutePath + '/src/main'+ debugDir +'/assets/plugins/')
 //    }
-    //暂时不进行拷贝到资源目录
-//    copy {
-//        from(buildDir.absolutePath + '/outputs/apk/' + dir) {
-//            include('*.apk')
-//        }
-//        into(project(':component_host').getProjectDir().absolutePath + '/src/main/debug/assets/plugins/')
-//    }
+    "adb remount".execute()
+    def apkNameDir = buildDir.absolutePath + "/outputs/apk/$dir/"
+    def fileParent = new File(apkNameDir).listFiles()
+    for (file in fileParent) {
+        if (file.name.endsWith(".apk")) {
+            def cmd = "adb push " + buildDir.absolutePath + "/outputs/apk/$dir/${file.name}  /sdcard/Android/data/$hostPkg/cache/hubertyoung/phantom/"
+            def cmdResult = cmd.execute().text.trim()
+            println("推送到手机卡结果：$cmdResult")
+        }
+    }
 }
 
 dependencies {
-    compileOnly deps.phantomVersion.communicationLib
-    compileOnly deps.phantomVersion.pluginLib
-    debugImplementation deps.phantomVersion.communicationLib
-    debugImplementation deps.phantomVersion.pluginLib
+    if (runAsApp) {
+        implementation deps.phantomVersion.communicationLib
+//        implementation deps.phantomVersion.pluginLib
+        implementation deps.phantomVersion.hostLib
+    } else {
+        compileOnly deps.phantomVersion.communicationLib
+        compileOnly deps.phantomVersion.pluginLib
+    }
+//    debugImplementation deps.phantomVersion.communicationLib
+//    debugImplementation deps.phantomVersion.pluginLib
 
     implementation deps.support.v4
     implementation deps.support.app_compat
@@ -174,6 +186,19 @@ dependencies {
 }
 if (runAsApp == false) {
     afterEvaluate { project ->
+//        if (project.task.name =~ /check.*Manifest/) {
+//            if (project.task.name =~ /[dD]ebug/) {
+//                project.tasks.assembleDebug.doLast {
+//                    deletePluginInHost()
+//                    copyPluginToHost('debug')
+//                }
+//            } else {
+//                project.tasks.assembleRelease.doLast {
+//                    deletePluginInHost()
+//                    copyPluginToHost('release')
+//                }
+//            }
+//        }
         project.tasks.assembleDebug.doLast {
             deletePluginInHost()
             copyPluginToHost('debug')
@@ -255,4 +280,4 @@ if (runAsApp == false) {
         /*------------------------------ 快速安装插件配置  END  -------------------------*/
     }
 }
-println("<<<---- 插件信息 END ---->>>")
+println("<<<---- 插件信息 END ---->>>\n")
