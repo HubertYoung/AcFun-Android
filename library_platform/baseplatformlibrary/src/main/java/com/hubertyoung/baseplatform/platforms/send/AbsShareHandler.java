@@ -29,9 +29,9 @@ import java.util.List;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 10:12
+ * Time::2018/9/14 10:12
  * @since:V$VERSION
- * @desc:com.hubertyoung.baseplatform.platforms.send
+ * Pkg:com.hubertyoung.baseplatform.platforms.send
  */
 public abstract class AbsShareHandler implements IShareHandler {
 

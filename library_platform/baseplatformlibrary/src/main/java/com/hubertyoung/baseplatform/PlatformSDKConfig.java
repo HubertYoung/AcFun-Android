@@ -2,10 +2,9 @@ package com.hubertyoung.baseplatform;
 
 /**
  * @author:Yang
- * @date:2017/11/17 13:38
+ * Time::2017/11/17 13:38
  * @since:V1.0.0
- * @desc:ddframework.gent.common.framwork
- * @param:
+ * Pkg:ddframework.gent.common.framwork
  */
 public class PlatformSDKConfig {
 	public static final String LANGUAGE = "Language";

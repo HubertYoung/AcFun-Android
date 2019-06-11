@@ -10,9 +10,9 @@ import com.hubertyoung.baseplatform.share.shareparam.BaseShareParam;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/10 16:10
+ * Time::2018/9/10 16:10
  * @since:V1.0.0
- * @desc:com.hubertyoung.pay.sdk
+ * Pkg:com.hubertyoung.pay.sdk
  */
 public interface OnCallback<T> {
     void onStart( Activity activity );

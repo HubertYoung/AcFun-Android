@@ -14,10 +14,9 @@ import java.util.Map;
 
 /**
  * @author:Yang
- * @date:2017/11/17 13:29
+ * Time::2017/11/17 13:29
  * @since:V1.0.0
- * @desc:ddframework.gent.common.framwork.tools
- * @param:
+ * Pkg:ddframework.gent.common.framwork.tools
  */
 public class Hashon {
 	public Hashon() {

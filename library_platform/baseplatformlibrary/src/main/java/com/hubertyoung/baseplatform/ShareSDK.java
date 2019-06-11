@@ -22,9 +22,9 @@ import java.lang.ref.WeakReference;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/11 15:52
+ * Time::2018/9/11 15:52
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform
+ * Pkg:com.hubertyoung.baseplatform
  */
 public final class ShareSDK {
 	static Sdk< IShareHandler > sdk = new Sdk<>();

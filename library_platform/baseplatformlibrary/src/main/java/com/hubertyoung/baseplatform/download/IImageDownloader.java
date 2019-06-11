@@ -11,9 +11,9 @@ import com.hubertyoung.baseplatform.error.ShareException;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 11:01
+ * Time::2018/9/14 11:01
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform.download
+ * Pkg:com.hubertyoung.baseplatform.download
  */
 public interface IImageDownloader {
 

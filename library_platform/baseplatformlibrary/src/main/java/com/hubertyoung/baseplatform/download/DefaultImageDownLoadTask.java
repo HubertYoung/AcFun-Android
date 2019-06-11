@@ -23,9 +23,9 @@ import java.net.URL;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 10:59
+ * Time::2018/9/14 10:59
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform.download
+ * Pkg:com.hubertyoung.baseplatform.download
  */
 public class DefaultImageDownLoadTask extends Thread {
     private static final String TAG = DefaultImageDownLoadTask.class.getSimpleName();

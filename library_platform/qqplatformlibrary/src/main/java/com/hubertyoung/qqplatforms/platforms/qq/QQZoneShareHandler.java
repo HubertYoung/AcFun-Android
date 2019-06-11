@@ -32,9 +32,9 @@ import java.util.ArrayList;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 14:57
+ * Time::2018/9/14 14:57
  * @since:V1.0.0
- * @desc:com.hubertyoung.qqplatforms.platforms.qq
+ * Pkg:com.hubertyoung.qqplatforms.platforms.qq
  */
 public class QQZoneShareHandler extends BaseQQShareHandler {
 

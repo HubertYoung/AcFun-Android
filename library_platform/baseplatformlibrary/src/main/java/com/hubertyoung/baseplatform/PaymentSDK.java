@@ -18,9 +18,9 @@ import com.hubertyoung.baseplatformlibrary.R;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/11 13:12
+ * Time::2018/9/11 13:12
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform
+ * Pkg:com.hubertyoung.baseplatform
  */
 public class PaymentSDK {
 	static Sdk< IPayable > sdk = new Sdk<>();

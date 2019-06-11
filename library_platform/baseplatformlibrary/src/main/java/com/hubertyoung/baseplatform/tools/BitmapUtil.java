@@ -19,9 +19,9 @@ import java.util.UUID;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 10:18
+ * Time::2018/9/14 10:18
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform.tools
+ * Pkg:com.hubertyoung.baseplatform.tools
  */
 public class BitmapUtil {
 

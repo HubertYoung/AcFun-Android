@@ -15,9 +15,9 @@ package com.hubertyoung.baseplatform.sdk;//package ddframework.gent.common.framw
 //
 ///**
 // * @author:Yang
-// * @date:2017/9/5 14:02
+// * Time::2017/9/5 14:02
 // * @since:v1.0
-// * @desc:com.gent.ddpsdk.framwork.sdk
+// * Pkg:com.gent.ddpsdk.framwork.sdk
 // * @param:
 // */
 //public class PlatformDb {

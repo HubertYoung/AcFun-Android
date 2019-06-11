@@ -31,9 +31,9 @@ import android.support.annotation.NonNull;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/10 18:06
+ * Time::2018/9/10 18:06
  * @since:V1.0.0
- * @desc:com.hubertyoung.qqplatforms.platforms.qq
+ * Pkg:com.hubertyoung.qqplatforms.platforms.qq
  */
 public class QQAuth implements IAuthorize {
 	public static final String TAG = QQAuth.class.getSimpleName();

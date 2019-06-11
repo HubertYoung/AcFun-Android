@@ -23,9 +23,9 @@ import org.json.JSONObject;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/11 13:15
+ * Time::2018/9/11 13:15
  * @since:V1.0.0
- * @desc:com.hubertyoung.wechatplatforms.platforms.weixin
+ * Pkg:com.hubertyoung.wechatplatforms.platforms.weixin
  */
 public class WXPayment extends WXBase implements IPayable {
 	WXPayment( Activity activity, OtherPlatform platform ) {

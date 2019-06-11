@@ -21,7 +21,9 @@ buildscript {
 //        classpath 'com.qihoo360.argusapm:argus-apm-gradle:2.0.1.1006' //aspectj的gradle插件，编译使用
 
         classpath 'com.billy.android:cc-register:1.0.6'
-        classpath 'com.novoda:bintray-release:0.8.1'
+
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
 
     }
 }
@@ -33,3 +35,4 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+

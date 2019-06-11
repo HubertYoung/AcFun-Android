@@ -12,9 +12,9 @@ import java.util.List;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/10/29 18:17
+ * Time::2018/10/29 18:17
  * @since:V$VERSION
- * @desc:com.hubertyoung.baseplatform.toos
+ * Pkg:com.hubertyoung.baseplatform.toos
  */
 public class PlatformUtils {
 	static final String PACKAGE_QQ = "com.tencent.mobileqq";

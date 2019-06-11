@@ -6,9 +6,9 @@ package com.hubertyoung.baseplatform.error;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 11:00
+ * Time::2018/9/14 11:00
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform.error
+ * Pkg:com.hubertyoung.baseplatform.error
  */
 public class ShareException extends Exception {
     private int mCode = -1;

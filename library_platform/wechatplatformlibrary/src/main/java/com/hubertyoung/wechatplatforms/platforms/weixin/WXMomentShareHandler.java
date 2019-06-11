@@ -13,9 +13,9 @@ import com.hubertyoung.baseplatform.share.shareparam.ShareParamWebPage;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 15:34
+ * Time::2018/9/14 15:34
  * @since:V1.0.0
- * @desc:com.hubertyoung.wechatplatforms.platforms.weixin
+ * Pkg:com.hubertyoung.wechatplatforms.platforms.weixin
  */
 public class WXMomentShareHandler extends BaseWxShareHandler {
 	WXMomentShareHandler( Activity activity, OtherPlatform platform ) {

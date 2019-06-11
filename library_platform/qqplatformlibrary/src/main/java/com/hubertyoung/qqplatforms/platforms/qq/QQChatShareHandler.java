@@ -30,9 +30,9 @@ import com.tencent.tauth.Tencent;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 14:58
+ * Time::2018/9/14 14:58
  * @since:V1.0.0
- * @desc:com.hubertyoung.qqplatforms.platforms.qq
+ * Pkg:com.hubertyoung.qqplatforms.platforms.qq
  */
 public class QQChatShareHandler extends BaseQQShareHandler {
 

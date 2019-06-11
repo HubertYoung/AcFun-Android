@@ -19,9 +19,9 @@ import java.util.concurrent.Executors;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 13:46
+ * Time::2018/9/14 13:46
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform
+ * Pkg:com.hubertyoung.baseplatform
  */
 public class PlatformShareConfiguration implements Parcelable {
 

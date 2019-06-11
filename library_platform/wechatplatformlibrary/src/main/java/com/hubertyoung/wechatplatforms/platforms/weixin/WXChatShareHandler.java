@@ -10,9 +10,9 @@ import com.hubertyoung.baseplatform.sdk.OtherPlatform;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 15:33
+ * Time::2018/9/14 15:33
  * @since:V1.0.0
- * @desc:com.hubertyoung.wechatplatforms.platforms.weixin
+ * Pkg:com.hubertyoung.wechatplatforms.platforms.weixin
  */
 public class WXChatShareHandler extends BaseWxShareHandler {
 	WXChatShareHandler( Activity activity, OtherPlatform platform ) {

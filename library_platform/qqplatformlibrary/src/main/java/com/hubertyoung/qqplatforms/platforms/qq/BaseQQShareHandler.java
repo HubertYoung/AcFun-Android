@@ -24,9 +24,9 @@ import com.tencent.tauth.UiError;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 14:41
+ * Time::2018/9/14 14:41
  * @since:V$VERSION
- * @desc:com.hubertyoung.qqplatforms.platforms.qq
+ * Pkg:com.hubertyoung.qqplatforms.platforms.qq
  */
 public abstract class BaseQQShareHandler extends AbsShareHandler {
 

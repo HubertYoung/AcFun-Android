@@ -1,8 +1,6 @@
 apply plugin: 'com.android.library'
 
-
 android {
-
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
 
@@ -27,5 +25,6 @@ android {
 dependencies {
     testImplementation deps.junit
     implementation deps.support.annotations
-
 }
+
+//apply from: file("${rootDir}/buildscript/publish_bintray.gradle")

@@ -13,9 +13,9 @@ import java.util.WeakHashMap;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/10 18:47
+ * Time::2018/9/10 18:47
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform.sdk
+ * Pkg:com.hubertyoung.baseplatform.sdk
  */
 public class Sdk< T extends IResult > {
 

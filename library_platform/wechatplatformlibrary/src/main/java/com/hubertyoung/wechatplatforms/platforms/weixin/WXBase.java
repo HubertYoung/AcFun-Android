@@ -30,9 +30,9 @@ import java.util.WeakHashMap;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/10 18:01
+ * Time::2018/9/10 18:01
  * @since:V1.0。0
- * @desc:com.hubertyoung.wechatplatforms.platforms.weixin
+ * Pkg:com.hubertyoung.wechatplatforms.platforms.weixin
  */
 abstract class WXBase implements IResult, IWXAPIEventHandler {
 	public static final String TAG = WXBase.class.getSimpleName();

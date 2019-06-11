@@ -28,9 +28,9 @@ import java.io.IOException;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 10:16
+ * Time::2018/9/14 10:16
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform.tools
+ * Pkg:com.hubertyoung.baseplatform.tools
  */
 public class ShareImageHelper {
 	private static final String TAG = ShareImageHelper.class.getSimpleName();
@@ -54,6 +54,8 @@ public class ShareImageHelper {
 	}
 	/**
 	 * 如果Bitmap/Res体积太大，保存到本地
+	 * @param params BaseShareParam
+	 * @return ShareImage
 	 */
 	public ShareImage saveBitmapToExternalIfNeed(BaseShareParam params) {
 		return saveBitmapToExternalIfNeed(getShareImage(params));
@@ -163,8 +165,8 @@ public class ShareImageHelper {
 	 * 缩略图。32kb限制。
 	 * 注意：在工作线程调用。
 	 *
-	 * @param image
-	 * @return
+	 * @param image ShareImage
+	 * @return byte[]
 	 */
 	public byte[] buildThumbData(final ShareImage image) {
 		return buildThumbData(image, THUMB_MAX_SIZE, THUMB_RESOLUTION_SIZE, THUMB_RESOLUTION_SIZE, false);
@@ -228,9 +230,9 @@ public class ShareImageHelper {
 	}
 
 	/**
-	 * @param image
+	 * @param image ShareImage
 	 * @param task  图片下载完成后待执行的任务
-	 * @throws ShareException
+	 * @throws ShareException 分享异常
 	 */
 	public void downloadImageIfNeed(final ShareImage image, final Runnable task) throws ShareException {
 		if (image == null || !image.isNetImage()) {

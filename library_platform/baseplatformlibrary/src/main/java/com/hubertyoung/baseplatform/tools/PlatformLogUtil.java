@@ -11,6 +11,7 @@ public class PlatformLogUtil {
 
 	/**
 	 * 在application调用初始化
+	 * @param debug 是否开启打印日志功能
 	 */
 	public static void logInit( boolean debug ) {
 		DEBUG_ENABLE = debug;

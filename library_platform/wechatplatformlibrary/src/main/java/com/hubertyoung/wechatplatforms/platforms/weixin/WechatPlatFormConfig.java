@@ -16,9 +16,9 @@ import com.hubertyoung.baseplatform.share.SocializeMedia;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/10 18:20
+ * Time::2018/9/10 18:20
  * @since:V1.0.0
- * @desc:com.hubertyoung.qqplatforms.platforms.qq
+ * Pkg:com.hubertyoung.qqplatforms.platforms.qq
  */
 public class WechatPlatFormConfig {
 	public static void registerShare( @NonNull String appId, @NonNull String appSecret ) {

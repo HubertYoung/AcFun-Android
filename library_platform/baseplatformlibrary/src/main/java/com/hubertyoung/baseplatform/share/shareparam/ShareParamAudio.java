@@ -9,9 +9,9 @@ import android.os.Parcelable;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 09:40
+ * Time::2018/9/14 09:40
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform.share.shareparam
+ * Pkg:com.hubertyoung.baseplatform.share.shareparam
  * TODO 区分低带宽音乐/普通音乐
  */
 public class ShareParamAudio extends BaseShareParam implements Parcelable {

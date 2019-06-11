@@ -31,3 +31,5 @@ dependencies {
     implementation deps.support.annotations
 
 }
+
+//apply from: file("${rootDir}/buildscript/publish_bintray.gradle")

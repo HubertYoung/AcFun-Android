@@ -14,9 +14,9 @@ import java.io.File;
  * <p>
  *
  * @author:HubertYoung
- * @date:2018/9/14 11:03
+ * Time::2018/9/14 11:03
  * @since:V1.0.0
- * @desc:com.hubertyoung.baseplatform.download
+ * Pkg:com.hubertyoung.baseplatform.download
  */
 public abstract class AbsImageDownloader implements IImageDownloader {
     private static final String TAG = AbsImageDownloader.class.getSimpleName();
