@@ -4,7 +4,7 @@ Please edit local.properties and add the following
 ```properties
 keyAlias=test
 keyPassword=123456
-storeFile=../acfun/test.jks
+storeFile=acfun/test.jks
 storePassword=123456
 
 app=true

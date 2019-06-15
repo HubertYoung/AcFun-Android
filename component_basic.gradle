@@ -39,7 +39,7 @@ android {
             config {
                 keyAlias localProperties['keyAlias']
                 keyPassword localProperties['keyPassword']
-                storeFile file(localProperties['storeFile'])
+                storeFile file(new File(rootDir.getAbsolutePath() + localProperties['storeFile']))
                 storePassword localProperties['storePassword']
 //            v2SigningEnabled false
             }

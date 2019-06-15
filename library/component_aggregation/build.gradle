@@ -1,4 +1,4 @@
-ext.alwaysLib = true
+//ext.alwaysLib = true
 apply from: rootProject.file('component_basic.gradle')
 
 dependencies {
@@ -6,9 +6,14 @@ dependencies {
     implementation project(':component_dialog')
 //    implementation project(':component_titlebar')
 
-    implementation project(':baseplatformlibrary')
+//    implementation project(':baseplatformlibrary')
+    implementation deps.hubertyoung.baseplatformlibrary
+    implementation deps.hubertyoung.qqplatformlibrary
+    implementation deps.hubertyoung.wechatplatformlibrary
+    implementation deps.hubertyoung.weiboplatformlibrary
+
     implementation project(':alipayplatformlibrary')
-    implementation project(':qqplatformlibrary')
-    implementation project(':wechatplatformlibrary')
-    implementation project(':weiboplatformlibrary')
+//    implementation project(':qqplatformlibrary')
+//    implementation project(':wechatplatformlibrary')
+//    implementation project(':weiboplatformlibrary')
 }

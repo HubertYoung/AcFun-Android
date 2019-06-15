@@ -57,6 +57,7 @@ versions.acraVersion = "4.9.0"
 versions.ijkplayer = "0.8.8"
 versions.exoplayer = "2.9.1"
 versions.transitionseverywhere = "1.7.0"
+versions.share_platform = "1.0.0@aar"
 ext.versions = versions
 
 def deps = [:]
@@ -239,6 +240,15 @@ exoplayer.exo_player2_rtmp = "com.google.android.exoplayer:extension-rtmp:$versi
 exoplayer.exoplayer = exoplayer
 deps.exoplayer = exoplayer
 
+def hubertyoung = [:]
+hubertyoung.baseplatformlibrary = "com.hubertyoung.share_platform:baseplatformlibrary:${versions.share_platform}"
+hubertyoung.qqplatformlibrary = "com.hubertyoung.share_platform:qqplatformlibrary:${versions.share_platform}"
+hubertyoung.wechatplatformlibrary = "com.hubertyoung.share_platform:wechatplatformlibrary:${versions.share_platform}"
+hubertyoung.weiboplatformlibrary = "com.hubertyoung.share_platform:weiboplatformlibrary:${versions.share_platform}"
+hubertyoung.alipayplatformlibrary = "com.hubertyoung.share_platform:alipayplatformlibrary:${versions.share_platform}"
+hubertyoung.hubertyoung = hubertyoung
+deps.hubertyoung = hubertyoung
+
 deps.smarttablayout = 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
 deps.android_gif_drawable = 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
 deps.fresco_processors = 'jp.wasabeef:fresco-processors:2.1.0'
@@ -271,7 +281,7 @@ def addRepos(RepositoryHandler handler) {
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     //微博
     handler.maven { url "https://dl.bintray.com/thelasterstar/maven/" }
-//    handler.maven { url 'http://45.63.19.1:8081/repository/maven-releases/' }
+    handler.maven { url 'https://dl.bintray.com/hubertyoung/share_platform' }
 }
 
 ext.addRepos = this.&addRepos

@@ -2,8 +2,9 @@ apply from: rootProject.file('component_basic.gradle')
 
 dependencies {
     implementation project(':common')
-    implementation project(':baseplatformlibrary')
-    implementation project(':component_aggregation')
+//    implementation project(':baseplatformlibrary')
+        implementation deps.hubertyoung.baseplatformlibrary
+//    implementation project(':component_aggregation')
     addComponent 'component_developer'
 //    debugAnnotationProcessor project(':compiler')
 //    releaseAnnotationProcessor project(':compiler-release')

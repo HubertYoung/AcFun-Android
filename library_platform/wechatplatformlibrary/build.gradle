@@ -26,7 +26,8 @@ android {
 
 dependencies {
     testImplementation deps.junit
-    implementation project(':baseplatformlibrary')
+//    implementation project(':baseplatformlibrary')
+    implementation deps.hubertyoung.baseplatformlibrary
     implementation deps.tencent.wechat
     implementation deps.support.annotations
 
