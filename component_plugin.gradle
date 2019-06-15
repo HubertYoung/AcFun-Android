@@ -223,6 +223,7 @@ if (runAsApp == false) {
         excludeLib "com.android.support:support-vector-drawable:${versions.support}"
 
         excludeLib "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+        excludeLib "com.android.support.constraint:constraint-layout-solver:$versions.constraint_layout"
         excludeLib "com.android.support:support-v4:${versions.support}"
         excludeLib "com.android.support:support-core-ui:${versions.support}"
         excludeLib "com.android.support:support-appcompat-v7:${versions.support}"
