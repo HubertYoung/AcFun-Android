@@ -39,7 +39,8 @@ dependencies {
     implementation deps.hubertyoung.qqplatformlibrary
     implementation deps.hubertyoung.wechatplatformlibrary
     implementation deps.hubertyoung.weiboplatformlibrary
-    implementation project(':alipayplatformlibrary')
+    implementation deps.hubertyoung.alipayplatformlibrary
+//    implementation project(':alipayplatformlibrary')
 
     api project(':component_skeleton')
     implementation deps.tencent.mmkv

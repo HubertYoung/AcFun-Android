@@ -1,117 +1,107 @@
-include ':studydemo',
-        ':acfun',
-        ':component_acfunmine',
-        ':component_acfunarticle',
-        ':bottom-navigation-bar',
-        ':component_acfundynamic',
-        ':component_acfunvideo',
-        ':component_gamecenter',
 
-//        ':android-support:skin-support',
-//        ':android-support:skin-support-appcompat',
-//        ':android-support:skin-support-cardview',
-//        ':android-support:skin-support-constraint-layout',
-//        ':android-support:skin-support-design',
-        ':component_stateview',
-        ':component_banner',
-        ':component_developer',
-        ':component_dynamicsoreview',
-        ':component_bankcard',
+includeBase()
+includeApp()
+includeSharePlatform()
+includeComponent()
+includeLib()
+includePlugin()
+
+def includeBase(){
+    include ':common_res',
+            ':common'
+    project(':common').projectDir = new File(rootDir, 'library_base/common')
+    project(':common_res').projectDir = new File(rootDir, 'library_base/common_res')
+}
+
+def includeApp(){
+    include ':acfun',
+            ':component_acfunmine',
+            ':component_acfunarticle',
+            ':component_acfundynamic',
+            ':component_acfunvideo',
+            ':component_gamecenter'
+}
+def includeSharePlatform(){
+    include ':alipayplatformlibrary',
+            ':wechatplatformlibrary',
+            ':qqplatformlibrary',
+            ':weiboplatformlibrary',
+            ':weiboplatformlibrary'
+    project(':alipayplatformlibrary').projectDir = new File(rootDir, 'library_platform/alipayplatformlibrary')
+    project(':wechatplatformlibrary').projectDir = new File(rootDir, 'library_platform/wechatplatformlibrary')
+    project(':qqplatformlibrary').projectDir = new File(rootDir, 'library_platform/qqplatformlibrary')
+    project(':weiboplatformlibrary').projectDir = new File(rootDir, 'library_platform/weiboplatformlibrary')
+
+}
+
+def includeComponent(){
+    include  ':component_stateview',
+            ':component_banner',
+            ':component_developer',
+            ':component_dynamicsoreview',
+            ':component_bankcard',
 //        ':component_filter',
-        ':component_skeleton',
+            ':component_skeleton',
 //        ':component_jsbridge',
 //        ':component_multiimageview',
 //        ':component_gridpasswordview',
 //        ':component_pickerview',
-        ':component_bar',
-        ':component_titlebar',
+            ':component_bar',
+            ':component_titlebar',
 //        ':component_update',
-        ':component_ping',
-        ':component_aggregation',
+            ':component_ping',
+            ':component_aggregation',
 //        ':baseplatformlibrary',
-        ':alipayplatformlibrary',
-        ':wechatplatformlibrary',
-        ':qqplatformlibrary',
-        ':weiboplatformlibrary',
-        ':weiboplatformlibrary',
-        ':component_dialog',
+
+            ':component_dialog',
 //        ':library_update',
-        ':common_res',
-        ':common',
+            ':component_host'
 
-        ':component_host',
-//        ':host',
-        ':plugin-view',
-        ':plugin_qrcodescanner',
-//        ':argus-apm-aop',
-//        ':argus-apm-cloud',
-//        ':argus-apm-cloud-dummy-impl',
-//        ':argus-apm-main',
-//        ':argus-apm-okhttp',
+    project(':component_bankcard').projectDir = new File(rootDir, 'library/component_bankcard')
+    project(':component_banner').projectDir = new File(rootDir, 'library/component_banner')
+    project(':component_bar').projectDir = new File(rootDir, 'library/component_bar')
+    project(':component_dialog').projectDir = new File(rootDir, 'library/component_dialog')
+    project(':component_dynamicsoreview').projectDir = new File(rootDir, 'library/component_dynamicsoreview')
+    project(':component_ping').projectDir = new File(rootDir, 'library/component_ping')
+    project(':component_skeleton').projectDir = new File(rootDir, 'library/component_skeleton')
+    project(':component_stateview').projectDir = new File(rootDir, 'library/component_stateview')
+    project(':component_aggregation').projectDir = new File(rootDir, 'library/component_aggregation')
+    project(':component_titlebar').projectDir = new File(rootDir, 'library/component_titlebar')
 
-        ':gsyVideoPlayer',
-        ':gsyVideoPlayer-armv5',
-        ':gsyVideoPlayer-armv7a',
-        ':gsyVideoPlayer-armv64',
-        ':gsyVideoPlayer-base',
-        ':gsyVideoPlayer-ex_so',
-        ':gsyVideoPlayer-exo_player2',
-        ':gsyVideoPlayer-java',
-        ':gsyVideoPlayer-proxy_cache',
-        ':gsyVideoPlayer-x86',
-        ':gsyVideoPlayer-x86_64'
+}
 
-//        ':annotation',
-//        ':compiler',
-//        ':compiler-release'
+def includeLib(){
+    include ':studydemo',
+            ':bottom-navigation-bar',
+            ':gsyVideoPlayer',
+            ':gsyVideoPlayer-armv5',
+            ':gsyVideoPlayer-armv7a',
+            ':gsyVideoPlayer-armv64',
+            ':gsyVideoPlayer-base',
+            ':gsyVideoPlayer-ex_so',
+            ':gsyVideoPlayer-exo_player2',
+            ':gsyVideoPlayer-java',
+            ':gsyVideoPlayer-proxy_cache',
+            ':gsyVideoPlayer-x86',
+            ':gsyVideoPlayer-x86_64'
 
+    project(':bottom-navigation-bar').projectDir = new File(rootDir, 'library/bottom-navigation-bar')
+    project(':studydemo').projectDir = new File(rootDir, 'library/studydemo')
 
-project(':common').projectDir = new File(rootDir, 'library_base/common')
-project(':common_res').projectDir = new File(rootDir, 'library_base/common_res')
-//project(':component_statsdk').projectDir = new File(rootDir, 'library/component_statsdk')
-//project(':component_update').projectDir = new File(rootDir, 'library/component_update')
-//project(':component_jsbridge').projectDir = new File(rootDir, 'library/component_jsbridge')
-//project(':component_pickerview').projectDir = new File(rootDir, 'library/component_pickerview')
-//project(':component_multiimageview').projectDir = new File(rootDir, 'library/component_multiimageview')
-//project(':component_gridpasswordview').projectDir = new File(rootDir, 'library/component_gridpasswordview')
-//project(':component_filter').projectDir = new File(rootDir, 'library/component_filter')
-project(':component_bankcard').projectDir = new File(rootDir, 'library/component_bankcard')
-project(':component_banner').projectDir = new File(rootDir, 'library/component_banner')
-project(':component_bar').projectDir = new File(rootDir, 'library/component_bar')
-project(':component_dialog').projectDir = new File(rootDir, 'library/component_dialog')
-project(':component_dynamicsoreview').projectDir = new File(rootDir, 'library/component_dynamicsoreview')
-project(':component_ping').projectDir = new File(rootDir, 'library/component_ping')
-project(':component_skeleton').projectDir = new File(rootDir, 'library/component_skeleton')
-project(':component_stateview').projectDir = new File(rootDir, 'library/component_stateview')
-project(':component_aggregation').projectDir = new File(rootDir, 'library/component_aggregation')
-project(':component_titlebar').projectDir = new File(rootDir, 'library/component_titlebar')
-project(':bottom-navigation-bar').projectDir = new File(rootDir, 'library/bottom-navigation-bar')
-project(':studydemo').projectDir = new File(rootDir, 'library/studydemo')
+    project(':gsyVideoPlayer').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer')
+    project(':gsyVideoPlayer-armv5').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-armv5')
+    project(':gsyVideoPlayer-armv7a').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-armv7a')
+    project(':gsyVideoPlayer-armv64').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-armv64')
+    project(':gsyVideoPlayer-base').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-base')
+    project(':gsyVideoPlayer-ex_so').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-ex_so')
+    project(':gsyVideoPlayer-exo_player2').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-exo_player2')
+    project(':gsyVideoPlayer-java').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-java')
+    project(':gsyVideoPlayer-proxy_cache').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-proxy_cache')
+    project(':gsyVideoPlayer-x86').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-x86')
+    project(':gsyVideoPlayer-x86_64').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-x86_64')
 
-//project(':argus-apm-aop').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-aop')
-//project(':argus-apm-cloud').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud')
-//project(':argus-apm-cloud-dummy-impl').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-cloud-dummy-impl')
-//project(':argus-apm-main').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-main')
-//project(':argus-apm-okhttp').projectDir = new File(rootDir, 'library_argus_apm/argus-apm-okhttp')
-
-project(':gsyVideoPlayer').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer')
-project(':gsyVideoPlayer-armv5').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-armv5')
-project(':gsyVideoPlayer-armv7a').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-armv7a')
-project(':gsyVideoPlayer-armv64').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-armv64')
-project(':gsyVideoPlayer-base').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-base')
-project(':gsyVideoPlayer-ex_so').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-ex_so')
-project(':gsyVideoPlayer-exo_player2').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-exo_player2')
-project(':gsyVideoPlayer-java').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-java')
-project(':gsyVideoPlayer-proxy_cache').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-proxy_cache')
-project(':gsyVideoPlayer-x86').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-x86')
-project(':gsyVideoPlayer-x86_64').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-x86_64')
-
-//project(':baseplatformlibrary').projectDir = new File(rootDir, 'library_platform/baseplatformlibrary')
-project(':alipayplatformlibrary').projectDir = new File(rootDir, 'library_platform/alipayplatformlibrary')
-project(':wechatplatformlibrary').projectDir = new File(rootDir, 'library_platform/wechatplatformlibrary')
-project(':qqplatformlibrary').projectDir = new File(rootDir, 'library_platform/qqplatformlibrary')
-project(':weiboplatformlibrary').projectDir = new File(rootDir, 'library_platform/weiboplatformlibrary')
-
-//project(':annotation').projectDir = new File(rootDir, 'javapoet/annotation')
-//project(':compiler').projectDir = new File(rootDir, 'javapoet/compiler')
-//project(':compiler-release').projectDir = new File(rootDir, 'javapoet/compiler-release')
+}
+def includePlugin(){
+    include ':plugin-view',
+            ':plugin_qrcodescanner'
+}
