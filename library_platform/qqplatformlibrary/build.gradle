@@ -30,4 +30,4 @@ dependencies {
     implementation files('libs/open_sdk_r5793_lite.jar')
     implementation deps.support.v4
 }
-//apply from: file("${rootDir}/buildscript/publish_bintray.gradle")
+apply from: file("${rootDir}/buildscript/publish_bintray.gradle")

@@ -28,9 +28,9 @@ dependencies {
     testImplementation deps.junit
 //    implementation project(':baseplatformlibrary')
     implementation deps.hubertyoung.baseplatformlibrary
-    implementation deps.tencent.wechat
+    implementation files('libs/wechat-sdk-android-without-mta-5.4.0.jar')
     implementation deps.support.annotations
 
 }
 
-//apply from: file("${rootDir}/buildscript/publish_bintray.gradle")
+apply from: file("${rootDir}/buildscript/publish_bintray.gradle")

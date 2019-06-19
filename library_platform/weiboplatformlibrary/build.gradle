@@ -33,4 +33,4 @@ dependencies {
 
 }
 
-//apply from: file("${rootDir}/buildscript/publish_bintray.gradle")
+apply from: file("${rootDir}/buildscript/publish_bintray.gradle")

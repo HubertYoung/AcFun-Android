@@ -10,6 +10,7 @@ dependencies {
     implementation deps.hubertyoung.baseplatformlibrary
     implementation deps.hubertyoung.qqplatformlibrary
     implementation deps.hubertyoung.wechatplatformlibrary
+    implementation deps.weibo.sdk_core
     implementation deps.hubertyoung.weiboplatformlibrary
     implementation deps.hubertyoung.alipayplatformlibrary
 

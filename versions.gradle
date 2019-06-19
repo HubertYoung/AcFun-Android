@@ -57,7 +57,7 @@ versions.acraVersion = "4.9.0"
 versions.ijkplayer = "0.8.8"
 versions.exoplayer = "2.9.1"
 versions.transitionseverywhere = "1.7.0"
-versions.share_platform = "1.0.0@aar"
+versions.share_platform = "1.1.1@aar"
 ext.versions = versions
 
 def deps = [:]
@@ -210,7 +210,7 @@ tencent.wechat = 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.0.2'
 deps.tencent = tencent
 
 def weibo = [:]
-weibo.sdk_core = 'com.sina.weibo.sdk:core:4.3.0:openDefaultRelease@aar'
+weibo.sdk_core = 'com.sina.weibo.sdk:core:4.3.9:openDefaultRelease@aar'
 deps.weibo = weibo
 
 def smartrefresh = [:]

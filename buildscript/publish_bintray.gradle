@@ -160,7 +160,7 @@ bintray {
  *  #project dependency info
  *  project.groupId=com.github.xuexiangjys     //组名
  *  project.artifactId=xutil-core              //项目名
- *  project.version=1.0.0                      //版本名
+ *  project.version=1.1.0                      //版本名
  *
  *  compile 'groupId:artifactId:version'
  *

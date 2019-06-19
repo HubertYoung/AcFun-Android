@@ -22,11 +22,13 @@ def includeApp(){
             ':component_gamecenter'
 }
 def includeSharePlatform(){
-    include ':alipayplatformlibrary',
+    include ':baseplatformlibrary',
+            ':alipayplatformlibrary',
             ':wechatplatformlibrary',
             ':qqplatformlibrary',
             ':weiboplatformlibrary',
             ':weiboplatformlibrary'
+    project(':baseplatformlibrary').projectDir = new File(rootDir, 'library_platform/baseplatformlibrary')
     project(':alipayplatformlibrary').projectDir = new File(rootDir, 'library_platform/alipayplatformlibrary')
     project(':wechatplatformlibrary').projectDir = new File(rootDir, 'library_platform/wechatplatformlibrary')
     project(':qqplatformlibrary').projectDir = new File(rootDir, 'library_platform/qqplatformlibrary')
@@ -51,7 +53,6 @@ def includeComponent(){
 //        ':component_update',
             ':component_ping',
             ':component_aggregation',
-//        ':baseplatformlibrary',
 
             ':component_dialog',
 //        ':library_update',
