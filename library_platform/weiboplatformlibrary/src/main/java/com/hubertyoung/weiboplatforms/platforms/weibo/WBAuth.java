@@ -45,11 +45,12 @@ public class WBAuth implements IAuthorize {
 
 		try {
 			WbSdk.checkInit();
-		} catch ( Exception e ) {
+		} catch ( RuntimeException e ) {
+			String scope = WBShare.SCOPE;
 			WbSdk.install( activity.getApplicationContext(), //
 					new AuthInfo( activity.getApplicationContext(),//
 							sinaWeiboKey, //
-							sinaWeiboRedirectUrl, WBShare.SCOPE ) );
+							sinaWeiboRedirectUrl, scope ) );
 		}
 
 		mApi = new SsoHandler( mActivity );

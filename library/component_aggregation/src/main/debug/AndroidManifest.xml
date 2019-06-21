@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="aggregation.MyApplication"
+        android:name="com.hubertyoung.common.CommonApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/aggregation_app_name"

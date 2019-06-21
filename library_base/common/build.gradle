@@ -41,7 +41,7 @@ dependencies {
     implementation deps.weibo.sdk_core
     implementation deps.hubertyoung.weiboplatformlibrary
     implementation deps.hubertyoung.alipayplatformlibrary
-//    implementation project(':alipayplatformlibrary')
+//    implementation project(':weiboplatformlibrary')
 
     api project(':component_skeleton')
     implementation deps.tencent.mmkv
