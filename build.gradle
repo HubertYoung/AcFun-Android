@@ -1,8 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-//ext {
-//    //是否是Release版本
-//    ArgusAPM_Release = true
-//}
 buildscript {
     apply from: 'versions.gradle'
 
