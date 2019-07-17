@@ -114,7 +114,6 @@ open class CommonApplication : Application() {
 
 							override fun reportEvent(eventId: String?, label: String?, params: HashMap<String, Any>?) {
 								// 使用 talkingdata 或其它移动统计平台上报 Phantom 内部自定义事件
-
 							}
 
 							override fun reportLog(tag: String?, message: String?) {
