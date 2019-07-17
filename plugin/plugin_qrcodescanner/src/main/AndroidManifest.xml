@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hubertyoung.plugin.qrscan">
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <!-- unavailable in API 23 -->
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name=".PluginQrScanApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/plugin_qrscan"
+        android:supportsRtl="true">
+
+        <!-- 3.x 的插件需要运行在 Phantom 3.0.0 及以上版本 -->
+        <meta-data
+            android:name="phantom.service.import.PhantomVersionService"
+            android:value="30000"/>
+
+        <!-- 声明对宿主服务的依赖-->
+        <meta-data
+            android:name="phantom.service.import.HostInfoService"
+            android:value="1"/>
+        <activity
+            android:name=".CaptureActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".activity.MainActivity"
+                  android:screenOrientation="portrait">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".activity.EasyCaptureActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CustomCaptureActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CodeActivity"
+            android:screenOrientation="portrait"/>
+    </application>
+
+
+</manifest>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/plugin_qrscan"
+        android:textColor="#fff"
+        android:textSize="@dimen/size_18sp"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
+
+    <Button
+        android:id="@+id/btn0"
+        style="@style/OnClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="6dp"
+        android:text="连续扫码"/>
+
+    <Button
+        android:id="@+id/btn1"
+        style="@style/OnClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="6dp"
+        android:text="默认扫码"/>
+
+    <Button
+        android:id="@+id/btn2"
+        style="@style/OnClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="6dp"
+        android:text="简单自定义布局扫码"/>
+
+    <Button
+        android:id="@+id/btn3"
+        style="@style/OnClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="6dp"
+        android:text="自定义布局扫码"/>
+
+    <Button
+        android:id="@+id/btn4"
+        style="@style/OnClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="6dp"
+        android:text="生成条形码"/>
+
+    <Button
+        android:id="@+id/btn5"
+        style="@style/OnClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="6dp"
+        android:text="生成二维码"/>
+
+    <Button
+        android:id="@+id/btn6"
+        style="@style/OnClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="6dp"
+        android:text="识别一维码/二维码图片"/>
+</LinearLayout>

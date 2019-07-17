@@ -1,0 +1,67 @@
+buildscript {
+    ext.build_gradle_version = '3.1.3'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$build_gradle_version"
+    }
+}
+
+plugins {
+    id 'com.android.application'
+    id 'com.tencent.shadow.plugin'
+}
+
+allprojects {
+    ext.COMPILE_SDK_VERSION = 28
+    ext.MIN_SDK_VERSION = 16
+    ext.TARGET_SDK_VERSION = 28
+    ext.VERSION_CODE = 1
+    ext.VERSION_NAME = "local"
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext.disable_shadow_transform = true
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION
+
+    defaultConfig {
+        applicationId "com.tencent.shadow.test.gradle.case1"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+    }
+}
+
+shadow {
+    packagePlugin {
+        pluginTypes {
+            plugin2Debug {
+                pluginApks {
+                    pluginApk1 {
+                        partKey = 'plugin2'
+                        buildTask = ':plugin2:assembleDebug'
+                        apkName = 'plugin2-debug.apk'
+                        //这里因为单元测试时，会把项目根目录设置成case1的根目录
+                        apkPath = 'plugin2/build/outputs/apk/debug/plugin2-debug.apk'
+                        dependsOn = ['Core', 'Base']
+                        hostWhiteList = ["androidx.test.espresso",
+                                         "com.tencent.shadow.test.lib.plugin_use_host_code_lib.interfaces"]
+                    }
+                }
+            }
+        }
+
+        uuid = '1234567890'
+        version = 4
+        compactVersion = [1, 2, 3]
+        uuidNickName = "1.1.5"
+    }
+}

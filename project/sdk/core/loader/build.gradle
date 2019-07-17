@@ -1,0 +1,72 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+group 'com.tencent.shadow.core'
+
+android {
+    compileSdkVersion project.COMPILE_SDK_VERSION
+
+    defaultConfig {
+        minSdkVersion project.MIN_SDK_VERSION
+        targetSdkVersion project.TARGET_SDK_VERSION
+        versionCode project.VERSION_CODE
+        versionName project.VERSION_NAME
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'plugin-loader-release.pro'
+        }
+
+        release {
+            consumerProguardFiles 'plugin-loader-release.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+
+    compileOnly project(':runtime')
+    compileOnly project(':common')
+    api project(':load-parameters')
+    implementation 'com.tencent.shadow.coding:lint'
+}
+
+def jarPackage(buildType) {
+    return tasks.create("jar${buildType.capitalize()}Package", Copy) {
+        def aarFile = file(project.buildDir.path + "/outputs/aar/${project.name}-${buildType}.aar")
+        def outputDir = file(project.buildDir.path + "/outputs/jar")
+
+        from zipTree(aarFile)
+        into outputDir
+        include 'classes.jar'
+        rename 'classes.jar', "${project.name}-${buildType}.jar"
+        group = 'build'
+        description = '生成jar包'
+    }.dependsOn(project.getTasksByName("assemble${buildType.capitalize()}", false).first())
+}
+
+afterEvaluate {
+    android {
+        buildTypes.findAll().each { buildType ->
+            def buildTypeName = buildType.getName()
+            jarPackage(buildTypeName)
+        }
+    }
+}

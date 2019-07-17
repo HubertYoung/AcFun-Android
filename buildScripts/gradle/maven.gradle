@@ -1,0 +1,314 @@
+task buildSdk() {
+    dependsOn gradle.includedBuild('core').task(':gradle-plugin:assemble')
+    dependsOn gradle.includedBuild('core').task(':common:jarReleasePackage')
+    dependsOn gradle.includedBuild('core').task(':loader:assembleRelease')
+    dependsOn gradle.includedBuild('core').task(':manager:assembleRelease')
+    dependsOn gradle.includedBuild('core').task(':runtime:jarReleasePackage')
+    dependsOn gradle.includedBuild('core').task(':transform-kit:assemble')
+    dependsOn gradle.includedBuild('core').task(':transform-kit:testJar')
+    dependsOn gradle.includedBuild('core').task(':transform:assemble')
+    dependsOn gradle.includedBuild('core').task(':load-parameters:assembleRelease')
+
+    dependsOn gradle.includedBuild('dynamic').task(':dynamic-host:jarReleasePackage')
+    dependsOn gradle.includedBuild('dynamic').task(':dynamic-loader:jarReleasePackage')
+    dependsOn gradle.includedBuild('dynamic').task(':dynamic-loader-impl:assembleRelease')
+    dependsOn gradle.includedBuild('dynamic').task(':dynamic-manager:assembleRelease')
+}
+
+task lintSdk() {
+    dependsOn gradle.includedBuild('core').task(':common:lint')
+    dependsOn gradle.includedBuild('core').task(':loader:lint')
+    dependsOn gradle.includedBuild('core').task(':manager:lint')
+    dependsOn gradle.includedBuild('core').task(':runtime:lint')
+    dependsOn gradle.includedBuild('core').task(':load-parameters:lint')
+
+    dependsOn gradle.includedBuild('dynamic').task(':dynamic-host:lint')
+    dependsOn gradle.includedBuild('dynamic').task(':dynamic-loader-impl:lint')
+    dependsOn gradle.includedBuild('dynamic').task(':dynamic-manager:lint')
+}
+
+task testSdk() {
+    dependsOn gradle.includedBuild('core').task(':transform-kit:test')
+    dependsOn gradle.includedBuild('core').task(':transform:test')
+    dependsOn gradle.includedBuild('core').task(':gradle-plugin:test')
+    dependsOn gradle.includedBuild('core').task(':manager:connectedDebugAndroidTest')
+    dependsOn ':test-dynamic-host:connectedDebugAndroidTest'
+}
+
+apply plugin: 'maven-publish'
+
+static def getDependencyNode(scope, groupId, artifactId, version) {
+    Node node = new Node(null, 'dependency')
+    node.appendNode('groupId', groupId)
+    node.appendNode('artifactId', artifactId)
+    node.appendNode('version', version)
+    node.appendNode('scope', scope)
+    return node
+}
+
+def gitShortRev() {
+    def gitCommit = ""
+    def proc = "git rev-parse --short HEAD".execute()
+    proc.in.eachLine { line -> gitCommit = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    return gitCommit
+}
+
+def setScm(scm) {
+    scm.appendNode('connection', 'https://github.com/Tencent/Shadow.git')
+
+    def commit
+    if ("${System.env.ORANGE}".equalsIgnoreCase("true")) {
+        commit = "${System.env.ORANGE_COMMIT}"
+    } else {
+        commit = gitShortRev()
+    }
+    scm.appendNode('url', "https://github.com/Tencent/Shadow/commit/$commit")
+}
+
+def setGeneratePomFileAndDepends(publicationName) {
+    model {
+        tasks."generatePomFileFor${publicationName.capitalize()}Publication" {
+            destination = file("$buildDir/pom/$publicationName-pom.xml")
+            dependsOn(buildSdk)
+            dependsOn(lintSdk)
+        }
+    }
+}
+
+def publicationVersion = project.ARTIFACT_VERSION
+def coreGroupId = 'com.tencent.shadow.core'
+def corePath = 'projects/sdk/core'
+def dynamicGroupId = 'com.tencent.shadow.dynamic'
+def dynamicPath = 'projects/sdk/dynamic'
+
+publishing {
+    publications {
+        gradlePlugin(MavenPublication) {
+            groupId coreGroupId
+            artifactId 'gradle-plugin'
+            version publicationVersion
+            artifact("$corePath/gradle-plugin/build/libs/gradle-plugin.jar")
+
+            pom.withXml {
+                def root = asNode()
+                def dependencies = root.appendNode('dependencies')
+                dependencies.append(getDependencyNode('compile', 'org.jetbrains.kotlin', 'kotlin-stdlib-jdk7', kotlin_version))
+                dependencies.append(getDependencyNode('compile', 'com.android.tools.build', 'gradle', build_gradle_version))
+                dependencies.append(getDependencyNode('compile', coreGroupId, 'transform-kit', publicationVersion))
+                dependencies.append(getDependencyNode('compile', coreGroupId, 'transform', publicationVersion))
+                dependencies.append(getDependencyNode('compile', coreGroupId, 'runtime', publicationVersion))
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+        common(MavenPublication) {
+            groupId coreGroupId
+            artifactId 'common'
+            version publicationVersion
+            artifact("$corePath/common/build/outputs/jar/common-release.jar")
+
+            pom.withXml {
+                def root = asNode()
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+
+        loadParameters(MavenPublication) {
+            groupId coreGroupId
+            artifactId 'load-parameters'
+            version publicationVersion
+            artifact("$corePath/load-parameters/build/outputs/aar/load-parameters-release.aar")
+
+            pom.withXml {
+                def root = asNode()
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+
+        coreLoader(MavenPublication) {
+            groupId coreGroupId
+            artifactId 'loader'
+            version publicationVersion
+            artifact("$corePath/loader/build/outputs/aar/loader-release.aar")
+
+            pom.withXml {
+                def root = asNode()
+                def dependencies = root.appendNode('dependencies')
+                dependencies.append(getDependencyNode('compile', 'org.jetbrains.kotlin', 'kotlin-stdlib-jdk7', kotlin_version))
+                dependencies.append(getDependencyNode('provided',coreGroupId, 'runtime', publicationVersion))
+                dependencies.append(getDependencyNode('provided', coreGroupId, 'common', publicationVersion))
+                dependencies.append(getDependencyNode('compile', coreGroupId, 'load-parameters', publicationVersion))
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+        coreManager(MavenPublication) {
+            groupId coreGroupId
+            artifactId 'manager'
+            version publicationVersion
+            artifact("$corePath/manager/build/outputs/aar/manager-release.aar")
+
+            pom.withXml {
+                def root = asNode()
+                def dependencies = root.appendNode('dependencies')
+                dependencies.append(getDependencyNode('provided', coreGroupId, 'common', publicationVersion))
+                dependencies.append(getDependencyNode('compile', coreGroupId, 'load-parameters', publicationVersion))
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+        runtime(MavenPublication) {
+            groupId coreGroupId
+            artifactId 'runtime'
+            version publicationVersion
+            artifact("$corePath/runtime/build/outputs/jar/runtime-release.jar")
+
+            pom.withXml {
+                def root = asNode()
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+
+        transformKit(MavenPublication) {
+            groupId coreGroupId
+            artifactId 'transform-kit'
+            version publicationVersion
+            artifact("$corePath/transform-kit/build/libs/transform-kit.jar")
+
+            pom.withXml {
+                def root = asNode()
+                def dependencies = root.appendNode('dependencies')
+                dependencies.append(getDependencyNode('compile', 'org.jetbrains.kotlin', 'kotlin-stdlib-jdk7', kotlin_version))
+                dependencies.append(getDependencyNode('compile', 'com.android.tools.build', 'gradle', build_gradle_version))
+                dependencies.append(getDependencyNode('compile', 'org.javassist', 'javassist', '3.22.0-GA'))
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+
+        transformKitTest(MavenPublication) {
+            groupId coreGroupId
+            artifactId 'transform-kit-test'
+            version publicationVersion
+            artifact("$corePath/transform-kit/build/libs/test-transform-kit.jar")
+
+            pom.withXml {
+                def root = asNode()
+                def dependencies = root.appendNode('dependencies')
+                dependencies.append(getDependencyNode('compile', 'junit', 'junit', '4.12'))
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+
+        transform(MavenPublication) {
+            groupId coreGroupId
+            artifactId 'transform'
+            version publicationVersion
+            artifact("$corePath/transform/build/libs/transform.jar")
+
+            pom.withXml {
+                def root = asNode()
+                def dependencies = root.appendNode('dependencies')
+                dependencies.append(getDependencyNode('compile', coreGroupId, 'transform-kit', publicationVersion))
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+        dynamicHost(MavenPublication) {
+            groupId dynamicGroupId
+            artifactId 'host'
+            version publicationVersion
+            artifact("$dynamicPath/dynamic-host/build/outputs/jar/dynamic-host-release.jar")
+
+            pom.withXml {
+                def root = asNode()
+                def dependencies = root.appendNode('dependencies')
+                dependencies.append(getDependencyNode('provided',coreGroupId, 'runtime', publicationVersion))
+                dependencies.append(getDependencyNode('compile', coreGroupId, 'common', publicationVersion))
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+        dynamicLoader(MavenPublication) {
+            groupId dynamicGroupId
+            artifactId 'loader'
+            version publicationVersion
+            artifact("$dynamicPath/dynamic-loader/build/outputs/jar/dynamic-loader-release.jar")
+
+            pom.withXml {
+                def root = asNode()
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+        dynamicLoaderImpl(MavenPublication) {
+            groupId dynamicGroupId
+            artifactId 'loader-impl'
+            version publicationVersion
+            artifact("$dynamicPath/dynamic-loader-impl/build/outputs/aar/dynamic-loader-impl-release.aar")
+
+            pom.withXml {
+                def root = asNode()
+                def dependencies = root.appendNode('dependencies')
+                dependencies.append(getDependencyNode('compile', 'org.jetbrains.kotlin', 'kotlin-stdlib-jdk7', kotlin_version))
+                dependencies.append(getDependencyNode('compile', coreGroupId, 'loader', publicationVersion))
+                dependencies.append(getDependencyNode('provided',coreGroupId, 'runtime', publicationVersion))
+                dependencies.append(getDependencyNode('provided', coreGroupId, 'common', publicationVersion))
+                dependencies.append(getDependencyNode('provided', dynamicGroupId, 'host', publicationVersion))
+                dependencies.append(getDependencyNode('compile', dynamicGroupId, 'loader', publicationVersion))
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+        dynamicManager(MavenPublication) {
+            groupId dynamicGroupId
+            artifactId 'manager'
+            version publicationVersion
+            artifact("$dynamicPath/dynamic-manager/build/outputs/aar/dynamic-manager-release.aar")
+
+            pom.withXml {
+                def root = asNode()
+                def dependencies = root.appendNode('dependencies')
+                dependencies.append(getDependencyNode('compile', coreGroupId, 'manager', publicationVersion))
+                dependencies.append(getDependencyNode('compile', dynamicGroupId, 'loader', publicationVersion))
+                dependencies.append(getDependencyNode('provided', coreGroupId, 'common', publicationVersion))
+                dependencies.append(getDependencyNode('provided', dynamicGroupId, 'host', publicationVersion))
+
+                def scm = root.appendNode('scm')
+                setScm(scm)
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
+
+setGeneratePomFileAndDepends('gradlePlugin')
+setGeneratePomFileAndDepends('common')
+setGeneratePomFileAndDepends('loadParameters')
+setGeneratePomFileAndDepends('coreLoader')
+setGeneratePomFileAndDepends('coreManager')
+setGeneratePomFileAndDepends('runtime')
+setGeneratePomFileAndDepends('transformKit')
+setGeneratePomFileAndDepends('transformKitTest')
+setGeneratePomFileAndDepends('transform')
+setGeneratePomFileAndDepends('dynamicHost')
+setGeneratePomFileAndDepends('dynamicLoader')
+setGeneratePomFileAndDepends('dynamicLoaderImpl')
+setGeneratePomFileAndDepends('dynamicManager')

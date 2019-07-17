@@ -1,0 +1,30 @@
+def gitShortRev() {
+    def gitCommit = ""
+    def proc = "git rev-parse --short HEAD".execute()
+    proc.in.eachLine { line -> gitCommit = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    return gitCommit
+}
+
+allprojects {
+    ext.COMPILE_SDK_VERSION = 28
+    ext.MIN_SDK_VERSION = 16
+    ext.TARGET_SDK_VERSION = 28
+    ext.VERSION_CODE = 1
+    ext.VERSION_NAME = "2.0.12"
+    if ("${System.env.PUBLISH_RELEASE}".equalsIgnoreCase("true")) {
+        ext.VERSION_SUFFIX = ""
+    } else if ("${System.env.ORANGE}".equalsIgnoreCase("true")) {
+        ext.VERSION_SUFFIX = "-${System.env.ORANGE_COMMIT_SHORT}-SNAPSHOT"
+    } else {
+        ext.VERSION_SUFFIX = "-${gitShortRev()}-SNAPSHOT"
+    }
+    ext.ARTIFACT_VERSION = ext.VERSION_NAME + ext.VERSION_SUFFIX
+    ext.TEST_HOST_APP_APPLICATION_ID = 'com.tencent.shadow.test.hostapp'
+    ext.SAMPLE_HOST_APP_APPLICATION_ID = 'com.tencent.shadow.sample.host'
+    repositories {
+        google()
+        jcenter()
+    }
+}

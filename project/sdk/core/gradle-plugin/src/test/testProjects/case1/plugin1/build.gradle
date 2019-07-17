@@ -1,0 +1,104 @@
+buildscript {
+    ext.build_gradle_version = '3.1.3'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$build_gradle_version"
+    }
+}
+
+plugins {
+    id 'com.android.application'
+    id 'com.tencent.shadow.plugin'
+}
+
+allprojects {
+    ext.COMPILE_SDK_VERSION = 28
+    ext.MIN_SDK_VERSION = 16
+    ext.TARGET_SDK_VERSION = 28
+    ext.VERSION_CODE = 1
+    ext.VERSION_NAME = "local"
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext.disable_shadow_transform = true
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION
+
+    defaultConfig {
+        applicationId "com.tencent.shadow.test.gradle.plugin1"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+    }
+}
+
+shadow {
+    packagePlugin {
+        pluginTypes {
+            debug {
+                loaderApkConfig = new Tuple2('loader-debug.apk', ':loader:assembleDebug')
+                runtimeApkConfig = new Tuple2('runtime-debug.apk', ':runtime:assembleDebug')
+                pluginApks {
+                    pluginApk1 {
+                        businessName = 'plugin1'
+                        partKey = 'plugin1'
+                        buildTask = ':plugin1:assembleDebug'
+                        apkName = 'plugin1-debug.apk'
+                        apkPath = 'plugin1/build/outputs/apk/debug/plugin1-debug.apk'
+                        dependsOn = ['Core', 'Base']
+                        hostWhiteList = ["androidx.test.espresso",
+                                         "com.tencent.shadow.test.lib.plugin_use_host_code_lib.interfaces"]
+                    }
+                }
+            }
+
+            onlyApk {
+                pluginApks {
+                    pluginApk1 {
+                        partKey = 'plugin1'
+                        buildTask = ':plugin1:assembleDebug'
+                        apkName = 'plugin1-debug.apk'
+                        apkPath = 'plugin1/build/outputs/apk/debug/plugin1-debug.apk'
+                        dependsOn = ['Core', 'Base']
+                        hostWhiteList = ["androidx.test.espresso",
+                                         "com.tencent.shadow.test.lib.plugin_use_host_code_lib.interfaces"]
+                    }
+                }
+            }
+        }
+
+        loaderApkProjectPath = 'loader'
+
+        runtimeApkProjectPath = 'runtime'
+
+        uuid = '1234567890'
+        version = 4
+        compactVersion = [1, 2, 3]
+        uuidNickName = "1.1.5"
+    }
+}
+
+task genUUID()  {
+    doFirst {
+        def uuidFile = file(rootProject.projectDir.absolutePath + '/build/uuid.txt')
+        uuidFile.getParentFile().mkdirs()
+        BufferedWriter writer = new BufferedWriter(new FileWriter(uuidFile))
+        writer.write(UUID.randomUUID().toString().toUpperCase())
+        writer.flush()
+        writer.close()
+    }
+}
+
+task PackageMultiPlugin(dependsOn: ['genUUID', 'packageDebugPlugin', ':plugin2:packagePlugin2DebugPlugin']) {
+    doLast {
+        file(rootProject.projectDir.absolutePath + '/build/uuid.txt').delete()
+    }
+}

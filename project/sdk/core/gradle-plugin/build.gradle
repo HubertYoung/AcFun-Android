@@ -1,0 +1,35 @@
+apply plugin: 'java-gradle-plugin'
+
+apply plugin: 'kotlin'
+
+group 'com.tencent.shadow.core'
+
+gradlePlugin {
+    plugins {
+        shadow {
+            id = "com.tencent.shadow.plugin"
+            implementationClass = "com.tencent.shadow.core.gradle.ShadowPlugin"
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.tools.build:gradle:$build_gradle_version"
+    implementation project(':transform')
+    testImplementation 'junit:junit:4.12'
+    testImplementation gradleTestKit()
+
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.6"
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.6"
+    }
+}

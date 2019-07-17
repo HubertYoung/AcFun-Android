@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        applicationId project.SAMPLE_HOST_APP_APPLICATION_ID
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.create("release")
+            signingConfig.initWith(buildTypes.debug.signingConfig)
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.tencent.shadow.core:loader'
+    implementation 'com.tencent.shadow.dynamic:dynamic-loader'
+    implementation 'com.tencent.shadow.dynamic:dynamic-loader-impl'
+    implementation project(':sample-constant')
+
+    compileOnly 'com.tencent.shadow.core:runtime-debug'
+    compileOnly 'com.tencent.shadow.core:common-debug'
+    //下面这行依赖是为了防止在proguard的时候找不到LoaderFactory接口
+    compileOnly 'com.tencent.shadow.dynamic:dynamic-host-debug'
+}
+
+afterEvaluate {
+    android {
+        buildTypes.findAll().each { buildType ->
+            def buildTypeName = buildType.getName()
+            println("buildType == ${buildTypeName} == ${buildTypeName.capitalize()} == ${project.getTasks()}")
+//            def name = project.getTasksByName("check${buildTypeName.capitalize()}Classpath", false)
+            def name = project.getTasksByName("pre${buildTypeName.capitalize()}Build", false)
+            println("buildTypeName == ${name}")
+            def task = name.first() as Task
+            task.dependsOn gradle.includedBuild('core').task(':common:jarDebugPackage')
+            task.dependsOn gradle.includedBuild('dynamic').task(':dynamic-host:jarDebugPackage')
+        }
+    }
+}

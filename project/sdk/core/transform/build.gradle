@@ -1,0 +1,21 @@
+apply plugin: 'kotlin'
+
+group 'com.tencent.shadow.core'
+
+dependencies {
+    compile project(':transform-kit')
+    testCompile 'junit:junit:4.12'
+    testCompile project(path: ':transform-kit', configuration: 'tests')
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.6"
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.6"
+    }
+}
