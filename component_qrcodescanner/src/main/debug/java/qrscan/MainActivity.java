@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package qrscan;
+package httpdns;
 
 import android.Manifest;
 import android.content.Context;
@@ -36,7 +36,7 @@ import com.hubertyoung.plugin.qrscan.CaptureActivity;
 import com.hubertyoung.plugin.qrscan.Intents;
 import com.hubertyoung.plugin.qrscan.util.CodeUtils;
 
-import qrscan.util.UriUtils;
+import httpdns.util.UriUtils;
 
 public class MainActivity extends AppCompatActivity {
 

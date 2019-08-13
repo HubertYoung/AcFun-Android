@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.hubertyoung.component_qrscan">
+          package="com.hubertyoung.component_httpdns">
 
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -15,34 +15,20 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-        android:name="com.hubertyoung.common.CommonApplication"
+        android:name="httpdns.HttpDnsApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/component_qrscan"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity
-            android:name="com.hubertyoung.plugin.qrscan.CaptureActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="httpdns.MainActivity"
-                  android:screenOrientation="portrait">
+        <activity android:name="httpdns.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="httpdns.EasyCaptureActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="httpdns.CustomCaptureActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="httpdns.CodeActivity"
-            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

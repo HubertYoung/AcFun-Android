@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package qrscan;
+package httpdns;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.hubertyoung.component_qrscan.R;
 import com.hubertyoung.plugin.qrscan.CaptureActivity;
 
-import qrscan.util.StatusBarUtils;
+import httpdns.util.StatusBarUtils;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
