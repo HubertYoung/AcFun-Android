@@ -1,4 +1,4 @@
-package com.hubertyoung.component_httpdns;
+package com.hubertyoung.component_qrcodescanner;
 
 import org.junit.Test;
 

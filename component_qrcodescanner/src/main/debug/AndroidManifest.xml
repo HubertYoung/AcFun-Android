@@ -26,7 +26,7 @@
             android:name="com.hubertyoung.plugin.qrscan.CaptureActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="httpdns.MainActivity"
+        <activity android:name="qrscan.MainActivity"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -35,13 +35,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="httpdns.EasyCaptureActivity"
+            android:name="qrscan.EasyCaptureActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="httpdns.CustomCaptureActivity"
+            android:name="qrscan.CustomCaptureActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="httpdns.CodeActivity"
+            android:name="qrscan.CodeActivity"
             android:screenOrientation="portrait"/>
     </application>
 

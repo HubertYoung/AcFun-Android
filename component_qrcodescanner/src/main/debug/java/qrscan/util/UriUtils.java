@@ -1,4 +1,4 @@
-package httpdns.util;
+package qrscan.util;
 
 import android.content.ContentUris;
 import android.content.Context;

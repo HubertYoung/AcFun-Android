@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package httpdns;
+package qrscan;
 
 import android.hardware.Camera;
 import android.os.Bundle;
@@ -26,7 +26,7 @@ import com.google.zxing.Result;
 import com.hubertyoung.component_qrscan.R;
 import com.hubertyoung.plugin.qrscan.CaptureActivity;
 
-import httpdns.util.StatusBarUtils;
+import qrscan.util.StatusBarUtils;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>

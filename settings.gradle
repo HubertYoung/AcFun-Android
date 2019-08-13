@@ -50,7 +50,7 @@ def includeComponent() {
 //        ':component_pickerview',
             ':component_bar',
             ':component_titlebar',
-//        ':component_update',
+        ':component_qrcodescanner',
             ':component_ping',
             ':component_aggregation',
 

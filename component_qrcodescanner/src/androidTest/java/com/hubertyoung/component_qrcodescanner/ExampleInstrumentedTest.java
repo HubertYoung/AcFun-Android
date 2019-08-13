@@ -1,4 +1,4 @@
-package com.hubertyoung.component_httpdns;
+package com.hubertyoung.component_qrcodescanner;
 
 
 import android.support.test.runner.AndroidJUnit4;
