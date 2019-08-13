@@ -1,4 +1,3 @@
-
 includeBase()
 includeApp()
 includeSharePlatform()
@@ -6,14 +5,14 @@ includeComponent()
 includeLib()
 includePlugin()
 
-def includeBase(){
+def includeBase() {
     include ':common_res',
             ':common'
     project(':common').projectDir = new File(rootDir, 'library_base/common')
     project(':common_res').projectDir = new File(rootDir, 'library_base/common_res')
 }
 
-def includeApp(){
+def includeApp() {
     include ':acfun',
             ':component_acfunmine',
             ':component_acfunarticle',
@@ -21,7 +20,8 @@ def includeApp(){
             ':component_acfunvideo',
             ':component_gamecenter'
 }
-def includeSharePlatform(){
+
+def includeSharePlatform() {
     include ':baseplatformlibrary',
             ':alipayplatformlibrary',
             ':wechatplatformlibrary',
@@ -36,8 +36,8 @@ def includeSharePlatform(){
 
 }
 
-def includeComponent(){
-    include  ':component_stateview',
+def includeComponent() {
+    include ':component_stateview',
             ':component_banner',
             ':component_developer',
             ':component_dynamicsoreview',
@@ -50,12 +50,12 @@ def includeComponent(){
 //        ':component_pickerview',
             ':component_bar',
             ':component_titlebar',
-//        ':component_update',
+        ':component_qrcodescanner',
             ':component_ping',
             ':component_aggregation',
 
             ':component_dialog',
-//        ':library_update',
+            ':component_httpdns',
             ':component_host'
 
     project(':component_bankcard').projectDir = new File(rootDir, 'library/component_bankcard')
@@ -71,7 +71,7 @@ def includeComponent(){
 
 }
 
-def includeLib(){
+def includeLib() {
     include ':studydemo',
             ':bottom-navigation-bar',
             ':gsyVideoPlayer',
@@ -102,7 +102,8 @@ def includeLib(){
     project(':gsyVideoPlayer-x86_64').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-x86_64')
 
 }
-def includePlugin(){
+
+def includePlugin() {
     include ':plugin-view',
             ':plugin_qrcodescanner'
 }

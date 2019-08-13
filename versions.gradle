@@ -279,6 +279,7 @@ def addRepos(RepositoryHandler handler) {
     handler.jcenter()
     handler.google()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    handler.maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' }
     //微博
     handler.maven { url "https://dl.bintray.com/thelasterstar/maven/" }
     handler.maven { url 'https://dl.bintray.com/hubertyoung/share_platform' }
