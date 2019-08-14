@@ -79,6 +79,10 @@ public class ClipboardUtils {
 
 	/**
 	 * 获取剪贴板的意图
+	 * 假说有一个应用通过某种类型的用户交互在剪切板中创建，增加一个包含了被认为是“公用”组件的Intent对象的ClipData
+	 * 恶意应用可能会设置一个监听器来接收新增ClipData的通知
+	 * 一旦检测到新的ClipData，它可以通过在剪切板增加一个包含了新的Intent对象的恶意ClipData
+	 *TODO 待优化
 	 *
 	 * @return 剪贴板的意图
 	 */

@@ -1,7 +1,14 @@
 package com.hubertyoung.component_httpdns;
 
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.os.Looper;
 import android.support.test.runner.AndroidJUnit4;
+
+import com.hubertyoung.common.CommonApplication;
+import com.hubertyoung.common.utils.os.ClipboardUtils;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,5 +31,13 @@ public class ExampleInstrumentedTest {
 		} catch ( Throwable throwable ) {
 			throwable.printStackTrace();
 		}
+	}
+	@Test
+	public void testClipboardUtils(){
+		Looper.prepare();
+		ClipboardUtils.copyText( "hhhh" );
+		ClipboardManager clipboard = (ClipboardManager) CommonApplication.getAppContext().getSystemService( Context.CLIPBOARD_SERVICE);
+		clipboard.setPrimaryClip( ClipData.newPlainText("hhhh", "22222"));
+		ClipboardUtils.getText();
 	}
 }
