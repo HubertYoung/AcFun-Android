@@ -7,8 +7,8 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.hubertyoung.component_httpdns.R;
-import com.hubertyoung.httpdns.HttpDnsMonitor;
-import com.hubertyoung.httpdns.HttpDnsServiceProvider;
+import com.hubertyoung.backgroundjob.HttpDnsMonitor;
+import com.hubertyoung.backgroundjob.HttpDnsServiceProvider;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

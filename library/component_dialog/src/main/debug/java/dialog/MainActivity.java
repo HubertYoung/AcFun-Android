@@ -1,58 +1,93 @@
 package dialog;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.view.ViewGroup;
 
+import com.hubertyoung.component_dialog.BuildConfig;
 import com.hubertyoung.component_dialog.R;
+import com.lxj.xpopup.XPopup;
 
-import dialog.ui.DialogEncapActivity;
-import dialog.ui.DiffentDialogActivity;
-import dialog.ui.NormalDFActivity;
-import dialog.ui.SystemDialog;
+import dialog.fragment.AllAnimatorDemo;
+import dialog.fragment.CustomAnimatorDemo;
+import dialog.fragment.CustomPopupDemo;
+import dialog.fragment.ImageViewerDemo;
+import dialog.fragment.PartShadowDemo;
+import dialog.fragment.QuickStartDemo;
 
 public class MainActivity extends AppCompatActivity {
+
+    PageInfo[] pageInfos = new PageInfo[]{
+            new PageInfo("快速开始", new QuickStartDemo()),
+            new PageInfo("局部阴影", new PartShadowDemo()),
+            new PageInfo("图片浏览", new ImageViewerDemo()),
+            new PageInfo("尝试不同动画", new AllAnimatorDemo()),
+            new PageInfo("自定义弹窗", new CustomPopupDemo()),
+            new PageInfo("自定义动画", new CustomAnimatorDemo())
+    };
+
+    TabLayout tabLayout;
+    public ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_main);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(actionBar.getTitle() + BuildConfig.VERSION_NAME);
+
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
+
+        viewPager.setAdapter(new MainAdapter(getSupportFragmentManager()));
+        tabLayout.setupWithViewPager(viewPager);
+
+        XPopup.setPrimaryColor(getResources().getColor(R.color.colorPrimary));
+//        XPopup.setAnimationDuration(1000);
+//        XPopup.setPrimaryColor(Color.RED);
     }
 
-    /**
-     * 系统Dialog使用
-     *
-     * @param view
-     */
-    public void systemDialog(View view) {
-        startActivity(new Intent(this, SystemDialog.class));
+    public ViewGroup getAppBar(){
+        return findViewById(R.id.appBarLayout);
     }
 
-    /**
-     * DialogFragment的使用
-     *
-     * @param view
-     */
-    public void NormalDF(View view) {
-        startActivity(new Intent(this, NormalDFActivity.class));
+
+    class MainAdapter extends FragmentPagerAdapter {
+
+        public MainAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            return pageInfos[i].fragment;
+        }
+
+        @Override
+        public int getCount() {
+            return pageInfos.length;
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return pageInfos[position].title;
+        }
     }
 
-    /**
-     * DialogFragment封装
-     *
-     * @param view
-     */
-    public void DialogEncap(View view) {
-        startActivity(new Intent(this, DialogEncapActivity.class));
-    }
-
-    /**
-     * 常用的各种Dialog
-     *
-     * @param view
-     */
-    public void diffentDialog(View view) {
-        startActivity(new Intent(this, DiffentDialogActivity.class));
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        viewPager.removeAllViews();
+        viewPager = null;
+        pageInfos = null;
     }
 }

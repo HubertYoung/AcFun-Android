@@ -1,31 +1,11 @@
 <resources>
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/white</item>
-        <item name="android:windowAnimationStyle">@style/WindowsAnim</item>
-        <item name="android:fitsSystemWindows">false</item>
-        <item name="android:clipToPadding">true</item>
-        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-
-    <style name="AppTheme" parent="AppTheme.Base"></style>
-
-    <style name="WindowsAnim" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_right</item>
-    </style>
-    <style name="animate_dialog">
-        <item name="android:windowEnterAnimation">@anim/enter_translate_dialog</item>
-        <item name="android:windowExitAnimation">@anim/exit_translate_dialog</item>
-    </style>
-
-    <style name="animate_dialog_scale">
-        <item name="android:windowEnterAnimation">@anim/enter_scale_dialog</item>
-        <item name="android:windowExitAnimation">@anim/exit_scale_dialog</item>
-    </style>
 </resources>

@@ -14,9 +14,9 @@ package httpdns;
 import android.util.Log;
 
 import com.hubertyoung.common.CommonApplication;
-import com.hubertyoung.httpdns.AliHttpDnsStrategy;
-import com.hubertyoung.httpdns.HttpDnsMonitor;
-import com.hubertyoung.httpdns.HttpDnsServiceProvider;
+import com.hubertyoung.backgroundjob.AliHttpDnsStrategy;
+import com.hubertyoung.backgroundjob.HttpDnsMonitor;
+import com.hubertyoung.backgroundjob.HttpDnsServiceProvider;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -52,7 +52,8 @@ def includeComponent() {
             ':component_titlebar',
         ':component_qrcodescanner',
             ':component_ping',
-            ':component_aggregation',
+//            ':component_aggregation',
+            ':component_backgroundjob',
 
             ':component_dialog',
             ':component_httpdns',
@@ -66,7 +67,7 @@ def includeComponent() {
     project(':component_ping').projectDir = new File(rootDir, 'library/component_ping')
     project(':component_skeleton').projectDir = new File(rootDir, 'library/component_skeleton')
     project(':component_stateview').projectDir = new File(rootDir, 'library/component_stateview')
-    project(':component_aggregation').projectDir = new File(rootDir, 'library/component_aggregation')
+//    project(':component_aggregation').projectDir = new File(rootDir, 'library/component_aggregation')
     project(':component_titlebar').projectDir = new File(rootDir, 'library/component_titlebar')
 
 }
