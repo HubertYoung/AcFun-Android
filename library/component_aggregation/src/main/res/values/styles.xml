@@ -1,6 +1,0 @@
-<resources>
-    <style name="animate_dialog_scale">
-        <item name="android:windowEnterAnimation">@anim/bottom_option_sheet_animation_in</item>
-        <item name="android:windowExitAnimation">@anim/bottom_option_sheet_animation_out</item>
-    </style>
-</resources>
