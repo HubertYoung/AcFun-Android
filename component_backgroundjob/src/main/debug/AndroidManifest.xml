@@ -1,35 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.hubertyoung.component_backgroundjob">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hubertyoung.component_backgroundjob">
 
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
-    <!-- unavailable in API 23 -->
-    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
 
     <application
-        android:name="httpdns.HttpDnsApplication"
+        android:name="backgroundjob.JobApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/component_backgroundjob"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name="httpdns.MainActivity">
+        <activity android:name="backgroundjob.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name="com.hubertyoung.backgroundjob.service.ScreenService" />
+        <activity
+            android:name="com.hubertyoung.backgroundjob.daemon.GenOpsActivity"
+            android:theme="@android:style/Theme.NoDisplay" />
+        <activity
+            android:name="com.hubertyoung.backgroundjob.daemon.KillActivity"
+            android:theme="@android:style/Theme.NoDisplay" />
+        <activity
+            android:name="com.hubertyoung.backgroundjob.daemon.RevokeActivity"
+            android:theme="@android:style/Theme.NoDisplay" />
+        <activity
+            android:name="com.hubertyoung.backgroundjob.SinglePixelActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="false"
+            android:launchMode="singleInstance"
+            android:theme="@style/SingleActivityStyle" />
+
+        <!-- 注册Service -->
+        <service
+            android:name="com.hubertyoung.backgroundjob.service.DaemonService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":daemon_service" />
+        <service
+            android:name="com.hubertyoung.backgroundjob.service.CancelNoticeService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":service" />
+        <service
+            android:name="com.hubertyoung.backgroundjob.service.PlayerMusicService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":music_service" />
+        <service
+            android:name="com.hubertyoung.backgroundjob.service.AliveJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <receiver
+            android:name="com.hubertyoung.backgroundjob.WakeUpReceiver"
+            android:process=":watch">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+                <action android:name="com.hubertyoung.backgroundjob.CANCEL_JOB_ALARM_SUB"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.hubertyoung.backgroundjob.WakeUpReceiver$WakeUpAutoStartReceiver"
+            android:process=":watch">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.hubertyoung.backgroundjob.AbsWorkService$WorkNotificationService"/>
+
+        <service
+            android:name="com.hubertyoung.backgroundjob.JobSchedulerService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":watch"/>
+
+        <service
+            android:name="com.hubertyoung.backgroundjob.WatchDogService"
+            android:process=":watch"/>
+
+        <service
+            android:name="com.hubertyoung.backgroundjob.WatchDogService$WatchDogNotificationService"
+            android:process=":watch"/>
+
+        <service android:name="backgroundjob.ServiceImpl" />
+
     </application>
 
 </manifest>

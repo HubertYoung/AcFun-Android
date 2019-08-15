@@ -7,11 +7,14 @@ import android.content.Context;
 import android.os.Looper;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.hubertyoung.backgroundjob.DaemonEnv;
 import com.hubertyoung.common.CommonApplication;
 import com.hubertyoung.common.utils.os.ClipboardUtils;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import backgroundjob.ServiceImpl;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -39,5 +42,14 @@ public class ExampleInstrumentedTest {
 		ClipboardManager clipboard = (ClipboardManager) CommonApplication.getAppContext().getSystemService( Context.CLIPBOARD_SERVICE);
 		clipboard.setPrimaryClip( ClipData.newPlainText("hhhh", "22222"));
 		ClipboardUtils.getText();
+	}
+	@Test
+	public void testBackgroundServer(){
+		initServiceImpl(CommonApplication.getAppContext());
+	}
+	private final void initServiceImpl(Context context) {
+		DaemonEnv.initialize(context, ServiceImpl.class, Integer.valueOf(DaemonEnv.DEFAULT_WAKE_UP_INTERVAL));
+		ServiceImpl.sShouldStopService = false;
+		DaemonEnv.startServiceMayBind(ServiceImpl.class);
 	}
 }
