@@ -3,6 +3,7 @@ package com.hubertyoung.wechatplatforms.platforms.weixin;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.hubertyoung.baseplatform.authorize.IAuthorize;
@@ -25,8 +26,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
-
-import android.support.annotation.NonNull;
 
 
 /**

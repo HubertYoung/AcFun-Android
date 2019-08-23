@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">SectionedRecyclerViewAdapter Demo</string>
+
+    <string name="home_title">Demo</string>
+    <string name="home_message">Use the navigation drawer to view an example.</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="nav_stateless">Stateless Section</string>
+    <string name="nav_example1">Section with Header</string>
+    <string name="nav_example2">Section with Header and Footer</string>
+    <string name="nav_example4">Expandable Section</string>
+    <string name="nav_example5">Grid Section with Header</string>
+    <string name="nav_example6">Expandable Grid Section</string>
+    <string name="nav_example7">SearchView with Sections</string>
+    <string name="nav_stateful">Stateful Section</string>
+    <string name="nav_example3">Section with Header and Footer</string>
+    <string name="nav_example8">Animations</string>
+
+    <string name="action_search">Search</string>
+
+    <string name="cd_app_icon">App icon</string>
+    <string name="cd_android_icon">Android icon</string>
+    <string name="cd_movie_icon">Movie icon</string>
+    <string name="cd_cloud_crossed">Cloud crossed icon</string>
+    <string name="cd_arrow_icon">Arrow icon</string>
+
+    <string name="world_topic">World</string>
+    <string name="biz_topic">Business</string>
+    <string name="tech_topic">Technology</string>
+    <string name="sports_topic">Sports</string>
+
+    <string name="top_rated_movies_topic">Top Rated Movies</string>
+    <string name="most_popular_movies_topic">Most Popular Movies</string>
+
+    <string name="group_title">Group #%1$s</string>
+
+    <string name="more">MORE</string>
+    <string name="see_more">See more..</string>
+    <string name="failed_load">Failed to load, tap to try again.</string>
+
+    <string name="add">ADD</string>
+    <string name="clear">CLEAR</string>
+    <string name="add_group">ADD GROUP</string>
+
+</resources>

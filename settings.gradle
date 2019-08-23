@@ -49,8 +49,9 @@ def includeComponent() {
 //        ':component_gridpasswordview',
 //        ':component_pickerview',
             ':component_bar',
+            ':component_section',
             ':component_titlebar',
-        ':component_qrcodescanner',
+            ':component_qrcodescanner',
             ':component_ping',
             ':component_aggregation',
             ':component_backgroundjob',
@@ -62,6 +63,7 @@ def includeComponent() {
     project(':component_bankcard').projectDir = new File(rootDir, 'library/component_bankcard')
     project(':component_banner').projectDir = new File(rootDir, 'library/component_banner')
     project(':component_bar').projectDir = new File(rootDir, 'library/component_bar')
+    project(':component_section').projectDir = new File(rootDir, 'library/component_section')
     project(':component_dialog').projectDir = new File(rootDir, 'library/component_dialog')
     project(':component_dynamicsoreview').projectDir = new File(rootDir, 'library/component_dynamicsoreview')
     project(':component_ping').projectDir = new File(rootDir, 'library/component_ping')
