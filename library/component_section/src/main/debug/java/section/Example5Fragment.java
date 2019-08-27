@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hubertyoung.common.utils.display.DisplayUtil;
+import com.hubertyoung.common.widget.decoration.HorizontalDividerItemDecoration;
+import com.hubertyoung.common.widget.decoration.VerticalDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
 import com.hubertyoung.common.widget.sectioned.StatelessSection;
@@ -37,17 +38,17 @@ public class Example5Fragment extends Fragment {
         sectionAdapter = new SectionedRecyclerViewAdapter();
 
         sectionAdapter.addSection(new MovieSection(getString(R.string.top_rated_movies_topic), getTopRatedMoviesList()));
-        sectionAdapter.addSection(new MovieSection(getString(R.string.most_popular_movies_topic), getMostPopularMoviesList()));
+//        sectionAdapter.addSection(new MovieSection(getString(R.string.most_popular_movies_topic), getMostPopularMoviesList()));
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
 
-        GridLayoutManager glm = new GridLayoutManager(getContext(), 2);
+        GridLayoutManager glm = new GridLayoutManager(getContext(), 3);
         glm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
                 switch (sectionAdapter.getSectionItemViewType(position)) {
                     case SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER:
-                        return 2;
+                        return 3;
                     default:
                         return 1;
                 }
@@ -56,9 +57,23 @@ public class Example5Fragment extends Fragment {
         recyclerView.setLayoutManager(glm);
         recyclerView.setAdapter(sectionAdapter);
         //添加自定义分割线
-        DividerItemDecoration divider = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
-        divider.setDrawable( ContextCompat.getDrawable(getActivity(),R.drawable.custom_divider));
-        recyclerView.addItemDecoration(divider);
+//        DividerItemDecoration divider = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
+//        divider.setDrawable( ContextCompat.getDrawable(getActivity(),R.drawable.custom_divider));
+        HorizontalDividerItemDecoration.Builder builder = new HorizontalDividerItemDecoration.Builder( getActivity() );
+        builder.size( DisplayUtil.dip2px( 20 ) );
+        builder.colorResId( R.color.colorAccent );
+//        builder.showFirstDivider();
+//        builder.showLastDivider();
+        VerticalDividerItemDecoration.Builder builder2 = new VerticalDividerItemDecoration.Builder( getActivity() );
+        builder2.colorResId( R.color.colorAccent );
+        builder2.size( DisplayUtil.dip2px( 20 ) );
+        builder2.showFirstDivider()
+                .showLastDivider();
+//        SimpleDividerDecoration decoration = new SimpleDividerDecoration( getActivity(), SimpleDividerDecoration.GRID_DIVIDER_VERTICAL );
+////        decoration.setHorizontalSize( 10,R.color.colorAccent );
+//        decoration.setVerticalSize( 10, R.color.colorAccent);
+//        recyclerView.addItemDecoration(builder.build());
+        recyclerView.addItemDecoration(builder2.build());
         return view;
     }
 

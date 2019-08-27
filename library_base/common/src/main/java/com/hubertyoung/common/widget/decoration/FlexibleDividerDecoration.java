@@ -16,6 +16,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.hubertyoung.common.widget.sectioned.SectionedRecyclerViewAdapter;
+
 /**
  */
 public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecoration {
@@ -97,7 +99,13 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 		for (int i = 0; i < validChildCount; i++) {
 			View child = parent.getChildAt( i );
 			int childPosition = parent.getChildAdapterPosition( child );
-
+			if ( adapter instanceof SectionedRecyclerViewAdapter ){
+				SectionedRecyclerViewAdapter sectionAdapter = ( SectionedRecyclerViewAdapter ) adapter;
+				int itemViewType = sectionAdapter.getItemViewType( i );
+				if ( itemViewType == SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER ){
+					continue;
+				}
+			}
 			if ( childPosition < lastChildPosition ) {
 				// Avoid remaining divider when animation starts
 				continue;
@@ -144,8 +152,16 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 	@Override
 	public void getItemOffsets( Rect rect, View v, RecyclerView parent, RecyclerView.State state ) {
 		int position = parent.getChildAdapterPosition( v );
-		int itemCount = parent.getAdapter()
-							  .getItemCount();
+		RecyclerView.Adapter adapter = parent.getAdapter();
+		int itemCount = adapter.getItemCount();
+		if ( adapter instanceof SectionedRecyclerViewAdapter ){
+			SectionedRecyclerViewAdapter sectionAdapter = ( SectionedRecyclerViewAdapter ) adapter;
+			int itemViewType = sectionAdapter.getItemViewType( position );
+			if ( itemViewType == SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER ){
+				return;
+			}
+		}
+
 		int lastDividerOffset = getLastDividerOffset( parent );
 		if (!mShowLastDivider && position >= itemCount - lastDividerOffset ) {
 			// Don't set item offset for last line if mShowLastDivider = false
@@ -157,7 +173,7 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 			return;
 		}
 
-		setItemOffsets( rect, groupIndex, parent );
+		setItemOffsets( rect, groupIndex,position, parent );
 	}
 	/**
 	 * Check if recyclerview is LinearLayoutManager layout
@@ -256,7 +272,7 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
 
 	protected abstract Rect getDividerBound( int position, RecyclerView parent, View child );
 
-	protected abstract void setItemOffsets( Rect outRect, int position, RecyclerView parent );
+	protected abstract void setItemOffsets( Rect outRect, int groupIndex, int position, RecyclerView parent );
 
 	/**
 	 * Interface for controlling divider visibility

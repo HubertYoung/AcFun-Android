@@ -64,27 +64,39 @@ public class VerticalDividerItemDecoration extends FlexibleDividerDecoration {
 	}
 
 	@Override
-	protected void setItemOffsets( Rect outRect, int position, RecyclerView parent ) {
+	protected void setItemOffsets( Rect outRect, int groupIndex, int position, RecyclerView parent ) {
 		if ( mPositionInsideItem ) {
 			outRect.set( 0, 0, 0, 0 );
 			return;
 		}
 		if ( isLinearLayoutManager( parent ) ) {
 			if ( isReverseLayout( parent ) ) {
-				if ( mShowFirstDivider == true && position == 0 ) {
-					outRect.set( getDividerSize( position, parent ), 0, getDividerSize( position, parent ), 0 );
+				if ( mShowFirstDivider == true && groupIndex == 0 ) {
+					outRect.set( getDividerSize( groupIndex, parent ), 0, getDividerSize( groupIndex, parent ), 0 );
 				}else{
-					outRect.set( getDividerSize( position, parent ), 0, 0, 0 );
+					outRect.set( getDividerSize( groupIndex, parent ), 0, 0, 0 );
 				}
 			} else {
-				if ( mShowFirstDivider == true && position == 0 ) {
-					outRect.set( getDividerSize( position, parent ), 0, getDividerSize( position, parent ), 0 );
+				if ( mShowFirstDivider == true && groupIndex == 0 ) {
+					outRect.set( getDividerSize( groupIndex, parent ), 0, getDividerSize( groupIndex, parent ), 0 );
 				}else{
-					outRect.set( 0, 0, getDividerSize( position, parent ), 0 );
+					outRect.set( 0, 0, getDividerSize( groupIndex, parent ), 0 );
 				}
 			}
 		}else{
-			int itemCount = parent.getAdapter().getItemCount();
+			if ( isReverseLayout( parent ) ) {
+				if ( mShowFirstDivider == true && groupIndex == 0 ) {
+					outRect.set( getDividerSize( groupIndex, parent ), 0, getDividerSize( groupIndex, parent ), 0 );
+				}else{
+					outRect.set( getDividerSize( groupIndex, parent ), 0, 0, 0 );
+				}
+			} else {
+				if ( mShowFirstDivider == true && groupIndex == 0 ) {
+					outRect.set( getDividerSize( groupIndex, parent ), 0, getDividerSize( groupIndex, parent ), 0 );
+				}else{
+					outRect.set( 0, 0, getDividerSize( groupIndex, parent ), 0 );
+				}
+			}
 		}
 	}
 

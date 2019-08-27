@@ -73,23 +73,23 @@ public class HorizontalDividerItemDecoration extends FlexibleDividerDecoration {
 	}
 
 	@Override
-	protected void setItemOffsets( Rect outRect, int position, RecyclerView parent ) {
+	protected void setItemOffsets( Rect outRect, int groupIndex, int position, RecyclerView parent ) {
 		if ( mPositionInsideItem ) {
 			outRect.set( 0, 0, 0, 0 );
 			return;
 		}
 
 		if ( isReverseLayout( parent ) ) {
-			if ( mShowFirstDivider == true && position == 0 ) {
-				outRect.set( 0, getDividerSize( position, parent ), 0, getDividerSize( position, parent ) );
+			if ( mShowFirstDivider == true && groupIndex == 0 ) {
+				outRect.set( 0, getDividerSize( groupIndex, parent ), 0, getDividerSize( groupIndex, parent ) );
 			}else{
-				outRect.set( 0, getDividerSize( position, parent ), 0, 0 );
+				outRect.set( 0, getDividerSize( groupIndex, parent ), 0, 0 );
 			}
 		} else {
-			if ( mShowFirstDivider == true && position == 0 ) {
-				outRect.set( 0, getDividerSize( position, parent ), 0, getDividerSize( position, parent ) );
+			if ( mShowFirstDivider == true && groupIndex == 0 ) {
+				outRect.set( 0, getDividerSize( groupIndex, parent ), 0, getDividerSize( groupIndex, parent ) );
 			}else{
-				outRect.set( 0, 0, 0, getDividerSize( position, parent ) );
+				outRect.set( 0, 0, 0, getDividerSize( groupIndex, parent ) );
 			}
 		}
 	}
