@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -14,8 +15,6 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.hubertyoung.common.CommonApplication;
-
-import android.support.v7.app.AppCompatActivity;
 
 
 /**
@@ -129,11 +128,10 @@ public class DisplayUtil {
 	/**
 	 * 获得屏幕宽度
 	 *
-	 * @param context
 	 * @return
 	 */
-	public static int getScreenWidth( Context context ) {
-		WindowManager wm = ( WindowManager ) context.getSystemService( Context.WINDOW_SERVICE );
+	public static int getScreenWidth() {
+		WindowManager wm = ( WindowManager ) CommonApplication.getAppContext().getSystemService( Context.WINDOW_SERVICE );
 		DisplayMetrics outMetrics = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics( outMetrics );
 		return outMetrics.widthPixels;
@@ -141,11 +139,10 @@ public class DisplayUtil {
 	/**
 	 * 获得屏幕高度
 	 *
-	 * @param context
 	 * @return
 	 */
-	public static int getScreenHeight( Context context ) {
-		WindowManager wm = ( WindowManager ) context.getSystemService( Context.WINDOW_SERVICE );
+	public static int getScreenHeight() {
+		WindowManager wm = ( WindowManager ) CommonApplication.getAppContext().getSystemService( Context.WINDOW_SERVICE );
 		DisplayMetrics outMetrics = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics( outMetrics );
 		return outMetrics.heightPixels;
@@ -218,8 +215,8 @@ public class DisplayUtil {
 		view.setDrawingCacheEnabled( true );
 		view.buildDrawingCache();
 		Bitmap bmp = view.getDrawingCache();
-		int width = getScreenWidth( activity );
-		int height = getScreenHeight( activity );
+		int width = getScreenWidth( );
+		int height = getScreenHeight( );
 		Bitmap bp = null;
 		bp = Bitmap.createBitmap( bmp, 0, 0, width, height );
 		view.destroyDrawingCache();
@@ -241,8 +238,8 @@ public class DisplayUtil {
 		activity.getWindow().getDecorView().getWindowVisibleDisplayFrame( frame );
 		int statusBarHeight = frame.top;
 
-		int width = getScreenWidth( activity );
-		int height = getScreenHeight( activity );
+		int width = getScreenWidth( );
+		int height = getScreenHeight();
 		Bitmap bp = null;
 		bp = Bitmap.createBitmap( bmp, 0, statusBarHeight, width, height - statusBarHeight );
 		view.destroyDrawingCache();
@@ -252,7 +249,7 @@ public class DisplayUtil {
 	public static int getDefKeyboardHeight( Context context ) {
 		sSDefKeyboardHeight = 0;
 		if ( sSDefKeyboardHeight == 0 ) {   //evaluate keyboard height
-			sSDefKeyboardHeight = getScreenHeight( context ) * 3 / 7;
+			sSDefKeyboardHeight = getScreenHeight() * 3 / 7;
 		}
 		final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences( context );
 		int height = settings.getInt( EXTRA_DEF_KEYBOARDHEIGHT, 0 );

@@ -261,6 +261,8 @@ deps.transitionseverywhere = "com.andkulikov:transitionseverywhere:${versions.tr
 deps.klinkerapps = 'com.klinkerapps:link_builder:2.0.5'
 //zxing
 deps.zxing = 'com.google.zxing:core:3.3.3'
+deps.uetool = 'me.ele:uetool:1.2.3'
+deps.uetool_no_op = 'me.ele:uetool-no-op:1.2.3'
 ext.deps = deps
 
 def phantomVersion = [:]

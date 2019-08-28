@@ -28,6 +28,7 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.tencent.mmkv.MMKV
 import com.wlqq.phantom.library.PhantomCore
 import com.wlqq.phantom.library.log.ILogReporter
+import me.ele.uetool.UETool
 import okhttp3.Headers
 import org.acra.ACRA
 import org.acra.ReportingInteractionMode
@@ -98,6 +99,8 @@ open class CommonApplication : Application() {
 		QQPlatFormConfig.registerShare("1106891112", "QiIFegOZGaRmeC4S")
 		WechatPlatFormConfig.registerShare("wxf143a66eb7528d12", "e408746be2a052ae1f294aa91595227c")
 		WeiboPlatFormConfig.registerShare("3136498027", "b62dd106233d9c59843512987b89627d", "https://api.weibo.com/oauth2/default.html")
+
+		UETool.showUETMenu(DisplayUtil.getScreenHeight() - DisplayUtil.dip2px(200f))
 	}
 
 	private fun initPhantom(base: Context) {
@@ -166,7 +169,7 @@ open class CommonApplication : Application() {
 				.add("appVersion", AppUtils.getAppVersionName())//
 				.add("productId", "2000") //
 				.add("User-agent", stringBuffer.toString())//
-				.add("resolution", DisplayUtil.getScreenWidth(this).toString() + "x" + DisplayUtil.getScreenHeight(this))//
+				.add("resolution", DisplayUtil.getScreenWidth().toString() + "x" + DisplayUtil.getScreenHeight())//
 				.add("uuid", UUID.randomUUID().toString())//
 				.add("market", "portal")//TODO 渠道
 				.add("requestTime", TimeUtil.getCurrentDate(TimeUtil.dateFormatYMDHMSSSS)!!)//

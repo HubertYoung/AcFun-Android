@@ -37,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             drawerLayout.openDrawer( GravityCompat.START);
         }
+        navigationView.setCheckedItem( R.id.example5Fragment );
     }
 
     private void bindViews() {

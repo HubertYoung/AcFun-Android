@@ -76,9 +76,9 @@
 
     <string-array name="top_rated_movies">
         <item>The Shawshank Redemption|Crime, Drama</item>
-        <item>The Godfather|Crime, Drama</item>
-        <item>The Dark Knight|Action, Crime, Drama</item>
-        <item>Schindler\'s List|Biography, Drama, History</item>
+<!--        <item>The Godfather|Crime, Drama</item>-->
+<!--        <item>The Dark Knight|Action, Crime, Drama</item>-->
+<!--        <item>Schindler\'s List|Biography, Drama, History</item>-->
     </string-array>
     <string-array name="most_popular_movies">
         <item>Batman v Superman: Dawn of Justice|Action, Adventure, Fantasy </item>

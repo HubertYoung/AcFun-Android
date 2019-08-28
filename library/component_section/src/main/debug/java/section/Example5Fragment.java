@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hubertyoung.common.utils.display.DisplayUtil;
+import com.hubertyoung.common.widget.decoration.GridDividerItemDecoration;
 import com.hubertyoung.common.widget.decoration.HorizontalDividerItemDecoration;
 import com.hubertyoung.common.widget.decoration.VerticalDividerItemDecoration;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
@@ -38,7 +39,7 @@ public class Example5Fragment extends Fragment {
         sectionAdapter = new SectionedRecyclerViewAdapter();
 
         sectionAdapter.addSection(new MovieSection(getString(R.string.top_rated_movies_topic), getTopRatedMoviesList()));
-//        sectionAdapter.addSection(new MovieSection(getString(R.string.most_popular_movies_topic), getMostPopularMoviesList()));
+        sectionAdapter.addSection(new MovieSection(getString(R.string.most_popular_movies_topic), getMostPopularMoviesList()));
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
 
@@ -67,13 +68,19 @@ public class Example5Fragment extends Fragment {
         VerticalDividerItemDecoration.Builder builder2 = new VerticalDividerItemDecoration.Builder( getActivity() );
         builder2.colorResId( R.color.colorAccent );
         builder2.size( DisplayUtil.dip2px( 20 ) );
-        builder2.showFirstDivider()
-                .showLastDivider();
+//        builder2.showFirstDivider()
+//                .showLastDivider();
 //        SimpleDividerDecoration decoration = new SimpleDividerDecoration( getActivity(), SimpleDividerDecoration.GRID_DIVIDER_VERTICAL );
 ////        decoration.setHorizontalSize( 10,R.color.colorAccent );
 //        decoration.setVerticalSize( 10, R.color.colorAccent);
 //        recyclerView.addItemDecoration(builder.build());
-        recyclerView.addItemDecoration(builder2.build());
+        GridDividerItemDecoration.Builder builder3 = new GridDividerItemDecoration.Builder( getActivity() );
+        builder3.colorResId( R.color.colorAccent );
+        builder3.size( DisplayUtil.dip2px( 1 ) );
+        builder3.showNeedSpace();
+//        builder3.showFirstDivider();
+        recyclerView.addItemDecoration(builder3.build());
+//        recyclerView.addItemDecoration(builder2.build());
         return view;
     }
 

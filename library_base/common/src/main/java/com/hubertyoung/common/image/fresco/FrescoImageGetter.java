@@ -72,7 +72,7 @@ public class FrescoImageGetter implements Drawable.Callback, ImageGetter, Fresco
 	public FrescoImageGetter( Context context ) {
 		mContext = context;
 		mMultiDraweeHolder = new MultiDraweeHolder();
-		widthPixels = ( int ) ( ( ( float ) DisplayUtil.getScreenWidth( context ) ) * 0.8f );
+		widthPixels = ( int ) ( ( ( float ) DisplayUtil.getScreenWidth() ) * 0.8f );
 	}
 
 	public void addTextView( TextView textView ) {

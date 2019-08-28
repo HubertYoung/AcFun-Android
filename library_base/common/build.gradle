@@ -56,6 +56,8 @@ dependencies {
     implementation deps.facebook.stetho
     implementation deps.facebook.stetho_okhttp3
     implementation deps.acra
+    debugImplementation deps.uetool
+    releaseImplementation deps.uetool_no_op
 //    api project(':annotation')
     //    implementation 'com.google.auto.service:auto-service:1.0-rc2'
     //    implementation 'com.squareup:javapoet:1.11.1'
