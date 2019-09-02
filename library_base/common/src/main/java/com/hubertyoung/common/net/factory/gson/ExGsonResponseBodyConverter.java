@@ -69,8 +69,9 @@ public class ExGsonResponseBodyConverter< T > implements Converter< ResponseBody
 				return gson.fromJson( value, type );
 			}
 		} catch ( Exception e ) {
+			return ( T ) value;
 		}
-		return gson.fromJson( value, type );
+//		return gson.fromJson( value, type );
 	}
 
 //	public ParameterizedType type( final Class raw, final Type... args ) {

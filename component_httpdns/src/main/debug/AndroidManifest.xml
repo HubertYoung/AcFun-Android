@@ -22,7 +22,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name="httpdns.MainActivity">
+<!--        <activity android:name="httpdns.MainActivity">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+        <activity android:name="httpdns.MainActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

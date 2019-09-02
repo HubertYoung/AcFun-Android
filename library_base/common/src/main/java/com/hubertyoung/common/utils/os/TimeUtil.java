@@ -388,6 +388,18 @@ public class TimeUtil {
         }
         return curDateTime;
     }
+    public static String getNextDay( int i,String dateFormat ) {
+        String curDateTime = null;
+        try {
+            SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat( dateFormat );
+            Calendar c = new GregorianCalendar();
+            c.add( Calendar.DAY_OF_MONTH, i );
+            curDateTime = mSimpleDateFormat.format( c.getTime() );
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+        return curDateTime;
+    }
     //</editor-fold>
 
     //获取当前系统前后第几小时
