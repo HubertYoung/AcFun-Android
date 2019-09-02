@@ -1,6 +1,7 @@
 package com.hubertyoung.component_acfunarticle.article.section;
 
 import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,6 @@ import com.hubertyoung.component_acfunarticle.R;
 import com.hubertyoung.component_acfunarticle.entity.RankContent;
 
 import java.util.List;
-
-import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>
@@ -116,7 +115,7 @@ public class ListArticleSection extends StatelessSection {
 			commentText = view.findViewById( R.id.comment_text );
 
 			ViewGroup.LayoutParams layoutParams = mCommentsLayout.getLayoutParams();
-			layoutParams.width = ( int ) ( DisplayUtil.getScreenWidth( view.getContext() ) * 0.126667f );
+			layoutParams.width = ( int ) ( DisplayUtil.getScreenWidth() * 0.126667f );
 			mCommentsLayout.setLayoutParams( layoutParams );
 		}
 	}
