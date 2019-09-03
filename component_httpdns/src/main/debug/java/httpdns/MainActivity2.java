@@ -64,7 +64,7 @@ public class MainActivity2 extends AbsLifecycleActivity< MainActivity2ViewModel 
             String value = entry.getValue();
             addView( key, value );
         }
-        headMap.put( "Cookie", "JSESSIONID=aaa5k5E9c1nsX-ueL-MZw; ecology_JSessionId=aaa5k5E9c1nsX-ueL-MZw; languageidweaver=7; loginidweaver=112" );
+        headMap.put( "Cookie", "aaa_rsZ06CIkrbzjr1YZw" );
         addView( "Cookie", headMap.get( "Cookie" ) );
         initAction();
     }
@@ -74,14 +74,22 @@ public class MainActivity2 extends AbsLifecycleActivity< MainActivity2ViewModel 
             @Override
             public void onClick( View v ) {
                 map.put( "type","on" );
-                getMViewModel().requestVerificationCodeInfo( headMap, map );
+                TreeMap treeMap = new TreeMap();
+                treeMap.putAll( headMap );
+                String cookie = ( String ) treeMap.get( "Cookie" );
+                treeMap.put( "Cookie", "JSESSIONID="+cookie+"; ecology_JSessionId="+cookie+"; languageidweaver=7; loginidweaver=112" );
+                getMViewModel().requestVerificationCodeInfo( treeMap, map );
             }
         } );
         findViewById( R.id.btn2 ).setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
                 map.put( "type","off" );
-                getMViewModel().requestVerificationCodeInfo( headMap, map );
+                TreeMap treeMap = new TreeMap();
+                treeMap.putAll( headMap );
+                String cookie = ( String ) treeMap.get( "Cookie" );
+                treeMap.put( "Cookie", "JSESSIONID="+cookie+"; ecology_JSessionId="+cookie+"; languageidweaver=7; loginidweaver=112" );
+                getMViewModel().requestVerificationCodeInfo( treeMap, map );
             }
         } );
     }

@@ -125,7 +125,7 @@ public class HttpConnection {
 
 		}
 		//设置cookie
-		addCookie();
+//		addCookie();
 		/**
 		 *
 		 *  判断是否在AppLication中配置Https证书
