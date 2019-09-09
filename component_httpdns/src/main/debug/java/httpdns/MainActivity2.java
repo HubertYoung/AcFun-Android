@@ -19,6 +19,7 @@ import com.hubertyoung.component_httpdns.R;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
@@ -29,8 +30,8 @@ import httpdns.vm.MainActivity2ViewModel;
 public class MainActivity2 extends AbsLifecycleActivity< MainActivity2ViewModel > {
 
     private TableLayout mTlRoot;
-    private Map< String, String > map = new TreeMap();
-    private Map< String, String > headMap = new TreeMap();
+    private Map< String, String > map = new LinkedHashMap();
+    private Map< String, String > headMap = new LinkedHashMap();
 
     @Override
     protected int getLayoutId() {
@@ -40,6 +41,8 @@ public class MainActivity2 extends AbsLifecycleActivity< MainActivity2ViewModel 
     @Override
     public void initView( @Nullable Bundle savedInstanceState ) {
         super.initView( savedInstanceState );
+
+        mTlRoot = ( TableLayout ) findViewById( R.id.tl_root );
         map.put( "signSection", TimeUtil.getCurrentDate( TimeUtil.dateFormatYMD ) + " 06:00:00#" + TimeUtil.getNextDay( 1, TimeUtil.dateFormatYMD ) + " 02:00:00" );
         map.put( "min", "480" );
         map.put( "longitude", "116.4822" + new Random().nextInt( 99 ) );
@@ -56,7 +59,8 @@ public class MainActivity2 extends AbsLifecycleActivity< MainActivity2ViewModel 
         map.put( "_ec_osVersion", "12.1" );
         map.put( "ismobile", "1" );
 
-        mTlRoot = ( TableLayout ) findViewById( R.id.tl_root );
+        headMap.put( "Cookie", "aaa_rsZ06CIkrbzjr1YZw" );
+        addView( "Cookie", headMap.get( "Cookie" ) );
         Iterator< Map.Entry< String, String > > entries = map.entrySet().iterator();
         while ( entries.hasNext() ) {
             Map.Entry< String, String > entry = entries.next();
@@ -64,8 +68,7 @@ public class MainActivity2 extends AbsLifecycleActivity< MainActivity2ViewModel 
             String value = entry.getValue();
             addView( key, value );
         }
-        headMap.put( "Cookie", "aaa_rsZ06CIkrbzjr1YZw" );
-        addView( "Cookie", headMap.get( "Cookie" ) );
+
         initAction();
     }
 
