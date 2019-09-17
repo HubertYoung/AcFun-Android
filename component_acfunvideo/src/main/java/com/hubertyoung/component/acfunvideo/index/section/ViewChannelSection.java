@@ -1,6 +1,7 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,8 +16,6 @@ import com.hubertyoung.component.acfunvideo.entity.ChannelOperate;
 import com.hubertyoung.component_acfunvideo.R;
 
 import java.util.List;
-
-import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>
@@ -100,7 +99,7 @@ public class ViewChannelSection extends StatelessSection {
             mRoot = ( LinearLayout ) view.findViewById( R.id.root );
             mImageView = ( SimpleDraweeView ) view.findViewById( R.id.item_channel_img );
             mTextView = ( TextView ) view.findViewById( R.id.item_channel_text );
-            int width = ( int ) ( DisplayUtil.getScreenWidth( view.getContext() ) * 0.106666f );
+            int width = ( int ) ( DisplayUtil.getScreenWidth() * 0.106666f );
             LinearLayout.LayoutParams layoutParams = ( LinearLayout.LayoutParams ) mImageView.getLayoutParams();
             layoutParams.width = width;
             layoutParams.height = width;

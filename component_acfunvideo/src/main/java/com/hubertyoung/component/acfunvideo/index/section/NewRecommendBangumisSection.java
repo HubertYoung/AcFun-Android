@@ -1,5 +1,6 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -8,18 +9,16 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.StatelessSection;
-import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindBottomMenuViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BottomMenuViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
 import com.hubertyoung.component_acfunvideo.R;
-
-import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>
@@ -192,7 +191,7 @@ public class NewRecommendBangumisSection extends StatelessSection {
 		protected void initCover( SimpleDraweeView cover ) {
 			ViewGroup.LayoutParams layoutParams = cover.getLayoutParams();
 			if ( layoutParams == null || layoutParams.width <= 0 ) {
-				int screenWidth = DisplayUtil.getScreenWidth( cover.getContext() );
+				int screenWidth = DisplayUtil.getScreenWidth( );
 				layoutParams = new FrameLayout.LayoutParams( screenWidth, ( int ) ( screenWidth / 2.3152175f ) );
 			} else {
 				layoutParams.height = ( int ) ( layoutParams.width / 2.3152175f );

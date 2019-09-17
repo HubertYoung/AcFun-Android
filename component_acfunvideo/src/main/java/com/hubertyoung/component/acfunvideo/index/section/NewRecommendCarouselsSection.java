@@ -125,7 +125,7 @@ public class NewRecommendCarouselsSection extends StatelessSection {
 		private void initBannerView( BannerView sliderLayout ) {
 			ViewGroup.LayoutParams layoutParams = ( FrameLayout.LayoutParams ) this.sliderLayout.getLayoutParams();
 			if ( layoutParams == null || layoutParams.width <= 0 ) {
-				int widgetWidth = DisplayUtil.getScreenWidth( sliderLayout.getContext() );
+				int widgetWidth = DisplayUtil.getScreenWidth();
 				layoutParams = new FrameLayout.LayoutParams( widgetWidth, ( int ) ( widgetWidth / 2.0833333f ) );
 			} else {
 				layoutParams.height = ( int ) ( layoutParams.width / 2.0833333f );

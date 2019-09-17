@@ -1,5 +1,6 @@
 package com.hubertyoung.component.acfunvideo.index.section;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,21 +10,19 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hubertyoung.common.base.BaseActivity;
 import com.hubertyoung.common.entity.RegionBodyContent;
+import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.common.image.fresco.ImageLoaderUtil;
 import com.hubertyoung.common.utils.data.StringUtil;
 import com.hubertyoung.common.utils.display.DisplayUtil;
 import com.hubertyoung.common.utils.display.ToastUtil;
 import com.hubertyoung.common.widget.sectioned.SectionParameters;
 import com.hubertyoung.common.widget.sectioned.StatelessSection;
-import com.hubertyoung.common.entity.Regions;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BindHeaderTitleViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.BottomMenuViewHolder;
 import com.hubertyoung.component.acfunvideo.index.section.viewholder.HeadTitleViewHolder;
 import com.hubertyoung.component_acfunvideo.R;
 
 import java.util.List;
-
-import android.support.v7.widget.RecyclerView;
 
 /**
  * <br>
@@ -161,7 +160,7 @@ public class ArticlesNewSection extends StatelessSection {
             mFrom = ( TextView ) view.findViewById( R.id.item_article_view_subchannel );
             root = view.findViewById( R.id.home_item_root );
             ViewGroup.LayoutParams layoutParams = mCommentsLayout.getLayoutParams();
-            layoutParams.width = ( int ) ( DisplayUtil.getScreenWidth( view.getContext() ) * 0.126667f );
+            layoutParams.width = ( int ) ( DisplayUtil.getScreenWidth( ) * 0.126667f );
             this.mCommentsLayout.setLayoutParams( layoutParams );
         }
     }

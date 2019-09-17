@@ -1,6 +1,5 @@
 package com.hubertyoung.backgroundjob;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +10,6 @@ import android.view.WindowManager;
 import com.hubertyoung.backgroundjob.receiver.KeepAliveReceiver;
 import com.hubertyoung.backgroundjob.receiver.ScreenManager;
 import com.hubertyoung.common.CommonApplication;
-
-import backgroundjob.MainActivity;
 
 
 /**
@@ -42,9 +39,9 @@ public class SinglePixelActivity extends AppCompatActivity {
     protected void onDestroy() {
 
         if(!KeepAliveReceiver.isApplive(this, CommonApplication.getAppContext().getPackageName() )){
-            Intent intentAlive = new Intent(this, MainActivity.class);
-            intentAlive.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intentAlive);
+            //Intent intentAlive = new Intent(this, MainActivity.class);
+            //intentAlive.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
+            //startActivity(intentAlive);
             //Log.i(TAG,"SinglePixelActivity--->App被干掉，我要重启它");
         }
         super.onDestroy();

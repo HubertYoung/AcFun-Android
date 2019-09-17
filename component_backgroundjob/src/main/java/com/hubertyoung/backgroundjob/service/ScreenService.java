@@ -9,8 +9,6 @@ import android.os.IBinder;
 
 import com.hubertyoung.common.utils.os.AppUtils;
 
-import backgroundjob.ServiceImpl;
-
 
 public class ScreenService extends Service {
 
@@ -48,7 +46,7 @@ public class ScreenService extends Service {
             if (action.equals("android.intent.action.SCREEN_ON")) {
                 System.out.println("—— SCREEN_ON ——");
                 if(!AppUtils.isServiceRunning("backgroundjob.ServiceImpl")){
-                    startService(new Intent(context, ServiceImpl.class));
+//                    startService(new Intent(context, ServiceImpl.class));
                 }
             } else if (action.equals("android.intent.action.SCREEN_OFF")) {
                 System.out.println("—— SCREEN_OFF ——");

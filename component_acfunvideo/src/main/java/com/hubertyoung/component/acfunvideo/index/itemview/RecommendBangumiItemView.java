@@ -27,7 +27,7 @@ public class RecommendBangumiItemView {
 
 	public RecommendBangumiItemView( Context context ) {
 		mLayoutInflater = LayoutInflater.from( context );
-		spaceWidth = ( DisplayUtil.getScreenWidth( context ) - ( ( DisplayUtil.dip2px( 15.0f ) * 2 ) + ( DisplayUtil.dip2px( 9.0f ) * 2 ) ) ) / 3;
+		spaceWidth = ( DisplayUtil.getScreenWidth( ) - ( ( DisplayUtil.dip2px( 15.0f ) * 2 ) + ( DisplayUtil.dip2px( 9.0f ) * 2 ) ) ) / 3;
 	}
 
 	public View init() {
