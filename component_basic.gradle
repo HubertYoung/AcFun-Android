@@ -1,6 +1,6 @@
 apply from: rootProject.file('cc-settings-2.gradle')
 /** phantom框架宿主 gradle 插件使用 */
-apply plugin: 'com.wlqq.phantom.host'
+//apply plugin: 'com.wlqq.phantom.host'
 //apply from: 'https://raw.githubusercontent.com/luckybilly/CC/master/cc-settings.gradle'
 //先加载local.properties文件
 apply plugin: 'kotlin-android'
@@ -106,8 +106,8 @@ dependencies {
 //    implementation deps.rxbinding_swiperefreshlayout
 //    implementation deps.rxbinding_viewpager
 //    implementation deps.rxbinding_material
-    implementation deps.phantomVersion.hostLib
-    implementation deps.phantomVersion.communicationLib
+//    implementation deps.phantomVersion.hostLib
+//    implementation deps.phantomVersion.communicationLib
 
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner

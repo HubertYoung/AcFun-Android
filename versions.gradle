@@ -20,7 +20,7 @@
  **/
 ext.deps = [:]
 def versions = [:]
-versions.android_gradle_plugin = '3.1.3'
+versions.android_gradle_plugin = '3.5.0'
 versions.arch_core = "2.0.0"
 versions.room = "2.0.0"
 versions.lifecycle = "1.1.1"
@@ -43,10 +43,10 @@ versions.glide = "4.8.0"
 versions.timber = "4.5.1"
 versions.rxjava2 = "2.2.3"
 versions.rx_android = "2.1.0"
-versions.atsl_runner = "1.0.2"
+versions.atsl_runner = "1.2.0"
 versions.atsl_rules = "1.1.0-alpha4"
 versions.hamcrest = "1.3"
-versions.kotlin = "1.3.10"
+versions.kotlin = "1.3.41"
 versions.paging = "2.1.0-alpha01"
 versions.navigation = "1.0.0-alpha06"
 versions.work = "1.0.0-alpha10"
@@ -118,8 +118,8 @@ espresso.intents = "com.android.support.test.espresso:espresso-intents:$versions
 deps.espresso = espresso
 
 def atsl = [:]
-atsl.runner = "com.android.support.test:runner:$versions.atsl_runner"
-atsl.rules = "com.android.support.test:rules:$versions.atsl_runner"
+atsl.runner = "androidx.test:runner:$versions.atsl_runner"
+atsl.rules = "androidx.test:runner:$versions.atsl_rules"
 deps.atsl = atsl
 
 def alibaba = [:]
@@ -133,11 +133,12 @@ mockito.android = "org.mockito:mockito-android:$versions.mockito_android"
 deps.mockito = mockito
 
 def kotlin = [:]
-kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
-kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+kotlin.reflect = "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test:$versions.kotlin"
+kotlin.test_junit = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
-
 deps.kotlin = kotlin
 
 //deps.paging_ktx = "androidx.paging:paging-runtime-ktx:$versions.paging"
@@ -282,6 +283,9 @@ def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     handler.maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' }
+
+    handler.maven { url "https://jitpack.io" }
+    handler.maven { url 'https://dl.bintray.com/umsdk/release' }
     //微博
     handler.maven { url "https://dl.bintray.com/thelasterstar/maven/" }
     handler.maven { url 'https://dl.bintray.com/hubertyoung/share_platform' }

@@ -3,7 +3,8 @@ includeApp()
 includeSharePlatform()
 includeComponent()
 includeLib()
-includePlugin()
+//includePlugin()
+includeAop()
 
 def includeBase() {
     include ':common_res',
@@ -57,8 +58,8 @@ def includeComponent() {
             ':component_backgroundjob',
 
             ':component_dialog',
-            ':component_httpdns',
-            ':component_host'
+            ':component_httpdns'
+//            ':component_host'
 
     project(':component_bankcard').projectDir = new File(rootDir, 'library/component_bankcard')
     project(':component_banner').projectDir = new File(rootDir, 'library/component_banner')
@@ -104,6 +105,19 @@ def includeLib() {
     project(':gsyVideoPlayer-x86').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-x86')
     project(':gsyVideoPlayer-x86_64').projectDir = new File(rootDir, 'library_player/gsyVideoPlayer-x86_64')
 
+}
+
+def includeAop() {
+//    include ':booster-android-gradle-api'
+//    include ':booster-gradle-plugin'
+//    include ':booster-task-spi'
+//    include ':booster-transform-spi'
+//    include ':booster-transform-util'
+//    project(':booster-android-gradle-api').projectDir = new File(rootDir, 'java_aop/booster-android-gradle-api')
+//    project(':booster-gradle-plugin').projectDir = new File(rootDir, 'java_aop/booster-gradle-plugin')
+//    project(':booster-task-spi').projectDir = new File(rootDir, 'java_aop/booster-task-spi')
+//    project(':booster-transform-spi').projectDir = new File(rootDir, 'java_aop/booster-transform-spi')
+//    project(':booster-transform-util').projectDir = new File(rootDir, 'java_aop/booster-transform-util')
 }
 
 def includePlugin() {

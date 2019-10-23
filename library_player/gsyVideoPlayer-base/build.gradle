@@ -26,7 +26,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    api deps.support.annotations
     api deps.ijkplayer.java
 
     //compile fileTree(dir: 'libs', include: ['*.jar'])

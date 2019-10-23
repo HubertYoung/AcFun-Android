@@ -339,7 +339,7 @@ public final class EventLogger implements Player.EventListener, MetadataOutput,
     }
 
     @Override
-    public void onLoadCompleted(int windowIndex, @Nullable MediaSource.MediaPeriodId mediaPeriodId, LoadEventInfo loadEventInfo, MediaLoadData mediaLoadData) {
+    public void onLoadCompleted( int windowIndex, @Nullable MediaSource.MediaPeriodId mediaPeriodId, LoadEventInfo loadEventInfo, MediaLoadData mediaLoadData) {
 
     }
 

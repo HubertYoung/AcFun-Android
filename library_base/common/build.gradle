@@ -1,7 +1,7 @@
 ext.alwaysLib = true
 apply from: rootProject.file('component_basic.gradle')
 /** phantom框架宿主 gradle 插件使用 */
-apply plugin: 'com.wlqq.phantom.host'
+//apply plugin: 'com.wlqq.phantom.host'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -32,8 +32,8 @@ android {
 dependencies {
     api project(':common_res')
 
-    implementation deps.phantomVersion.hostLib
-    implementation deps.phantomVersion.communicationLib
+//    implementation deps.phantomVersion.hostLib
+//    implementation deps.phantomVersion.communicationLib
 
     implementation deps.hubertyoung.baseplatformlibrary
     implementation deps.hubertyoung.qqplatformlibrary
