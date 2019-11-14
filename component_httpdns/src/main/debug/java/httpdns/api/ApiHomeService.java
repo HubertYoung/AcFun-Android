@@ -9,6 +9,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  * <br>
@@ -23,8 +24,8 @@ import retrofit2.http.POST;
 public interface ApiHomeService {
 
 	@FormUrlEncoded
-	@POST("api/hrm/kq/attendanceButton/punchButton")
+	@POST("{path}")
 	@Headers({
 			"User-Agent:Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92 Qiyuesuo/physicalSDK/E-Mobile7/7.0.32"})
-	Flowable< String > request( @HeaderMap Map< String, String > headMap, @FieldMap Map< String, String > map );
+	Flowable< String > request( @HeaderMap Map< String, String > headMap, @FieldMap Map< String, String > map, @Path("path") String path );
 }

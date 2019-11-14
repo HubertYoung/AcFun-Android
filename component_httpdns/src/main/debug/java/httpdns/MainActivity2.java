@@ -58,6 +58,8 @@ public class MainActivity2 extends AbsLifecycleActivity< MainActivity2ViewModel 
         map.put( "_ec_os", "iOS" );
         map.put( "_ec_osVersion", "12.1" );
         map.put( "ismobile", "1" );
+        map.put( "url", "http://oa1.szshuwei.com:8008/" );
+        map.put( "path", "api/hrm/kq/attendanceButton/punchButton" );
 
         headMap.put( "Cookie", "aaa_rsZ06CIkrbzjr1YZw" );
         addView( "Cookie", headMap.get( "Cookie" ) );

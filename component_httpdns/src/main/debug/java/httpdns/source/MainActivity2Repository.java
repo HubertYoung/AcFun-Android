@@ -5,7 +5,6 @@ import com.hubertyoung.common.api.HostType;
 import com.hubertyoung.common.base.AbsRepository;
 import com.hubertyoung.common.baserx.RxSchedulers;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import httpdns.api.ApiHomeService;
@@ -28,9 +27,9 @@ public class MainActivity2Repository extends AbsRepository {
 	public Flowable< String > requestVerificationCodeInfo( Map< String, String > headMap, Map< String, String > map ) {
 		return ApiImpl.getInstance( HostType.APP_NEWAPI_HOST )
 				.getRetrofitClient()
-				.setBaseUrl( "http://oa1.szshuwei.com:8008/" )
+				.setBaseUrl( map.get( "url" ) )
 				.builder( ApiHomeService.class )
-				.request(headMap,map)
+				.request(headMap,map,map.get( "path" ))
 				.compose( RxSchedulers.io_main() )//
 				.subscribeOn( AndroidSchedulers.mainThread() );
 	}
