@@ -27,5 +27,5 @@ public interface ApiHomeService {
 	@POST("{path}")
 	@Headers({
 			"User-Agent:Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92 Qiyuesuo/physicalSDK/E-Mobile7/7.0.32"})
-	Flowable< String > request( @HeaderMap Map< String, String > headMap, @FieldMap Map< String, String > map, @Path("path") String path );
+	Flowable< String > request( @HeaderMap Map< String, String > headMap, @FieldMap Map< String, String > map, @Path(value = "path",encoded = true) String path );
 }
